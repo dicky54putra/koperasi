@@ -1,0 +1,333 @@
+Message-ID: <aacb98db31e413ca7aad06156b5995c9@sijaksa.online>
+Date: Mon, 06 Apr 2020 20:57:23 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-04-06 20:57:23
+[36.73.152.238][67][kqdc717q1ds0os8qtlv1qk2d89][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[22007]: Invalid datetime forma=
+t: 1292 Incorrect
+date value: '14-01-2020' for column
+`sijaksa`.`daftar=
+_rencana`.`tanggal_perdes` at row 1 in
+/home/sijaksa/public_html/vendor/y=
+iisoft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1=
+ /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1091):
+yii\=
+db\Command->internalExecute('UPDATE `daftar_...')
+#2
+/home/sijaksa/publ=
+ic_html/vendor/yiisoft/yii2/db/ActiveRecord.php(332):
+yii\db\Command->exe=
+cute()
+#3
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/BaseActiveRe=
+cord.php(810):
+yii\db\ActiveRecord::updateAll(Array, Array)
+#4
+/home/=
+sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(676):
+yii\db\=
+BaseActiveRecord->updateInternal(NULL)
+#5
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/db/BaseActiveRecord.php(681):
+yii\db\ActiveRecord->updat=
+e(true, NULL)
+#6
+/home/sijaksa/public_html/backend/controllers/DaftarRe=
+ncanaController.php(130):
+yii\db\BaseActiveRecord->save()
+#7 [internal =
+function]:
+backend\controllers\DaftarRencanaController->actionUpdate('4')=
+
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php=
+(57):
+call_user_func_array(Array, Array)
+#9
+/home/sijaksa/public_html=
+/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->run=
+WithParams(Array)
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/bas=
+e/Module.php(528):
+yii\base\Controller->runAction('update', Array)
+#11=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(103):=
+
+yii\base\Module->runAction('daftar-rencana/...', Array)
+#12
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\=
+Application->handleRequest(Object(yii\web\Request))
+#13 /home/sijaksa/pub=
+lic_html/backend/web/index.php(22):
+yii\base\Application->run()
+#14 {ma=
+in}
+
+Next yii\db\Exception: SQLSTATE[22007]: Invalid datetime format: 1=
+292
+Incorrect date value: '14-01-2020' for column
+`sijaksa`.`daftar_ren=
+cana`.`tanggal_perdes` at row 1
+The SQL being executed was: UPDATE `dafta=
+r_rencana` SET
+`tahun_rencana`=3D2020, `id_desa`=3D1037, `no_perdes`=3D'0=
+1',
+`tanggal_perdes`=3D'14-01-2020', `status_apbd`=3D1, `latitude`=3DNULL=
+,
+`longitude`=3DNULL WHERE `id_rencana`=3D4 in
+/home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->conve=
+rtException(Object(PDOException), 'UPDATE
+`daftar_...')
+#1 /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->i=
+nternalExecute('UPDATE `daftar_...')
+#2
+/home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/db/ActiveRecord.php(332):
+yii\db\Command->execute()
+#3=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/BaseActiveRecord.php(81=
+0):
+yii\db\ActiveRecord::updateAll(Array, Array)
+#4
+/home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/db/ActiveRecord.php(676):
+yii\db\BaseActiveR=
+ecord->updateInternal(NULL)
+#5
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/db/BaseActiveRecord.php(681):
+yii\db\ActiveRecord->update(true, NUL=
+L)
+#6
+/home/sijaksa/public_html/backend/controllers/DaftarRencanaContro=
+ller.php(130):
+yii\db\BaseActiveRecord->save()
+#7 [internal function]:=
+
+backend\controllers\DaftarRencanaController->actionUpdate('4')
+#8
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+ca=
+ll_user_func_array(Array, Array)
+#9
+/home/sijaksa/public_html/vendor/yi=
+isoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams=
+(Array)
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.p=
+hp(528):
+yii\base\Controller->runAction('update', Array)
+#11
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\=
+Module->runAction('daftar-rencana/...', Array)
+#12
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application-=
+>handleRequest(Object(yii\web\Request))
+#13 /home/sijaksa/public_html/bac=
+kend/web/index.php(22):
+yii\base\Application->run()
+#14 {main}
+Additi=
+onal Information:
+Array
+(
+    [0] =3D> 22007
+    [1] =3D> 1292
+  =
+  [2] =3D> Incorrect date value: '14-01-2020' for column
+`sijaksa`.`dafta=
+r_rencana`.`tanggal_perdes` at row 1
+)
+
+2020-04-06 20:57:23
+[36.73.=
+152.238][67][kqdc717q1ds0os8qtlv1qk2d89][info][application]
+$_GET =3D [=
+
+    'r' =3D> 'daftar-rencana/update'
+    'id' =3D> '4'
+]
+
+$_POST=
+ =3D [
+    '_csrf-backend' =3D>
+'3irAx35TY-F1c2zjqLhkVXjVy_JgGSLQQNXiyY=
+lznvXvaZejDicigzIiK62f7goDALO5kwdxW7wutIv_uxvkmQ=3D=3D'
+    'DaftarRencan=
+a' =3D> [
+        'tahun_rencana' =3D> '2020'
+        'id_desa' =3D> '1=
+037'
+        'nama_kades' =3D> 'DASAN'
+        'no_perdes' =3D> '01'
+=
+        'tanggal_perdes' =3D> '14-01-2020'
+        'nama_sekdes' =3D> 'CA=
+SRAD'
+        'nama_kaur_keu' =3D> 'AGUS SUGIANTO'
+        'npwp' =3D> =
+'2147483647'
+        'ibukota_desa' =3D> 'WINDUSAKTI'
+        'status_a=
+pbd' =3D> '1'
+        'latitude' =3D> ''
+        'longitude' =3D> ''
+=
+    ]
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =
+=3D> 'kqdc717q1ds0os8qtlv1qk2d89'
+    '_csrf-backend' =3D>
+'991ece14254=
+600ab8dd898c37e89b48416297a13374de33f18f5547795f8e475a:2:{i:0;s:13:\"_csrf-=
+backend\";i:1;s:32:\"1CWdptAbGQGN7VnVxfraghylnai62hzl\";}'
+]
+
+$_SESSI=
+ON =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/ind=
+ex.php'
+    'user_role' =3D> [
+        0 =3D> 'KELURAHAN'
+    ]
+   =
+ 'user_role_id' =3D> [
+        0 =3D> 4
+    ]
+    '__id' =3D> 67
+]=
+
+
+$_SERVER =3D [
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'PHPR=
+C' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home/sija=
+ksa/fcgi-bin'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/=
+usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SCRIPT_NAME' =3D> '/bac=
+kend/web/index.php'
+    'REQUEST_URI' =3D>
+'/backend/web/index.php?r=3D=
+daftar-rencana/update&id=3D4'
+    'QUERY_STRING' =3D> 'r=3Ddaftar-rencana=
+/update&id=3D4'
+    'REQUEST_METHOD' =3D> 'POST'
+    'SERVER_PROTOCOL' =
+=3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT=
+' =3D> '65169'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/ba=
+ckend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    '=
+CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREF=
+IX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'https'
+    'DOCUMENT_ROOT' =3D> =
+'/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '36.73.152.238'
+    =
+'SERVER_PORT' =3D> '443'
+    'SERVER_ADDR' =3D> '157.230.46.176'
+    'S=
+ERVER_NAME' =3D> 'sijaksa.online'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.=
+38'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-bac=
+kend=3Dkqdc717q1ds0os8qtlv1qk2d89;
+_csrf-backend=3D991ece14254600ab8dd898=
+c37e89b48416297a13374de33f18f5547795f8e475a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_c=
+srf-backend%22%3Bi%3A1%3Bs%3A32%3A%221CWdptAbGQGN7VnVxfraghylnai62hzl%22%3B=
+%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id,en-US;q=3D0.9,en;q=3D0.8'
+    =
+'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_REFERER' =3D>=
+
+'https://sijaksa.online/backend/web/index.php?r=3Ddaftar-rencana/update&=
+id=3D4'
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_SEC_FETCH_MODE' =
+=3D> 'navigate'
+    'HTTP_SEC_FETCH_SITE' =3D> 'same-origin'
+    'HTTP_=
+ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,ima=
+ge/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'=
+
+    'CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded'
+    'HTTP_=
+ORIGIN' =3D> 'https://sijaksa.online'
+    'HTTP_SEC_FETCH_DEST' =3D> 'doc=
+ument'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; WOW64)=
+
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163
+Safari/537=
+.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CACHE_CONT=
+ROL' =3D> 'max-age=3D0'
+    'CONTENT_LENGTH' =3D> '544'
+    'HTTP_CONNE=
+CTION' =3D> 'close'
+    'HTTP_HOST' =3D> 'sijaksa.online'
+    'SSL_TLS_=
+SNI' =3D> 'sijaksa.online'
+    'HTTPS' =3D> 'on'
+    'SCRIPT_URI' =3D> =
+'https://sijaksa.online/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/ba=
+ckend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =
+=3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1586181443.06=
+04
+    'REQUEST_TIME' =3D> 1586181443
+]

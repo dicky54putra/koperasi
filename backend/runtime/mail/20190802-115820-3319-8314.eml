@@ -1,0 +1,367 @@
+Message-ID: <7a1dd89460a6624ce8b02599ccbde1f9@cvajm.com>
+Date: Fri, 02 Aug 2019 11:58:20 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-08-02 11:58:20
+[209.58.180.2][1][5cp8ggd5np89cisv0lqbg8up65][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 U=
+nknown column
+'purchase.id_po' in 'on clause' in
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOSta=
+tement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+db/Command.php(1158):
+yii\db\Command->internalExecute('select distinct...=
+')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(=
+399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/=
+public_html/cvajm/backend/views/surat-jalan/laporan_rekap_angkutan.php(112)=
+:
+yii\db\Command->queryAll()
+#4
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#5
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\ba=
+se\View->renderPhpFile('/home/cvajm/pub...', '[]')
+#6
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->rende=
+rFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\SuratJalanC=
+ontroller))
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/C=
+ontroller.php(384):
+yii\base\View->render('laporan_rekap_a...', Array,
+=
+Object(backend\controllers\SuratJalanController))
+#8
+/home/cvajm/public=
+_html/cvajm/backend/controllers/SuratJalanController.php(829):
+yii\base\C=
+ontroller->render('laporan_rekap_a...', Array)
+#9 [internal function]:
+=
+backend\controllers\SuratJalanController->actionLaporanRekapAngkutan()
+#1=
+0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php=
+(57):
+call_user_func_array(Array, Array)
+#11
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction=
+->runWithParams(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/base/Module.php(528):
+yii\base\Controller->runAction('laporan-rekap=
+-a...', Array)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/we=
+b/Application.php(103):
+yii\base\Module->runAction('surat-jalan/lap...', =
+Array)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Appli=
+cation.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Reques=
+t))
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\ba=
+se\Application->run()
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[42S=
+22]: Column not found: 1054 Unknown
+column 'purchase.id_po' in 'on clause=
+'
+The SQL being executed was: select distinct(pelanggan.pelanggan),
+pel=
+anggan.id_pelanggan, jenis_muatan.jenis_muatan =09from surat_jalan
+=09lef=
+t join purchase_order on purchase.id_po =3D surat_jalan.id_po =09left
+joi=
+n pelanggan on pelanggan.id_pelanggan =3D purchase_order.id_pelanggan
+=09=
+left join jenis_muatan on jenis_muatan.id_jenis_muatan =3D
+surat_jalan.id=
+_jenis_muatan =09where date_format(tanggal_surat_jalan,
+'%Y-%m-%d') betwe=
+en '2019-08-02' and '2019-08-02' =09order by
+pelanggan.pelanggan =09 in=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+St=
+ack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Comm=
+and.php(1295):
+yii\db\Schema->convertException(Object(PDOException), 'sel=
+ect
+distinct...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/db/Command.php(1158):
+yii\db\Command->internalExecute('select distinct.=
+..')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.ph=
+p(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/home/cvaj=
+m/public_html/cvajm/backend/views/surat-jalan/laporan_rekap_angkutan.php(11=
+2):
+yii\db\Command->queryAll()
+#4
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#5
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\=
+base\View->renderPhpFile('/home/cvajm/pub...', '[]')
+#6
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->ren=
+derFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\SuratJala=
+nController))
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base=
+/Controller.php(384):
+yii\base\View->render('laporan_rekap_a...', Array,=
+
+Object(backend\controllers\SuratJalanController))
+#8
+/home/cvajm/pub=
+lic_html/cvajm/backend/controllers/SuratJalanController.php(829):
+yii\bas=
+e\Controller->render('laporan_rekap_a...', Array)
+#9 [internal function]:=
+
+backend\controllers\SuratJalanController->actionLaporanRekapAngkutan()=
+
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineActio=
+n.php(57):
+call_user_func_array(Array, Array)
+#11
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineA=
+ction->runWithParams(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('laporan-=
+rekap-a...', Array)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/web/Application.php(103):
+yii\base\Module->runAction('surat-jalan/lap.=
+..', Array)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/=
+Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web\R=
+equest))
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+y=
+ii\base\Application->run()
+#16 {main}
+Additional Information:
+Array=
+
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown column=
+ 'purchase.id_po' in 'on clause'
+)
+
+2019-08-02 11:58:20
+[209.58.180=
+.2][1][5cp8ggd5np89cisv0lqbg8up65][info][application] $_GET
+=3D [
+    '=
+r' =3D> 'surat-jalan/laporan-rekap-angkutan'
+]
+
+$_POST =3D []
+
+$_=
+FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '5cp8ggd5np8=
+9cisv0lqbg8up65'
+    '_csrf-backend' =3D>
+'95d49211e9eb8b2098c784c8d825=
+d9f5a67e7da569748f85fe7423431ab685cfa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:3=
+2:\"Wy5dB0ZUpAnvtVTxgG-Tx_L4AjMv4agj\";}'
+]
+
+$_SESSION =3D [
+    '_=
+_flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+ =
+   'user_role' =3D> [
+        0 =3D> 'WORKSHOP'
+        1 =3D> 'TAMBANG=
+'
+        2 =3D> 'SYSTEM ADMINISTRATOR'
+        3 =3D> 'SURAT JALAN'
+=
+        4 =3D> 'PURCHASING'
+        5 =3D> 'PEMESANAN'
+        6 =3D> '=
+LOGISTIC'
+        7 =3D> 'KORLAP'
+        8 =3D> 'INVOICE'
+        9 =
+=3D> 'HRD'
+        10 =3D> 'GPS'
+        11 =3D> 'FINANCE'
+        12=
+ =3D> 'CHECKER'
+        13 =3D> 'ADMIN'
+    ]
+    'user_role_id' =3D>=
+ [
+        0 =3D> 10
+        1 =3D> 13
+        2 =3D> 1
+        3 =
+=3D> 4
+        4 =3D> 12
+        5 =3D> 5
+        6 =3D> 11
+       =
+ 7 =3D> 9
+        8 =3D> 8
+        9 =3D> 14
+        10 =3D> 7
+    =
+    11 =3D> 3
+        12 =3D> 6
+        13 =3D> 2
+    ]
+    '__id' =
+=3D> 1
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../=
+etc/php7.0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQ=
+UESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/=
+sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =
+=3D> '0'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQ=
+UEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dsurat-jalan/laporan-reka=
+p-angkutan'
+    'QUERY_STRING' =3D> 'r=3Dsurat-jalan/laporan-rekap-angkut=
+an'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.=
+1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '40526=
+'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web=
+/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_D=
+OCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''=
+
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm=
+/public_html'
+    'REMOTE_ADDR' =3D> '209.58.180.2'
+    'SERVER_PORT' =
+=3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D=
+> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SI=
+GNATURE' =3D> ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CON=
+TROL' =3D> 'max-age=3D0'
+    'HTTP_X_FORWARDED_FOR' =3D> '36.72.216.187'=
+
+    'HTTP_VIA' =3D> '1.1 singapore.rastavarian.com (squid/3.5.23)'
+   =
+ 'HTTP_HOST' =3D> 'cvajm.com'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D=
+5cp8ggd5np89cisv0lqbg8up65;
+_csrf-backend=3D95d49211e9eb8b2098c784c8d825d=
+9f5a67e7da569748f85fe7423431ab685cfa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-bac=
+kend%22%3Bi%3A1%3Bs%3A32%3A%22Wy5dB0ZUpAnvtVTxgG-Tx_L4AjMv4agj%22%3B%7D'
+=
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8'
+    'HTTP_A=
+CCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cv=
+ajm.com/cvajm/backend/web/index.php?r=3Dretase/unit'
+    'HTTP_ACCEPT' =
+=3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,=
+image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3'
+    'HTTP_USER=
+_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.3=
+6 (KHTML, like Gecko) Chrome/75.0.3770.142
+Safari/537.36'
+    'HTTP_UPG=
+RADE_INSECURE_REQUESTS' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/=
+cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/in=
+dex.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/b=
+ackend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1564718300.2933
+   =
+ 'REQUEST_TIME' =3D> 1564718300
+]

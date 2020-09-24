@@ -1,0 +1,318 @@
+Message-ID: <6c5b93be1424d275cfb18c2198e56167@cvajm.com>
+Date: Sat, 13 Jul 2019 13:35:00 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-07-13 13:35:00
+[209.58.180.2][1][gdqq5cp59adggsubcl4ncp95v1][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 U=
+nknown column
+'nama' in 'order clause' in
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement-=
+>execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Comm=
+and.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM `...')
+#2=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(399):=
+
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->query=
+All()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQue=
+ry.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/cvajm/public_html/cvajm=
+/backend/controllers/SystemroleController.php(68):
+yii\db\ActiveQuery->al=
+l()
+#6 [internal function]:
+backend\controllers\SystemroleController->a=
+ctionView('1')
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/bas=
+e/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#8
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\=
+base\InlineAction->runWithParams(Array)
+#9
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runActio=
+n('view', Array)
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+web/Application.php(103):
+yii\base\Module->runAction('systemrole/view', A=
+rray)
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Applic=
+ation.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request=
+))
+#12 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\bas=
+e\Application->run()
+#13 {main}
+
+Next yii\db\Exception: SQLSTATE[42S2=
+2]: Column not found: 1054 Unknown
+column 'nama' in 'order clause'
+The =
+SQL being executed was: SELECT * FROM `user_role` WHERE
+`id_system_role`=
+=3D'1' ORDER BY `nama` in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(O=
+bject(PDOException), 'SELECT * FROM
+`...')
+#1
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internal=
+Execute('SELECT * FROM `...')
+#2
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/db/Command.php(399):
+yii\db\Command->queryInternal('fetchAll'=
+, NULL)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.p=
+hp(237):
+yii\db\Command->queryAll()
+#4
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/db/ActiveQuery.php(133):
+yii\db\Query->all(NULL)
+#5=
+
+/home/cvajm/public_html/cvajm/backend/controllers/SystemroleController.p=
+hp(68):
+yii\db\ActiveQuery->all()
+#6 [internal function]:
+backend\con=
+trollers\SystemroleController->actionView('1')
+#7
+/home/cvajm/public_ht=
+ml/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_ar=
+ray(Array, Array)
+#8
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#=
+9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):=
+
+yii\base\Controller->runAction('view', Array)
+#10
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module=
+->runAction('systemrole/view', Array)
+#11
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->hand=
+leRequest(Object(yii\web\Request))
+#12 /home/cvajm/public_html/cvajm/back=
+end/web/index.php(22):
+yii\base\Application->run()
+#13 {main}
+Additio=
+nal Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+   =
+ [2] =3D> Unknown column 'nama' in 'order clause'
+)
+
+2019-07-13 13:35=
+:00
+[209.58.180.2][1][gdqq5cp59adggsubcl4ncp95v1][info][application] $_GE=
+T
+=3D [
+    'r' =3D> 'systemrole/view'
+    'id' =3D> '1'
+]
+
+$_P=
+OST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend'=
+ =3D> 'gdqq5cp59adggsubcl4ncp95v1'
+    '_csrf-backend' =3D>
+'bfdb9f8030=
+3a7cfdb85ad965d8084ba93ccfed4391ebf5cc2c90208d152b8a74a:2:{i:0;s:13:\"_csrf=
+-backend\";i:1;s:32:\"ejpF_y0JF6yVpCq29XcKSCYOVzrXOfm5\";}'
+]
+
+$_SESS=
+ION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/=
+web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'WORKSHOP'
+     =
+   1 =3D> 'TAMBANG'
+        2 =3D> 'SYSTEM ADMINISTRATOR'
+        3 =3D=
+> 'SURAT JALAN'
+        4 =3D> 'PURCHASING'
+        5 =3D> 'PEMESANAN'=
+
+        6 =3D> 'LOGISTIC'
+        7 =3D> 'KORLAP'
+        8 =3D> 'IN=
+VOICE'
+        9 =3D> 'HRD'
+        10 =3D> 'GPS'
+        11 =3D> 'FI=
+NANCE'
+        12 =3D> 'CHECKER'
+        13 =3D> 'ADMIN'
+    ]
+    =
+'user_role_id' =3D> [
+        0 =3D> 10
+        1 =3D> 13
+        2 =
+=3D> 1
+        3 =3D> 4
+        4 =3D> 12
+        5 =3D> 5
+        =
+6 =3D> 11
+        7 =3D> 9
+        8 =3D> 8
+        9 =3D> 14
+     =
+   10 =3D> 7
+        11 =3D> 3
+        12 =3D> 6
+        13 =3D> 2
+=
+    ]
+    '__id' =3D> 1
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home=
+/cvajm/fcgi-bin/../etc/php7.0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+  =
+  'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =
+=3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+   =
+ 'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/ind=
+ex.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dsystem=
+role%2Fview&id=3D1'
+    'QUERY_STRING' =3D> 'r=3Dsystemrole%2Fview&id=3D1=
+'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'=
+
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '59032'=
+
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/=
+index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DO=
+CUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''=
+
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm=
+/public_html'
+    'REMOTE_ADDR' =3D> '209.58.180.2'
+    'SERVER_PORT' =
+=3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D=
+> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SI=
+GNATURE' =3D> ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CON=
+TROL' =3D> 'max-age=3D0'
+    'HTTP_X_FORWARDED_FOR' =3D> '36.73.10.180'=
+
+    'HTTP_VIA' =3D> '1.1 singapore.rastavarian.com (squid/3.5.23)'
+   =
+ 'HTTP_HOST' =3D> 'cvajm.com'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D=
+gdqq5cp59adggsubcl4ncp95v1;
+_csrf-backend=3Dbfdb9f80303a7cfdb85ad965d8084=
+ba93ccfed4391ebf5cc2c90208d152b8a74a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-bac=
+kend%22%3Bi%3A1%3Bs%3A32%3A%22ejpF_y0JF6yVpCq29XcKSCYOVzrXOfm5%22%3B%7D'
+=
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8'
+    'HTTP_A=
+CCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cv=
+ajm.com/cvajm/backend/web/index.php?r=3Dsystemrole%2Findex&page=3D2&per-pag=
+e=3D10'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,applica=
+tion/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-excha=
+nge;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win=
+64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100
+Sa=
+fari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'SCRIPT_=
+URI' =3D> 'http://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL'=
+ =3D> '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+ =
+   'PHP_SELF' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT=
+' =3D> 1562999700.5018
+    'REQUEST_TIME' =3D> 1562999700
+]

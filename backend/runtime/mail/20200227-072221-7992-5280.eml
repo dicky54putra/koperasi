@@ -1,0 +1,367 @@
+Message-ID: <0b5bb33a110b6bee7526061013e4f186@sijaksa.com>
+Date: Thu, 27 Feb 2020 07:22:21 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-27 07:22:21
+[114.4.216.145][14][k6eng30gjsicfrfh5i0pk6m1ec][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'rek_obyek_apbd.kode_obyek' in 'field list' in
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+=
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):
+PD=
+OStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db=
+/Command.php(1158):
+yii\db\Command->internalExecute('\n              ...'=
+)
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(386):=
+
+yii\db\Command->queryInternal('')
+#3
+/home/sijaksa/public_html/backe=
+nd/views/data-penerimaan-dana/cetak.php(238):
+yii\db\Command->query()
+#=
+4 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+requi=
+re('/home/sijaksa/p...')
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2=
+/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '=
+[<span
+class=3D"s...')
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii2=
+/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Arra=
+y,
+Object(backend\controllers\DataPenerimaanDanaController))
+#7
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(415):
+yii\ba=
+se\View->render('cetak', Array,
+Object(backend\controllers\DataPenerimaan=
+DanaController))
+#8
+/home/sijaksa/public_html/backend/controllers/DataP=
+enerimaanDanaController.php(203):
+yii\base\Controller->renderPartial('cet=
+ak', Array)
+#9 [internal function]:
+backend\controllers\DataPenerimaanD=
+anaController->actionCetak('6')
+#10
+/home/sijaksa/public_html/vendor/yi=
+isoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(=
+157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller-=
+>runAction('cetak', Array)
+#13
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/web/Application.php(103):
+yii\base\Module->runAction('data-penerima=
+an...', Array)
+#14
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/A=
+pplication.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Re=
+quest))
+#15 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\ba=
+se\Application->run()
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[42S=
+22]: Column not found: 1054 Unknown
+column 'rek_obyek_apbd.kode_obyek' in=
+ 'field list'
+The SQL being executed was:=20
+                 SELECT
+da=
+ftar_penganggaran_pendapatan_detail.uraian,rek_obyek_apbd.kode_obyek
+    =
+             FROM data_rincian_penerimaan_dana=20
+                 LEFT JOI=
+N daftar_penganggaran_pendapatan_detail ON
+daftar_penganggaran_pendapatan=
+_detail.id_daftar_penganggaran_pendapatan_detail
+=3D
+data_rincian_pener=
+imaan_dana.id_daftar_penganggaran_pendapatan_detail
+                 LEFT=
+ JOIN daftar_penganggaran_pendapatan ON
+daftar_penganggaran_pendapatan.id=
+_daftar_penganggaran_pendapatan =3D
+daftar_penganggaran_pendapatan_detail=
+.id_daftar_penganggaran_pendapatan
+                 LEFT JOIN rek_obyek_a=
+pbd ON rek_obyek_apbd.id_obyek =3D
+daftar_penganggaran_pendapatan.id_oby=
+
+                 WHERE data_rincian_penerimaan_dana
+.id_data_penerimaa=
+n_dana =3D '6'
+                 UNION=20
+                 SELECT
+daftar=
+_penganggaran_pembiayaan_satu_detail.uraian,rek_obyek_apbd.kode_obyek
+   =
+              FROM data_rincian_penerimaan_dana=20
+                 LEFT JO=
+IN daftar_penganggaran_pembiayaan_satu_detail
+ON
+daftar_penganggaran_pe=
+mbiayaan_satu_detail.id_daftar_penganggaran_pembiayaan_satu_detail
+=3D
+=
+data_rincian_penerimaan_dana.id_daftar_penganggaran_pembiayaan_satu_detail=
+
+                 LEFT JOIN daftar_penganggaran_pembiayaan_satu ON
+daft=
+ar_penganggaran_pembiayaan_satu.id_daftar_penganggaran_pembiayaan_satu
+=
+=3D
+daftar_penganggaran_pembiayaan_satu_detail.id_daftar_penganggaran_pem=
+biayaan_satu
+                 LEFT JOIN rek_obyek_apbd ON rek_obyek_apbd.=
+id_obyek =3D
+daftar_penganggaran_pembiayaan_satu.id_oby
+               =
+  WHERE data_rincian_penerimaan_dana
+.id_data_penerimaan_dana =3D '6'
+ =
+            in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.ph=
+p:664
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/=
+Command.php(1295):
+yii\db\Schema->convertException(Object(PDOException), =
+'\n            =20
+...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2=
+/db/Command.php(1158):
+yii\db\Command->internalExecute('\n              .=
+..')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(386)=
+:
+yii\db\Command->queryInternal('')
+#3
+/home/sijaksa/public_html/back=
+end/views/data-penerimaan-dana/cetak.php(238):
+yii\db\Command->query()
+=
+#4 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+requ=
+ire('/home/sijaksa/p...')
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii=
+2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', =
+'[<span
+class=3D"s...')
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii=
+2/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Arr=
+ay,
+Object(backend\controllers\DataPenerimaanDanaController))
+#7
+/hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(415):
+yii\b=
+ase\View->render('cetak', Array,
+Object(backend\controllers\DataPenerimaa=
+nDanaController))
+#8
+/home/sijaksa/public_html/backend/controllers/Data=
+PenerimaanDanaController.php(203):
+yii\base\Controller->renderPartial('ce=
+tak', Array)
+#9 [internal function]:
+backend\controllers\DataPenerimaan=
+DanaController->actionCetak('6')
+#10
+/home/sijaksa/public_html/vendor/y=
+iisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(=
+157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller-=
+>runAction('cetak', Array)
+#13
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/web/Application.php(103):
+yii\base\Module->runAction('data-penerima=
+an...', Array)
+#14
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/A=
+pplication.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Re=
+quest))
+#15 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\ba=
+se\Application->run()
+#16 {main}
+Additional Information:
+Array
+(
+=
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'rek_o=
+byek_apbd.kode_obyek' in 'field list'
+)
+
+2020-02-27 07:22:21
+[114.4=
+.216.145][14][k6eng30gjsicfrfh5i0pk6m1ec][info][application]
+$_GET =3D [=
+
+    'r' =3D> 'data-penerimaan-dana/cetak'
+    'id' =3D> '6'
+]
+
+$=
+_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backen=
+d' =3D> 'k6eng30gjsicfrfh5i0pk6m1ec'
+    '_csrf-backend' =3D>
+'90a1e3af=
+6f9c218e39aa008df1ac364203fd546ea201aef80eae85592820dc2fa:2:{i:0;s:13:\"_cs=
+rf-backend\";i:1;s:32:\"3Wd9ZqeE6Dya3i_rl7CFhkbZ1mrUxTwb\";}'
+]
+
+$_SE=
+SSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/=
+index.php'
+    'user_role' =3D> [
+        0 =3D> 'KABUPATEN'
+        =
+1 =3D> 'KECAMATAN'
+        2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM AD=
+MINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 2
+     =
+   1 =3D> 3
+        2 =3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D>=
+ 14
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../e=
+tc/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_RE=
+QUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local=
+/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =
+=3D> '0'
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_U=
+RI' =3D>
+'/backend/web/index.php?r=3Ddata-penerimaan-dana/cetak&id=3D6'=
+
+    'QUERY_STRING' =3D> 'r=3Ddata-penerimaan-dana/cetak&id=3D6'
+    'R=
+EQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GA=
+TEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '10560'
+    'SCR=
+IPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/index.php'
+  =
+  'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =
+=3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQU=
+EST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_ht=
+ml'
+    'REMOTE_ADDR' =3D> '114.4.216.145'
+    'SERVER_PORT' =3D> '80'=
+
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijaksa.=
+com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =
+=3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dk6eng30gjsicfrfh5i0pk6=
+m1ec;
+_csrf-backend=3D90a1e3af6f9c218e39aa008df1ac364203fd546ea201aef80ea=
+e85592820dc2fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A=
+32%3A%223Wd9ZqeE6Dya3i_rl7CFhkbZ1mrUxTwb%22%3B%7D'
+    'HTTP_ACCEPT_LANGU=
+AGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_EN=
+CODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://sijaksa.co=
+m/backend/web/index.php?r=3Ddata-penerimaan-dana/cetak&id=3D6'
+    'HTTP_=
+ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,ima=
+ge/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'=
+
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+=
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130
+Safari/537.36=
+'
+    'HTTP_DNT' =3D> '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'=
+
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_HOST' =3D> 'sijaksa.com'=
+
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/web/index.php'
+    '=
+SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER=
+'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT'=
+ =3D> 1582762941.5797
+    'REQUEST_TIME' =3D> 1582762941
+]

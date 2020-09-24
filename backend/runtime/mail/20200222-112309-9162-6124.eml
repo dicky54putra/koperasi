@@ -1,0 +1,332 @@
+Message-ID: <bbc66c7aecaac81382fd33d67ff38317@sijaksa.com>
+Date: Sat, 22 Feb 2020 11:23:09 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-22 11:23:09
+[36.80.112.215][14][8lnqdcrt73pmuphslqq0ok6v7p][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S02]: Base table or view not=
+ found: 1051
+Unknown table 'sijaksa.daftar_penganggaran_pendapatan' in
+=
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack t=
+race:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(129=
+0):
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft=
+/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT `daft=
+ar_...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(=
+399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 /home/sijaksa/=
+public_html/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->queryA=
+ll()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.ph=
+p(133):
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_html/backend/=
+views/daftar-penganggaran-pendapatan/cetak.php(70):
+yii\db\ActiveQuery->a=
+ll()
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):=
+
+require('/home/sijaksa/p...')
+#7 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/=
+p...', '[]')
+#8 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.p=
+hp(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(=
+backend\controllers\DaftarPenganggaranPendapatanController))
+#9
+/home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(415):
+yii\base=
+\View->render('cetak', Array,
+Object(backend\controllers\DaftarPenganggar=
+anPendapatanController))
+#10
+/home/sijaksa/public_html/backend/controll=
+ers/DaftarPenganggaranPendapatanController.php(189):
+yii\base\Controller-=
+>renderPartial('cetak')
+#11 [internal function]:
+backend\controllers\Da=
+ftarPenganggaranPendapatanController->actionCetak()
+#12
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_=
+array(Array, Array)
+#13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/b=
+ase/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#1=
+4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+y=
+ii\base\Controller->runAction('cetak', Array)
+#15
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAc=
+tion('daftar-pengangg...', Array)
+#16
+/home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleReques=
+t(Object(yii\web\Request))
+#17 /home/sijaksa/public_html/backend/web/inde=
+x.php(22):
+yii\base\Application->run()
+#18 {main}
+
+Next yii\db\Exce=
+ption: SQLSTATE[42S02]: Base table or view not found:
+1051 Unknown table =
+'sijaksa.daftar_penganggaran_pendapatan'
+The SQL being executed was: SELE=
+CT `daftar_penganggaran_pendapatan`.*,
+`rek_jenis_apbd`.`nama_jenis`, `re=
+k_jenis_apbd`.`id_jenis` FROM
+`rek_jenis_apbd` WHERE
+`daftar_penganggar=
+an_pendapatan`.`id_daftar_penganggaran_pendapatan`=3D'10'
+in /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\S=
+chema->convertException(Object(PDOException), 'SELECT
+`daftar_...')
+#1 =
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\d=
+b\Command->internalExecute('SELECT `daftar_...')
+#2 /home/sijaksa/public_=
+html/vendor/yiisoft/yii2/db/Command.php(399):
+yii\db\Command->queryIntern=
+al('fetchAll', NULL)
+#3 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/=
+Query.php(237):
+yii\db\Command->queryAll()
+#4
+/home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/db/ActiveQuery.php(133):
+yii\db\Query->all(NULL)=
+
+#5
+/home/sijaksa/public_html/backend/views/daftar-penganggaran-pendapa=
+tan/cetak.php(70):
+yii\db\ActiveQuery->all()
+#6 /home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')=
+
+#7 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+y=
+ii\base\View->renderPhpFile('/home/sijaksa/p...', '[]')
+#8 /home/sijaksa/=
+public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->render=
+File('/home/sijaksa/p...', Array,
+Object(backend\controllers\DaftarPengan=
+ggaranPendapatanController))
+#9
+/home/sijaksa/public_html/vendor/yiisof=
+t/yii2/base/Controller.php(415):
+yii\base\View->render('cetak', Array,
+=
+Object(backend\controllers\DaftarPenganggaranPendapatanController))
+#10=
+
+/home/sijaksa/public_html/backend/controllers/DaftarPenganggaranPendapat=
+anController.php(189):
+yii\base\Controller->renderPartial('cetak')
+#11 =
+[internal function]:
+backend\controllers\DaftarPenganggaranPendapatanCont=
+roller->actionCetak()
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2=
+/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#13
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii=
+\base\InlineAction->runWithParams(Array)
+#14
+/home/sijaksa/public_html/=
+vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction(=
+'cetak', Array)
+#15
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/A=
+pplication.php(103):
+yii\base\Module->runAction('daftar-pengangg...', Arr=
+ay)
+#16
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.=
+php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#=
+17 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Applicat=
+ion->run()
+#18 {main}
+Additional Information:
+Array
+(
+    [0] =3D=
+> 42S02
+    [1] =3D> 1051
+    [2] =3D> Unknown table 'sijaksa.daftar_pe=
+nganggaran_pendapatan'
+)
+
+2020-02-22 11:23:09
+[36.80.112.215][14][8=
+lnqdcrt73pmuphslqq0ok6v7p][info][application]
+$_GET =3D [
+    'r' =3D> =
+'daftar-penganggaran-pendapatan/cetak'
+]
+
+$_POST =3D []
+
+$_FILES =
+=3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '8lnqdcrt73pmuphsl=
+qq0ok6v7p'
+    '_csrf-backend' =3D>
+'903945b20d8a331c580f8e7585d3804755=
+b97e7b9ad05a141b4e37d37da7d8aba:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"v0=
+uwdA8WsaLZ1hIIlKRO5z5oxFnWzKky\";}'
+]
+
+$_SESSION =3D [
+    '__flash=
+' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_rol=
+e' =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+     =
+   2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+   =
+ 'user_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> 3
+        2 =
+=3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 14
+]
+
+$_SERVER =
+=3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD'=
+ =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'=
+
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin=
+:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRI=
+PT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/backend=
+/web/index.php?r=3Ddaftar-penganggaran-pendapatan%2Fcetak'
+    'QUERY_STR=
+ING' =3D> 'r=3Ddaftar-penganggaran-pendapatan%2Fcetak'
+    'REQUEST_METHO=
+D' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERF=
+ACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '55714'
+    'SCRIPT_FILENAME=
+' =3D>
+'/home/sijaksa/public_html/backend/web/index.php'
+    'SERVER_AD=
+MIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/si=
+jaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =
+=3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'R=
+EMOTE_ADDR' =3D> '36.80.112.215'
+    'SERVER_PORT' =3D> '80'
+    'SERVE=
+R_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijaksa.com'
+    'S=
+ERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+   =
+ 'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_IF_MODIFIED_SINCE' =3D=
+> 'Sat, 22 Feb 2020 04:22:14 GMT'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =
+=3D> '1'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D8lnqdcrt73pmuphslqq0o=
+k6v7p;
+_csrf-backend=3D903945b20d8a331c580f8e7585d3804755b97e7b9ad05a141b=
+4e37d37da7d8aba%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3=
+A32%3A%22v0uwdA8WsaLZ1hIIlKRO5z5oxFnWzKky%22%3B%7D'
+    'HTTP_CONNECTION'=
+ =3D> 'close'
+    'HTTP_REFERER' =3D>
+'http://sijaksa.com/backend/web/i=
+ndex.php?r=3Ddaftar-penganggaran-pendapatan%2Findex'
+    'HTTP_ACCEPT_ENC=
+ODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=
+=3D0.5'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,applica=
+tion/xml;q=3D0.9,*/*;q=3D0.8'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Wi=
+ndows NT 10.0; Win64; x64;
+rv:71.0) Gecko/20100101 Firefox/71.0'
+    'H=
+TTP_HOST' =3D> 'sijaksa.com'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/ba=
+ckend/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+   =
+ 'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php=
+'
+    'REQUEST_TIME_FLOAT' =3D> 1582345389.8921
+    'REQUEST_TIME' =3D>=
+ 1582345389
+]

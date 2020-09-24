@@ -1,0 +1,470 @@
+Message-ID: <6e8e5d441ebdd62de15629cc00a552d2@sijaksa.com>
+Date: Fri, 21 Feb 2020 11:16:19 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-21 11:16:19
+[89.39.107.178][14][uofb4s9pa0d3iotsm99qtsq0d5][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'nama_kec' in 'field list' in
+/home/sijaksa/public_html=
+/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/=
+public_html/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execu=
+te()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158=
+):
+yii\db\Command->internalExecute('SELECT nama_kec...')
+#2 /home/sijak=
+sa/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->q=
+ueryInternal('fetchColumn', 0)
+#3 /home/sijaksa/public_html/backend/views=
+/login/index.php(49):
+yii\db\Command->queryScalar()
+#4 [internal functi=
+on]:
+yii\base\View->{closure}(Object(backend\models\Login), 20, 0,
+Obje=
+ct(kartik\grid\DataColumn))
+#5
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/grid/DataColumn.php(230):
+call_user_func(Object(Closure), Object(ba=
+ckend\models\Login), 20, 0,
+Object(kartik\grid\DataColumn))
+#6
+/home/=
+sijaksa/public_html/vendor/yiisoft/yii2/grid/DataColumn.php(244):
+yii\gri=
+d\DataColumn->getDataCellValue(Object(backend\models\Login),
+20, 0)
+#7=
+
+/home/sijaksa/public_html/vendor/kartik-v/yii2-grid/src/DataColumn.php(2=
+42):
+yii\grid\DataColumn->renderDataCellContent(Object(backend\models\Log=
+in),
+20, 0)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/Gri=
+dView.php(525):
+kartik\grid\DataColumn->renderDataCell(Object(backend\mod=
+els\Login),
+20, 0)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/g=
+rid/GridView.php(494):
+yii\grid\GridView->renderTableRow(Object(backend\m=
+odels\Login), 20, 0)
+#10
+/home/sijaksa/public_html/vendor/kartik-v/yii2=
+-grid/src/GridView.php(1220):
+yii\grid\GridView->renderTableBody()
+#11=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.php(358):
+=
+kartik\grid\GridView->renderTableBody()
+#12
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/widgets/BaseListView.php(160):
+yii\grid\GridView->rend=
+erItems()
+#13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridVi=
+ew.php(326):
+yii\widgets\BaseListView->renderSection('{items}')
+#14
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/widgets/BaseListView.php(135):=
+
+yii\grid\GridView->renderSection('{items}')
+#15 [internal function]:=
+
+yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#16
+/home/sij=
+aksa/public_html/vendor/yiisoft/yii2/widgets/BaseListView.php(138):
+preg_=
+replace_callback('/{\\w+}/', Object(Closure), '<div
+class=3D"pan...')
+#=
+17
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.php(301):=
+
+yii\widgets\BaseListView->run()
+#18
+/home/sijaksa/public_html/vendor=
+/kartik-v/yii2-grid/src/GridView.php(1186):
+yii\grid\GridView->run()
+#1=
+9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Widget.php(140):
+k=
+artik\grid\GridView->run()
+#20 /home/sijaksa/public_html/backend/views/lo=
+gin/index.php(32):
+yii\base\Widget::widget(Array)
+#21 /home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p=
+...')
+#22 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257=
+):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"=
+s...')
+#23 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(15=
+6):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(backe=
+nd\controllers\LoginController))
+#24
+/home/sijaksa/public_html/vendor/y=
+iisoft/yii2/base/Controller.php(384):
+yii\base\View->render('index', Arra=
+y,
+Object(backend\controllers\LoginController))
+#25
+/home/sijaksa/pub=
+lic_html/backend/controllers/LoginController.php(56):
+yii\base\Controller=
+->render('index', Array)
+#26 [internal function]:
+backend\controllers\L=
+oginController->actionIndex()
+#27
+/home/sijaksa/public_html/vendor/yiis=
+oft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+=
+#28
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157=
+):
+yii\base\InlineAction->runWithParams(Array)
+#29
+/home/sijaksa/publ=
+ic_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->ru=
+nAction('', Array)
+#30
+/home/sijaksa/public_html/vendor/yiisoft/yii2/we=
+b/Application.php(103):
+yii\base\Module->runAction('login', Array)
+#31=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):=
+
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#32 /home/=
+sijaksa/public_html/backend/web/index.php(22):
+yii\base\Application->run(=
+)
+#33 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not foun=
+d: 1054 Unknown
+column 'nama_kec' in 'field list'
+The SQL being execute=
+d was: SELECT nama_kec FROM data_desa WHERE
+id_desa =3D '581' in
+/home/=
+sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+=
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yi=
+i\db\Schema->convertException(Object(PDOException), 'SELECT
+nama_kec...')=
+
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):=
+
+yii\db\Command->internalExecute('SELECT nama_kec...')
+#2 /home/sijaksa=
+/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->que=
+ryInternal('fetchColumn', 0)
+#3 /home/sijaksa/public_html/backend/views/l=
+ogin/index.php(49):
+yii\db\Command->queryScalar()
+#4 [internal function=
+]:
+yii\base\View->{closure}(Object(backend\models\Login), 20, 0,
+Object=
+(kartik\grid\DataColumn))
+#5
+/home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/grid/DataColumn.php(230):
+call_user_func(Object(Closure), Object(back=
+end\models\Login), 20, 0,
+Object(kartik\grid\DataColumn))
+#6
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/grid/DataColumn.php(244):
+yii\grid\=
+DataColumn->getDataCellValue(Object(backend\models\Login),
+20, 0)
+#7
+=
+/home/sijaksa/public_html/vendor/kartik-v/yii2-grid/src/DataColumn.php(242)=
+:
+yii\grid\DataColumn->renderDataCellContent(Object(backend\models\Login)=
+,
+20, 0)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridVi=
+ew.php(525):
+kartik\grid\DataColumn->renderDataCell(Object(backend\models=
+\Login),
+20, 0)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid=
+/GridView.php(494):
+yii\grid\GridView->renderTableRow(Object(backend\mode=
+ls\Login), 20, 0)
+#10
+/home/sijaksa/public_html/vendor/kartik-v/yii2-gr=
+id/src/GridView.php(1220):
+yii\grid\GridView->renderTableBody()
+#11
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.php(358):
+kart=
+ik\grid\GridView->renderTableBody()
+#12
+/home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/widgets/BaseListView.php(160):
+yii\grid\GridView->renderIt=
+ems()
+#13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.p=
+hp(326):
+yii\widgets\BaseListView->renderSection('{items}')
+#14
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/widgets/BaseListView.php(135):
+y=
+ii\grid\GridView->renderSection('{items}')
+#15 [internal function]:
+yii=
+\widgets\BaseListView->yii\widgets\{closure}(Array)
+#16
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/widgets/BaseListView.php(138):
+preg_replac=
+e_callback('/{\\w+}/', Object(Closure), '<div
+class=3D"pan...')
+#17
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.php(301):
+yii\=
+widgets\BaseListView->run()
+#18
+/home/sijaksa/public_html/vendor/kartik=
+-v/yii2-grid/src/GridView.php(1186):
+yii\grid\GridView->run()
+#19
+/ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\g=
+rid\GridView->run()
+#20 /home/sijaksa/public_html/backend/views/login/ind=
+ex.php(32):
+yii\base\Widget::widget(Array)
+#21 /home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')=
+
+#22 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+=
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...'=
+)
+#23 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):=
+
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(backend\=
+controllers\LoginController))
+#24
+/home/sijaksa/public_html/vendor/yiis=
+oft/yii2/base/Controller.php(384):
+yii\base\View->render('index', Array,=
+
+Object(backend\controllers\LoginController))
+#25
+/home/sijaksa/publi=
+c_html/backend/controllers/LoginController.php(56):
+yii\base\Controller->=
+render('index', Array)
+#26 [internal function]:
+backend\controllers\Log=
+inController->actionIndex()
+#27
+/home/sijaksa/public_html/vendor/yiisof=
+t/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#2=
+8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):=
+
+yii\base\InlineAction->runWithParams(Array)
+#29
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runA=
+ction('', Array)
+#30
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/=
+Application.php(103):
+yii\base\Module->runAction('login', Array)
+#31
+=
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+=
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#32 /home/sij=
+aksa/public_html/backend/web/index.php(22):
+yii\base\Application->run()=
+
+#33 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+=
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'nama_kec' in 'field list'=
+
+)
+
+2020-02-21 11:16:19
+[89.39.107.178][14][uofb4s9pa0d3iotsm99qtsq=
+0d5][info][application]
+$_GET =3D [
+    'r' =3D> 'login'
+]
+
+$_POS=
+T =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =
+=3D> 'uofb4s9pa0d3iotsm99qtsq0d5'
+    '_csrf-backend' =3D>
+'d389b2e7d28=
+6f2111bb955d45f359f0d18b2231cc9a65e11be3864a94a19dfd7a:2:{i:0;s:13:\"_csrf-=
+backend\";i:1;s:32:\"ZptrcQu_9ZJh4NW1SVpGCgeboeaqN7Mh\";}'
+]
+
+$_SESSI=
+ON =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/ind=
+ex.php'
+    'user_role' =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =
+=3D> 'KECAMATAN'
+        2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMI=
+NISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 2
+       =
+ 1 =3D> 3
+        2 =3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 1=
+4
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc=
+/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQU=
+ESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/s=
+bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =
+=3D> '0'
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_U=
+RI' =3D> '/backend/web/index.php?r=3Dlogin'
+    'QUERY_STRING' =3D> 'r=3D=
+login'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP=
+/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '45=
+070'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/=
+index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DO=
+CUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> '=
+'
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sija=
+ksa/public_html'
+    'REMOTE_ADDR' =3D> '89.39.107.178'
+    'SERVER_POR=
+T' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =
+=3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERV=
+ER_SIGNATURE' =3D> ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACH=
+E_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'H=
+TTP_COOKIE' =3D> 'advanced-backend=3Duofb4s9pa0d3iotsm99qtsq0d5;
+_csrf-ba=
+ckend=3Dd389b2e7d286f2111bb955d45f359f0d18b2231cc9a65e11be3864a94a19dfd7a%3=
+A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ZptrcQu_=
+9ZJh4NW1SVpGCgeboeaqN7Mh%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID=
+,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gz=
+ip, deflate'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,ap=
+plication/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-=
+exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows=
+ NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.=
+3945.130
+Safari/537.36'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backe=
+nd/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'F=
+CGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php'=
+
+    'REQUEST_TIME_FLOAT' =3D> 1582258579.7981
+    'REQUEST_TIME' =3D> =
+1582258579
+]

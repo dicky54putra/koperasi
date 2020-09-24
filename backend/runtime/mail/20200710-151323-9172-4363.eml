@@ -1,0 +1,381 @@
+Message-ID: <7530208004fb5071f83a386b5cd91c2a@localhost>
+Date: Fri, 10 Jul 2020 15:13:23 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-07-10 15:13:22
+[::1][3][nrdc6au2kgsjod1g4t04dqjgnc][error][yii\db\Ex=
+ception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown co=
+lumn
+'tipe_mitra_bisnis' in 'where clause' in
+C:\xampp7\htdocs\accounti=
+ng\vendor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0
+C:\xampp7\=
+htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+PDOStatement-=
+>execute()
+#1
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Comman=
+d.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM `...')
+#2=
+
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(399):
+y=
+ii\db\Command->queryInternal('fetchAll', NULL)
+#3 C:\xampp7\htdocs\accoun=
+ting\vendor\yiisoft\yii2\db\Query.php(237):
+yii\db\Command->queryAll()
+=
+#4
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\ActiveQuery.php(133=
+):
+yii\db\Query->all(NULL)
+#5
+C:\xampp7\htdocs\accounting\backend\vie=
+ws\akt-pembelian-harta-tetap\_form.php(40):
+yii\db\ActiveQuery->all()
+#=
+6 C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(348):
+req=
+uire('C:\\xampp7\\htdoc...')
+#7 C:\xampp7\htdocs\accounting\vendor\yiisof=
+t\yii2\base\View.php(257):
+yii\base\View->renderPhpFile('C:\\xampp7\\htdo=
+c...', '[<span
+class=3D"s...')
+#8 C:\xampp7\htdocs\accounting\vendor\yi=
+isoft\yii2\base\View.php(156):
+yii\base\View->renderFile('C:\\xampp7\\htd=
+oc...', Array, NULL)
+#9
+C:\xampp7\htdocs\accounting\backend\views\akt-p=
+embelian-harta-tetap\create.php(20):
+yii\base\View->render('_form', Array=
+)
+#10
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(348=
+):
+require('C:\\xampp7\\htdoc...')
+#11
+C:\xampp7\htdocs\accounting\ve=
+ndor\yiisoft\yii2\base\View.php(257):
+yii\base\View->renderPhpFile('C:\\x=
+ampp7\\htdoc...', '[<span
+class=3D"s...')
+#12
+C:\xampp7\htdocs\accoun=
+ting\vendor\yiisoft\yii2\base\View.php(156):
+yii\base\View->renderFile('C=
+:\\xampp7\\htdoc...', Array,
+Object(backend\controllers\AktPembelianHarta=
+TetapController))
+#13
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\b=
+ase\Controller.php(384):
+yii\base\View->render('create', Array,
+Object(=
+backend\controllers\AktPembelianHartaTetapController))
+#14
+C:\xampp7\ht=
+docs\accounting\backend\controllers\AktPembelianHartaTetapController.php(74=
+):
+yii\base\Controller->render('create', Array)
+#15 [internal function]=
+:
+backend\controllers\AktPembelianHartaTetapController->actionCreate()
+=
+#16
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\InlineAction.php=
+(57):
+call_user_func_array(Array, Array)
+#17
+C:\xampp7\htdocs\account=
+ing\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base\InlineAction->=
+runWithParams(Array)
+#18
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii=
+2\base\Module.php(528):
+yii\base\Controller->runAction('create', Array)=
+
+#19
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\web\Application.ph=
+p(103):
+yii\base\Module->runAction('akt-pembelian-h...', Array)
+#20
+C=
+:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\Application.php(386):=
+
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 C:\xam=
+pp7\htdocs\accounting\backend\web\index.php(22):
+yii\base\Application->ru=
+n()
+#22 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not fo=
+und: 1054 Unknown
+column 'tipe_mitra_bisnis' in 'where clause'
+The SQL =
+being executed was: SELECT * FROM `akt_kas_bank` WHERE
+tipe_mitra_bisnis =
+IN (2,3) in
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Schema.php=
+:664
+Stack trace:
+#0
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\=
+db\Command.php(1295):
+yii\db\Schema->convertException(Object(PDOException=
+), 'SELECT * FROM
+`...')
+#1
+C:\xampp7\htdocs\accounting\vendor\yiisof=
+t\yii2\db\Command.php(1158):
+yii\db\Command->internalExecute('SELECT * FR=
+OM `...')
+#2
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Command=
+.php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 C:\xampp7=
+\htdocs\accounting\vendor\yiisoft\yii2\db\Query.php(237):
+yii\db\Command-=
+>queryAll()
+#4
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Activ=
+eQuery.php(133):
+yii\db\Query->all(NULL)
+#5
+C:\xampp7\htdocs\accounti=
+ng\backend\views\akt-pembelian-harta-tetap\_form.php(40):
+yii\db\ActiveQu=
+ery->all()
+#6 C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\View.p=
+hp(348):
+require('C:\\xampp7\\htdoc...')
+#7 C:\xampp7\htdocs\accounting=
+\vendor\yiisoft\yii2\base\View.php(257):
+yii\base\View->renderPhpFile('C:=
+\\xampp7\\htdoc...', '[<span
+class=3D"s...')
+#8 C:\xampp7\htdocs\accoun=
+ting\vendor\yiisoft\yii2\base\View.php(156):
+yii\base\View->renderFile('C=
+:\\xampp7\\htdoc...', Array, NULL)
+#9
+C:\xampp7\htdocs\accounting\backe=
+nd\views\akt-pembelian-harta-tetap\create.php(20):
+yii\base\View->render(=
+'_form', Array)
+#10
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\bas=
+e\View.php(348):
+require('C:\\xampp7\\htdoc...')
+#11
+C:\xampp7\htdocs=
+\accounting\vendor\yiisoft\yii2\base\View.php(257):
+yii\base\View->render=
+PhpFile('C:\\xampp7\\htdoc...', '[<span
+class=3D"s...')
+#12
+C:\xampp7=
+\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(156):
+yii\base\View-=
+>renderFile('C:\\xampp7\\htdoc...', Array,
+Object(backend\controllers\Akt=
+PembelianHartaTetapController))
+#13
+C:\xampp7\htdocs\accounting\vendor\=
+yiisoft\yii2\base\Controller.php(384):
+yii\base\View->render('create', Ar=
+ray,
+Object(backend\controllers\AktPembelianHartaTetapController))
+#14=
+
+C:\xampp7\htdocs\accounting\backend\controllers\AktPembelianHartaTetapCo=
+ntroller.php(74):
+yii\base\Controller->render('create', Array)
+#15 [int=
+ernal function]:
+backend\controllers\AktPembelianHartaTetapController->ac=
+tionCreate()
+#16
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\I=
+nlineAction.php(57):
+call_user_func_array(Array, Array)
+#17
+C:\xampp7=
+\htdocs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base=
+\InlineAction->runWithParams(Array)
+#18
+C:\xampp7\htdocs\accounting\ven=
+dor\yiisoft\yii2\base\Module.php(528):
+yii\base\Controller->runAction('cr=
+eate', Array)
+#19
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\web\A=
+pplication.php(103):
+yii\base\Module->runAction('akt-pembelian-h...', Arr=
+ay)
+#20
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\Applicatio=
+n.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))=
+
+#21 C:\xampp7\htdocs\accounting\backend\web\index.php(22):
+yii\base\Ap=
+plication->run()
+#22 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown c=
+olumn 'tipe_mitra_bisnis' in 'where clause'
+)
+
+2020-07-10 15:13:22
+=
+[::1][3][nrdc6au2kgsjod1g4t04dqjgnc][info][application] $_GET =3D [
+    '=
+r' =3D> 'akt-pembelian-harta-tetap/create'
+]
+
+$_POST =3D []
+
+$_FI=
+LES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'nrdc6au2kgsjo=
+d1g4t04dqjgnc'
+    '_csrf-backend' =3D>
+'dc4dff4563ec34ec785e99686497d7=
+c085b6c68f14f5dbab7909148aae5bd43fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:=
+\"S9QaF_4g7-7MoJshdsAyLFDUi5Cdi9nG\";}'
+]
+
+$_SESSION =3D [
+    '__f=
+lash' =3D> []
+    '__returnUrl' =3D> '/accounting/backend/web/'
+    'us=
+er_role' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user=
+_role_id' =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_=
+SERVER =3D [
+    'MIBDIRS' =3D> 'C:/xampp7/php/extras/mibs'
+    'MYSQL_=
+HOME' =3D> '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' =3D> 'C:/xampp7/apach=
+e/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+    '=
+PHPRC' =3D> '\\xampp\\php'
+    'TMP' =3D> '\\xampp\\tmp'
+    'HTTP_HOST=
+' =3D> 'localhost'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10=
+.0; Win64; x64;
+rv:77.0) Gecko/20100101 Firefox/77.0'
+    'HTTP_ACCEPT'=
+ =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp=
+,*/*;q=3D0.8'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id,en-US;q=3D0.7,en;q=3D0.=
+3'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_CONNECTION=
+' =3D> 'keep-alive'
+    'HTTP_REFERER' =3D>
+'http://localhost/accountin=
+g/backend/web/index.php?r=3Dakt-pembelian-harta-tetap'
+    'HTTP_COOKIE' =
+=3D> 'advanced-backend=3Dnrdc6au2kgsjod1g4t04dqjgnc;
+_csrf-backend=3Ddc4d=
+ff4563ec34ec785e99686497d7c085b6c68f14f5dbab7909148aae5bd43fa%3A2%3A%7Bi%3A=
+0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22S9QaF_4g7-7MoJshdsAy=
+LFDUi5Cdi9nG%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+  =
+  'PATH' =3D> 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared
+Files=
+\\cpp\\bin\\Intel64;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32=
+\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp7\\php;C:\=
+\composer;C:\\Program
+Files\\Git\\cmd;C:\\WINDOWS\\System32\\OpenSSH\\;C:=
+\\Users\\GSS\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\GSS\\AppDa=
+ta\\Local\\GitHubDesktop\\bin;C:\\Users\\GSS\\AppData\\Local\\Microsoft\\Wi=
+ndowsApps;C:\\Users\\GSS\\AppData\\Local\\Programs\\Microsoft
+VS Code\\bi=
+n'
+    'SystemRoot' =3D> 'C:\\WINDOWS'
+    'COMSPEC' =3D> 'C:\\WINDOWS\=
+\system32\\cmd.exe'
+    'PATHEXT' =3D>
+'.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.=
+JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' =3D> 'C:\\WINDOWS'
+    'SERVER_SIG=
+NATURE' =3D> '<address>Apache/2.4.38 (Win64)
+OpenSSL/1.1.1b PHP/7.3.3 Ser=
+ver at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' =3D> 'Apache=
+/2.4.38 (Win64) OpenSSL/1.1.1b
+PHP/7.3.3'
+    'SERVER_NAME' =3D> 'local=
+host'
+    'SERVER_ADDR' =3D> '::1'
+    'SERVER_PORT' =3D> '80'
+    'R=
+EMOTE_ADDR' =3D> '::1'
+    'DOCUMENT_ROOT' =3D> 'C:/xampp7/htdocs'
+    =
+'REQUEST_SCHEME' =3D> 'http'
+    'CONTEXT_PREFIX' =3D> ''
+    'CONTEXT_=
+DOCUMENT_ROOT' =3D> 'C:/xampp7/htdocs'
+    'SERVER_ADMIN' =3D> 'postmaste=
+r@localhost'
+    'SCRIPT_FILENAME' =3D>
+'C:/xampp7/htdocs/accounting/ba=
+ckend/web/index.php'
+    'REMOTE_PORT' =3D> '56392'
+    'GATEWAY_INTERF=
+ACE' =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_=
+METHOD' =3D> 'GET'
+    'QUERY_STRING' =3D> 'r=3Dakt-pembelian-harta-tetap=
+%2Fcreate'
+    'REQUEST_URI' =3D>
+'/accounting/backend/web/index.php?r=
+=3Dakt-pembelian-harta-tetap%2Fcreate'
+    'SCRIPT_NAME' =3D> '/accountin=
+g/backend/web/index.php'
+    'PHP_SELF' =3D> '/accounting/backend/web/ind=
+ex.php'
+    'REQUEST_TIME_FLOAT' =3D> 1594368801.948
+    'REQUEST_TIME'=
+ =3D> 1594368801
+]

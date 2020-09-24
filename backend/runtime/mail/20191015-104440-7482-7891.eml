@@ -1,0 +1,337 @@
+Message-ID: <95d02f39dd079ea91876e6525f08a89b@cvajm.com>
+Date: Tue, 15 Oct 2019 10:44:40 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-10-15 10:44:40
+[36.90.98.147][21][s6hkoi958jgtngmiiu6047r125][error]=
+[yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access =
+violation: 1064
+You have an error in your SQL syntax; check the manual th=
+at
+corresponds to your MariaDB server version for the right syntax to use=
+
+near '' at line 1 in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/db/Command.php:1290
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii=
+\db\Command->internalExecute('SELECT sub_pela...')
+#2
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->que=
+ryInternal('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm/backend/v=
+iews/gps/export_excel_laporan_rekap_angkutan_per_po.php(41):
+yii\db\Comma=
+nd->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/View.php(348):
+require('/home/cvajm/pub...')
+#5
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->rend=
+erPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#6
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View=
+->renderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\GpsC=
+ontroller))
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/C=
+ontroller.php(415):
+yii\base\View->render('export_excel_la...', Array,
+=
+Object(backend\controllers\GpsController))
+#8
+/home/cvajm/public_html/c=
+vajm/backend/controllers/GpsController.php(453):
+yii\base\Controller->ren=
+derPartial('export_excel_la...', Array)
+#9 [internal function]:
+backend=
+\controllers\GpsController->actionExportExcelLaporanRekapAngkutanPerPo()
+=
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.p=
+hp(57):
+call_user_func_array(Array, Array)
+#11
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineActi=
+on->runWithParams(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('export-exce=
+l-la...', Array)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+web/Application.php(103):
+yii\base\Module->runAction('gps/export-exce...'=
+, Array)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/App=
+lication.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Requ=
+est))
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\=
+base\Application->run()
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[4=
+2000]: Syntax error or access
+violation: 1064 You have an error in your S=
+QL syntax; check the manual
+that corresponds to your MariaDB server versi=
+on for the right syntax
+to use near '' at line 1
+The SQL being executed=
+ was: SELECT sub_pelanggan FROM sub_pelanggan
+WHERE id_sub_pelanggan =3D =
+ in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664=
+
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db=
+/Command.php(1295):
+yii\db\Schema->convertException(Object(PDOException),=
+ 'SELECT
+sub_pela...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT sub_=
+pela...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Comma=
+nd.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+/home=
+/cvajm/public_html/cvajm/backend/views/gps/export_excel_laporan_rekap_angku=
+tan_per_po.php(41):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvaj=
+m/pub...')
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Vi=
+ew.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span=
+
+class=3D"s...')
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Arra=
+y,
+Object(backend\controllers\GpsController))
+#7
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/base/Controller.php(415):
+yii\base\View->re=
+nder('export_excel_la...', Array,
+Object(backend\controllers\GpsControlle=
+r))
+#8
+/home/cvajm/public_html/cvajm/backend/controllers/GpsController.=
+php(453):
+yii\base\Controller->renderPartial('export_excel_la...', Array)=
+
+#9 [internal function]:
+backend\controllers\GpsController->actionExpor=
+tExcelLaporanRekapAngkutanPerPo()
+#10
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, A=
+rray)
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Contro=
+ller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\bas=
+e\Controller->runAction('export-excel-la...', Array)
+#13
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Mo=
+dule->runAction('gps/export-exce...', Array)
+#14
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Applicatio=
+n->handleRequest(Object(yii\web\Request))
+#15 /home/cvajm/public_html/cva=
+jm/backend/web/index.php(22):
+yii\base\Application->run()
+#16 {main}
+=
+Additional Information:
+Array
+(
+    [0] =3D> 42000
+    [1] =3D> 106=
+4
+    [2] =3D> You have an error in your SQL syntax; check the manual tha=
+t
+corresponds to your MariaDB server version for the right syntax to use=
+
+near '' at line 1
+)
+
+2019-10-15 10:44:40
+[36.90.98.147][21][s6hk=
+oi958jgtngmiiu6047r125][info][application]
+$_GET =3D [
+    'r' =3D> 'gp=
+s/export-excel-laporan-rekap-angkutan-per-po'
+    'tanggal' =3D> '2019-10=
+-02'
+    'shift' =3D> '1'
+    'id_pelanggan' =3D> '14'
+]
+
+$_POST =
+=3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D=
+> 's6hkoi958jgtngmiiu6047r125'
+    '_csrf-backend' =3D>
+'322049ad83d25d=
+0244d8ee9fcdb015ca106a6cffac06d93dbd8c9f8f0a8ecf03a:2:{i:0;s:13:\"_csrf-bac=
+kend\";i:1;s:32:\"5TYUtQ3M228GBiqnlvMgE8m8qFCTZCre\";}'
+]
+
+$_SESSION =
+=3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/=
+index.php'
+    'user_role' =3D> [
+        0 =3D> 'GPS'
+    ]
+    'u=
+ser_role_id' =3D> [
+        0 =3D> 7
+    ]
+    '__id' =3D> 21
+]
+=
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.0'=
+
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D>=
+ '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/l=
+ocal/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+ =
+   'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_URI' =
+=3D>
+'/cvajm/backend/web/index.php?r=3Dgps%2Fexport-excel-laporan-rekap-a=
+ngkutan-per-po&tanggal=3D2019-10-02&shift=3D1&id_pelanggan=3D14'
+    'QUE=
+RY_STRING' =3D>
+'r=3Dgps%2Fexport-excel-laporan-rekap-angkutan-per-po&tan=
+ggal=3D2019-10-02&shift=3D1&id_pelanggan=3D14'
+    'REQUEST_METHOD' =3D> =
+'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D=
+> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '53794'
+    'SCRIPT_FILENAME' =3D>=
+
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+    'SERVER_ADMI=
+N' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvaj=
+m/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> '=
+http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_AD=
+DR' =3D> '36.90.98.147'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =
+=3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SO=
+FTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_C=
+OOKIE' =3D> 'advanced-backend=3Ds6hkoi958jgtngmiiu6047r125;
+_csrf-backend=
+=3D322049ad83d25d0244d8ee9fcdb015ca106a6cffac06d93dbd8c9f8f0a8ecf03a%3A2%3A=
+%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%225TYUtQ3M228GB=
+iqnlvMgE8m8qFCTZCre%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=
+=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, d=
+eflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/ind=
+ex.php?r=3Dgps%2Flaporan-rekap-angkutan-per-po&1%5Bclass%5D=3Dform-inline'=
+
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xm=
+l;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=
+=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x=
+64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120
+Safari/=
+537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CONNECT=
+ION' =3D> 'close'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'SCRIPT_URI' =3D=
+> 'http://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/=
+cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_=
+SELF' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1=
+571107480.7115
+    'REQUEST_TIME' =3D> 1571107480
+]

@@ -1,0 +1,455 @@
+Message-ID: <3047ebf994a2a2c5d7cef5b95d36dec4@cvajm.com>
+Date: Fri, 10 Jan 2020 13:37:36 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-01-10 13:37:36
+[36.92.48.63][66][50ma0en697bhhpc3sud3foqic5][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 U=
+nknown column
+'purchasing_order' in 'where clause' in
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+P=
+DOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(=
+*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command=
+.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Comm=
+and->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUNT(*)', Object(yi=
+i\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii=
+\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/d=
+ata/ActiveDataProvider.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/BaseDataProvider.php(1=
+69):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8
+/home/cvajm/=
+public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1754):
+yii\d=
+ata\BaseDataProvider->getTotalCount()
+#9
+/home/cvajm/public_html/cvajm/=
+vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\grid\GridView->i=
+nitToggleData()
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/b=
+ase/Widget.php(140):
+kartik\grid\GridView->run()
+#11
+/home/cvajm/publ=
+ic_html/cvajm/backend/views/spare-part/index.php(24):
+yii\base\Widget::wi=
+dget(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/=
+View.php(348):
+require('/home/cvajm/pub...')
+#13
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPh=
+pFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#14
+/home/cvajm/p=
+ublic_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->r=
+enderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\SparePa=
+rtController))
+#15
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/ba=
+se/Controller.php(384):
+yii\base\View->render('index', Array,
+Object(ba=
+ckend\controllers\SparePartController))
+#16
+/home/cvajm/public_html/cva=
+jm/backend/controllers/SparePartController.php(52):
+yii\base\Controller->=
+render('index', Array)
+#17 [internal function]:
+backend\controllers\Spa=
+rePartController->actionIndex()
+#18
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Arr=
+ay)
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controll=
+er.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\=
+Controller->runAction('', Array)
+#21
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('spa=
+re-part', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\=
+web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/index.php(22)=
+:
+yii\base\Application->run()
+#24 {main}
+
+Next yii\db\Exception: SQ=
+LSTATE[42S22]: Column not found: 1054 Unknown
+column 'purchasing_order' i=
+n 'where clause'
+The SQL being executed was: SELECT COUNT(*) FROM `spare_=
+part` LEFT
+JOIN `purchasing_order` ON `spare_part`.`id_purchasing_order` =
+=3D
+`purchasing_order`.`id_purchasing_order` LEFT JOIN `merk_spare_part`=
+
+ON `spare_part`.`id_merk_spare_part` =3D
+`merk_spare_part`.`id_merk_sp=
+are_part` LEFT JOIN `tipe_spare_part` ON
+`spare_part`.`id_tipe_spare_part=
+` =3D
+`tipe_spare_part`.`id_tipe_spare_part` LEFT JOIN `rak_spare_part` O=
+N
+`spare_part`.`id_rak_spare_part` =3D
+`rak_spare_part`.`id_rak_spare_p=
+art` LEFT JOIN `supplier` ON
+`spare_part`.`id_supplier` =3D `supplier`.`i=
+d_supplier` LEFT JOIN `uom`
+ON `spare_part`.`id_uom` =3D `uom`.`id_uom` L=
+EFT JOIN `nama_spare_part`
+ON `spare_part`.`id_nama_spare_part` =3D
+`na=
+ma_spare_part`.`id_nama_spare_part` WHERE (`no_spare_part` LIKE
+'%-%') AN=
+D (`nama_spare_part` LIKE '%lampu depan%') AND
+(date_format(tanggal, "%d-=
+%m-%Y") LIKE '%10-01-2020%') AND
+(`purchasing_order` LIKE '%100120-385%')=
+ AND (`merk_spare_part` LIKE
+'%-%') AND (`tipe_spare_part` LIKE '%spare p=
+art%') in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php=
+:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(PDOExcepti=
+on), 'SELECT
+COUNT(*)...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT =
+COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/C=
+ommand.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463):
+yii\d=
+b\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUNT(*)', Obj=
+ect(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT(*)', Obje=
+ct(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*', NULL)
+#=
+7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/BaseDataProvider=
+.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8
+/home/=
+cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1754):=
+
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvajm/public_htm=
+l/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\grid\Gri=
+dView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#11
+/home/cv=
+ajm/public_html/cvajm/backend/views/spare-part/index.php(24):
+yii\base\Wi=
+dget::widget(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/base/View.php(348):
+require('/home/cvajm/pub...')
+#13
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->=
+renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#14
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base=
+\View->renderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers=
+\SparePartController))
+#15
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/base/Controller.php(384):
+yii\base\View->render('index', Array,
+O=
+bject(backend\controllers\SparePartController))
+#16
+/home/cvajm/public_=
+html/cvajm/backend/controllers/SparePartController.php(52):
+yii\base\Cont=
+roller->render('index', Array)
+#17 [internal function]:
+backend\control=
+lers\SparePartController->actionIndex()
+#18
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Ar=
+ray, Array)
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/=
+Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+y=
+ii\base\Controller->runAction('', Array)
+#21
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAct=
+ion('spare-part', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Obj=
+ect(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/index=
+.php(22):
+yii\base\Application->run()
+#24 {main}
+Additional Informati=
+on:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unk=
+nown column 'purchasing_order' in 'where clause'
+)
+
+2020-01-10 13:37:=
+36
+[36.92.48.63][66][50ma0en697bhhpc3sud3foqic5][info][application] $_GET=
+
+=3D [
+    'SparePartSearch' =3D> [
+        'tanggal' =3D> '10-01-202=
+0'
+        'no_spare_part' =3D> '-'
+        'id_nama_spare_part' =3D> '=
+lampu depan'
+        'id_purchasing_order' =3D> '100120-385'
+        'i=
+d_merk_spare_part' =3D> '-'
+        'id_tipe_spare_part' =3D> 'spare part=
+'
+        'id_rak_spare_part' =3D> ''
+        'id_supplier' =3D> ''
+ =
+       'id_uom' =3D> ''
+        'jumlah' =3D> ''
+        'harga' =3D> '=
+'
+    ]
+    'r' =3D> 'spare-part'
+]
+
+$_POST =3D []
+
+$_FILES =
+=3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '50ma0en697bhhpc3s=
+ud3foqic5'
+    '_csrf-backend' =3D>
+'6003345804547e0b2a626425a09f732a5c=
+9221644e60b4249ce1d0ca15cc49dda:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"SQ=
+DtPY4dQDN21dYf5ZUsxqPhJUH1jKgK\";}'
+]
+
+$_SESSION =3D [
+    '__flash=
+' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+    'us=
+er_role' =3D> [
+        0 =3D> 'LOGISTIC'
+    ]
+    'user_role_id' =
+=3D> [
+        0 =3D> 11
+    ]
+    '__id' =3D> 66
+]
+
+$_SERVER =
+=3D [
+    'USER' =3D> 'cvajm'
+    'HOME' =3D> '/home/cvajm'
+    'SCRI=
+PT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/c=
+vajm/backend/web/index.php?SparePartSearch%5Btanggal%5D=3D10-01-2020&SpareP=
+artSearch%5Bno_spare_part%5D=3D-&SparePartSearch%5Bid_nama_spare_part%5D=3D=
+lampu+depan&SparePartSearch%5Bid_purchasing_order%5D=3D100120-385&SparePart=
+Search%5Bid_merk_spare_part%5D=3D-&SparePartSearch%5Bid_tipe_spare_part%5D=
+=3Dspare+part&SparePartSearch%5Bid_rak_spare_part%5D=3D&SparePartSearch%5Bi=
+d_supplier%5D=3D&SparePartSearch%5Bid_uom%5D=3D&SparePartSearch%5Bjumlah%5D=
+=3D&SparePartSearch%5Bharga%5D=3D&r=3Dspare-part'
+    'QUERY_STRING' =3D>=
+
+'SparePartSearch%5Btanggal%5D=3D10-01-2020&SparePartSearch%5Bno_spare_pa=
+rt%5D=3D-&SparePartSearch%5Bid_nama_spare_part%5D=3Dlampu+depan&SparePartSe=
+arch%5Bid_purchasing_order%5D=3D100120-385&SparePartSearch%5Bid_merk_spare_=
+part%5D=3D-&SparePartSearch%5Bid_tipe_spare_part%5D=3Dspare+part&SparePartS=
+earch%5Bid_rak_spare_part%5D=3D&SparePartSearch%5Bid_supplier%5D=3D&SparePa=
+rtSearch%5Bid_uom%5D=3D&SparePartSearch%5Bjumlah%5D=3D&SparePartSearch%5Bha=
+rga%5D=3D&r=3Dspare-part'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_P=
+ROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'RE=
+MOTE_PORT' =3D> '49332'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_=
+html/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address gi=
+ven]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'C=
+ONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_R=
+OOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '36.92.48.63'=
+
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+=
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4=
+.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'PATH' =3D>
+'/usr/local/sbin:=
+/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_COOKIE' =3D> 'adv=
+anced-backend=3D50ma0en697bhhpc3sud3foqic5;
+_csrf-backend=3D6003345804547=
+e0b2a626425a09f732a5c9221644e60b4249ce1d0ca15cc49dda%3A2%3A%7Bi%3A0%3Bs%3A1=
+3%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22SQDtPY4dQDN21dYf5ZUsxqPhJUH1j=
+KgK%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+    'H=
+TTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http=
+://cvajm.com/cvajm/backend/web/index.php?SparePartSearch%5Btanggal%5D=3D10-=
+01-20&SparePartSearch%5Bno_spare_part%5D=3D-&SparePartSearch%5Bid_nama_spar=
+e_part%5D=3Dlampu+depan&SparePartSearch%5Bid_purchasing_order%5D=3D&SparePa=
+rtSearch%5Bid_merk_spare_part%5D=3D&SparePartSearch%5Bid_tipe_spare_part%5D=
+=3D&SparePartSearch%5Bid_rak_spare_part%5D=3D&SparePartSearch%5Bid_supplier=
+%5D=3D&SparePartSearch%5Bid_uom%5D=3D&SparePartSearch%5Bjumlah%5D=3D&SpareP=
+artSearch%5Bharga%5D=3D&r=3Dspare-part'
+    'HTTP_ACCEPT' =3D>
+'text/ht=
+ml,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;=
+q=3D0.8,application/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'M=
+ozilla/5.0 (Windows NT 6.1)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome=
+/77.0.3865.120
+Safari/537.36 Avast/77.2.2152.121'
+    'HTTP_DNT' =3D> '=
+1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CONNECTION' =
+=3D> 'keep-alive'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepali=
+ve' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/in=
+dex.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FCGI=
+_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.php=
+'
+    'REQUEST_TIME_FLOAT' =3D> 1578634656.4338
+    'REQUEST_TIME' =3D>=
+ 1578634656
+]

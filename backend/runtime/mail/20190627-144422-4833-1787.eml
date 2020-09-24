@@ -1,0 +1,490 @@
+Message-ID: <3bda6d0e4d62b6190ab5ed061c1d4d7e@cvajm.com>
+Date: Thu, 27 Jun 2019 14:44:22 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-06-27 14:44:22
+[36.92.48.63][4][gm3rov81duuru10qldd52qh1j0][error][y=
+ii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity constr=
+aint violation: 1052
+Column 'id_sub_pelanggan' in where clause is ambiguo=
+us in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:12=
+90
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+db/Command.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->inter=
+nalExecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchC=
+olumn', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Quer=
+y.php(463):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->querySca=
+lar('COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScal=
+ar('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->c=
+ount('*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/da=
+ta/BaseDataProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCo=
+unt()
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/Gr=
+idView.php(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home=
+/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):=
+
+kartik\grid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run(=
+)
+#11
+/home/cvajm/public_html/cvajm/backend/views/purchase-order/index.=
+php(24):
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...'=
+)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(2=
+57):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=
+=3D"s...')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/V=
+iew.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Ob=
+ject(backend\controllers\PurchaseOrderController))
+#15
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View=
+->render('index', Array,
+Object(backend\controllers\PurchaseOrderControll=
+er))
+#16
+/home/cvajm/public_html/cvajm/backend/controllers/PurchaseOrde=
+rController.php(52):
+yii\base\Controller->render('index', Array)
+#17 [i=
+nternal function]:
+backend\controllers\PurchaseOrderController->actionInd=
+ex()
+#18
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineA=
+ction.php(57):
+call_user_func_array(Array, Array)
+#19
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inl=
+ineAction->runWithParams(Array)
+#20
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('', A=
+rray)
+#21
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Applica=
+tion.php(103):
+yii\base\Module->runAction('purchase-order', Array)
+#22=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(3=
+86):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /h=
+ome/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\Applicati=
+on->run()
+#24 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]=
+: Integrity constraint
+violation: 1052 Column 'id_sub_pelanggan' in where=
+ clause is ambiguous
+The SQL being executed was: SELECT COUNT(*) FROM `pu=
+rchase_order` LEFT
+JOIN `pelanggan` ON `purchase_order`.`id_pelanggan` =
+=3D
+`pelanggan`.`id_pelanggan` LEFT JOIN `sub_pelanggan` ON
+`purchase_o=
+rder`.`id_sub_pelanggan` =3D
+`sub_pelanggan`.`id_sub_pelanggan` LEFT JOIN=
+ `tujuan_bongkar` ON
+`purchase_order`.`id_tujuan_bongkar` =3D
+`tujuan_b=
+ongkar`.`id_tujuan_bongkar` LEFT JOIN `kota` ON
+`purchase_order`.`id_kota=
+` =3D `kota`.`id_kota` LEFT JOIN `uom` ON
+`purchase_order`.`id_uom` =3D `=
+uom`.`id_uom` LEFT JOIN `jenis_muatan` ON
+`purchase_order`.`id_jenis_muat=
+an` =3D `jenis_muatan`.`id_jenis_muatan`
+WHERE (`id_sub_pelanggan`=3D'lin=
+tas damai') AND
+(`sub_pelanggan`.`sub_pelanggan` LIKE '%lintas damai%') A=
+ND
+(`jenis_muatan`.`jenis_muatan` LIKE '%klinker%') in
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yi=
+i\db\Schema->convertException(Object(PDOException), 'SELECT
+COUNT(*)...')=
+
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(11=
+58):
+yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Co=
+mmand->queryInternal('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command->queryScalar()
+#=
+4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(35=
+2):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#5=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(347):
+y=
+ii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/ActiveDataProvide=
+r.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data\Activ=
+eDataProvider->prepareTotalCount()
+#8
+/home/cvajm/public_html/cvajm/ven=
+dor/kartik-v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider-=
+>getTotalCount()
+#9
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-=
+grid/src/GridView.php(1163):
+kartik\grid\GridView->initToggleData()
+#10=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):=
+
+kartik\grid\GridView->run()
+#11
+/home/cvajm/public_html/cvajm/backen=
+d/views/purchase-order/index.php(24):
+yii\base\Widget::widget(Array)
+#1=
+2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):=
+
+require('/home/cvajm/pub...')
+#13
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/c=
+vajm/pub...', '[<span
+class=3D"s...')
+#14
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/ho=
+me/cvajm/pub...', Array,
+Object(backend\controllers\PurchaseOrderControll=
+er))
+#15
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Control=
+ler.php(384):
+yii\base\View->render('index', Array,
+Object(backend\cont=
+rollers\PurchaseOrderController))
+#16
+/home/cvajm/public_html/cvajm/bac=
+kend/controllers/PurchaseOrderController.php(52):
+yii\base\Controller->re=
+nder('index', Array)
+#17 [internal function]:
+backend\controllers\Purch=
+aseOrderController->actionIndex()
+#18
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, A=
+rray)
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Contro=
+ller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\bas=
+e\Controller->runAction('', Array)
+#21
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('p=
+urchase-order', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Objec=
+t(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/index.p=
+hp(22):
+yii\base\Application->run()
+#24 {main}
+Additional Information=
+:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1052
+    [2] =3D> Colum=
+n 'id_sub_pelanggan' in where clause is ambiguous
+)
+
+2019-06-27 14:44=
+:22
+[36.92.48.63][4][gm3rov81duuru10qldd52qh1j0][info][application] $_GET=
+
+=3D [
+    'PurchaseOrderSearch' =3D> [
+        'no_po' =3D> ''
+   =
+     'tanggal_po' =3D> ''
+        'id_pelanggan' =3D> ''
+        'id_su=
+b_pelanggan' =3D> 'lintas damai'
+        'id_tujuan_bongkar' =3D> ''
+  =
+      'id_kota' =3D> ''
+        'deadline' =3D> ''
+        'jumlah' =3D=
+> ''
+        'id_uom' =3D> ''
+        'id_jenis_muatan' =3D> 'klinker'=
+
+        'status' =3D> ''
+    ]
+    'r' =3D> 'purchase-order'
+]
+=
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-ba=
+ckend' =3D> 'gm3rov81duuru10qldd52qh1j0'
+    '_csrf-backend' =3D>
+'b98a=
+a29f5654836850b5f41f3d1424fcb474543582186d0ccb6556af3cf83ba3a:2:{i:0;s:13:\=
+"_csrf-backend\";i:1;s:32:\"On5-nzGKQQYGKf5DcBBTFvhIwN8fWcHw\";}'
+]
+
+=
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/ba=
+ckend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'SURAT JALAN=
+'
+        1 =3D> 'STAF HRD UNIT'
+        2 =3D> 'STAF HRD KARYAWAN'
+ =
+       3 =3D> 'PURCHASING'
+        4 =3D> 'PEMESANAN'
+        5 =3D> 'L=
+OGISTIC'
+        6 =3D> 'KORLAP'
+        7 =3D> 'KEPALA HRD'
+        =
+8 =3D> 'INVOICE'
+        9 =3D> 'HRD'
+        10 =3D> 'GPS'
+        1=
+1 =3D> 'FINANCE'
+        12 =3D> 'CHECKER'
+        13 =3D> 'ADMIN'
+  =
+      14 =3D> 'SYSTEM ADMINISTRATOR'
+        15 =3D> 'TAMBANG'
+        =
+16 =3D> 'WORKSHOP'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 4=
+
+        1 =3D> 17
+        2 =3D> 16
+        3 =3D> 12
+        4 =
+=3D> 5
+        5 =3D> 11
+        6 =3D> 9
+        7 =3D> 15
+       =
+ 8 =3D> 8
+        9 =3D> 14
+        10 =3D> 7
+        11 =3D> 3
+   =
+     12 =3D> 6
+        13 =3D> 2
+        14 =3D> 1
+        15 =3D> 13=
+
+        16 =3D> 10
+    ]
+    '__id' =3D> 4
+]
+
+$_SERVER =3D [=
+
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.0'
+    'PWD' =3D> '=
+/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHL=
+VL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:=
+/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME' =
+=3D> '/cvajm/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/back=
+end/web/index.php?PurchaseOrderSearch%5Bno_po%5D=3D&PurchaseOrderSearch%5Bt=
+anggal_po%5D=3D&PurchaseOrderSearch%5Bid_pelanggan%5D=3D&PurchaseOrderSearc=
+h%5Bid_sub_pelanggan%5D=3Dlintas+damai&PurchaseOrderSearch%5Bid_tujuan_bong=
+kar%5D=3D&PurchaseOrderSearch%5Bid_kota%5D=3D&PurchaseOrderSearch%5Bdeadlin=
+e%5D=3D&PurchaseOrderSearch%5Bjumlah%5D=3D&PurchaseOrderSearch%5Bid_uom%5D=
+=3D&PurchaseOrderSearch%5Bid_jenis_muatan%5D=3Dklinker&PurchaseOrderSearch%=
+5Bstatus%5D=3D&r=3Dpurchase-order'
+    'QUERY_STRING' =3D>
+'PurchaseOrd=
+erSearch%5Bno_po%5D=3D&PurchaseOrderSearch%5Btanggal_po%5D=3D&PurchaseOrder=
+Search%5Bid_pelanggan%5D=3D&PurchaseOrderSearch%5Bid_sub_pelanggan%5D=3Dlin=
+tas+damai&PurchaseOrderSearch%5Bid_tujuan_bongkar%5D=3D&PurchaseOrderSearch=
+%5Bid_kota%5D=3D&PurchaseOrderSearch%5Bdeadline%5D=3D&PurchaseOrderSearch%5=
+Bjumlah%5D=3D&PurchaseOrderSearch%5Bid_uom%5D=3D&PurchaseOrderSearch%5Bid_j=
+enis_muatan%5D=3Dklinker&PurchaseOrderSearch%5Bstatus%5D=3D&r=3Dpurchase-or=
+der'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1=
+.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '5090=
+0'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/we=
+b/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_=
+DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> '=
+'
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvaj=
+m/public_html'
+    'REMOTE_ADDR' =3D> '36.92.48.63'
+    'SERVER_PORT' =
+=3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D=
+> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SI=
+GNATURE' =3D> ''
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTT=
+P_COOKIE' =3D> 'advanced-backend=3Dgm3rov81duuru10qldd52qh1j0;
+_csrf-back=
+end=3Db98aa29f5654836850b5f41f3d1424fcb474543582186d0ccb6556af3cf83ba3a%3A2=
+%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22On5-nzGKQQ=
+YGKf5DcBBTFvhIwN8fWcHw%22%3B%7D'
+    'HTTP_CONNECTION' =3D> 'close'
+   =
+ 'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/index.php?Purcha=
+seOrderSearch%5Bno_po%5D=3D&PurchaseOrderSearch%5Btanggal_po%5D=3D&Purchase=
+OrderSearch%5Bid_pelanggan%5D=3D&PurchaseOrderSearch%5Bid_sub_pelanggan%5D=
+=3D&PurchaseOrderSearch%5Bid_tujuan_bongkar%5D=3D&PurchaseOrderSearch%5Bid_=
+kota%5D=3D&PurchaseOrderSearch%5Bdeadline%5D=3D&PurchaseOrderSearch%5Bjumla=
+h%5D=3D&PurchaseOrderSearch%5Bid_uom%5D=3D&PurchaseOrderSearch%5Bid_jenis_m=
+uatan%5D=3Dklinker&PurchaseOrderSearch%5Bstatus%5D=3D&r=3Dpurchase-order'=
+
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT_LANGU=
+AGE' =3D> 'en-US,en;q=3D0.5'
+    'HTTP_ACCEPT' =3D>
+'text/html,applicat=
+ion/xhtml+xml,application/xml;q=3D0.9,*/*;q=3D0.8'
+    'HTTP_USER_AGENT' =
+=3D> 'Mozilla/5.0 (Windows NT 6.1; Win64; x64;
+rv:67.0) Gecko/20100101 Fi=
+refox/67.0'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'SCRIPT_URI' =3D> 'htt=
+p://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/=
+backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =
+=3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1561621=
+462.4617
+    'REQUEST_TIME' =3D> 1561621462
+]

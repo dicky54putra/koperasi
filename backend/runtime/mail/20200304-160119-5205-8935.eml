@@ -1,0 +1,434 @@
+Message-ID: <49f0d10a7f0ad5774f809db20fa5b8ec@sijaksa.online>
+Date: Wed, 04 Mar 2020 16:01:19 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-03-04 16:01:19
+[103.247.122.10][1036][9cc9f8d24c6b9de6936ac5e593d1a9=
+dd][error][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Inte=
+grity constraint violation: 1052
+Column 'nama_kades' in where clause is a=
+mbiguous in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:=
+1290
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/C=
+ommand.php(1290):
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/=
+vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute=
+('SELECT COUNT(*)...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/d=
+b/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3 =
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\C=
+ommand->queryScalar()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/=
+db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii=
+\db\Connection))
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Quer=
+y.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Con=
+nection))
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/data/ActiveD=
+ataProvider.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/sijaksa=
+/public_html/vendor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data=
+\ActiveDataProvider->prepareTotalCount()
+#8
+/home/sijaksa/public_html/v=
+endor/kartik-v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvide=
+r->getTotalCount()
+#9
+/home/sijaksa/public_html/vendor/kartik-v/yii2-gr=
+id/src/GridView.php(1163):
+kartik\grid\GridView->initToggleData()
+#10=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Widget.php(140):
+ka=
+rtik\grid\GridView->run()
+#11
+/home/sijaksa/public_html/backend/views/d=
+aftar-rencana/index.php(33):
+yii\base\Widget::widget(Array)
+#12 /home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home=
+/sijaksa/p...')
+#13 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/Vi=
+ew.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span=
+
+class=3D"s...')
+#14 /home/sijaksa/public_html/vendor/yiisoft/yii2/base=
+/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+=
+Object(backend\controllers\DaftarRencanaController))
+#15
+/home/sijaksa/=
+public_html/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->=
+render('index', Array,
+Object(backend\controllers\DaftarRencanaController=
+))
+#16
+/home/sijaksa/public_html/backend/controllers/DaftarRencanaContr=
+oller.php(53):
+yii\base\Controller->render('index', Array)
+#17 [interna=
+l function]:
+backend\controllers\DaftarRencanaController->actionIndex()=
+
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.ph=
+p(57):
+call_user_func_array(Array, Array)
+#19
+/home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->r=
+unWithParams(Array)
+#20
+/home/sijaksa/public_html/vendor/yiisoft/yii2/b=
+ase/Module.php(528):
+yii\base\Controller->runAction('index', Array)
+#21=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(103):=
+
+yii\base\Module->runAction('daftar-rencana/...', Array)
+#22
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\=
+Application->handleRequest(Object(yii\web\Request))
+#23 /home/sijaksa/pub=
+lic_html/backend/web/index.php(22):
+yii\base\Application->run()
+#24 {ma=
+in}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: Integrity constra=
+int
+violation: 1052 Column 'nama_kades' in where clause is ambiguous
+Th=
+e SQL being executed was: SELECT COUNT(*) FROM `daftar_rencana` LEFT
+JOIN=
+ `data_desa` ON `daftar_rencana`.`id_desa` =3D `data_desa`.`id_desa`
+WHER=
+E (`daftar_rencana`.`id_desa`=3D'658') AND (`nama_kades` LIKE
+'%Wahyono, =
+ST%') AND (`data_desa`.`nama_desa` LIKE '%Tegalglagah%') in
+/home/sijaksa=
+/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Sc=
+hema->convertException(Object(PDOException), 'SELECT
+COUNT(*)...')
+#1 /=
+home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db=
+\Command->internalExecute('SELECT COUNT(*)...')
+#2 /home/sijaksa/public_h=
+tml/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInterna=
+l('fetchColumn', 0)
+#3 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Q=
+uery.php(463):
+yii\db\Command->queryScalar()
+#4
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScal=
+ar('COUNT(*)', Object(yii\db\Connection))
+#5 /home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COU=
+NT(*)', Object(yii\db\Connection))
+#6
+/home/sijaksa/public_html/vendor/=
+yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*', N=
+ULL)
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/data/BaseDataProv=
+ider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8
+/h=
+ome/sijaksa/public_html/vendor/kartik-v/yii2-grid/src/GridView.php(1754):=
+
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/sijaksa/public_h=
+tml/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\grid\GridVie=
+w->initToggleData()
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/b=
+ase/Widget.php(140):
+kartik\grid\GridView->run()
+#11
+/home/sijaksa/pu=
+blic_html/backend/views/daftar-rencana/index.php(33):
+yii\base\Widget::wi=
+dget(Array)
+#12 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.p=
+hp(348):
+require('/home/sijaksa/p...')
+#13 /home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home=
+/sijaksa/p...', '[<span
+class=3D"s...')
+#14 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/s=
+ijaksa/p...', Array,
+Object(backend\controllers\DaftarRencanaController))=
+
+#15
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(=
+384):
+yii\base\View->render('index', Array,
+Object(backend\controllers\=
+DaftarRencanaController))
+#16
+/home/sijaksa/public_html/backend/control=
+lers/DaftarRencanaController.php(53):
+yii\base\Controller->render('index'=
+, Array)
+#17 [internal function]:
+backend\controllers\DaftarRencanaCont=
+roller->actionIndex()
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2=
+/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#19
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii=
+\base\InlineAction->runWithParams(Array)
+#20
+/home/sijaksa/public_html/=
+vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction(=
+'index', Array)
+#21
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/A=
+pplication.php(103):
+yii\base\Module->runAction('daftar-rencana/...', Arr=
+ay)
+#22
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.=
+php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#=
+23 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Applicat=
+ion->run()
+#24 {main}
+Additional Information:
+Array
+(
+    [0] =3D=
+> 23000
+    [1] =3D> 1052
+    [2] =3D> Column 'nama_kades' in where cla=
+use is ambiguous
+)
+
+2020-03-04 16:01:19
+[103.247.122.10][1036][9cc9=
+f8d24c6b9de6936ac5e593d1a9dd][info][application]
+$_GET =3D [
+    'Dafta=
+rRencanaSearch' =3D> [
+        'tahun_rencana' =3D> ''
+        'id_desa=
+' =3D> 'Tegalglagah'
+        'nama_kades' =3D> 'Wahyono, ST'
+        'n=
+o_perdes' =3D> ''
+        'tanggal_perdes' =3D> ''
+    ]
+    'r' =3D>=
+ 'daftar-rencana/index'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_C=
+OOKIE =3D [
+    'advanced-backend' =3D> '9cc9f8d24c6b9de6936ac5e593d1a9dd=
+'
+    '_csrf-backend' =3D>
+'a02ed707f8e0cc5227b119dd8f3f7b09839b6bf4a1c=
+3a5db82852bbfcd20c30aa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"epwTwR4--7d=
+dcMvzJH4wrKyNhjdC1aVS\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []=
+
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_role' =3D> [=
+
+        0 =3D> 'KELURAHAN'
+    ]
+    'user_role_id' =3D> [
+       =
+ 0 =3D> 4
+    ]
+    '__id' =3D> 1036
+]
+
+$_SERVER =3D [
+    'PAT=
+H' =3D> '/usr/local/bin:/usr/bin:/bin'
+    'TZ' =3D> 'UTC'
+    'REDIREC=
+T_HANDLER' =3D> 'application/x-httpd-ea-php72'
+    'REDIRECT_STATUS' =3D>=
+ '200'
+    'UNIQUE_ID' =3D> 'Xl9uXyFc36MdndJ2nECFOgAAAJI'
+    'SCRIPT_U=
+RL' =3D> '/backend/web/index.php'
+    'SCRIPT_URI' =3D> 'https://sijaksa.=
+online/backend/web/index.php'
+    'HTTPS' =3D> 'on'
+    'SSL_TLS_SNI' =
+=3D> 'sijaksa.online'
+    'HTTP_HOST' =3D> 'sijaksa.online'
+    'HTTP_C=
+ONNECTION' =3D> 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1=
+'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)=
+
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122
+Safari/537=
+.36'
+    'HTTP_SEC_FETCH_DEST' =3D> 'document'
+    'HTTP_ACCEPT' =3D>=
+
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,imag=
+e/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_=
+SEC_FETCH_SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE' =3D> 'naviga=
+te'
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_REFERER' =3D>
+'http=
+s://sijaksa.online/backend/web/index.php?DaftarRencanaSearch%5Btahun_rencan=
+a%5D=3D&DaftarRencanaSearch%5Bid_desa%5D=3DTegalglagah&DaftarRencanaSearch%=
+5Bnama_kades%5D=3D&DaftarRencanaSearch%5Bno_perdes%5D=3D&DaftarRencanaSearc=
+h%5Btanggal_perdes%5D=3D&r=3Ddaftar-rencana%2Findex'
+    'HTTP_ACCEPT_ENC=
+ODING' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en=
+;q=3D0.9'
+    'HTTP_COOKIE' =3D>
+'advanced-backend=3D9cc9f8d24c6b9de693=
+6ac5e593d1a9dd;
+_csrf-backend=3Da02ed707f8e0cc5227b119dd8f3f7b09839b6bf4a=
+1c3a5db82852bbfcd20c30aa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%=
+3A1%3Bs%3A32%3A%22epwTwR4--7ddcMvzJH4wrKyNhjdC1aVS%22%3B%7D'
+    'HTTP_X_=
+HTTPS' =3D> '1'
+    'SERVER_SIGNATURE' =3D> ''
+    'SERVER_SOFTWARE' =
+=3D> 'Apache'
+    'SERVER_NAME' =3D> 'sijaksa.online'
+    'SERVER_ADDR'=
+ =3D> '103.247.11.153'
+    'SERVER_PORT' =3D> '443'
+    'REMOTE_ADDR' =
+=3D> '103.247.122.10'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html=
+'
+    'REQUEST_SCHEME' =3D> 'https'
+    'CONTEXT_PREFIX' =3D> '/cgi-sys=
+'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/usr/local/cpanel/cgi-sys/'
+    'SE=
+RVER_ADMIN' =3D> 'webmaster@sijaksa.online'
+    'SCRIPT_FILENAME' =3D>
+=
+'/home/sijaksa/public_html/backend/web/index.php'
+    'REMOTE_PORT' =3D> =
+'50723'
+    'REDIRECT_URL' =3D> '/backend/web/index.php'
+    'REDIRECT_=
+QUERY_STRING' =3D>
+'DaftarRencanaSearch%5Btahun_rencana%5D=3D&DaftarRenca=
+naSearch%5Bid_desa%5D=3DTegalglagah&DaftarRencanaSearch%5Bnama_kades%5D=3DW=
+ahyono%2C+ST&DaftarRencanaSearch%5Bno_perdes%5D=3D&DaftarRencanaSearch%5Bta=
+nggal_perdes%5D=3D&r=3Ddaftar-rencana%2Findex'
+    'GATEWAY_INTERFACE' =
+=3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHO=
+D' =3D> 'GET'
+    'QUERY_STRING' =3D>
+'DaftarRencanaSearch%5Btahun_renc=
+ana%5D=3D&DaftarRencanaSearch%5Bid_desa%5D=3DTegalglagah&DaftarRencanaSearc=
+h%5Bnama_kades%5D=3DWahyono%2C+ST&DaftarRencanaSearch%5Bno_perdes%5D=3D&Daf=
+tarRencanaSearch%5Btanggal_perdes%5D=3D&r=3Ddaftar-rencana%2Findex'
+    '=
+REQUEST_URI' =3D>
+'/backend/web/index.php?DaftarRencanaSearch%5Btahun_ren=
+cana%5D=3D&DaftarRencanaSearch%5Bid_desa%5D=3DTegalglagah&DaftarRencanaSear=
+ch%5Bnama_kades%5D=3DWahyono%2C+ST&DaftarRencanaSearch%5Bno_perdes%5D=3D&Da=
+ftarRencanaSearch%5Btanggal_perdes%5D=3D&r=3Ddaftar-rencana%2Findex'
+    =
+'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'ORIG_SCRIPT_FILENAME' =
+=3D> '/usr/local/cpanel/cgi-sys/ea-php72'
+    'ORIG_PATH_INFO' =3D> '/bac=
+kend/web/index.php'
+    'ORIG_PATH_TRANSLATED' =3D>
+'/home/sijaksa/publ=
+ic_html/backend/web/index.php'
+    'ORIG_SCRIPT_NAME' =3D> '/cgi-sys/ea-p=
+hp72'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FL=
+OAT' =3D> 1583312479.3314
+    'REQUEST_TIME' =3D> 1583312479
+    'argv'=
+ =3D> [
+        0 =3D>
+'DaftarRencanaSearch%5Btahun_rencana%5D=3D&Dafta=
+rRencanaSearch%5Bid_desa%5D=3DTegalglagah&DaftarRencanaSearch%5Bnama_kades%=
+5D=3DWahyono%2C'
+        1 =3D>
+'ST&DaftarRencanaSearch%5Bno_perdes%5D=
+=3D&DaftarRencanaSearch%5Btanggal_perdes%5D=3D&r=3Ddaftar-rencana%2Findex'=
+
+    ]
+    'argc' =3D> 2
+]

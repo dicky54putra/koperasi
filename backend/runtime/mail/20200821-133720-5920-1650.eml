@@ -1,0 +1,299 @@
+Message-ID: <d2a076bbd4adccf4b84b9b926bb0ee7e@localhost>
+Date: Fri, 21 Aug 2020 13:37:20 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-08-21 13:37:18
+[::1][3][acd4k58amev7lmadooafsluq43][error][yii\db\Ex=
+ception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown co=
+lumn
+'id_item' in 'field list' in
+C:\xampp\htdocs\accounting\vendor\yii=
+soft\yii2\db\Command.php:1290
+Stack trace:
+#0
+C:\xampp\htdocs\account=
+ing\vendor\yiisoft\yii2\db\Command.php(1290):
+PDOStatement->execute()
+#=
+1
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1158):
+=
+yii\db\Command->internalExecute('SELECT id_item ...')
+#2 C:\xampp\htdocs\=
+accounting\vendor\yiisoft\yii2\db\Command.php(425):
+yii\db\Command->query=
+Internal('fetchColumn', 0)
+#3
+C:\xampp\htdocs\accounting\backend\contro=
+llers\AktProduksiBomController.php(285):
+yii\db\Command->queryScalar()
+=
+#4 [internal function]:
+backend\controllers\AktProduksiBomController->act=
+ionTutup('1')
+#5
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\In=
+lineAction.php(57):
+call_user_func_array(Array, Array)
+#6
+C:\xampp\ht=
+docs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base\In=
+lineAction->runWithParams(Array)
+#7
+C:\xampp\htdocs\accounting\vendor\y=
+iisoft\yii2\base\Module.php(528):
+yii\base\Controller->runAction('tutup',=
+ Array)
+#8
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\web\Applicati=
+on.php(103):
+yii\base\Module->runAction('akt-produksi-bo...', Array)
+#9=
+
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Application.php(386)=
+:
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xa=
+mpp\htdocs\accounting\backend\web\index.php(22):
+yii\base\Application->ru=
+n()
+#11 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not fo=
+und: 1054 Unknown
+column 'id_item' in 'field list'
+The SQL being execut=
+ed was: SELECT id_item FROM akt_bom WHERE id_bom =3D
+'1' in
+C:\xampp\ht=
+docs\accounting\vendor\yiisoft\yii2\db\Schema.php:664
+Stack trace:
+#0=
+
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1295):
+y=
+ii\db\Schema->convertException(Object(PDOException), 'SELECT id_item
+...'=
+)
+#1
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1158=
+):
+yii\db\Command->internalExecute('SELECT id_item ...')
+#2 C:\xampp\ht=
+docs\accounting\vendor\yiisoft\yii2\db\Command.php(425):
+yii\db\Command->=
+queryInternal('fetchColumn', 0)
+#3
+C:\xampp\htdocs\accounting\backend\c=
+ontrollers\AktProduksiBomController.php(285):
+yii\db\Command->queryScalar=
+()
+#4 [internal function]:
+backend\controllers\AktProduksiBomController=
+->actionTutup('1')
+#5
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\ba=
+se\InlineAction.php(57):
+call_user_func_array(Array, Array)
+#6
+C:\xam=
+pp\htdocs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\ba=
+se\InlineAction->runWithParams(Array)
+#7
+C:\xampp\htdocs\accounting\ven=
+dor\yiisoft\yii2\base\Module.php(528):
+yii\base\Controller->runAction('tu=
+tup', Array)
+#8
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\web\Appl=
+ication.php(103):
+yii\base\Module->runAction('akt-produksi-bo...', Array)=
+
+#9
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Application.php=
+(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 =
+C:\xampp\htdocs\accounting\backend\web\index.php(22):
+yii\base\Applicatio=
+n->run()
+#11 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown c=
+olumn 'id_item' in 'field list'
+)
+
+2020-08-21 13:37:18
+[::1][3][acd=
+4k58amev7lmadooafsluq43][info][application] $_GET =3D [
+    'r' =3D> 'akt=
+-produksi-bom/tutup'
+    'id' =3D> '1'
+]
+
+$_POST =3D []
+
+$_FILE=
+S =3D []
+
+$_COOKIE =3D [
+    '_ga' =3D> 'GA1.1.1348291765.1597241895'=
+
+    'advanced-backend' =3D> 'acd4k58amev7lmadooafsluq43'
+    '_csrf-ba=
+ckend' =3D>
+'7a4bacc3e8d290e04d7f71c94b363f6c67a5325412e8d1112b0e12e2a1cd=
+1211a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"aY5U1NuNzGZa3vx-FZ6ApNzx5Jvb=
+PzJ8\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    'user_role=
+' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_i=
+d' =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_SERVER =
+=3D [
+    'MIBDIRS' =3D> 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' =
+=3D> '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' =3D> 'C:/xampp/apache/bin/o=
+penssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+    'PHPRC' =
+=3D> '\\xampp\\php'
+    'TMP' =3D> '\\xampp\\tmp'
+    'HTTP_HOST' =3D> =
+'localhost'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_UPGRADE_I=
+NSECURE_REQUESTS' =3D> '1'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windo=
+ws NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.=
+0.4147.125
+Safari/537.36'
+    'HTTP_ACCEPT' =3D>
+'text/html,applicati=
+on/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,appl=
+ication/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_SEC_FETCH_SITE' =3D> 's=
+ame-origin'
+    'HTTP_SEC_FETCH_MODE' =3D> 'navigate'
+    'HTTP_SEC_FET=
+CH_USER' =3D> '?1'
+    'HTTP_SEC_FETCH_DEST' =3D> 'document'
+    'HTTP_=
+REFERER' =3D>
+'http://localhost/accounting/backend/web/index.php?r=3Dakt-=
+produksi-bom/view&id=3D1'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate,=
+ br'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+    'HTTP_COOKI=
+E' =3D> '_ga=3DGA1.1.1348291765.1597241895;
+advanced-backend=3Dacd4k58ame=
+v7lmadooafsluq43;
+_csrf-backend=3D7a4bacc3e8d290e04d7f71c94b363f6c67a5325=
+412e8d1112b0e12e2a1cd1211a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3B=
+i%3A1%3Bs%3A32%3A%22aY5U1NuNzGZa3vx-FZ6ApNzx5JvbPzJ8%22%3B%7D'
+    'PATH'=
+ =3D>
+'C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\=
+WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\composer;C:=
+\\Program
+Files\\Git\\cmd;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program
+=
+Files\\nodejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\Dicky
+Saputra=
+\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\Program
+Files (x86)\\Y=
+arn\\bin\\;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Microsoft\\WindowsAp=
+ps;C:\\Users\\Dicky
+Saputra\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\=
+Users\\Dicky
+Saputra\\AppData\\Local\\Programs\\Microsoft VS
+Code\\bin;=
+C:\\Users\\Dicky
+Saputra\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\D=
+icky
+Saputra\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Dicky
+S=
+aputra\\AppData\\Roaming\\npm;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\A=
+ndroid\\Sdk\\platform-tools;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\ato=
+m\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Yarn\\bin'
+    'System=
+Root' =3D> 'C:\\WINDOWS'
+    'COMSPEC' =3D> 'C:\\WINDOWS\\system32\\cmd.e=
+xe'
+    'PATHEXT' =3D>
+'.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WS=
+H;.MSC'
+    'WINDIR' =3D> 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' =3D> '<a=
+ddress>Apache/2.4.38 (Win64)
+OpenSSL/1.1.1b PHP/7.3.3 Server at localhost=
+ Port 80</address>
+'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.38 (Win64) =
+OpenSSL/1.1.1b
+PHP/7.3.3'
+    'SERVER_NAME' =3D> 'localhost'
+    'SER=
+VER_ADDR' =3D> '::1'
+    'SERVER_PORT' =3D> '80'
+    'REMOTE_ADDR' =3D>=
+ '::1'
+    'DOCUMENT_ROOT' =3D> 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' =
+=3D> 'http'
+    'CONTEXT_PREFIX' =3D> ''
+    'CONTEXT_DOCUMENT_ROOT' =
+=3D> 'C:/xampp/htdocs'
+    'SERVER_ADMIN' =3D> 'postmaster@localhost'
+ =
+   'SCRIPT_FILENAME' =3D>
+'C:/xampp/htdocs/accounting/backend/web/index.p=
+hp'
+    'REMOTE_PORT' =3D> '60597'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.=
+1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHOD' =3D> 'GET=
+'
+    'QUERY_STRING' =3D> 'r=3Dakt-produksi-bom%2Ftutup&id=3D1'
+    'RE=
+QUEST_URI' =3D>
+'/accounting/backend/web/index.php?r=3Dakt-produksi-bom%2=
+Ftutup&id=3D1'
+    'SCRIPT_NAME' =3D> '/accounting/backend/web/index.php'=
+
+    'PHP_SELF' =3D> '/accounting/backend/web/index.php'
+    'REQUEST_T=
+IME_FLOAT' =3D> 1597991838.139
+    'REQUEST_TIME' =3D> 1597991838
+]

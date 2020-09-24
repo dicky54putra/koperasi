@@ -1,0 +1,416 @@
+Message-ID: <1da835dac6b8aa1348e2cdce1a29c2a3@cvajm.com>
+Date: Mon, 24 Jun 2019 02:29:53 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-06-24 02:29:53
+[185.253.96.195][4][snti17iur63a9g82udg0526vf2][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'c.status' in 'where clause' in
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStat=
+ement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/d=
+b/Command.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM `...'=
+)
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(3=
+99):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/p=
+ublic_html/cvajm/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->q=
+ueryAll()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Activ=
+eQuery.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/cvajm/public_html/c=
+vajm/backend/views/pengajuan-bbm/_form.php(39):
+yii\db\ActiveQuery->all()=
+
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348=
+):
+require('/home/cvajm/pub...')
+#7
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/=
+cvajm/pub...', '[<span
+class=3D"s...')
+#8
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/ho=
+me/cvajm/pub...', Array, NULL)
+#9
+/home/cvajm/public_html/cvajm/backend=
+/views/pengajuan-bbm/create.php(17):
+yii\base\View->render('_form', Array=
+)
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(3=
+48):
+require('/home/cvajm/pub...')
+#11
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/ho=
+me/cvajm/pub...', '[<span
+class=3D"s...')
+#12
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile(=
+'/home/cvajm/pub...', Array,
+Object(backend\controllers\PengajuanBbmContr=
+oller))
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Cont=
+roller.php(384):
+yii\base\View->render('create', Array,
+Object(backend\=
+controllers\PengajuanBbmController))
+#14
+/home/cvajm/public_html/cvajm/=
+backend/controllers/PengajuanBbmController.php(95):
+yii\base\Controller->=
+render('create', Array)
+#15 [internal function]:
+backend\controllers\Pe=
+ngajuanBbmController->actionCreate()
+#16
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array=
+, Array)
+#17
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Con=
+troller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#18
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\=
+base\Controller->runAction('create', Array)
+#19
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->run=
+Action('pengajuan-bbm/c...', Array)
+#20
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handle=
+Request(Object(yii\web\Request))
+#21 /home/cvajm/public_html/cvajm/backen=
+d/web/index.php(22):
+yii\base\Application->run()
+#22 {main}
+
+Next y=
+ii\db\Exception: SQLSTATE[42S22]: Column not found: 1054 Unknown
+column '=
+c.status' in 'where clause'
+The SQL being executed was: SELECT * FROM `ka=
+ryawan` WHERE
+`c`.`status` IN (17, 37, 38, 39, 40, 41, 42, 43) in
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trac=
+e:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(=
+1295):
+yii\db\Schema->convertException(Object(PDOException), 'SELECT * FR=
+OM
+`...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Com=
+mand.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM `...')
+#=
+2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(399):=
+
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->query=
+All()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQue=
+ry.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/cvajm/public_html/cvajm=
+/backend/views/pengajuan-bbm/_form.php(39):
+yii\db\ActiveQuery->all()
+#=
+6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):=
+
+require('/home/cvajm/pub...')
+#7
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/cv=
+ajm/pub...', '[<span
+class=3D"s...')
+#8
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home=
+/cvajm/pub...', Array, NULL)
+#9
+/home/cvajm/public_html/cvajm/backend/v=
+iews/pengajuan-bbm/create.php(17):
+yii\base\View->render('_form', Array)=
+
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(34=
+8):
+require('/home/cvajm/pub...')
+#11
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/hom=
+e/cvajm/pub...', '[<span
+class=3D"s...')
+#12
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('=
+/home/cvajm/pub...', Array,
+Object(backend\controllers\PengajuanBbmContro=
+ller))
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Contr=
+oller.php(384):
+yii\base\View->render('create', Array,
+Object(backend\c=
+ontrollers\PengajuanBbmController))
+#14
+/home/cvajm/public_html/cvajm/b=
+ackend/controllers/PengajuanBbmController.php(95):
+yii\base\Controller->r=
+ender('create', Array)
+#15 [internal function]:
+backend\controllers\Pen=
+gajuanBbmController->actionCreate()
+#16
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array,=
+ Array)
+#17
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Cont=
+roller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#18
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\b=
+ase\Controller->runAction('create', Array)
+#19
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runA=
+ction('pengajuan-bbm/c...', Array)
+#20
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleR=
+equest(Object(yii\web\Request))
+#21 /home/cvajm/public_html/cvajm/backend=
+/web/index.php(22):
+yii\base\Application->run()
+#22 {main}
+Additional=
+ Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2=
+] =3D> Unknown column 'c.status' in 'where clause'
+)
+
+2019-06-24 02:2=
+9:53
+[185.253.96.195][4][snti17iur63a9g82udg0526vf2][info][application]=
+
+$_GET =3D [
+    'r' =3D> 'pengajuan-bbm/create'
+]
+
+$_POST =3D []=
+
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'snt=
+i17iur63a9g82udg0526vf2'
+    '_csrf-backend' =3D>
+'5809220b92180000ff31=
+f5ec64eaa0fa1540a218fd60c4754310f475791b8b61a:2:{i:0;s:13:\"_csrf-backend\"=
+;i:1;s:32:\"BIZ4YoaRoPapIzRR7kdlJj-u1f03HhnZ\";}'
+]
+
+$_SESSION =3D [=
+
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index=
+.php'
+    'user_role' =3D> [
+        0 =3D> 'SURAT JALAN'
+        1 =
+=3D> 'STAF HRD UNIT'
+        2 =3D> 'STAF HRD KARYAWAN'
+        3 =3D> =
+'PURCHASING'
+        4 =3D> 'PEMESANAN'
+        5 =3D> 'LOGISTIC'
+   =
+     6 =3D> 'KORLAP'
+        7 =3D> 'KEPALA HRD'
+        8 =3D> 'INVOIC=
+E'
+        9 =3D> 'HRD'
+        10 =3D> 'GPS'
+        11 =3D> 'FINANC=
+E'
+        12 =3D> 'CHECKER'
+        13 =3D> 'ADMIN'
+        14 =3D> =
+'SYSTEM ADMINISTRATOR'
+        15 =3D> 'TAMBANG'
+        16 =3D> 'WORKS=
+HOP'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 4
+        1 =3D=
+> 17
+        2 =3D> 16
+        3 =3D> 12
+        4 =3D> 5
+        5=
+ =3D> 11
+        6 =3D> 9
+        7 =3D> 15
+        8 =3D> 8
+      =
+  9 =3D> 14
+        10 =3D> 7
+        11 =3D> 3
+        12 =3D> 6
+ =
+       13 =3D> 2
+        14 =3D> 1
+        15 =3D> 13
+        16 =3D>=
+ 10
+    ]
+    '__id' =3D> 4
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> =
+'/home/cvajm/fcgi-bin/../etc/php7.0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin=
+'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    '=
+PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'=
+
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/w=
+eb/index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3D=
+pengajuan-bbm%2Fcreate'
+    'QUERY_STRING' =3D> 'r=3Dpengajuan-bbm%2Fcrea=
+te'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.=
+1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '60949=
+'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web=
+/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_D=
+OCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''=
+
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm=
+/public_html'
+    'REMOTE_ADDR' =3D> '185.253.96.195'
+    'SERVER_PORT'=
+ =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =
+=3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER=
+_SIGNATURE' =3D> ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_=
+CONTROL' =3D> 'max-age=3D0'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'HTTP_=
+UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_COOKIE' =3D> 'advanced-back=
+end=3Dsnti17iur63a9g82udg0526vf2;
+_csrf-backend=3D5809220b92180000ff31f5e=
+c64eaa0fa1540a218fd60c4754310f475791b8b61a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_cs=
+rf-backend%22%3Bi%3A1%3Bs%3A32%3A%22BIZ4YoaRoPapIzRR7kdlJj-u1f03HhnZ%22%3B%=
+7D'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/index.p=
+hp?r=3Dpengajuan-bbm'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+ =
+   'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.5'
+    'HTTP_ACCEPT' =3D>=
+
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,*/*;q=3D0.8'
+=
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 6.1; Win64; x64;
+rv:6=
+7.0) Gecko/20100101 Firefox/67.0'
+    'SCRIPT_URI' =3D> 'http://cvajm.com=
+/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/i=
+ndex.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/=
+backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1561318193.9668
+  =
+  'REQUEST_TIME' =3D> 1561318193
+]

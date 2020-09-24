@@ -1,0 +1,341 @@
+Message-ID: <09857c56a67c4563a6d420e4fa05e89c@cvajm.com>
+Date: Mon, 02 Dec 2019 15:21:30 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-12-02 15:21:30
+[36.92.48.63][36][g8l8m8ckji0chbuhrr2q33m1u0][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access v=
+iolation: 1064
+You have an error in your SQL syntax; check the manual tha=
+t
+corresponds to your MariaDB server version for the right syntax to use=
+
+near 'and a.id_sub_pelanggan =3D 240 =09and a.shift =3D 1' at line 4 in=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+=
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Co=
+mmand.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalEx=
+ecute('select sum(a.to...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn=
+', 0)
+#3
+/home/cvajm/public_html/cvajm/backend/views/surat-jalan/rekap_=
+pelanggan.php(140):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvaj=
+m/pub...')
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Vi=
+ew.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[]')
+#=
+6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):=
+
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(backend\=
+controllers\SuratJalanController))
+#7
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('rekap_p=
+elanggan', Array,
+Object(backend\controllers\SuratJalanController))
+#8=
+
+/home/cvajm/public_html/cvajm/backend/controllers/SuratJalanController.p=
+hp(1069):
+yii\base\Controller->render('rekap_pelanggan', Array)
+#9 [int=
+ernal function]:
+backend\controllers\SuratJalanController->actionRekapPel=
+anggan()
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Inl=
+ineAction.php(57):
+call_user_func_array(Array, Array)
+#11
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base=
+\InlineAction->runWithParams(Array)
+#12
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('=
+rekap-pelanggan', Array)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/web/Application.php(103):
+yii\base\Module->runAction('surat-jalan=
+/rek...', Array)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\=
+web\Request))
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php(22)=
+:
+yii\base\Application->run()
+#16 {main}
+
+Next yii\db\Exception: SQ=
+LSTATE[42000]: Syntax error or access
+violation: 1064 You have an error i=
+n your SQL syntax; check the manual
+that corresponds to your MariaDB serv=
+er version for the right syntax
+to use near 'and a.id_sub_pelanggan =3D 2=
+40 =09and a.shift =3D 1' at line 4
+The SQL being executed was: select sum=
+(a.tonase) =09from surat_jalan a
+=09left join jenis_muatan b on b.id_jeni=
+s_muatan =3D a.id_jenis_muatan
+=09left join purchase_order c on c.id_po =
+=3D a.id_po =09left join pelanggan
+d on d.id_pelanggan =3D c.id_po =09whe=
+re
+date_format(a.tanggal_surat_jalan, '%Y-%m-%d') between '2019-12-02'
+=
+and '2019-12-02' =09=20
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=20
+=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09AND a.id_jenis_muatan =3D 26 =
+
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09and c.id_pelanggan =3D  and=
+ a.id_sub_pelanggan =3D 240 =09and
+a.shift =3D 1 =09 in
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+y=
+ii\db\Schema->convertException(Object(PDOException), 'select
+sum(a.to...'=
+)
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1=
+158):
+yii\db\Command->internalExecute('select sum(a.to...')
+#2
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\C=
+ommand->queryInternal('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvaj=
+m/backend/views/surat-jalan/rekap_pelanggan.php(140):
+yii\db\Command->que=
+ryScalar()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Vi=
+ew.php(348):
+require('/home/cvajm/pub...')
+#5
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFi=
+le('/home/cvajm/pub...', '[]')
+#6
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm/p=
+ub...', Array,
+Object(backend\controllers\SuratJalanController))
+#7
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):=
+
+yii\base\View->render('rekap_pelanggan', Array,
+Object(backend\control=
+lers\SuratJalanController))
+#8
+/home/cvajm/public_html/cvajm/backend/co=
+ntrollers/SuratJalanController.php(1069):
+yii\base\Controller->render('re=
+kap_pelanggan', Array)
+#9 [internal function]:
+backend\controllers\Sura=
+tJalanController->actionRekapPelanggan()
+#10
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(A=
+rray, Array)
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base=
+/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#12=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):=
+
+yii\base\Controller->runAction('rekap-pelanggan', Array)
+#13
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\=
+base\Module->runAction('surat-jalan/rek...', Array)
+#14
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\App=
+lication->handleRequest(Object(yii\web\Request))
+#15 /home/cvajm/public_h=
+tml/cvajm/backend/web/index.php(22):
+yii\base\Application->run()
+#16 {m=
+ain}
+Additional Information:
+Array
+(
+    [0] =3D> 42000
+    [1] =
+=3D> 1064
+    [2] =3D> You have an error in your SQL syntax; check the ma=
+nual that
+corresponds to your MariaDB server version for the right syntax=
+ to use
+near 'and a.id_sub_pelanggan =3D 240 =09and a.shift =3D 1' at lin=
+e 4
+)
+
+2019-12-02 15:21:30
+[36.92.48.63][36][g8l8m8ckji0chbuhrr2q33=
+m1u0][info][application] $_GET
+=3D [
+    'r' =3D> 'surat-jalan/rekap-pe=
+langgan'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+ =
+   'advanced-backend' =3D> 'g8l8m8ckji0chbuhrr2q33m1u0'
+    '_csrf-backen=
+d' =3D>
+'944694348f65145d776fc58c598f8363ecde95d1cd5fc8eeb78e1180e242c333=
+a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"cA3vAf-kfFunmPDbti7hgXviqAiooYf9=
+\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =
+=3D> '/cvajm/backend/web/index.php'
+    'user_role' =3D> [
+        0 =
+=3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0=
+ =3D> 1
+    ]
+    '__id' =3D> 36
+]
+
+$_SERVER =3D [
+    'USER' =
+=3D> 'cvajm'
+    'HOME' =3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D> '/cva=
+jm/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/in=
+dex.php?r=3Dsurat-jalan/rekap-pelanggan'
+    'QUERY_STRING' =3D> 'r=3Dsur=
+at-jalan/rekap-pelanggan'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_P=
+ROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'RE=
+MOTE_PORT' =3D> '59519'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_=
+html/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address gi=
+ven]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'C=
+ONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_R=
+OOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '36.92.48.63'=
+
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+=
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4=
+.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'PATH' =3D>
+'/usr/local/sbin:=
+/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_COOKIE' =3D> 'adv=
+anced-backend=3Dg8l8m8ckji0chbuhrr2q33m1u0;
+_csrf-backend=3D944694348f651=
+45d776fc58c598f8363ecde95d1cd5fc8eeb78e1180e242c333a%3A2%3A%7Bi%3A0%3Bs%3A1=
+3%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22cA3vAf-kfFunmPDbti7hgXviqAioo=
+Yf9%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=
+=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    =
+'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/index.php?r=3Dsur=
+at-jalan'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,appli=
+cation/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exc=
+hange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 6.1; Wi=
+n64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108
+S=
+afari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_C=
+ACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_CONNECTION' =3D> 'keep-alive'=
+
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepalive' =3D> '1'
+  =
+  'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/index.php'
+    'S=
+CRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESP=
+ONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_=
+TIME_FLOAT' =3D> 1575271290.3212
+    'REQUEST_TIME' =3D> 1575271290
+]

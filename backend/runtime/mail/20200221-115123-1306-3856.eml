@@ -1,0 +1,367 @@
+Message-ID: <d2c0acebb9ebdd05e40340ace4e97882@sijaksa.com>
+Date: Fri, 21 Feb 2020 11:51:23 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-21 11:51:23
+[107.181.177.137][15][upg2fvmhacnas4j7mpg1jlce1u][err=
+or][yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or acce=
+ss violation: 1066
+Not unique table/alias: 'data_penerimaan_dana' in
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack tra=
+ce:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290)=
+:
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT `data_p=
+e...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(39=
+9):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 /home/sijaksa/pu=
+blic_html/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->queryAll=
+()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.php(=
+133):
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_html/backend/vi=
+ews/data-rincian-penyetoran-dana/_form.php(31):
+yii\db\ActiveQuery->all()=
+
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+r=
+equire('/home/sijaksa/p...')
+#7 /home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...=
+', '[<span
+class=3D"s...')
+#8 /home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', =
+Array, NULL)
+#9
+/home/sijaksa/public_html/backend/views/data-rincian-pe=
+nyetoran-dana/create.php(17):
+yii\base\View->render('_form', Array)
+#10=
+ /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+requir=
+e('/home/sijaksa/p...')
+#11 /home/sijaksa/public_html/vendor/yiisoft/yii2=
+/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '=
+[<span
+class=3D"s...')
+#12 /home/sijaksa/public_html/vendor/yiisoft/yii=
+2/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Arr=
+ay,
+Object(backend\controllers\DataRincianPenyetoranDanaController))
+#1=
+3
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(384):=
+
+yii\base\View->render('create', Array,
+Object(backend\controllers\Data=
+RincianPenyetoranDanaController))
+#14
+/home/sijaksa/public_html/backend=
+/controllers/DataRincianPenyetoranDanaController.php(74):
+yii\base\Contro=
+ller->render('create', Array)
+#15 [internal function]:
+backend\controll=
+ers\DataRincianPenyetoranDanaController->actionCreate()
+#16
+/home/sijak=
+sa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_f=
+unc_array(Array, Array)
+#17
+/home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)=
+
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528)=
+:
+yii\base\Controller->runAction('create', Array)
+#19
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module-=
+>runAction('data-rincian-pe...', Array)
+#20
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handle=
+Request(Object(yii\web\Request))
+#21 /home/sijaksa/public_html/backend/we=
+b/index.php(22):
+yii\base\Application->run()
+#22 {main}
+
+Next yii\d=
+b\Exception: SQLSTATE[42000]: Syntax error or access
+violation: 1066 Not =
+unique table/alias: 'data_penerimaan_dana'
+The SQL being executed was: SE=
+LECT `data_penerimaan_dana`.* FROM
+`data_penerimaan_dana` LEFT JOIN `data=
+_penerimaan_dana` ON
+data_penerimaan_dana.id_data_penerimaan_dana=3Ddata_=
+rincian_penyetoran_dana.id_data_penerimaan_dana
+WHERE (`id_desa`=3D'26') =
+AND (`jenis_penerimaan`=3D2) in
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/db/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/vendor=
+/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Objec=
+t(PDOException), 'SELECT
+`data_pe...')
+#1 /home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('S=
+ELECT `data_pe...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/C=
+ommand.php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 /ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Comm=
+and->queryAll()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Act=
+iveQuery.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_ht=
+ml/backend/views/data-rincian-penyetoran-dana/_form.php(31):
+yii\db\Activ=
+eQuery->all()
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.=
+php(348):
+require('/home/sijaksa/p...')
+#7 /home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home=
+/sijaksa/p...', '[<span
+class=3D"s...')
+#8 /home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/si=
+jaksa/p...', Array, NULL)
+#9
+/home/sijaksa/public_html/backend/views/da=
+ta-rincian-penyetoran-dana/create.php(17):
+yii\base\View->render('_form',=
+ Array)
+#10 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(3=
+48):
+require('/home/sijaksa/p...')
+#11 /home/sijaksa/public_html/vendor=
+/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sij=
+aksa/p...', '[<span
+class=3D"s...')
+#12 /home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/sijak=
+sa/p...', Array,
+Object(backend\controllers\DataRincianPenyetoranDanaCont=
+roller))
+#13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Control=
+ler.php(384):
+yii\base\View->render('create', Array,
+Object(backend\con=
+trollers\DataRincianPenyetoranDanaController))
+#14
+/home/sijaksa/public=
+_html/backend/controllers/DataRincianPenyetoranDanaController.php(74):
+yi=
+i\base\Controller->render('create', Array)
+#15 [internal function]:
+bac=
+kend\controllers\DataRincianPenyetoranDanaController->actionCreate()
+#16=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):=
+
+call_user_func_array(Array, Array)
+#17
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWith=
+Params(Array)
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Mo=
+dule.php(528):
+yii\base\Controller->runAction('create', Array)
+#19
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii=
+\base\Module->runAction('data-rincian-pe...', Array)
+#20
+/home/sijaksa/=
+public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Applic=
+ation->handleRequest(Object(yii\web\Request))
+#21 /home/sijaksa/public_ht=
+ml/backend/web/index.php(22):
+yii\base\Application->run()
+#22 {main}
+=
+Additional Information:
+Array
+(
+    [0] =3D> 42000
+    [1] =3D> 106=
+6
+    [2] =3D> Not unique table/alias: 'data_penerimaan_dana'
+)
+
+20=
+20-02-21 11:51:23
+[107.181.177.137][15][upg2fvmhacnas4j7mpg1jlce1u][info]=
+[application]
+$_GET =3D [
+    'r' =3D> 'data-rincian-penyetoran-dana/cr=
+eate'
+    'id' =3D> '2'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$=
+_COOKIE =3D [
+    'advanced-backend' =3D> 'upg2fvmhacnas4j7mpg1jlce1u'
+=
+    '_csrf-backend' =3D>
+'8a3a855d1b479741392ea9f141dd84c8585d82ae4444f63=
+1c9fa95606b25dd05a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"l-ztwa5wbBldX5b=
+3y8kedEi-qoDMNOvd\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+ =
+   '__returnUrl' =3D> '/backend/web/index.php?r=3D'
+    'user_role' =3D> =
+[
+        0 =3D> 'KELURAHAN'
+        1 =3D> 'KECAMATAN'
+        2 =3D=
+> 'KABUPATEN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_r=
+ole_id' =3D> [
+        0 =3D> 4
+        1 =3D> 3
+        2 =3D> 2
+ =
+       3 =3D> 1
+    ]
+    '__id' =3D> 15
+]
+
+$_SERVER =3D [
+    =
+'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home=
+/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL'=
+ =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/us=
+r/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'HTTP_CONNECTION' =
+=3D> 'close'
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUE=
+ST_URI' =3D>
+'/backend/web/index.php?r=3Ddata-rincian-penyetoran-dana%2Fc=
+reate&id=3D2'
+    'QUERY_STRING' =3D> 'r=3Ddata-rincian-penyetoran-dana%2=
+Fcreate&id=3D2'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =
+=3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT=
+' =3D> '49314'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/ba=
+ckend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    '=
+CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREF=
+IX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '=
+/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '107.181.177.137'
+   =
+ 'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SER=
+VER_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'=
+
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip'=
+
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_COOKIE' =3D> '=
+advanced-backend=3Dupg2fvmhacnas4j7mpg1jlce1u;
+_csrf-backend=3D8a3a855d1b=
+479741392ea9f141dd84c8585d82ae4444f631c9fa95606b25dd05a%3A2%3A%7Bi%3A0%3Bs%=
+3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22l-ztwa5wbBldX5b3y8kedEi-qo=
+DMNOvd%22%3B%7D'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_=
+ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HT=
+TP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,=
+image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.=
+9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)=
+
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87
+Safari/537.=
+36'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'SCRIPT_URI' =3D> 'http://si=
+jaksa.com/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/inde=
+x.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/w=
+eb/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1582260683.1173
+    'REQUES=
+T_TIME' =3D> 1582260683
+]

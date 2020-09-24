@@ -1,0 +1,358 @@
+Message-ID: <4fecf3aedd8b4b49dcd86d3258c2113a@cvajm.com>
+Date: Wed, 20 Nov 2019 11:34:58 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-11-20 11:34:58
+[36.92.48.63][37][fkl6unpc471m31f69ff3froqc7][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access v=
+iolation: 1064
+You have an error in your SQL syntax; check the manual tha=
+t
+corresponds to your MariaDB server version for the right syntax to use=
+
+near 'and shift =3D 1 =09and date_format(tanggal_surat_jalan, '%Y-%m-%d=
+
+%H:%i') between '2' at line 1 in
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute=
+()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(=
+1158):
+yii\db\Command->internalExecute('select sum(tona...')
+#2
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\=
+Command->queryInternal('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cva=
+jm/backend/views/surat-jalan/laporan_rekap_angkutan.php(109):
+yii\db\Comm=
+and->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/base/View.php(348):
+require('/home/cvajm/pub...')
+#5
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->ren=
+derPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#6
+/home/cva=
+jm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\Vie=
+w->renderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\Sur=
+atJalanController))
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/base/Controller.php(384):
+yii\base\View->render('laporan_rekap_a...', A=
+rray,
+Object(backend\controllers\SuratJalanController))
+#8
+/home/cvaj=
+m/public_html/cvajm/backend/controllers/SuratJalanController.php(866):
+yi=
+i\base\Controller->render('laporan_rekap_a...', Array)
+#9 [internal funct=
+ion]:
+backend\controllers\SuratJalanController->actionLaporanRekapAngkuta=
+n()
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAc=
+tion.php(57):
+call_user_func_array(Array, Array)
+#11
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inli=
+neAction->runWithParams(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('lapor=
+an-rekap-a...', Array)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/web/Application.php(103):
+yii\base\Module->runAction('surat-jalan/l=
+ap...', Array)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/ba=
+se/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\we=
+b\Request))
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php(22):=
+
+yii\base\Application->run()
+#16 {main}
+
+Next yii\db\Exception: SQL=
+STATE[42000]: Syntax error or access
+violation: 1064 You have an error in=
+ your SQL syntax; check the manual
+that corresponds to your MariaDB serve=
+r version for the right syntax
+to use near 'and shift =3D 1 =09and date_f=
+ormat(tanggal_surat_jalan,
+'%Y-%m-%d %H:%i') between '2' at line 1
+The =
+SQL being executed was: select sum(tonase) =09from surat_jalan =09left
+jo=
+in purchase_order on purchase_order.id_po =3D surat_jalan.id_po =09where
+=
+id_pelanggan =3D  and shift =3D 1 =09and date_format(tanggal_surat_jalan,=
+
+'%Y-%m-%d %H:%i') between '2019-11-11 11:30' and '2019-11-20 11:34' =09=
+
+in /home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664=
+
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db=
+/Command.php(1295):
+yii\db\Schema->convertException(Object(PDOException),=
+ 'select
+sum(tona...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('select sum(=
+tona...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Comma=
+nd.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+/home=
+/cvajm/public_html/cvajm/backend/views/surat-jalan/laporan_rekap_angkutan.p=
+hp(109):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')=
+
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257=
+):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"=
+s...')
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.p=
+hp(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(=
+backend\controllers\SuratJalanController))
+#7
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render(=
+'laporan_rekap_a...', Array,
+Object(backend\controllers\SuratJalanControl=
+ler))
+#8
+/home/cvajm/public_html/cvajm/backend/controllers/SuratJalanCo=
+ntroller.php(866):
+yii\base\Controller->render('laporan_rekap_a...', Arra=
+y)
+#9 [internal function]:
+backend\controllers\SuratJalanController->ac=
+tionLaporanRekapAngkutan()
+#10
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.=
+php(157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Con=
+troller->runAction('laporan-rekap-a...', Array)
+#13
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module-=
+>runAction('surat-jalan/lap...', Array)
+#14
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->ha=
+ndleRequest(Object(yii\web\Request))
+#15 /home/cvajm/public_html/cvajm/ba=
+ckend/web/index.php(22):
+yii\base\Application->run()
+#16 {main}
+Addit=
+ional Information:
+Array
+(
+    [0] =3D> 42000
+    [1] =3D> 1064
+ =
+   [2] =3D> You have an error in your SQL syntax; check the manual that
+c=
+orresponds to your MariaDB server version for the right syntax to use
+nea=
+r 'and shift =3D 1 =09and date_format(tanggal_surat_jalan, '%Y-%m-%d
+%H:%=
+i') between '2' at line 1
+)
+
+2019-11-20 11:34:58
+[36.92.48.63][37][=
+fkl6unpc471m31f69ff3froqc7][info][application] $_GET
+=3D [
+    'r' =3D>=
+ 'surat-jalan/laporan-rekap-angkutan'
+    1 =3D> [
+        'class' =3D>=
+ 'form-inline'
+    ]
+]
+
+$_POST =3D [
+    '_csrf-backend' =3D>
+'=
+i-XRiqb-qeQtWhKVQsj9r1fvdmu8hGeg1SIurL2iatrOqbjMwoTsrRtsW91y_sTXJ44jUo7lLtD=
+sR1r47M1TmQ=3D=3D'
+    'tanggal_awal' =3D> '2019-11-11 11:30'
+    'tang=
+gal_akhir' =3D> '2019-11-20 11:34'
+]
+
+$_FILES =3D []
+
+$_COOKIE =
+=3D [
+    'advanced-backend' =3D> 'fkl6unpc471m31f69ff3froqc7'
+    '_cs=
+rf-backend' =3D>
+'6ed0fac1995963d89bcd0d7342307b7ff80d907e11483be8924a216=
+90afd91f9a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"ELiFdzEI66IH069xpaU92aI=
+p9etTQo9C\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__re=
+turnUrl' =3D> '/cvajm/backend/web/index.php'
+    'user_role' =3D> [
+   =
+     0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+  =
+      0 =3D> 1
+    ]
+    '__id' =3D> 37
+]
+
+$_SERVER =3D [
+    '=
+USER' =3D> 'cvajm'
+    'HOME' =3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D>=
+ '/cvajm/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/=
+web/index.php?r=3Dsurat-jalan%2Flaporan-rekap-angkutan&1%5Bclass%5D=3Dform-=
+inline'
+    'QUERY_STRING' =3D>
+'r=3Dsurat-jalan%2Flaporan-rekap-angkut=
+an&1%5Bclass%5D=3Dform-inline'
+    'REQUEST_METHOD' =3D> 'POST'
+    'SE=
+RVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+ =
+   'REMOTE_PORT' =3D> '52095'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/p=
+ublic_html/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no addr=
+ess given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+=
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCU=
+MENT_ROOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '36.92.4=
+8.63'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.19=
+8'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apach=
+e/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'PATH' =3D>
+'/usr/local/=
+sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_COOKIE' =3D>=
+ 'advanced-backend=3Dfkl6unpc471m31f69ff3froqc7;
+_csrf-backend=3D6ed0fac1=
+995963d89bcd0d7342307b7ff80d907e11483be8924a21690afd91f9a%3A2%3A%7Bi%3A0%3B=
+s%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ELiFdzEI66IH069xpaU92aIp=
+9etTQo9C%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+ =
+   'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+=
+'http://cvajm.com/cvajm/backend/web/index.php?r=3Dsurat-jalan%2Flaporan-rek=
+ap-angkutan&1%5Bclass%5D=3Dform-inline'
+    'HTTP_ACCEPT' =3D>
+'text/ht=
+ml,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;=
+q=3D0.8,application/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'M=
+ozilla/5.0 (Windows NT 6.1)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome=
+/78.0.3904.97
+Safari/537.36'
+    'CONTENT_TYPE' =3D> 'application/x-www=
+-form-urlencoded'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HT=
+TP_ORIGIN' =3D> 'http://cvajm.com'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=
+=3D0'
+    'CONTENT_LENGTH' =3D> '171'
+    'HTTP_CONNECTION' =3D> 'keep-=
+alive'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepalive' =3D> '1=
+'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/index.php'
+=
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D>=
+ 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.php'
+    'RE=
+QUEST_TIME_FLOAT' =3D> 1574220898.0886
+    'REQUEST_TIME' =3D> 1574220898=
+
+]

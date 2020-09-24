@@ -1,0 +1,382 @@
+Message-ID: <0b386caba19937dfb1872986f293855d@cvajm.com>
+Date: Sun, 01 Dec 2019 17:28:17 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-12-01 17:28:17
+[36.72.218.174][1][g3fbkn9v120pupo4ht2p0hn7j7][error]=
+[yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 =
+Unknown column
+'surat_jalan.id_jenis_muatan' in 'field list' in
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trac=
+e:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(=
+1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('sel=
+ect DISTINCT...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+db/Command.php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3=
+
+/home/cvajm/public_html/cvajm/backend/views/surat-jalan/rekap_pelanggan.=
+php(118):
+yii\db\Command->queryAll()
+#4
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+=
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):=
+
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[]')
+#6
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\Vi=
+ew->renderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\Su=
+ratJalanController))
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/base/Controller.php(384):
+yii\base\View->render('rekap_pelanggan', Arr=
+ay,
+Object(backend\controllers\SuratJalanController))
+#8
+/home/cvajm/=
+public_html/cvajm/backend/controllers/SuratJalanController.php(1007):
+yii=
+\base\Controller->render('rekap_pelanggan', Array)
+#9 [internal function]=
+:
+backend\controllers\SuratJalanController->actionRekapPelanggan()
+#10=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(=
+57):
+call_user_func_array(Array, Array)
+#11
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction-=
+>runWithParams(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/base/Module.php(528):
+yii\base\Controller->runAction('rekap-pelangga=
+n', Array)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Ap=
+plication.php(103):
+yii\base\Module->runAction('surat-jalan/rek...', Arra=
+y)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Applicati=
+on.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))=
+
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\=
+Application->run()
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]=
+: Column not found: 1054 Unknown
+column 'surat_jalan.id_jenis_muatan' in =
+'field list'
+The SQL being executed was: select DISTINCT(c.pelanggan),
+=
+c.id_pelanggan, jenis_muatan.jenis_muatan, surat_jalan.id_jenis_muatan
+=
+=09from surat_jalan a =09left join purchase_order b on b.id_po =3D a.id_po=
+
+=09left join pelanggan c on c.id_pelanggan =3D b.id_pelanggan =09LEFT JO=
+IN
+jenis_muatan ON jenis_muatan.id_jenis_muatan =3D
+surat_jalan.id_jeni=
+s_muatan =09where date_format(a.tanggal_surat_jalan,
+'%Y-%m-%d') between =
+'2019-12-01' and '2019-12-01' =09order by
+c.pelanggan =09 in
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+=
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295)=
+:
+yii\db\Schema->convertException(Object(PDOException), 'select
+DISTINC=
+T...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.=
+php(1158):
+yii\db\Command->internalExecute('select DISTINCT...')
+#2
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(399):
+yii=
+\db\Command->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/public_html=
+/cvajm/backend/views/surat-jalan/rekap_pelanggan.php(118):
+yii\db\Command=
+->queryAll()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/=
+View.php(348):
+require('/home/cvajm/pub...')
+#5
+/home/cvajm/public_ht=
+ml/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhp=
+File('/home/cvajm/pub...', '[]')
+#6
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm=
+/pub...', Array,
+Object(backend\controllers\SuratJalanController))
+#7=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(38=
+4):
+yii\base\View->render('rekap_pelanggan', Array,
+Object(backend\cont=
+rollers\SuratJalanController))
+#8
+/home/cvajm/public_html/cvajm/backend=
+/controllers/SuratJalanController.php(1007):
+yii\base\Controller->render(=
+'rekap_pelanggan', Array)
+#9 [internal function]:
+backend\controllers\S=
+uratJalanController->actionRekapPelanggan()
+#10
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_arra=
+y(Array, Array)
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/b=
+ase/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#1=
+2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):=
+
+yii\base\Controller->runAction('rekap-pelanggan', Array)
+#13
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\=
+base\Module->runAction('surat-jalan/rek...', Array)
+#14
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\App=
+lication->handleRequest(Object(yii\web\Request))
+#15 /home/cvajm/public_h=
+tml/cvajm/backend/web/index.php(22):
+yii\base\Application->run()
+#16 {m=
+ain}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =
+=3D> 1054
+    [2] =3D> Unknown column 'surat_jalan.id_jenis_muatan' in 'f=
+ield
+list'
+)
+
+2019-12-01 17:28:17
+[36.72.218.174][1][g3fbkn9v120p=
+upo4ht2p0hn7j7][info][application]
+$_GET =3D [
+    'r' =3D> 'surat-jala=
+n/rekap-pelanggan'
+    1 =3D> [
+        'class' =3D> 'form-horizontal'=
+
+    ]
+]
+
+$_POST =3D [
+    '_csrf-backend' =3D>
+'igMNrOVaJbI_QP=
+SMYVUIepIW0ouqW6eerpVhlknH5-fBYkPKgRYSxwdxt-4neDovxE65ssUe-OeDrVTFGvWzog=3D=
+=3D'
+    'tanggal_awal' =3D> '2019-12-01'
+    'tanggal_akhir' =3D> '201=
+9-12-01'
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backen=
+d' =3D> 'g3fbkn9v120pupo4ht2p0hn7j7'
+    '_csrf-backend' =3D>
+'1d46740c=
+05cfdd723b45b0ecb7c43c9df0beabbe9db69133698af08d17cbc0fca:2:{i:0;s:13:\"_cs=
+rf-backend\";i:1;s:32:\"KaNfdL7u81CbF-2UVXk9oE_y-85SS2TE\";}'
+]
+
+$_SE=
+SSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backen=
+d/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'TAMBANG'
+    =
+    1 =3D> 'SYSTEM ADMINISTRATOR'
+        2 =3D> 'SURAT JALAN'
+        =
+3 =3D> 'PURCHASING'
+        4 =3D> 'PEMESANAN'
+        5 =3D> 'LOGISTIC=
+'
+        6 =3D> 'KORLAP'
+        7 =3D> 'INVOICE'
+        8 =3D> 'HR=
+D'
+        9 =3D> 'GPS'
+        10 =3D> 'FINANCE'
+        11 =3D> 'CH=
+ECKER'
+        12 =3D> 'APPROVER'
+        13 =3D> 'ADMIN'
+        14 =
+=3D> 'WORKSHOP'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 13
+ =
+       1 =3D> 1
+        2 =3D> 4
+        3 =3D> 12
+        4 =3D> 5=
+
+        5 =3D> 11
+        6 =3D> 9
+        7 =3D> 8
+        8 =3D>=
+ 14
+        9 =3D> 7
+        10 =3D> 3
+        11 =3D> 6
+        12=
+ =3D> 21
+        13 =3D> 2
+        14 =3D> 10
+    ]
+    '__id' =3D>=
+ 1
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+    'HOME' =3D> '/ho=
+me/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'RE=
+QUEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dsurat-jalan%2Frekap-pel=
+anggan&1%5Bclass%5D=3Dform-horizontal'
+    'QUERY_STRING' =3D>
+'r=3Dsur=
+at-jalan%2Frekap-pelanggan&1%5Bclass%5D=3Dform-horizontal'
+    'REQUEST_M=
+ETHOD' =3D> 'POST'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_I=
+NTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '44147'
+    'SCRIPT_FIL=
+ENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+    '=
+SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> =
+'/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCH=
+EME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+   =
+ 'REMOTE_ADDR' =3D> '36.72.218.174'
+    'SERVER_PORT' =3D> '80'
+    'SE=
+RVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+   =
+ 'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+=
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:=
+/bin'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dg3fbkn9v120pupo4ht2p0hn7=
+j7;
+_csrf-backend=3D1d46740c05cfdd723b45b0ecb7c43c9df0beabbe9db69133698af=
+08d17cbc0fca%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32=
+%3A%22KaNfdL7u81CbF-2UVXk9oE_y-85SS2TE%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAG=
+E' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gz=
+ip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/we=
+b/index.php?r=3Dsurat-jalan%2Frekap-pelanggan&1%5Bclass%5D=3Dform-horizonta=
+l'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/=
+xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=
+=3Db3'
+    'CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded'
+    =
+'HTTP_ORIGIN' =3D> 'http://cvajm.com'
+    'HTTP_USER_AGENT' =3D> 'Mozilla=
+/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko)=
+ Chrome/78.0.3904.108
+Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUEST=
+S' =3D> '1'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'CONTENT_LE=
+NGTH' =3D> '155'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_HOST=
+' =3D> 'cvajm.com'
+    'proxy-nokeepalive' =3D> '1'
+    'SCRIPT_URI' =
+=3D> 'http://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D>=
+ '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'P=
+HP_SELF' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D=
+> 1575192497.2413
+    'REQUEST_TIME' =3D> 1575192497
+]

@@ -1,0 +1,388 @@
+Message-ID: <1c1d538334b73e042d453c290c4c093a@localhost>
+Date: Sat, 11 Jul 2020 10:34:22 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-07-11 10:34:21
+[::1][3][a46bb4s642t7k7i7s8mnkhap5g][error][yii\db\Ex=
+ception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown co=
+lumn
+'tipe_mitra_bisni' in 'where clause' in
+C:\xampp7\htdocs\accountin=
+g\vendor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0
+C:\xampp7\h=
+tdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+PDOStatement->=
+execute()
+#1
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Command=
+.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM `...')
+#2
+=
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(399):
+yii\=
+db\Command->queryInternal('fetchAll', NULL)
+#3 C:\xampp7\htdocs\accountin=
+g\vendor\yiisoft\yii2\db\Query.php(237):
+yii\db\Command->queryAll()
+#4=
+
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\ActiveQuery.php(133):=
+
+yii\db\Query->all(NULL)
+#5 C:\xampp7\htdocs\accounting\backend\views\a=
+kt-cabang\_form.php(39):
+yii\db\ActiveQuery->all()
+#6 C:\xampp7\htdocs\=
+accounting\vendor\yiisoft\yii2\base\View.php(348):
+require('C:\\xampp7\\h=
+tdoc...')
+#7 C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\View.ph=
+p(257):
+yii\base\View->renderPhpFile('C:\\xampp7\\htdoc...', '[<span
+cl=
+ass=3D"s...')
+#8 C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\Vie=
+w.php(156):
+yii\base\View->renderFile('C:\\xampp7\\htdoc...', Array, NULL=
+)
+#9
+C:\xampp7\htdocs\accounting\backend\views\akt-cabang\update.php(20=
+):
+yii\base\View->render('_form', Array)
+#10
+C:\xampp7\htdocs\account=
+ing\vendor\yiisoft\yii2\base\View.php(348):
+require('C:\\xampp7\\htdoc...=
+')
+#11
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(25=
+7):
+yii\base\View->renderPhpFile('C:\\xampp7\\htdoc...', '[<span
+class=
+=3D"s...')
+#12
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\Vie=
+w.php(156):
+yii\base\View->renderFile('C:\\xampp7\\htdoc...', Array,
+Ob=
+ject(backend\controllers\AktCabangController))
+#13
+C:\xampp7\htdocs\acc=
+ounting\vendor\yiisoft\yii2\base\Controller.php(384):
+yii\base\View->rend=
+er('update', Array,
+Object(backend\controllers\AktCabangController))
+#1=
+4
+C:\xampp7\htdocs\accounting\backend\controllers\AktCabangController.php=
+(128):
+yii\base\Controller->render('update', Array)
+#15 [internal funct=
+ion]:
+backend\controllers\AktCabangController->actionUpdate('1')
+#16
+=
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\InlineAction.php(57):=
+
+call_user_func_array(Array, Array)
+#17
+C:\xampp7\htdocs\accounting\v=
+endor\yiisoft\yii2\base\Controller.php(157):
+yii\base\InlineAction->runWi=
+thParams(Array)
+#18
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\bas=
+e\Module.php(528):
+yii\base\Controller->runAction('update', Array)
+#19=
+
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\web\Application.php(103)=
+:
+yii\base\Module->runAction('akt-cabang/upda...', Array)
+#20
+C:\xamp=
+p7\htdocs\accounting\vendor\yiisoft\yii2\base\Application.php(386):
+yii\w=
+eb\Application->handleRequest(Object(yii\web\Request))
+#21 C:\xampp7\htdo=
+cs\accounting\backend\web\index.php(22):
+yii\base\Application->run()
+#2=
+2 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 105=
+4 Unknown
+column 'tipe_mitra_bisni' in 'where clause'
+The SQL being exe=
+cuted was: SELECT * FROM `akt_mitra_bisnis` WHERE
+tipe_mitra_bisni IN (1,=
+3) in
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Schema.php:664=
+
+Stack trace:
+#0
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\C=
+ommand.php(1295):
+yii\db\Schema->convertException(Object(PDOException), '=
+SELECT * FROM
+`...')
+#1
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yi=
+i2\db\Command.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM `=
+...')
+#2
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php=
+(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 C:\xampp7\htd=
+ocs\accounting\vendor\yiisoft\yii2\db\Query.php(237):
+yii\db\Command->que=
+ryAll()
+#4
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\ActiveQue=
+ry.php(133):
+yii\db\Query->all(NULL)
+#5 C:\xampp7\htdocs\accounting\bac=
+kend\views\akt-cabang\_form.php(39):
+yii\db\ActiveQuery->all()
+#6 C:\xa=
+mpp7\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(348):
+require('C=
+:\\xampp7\\htdoc...')
+#7 C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\=
+base\View.php(257):
+yii\base\View->renderPhpFile('C:\\xampp7\\htdoc...', =
+'[<span
+class=3D"s...')
+#8 C:\xampp7\htdocs\accounting\vendor\yiisoft\y=
+ii2\base\View.php(156):
+yii\base\View->renderFile('C:\\xampp7\\htdoc...',=
+ Array, NULL)
+#9
+C:\xampp7\htdocs\accounting\backend\views\akt-cabang\u=
+pdate.php(20):
+yii\base\View->render('_form', Array)
+#10
+C:\xampp7\ht=
+docs\accounting\vendor\yiisoft\yii2\base\View.php(348):
+require('C:\\xamp=
+p7\\htdoc...')
+#11
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base=
+\View.php(257):
+yii\base\View->renderPhpFile('C:\\xampp7\\htdoc...', '[<s=
+pan
+class=3D"s...')
+#12
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yi=
+i2\base\View.php(156):
+yii\base\View->renderFile('C:\\xampp7\\htdoc...', =
+Array,
+Object(backend\controllers\AktCabangController))
+#13
+C:\xampp7=
+\htdocs\accounting\vendor\yiisoft\yii2\base\Controller.php(384):
+yii\base=
+\View->render('update', Array,
+Object(backend\controllers\AktCabangContro=
+ller))
+#14
+C:\xampp7\htdocs\accounting\backend\controllers\AktCabangCon=
+troller.php(128):
+yii\base\Controller->render('update', Array)
+#15 [int=
+ernal function]:
+backend\controllers\AktCabangController->actionUpdate('1=
+')
+#16
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\InlineActio=
+n.php(57):
+call_user_func_array(Array, Array)
+#17
+C:\xampp7\htdocs\ac=
+counting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base\InlineAct=
+ion->runWithParams(Array)
+#18
+C:\xampp7\htdocs\accounting\vendor\yiisof=
+t\yii2\base\Module.php(528):
+yii\base\Controller->runAction('update', Arr=
+ay)
+#19
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\web\Application=
+.php(103):
+yii\base\Module->runAction('akt-cabang/upda...', Array)
+#20=
+
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\Application.php(386=
+):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 C:\x=
+ampp7\htdocs\accounting\backend\web\index.php(22):
+yii\base\Application->=
+run()
+#22 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown c=
+olumn 'tipe_mitra_bisni' in 'where clause'
+)
+
+2020-07-11 10:34:20
+[=
+::1][3][a46bb4s642t7k7i7s8mnkhap5g][info][application] $_GET =3D [
+    'r=
+' =3D> 'akt-cabang/update'
+    'id' =3D> '1'
+]
+
+$_POST =3D []
+
+=
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'a46bb4s64=
+2t7k7i7s8mnkhap5g'
+    '_csrf-backend' =3D>
+'4b1b6b130995fb3fd1b85ee0c6=
+c31d1f53726c13453df5f5917d8b400042fa3fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s=
+:32:\"nEgzV4wXjvdnL1wLg1WMdi4YsIxgrJsz\";}'
+]
+
+$_SESSION =3D [
+    =
+'__flash' =3D> []
+    '__returnUrl' =3D> '/accounting/backend/web/'
+   =
+ 'user_role' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    '=
+user_role_id' =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3
+]
+=
+
+$_SERVER =3D [
+    'MIBDIRS' =3D> 'C:/xampp7/php/extras/mibs'
+    'M=
+YSQL_HOME' =3D> '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' =3D> 'C:/xampp7/=
+apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+=
+    'PHPRC' =3D> '\\xampp\\php'
+    'TMP' =3D> '\\xampp\\tmp'
+    'HTTP=
+_HOST' =3D> 'localhost'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HT=
+TP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS'=
+ =3D> '1'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64=
+; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116
+Safa=
+ri/537.36'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,appl=
+ication/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-ex=
+change;v=3Db3;q=3D0.9'
+    'HTTP_SEC_FETCH_SITE' =3D> 'same-origin'
+   =
+ 'HTTP_SEC_FETCH_MODE' =3D> 'navigate'
+    'HTTP_SEC_FETCH_USER' =3D> '?1=
+'
+    'HTTP_SEC_FETCH_DEST' =3D> 'document'
+    'HTTP_REFERER' =3D>
+'=
+http://localhost/accounting/backend/web/index.php?r=3Dakt-cabang/view&id=3D=
+1'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT=
+_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_COO=
+KIE' =3D> 'advanced-backend=3Da46bb4s642t7k7i7s8mnkhap5g;
+_csrf-backend=
+=3D4b1b6b130995fb3fd1b85ee0c6c31d1f53726c13453df5f5917d8b400042fa3fa%3A2%3A=
+%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22nEgzV4wXjvdnL=
+1wLg1WMdi4YsIxgrJsz%22%3B%7D'
+    'PATH' =3D> 'C:\\Program Files (x86)\\C=
+ommon Files\\Intel\\Shared
+Files\\cpp\\bin\\Intel64;C:\\WINDOWS\\system32=
+;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowe=
+rShell\\v1.0\\;C:\\xampp7\\php;C:\\composer;C:\\Program
+Files\\Git\\cmd;C=
+:\\WINDOWS\\System32\\OpenSSH\\;C:\\Users\\GSS\\AppData\\Roaming\\Composer\=
+\vendor\\bin;C:\\Users\\GSS\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\=
+GSS\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\GSS\\AppData\\Local\=
+\Programs\\Microsoft
+VS Code\\bin'
+    'SystemRoot' =3D> 'C:\\WINDOWS'=
+
+    'COMSPEC' =3D> 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' =3D>=
+
+'.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' =
+=3D> 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' =3D> '<address>Apache/2.4.38 (W=
+in64)
+OpenSSL/1.1.1b PHP/7.3.3 Server at localhost Port 80</address>
+'=
+
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.38 (Win64) OpenSSL/1.1.1b
+PHP/7=
+.3.3'
+    'SERVER_NAME' =3D> 'localhost'
+    'SERVER_ADDR' =3D> '::1'=
+
+    'SERVER_PORT' =3D> '80'
+    'REMOTE_ADDR' =3D> '::1'
+    'DOCUME=
+NT_ROOT' =3D> 'C:/xampp7/htdocs'
+    'REQUEST_SCHEME' =3D> 'http'
+    '=
+CONTEXT_PREFIX' =3D> ''
+    'CONTEXT_DOCUMENT_ROOT' =3D> 'C:/xampp7/htdoc=
+s'
+    'SERVER_ADMIN' =3D> 'postmaster@localhost'
+    'SCRIPT_FILENAME'=
+ =3D>
+'C:/xampp7/htdocs/accounting/backend/web/index.php'
+    'REMOTE_P=
+ORT' =3D> '54422'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'SERVER_PR=
+OTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHOD' =3D> 'GET'
+    'QUERY_STRI=
+NG' =3D> 'r=3Dakt-cabang%2Fupdate&id=3D1'
+    'REQUEST_URI' =3D>
+'/acco=
+unting/backend/web/index.php?r=3Dakt-cabang%2Fupdate&id=3D1'
+    'SCRIPT_=
+NAME' =3D> '/accounting/backend/web/index.php'
+    'PHP_SELF' =3D> '/acco=
+unting/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1594438459.84=
+5
+    'REQUEST_TIME' =3D> 1594438459
+]

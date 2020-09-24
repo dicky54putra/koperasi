@@ -1,0 +1,424 @@
+Message-ID: <1c8a325362cbc8f20a2b7fe9312cf05b@cvajm.com>
+Date: Mon, 06 Jan 2020 14:28:35 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-01-06 14:28:35
+[125.160.63.239][37][3jtg3rjuvig6gvcro6fckm74e3][erro=
+r][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 105=
+4 Unknown column
+'kas_kecil_surat_jalan.status' in 'where clause' in
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack=
+ trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command=
+.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute=
+('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)=
+
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463)=
+:
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUNT=
+(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT(=
+*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*', =
+NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/BaseDat=
+aProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8=
+
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php=
+(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvajm/pub=
+lic_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\g=
+rid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#11
+/=
+home/cvajm/public_html/cvajm/backend/views/kas-kecil-surat-jalan-non-rutin/=
+index.php(25):
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/p=
+ub...')
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View=
+.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+c=
+lass=3D"s...')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/ba=
+se/View.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,=
+
+Object(backend\controllers\KasKecilSuratJalanNonRutinController))
+#15=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(38=
+4):
+yii\base\View->render('index', Array,
+Object(backend\controllers\Ka=
+sKecilSuratJalanNonRutinController))
+#16
+/home/cvajm/public_html/cvajm/=
+backend/controllers/KasKecilSuratJalanNonRutinController.php(50):
+yii\bas=
+e\Controller->render('index', Array)
+#17 [internal function]:
+backend\c=
+ontrollers\KasKecilSuratJalanNonRutinController->actionIndex()
+#18
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+=
+call_user_func_array(Array, Array)
+#19
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWit=
+hParams(Array)
+#20
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/ba=
+se/Module.php(528):
+yii\base\Controller->runAction('', Array)
+#21
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+=
+yii\base\Module->runAction('kas-kecil-surat...', Array)
+#22
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web=
+\Application->handleRequest(Object(yii\web\Request))
+#23 /home/cvajm/publ=
+ic_html/cvajm/backend/web/index.php(22):
+yii\base\Application->run()
+#2=
+4 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 105=
+4 Unknown
+column 'kas_kecil_surat_jalan.status' in 'where clause'
+The S=
+QL being executed was: SELECT COUNT(*) FROM
+`kas_kecil_surat_jalan_non_ru=
+tin` LEFT JOIN `surat_jalan` ON
+`kas_kecil_surat_jalan_non_rutin`.`id_sur=
+at_jalan` =3D
+`surat_jalan`.`id_surat_jalan` LEFT JOIN `karyawan` ON
+`k=
+as_kecil_surat_jalan_non_rutin`.`id_karyawan` =3D
+`karyawan`.`id_karyawan=
+` WHERE `kas_kecil_surat_jalan`.`status` LIKE
+'%1%' in
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yi=
+i\db\Schema->convertException(Object(PDOException), 'SELECT
+COUNT(*)...')=
+
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(11=
+58):
+yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Co=
+mmand->queryInternal('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command->queryScalar()
+#=
+4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(35=
+2):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#5=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(347):
+y=
+ii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/ActiveDataProvide=
+r.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data\Activ=
+eDataProvider->prepareTotalCount()
+#8
+/home/cvajm/public_html/cvajm/ven=
+dor/kartik-v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider-=
+>getTotalCount()
+#9
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-=
+grid/src/GridView.php(1163):
+kartik\grid\GridView->initToggleData()
+#10=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):=
+
+kartik\grid\GridView->run()
+#11
+/home/cvajm/public_html/cvajm/backen=
+d/views/kas-kecil-surat-jalan-non-rutin/index.php(25):
+yii\base\Widget::w=
+idget(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base=
+/View.php(348):
+require('/home/cvajm/pub...')
+#13
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderP=
+hpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#14
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->=
+renderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\KasKec=
+ilSuratJalanNonRutinController))
+#15
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('index', =
+Array,
+Object(backend\controllers\KasKecilSuratJalanNonRutinController))=
+
+#16
+/home/cvajm/public_html/cvajm/backend/controllers/KasKecilSuratJal=
+anNonRutinController.php(50):
+yii\base\Controller->render('index', Array)=
+
+#17 [internal function]:
+backend\controllers\KasKecilSuratJalanNonRuti=
+nController->actionIndex()
+#18
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.=
+php(157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Con=
+troller->runAction('', Array)
+#21
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('kas-ke=
+cil-surat...', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Object=
+(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/index.ph=
+p(22):
+yii\base\Application->run()
+#24 {main}
+Additional Information:=
+
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknow=
+n column 'kas_kecil_surat_jalan.status' in 'where
+clause'
+)
+
+2020-0=
+1-06 14:28:35
+[125.160.63.239][37][3jtg3rjuvig6gvcro6fckm74e3][info][appl=
+ication]
+$_GET =3D [
+    'KasKecilSuratJalanNonRutinSearch' =3D> [
+  =
+      'tanggal' =3D> ''
+        'keterangan' =3D> ''
+        'id_surat_=
+jalan' =3D> ''
+        'id_karyawan' =3D> ''
+        'jumlah' =3D> ''=
+
+        'status' =3D> '1'
+    ]
+    'r' =3D> 'kas-kecil-surat-jalan-=
+non-rutin'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [=
+
+    'advanced-backend' =3D> '3jtg3rjuvig6gvcro6fckm74e3'
+    '_csrf-ba=
+ckend' =3D>
+'22ff037097bc709462ffd05daaaddd4e35d458b1b4fb3de8b8ee5fa22cef=
+ea68a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"HKJk2YAmYzDBLirysue-IJQMtVyi=
+LbLE\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnU=
+rl' =3D> '/cvajm/backend/web/index.php'
+    'user_role' =3D> [
+        =
+0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+       =
+ 0 =3D> 1
+    ]
+    '__id' =3D> 37
+]
+
+$_SERVER =3D [
+    'USER'=
+ =3D> 'cvajm'
+    'HOME' =3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D> '/cv=
+ajm/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/i=
+ndex.php?KasKecilSuratJalanNonRutinSearch%5Btanggal%5D=3D&KasKecilSuratJala=
+nNonRutinSearch%5Bketerangan%5D=3D&KasKecilSuratJalanNonRutinSearch%5Bid_su=
+rat_jalan%5D=3D&KasKecilSuratJalanNonRutinSearch%5Bid_karyawan%5D=3D&KasKec=
+ilSuratJalanNonRutinSearch%5Bjumlah%5D=3D&KasKecilSuratJalanNonRutinSearch%=
+5Bstatus%5D=3D1&r=3Dkas-kecil-surat-jalan-non-rutin'
+    'QUERY_STRING' =
+=3D>
+'KasKecilSuratJalanNonRutinSearch%5Btanggal%5D=3D&KasKecilSuratJalan=
+NonRutinSearch%5Bketerangan%5D=3D&KasKecilSuratJalanNonRutinSearch%5Bid_sur=
+at_jalan%5D=3D&KasKecilSuratJalanNonRutinSearch%5Bid_karyawan%5D=3D&KasKeci=
+lSuratJalanNonRutinSearch%5Bjumlah%5D=3D&KasKecilSuratJalanNonRutinSearch%5=
+Bstatus%5D=3D1&r=3Dkas-kecil-surat-jalan-non-rutin'
+    'REQUEST_METHOD' =
+=3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE=
+' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '49788'
+    'SCRIPT_FILENAME' =
+=3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+    'SERVER_=
+ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/=
+cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =
+=3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'REM=
+OTE_ADDR' =3D> '125.160.63.239'
+    'SERVER_PORT' =3D> '80'
+    'SERVER=
+_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SE=
+RVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    =
+'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin=
+'
+    'HTTP_CONNECTION' =3D> 'Keep-Alive'
+    'HTTP_CACHE_CONTROL' =3D>=
+ 'max-stale=3D0'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D3jtg3rjuvig6g=
+vcro6fckm74e3;
+_csrf-backend=3D22ff037097bc709462ffd05daaaddd4e35d458b1b4=
+fb3de8b8ee5fa22cefea68a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3=
+A1%3Bs%3A32%3A%22HKJk2YAmYzDBLirysue-IJQMtVyiLbLE%22%3B%7D'
+    'HTTP_ACC=
+EPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_=
+ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://c=
+vajm.com/cvajm/backend/web/index.php?r=3Dkas-kecil-surat-jalan-non-rutin'=
+
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xm=
+l;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=
+=3Db3;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 6.1)=
+
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88
+Safari/537.=
+36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_HOST' =3D> =
+'cvajm.com'
+    'proxy-nokeepalive' =3D> '1'
+    'SCRIPT_URI' =3D> 'htt=
+p://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/=
+backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =
+=3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1578292=
+115.3952
+    'REQUEST_TIME' =3D> 1578292115
+]

@@ -1,0 +1,399 @@
+Message-ID: <47ac9d6e1af46cc328050e5ae8270abe@cvajm.com>
+Date: Wed, 19 Jun 2019 11:09:06 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-06-19 11:09:06
+[118.96.185.242][6][ku2kr3oibghm0c2hmtmchopon0][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'pemiik_unit' in 'field list' in
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOSta=
+tement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT `pemiik_...=
+')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(=
+399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->=
+queryAll()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Acti=
+veQuery.php(133):
+yii\db\Query->all(NULL)
+#5 /home/cvajm/public_html/cv=
+ajm/backend/views/unit/_form.php(33):
+yii\db\ActiveQuery->all()
+#6
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+requi=
+re('/home/cvajm/pub...')
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub.=
+..', '[<span
+class=3D"s...')
+#8
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm/p=
+ub...', Array, NULL)
+#9 /home/cvajm/public_html/cvajm/backend/views/unit/=
+create.php(18):
+yii\base\View->render('_form', Array)
+#10
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home=
+/cvajm/pub...')
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/b=
+ase/View.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<=
+span
+class=3D"s...')
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...',=
+ Array,
+Object(backend\controllers\UnitController))
+#13
+/home/cvajm/p=
+ublic_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\V=
+iew->render('create', Array,
+Object(backend\controllers\UnitController))=
+
+#14
+/home/cvajm/public_html/cvajm/backend/controllers/UnitController.p=
+hp(76):
+yii\base\Controller->render('create', Array)
+#15 [internal func=
+tion]:
+backend\controllers\UnitController->actionCreate()
+#16
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+cal=
+l_user_func_array(Array, Array)
+#17
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithPa=
+rams(Array)
+#18
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/=
+Module.php(528):
+yii\base\Controller->runAction('create', Array)
+#19
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):=
+
+yii\base\Module->runAction('unit/create', Array)
+#20
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\App=
+lication->handleRequest(Object(yii\web\Request))
+#21 /home/cvajm/public_h=
+tml/cvajm/backend/web/index.php(22):
+yii\base\Application->run()
+#22 {m=
+ain}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 1054 Un=
+known
+column 'pemiik_unit' in 'field list'
+The SQL being executed was: =
+SELECT `pemiik_unit` FROM `pemilik_unit`
+in /home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->=
+convertException(Object(PDOException), 'SELECT
+`pemiik_...')
+#1
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db=
+\Command->internalExecute('SELECT `pemiik_...')
+#2
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/db/Command.php(399):
+yii\db\Command->queryI=
+nternal('fetchAll', NULL)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/db/Query.php(237):
+yii\db\Command->queryAll()
+#4
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(133):
+yii\db\Que=
+ry->all(NULL)
+#5 /home/cvajm/public_html/cvajm/backend/views/unit/_form.p=
+hp(33):
+yii\db\ActiveQuery->all()
+#6
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#7=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+=
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...'=
+)
+#8
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(15=
+6):
+yii\base\View->renderFile('/home/cvajm/pub...', Array, NULL)
+#9 /ho=
+me/cvajm/public_html/cvajm/backend/views/unit/create.php(18):
+yii\base\Vi=
+ew->render('_form', Array)
+#10
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#11
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base=
+\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#12=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+=
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(backend\con=
+trollers\UnitController))
+#13
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/base/Controller.php(384):
+yii\base\View->render('create', Array,=
+
+Object(backend\controllers\UnitController))
+#14
+/home/cvajm/public_h=
+tml/cvajm/backend/controllers/UnitController.php(76):
+yii\base\Controller=
+->render('create', Array)
+#15 [internal function]:
+backend\controllers\=
+UnitController->actionCreate()
+#16
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Arra=
+y)
+#17
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controlle=
+r.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#18
+/home/cva=
+jm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\C=
+ontroller->runAction('create', Array)
+#19
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction=
+('unit/create', Array)
+#20
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Objec=
+t(yii\web\Request))
+#21 /home/cvajm/public_html/cvajm/backend/web/index.p=
+hp(22):
+yii\base\Application->run()
+#22 {main}
+Additional Information=
+:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unkno=
+wn column 'pemiik_unit' in 'field list'
+)
+
+2019-06-19 11:09:06
+[118=
+.96.185.242][6][ku2kr3oibghm0c2hmtmchopon0][info][application]
+$_GET =3D =
+[
+    'r' =3D> 'unit/create'
+]
+
+$_POST =3D []
+
+$_FILES =3D []=
+
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'ku2kr3oibghm0c2hmtmchop=
+on0'
+    '_csrf-backend' =3D>
+'8149cbaa2907634d0e3e67fa49de2921281e3422=
+b1959ebc22da7aae462c93bfa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"OulWiLYn=
+0wuEsJM0wWerWGT4RitoUmt3\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D>=
+ []
+    '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+    'user_rol=
+e' =3D> [
+        0 =3D> 'CHECKER'
+        1 =3D> 'ADMIN'
+        2 =
+=3D> 'FINANCE'
+        3 =3D> 'GPS'
+        4 =3D> 'HRD'
+        5 =
+=3D> 'INVOICE'
+        6 =3D> 'KORLAP'
+        7 =3D> 'LOGISTIC'
+    =
+    8 =3D> 'PEMESANAN'
+        9 =3D> 'PURCHASING'
+        10 =3D> 'SUR=
+AT JALAN'
+        11 =3D> 'SYSTEM ADMINISTRATOR'
+        12 =3D> 'TAMBA=
+NG'
+        13 =3D> 'WORKSHOP'
+    ]
+    'user_role_id' =3D> [
+    =
+    0 =3D> 6
+        1 =3D> 2
+        2 =3D> 3
+        3 =3D> 7
+   =
+     4 =3D> 14
+        5 =3D> 8
+        6 =3D> 9
+        7 =3D> 11
+=
+        8 =3D> 5
+        9 =3D> 12
+        10 =3D> 4
+        11 =3D> =
+1
+        12 =3D> 13
+        13 =3D> 10
+    ]
+    '__id' =3D> 6
+]=
+
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.0=
+'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D=
+> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/=
+local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+=
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_URI' =
+=3D> '/cvajm/backend/web/index.php?r=3Dunit%2Fcreate'
+    'QUERY_STRING' =
+=3D> 'r=3Dunit%2Fcreate'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PR=
+OTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REM=
+OTE_PORT' =3D> '49976'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_h=
+tml/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address giv=
+en]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CO=
+NTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_RO=
+OT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '118.96.185.242=
+'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'=
+
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/=
+2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_CACHE_CONTROL' =3D> 'm=
+ax-age=3D0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_COO=
+KIE' =3D> 'advanced-backend=3Dku2kr3oibghm0c2hmtmchopon0;
+_csrf-backend=
+=3D8149cbaa2907634d0e3e67fa49de2921281e3422b1959ebc22da7aae462c93bfa%3A2%3A=
+%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22OulWiLYn0wuEs=
+JM0wWerWGT4RitoUmt3%22%3B%7D'
+    'HTTP_CONNECTION' =3D> 'close'
+    'H=
+TTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/index.php?r=3Dunit'=
+
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT_LANGU=
+AGE' =3D> 'en-US,en;q=3D0.5'
+    'HTTP_ACCEPT' =3D>
+'text/html,applicat=
+ion/xhtml+xml,application/xml;q=3D0.9,*/*;q=3D0.8'
+    'HTTP_USER_AGENT' =
+=3D> 'Mozilla/5.0 (Windows NT 6.1; Win64; x64;
+rv:67.0) Gecko/20100101 Fi=
+refox/67.0'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'SCRIPT_URI' =3D> 'htt=
+p://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/=
+backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =
+=3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1560917=
+346.0241
+    'REQUEST_TIME' =3D> 1560917346
+]

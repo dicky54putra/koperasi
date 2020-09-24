@@ -1,0 +1,310 @@
+Message-ID: <373a083572ae5ce0c4522e435a4dc52c@sijaksa.com>
+Date: Sat, 15 Feb 2020 09:47:53 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-15 09:47:53
+[37.139.23.240][14][17d0iqi7qcfaoecrtvd2a3nrm0][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access=
+ violation: 1064
+You have an error in your SQL syntax; check the manual t=
+hat
+corresponds to your MariaDB server version for the right syntax to us=
+e
+near ''data_desa'' at line 1 in
+/home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/public_html/=
+vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1 /h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\=
+Command->internalExecute('SELECT * FROM '...')
+#2 /home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/db/Command.php(386):
+yii\db\Command->queryInternal=
+('')
+#3 /home/sijaksa/public_html/backend/views/data-desa/cetak.php(100):=
+
+yii\db\Command->query()
+#4 /home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/base/View.php(348):
+require('/home/sijaksa/p...')
+#5 /home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderP=
+hpFile('/home/sijaksa/p...', '[]')
+#6 /home/sijaksa/public_html/vendor/yi=
+isoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p=
+...', Array,
+Object(backend\controllers\DataDesaController))
+#7
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(415):
+yii\ba=
+se\View->render('cetak', Array,
+Object(backend\controllers\DataDesaContro=
+ller))
+#8
+/home/sijaksa/public_html/backend/controllers/DataDesaControl=
+ler.php(155):
+yii\base\Controller->renderPartial('cetak')
+#9 [internal =
+function]:
+backend\controllers\DataDesaController->actionCetak()
+#10
+=
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+=
+call_user_func_array(Array, Array)
+#11
+/home/sijaksa/public_html/vendor=
+/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithPar=
+ams(Array)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Modul=
+e.php(528):
+yii\base\Controller->runAction('cetak', Array)
+#13
+/home/=
+sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\bas=
+e\Module->runAction('data-desa/cetak', Array)
+#14
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->=
+handleRequest(Object(yii\web\Request))
+#15 /home/sijaksa/public_html/back=
+end/web/index.php(22):
+yii\base\Application->run()
+#16 {main}
+
+Next=
+ yii\db\Exception: SQLSTATE[42000]: Syntax error or access
+violation: 106=
+4 You have an error in your SQL syntax; check the manual
+that corresponds=
+ to your MariaDB server version for the right syntax
+to use near ''data_d=
+esa'' at line 1
+The SQL being executed was: SELECT * FROM 'data_desa' in=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack =
+trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(12=
+95):
+yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM=
+
+'...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php=
+(1158):
+yii\db\Command->internalExecute('SELECT * FROM '...')
+#2 /home/=
+sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(386):
+yii\db\Comma=
+nd->queryInternal('')
+#3 /home/sijaksa/public_html/backend/views/data-des=
+a/cetak.php(100):
+yii\db\Command->query()
+#4 /home/sijaksa/public_html/=
+vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')
+#=
+5 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\b=
+ase\View->renderPhpFile('/home/sijaksa/p...', '[]')
+#6 /home/sijaksa/publ=
+ic_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile=
+('/home/sijaksa/p...', Array,
+Object(backend\controllers\DataDesaControll=
+er))
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.p=
+hp(415):
+yii\base\View->render('cetak', Array,
+Object(backend\controlle=
+rs\DataDesaController))
+#8
+/home/sijaksa/public_html/backend/controller=
+s/DataDesaController.php(155):
+yii\base\Controller->renderPartial('cetak'=
+)
+#9 [internal function]:
+backend\controllers\DataDesaController->actio=
+nCetak()
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineA=
+ction.php(57):
+call_user_func_array(Array, Array)
+#11
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineA=
+ction->runWithParams(Array)
+#12
+/home/sijaksa/public_html/vendor/yiisof=
+t/yii2/base/Module.php(528):
+yii\base\Controller->runAction('cetak', Arra=
+y)
+#13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.ph=
+p(103):
+yii\base\Module->runAction('data-desa/cetak', Array)
+#14
+/hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\=
+web\Application->handleRequest(Object(yii\web\Request))
+#15 /home/sijaksa=
+/public_html/backend/web/index.php(22):
+yii\base\Application->run()
+#16=
+ {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42000
+    [1=
+] =3D> 1064
+    [2] =3D> You have an error in your SQL syntax; check the =
+manual that
+corresponds to your MariaDB server version for the right synt=
+ax to use
+near ''data_desa'' at line 1
+)
+
+2020-02-15 09:47:53
+[37=
+.139.23.240][14][17d0iqi7qcfaoecrtvd2a3nrm0][info][application]
+$_GET =3D=
+ [
+    'r' =3D> 'data-desa/cetak'
+]
+
+$_POST =3D []
+
+$_FILES =3D=
+ []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '17d0iqi7qcfaoecrtvd2=
+a3nrm0'
+    '_csrf-backend' =3D>
+'87a8e9ccd13bca6e331c4228c6ebdb9c84092=
+9ea58da1453a6fd0e5d78cb6d94a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"n6B5A=
+lNh16fgXjdzJtUubrz2rcSK-V-c\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =
+=3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_role'=
+ =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+       =
+ 2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    '=
+user_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> 3
+        2 =3D>=
+ 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 14
+]
+
+$_SERVER =3D [=
+
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D>=
+ '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    =
+'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/s=
+bin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME=
+' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D> '/backend/web/inde=
+x.php?r=3Ddata-desa%2Fcetak'
+    'QUERY_STRING' =3D> 'r=3Ddata-desa%2Fcet=
+ak'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.=
+1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '36496=
+'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/ind=
+ex.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUM=
+ENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''=
+
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijak=
+sa/public_html'
+    'REMOTE_ADDR' =3D> '37.139.23.240'
+    'SERVER_PORT=
+' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D=
+> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_=
+SIGNATURE' =3D> ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_C=
+ONTROL' =3D> 'max-age=3D0'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'HTTP=
+_COOKIE' =3D> 'advanced-backend=3D17d0iqi7qcfaoecrtvd2a3nrm0;
+_csrf-backe=
+nd=3D87a8e9ccd13bca6e331c4228c6ebdb9c840929ea58da1453a6fd0e5d78cb6d94a%3A2%=
+3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22n6B5AlNh16f=
+gXjdzJtUubrz2rcSK-V-c%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id=
+;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip,=
+ deflate'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,appli=
+cation/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exc=
+hange;v=3Db3;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT=
+ 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.394=
+5.130
+Safari/537.36'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/=
+web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI=
+_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+  =
+  'REQUEST_TIME_FLOAT' =3D> 1581734873.9409
+    'REQUEST_TIME' =3D> 15817=
+34873
+]

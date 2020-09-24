@@ -1,0 +1,290 @@
+Message-ID: <cfc3d92582da1494bdac1ad23c5059f9@sijaksa.com>
+Date: Tue, 04 Feb 2020 13:18:35 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-04 13:18:35
+[180.246.55.108][5][52roltbgtosmm3a79bs14l86en][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access=
+ violation: 1064
+You have an error in your SQL syntax; check the manual t=
+hat
+corresponds to your MariaDB server version for the right syntax to us=
+e
+near '') as value, `id_bidang` AS `id` FROM `ref_bidang`' at line 1 in=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stac=
+k trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(=
+1290):
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT co=
+ncat(n...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.p=
+hp(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 /home/sijak=
+sa/public_html/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->que=
+ryAll()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery=
+.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_html/backe=
+nd/controllers/RefKegiatanController.php(73):
+yii\db\ActiveQuery->all()=
+
+#6 [internal function]:
+backend\controllers\RefKegiatanController->act=
+ionCreate()
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Inlin=
+eAction.php(57):
+call_user_func_array(Array, Array)
+#8
+/home/sijaksa/=
+public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inline=
+Action->runWithParams(Array)
+#9 /home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/Module.php(528):
+yii\base\Controller->runAction('create', Array=
+)
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php=
+(103):
+yii\base\Module->runAction('ref-kegiatan/cr...', Array)
+#11
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yi=
+i\web\Application->handleRequest(Object(yii\web\Request))
+#12 /home/sijak=
+sa/public_html/backend/web/index.php(22):
+yii\base\Application->run()
+#=
+13 {main}
+
+Next yii\db\Exception: SQLSTATE[42000]: Syntax error or acce=
+ss
+violation: 1064 You have an error in your SQL syntax; check the manual=
+
+that corresponds to your MariaDB server version for the right syntax
+t=
+o use near '') as value, `id_bidang` AS `id` FROM `ref_bidang`' at
+line 1=
+
+The SQL being executed was: SELECT concat(nama_bidang,' -
+',kode_bidan=
+g') as value, `id_bidang` AS `id` FROM `ref_bidang` in
+/home/sijaksa/publ=
+ic_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /home/sij=
+aksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema-=
+>convertException(Object(PDOException), 'SELECT
+concat(n...')
+#1 /home/=
+sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Comm=
+and->internalExecute('SELECT concat(n...')
+#2 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/db/Command.php(399):
+yii\db\Command->queryInternal('fe=
+tchAll', NULL)
+#3 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.=
+php(237):
+yii\db\Command->queryAll()
+#4
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/db/ActiveQuery.php(133):
+yii\db\Query->all(NULL)
+#5
+=
+/home/sijaksa/public_html/backend/controllers/RefKegiatanController.php(73)=
+:
+yii\db\ActiveQuery->all()
+#6 [internal function]:
+backend\controlle=
+rs\RefKegiatanController->actionCreate()
+#7
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array,=
+ Array)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controlle=
+r.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#9 /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controll=
+er->runAction('create', Array)
+#10
+/home/sijaksa/public_html/vendor/yii=
+soft/yii2/web/Application.php(103):
+yii\base\Module->runAction('ref-kegia=
+tan/cr...', Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\we=
+b\Request))
+#12 /home/sijaksa/public_html/backend/web/index.php(22):
+yi=
+i\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+=
+(
+    [0] =3D> 42000
+    [1] =3D> 1064
+    [2] =3D> You have an error=
+ in your SQL syntax; check the manual that
+corresponds to your MariaDB se=
+rver version for the right syntax to use
+near '') as value, `id_bidang` A=
+S `id` FROM `ref_bidang`' at line 1
+)
+
+2020-02-04 13:18:35
+[180.246=
+.55.108][5][52roltbgtosmm3a79bs14l86en][info][application]
+$_GET =3D [
+=
+    'r' =3D> 'ref-kegiatan/create'
+]
+
+$_POST =3D []
+
+$_FILES =3D =
+[]
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '52roltbgtosmm3a79bs14=
+l86en'
+    '_csrf-backend' =3D>
+'3f8e185e36b8f06742fdd348f1743a0d164354=
+8b7987604e065d30b54fba3fa5a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"EHSolq=
+rv00r-TjzyKDteeFAl1e0jjIFN\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =
+=3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_role'=
+ =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+       =
+ 2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    '=
+user_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> 3
+        2 =3D>=
+ 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 5
+]
+
+$_SERVER =3D [=
+
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D>=
+ '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    =
+'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/s=
+bin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME=
+' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D> '/backend/web/inde=
+x.php?r=3Dref-kegiatan%2Fcreate'
+    'QUERY_STRING' =3D> 'r=3Dref-kegiata=
+n%2Fcreate'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> =
+'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D=
+> '53382'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend=
+/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTE=
+XT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =
+=3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/hom=
+e/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '180.246.55.108'
+    'SER=
+VER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_N=
+AME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    =
+'SERVER_SIGNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D52r=
+oltbgtosmm3a79bs14l86en;
+_csrf-backend=3D3f8e185e36b8f06742fdd348f1743a0d=
+1643548b7987604e065d30b54fba3fa5a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backen=
+d%22%3Bi%3A1%3Bs%3A32%3A%22EHSolqrv00r-TjzyKDteeFAl1e0jjIFN%22%3B%7D'
+   =
+ 'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+=
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>=
+
+'http://sijaksa.com/backend/web/index.php?r=3Dref-kegiatan'
+    'HTTP_=
+ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,ima=
+ge/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'=
+
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+=
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130
+Safari/537.36=
+'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_DNT' =3D> '1'=
+
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_CONNECTION' =3D>=
+ 'close'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'SCRIPT_URI' =3D> 'http=
+://sijaksa.com/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web=
+/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/back=
+end/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1580797115.4723
+    'R=
+EQUEST_TIME' =3D> 1580797115
+]

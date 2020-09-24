@@ -1,0 +1,344 @@
+Message-ID: <23d7cb3ff4cac1a1f140409c3aa1840e@localhost>
+Date: Mon, 20 Jul 2020 08:40:35 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-07-20 08:40:35
+[::1][3][7gr5v4s80ulkjsk1mhqsi0eve0][error][yii\db\In=
+tegrityException]
+PDOException: SQLSTATE[23000]: Integrity constraint vio=
+lation: 1048
+Column 'quantity' cannot be null in
+C:\xampp\htdocs\accoun=
+ting\vendor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0
+C:\xampp=
+\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+PDOStatement=
+->execute()
+#1
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Comman=
+d.php(1091):
+yii\db\Command->internalExecute('INSERT INTO `it...')
+#2 C=
+:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Schema.php(433):
+yii\db\=
+Command->execute()
+#3
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db=
+\ActiveRecord.php(600):
+yii\db\Schema->insert('item_pembelian', Array)
+=
+#4
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\ActiveRecord.php(566=
+):
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+C:\xampp\htdocs\accou=
+nting\vendor\yiisoft\yii2\db\BaseActiveRecord.php(678):
+yii\db\ActiveReco=
+rd->insert(false, NULL)
+#6
+C:\xampp\htdocs\accounting\backend\controlle=
+rs\AktPembelianController.php(79):
+yii\db\BaseActiveRecord->save(false)=
+
+#7 [internal function]:
+backend\controllers\AktPembelianController->ac=
+tionView('1')
+#8
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\In=
+lineAction.php(57):
+call_user_func_array(Array, Array)
+#9
+C:\xampp\ht=
+docs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base\In=
+lineAction->runWithParams(Array)
+#10
+C:\xampp\htdocs\accounting\vendor\=
+yiisoft\yii2\base\Module.php(528):
+yii\base\Controller->runAction('view',=
+ Array)
+#11
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\web\Applicat=
+ion.php(103):
+yii\base\Module->runAction('akt-pembelian/v...', Array)
+#=
+12
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Application.php(38=
+6):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\=
+xampp\htdocs\accounting\backend\web\index.php(22):
+yii\base\Application->=
+run()
+#14 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: In=
+tegrity constraint
+violation: 1048 Column 'quantity' cannot be null
+The=
+ SQL being executed was: INSERT INTO `item_pembelian`
+(`id_pembelian`, `i=
+d_item_stok`, `quantity`, `id_satuan`, `harga`,
+`diskon`, `keterangan`) V=
+ALUES (1, NULL, NULL, NULL, 4, 3, '1') in
+C:\xampp\htdocs\accounting\vend=
+or\yiisoft\yii2\db\Schema.php:664
+Stack trace:
+#0
+C:\xampp\htdocs\acc=
+ounting\vendor\yiisoft\yii2\db\Command.php(1295):
+yii\db\Schema->convertE=
+xception(Object(PDOException), 'INSERT INTO
+`it...')
+#1
+C:\xampp\htdo=
+cs\accounting\vendor\yiisoft\yii2\db\Command.php(1091):
+yii\db\Command->i=
+nternalExecute('INSERT INTO `it...')
+#2 C:\xampp\htdocs\accounting\vendor=
+\yiisoft\yii2\db\Schema.php(433):
+yii\db\Command->execute()
+#3
+C:\xam=
+pp\htdocs\accounting\vendor\yiisoft\yii2\db\ActiveRecord.php(600):
+yii\db=
+\Schema->insert('item_pembelian', Array)
+#4
+C:\xampp\htdocs\accounting\=
+vendor\yiisoft\yii2\db\ActiveRecord.php(566):
+yii\db\ActiveRecord->insert=
+Internal(NULL)
+#5
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Bas=
+eActiveRecord.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+C=
+:\xampp\htdocs\accounting\backend\controllers\AktPembelianController.php(79=
+):
+yii\db\BaseActiveRecord->save(false)
+#7 [internal function]:
+backe=
+nd\controllers\AktPembelianController->actionView('1')
+#8
+C:\xampp\htdo=
+cs\accounting\vendor\yiisoft\yii2\base\InlineAction.php(57):
+call_user_fu=
+nc_array(Array, Array)
+#9
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii=
+2\base\Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)=
+
+#10
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Module.php(528=
+):
+yii\base\Controller->runAction('view', Array)
+#11
+C:\xampp\htdocs\=
+accounting\vendor\yiisoft\yii2\web\Application.php(103):
+yii\base\Module-=
+>runAction('akt-pembelian/v...', Array)
+#12
+C:\xampp\htdocs\accounting\=
+vendor\yiisoft\yii2\base\Application.php(386):
+yii\web\Application->handl=
+eRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\accounting\backend\=
+web\index.php(22):
+yii\base\Application->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1048
+    [2] =3D> Column 'q=
+uantity' cannot be null
+)
+
+2020-07-20 08:40:35
+[::1][3][7gr5v4s80ul=
+kjsk1mhqsi0eve0][info][application] $_GET =3D [
+    'r' =3D> 'akt-pembeli=
+an/view'
+    'aksi' =3D> 'save'
+    'id' =3D> '1'
+]
+
+$_POST =3D [=
+
+    '_csrf-backend' =3D>
+'oB9IggI2tEavxEMyqPT1y1qTRwiSf71XvTeyjEAYhlr_=
+fSe3RXPyD8z8AQb_nruIadY0Y94S9GX2TefjN1L_EQ=3D=3D'
+    'item_stok' =3D> '6=
+'
+    'qty' =3D> '5'
+    'harga' =3D> '4'
+    'diskon' =3D> '3'
+   =
+ 'total' =3D> '2'
+    'keterangan' =3D> '1'
+]
+
+$_FILES =3D []
+
+=
+$_COOKIE =3D [
+    'advanced-backend' =3D> '7gr5v4s80ulkjsk1mhqsi0eve0'=
+
+    '_csrf-backend' =3D>
+'dc3ae5fd078173ceb030a0c6e8a5951da32fd97821b2=
+76254ede08f6dc516c30a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"_bo5GEFIc8B4=
+WjNC3EskLmI2KzUowJyK\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []=
+
+    '__returnUrl' =3D> '/accounting/backend/web/'
+    'user_role' =3D>=
+ [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D=
+> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_SERVER =3D [=
+
+    'MIBDIRS' =3D> 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' =3D> '\=
+\xampp\\mysql\\bin'
+    'OPENSSL_CONF' =3D> 'C:/xampp/apache/bin/openssl.=
+cnf'
+    'PHP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+    'PHPRC' =3D> '\=
+\xampp\\php'
+    'TMP' =3D> '\\xampp\\tmp'
+    'HTTP_HOST' =3D> 'localh=
+ost'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'CONTENT_LENGTH' =3D> =
+'162'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_UPGRADE_INS=
+ECURE_REQUESTS' =3D> '1'
+    'HTTP_ORIGIN' =3D> 'http://localhost'
+    =
+'CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded'
+    'HTTP_USER_AG=
+ENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (=
+KHTML, like Gecko) Chrome/84.0.4147.89
+Safari/537.36'
+    'HTTP_ACCEPT'=
+ =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp=
+,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    '=
+HTTP_SEC_FETCH_SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE' =3D> 'n=
+avigate'
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_SEC_FETCH_DEST' =
+=3D> 'document'
+    'HTTP_REFERER' =3D>
+'http://localhost/accounting/ba=
+ckend/web/index.php?r=3Dakt-penawaran-penjualan/view&id=3D1'
+    'HTTP_AC=
+CEPT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' =3D> '=
+en-US,en;q=3D0.9'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D7gr5v4s80ulk=
+jsk1mhqsi0eve0;
+_csrf-backend=3Ddc3ae5fd078173ceb030a0c6e8a5951da32fd9782=
+1b276254ede08f6dc516c30a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%=
+3A1%3Bs%3A32%3A%22_bo5GEFIc8B4WjNC3EskLmI2KzUowJyK%22%3B%7D'
+    'PATH' =
+=3D>
+'C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\W=
+INDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\composer;C:\=
+\Program
+Files\\Git\\cmd;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program
+F=
+iles\\nodejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\Dicky
+Saputra\=
+\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\Users\\Dicky
+Saputra\\A=
+ppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Dicky
+Saputra\\AppData\\=
+Roaming\\Composer\\vendor\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\=
+Programs\\Microsoft VS
+Code\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Loc=
+al\\GitHubDesktop\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Microsof=
+t\\WindowsApps;C:\\Users\\Dicky
+Saputra\\AppData\\Roaming\\npm;C:\\Users\=
+\Dicky
+Saputra\\AppData\\Local\\Android\\Sdk\\platform-tools;'
+    'Sys=
+temRoot' =3D> 'C:\\WINDOWS'
+    'COMSPEC' =3D> 'C:\\WINDOWS\\system32\\cm=
+d.exe'
+    'PATHEXT' =3D>
+'.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;=
+.WSH;.MSC'
+    'WINDIR' =3D> 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' =3D> =
+'<address>Apache/2.4.38 (Win64)
+OpenSSL/1.1.1b PHP/7.3.3 Server at localh=
+ost Port 80</address>
+'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.38 (Win6=
+4) OpenSSL/1.1.1b
+PHP/7.3.3'
+    'SERVER_NAME' =3D> 'localhost'
+    '=
+SERVER_ADDR' =3D> '::1'
+    'SERVER_PORT' =3D> '80'
+    'REMOTE_ADDR' =
+=3D> '::1'
+    'DOCUMENT_ROOT' =3D> 'C:/xampp/htdocs'
+    'REQUEST_SCHE=
+ME' =3D> 'http'
+    'CONTEXT_PREFIX' =3D> ''
+    'CONTEXT_DOCUMENT_ROOT=
+' =3D> 'C:/xampp/htdocs'
+    'SERVER_ADMIN' =3D> 'postmaster@localhost'=
+
+    'SCRIPT_FILENAME' =3D>
+'C:/xampp/htdocs/accounting/backend/web/ind=
+ex.php'
+    'REMOTE_PORT' =3D> '64434'
+    'GATEWAY_INTERFACE' =3D> 'CG=
+I/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHOD' =3D> =
+'POST'
+    'QUERY_STRING' =3D> 'r=3Dakt-pembelian%2Fview&aksi=3Dsave&id=
+=3D1'
+    'REQUEST_URI' =3D>
+'/accounting/backend/web/index.php?r=3Dakt=
+-pembelian%2Fview&aksi=3Dsave&id=3D1'
+    'SCRIPT_NAME' =3D> '/accounting=
+/backend/web/index.php'
+    'PHP_SELF' =3D> '/accounting/backend/web/inde=
+x.php'
+    'REQUEST_TIME_FLOAT' =3D> 1595209235.685
+    'REQUEST_TIME' =
+=3D> 1595209235
+]

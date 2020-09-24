@@ -1,0 +1,498 @@
+Message-ID: <6b1a560dae804c513dd6f1ea678dc778@cvajm.com>
+Date: Tue, 14 Jan 2020 19:34:11 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-01-14 19:34:11
+[36.92.48.63][66][7p1fabu0u82ml0vjv7e2sbh834][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 U=
+nknown column
+'no_spare_part' in 'field list' in
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOSta=
+tement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT no_spare...=
+')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(=
+425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+/home/cvajm/=
+public_html/cvajm/backend/views/penggunaan-spare-part/index.php(67):
+yii\=
+db\Command->queryScalar()
+#4 [internal function]:
+yii\base\View->{closu=
+re}(Object(backend\models\PenggunaanSparePart),
+1, 0, Object(kartik\grid\=
+DataColumn))
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/=
+DataColumn.php(230):
+call_user_func(Object(Closure),
+Object(backend\mod=
+els\PenggunaanSparePart), 1, 0,
+Object(kartik\grid\DataColumn))
+#6
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/DataColumn.php(244):=
+
+yii\grid\DataColumn->getDataCellValue(Object(backend\models\PenggunaanSp=
+arePart),
+1, 0)
+#7
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2=
+-grid/src/DataColumn.php(242):
+yii\grid\DataColumn->renderDataCellContent=
+(Object(backend\models\PenggunaanSparePart),
+1, 0)
+#8
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(525):
+kartik\grid\Da=
+taColumn->renderDataCell(Object(backend\models\PenggunaanSparePart),
+1, 0=
+)
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/GridView.ph=
+p(494):
+yii\grid\GridView->renderTableRow(Object(backend\models\Penggunaa=
+nSparePart),
+1, 0)
+#10
+/home/cvajm/public_html/cvajm/vendor/kartik-v/=
+yii2-grid/src/GridView.php(1220):
+yii\grid\GridView->renderTableBody()
+=
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(3=
+58):
+kartik\grid\GridView->renderTableBody()
+#12
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/widgets/BaseListView.php(160):
+yii\grid\Gri=
+dView->renderItems()
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/grid/GridView.php(326):
+yii\widgets\BaseListView->renderSection('{ite=
+ms}')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/widgets/Bas=
+eListView.php(135):
+yii\grid\GridView->renderSection('{items}')
+#15 [in=
+ternal function]:
+yii\widgets\BaseListView->yii\widgets\{closure}(Array)=
+
+#16
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/widgets/BaseList=
+View.php(138):
+preg_replace_callback('/{\\w+}/', Object(Closure), '<div=
+
+class=3D"pan...')
+#17
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/grid/GridView.php(301):
+yii\widgets\BaseListView->run()
+#18
+/home=
+/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1186):=
+
+yii\grid\GridView->run()
+#19
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#20
+/hom=
+e/cvajm/public_html/cvajm/backend/views/penggunaan-spare-part/index.php(24)=
+:
+yii\base\Widget::widget(Array)
+#21
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#22=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+=
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...'=
+)
+#23
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(1=
+56):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(back=
+end\controllers\PenggunaanSparePartController))
+#24
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->r=
+ender('index', Array,
+Object(backend\controllers\PenggunaanSparePartContr=
+oller))
+#25
+/home/cvajm/public_html/cvajm/backend/controllers/Penggunaa=
+nSparePartController.php(53):
+yii\base\Controller->render('index', Array)=
+
+#26 [internal function]:
+backend\controllers\PenggunaanSparePartContro=
+ller->actionIndex()
+#27
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#28
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):=
+
+yii\base\InlineAction->runWithParams(Array)
+#29
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->=
+runAction('', Array)
+#30
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/web/Application.php(103):
+yii\base\Module->runAction('penggunaan-spar=
+...', Array)
+#31
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base=
+/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web\=
+Request))
+#32 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+=
+yii\base\Application->run()
+#33 {main}
+
+Next yii\db\Exception: SQLSTA=
+TE[42S22]: Column not found: 1054 Unknown
+column 'no_spare_part' in 'fiel=
+d list'
+The SQL being executed was: SELECT no_spare_part FROM spare_part =
+WHERE
+id_nama_spare_part =3D '2' in
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->conver=
+tException(Object(PDOException), 'SELECT
+no_spare...')
+#1
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Comma=
+nd->internalExecute('SELECT no_spare...')
+#2
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInterna=
+l('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm/backend/views/peng=
+gunaan-spare-part/index.php(67):
+yii\db\Command->queryScalar()
+#4 [inte=
+rnal function]:
+yii\base\View->{closure}(Object(backend\models\Penggunaan=
+SparePart),
+1, 0, Object(kartik\grid\DataColumn))
+#5
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/grid/DataColumn.php(230):
+call_user_fun=
+c(Object(Closure),
+Object(backend\models\PenggunaanSparePart), 1, 0,
+Ob=
+ject(kartik\grid\DataColumn))
+#6
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/grid/DataColumn.php(244):
+yii\grid\DataColumn->getDataCellVal=
+ue(Object(backend\models\PenggunaanSparePart),
+1, 0)
+#7
+/home/cvajm/p=
+ublic_html/cvajm/vendor/kartik-v/yii2-grid/src/DataColumn.php(242):
+yii\g=
+rid\DataColumn->renderDataCellContent(Object(backend\models\PenggunaanSpare=
+Part),
+1, 0)
+#8
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/gri=
+d/GridView.php(525):
+kartik\grid\DataColumn->renderDataCell(Object(backen=
+d\models\PenggunaanSparePart),
+1, 0)
+#9
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/grid/GridView.php(494):
+yii\grid\GridView->renderTab=
+leRow(Object(backend\models\PenggunaanSparePart),
+1, 0)
+#10
+/home/cva=
+jm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1220):
+yi=
+i\grid\GridView->renderTableBody()
+#11
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/grid/GridView.php(358):
+kartik\grid\GridView->renderTab=
+leBody()
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/widgets/=
+BaseListView.php(160):
+yii\grid\GridView->renderItems()
+#13
+/home/cva=
+jm/public_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(326):
+yii\widg=
+ets\BaseListView->renderSection('{items}')
+#14
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/widgets/BaseListView.php(135):
+yii\grid\GridVie=
+w->renderSection('{items}')
+#15 [internal function]:
+yii\widgets\BaseLi=
+stView->yii\widgets\{closure}(Array)
+#16
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/widgets/BaseListView.php(138):
+preg_replace_callback(=
+'/{\\w+}/', Object(Closure), '<div
+class=3D"pan...')
+#17
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(301):
+yii\widgets=
+\BaseListView->run()
+#18
+/home/cvajm/public_html/cvajm/vendor/kartik-v/=
+yii2-grid/src/GridView.php(1186):
+yii\grid\GridView->run()
+#19
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\=
+grid\GridView->run()
+#20
+/home/cvajm/public_html/cvajm/backend/views/pe=
+nggunaan-spare-part/index.php(24):
+yii\base\Widget::widget(Array)
+#21=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+=
+require('/home/cvajm/pub...')
+#22
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/cvaj=
+m/pub...', '[<span
+class=3D"s...')
+#23
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/=
+cvajm/pub...', Array,
+Object(backend\controllers\PenggunaanSparePartContr=
+oller))
+#24
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Cont=
+roller.php(384):
+yii\base\View->render('index', Array,
+Object(backend\c=
+ontrollers\PenggunaanSparePartController))
+#25
+/home/cvajm/public_html/=
+cvajm/backend/controllers/PenggunaanSparePartController.php(53):
+yii\base=
+\Controller->render('index', Array)
+#26 [internal function]:
+backend\co=
+ntrollers\PenggunaanSparePartController->actionIndex()
+#27
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_use=
+r_func_array(Array, Array)
+#28
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(=
+Array)
+#29
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Modul=
+e.php(528):
+yii\base\Controller->runAction('', Array)
+#30
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base=
+\Module->runAction('penggunaan-spar...', Array)
+#31
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Applica=
+tion->handleRequest(Object(yii\web\Request))
+#32 /home/cvajm/public_html/=
+cvajm/backend/web/index.php(22):
+yii\base\Application->run()
+#33 {main}=
+
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> =
+1054
+    [2] =3D> Unknown column 'no_spare_part' in 'field list'
+)
+=
+
+2020-01-14 19:34:11
+[36.92.48.63][66][7p1fabu0u82ml0vjv7e2sbh834][info=
+][application] $_GET
+=3D [
+    'r' =3D> 'penggunaan-spare-part'
+]
+=
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-ba=
+ckend' =3D> '7p1fabu0u82ml0vjv7e2sbh834'
+    '_csrf-backend' =3D>
+'a630=
+dc5364259051b6555cdbc79220df40cd9f0cd1d3d2d4cd642248be1af353a:2:{i:0;s:13:\=
+"_csrf-backend\";i:1;s:32:\"NaeUAi-CJK4u7XD6Wm6KCrEvvnnCaBoB\";}'
+]
+
+=
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/ba=
+ckend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'WORKSHOP'=
+
+        1 =3D> 'PURCHASING'
+        2 =3D> 'LOGISTIC'
+    ]
+    'u=
+ser_role_id' =3D> [
+        0 =3D> 10
+        1 =3D> 12
+        2 =3D=
+> 11
+    ]
+    '__id' =3D> 66
+]
+
+$_SERVER =3D [
+    'USER' =3D>=
+ 'cvajm'
+    'HOME' =3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/b=
+ackend/web/index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.=
+php?r=3Dpenggunaan-spare-part'
+    'QUERY_STRING' =3D> 'r=3Dpenggunaan-sp=
+are-part'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'H=
+TTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> =
+'49410'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backe=
+nd/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CON=
+TEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =
+=3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/hom=
+e/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '36.92.48.63'
+    'SERVER_P=
+ORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME=
+' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERV=
+ER_SIGNATURE' =3D> ''
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/=
+usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D=
+7p1fabu0u82ml0vjv7e2sbh834;
+_csrf-backend=3Da630dc5364259051b6555cdbc7922=
+0df40cd9f0cd1d3d2d4cd642248be1af353a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-bac=
+kend%22%3Bi%3A1%3Bs%3A32%3A%22NaeUAi-CJK4u7XD6Wm6KCrEvvnnCaBoB%22%3B%7D'
+=
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'=
+
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D=
+>
+'http://cvajm.com/cvajm/backend/web/index.php?r=3Dspare-part'
+    'HT=
+TP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,=
+image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.=
+9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)=
+
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117
+Safari/537=
+.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CONNECTION=
+' =3D> 'keep-alive'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepa=
+live' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/=
+index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FC=
+GI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.p=
+hp'
+    'REQUEST_TIME_FLOAT' =3D> 1579001651.2203
+    'REQUEST_TIME' =
+=3D> 1579001651
+]

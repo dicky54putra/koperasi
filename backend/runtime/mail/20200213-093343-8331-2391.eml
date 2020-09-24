@@ -1,0 +1,302 @@
+Message-ID: <8c8d20744a57ee2265bf8b78182c34cc@www.sijaksa.com>
+Date: Thu, 13 Feb 2020 09:33:43 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-13 09:33:43
+[125.166.97.142][10][n5felp8auv6279mkqidho9hao7][erro=
+r][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity co=
+nstraint violation: 1048
+Column 'nilai' cannot be null in
+/home/sijaksa=
+/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0 /h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStat=
+ement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Comm=
+and.php(1091):
+yii\db\Command->internalExecute('INSERT INTO `da...')
+#2=
+ /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php(433):
+yii\db=
+\Command->execute()
+#3
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db=
+/ActiveRecord.php(600):
+yii\db\Schema->insert('data_rincian_pe...', Array=
+)
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(=
+566):
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+/home/sijaksa/publ=
+ic_html/vendor/yiisoft/yii2/db/BaseActiveRecord.php(678):
+yii\db\ActiveRe=
+cord->insert(false, NULL)
+#6
+/home/sijaksa/public_html/backend/controll=
+ers/DataPenerimaanBankController.php(75):
+yii\db\BaseActiveRecord->save(f=
+alse)
+#7 [internal function]:
+backend\controllers\DataPenerimaanBankCon=
+troller->actionView('2')
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#9
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yi=
+i\base\InlineAction->runWithParams(Array)
+#10
+/home/sijaksa/public_html=
+/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction=
+('view', Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/A=
+pplication.php(103):
+yii\base\Module->runAction('data-penerimaan...', Arr=
+ay)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.=
+php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#=
+13 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Applicat=
+ion->run()
+#14 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000=
+]: Integrity constraint
+violation: 1048 Column 'nilai' cannot be null
+T=
+he SQL being executed was: INSERT INTO `data_rincian_penerimaan_bank`
+(`i=
+d_data_penerimaan_bank`, `id_sdana`, `nilai`) VALUES (2, 3, NULL)
+in /hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:=
+
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):=
+
+yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO
+`da=
+...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(109=
+1):
+yii\db\Command->internalExecute('INSERT INTO `da...')
+#2 /home/sija=
+ksa/public_html/vendor/yiisoft/yii2/db/Schema.php(433):
+yii\db\Command->e=
+xecute()
+#3
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveReco=
+rd.php(600):
+yii\db\Schema->insert('data_rincian_pe...', Array)
+#4
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(566):
+yii=
+\db\ActiveRecord->insertInternal(NULL)
+#5
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/db/BaseActiveRecord.php(678):
+yii\db\ActiveRecord->inser=
+t(false, NULL)
+#6
+/home/sijaksa/public_html/backend/controllers/DataPen=
+erimaanBankController.php(75):
+yii\db\BaseActiveRecord->save(false)
+#7 =
+[internal function]:
+backend\controllers\DataPenerimaanBankController->ac=
+tionView('2')
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Inl=
+ineAction.php(57):
+call_user_func_array(Array, Array)
+#9
+/home/sijaks=
+a/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inli=
+neAction->runWithParams(Array)
+#10
+/home/sijaksa/public_html/vendor/yii=
+soft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('view', Ar=
+ray)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.=
+php(103):
+yii\base\Module->runAction('data-penerimaan...', Array)
+#12=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):=
+
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 /home/=
+sijaksa/public_html/backend/web/index.php(22):
+yii\base\Application->run(=
+)
+#14 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 23000=
+
+    [1] =3D> 1048
+    [2] =3D> Column 'nilai' cannot be null
+)
+
+=
+2020-02-13 09:33:43
+[125.166.97.142][10][n5felp8auv6279mkqidho9hao7][info=
+][application]
+$_GET =3D [
+    'r' =3D> 'data-penerimaan-bank/view'
+ =
+   'id' =3D> '2'
+]
+
+$_POST =3D [
+    '_csrf-backend' =3D>
+'lKv52A=
+LWR_4zWEFlsWtCn_Qnsob5uvpatjJb5WJBdNDi4rGCZeUOnEQ1Cw35NHT7vF_o_82Xix-Bei69G=
+nFFmg=3D=3D'
+    'nama_sdana' =3D> 'ADD - Alokasi Dana Desa'
+    'id_sd=
+ana' =3D> '3'
+    'nilai' =3D> ''
+]
+
+$_FILES =3D []
+
+$_COOKIE =
+=3D [
+    'advanced-backend' =3D> 'n5felp8auv6279mkqidho9hao7'
+    '_cs=
+rf-backend' =3D>
+'1d444256fe3fa088c8120e83bd8192e13a301a58a597c875c67ffd5=
+46433a30da:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"vIHZg3IbwmJhH_6dHxZy4-q=
+E7HuXx01J\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__re=
+turnUrl' =3D> '/backend/web/index.php?r=3D'
+    'user_role' =3D> [
+    =
+    0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+        2 =3D> 'KELUR=
+AHAN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =
+=3D> [
+        0 =3D> 2
+        1 =3D> 3
+        2 =3D> 4
+        3=
+ =3D> 1
+    ]
+    '__id' =3D> 10
+]
+
+$_SERVER =3D [
+    'PHPRC' =
+=3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home/sijaksa=
+/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0=
+'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s=
+bin:/bin'
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_=
+URI' =3D>
+'/backend/web/index.php?r=3Ddata-penerimaan-bank%2Fview&id=3D2'=
+
+    'QUERY_STRING' =3D> 'r=3Ddata-penerimaan-bank%2Fview&id=3D2'
+    '=
+REQUEST_METHOD' =3D> 'POST'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    '=
+GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '2577'
+    'SC=
+RIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/index.php'
+ =
+   'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =
+=3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQU=
+EST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_ht=
+ml'
+    'REMOTE_ADDR' =3D> '125.166.97.142'
+    'SERVER_PORT' =3D> '80'=
+
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'www.sija=
+ksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATU=
+RE' =3D> ''
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_COO=
+KIE' =3D> 'advanced-backend=3Dn5felp8auv6279mkqidho9hao7;
+_csrf-backend=
+=3D1d444256fe3fa088c8120e83bd8192e13a301a58a597c875c67ffd546433a30da%3A2%3A=
+%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22vIHZg3IbwmJhH=
+_6dHxZy4-qE7HuXx01J%22%3B%7D'
+    'HTTP_REFERER' =3D>
+'http://www.sijak=
+sa.com/backend/web/index.php?r=3Ddata-penerimaan-bank/view&id=3D2&action=3D=
+rincian&id_data_rincian_penerimaan_bank=3D7'
+    'HTTP_CONNECTION' =3D> '=
+close'
+    'HTTP_ORIGIN' =3D> 'http://www.sijaksa.com'
+    'CONTENT_LEN=
+GTH' =3D> '159'
+    'CONTENT_TYPE' =3D> 'application/x-www-form-urlencode=
+d'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT_LAN=
+GUAGE' =3D> 'en-US,en;q=3D0.5'
+    'HTTP_ACCEPT' =3D>
+'text/html,applic=
+ation/xhtml+xml,application/xml;q=3D0.9,image/webp,*/*;q=3D0.8'
+    'HTTP=
+_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64;
+rv:72.0) Gec=
+ko/20100101 Firefox/72.0'
+    'HTTP_HOST' =3D> 'www.sijaksa.com'
+    'S=
+CRIPT_URI' =3D> 'http://www.sijaksa.com/backend/web/index.php'
+    'SCRIP=
+T_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+ =
+   'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D>=
+ 1581561223.6932
+    'REQUEST_TIME' =3D> 1581561223
+]

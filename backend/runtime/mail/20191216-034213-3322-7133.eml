@@ -1,0 +1,313 @@
+Message-ID: <37d17028c05d3b61d5b4c70f4242a65a@cvajm.com>
+Date: Mon, 16 Dec 2019 03:42:13 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-12-16 03:42:13
+[180.246.148.186][36][8gc30se7ulnuf73a3dpfj25sm5][err=
+or][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 10=
+54 Unknown column
+'id_workshop' in 'where clause' in
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PD=
+OStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM =
+w...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.=
+php(386):
+yii\db\Command->queryInternal('')
+#3 /home/cvajm/public_html/=
+cvajm/backend/views/workshop/view.php(260):
+yii\db\Command->query()
+#4=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+=
+require('/home/cvajm/pub...')
+#5
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/cvajm=
+/pub...', '[<span
+class=3D"s...')
+#6
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/cv=
+ajm/pub...', Array,
+Object(backend\controllers\WorkshopController))
+#7=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(38=
+4):
+yii\base\View->render('view', Array,
+Object(backend\controllers\Wor=
+kshopController))
+#8
+/home/cvajm/public_html/cvajm/backend/controllers/=
+WorkshopController.php(146):
+yii\base\Controller->render('view', Array)=
+
+#9 [internal function]:
+backend\controllers\WorkshopController->action=
+View('233')
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/=
+InlineAction.php(57):
+call_user_func_array(Array, Array)
+#11
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\b=
+ase\InlineAction->runWithParams(Array)
+#12
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runActio=
+n('view', Array)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+web/Application.php(103):
+yii\base\Module->runAction('workshop/view', Arr=
+ay)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Applicat=
+ion.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))=
+
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\=
+Application->run()
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]=
+: Column not found: 1054 Unknown
+column 'id_workshop' in 'where clause'=
+
+The SQL being executed was: SELECT * FROM workshop_permintaan WHERE
+id=
+_workshop =3D '233' in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Obje=
+ct(PDOException), 'SELECT * FROM
+w...')
+#1
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExe=
+cute('SELECT * FROM w...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/db/Command.php(386):
+yii\db\Command->queryInternal('')
+#3 /hom=
+e/cvajm/public_html/cvajm/backend/views/workshop/view.php(260):
+yii\db\Co=
+mmand->query()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/bas=
+e/View.php(348):
+require('/home/cvajm/pub...')
+#5
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderP=
+hpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#6
+/home/cvajm/p=
+ublic_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->r=
+enderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\Worksho=
+pController))
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base=
+/Controller.php(384):
+yii\base\View->render('view', Array,
+Object(backe=
+nd\controllers\WorkshopController))
+#8
+/home/cvajm/public_html/cvajm/ba=
+ckend/controllers/WorkshopController.php(146):
+yii\base\Controller->rende=
+r('view', Array)
+#9 [internal function]:
+backend\controllers\WorkshopCo=
+ntroller->actionView('233')
+#10
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.=
+php(157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Con=
+troller->runAction('view', Array)
+#13
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('wo=
+rkshop/view', Array)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/base/Application.php(386):
+yii\web\Application->handleRequest(Object(=
+yii\web\Request))
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php=
+(22):
+yii\base\Application->run()
+#16 {main}
+Additional Information:=
+
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknow=
+n column 'id_workshop' in 'where clause'
+)
+
+2019-12-16 03:42:13
+[18=
+0.246.148.186][36][8gc30se7ulnuf73a3dpfj25sm5][info][application]
+$_GET =
+=3D [
+    'r' =3D> 'workshop/view'
+    'id' =3D> '233'
+]
+
+$_POST =
+=3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D=
+> '8gc30se7ulnuf73a3dpfj25sm5'
+    '_csrf-backend' =3D>
+'cc21de6201ed65=
+f13e15c998ee8d207fc80d824dcb6708e8bd09f66a68d8a57ea:2:{i:0;s:13:\"_csrf-bac=
+kend\";i:1;s:32:\"35efEcD_Ck45Q3cDDys6UE2kBEp2xbaZ\";}'
+]
+
+$_SESSION =
+=3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/=
+index.php'
+    'user_role' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'=
+
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 1
+    ]
+    '__id=
+' =3D> 36
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+    'HOME' =
+=3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'=
+
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dworkshop/view=
+&id=3D233'
+    'QUERY_STRING' =3D> 'r=3Dworkshop/view&id=3D233'
+    'RE=
+QUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GAT=
+EWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '10804'
+    'SCRI=
+PT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'=
+
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROO=
+T' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQ=
+UEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_htm=
+l'
+    'REMOTE_ADDR' =3D> '180.246.148.186'
+    'SERVER_PORT' =3D> '80'=
+
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.=
+com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =
+=3D> ''
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/=
+bin:/sbin:/bin'
+    'HTTP_CONNECTION' =3D> 'Keep-Alive'
+    'HTTP_COOKI=
+E' =3D> 'advanced-backend=3D8gc30se7ulnuf73a3dpfj25sm5;
+_csrf-backend=3Dc=
+c21de6201ed65f13e15c998ee8d207fc80d824dcb6708e8bd09f66a68d8a57ea%3A2%3A%7Bi=
+%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%2235efEcD_Ck45Q3cDD=
+ys6UE2kBEp2xbaZ%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0=
+.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, defla=
+te'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/index.p=
+hp?r=3Dworkshop%2Findex'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/=
+xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,applica=
+tion/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Win=
+dows NT 6.1; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78=
+.0.3904.108
+Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1=
+'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_HOST' =3D> 'cva=
+jm.com'
+    'proxy-nokeepalive' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://=
+cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/back=
+end/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D>=
+ '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1576438933.=
+2999
+    'REQUEST_TIME' =3D> 1576438933
+]

@@ -1,0 +1,441 @@
+Message-ID: <1fd690a9c13de2aa6a9c024a9a8b6d3d@cvajm.com>
+Date: Thu, 11 Jul 2019 09:30:56 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-07-11 09:30:56
+[209.58.180.2][1][ri6f55ri3li2urvijq936epcl1][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 U=
+nknown column
+'workshop_request_detail.status' in 'where clause' in
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack =
+trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.=
+php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute(=
+'SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)=
+
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463)=
+:
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUNT=
+(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT(=
+*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*', =
+NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/BaseDat=
+aProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8=
+
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php=
+(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvajm/pub=
+lic_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\g=
+rid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#11
+/=
+home/cvajm/public_html/cvajm/backend/views/logistik-keluar/index.php(20):=
+
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#13=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+=
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...'=
+)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(1=
+56):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(back=
+end\controllers\LogistikKeluarController))
+#15
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render=
+('index', Array,
+Object(backend\controllers\LogistikKeluarController))
+=
+#16
+/home/cvajm/public_html/cvajm/backend/controllers/LogistikKeluarContr=
+oller.php(45):
+yii\base\Controller->render('index', Array)
+#17 [interna=
+l function]:
+backend\controllers\LogistikKeluarController->actionIndex()=
+
+#18
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineActio=
+n.php(57):
+call_user_func_array(Array, Array)
+#19
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineA=
+ction->runWithParams(Array)
+#20
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('index', =
+Array)
+#21
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Applic=
+ation.php(103):
+yii\base\Module->runAction('logistik-keluar...', Array)=
+
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application=
+.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+=
+#23 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\App=
+lication->run()
+#24 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: C=
+olumn not found: 1054 Unknown
+column 'workshop_request_detail.status' in =
+'where clause'
+The SQL being executed was: SELECT COUNT(*) FROM
+`worksh=
+op_request_detail` LEFT JOIN `logistik_keluar` ON
+`workshop_request_detai=
+l`.`id_workshop_request` =3D
+`logistik_keluar`.`id_workshop_request` WHER=
+E
+`workshop_request_detail`.`status`=3D3 in
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema=
+->convertException(Object(PDOException), 'SELECT
+COUNT(*)...')
+#1
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\=
+db\Command->internalExecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->quer=
+yInternal('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/db/Query.php(463):
+yii\db\Command->queryScalar()
+#4
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\d=
+b\Query->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\Activ=
+eQuery->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/cva=
+jm/public_html/cvajm/vendor/yiisoft/yii2/data/ActiveDataProvider.php(169):=
+
+yii\db\Query->count('*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data\ActiveDataProvid=
+er->prepareTotalCount()
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-=
+v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider->getTotalCo=
+unt()
+#9
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/Gr=
+idView.php(1163):
+kartik\grid\GridView->initToggleData()
+#10
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\gr=
+id\GridView->run()
+#11
+/home/cvajm/public_html/cvajm/backend/views/logi=
+stik-keluar/index.php(20):
+yii\base\Widget::widget(Array)
+#12
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/=
+home/cvajm/pub...')
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...',=
+ '[<span
+class=3D"s...')
+#14
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm/pub.=
+..', Array,
+Object(backend\controllers\LogistikKeluarController))
+#15=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(38=
+4):
+yii\base\View->render('index', Array,
+Object(backend\controllers\Lo=
+gistikKeluarController))
+#16
+/home/cvajm/public_html/cvajm/backend/cont=
+rollers/LogistikKeluarController.php(45):
+yii\base\Controller->render('in=
+dex', Array)
+#17 [internal function]:
+backend\controllers\LogistikKelua=
+rController->actionIndex()
+#18
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.=
+php(157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Con=
+troller->runAction('index', Array)
+#21
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('l=
+ogistik-keluar...', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(O=
+bject(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/ind=
+ex.php(22):
+yii\base\Application->run()
+#24 {main}
+Additional Informa=
+tion:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> U=
+nknown column 'workshop_request_detail.status' in 'where
+clause'
+)
+=
+
+2019-07-11 09:30:56
+[209.58.180.2][1][ri6f55ri3li2urvijq936epcl1][info=
+][application] $_GET
+=3D [
+    'r' =3D> 'logistik-keluar/index'
+    '=
+sort' =3D> '-nama'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE=
+ =3D [
+    'advanced-backend' =3D> 'ri6f55ri3li2urvijq936epcl1'
+    '_c=
+srf-backend' =3D>
+'ddf3b02bdc57fafeec26976d4678ae687eee6ab39d3eccc92b8891=
+24b884717fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"0U6UajbHmPvS5aGhE-86HQ=
+49qmKmmHxF\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__r=
+eturnUrl' =3D> '/cvajm/backend/web/index.php'
+    'user_role' =3D> [
+  =
+      0 =3D> 'WORKSHOP'
+        1 =3D> 'TAMBANG'
+        2 =3D> 'SYSTEM=
+ ADMINISTRATOR'
+        3 =3D> 'SURAT JALAN'
+        4 =3D> 'PURCHASING=
+'
+        5 =3D> 'PEMESANAN'
+        6 =3D> 'LOGISTIC'
+        7 =3D>=
+ 'KORLAP'
+        8 =3D> 'INVOICE'
+        9 =3D> 'HRD'
+        10 =
+=3D> 'GPS'
+        11 =3D> 'FINANCE'
+        12 =3D> 'CHECKER'
+      =
+  13 =3D> 'ADMIN'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 10=
+
+        1 =3D> 13
+        2 =3D> 1
+        3 =3D> 4
+        4 =3D>=
+ 12
+        5 =3D> 5
+        6 =3D> 11
+        7 =3D> 9
+        8 =
+=3D> 8
+        9 =3D> 14
+        10 =3D> 7
+        11 =3D> 3
+      =
+  12 =3D> 6
+        13 =3D> 2
+    ]
+    '__id' =3D> 1
+]
+
+$_SERV=
+ER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.0'
+    'PWD=
+' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+=
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/u=
+sr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_=
+NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/cvaj=
+m/backend/web/index.php?r=3Dlogistik-keluar%2Findex&sort=3D-nama'
+    'QU=
+ERY_STRING' =3D> 'r=3Dlogistik-keluar%2Findex&sort=3D-nama'
+    'REQUEST_=
+METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_I=
+NTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '36440'
+    'SCRIPT_FIL=
+ENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+    '=
+SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> =
+'/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCH=
+EME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+   =
+ 'REMOTE_ADDR' =3D> '209.58.180.2'
+    'SERVER_PORT' =3D> '80'
+    'SER=
+VER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    =
+'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+ =
+   'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=
+=3D0'
+    'HTTP_X_FORWARDED_FOR' =3D> '36.72.217.45'
+    'HTTP_VIA' =3D=
+> '1.1 singapore.rastavarian.com (squid/3.5.23)'
+    'HTTP_HOST' =3D> 'cv=
+ajm.com'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dri6f55ri3li2urvijq936=
+epcl1;
+_csrf-backend=3Dddf3b02bdc57fafeec26976d4678ae687eee6ab39d3eccc92b=
+889124b884717fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3=
+A32%3A%220U6UajbHmPvS5aGhE-86HQ49qmKmmHxF%22%3B%7D'
+    'HTTP_ACCEPT_LANG=
+UAGE' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8'
+    'HTTP_ACCEPT_ENCODING' =3D> =
+'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend=
+/web/index.php?r=3Dlogistik-keluar%2Findex&sort=3Dnama'
+    'HTTP_ACCEPT'=
+ =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp=
+,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3'
+    'HTTP_USE=
+R_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.=
+36 (KHTML, like Gecko) Chrome/75.0.3770.100
+Safari/537.36'
+    'HTTP_UP=
+GRADE_INSECURE_REQUESTS' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com=
+/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/i=
+ndex.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/=
+backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1562812256.5229
+  =
+  'REQUEST_TIME' =3D> 1562812256
+]

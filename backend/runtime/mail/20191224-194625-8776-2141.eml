@@ -1,0 +1,300 @@
+Message-ID: <62f1c78ba1ac72c401352fa4bd920bd3@cvajm.com>
+Date: Tue, 24 Dec 2019 19:46:25 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-12-24 19:46:25
+[36.92.48.63][32][2q7njeh10pa8at49smdi913817][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 U=
+nknown column
+'spare_part.spare_part' in 'field list' in
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):=
+
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT `s=
+pare_p...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Com=
+mand.php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\=
+Command->queryAll()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/db/ActiveQuery.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/cvajm/pub=
+lic_html/cvajm/backend/controllers/WorkshopRequestLogistikController.php(94=
+):
+yii\db\ActiveQuery->all()
+#6
+/home/cvajm/public_html/cvajm/backend=
+/controllers/WorkshopRequestLogistikController.php(82):
+backend\controlle=
+rs\WorkshopRequestLogistikController->getArrayDetailSparePart('56')
+#7 [i=
+nternal function]:
+backend\controllers\WorkshopRequestLogistikController-=
+>actionView('56')
+#8
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#9
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+y=
+ii\base\InlineAction->runWithParams(Array)
+#10
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runA=
+ction('view', Array)
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/web/Application.php(103):
+yii\base\Module->runAction('workshop-reques=
+...', Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base=
+/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web\=
+Request))
+#13 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+=
+yii\base\Application->run()
+#14 {main}
+
+Next yii\db\Exception: SQLSTA=
+TE[42S22]: Column not found: 1054 Unknown
+column 'spare_part.spare_part' =
+in 'field list'
+The SQL being executed was: SELECT `spare_part`.`spare_pa=
+rt`,
+`spare_part`.`no_spare_part`, `spare_part`.`stok`,
+`workshop_reque=
+st_detail`.`id_workshop_request_detail`,
+`workshop_request_detail`.`jumla=
+h`,
+`workshop_request_detail`.`keterangan` FROM `workshop_request_detail`=
+
+LEFT JOIN `workshop_request` ON workshop_request.id_workshop_request =3D=
+
+workshop_request_detail.id_workshop_request LEFT JOIN `spare_part` ON
+=
+spare_part.id_spare_part =3D workshop_request_detail.id_spare_part WHERE
+=
+`workshop_request_detail`.`id_workshop_request`=3D'56' in
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+y=
+ii\db\Schema->convertException(Object(PDOException), 'SELECT
+`spare_p...'=
+)
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1=
+158):
+yii\db\Command->internalExecute('SELECT `spare_p...')
+#2
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(399):
+yii\db\C=
+ommand->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->queryAll()
+#4=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(133=
+):
+yii\db\Query->all(NULL)
+#5
+/home/cvajm/public_html/cvajm/backend/c=
+ontrollers/WorkshopRequestLogistikController.php(94):
+yii\db\ActiveQuery-=
+>all()
+#6
+/home/cvajm/public_html/cvajm/backend/controllers/WorkshopReq=
+uestLogistikController.php(82):
+backend\controllers\WorkshopRequestLogist=
+ikController->getArrayDetailSparePart('56')
+#7 [internal function]:
+bac=
+kend\controllers\WorkshopRequestLogistikController->actionView('56')
+#8=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(=
+57):
+call_user_func_array(Array, Array)
+#9
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->=
+runWithParams(Array)
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/base/Module.php(528):
+yii\base\Controller->runAction('view', Array)=
+
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.=
+php(103):
+yii\base\Module->runAction('workshop-reques...', Array)
+#12=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(3=
+86):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 /h=
+ome/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\Applicati=
+on->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] =3D>=
+ 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'spare_part.spare_=
+part' in 'field list'
+)
+
+2019-12-24 19:46:25
+[36.92.48.63][32][2q7n=
+jeh10pa8at49smdi913817][info][application] $_GET
+=3D [
+    'r' =3D> 'wo=
+rkshop-request-logistik/view'
+    'id' =3D> '56'
+]
+
+$_POST =3D []=
+
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '2q7=
+njeh10pa8at49smdi913817'
+    '_csrf-backend' =3D>
+'2920be54c54f48a7c99b=
+c534cd35d22a2a8cb3a0801a580dac13b78f237a2976a:2:{i:0;s:13:\"_csrf-backend\"=
+;i:1;s:32:\"Az7M7IhUWNMxRr66IOF0IyOwaxPf6oLl\";}'
+]
+
+$_SESSION =3D [=
+
+    '__flash' =3D> []
+    'user_role' =3D> [
+        0 =3D> 'LOGISTI=
+C'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 11
+    ]
+    '_=
+_id' =3D> 32
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+    'HOME'=
+ =3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'=
+
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dworkshop-requ=
+est-logistik/view&id=3D56'
+    'QUERY_STRING' =3D> 'r=3Dworkshop-request-=
+logistik/view&id=3D56'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROT=
+OCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOT=
+E_PORT' =3D> '64719'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_htm=
+l/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given=
+]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONT=
+EXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT=
+' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '36.92.48.63'
+ =
+   'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    =
+'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'=
+
+    'SERVER_SIGNATURE' =3D> ''
+    'PATH' =3D>
+'/usr/local/sbin:/usr=
+/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_COOKIE' =3D> 'advance=
+d-backend=3D2q7njeh10pa8at49smdi913817;
+_csrf-backend=3D2920be54c54f48a7c=
+99bc534cd35d22a2a8cb3a0801a580dac13b78f237a2976a%3A2%3A%7Bi%3A0%3Bs%3A13%3A=
+%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22Az7M7IhUWNMxRr66IOF0IyOwaxPf6oLl%=
+22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+    'HTTP_=
+ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://c=
+vajm.com/cvajm/backend/web/index.php?r=3Dworkshop-request-logistik'
+    '=
+HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.=
+9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D=
+0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 6.1)
+AppleWebK=
+it/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88
+Safari/537.36'
+    'H=
+TTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CONNECTION' =3D> 'keep-=
+alive'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepalive' =3D> '1=
+'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/index.php'
+=
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D>=
+ 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.php'
+    'RE=
+QUEST_TIME_FLOAT' =3D> 1577187985.8635
+    'REQUEST_TIME' =3D> 1577187985=
+
+]

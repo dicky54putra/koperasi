@@ -1,0 +1,480 @@
+Message-ID: <1c424ef1e7175ba7943e8336c4b00fa7@cvajm.com>
+Date: Fri, 09 Aug 2019 10:47:21 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-08-09 10:47:21
+[36.92.48.63][29][fmaq956p6ttm7o0u80fbtvrhk7][error][=
+yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity const=
+raint violation: 1052
+Column 'id_badan_usaha' in where clause is ambiguou=
+s in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:129=
+0
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/d=
+b/Command.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_ht=
+ml/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->intern=
+alExecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchCo=
+lumn', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query=
+.php(463):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScal=
+ar('COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScala=
+r('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->co=
+unt('*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/dat=
+a/BaseDataProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCou=
+nt()
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/Gri=
+dView.php(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/=
+cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):=
+
+kartik\grid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run(=
+)
+#11 /home/cvajm/public_html/cvajm/backend/views/driver/index.php(28):=
+
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#13=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+=
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...'=
+)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(1=
+56):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(back=
+end\controllers\DriverController))
+#15
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('index'=
+, Array,
+Object(backend\controllers\DriverController))
+#16
+/home/cvaj=
+m/public_html/cvajm/backend/controllers/DriverController.php(55):
+yii\bas=
+e\Controller->render('index', Array)
+#17 [internal function]:
+backend\c=
+ontrollers\DriverController->actionIndex()
+#18
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array=
+(Array, Array)
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/ba=
+se/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#20=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):=
+
+yii\base\Controller->runAction('', Array)
+#21
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->ru=
+nAction('driver', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Obj=
+ect(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/index=
+.php(22):
+yii\base\Application->run()
+#24 {main}
+
+Next yii\db\Integ=
+rityException: SQLSTATE[23000]: Integrity constraint
+violation: 1052 Colu=
+mn 'id_badan_usaha' in where clause is ambiguous
+The SQL being executed w=
+as: SELECT COUNT(*) FROM `karyawan` LEFT JOIN
+`badan_usaha` ON `karyawan`=
+.`id_badan_usaha` =3D
+`badan_usaha`.`id_badan_usaha` LEFT JOIN `sts` ON `=
+karyawan`.`id_sts`
+=3D `sts`.`id_sts` LEFT JOIN `jabatan` ON `karyawan`.`=
+id_jabatan` =3D
+`jabatan`.`id_jabatan` LEFT JOIN `grade` ON `karyawan`.`i=
+d_grade` =3D
+`grade`.`id_grade` LEFT JOIN `lokasi_kerja` ON
+`karyawan`.=
+`id_lokasi_kerja` =3D `lokasi_kerja`.`id_lokasi_kerja` LEFT
+JOIN `kota` O=
+N `karyawan`.`id_kota` =3D `kota`.`id_kota` WHERE
+(karyawan.id_jabatan in=
+ (37,38,39,40,41,42,43,63)) AND
+(`id_badan_usaha`=3D'CLL') AND (`badan_us=
+aha`.`badan_usaha` LIKE
+'%CLL%') in
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->conver=
+tException(Object(PDOException), 'SELECT
+COUNT(*)...')
+#1
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Comma=
+nd->internalExecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInterna=
+l('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/db/Query.php(463):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query-=
+>queryScalar('COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->=
+queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db=
+\Query->count('*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/data/BaseDataProvider.php(169):
+yii\data\ActiveDataProvider->prepa=
+reTotalCount()
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-gr=
+id/src/GridView.php(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#=
+9
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.ph=
+p(1163):
+kartik\grid\GridView->initToggleData()
+#10
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridVi=
+ew->run()
+#11 /home/cvajm/public_html/cvajm/backend/views/driver/index.ph=
+p(28):
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')=
+
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(25=
+7):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D=
+"s...')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View=
+.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Objec=
+t(backend\controllers\DriverController))
+#15
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('=
+index', Array,
+Object(backend\controllers\DriverController))
+#16
+/hom=
+e/cvajm/public_html/cvajm/backend/controllers/DriverController.php(55):
+y=
+ii\base\Controller->render('index', Array)
+#17 [internal function]:
+bac=
+kend\controllers\DriverController->actionIndex()
+#18
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func=
+_array(Array, Array)
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)=
+
+#20
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(=
+528):
+yii\base\Controller->runAction('', Array)
+#21
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Modul=
+e->runAction('driver', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleReques=
+t(Object(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/=
+index.php(22):
+yii\base\Application->run()
+#24 {main}
+Additional Info=
+rmation:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1052
+    [2] =3D=
+> Column 'id_badan_usaha' in where clause is ambiguous
+)
+
+2019-08-09 =
+10:47:21
+[36.92.48.63][29][fmaq956p6ttm7o0u80fbtvrhk7][info][application]=
+ $_GET
+=3D [
+    'DriverSearch' =3D> [
+        'nrp' =3D> ''
+      =
+  'nik' =3D> ''
+        'nama' =3D> ''
+        'jenis_kelamin' =3D> ''=
+
+        'tempat_lahir' =3D> ''
+        'tanggal_lahir' =3D> ''
+     =
+   'alamat' =3D> ''
+        'id_kota' =3D> ''
+        'no_hp' =3D> ''=
+
+        'email1' =3D> ''
+        'email2' =3D> ''
+        'status_pe=
+rkawinan' =3D> ''
+        'jumlah_anak' =3D> ''
+        'pendidikan_ter=
+akhir' =3D> ''
+        'golongan_darah' =3D> ''
+        'agama' =3D> ''=
+
+        'id_badan_usaha' =3D> 'CLL'
+        'id_sts' =3D> ''
+       =
+ 'id_jabatan' =3D> ''
+        'id_grade' =3D> ''
+        'id_lokasi_ker=
+ja' =3D> ''
+        'npwp' =3D> ''
+        'bank' =3D> ''
+        'no=
+_rek' =3D> ''
+        'pemilik_rekening' =3D> ''
+        'cod_makan' =
+=3D> ''
+        'bpjs_kt' =3D> ''
+        'bpjs_ks' =3D> ''
+        '=
+tanggal_masuk' =3D> ''
+        'tanggal_keluar' =3D> ''
+        'status=
+' =3D> ''
+    ]
+    'r' =3D> 'driver'
+]
+
+$_POST =3D []
+
+$_FIL=
+ES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'fmaq956p6ttm7o=
+0u80fbtvrhk7'
+    '_csrf-backend' =3D>
+'aef38d51b13ab58a5f34ff8861b8e79=
+473c07251ed005bda7d9ba4a0e297db7ba:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\=
+"2nkXtqN13QrYbpovIbMB8qSaspxjKWJZ\";}'
+]
+
+$_SESSION =3D [
+    '__fl=
+ash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+    =
+'user_role' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'u=
+ser_role_id' =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 29
+]
+=
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.0'=
+
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D>=
+ '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/l=
+ocal/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+ =
+   'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_URI' =
+=3D>
+'/cvajm/backend/web/index.php?DriverSearch%5Bnrp%5D=3D&DriverSearch%=
+5Bnik%5D=3D&DriverSearch%5Bnama%5D=3D&DriverSearch%5Bjenis_kelamin%5D=3D&Dr=
+iverSearch%5Btempat_lahir%5D=3D&DriverSearch%5Btanggal_lahir%5D=3D&DriverSe=
+arch%5Balamat%5D=3D&DriverSearch%5Bid_kota%5D=3D&DriverSearch%5Bno_hp%5D=3D=
+&DriverSearch%5Bemail1%5D=3D&DriverSearch%5Bemail2%5D=3D&DriverSearch%5Bsta=
+tus_perkawinan%5D=3D&DriverSearch%5Bjumlah_anak%5D=3D&DriverSearch%5Bpendid=
+ikan_terakhir%5D=3D&DriverSearch%5Bgolongan_darah%5D=3D&DriverSearch%5Bagam=
+a%5D=3D&DriverSearch%5Bid_badan_usaha%5D=3DCLL&DriverSearch%5Bid_sts%5D=3D&=
+DriverSearch%5Bid_jabatan%5D=3D&DriverSearch%5Bid_grade%5D=3D&DriverSearch%=
+5Bid_lokasi_kerja%5D=3D&DriverSearch%5Bnpwp%5D=3D&DriverSearch%5Bbank%5D=3D=
+&DriverSearch%5Bno_rek%5D=3D&DriverSearch%5Bpemilik_rekening%5D=3D&DriverSe=
+arch%5Bcod_makan%5D=3D&DriverSearch%5Bbpjs_kt%5D=3D&DriverSearch%5Bbpjs_ks%=
+5D=3D&DriverSearch%5Btanggal_masuk%5D=3D&DriverSearch%5Btanggal_keluar%5D=
+=3D&DriverSearch%5Bstatus%5D=3D&r=3Ddriver'
+    'QUERY_STRING' =3D>
+'Dr=
+iverSearch%5Bnrp%5D=3D&DriverSearch%5Bnik%5D=3D&DriverSearch%5Bnama%5D=3D&D=
+riverSearch%5Bjenis_kelamin%5D=3D&DriverSearch%5Btempat_lahir%5D=3D&DriverS=
+earch%5Btanggal_lahir%5D=3D&DriverSearch%5Balamat%5D=3D&DriverSearch%5Bid_k=
+ota%5D=3D&DriverSearch%5Bno_hp%5D=3D&DriverSearch%5Bemail1%5D=3D&DriverSear=
+ch%5Bemail2%5D=3D&DriverSearch%5Bstatus_perkawinan%5D=3D&DriverSearch%5Bjum=
+lah_anak%5D=3D&DriverSearch%5Bpendidikan_terakhir%5D=3D&DriverSearch%5Bgolo=
+ngan_darah%5D=3D&DriverSearch%5Bagama%5D=3D&DriverSearch%5Bid_badan_usaha%5=
+D=3DCLL&DriverSearch%5Bid_sts%5D=3D&DriverSearch%5Bid_jabatan%5D=3D&DriverS=
+earch%5Bid_grade%5D=3D&DriverSearch%5Bid_lokasi_kerja%5D=3D&DriverSearch%5B=
+npwp%5D=3D&DriverSearch%5Bbank%5D=3D&DriverSearch%5Bno_rek%5D=3D&DriverSear=
+ch%5Bpemilik_rekening%5D=3D&DriverSearch%5Bcod_makan%5D=3D&DriverSearch%5Bb=
+pjs_kt%5D=3D&DriverSearch%5Bbpjs_ks%5D=3D&DriverSearch%5Btanggal_masuk%5D=
+=3D&DriverSearch%5Btanggal_keluar%5D=3D&DriverSearch%5Bstatus%5D=3D&r=3Ddri=
+ver'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1=
+.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '5391=
+7'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/we=
+b/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_=
+DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> '=
+'
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvaj=
+m/public_html'
+    'REMOTE_ADDR' =3D> '36.92.48.63'
+    'SERVER_PORT' =
+=3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D=
+> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SI=
+GNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dfmaq956p6ttm7=
+o0u80fbtvrhk7;
+_csrf-backend=3Daef38d51b13ab58a5f34ff8861b8e79473c07251ed=
+005bda7d9ba4a0e297db7ba%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3=
+A1%3Bs%3A32%3A%222nkXtqN13QrYbpovIbMB8qSaspxjKWJZ%22%3B%7D'
+    'HTTP_ACC=
+EPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gz=
+ip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/we=
+b/index.php?r=3Ddriver'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/x=
+html+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,applicat=
+ion/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Wind=
+ows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75=
+.0.3770.142
+Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1=
+'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_CONNECTION' =3D=
+> 'close'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'SCRIPT_URI' =3D> 'http:=
+//cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/ba=
+ckend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =
+=3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1565318=
+841.5717
+    'REQUEST_TIME' =3D> 1565318841
+]

@@ -1,0 +1,280 @@
+Message-ID: <b61f3bbf9f864b2ccb380877d35ee412@sijaksa.com>
+Date: Wed, 12 Feb 2020 10:41:25 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-12 10:41:25
+[125.166.97.142][11][c3sr20igqq6i4a7tan4rsr3kvj][erro=
+r][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 105=
+4 Unknown column
+'id_data_penerimaan_bank' in 'where clause' in
+/home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:=
+
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):=
+
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM `=
+...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(399=
+):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 /home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->queryAll(=
+)
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.php(1=
+33):
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_html/backend/con=
+trollers/DataPenerimaanBankController.php(95):
+yii\db\ActiveQuery->all()=
+
+#6 [internal function]:
+backend\controllers\DataPenerimaanBankControll=
+er->actionView('1')
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#8
+/home/=
+sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\bas=
+e\InlineAction->runWithParams(Array)
+#9 /home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('view',=
+ Array)
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Applicati=
+on.php(103):
+yii\base\Module->runAction('data-penerimaan...', Array)
+#1=
+1
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386)=
+:
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 /home=
+/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Application->run=
+()
+#13 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not fou=
+nd: 1054 Unknown
+column 'id_data_penerimaan_bank' in 'where clause'
+The=
+ SQL being executed was: SELECT * FROM
+`data_rincian_penerimaan_bank` WHE=
+RE `id_data_penerimaan_bank`=3D'1' in
+/home/sijaksa/public_html/vendor/yi=
+isoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/=
+vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException=
+(Object(PDOException), 'SELECT * FROM
+`...')
+#1 /home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExec=
+ute('SELECT * FROM `...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii=
+2/db/Command.php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+=
+#3 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(237):
+yii\d=
+b\Command->queryAll()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/=
+db/ActiveQuery.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/pub=
+lic_html/backend/controllers/DataPenerimaanBankController.php(95):
+yii\db=
+\ActiveQuery->all()
+#6 [internal function]:
+backend\controllers\DataPen=
+erimaanBankController->actionView('1')
+#7
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, A=
+rray)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.=
+php(157):
+yii\base\InlineAction->runWithParams(Array)
+#9 /home/sijaksa/=
+public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller=
+->runAction('view', Array)
+#10
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/web/Application.php(103):
+yii\base\Module->runAction('data-penerima=
+an...', Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/A=
+pplication.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Re=
+quest))
+#12 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\ba=
+se\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+=
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'id_da=
+ta_penerimaan_bank' in 'where clause'
+)
+
+2020-02-12 10:41:25
+[125.1=
+66.97.142][11][c3sr20igqq6i4a7tan4rsr3kvj][info][application]
+$_GET =3D [=
+
+    'r' =3D> 'data-penerimaan-bank/view'
+    'id' =3D> '1'
+]
+
+$_=
+POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend=
+' =3D> 'c3sr20igqq6i4a7tan4rsr3kvj'
+    '_csrf-backend' =3D>
+'6ee640dd8=
+6326f5e3b97d3379719b23f2dcd2bac2f445928ff36a6f6b4da3075a:2:{i:0;s:13:\"_csr=
+f-backend\";i:1;s:32:\"SxPi6ZOuvX-ESLyABedgzpX6e-VPCt1q\";}'
+]
+
+$_SES=
+SION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/i=
+ndex.php'
+    'user_role' =3D> [
+        0 =3D> 'KABUPATEN'
+        1=
+ =3D> 'KECAMATAN'
+        2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADM=
+INISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 2
+      =
+  1 =3D> 3
+        2 =3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D> =
+11
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../et=
+c/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQ=
+UESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/=
+sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =
+=3D> '0'
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_U=
+RI' =3D>
+'/backend/web/index.php?r=3Ddata-penerimaan-bank%2Fview&id=3D1'=
+
+    'QUERY_STRING' =3D> 'r=3Ddata-penerimaan-bank%2Fview&id=3D1'
+    '=
+REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'G=
+ATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '50913'
+    'SC=
+RIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/index.php'
+ =
+   'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =
+=3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQU=
+EST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_ht=
+ml'
+    'REMOTE_ADDR' =3D> '125.166.97.142'
+    'SERVER_PORT' =3D> '80'=
+
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijaksa.=
+com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =
+=3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dc3sr20igqq6i4a7tan4rsr=
+3kvj;
+_csrf-backend=3D6ee640dd86326f5e3b97d3379719b23f2dcd2bac2f445928ff3=
+6a6f6b4da3075a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A=
+32%3A%22SxPi6ZOuvX-ESLyABedgzpX6e-VPCt1q%22%3B%7D'
+    'HTTP_ACCEPT_LANGU=
+AGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_EN=
+CODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://sijaksa.co=
+m/backend/web/index.php?r=3Ddata-penerimaan-bank/update&id=3D1'
+    'HTTP=
+_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,im=
+age/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'=
+
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+=
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130
+Safari/537.36=
+'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_DNT' =3D> '1'=
+
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_CONNECTION' =3D>=
+ 'close'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'SCRIPT_URI' =3D> 'http=
+://sijaksa.com/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web=
+/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/back=
+end/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1581478885.5854
+    'R=
+EQUEST_TIME' =3D> 1581478885
+]

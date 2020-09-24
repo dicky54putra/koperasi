@@ -1,0 +1,464 @@
+Message-ID: <eaefbec1b80d021ca0ae34b80c310599@cvajm.com>
+Date: Mon, 30 Dec 2019 10:37:14 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-12-30 10:37:14
+[36.92.48.63][12][egn73lc5ncaltuqsj2l3e1ope3][error][=
+yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity const=
+raint violation: 1052
+Column 'id_jabatan' in where clause is ambiguous in=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+=
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Co=
+mmand.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalEx=
+ecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn=
+', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php=
+(463):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('=
+COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('C=
+OUNT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count(=
+'*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/Ba=
+seDataProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()=
+
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridVie=
+w.php(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvaj=
+m/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kar=
+tik\grid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#1=
+1 /home/cvajm/public_html/cvajm/backend/views/driver/index.php(33):
+yii\b=
+ase\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#13
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\=
+View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#14=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+=
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(backend\con=
+trollers\DriverController))
+#15
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Controller.php(384):
+yii\base\View->render('index', Array=
+,
+Object(backend\controllers\DriverController))
+#16
+/home/cvajm/publi=
+c_html/cvajm/backend/controllers/DriverController.php(55):
+yii\base\Contr=
+oller->render('index', Array)
+#17 [internal function]:
+backend\controll=
+ers\DriverController->actionIndex()
+#18
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array,=
+ Array)
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Cont=
+roller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\b=
+ase\Controller->runAction('', Array)
+#21
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction(=
+'driver', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\=
+web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/index.php(22)=
+:
+yii\base\Application->run()
+#24 {main}
+
+Next yii\db\IntegrityExce=
+ption: SQLSTATE[23000]: Integrity constraint
+violation: 1052 Column 'id_j=
+abatan' in where clause is ambiguous
+The SQL being executed was: SELECT C=
+OUNT(*) FROM `karyawan` LEFT JOIN
+`sts` ON `karyawan`.`id_sts` =3D `sts`.=
+`id_sts` LEFT JOIN `jabatan` ON
+`karyawan`.`id_jabatan` =3D `jabatan`.`id=
+_jabatan` LEFT JOIN `grade` ON
+`karyawan`.`id_grade` =3D `grade`.`id_grad=
+e` LEFT JOIN `lokasi_kerja` ON
+`karyawan`.`id_lokasi_kerja` =3D `lokasi_k=
+erja`.`id_lokasi_kerja` LEFT
+JOIN `kota` ON `karyawan`.`id_kota` =3D `kot=
+a`.`id_kota` WHERE (`status`
+!=3D 5) AND (`status` !=3D 7) AND (karyawan.=
+id_jabatan in
+(37,38,39,40,41,42,43,63)) AND (`id_jabatan`=3D'DUMP') AND=
+
+(`jabatan`.`jabatan` LIKE '%DUMP%') in
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->co=
+nvertException(Object(PDOException), 'SELECT
+COUNT(*)...')
+#1
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\C=
+ommand->internalExecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInt=
+ernal('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/db/Query.php(463):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Qu=
+ery->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQue=
+ry->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/p=
+ublic_html/cvajm/vendor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yi=
+i\db\Query->count('*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/data/BaseDataProvider.php(169):
+yii\data\ActiveDataProvider->p=
+repareTotalCount()
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii=
+2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider->getTotalCount()=
+
+#9
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridVie=
+w.php(1163):
+kartik\grid\GridView->initToggleData()
+#10
+/home/cvajm/p=
+ublic_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\Gr=
+idView->run()
+#11 /home/cvajm/public_html/cvajm/backend/views/driver/inde=
+x.php(33):
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub..=
+.')
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php=
+(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=
+=3D"s...')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/V=
+iew.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Ob=
+ject(backend\controllers\DriverController))
+#15
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->rende=
+r('index', Array,
+Object(backend\controllers\DriverController))
+#16
+/=
+home/cvajm/public_html/cvajm/backend/controllers/DriverController.php(55):=
+
+yii\base\Controller->render('index', Array)
+#17 [internal function]:=
+
+backend\controllers\DriverController->actionIndex()
+#18
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_use=
+r_func_array(Array, Array)
+#19
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(=
+Array)
+#20
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Modul=
+e.php(528):
+yii\base\Controller->runAction('', Array)
+#21
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base=
+\Module->runAction('driver', Array)
+#22
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handle=
+Request(Object(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/backen=
+d/web/index.php(22):
+yii\base\Application->run()
+#24 {main}
+Additiona=
+l Information:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1052
+    [=
+2] =3D> Column 'id_jabatan' in where clause is ambiguous
+)
+
+2019-12-3=
+0 10:37:14
+[36.92.48.63][12][egn73lc5ncaltuqsj2l3e1ope3][info][applicatio=
+n] $_GET
+=3D [
+    'DriverSearch' =3D> [
+        'nrp' =3D> ''
+    =
+    'nik' =3D> ''
+        'nama' =3D> ''
+        'jenis_kelamin' =3D> '=
+'
+        'tempat_lahir' =3D> ''
+        'tanggal_lahir' =3D> ''
+    =
+    'alamat' =3D> ''
+        'id_kota' =3D> ''
+        'no_hp' =3D> ''=
+
+        'status_perkawinan' =3D> ''
+        'jumlah_anak' =3D> ''
+  =
+      'pendidikan_terakhir' =3D> ''
+        'golongan_darah' =3D> ''
+  =
+      'agama' =3D> ''
+        'id_badan_usaha' =3D> ''
+        'id_sts'=
+ =3D> ''
+        'id_jabatan' =3D> 'DUMP'
+        'id_lokasi_kerja' =3D=
+> ''
+        'npwp' =3D> ''
+        'bank' =3D> ''
+        'no_rek' =
+=3D> ''
+        'pemilik_rekening' =3D> ''
+        'bpjs_kt' =3D> ''
+=
+        'bpjs_ks' =3D> ''
+        'tanggal_masuk' =3D> ''
+        'tang=
+gal_keluar' =3D> ''
+        'status' =3D> ''
+    ]
+    'r' =3D> 'driv=
+er'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'a=
+dvanced-backend' =3D> 'egn73lc5ncaltuqsj2l3e1ope3'
+    '_csrf-backend' =
+=3D>
+'5490d4e13fe60869f1a90852558f6ac9bba157a4aa84d206aa92cc48db000b25a:2=
+:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"vz1xq_QHOP2rY7Qf6WkFbCfBujmruKt2\";=
+}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D=
+> '/cvajm/backend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> =
+'KEPALA HRD'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 15
+    =
+]
+    '__id' =3D> 12
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+=
+    'HOME' =3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/=
+index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?DriverS=
+earch%5Bnrp%5D=3D&DriverSearch%5Bnik%5D=3D&DriverSearch%5Bnama%5D=3D&Driver=
+Search%5Bjenis_kelamin%5D=3D&DriverSearch%5Btempat_lahir%5D=3D&DriverSearch=
+%5Btanggal_lahir%5D=3D&DriverSearch%5Balamat%5D=3D&DriverSearch%5Bid_kota%5=
+D=3D&DriverSearch%5Bno_hp%5D=3D&DriverSearch%5Bstatus_perkawinan%5D=3D&Driv=
+erSearch%5Bjumlah_anak%5D=3D&DriverSearch%5Bpendidikan_terakhir%5D=3D&Drive=
+rSearch%5Bgolongan_darah%5D=3D&DriverSearch%5Bagama%5D=3D&DriverSearch%5Bid=
+_badan_usaha%5D=3D&DriverSearch%5Bid_sts%5D=3D&DriverSearch%5Bid_jabatan%5D=
+=3DDUMP&DriverSearch%5Bid_lokasi_kerja%5D=3D&DriverSearch%5Bnpwp%5D=3D&Driv=
+erSearch%5Bbank%5D=3D&DriverSearch%5Bno_rek%5D=3D&DriverSearch%5Bpemilik_re=
+kening%5D=3D&DriverSearch%5Bbpjs_kt%5D=3D&DriverSearch%5Bbpjs_ks%5D=3D&Driv=
+erSearch%5Btanggal_masuk%5D=3D&DriverSearch%5Btanggal_keluar%5D=3D&DriverSe=
+arch%5Bstatus%5D=3D&r=3Ddriver'
+    'QUERY_STRING' =3D>
+'DriverSearch%5=
+Bnrp%5D=3D&DriverSearch%5Bnik%5D=3D&DriverSearch%5Bnama%5D=3D&DriverSearch%=
+5Bjenis_kelamin%5D=3D&DriverSearch%5Btempat_lahir%5D=3D&DriverSearch%5Btang=
+gal_lahir%5D=3D&DriverSearch%5Balamat%5D=3D&DriverSearch%5Bid_kota%5D=3D&Dr=
+iverSearch%5Bno_hp%5D=3D&DriverSearch%5Bstatus_perkawinan%5D=3D&DriverSearc=
+h%5Bjumlah_anak%5D=3D&DriverSearch%5Bpendidikan_terakhir%5D=3D&DriverSearch=
+%5Bgolongan_darah%5D=3D&DriverSearch%5Bagama%5D=3D&DriverSearch%5Bid_badan_=
+usaha%5D=3D&DriverSearch%5Bid_sts%5D=3D&DriverSearch%5Bid_jabatan%5D=3DDUMP=
+&DriverSearch%5Bid_lokasi_kerja%5D=3D&DriverSearch%5Bnpwp%5D=3D&DriverSearc=
+h%5Bbank%5D=3D&DriverSearch%5Bno_rek%5D=3D&DriverSearch%5Bpemilik_rekening%=
+5D=3D&DriverSearch%5Bbpjs_kt%5D=3D&DriverSearch%5Bbpjs_ks%5D=3D&DriverSearc=
+h%5Btanggal_masuk%5D=3D&DriverSearch%5Btanggal_keluar%5D=3D&DriverSearch%5B=
+status%5D=3D&r=3Ddriver'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PR=
+OTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REM=
+OTE_PORT' =3D> '55866'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_h=
+tml/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address giv=
+en]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CO=
+NTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_RO=
+OT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '36.92.48.63'=
+
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+=
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4=
+.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'PATH' =3D>
+'/usr/local/sbin:=
+/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_COOKIE' =3D> 'adv=
+anced-backend=3Degn73lc5ncaltuqsj2l3e1ope3;
+_csrf-backend=3D5490d4e13fe60=
+869f1a90852558f6ac9bba157a4aa84d206aa92cc48db000b25a%3A2%3A%7Bi%3A0%3Bs%3A1=
+3%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22vz1xq_QHOP2rY7Qf6WkFbCfBujmru=
+Kt2%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=
+=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    =
+'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/index.php?r=3Ddri=
+ver'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,applicatio=
+n/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange=
+;v=3Db3;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 6.1)=
+
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88
+Safari/537.=
+36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CONNECTION'=
+ =3D> 'keep-alive'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepal=
+ive' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/i=
+ndex.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FCG=
+I_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.ph=
+p'
+    'REQUEST_TIME_FLOAT' =3D> 1577673434.769
+    'REQUEST_TIME' =3D>=
+ 1577673434
+]

@@ -1,0 +1,322 @@
+Message-ID: <f6f41017c1ff2ce0d03f86d9e5653250@sijaksa.online>
+Date: Mon, 09 Mar 2020 16:13:01 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-03-09 16:13:01
+[180.246.82.199][1101][af0607eaf446d360461f4dbe86ce77=
+87][error][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not fo=
+und: 1054 Unknown column
+'id_daftar_penganggaran_pembiayaan_satu' in 'fie=
+ld list' in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:=
+1290
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/C=
+ommand.php(1290):
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/=
+vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute=
+('SELECT COUNT(id...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/d=
+b/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3=
+
+/home/sijaksa/public_html/backend/controllers/DaftarPenganggaranPembiaya=
+anSatuController.php(90):
+yii\db\Command->queryScalar()
+#4 [internal fu=
+nction]:
+backend\controllers\DaftarPenganggaranPembiayaanSatuController->=
+actionCreate()
+#5
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/In=
+lineAction.php(57):
+call_user_func_array(Array, Array)
+#6
+/home/sijak=
+sa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inl=
+ineAction->runWithParams(Array)
+#7 /home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('create', Ar=
+ray)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.p=
+hp(103):
+yii\base\Module->runAction('daftar-pengangg...', Array)
+#9
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+y=
+ii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /home/sija=
+ksa/public_html/backend/web/index.php(22):
+yii\base\Application->run()
+=
+#11 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 1=
+054 Unknown
+column 'id_daftar_penganggaran_pembiayaan_satu' in 'field lis=
+t'
+The SQL being executed was: SELECT
+COUNT(id_daftar_penganggaran_pemb=
+iayaan_satu)
+                            FROM daftar_penganggaran_pendapa=
+tan
+                            WHERE id_akun =3D '6'
+                 =
+           AND id_kel =3D '10'
+                            AND id_jenis =
+=3D '39'
+                            AND id_oby =3D '207'
+             =
+               AND id_desa =3D '398'
+                             in
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace=
+:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):=
+
+yii\db\Schema->convertException(Object(PDOException), 'SELECT
+COUNT(id=
+...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(115=
+8):
+yii\db\Command->internalExecute('SELECT COUNT(id...')
+#2 /home/sija=
+ksa/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->=
+queryInternal('fetchColumn', 0)
+#3
+/home/sijaksa/public_html/backend/co=
+ntrollers/DaftarPenganggaranPembiayaanSatuController.php(90):
+yii\db\Comm=
+and->queryScalar()
+#4 [internal function]:
+backend\controllers\DaftarPe=
+nganggaranPembiayaanSatuController->actionCreate()
+#5
+/home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_ar=
+ray(Array, Array)
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base=
+/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#7 /h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\bas=
+e\Controller->runAction('create', Array)
+#8
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('=
+daftar-pengangg...', Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Objec=
+t(yii\web\Request))
+#10 /home/sijaksa/public_html/backend/web/index.php(2=
+2):
+yii\base\Application->run()
+#11 {main}
+Additional Information:
+=
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown c=
+olumn 'id_daftar_penganggaran_pembiayaan_satu' in
+'field list'
+)
+
+2=
+020-03-09 16:13:01
+[180.246.82.199][1101][af0607eaf446d360461f4dbe86ce778=
+7][info][application]
+$_GET =3D [
+    'r' =3D> 'daftar-penganggaran-pem=
+biayaan-satu/create'
+]
+
+$_POST =3D [
+    '_csrf-backend' =3D>
+'-Z=
+I9buQ-_EIq6d99ttwGgjl1tllMmArjNv7CuvyFPAatwgtWoQ2QAETYsifftW7mUirdaAL5OqZTx=
+rLwt_d4Sw=3D=3D'
+    'DaftarPenganggaranPembiayaanSatu' =3D> [
+        =
+'id_akun' =3D> '6'
+        'id_kel' =3D> '10'
+        'id_jenis' =3D> '=
+39'
+        'id_oby' =3D> '207'
+    ]
+]
+
+$_FILES =3D []
+
+$_CO=
+OKIE =3D [
+    'timezone' =3D> 'Asia/Jakarta'
+    'cpsession' =3D>
+'s=
+ijaksa:xm8IzWeRf8MwauTK,b26e658cc55d81b18e1cd8d71cfdf49c'
+    'advanced-b=
+ackend' =3D> 'af0607eaf446d360461f4dbe86ce7787'
+    '_csrf-backend' =3D>=
+
+'c76a78b502982fa388caf5551c6bac0f4980572c31c360c08afe3e5d69a507c1a:2:{i:=
+0;s:13:\"_csrf-backend\";i:1;s:32:\"TP68E3lBn1mZiihdk_k1Na0Ee8pJKrDM\";}'=
+
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> =
+'/backend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'KELURAH=
+AN'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 4
+    ]
+    '_=
+_id' =3D> 1101
+]
+
+$_SERVER =3D [
+    'PATH' =3D> '/usr/local/bin:/u=
+sr/bin:/bin'
+    'TZ' =3D> 'UTC'
+    'REDIRECT_HANDLER' =3D> 'applicati=
+on/x-httpd-ea-php72'
+    'REDIRECT_STATUS' =3D> '200'
+    'UNIQUE_ID' =
+=3D> 'XmYInYEgVJhR7kSBwQN9QAAAAIQ'
+    'SCRIPT_URL' =3D> '/backend/web/in=
+dex.php'
+    'SCRIPT_URI' =3D> 'https://sijaksa.online/backend/web/index.=
+php'
+    'HTTPS' =3D> 'on'
+    'SSL_TLS_SNI' =3D> 'sijaksa.online'
+  =
+  'HTTP_HOST' =3D> 'sijaksa.online'
+    'HTTP_CONNECTION' =3D> 'keep-aliv=
+e'
+    'CONTENT_LENGTH' =3D> '301'
+    'HTTP_CACHE_CONTROL' =3D> 'max-a=
+ge=3D0'
+    'HTTP_ORIGIN' =3D> 'https://sijaksa.online'
+    'HTTP_UPGRA=
+DE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_DNT' =3D> '1'
+    'CONTENT_TYP=
+E' =3D> 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' =3D> 'M=
+ozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like =
+Gecko) Chrome/80.0.3987.132
+Safari/537.36'
+    'HTTP_SEC_FETCH_DEST' =
+=3D> 'document'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml=
+,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/sign=
+ed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_SEC_FETCH_SITE' =3D> 'same-origin'=
+
+    'HTTP_SEC_FETCH_MODE' =3D> 'navigate'
+    'HTTP_SEC_FETCH_USER' =
+=3D> '?1'
+    'HTTP_REFERER' =3D>
+'https://sijaksa.online/backend/web/i=
+ndex.php?r=3Ddaftar-penganggaran-pembiayaan-satu%2Fcreate'
+    'HTTP_ACCE=
+PT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id=
+-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_COOKIE' =3D> 'timezone=
+=3DAsia/Jakarta;
+cpsession=3Dsijaksa%3axm8IzWeRf8MwauTK%2cb26e658cc55d81b=
+18e1cd8d71cfdf49c;
+advanced-backend=3Daf0607eaf446d360461f4dbe86ce7787;=
+
+_csrf-backend=3Dc76a78b502982fa388caf5551c6bac0f4980572c31c360c08afe3e5d=
+69a507c1a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A=
+%22TP68E3lBn1mZiihdk_k1Na0Ee8pJKrDM%22%3B%7D'
+    'HTTP_X_HTTPS' =3D> '1'=
+
+    'SERVER_SIGNATURE' =3D> ''
+    'SERVER_SOFTWARE' =3D> 'Apache'
+ =
+   'SERVER_NAME' =3D> 'sijaksa.online'
+    'SERVER_ADDR' =3D> '103.247.11=
+.153'
+    'SERVER_PORT' =3D> '443'
+    'REMOTE_ADDR' =3D> '180.246.82.1=
+99'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REQUEST_S=
+CHEME' =3D> 'https'
+    'CONTEXT_PREFIX' =3D> '/cgi-sys'
+    'CONTEXT_D=
+OCUMENT_ROOT' =3D> '/usr/local/cpanel/cgi-sys/'
+    'SERVER_ADMIN' =3D> '=
+webmaster@sijaksa.online'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/pub=
+lic_html/backend/web/index.php'
+    'REMOTE_PORT' =3D> '52901'
+    'RED=
+IRECT_URL' =3D> '/backend/web/index.php'
+    'REDIRECT_QUERY_STRING' =3D>=
+
+'r=3Ddaftar-penganggaran-pembiayaan-satu%2Fcreate'
+    'GATEWAY_INTERF=
+ACE' =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_=
+METHOD' =3D> 'POST'
+    'QUERY_STRING' =3D> 'r=3Ddaftar-penganggaran-pemb=
+iayaan-satu%2Fcreate'
+    'REQUEST_URI' =3D>
+'/backend/web/index.php?r=
+=3Ddaftar-penganggaran-pembiayaan-satu%2Fcreate'
+    'SCRIPT_NAME' =3D> '=
+/backend/web/index.php'
+    'ORIG_SCRIPT_FILENAME' =3D> '/usr/local/cpane=
+l/cgi-sys/ea-php72'
+    'ORIG_PATH_INFO' =3D> '/backend/web/index.php'
+=
+    'ORIG_PATH_TRANSLATED' =3D>
+'/home/sijaksa/public_html/backend/web/in=
+dex.php'
+    'ORIG_SCRIPT_NAME' =3D> '/cgi-sys/ea-php72'
+    'PHP_SELF'=
+ =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1583745181.5=
+912
+    'REQUEST_TIME' =3D> 1583745181
+    'argv' =3D> [
+        0 =
+=3D> 'r=3Ddaftar-penganggaran-pembiayaan-satu%2Fcreate'
+    ]
+    'argc=
+' =3D> 1
+]

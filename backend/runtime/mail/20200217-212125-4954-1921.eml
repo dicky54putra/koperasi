@@ -1,0 +1,405 @@
+Message-ID: <60de444abad015d59ae3ad8308f7648d@sijaksa.com>
+Date: Mon, 17 Feb 2020 21:21:25 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-17 21:21:25
+[114.5.244.142][14][2gbu879vo0uc0ka7ma8bus81kt][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'anggaran_lanjutan_kegiatan' in 'where clause' in
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:=
+
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):=
+
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(*)=
+...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(425=
+):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3 /home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command->queryScal=
+ar()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.ph=
+p(352):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Connection))=
+
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(347):
+yi=
+i\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/data/ActiveDataProvider.ph=
+p(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data\ActiveDataPro=
+vider->prepareTotalCount()
+#8
+/home/sijaksa/public_html/vendor/kartik-v=
+/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider->getTotalCou=
+nt()
+#9
+/home/sijaksa/public_html/vendor/kartik-v/yii2-grid/src/GridVie=
+w.php(1163):
+kartik\grid\GridView->initToggleData()
+#10
+/home/sijaksa=
+/public_html/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridVi=
+ew->run()
+#11
+/home/sijaksa/public_html/backend/views/anggaran-lanjutan=
+-rak/index.php(25):
+yii\base\Widget::widget(Array)
+#12 /home/sijaksa/pu=
+blic_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/=
+p...')
+#13 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(25=
+7):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D=
+"s...')
+#14 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(1=
+56):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(back=
+end\controllers\AnggaranLanjutanRakController))
+#15
+/home/sijaksa/publi=
+c_html/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->rende=
+r('index', Array,
+Object(backend\controllers\AnggaranLanjutanRakControlle=
+r))
+#16
+/home/sijaksa/public_html/backend/controllers/AnggaranLanjutanR=
+akController.php(43):
+yii\base\Controller->render('index', Array)
+#17 [=
+internal function]:
+backend\controllers\AnggaranLanjutanRakController->ac=
+tionIndex()
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Inli=
+neAction.php(57):
+call_user_func_array(Array, Array)
+#19
+/home/sijaks=
+a/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inli=
+neAction->runWithParams(Array)
+#20
+/home/sijaksa/public_html/vendor/yii=
+soft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('', Array)=
+
+#21
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(=
+103):
+yii\base\Module->runAction('anggaran-lanjut...', Array)
+#22
+/ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii=
+\web\Application->handleRequest(Object(yii\web\Request))
+#23 /home/sijaks=
+a/public_html/backend/web/index.php(22):
+yii\base\Application->run()
+#2=
+4 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 105=
+4 Unknown
+column 'anggaran_lanjutan_kegiatan' in 'where clause'
+The SQL=
+ being executed was: SELECT COUNT(*) FROM
+`anggaran_lanjutan_rak` LEFT JO=
+IN `anggaran_lanjutan_kegiatan` ON
+`anggaran_lanjutan_rak`.`id_anggaran_l=
+anjutan_kegiatan` =3D
+`anggaran_lanjutan_kegiatan`.`id_anggaran_lanjutan_=
+kegiatan` WHERE
+(`bulan_rencana`=3D'12') AND (`anggaran_lanjutan_kegiatan=
+` LIKE
+'%gaji%') in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Sc=
+hema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(PDOExcep=
+tion), 'SELECT
+COUNT(*)...')
+#1 /home/sijaksa/public_html/vendor/yiisof=
+t/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT COUN=
+T(*)...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php=
+(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3 /home/sijaksa=
+/public_html/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command->query=
+Scalar()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuer=
+y.php(352):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Connectio=
+n))
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(347):=
+
+yii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connection))=
+
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/data/ActiveDataProvid=
+er.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/sijaksa/public_h=
+tml/vendor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data\ActiveDa=
+taProvider->prepareTotalCount()
+#8
+/home/sijaksa/public_html/vendor/kar=
+tik-v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider->getTot=
+alCount()
+#9
+/home/sijaksa/public_html/vendor/kartik-v/yii2-grid/src/Gr=
+idView.php(1163):
+kartik\grid\GridView->initToggleData()
+#10
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\G=
+ridView->run()
+#11
+/home/sijaksa/public_html/backend/views/anggaran-lan=
+jutan-rak/index.php(25):
+yii\base\Widget::widget(Array)
+#12 /home/sijak=
+sa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sij=
+aksa/p...')
+#13 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.p=
+hp(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+cla=
+ss=3D"s...')
+#14 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.=
+php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object=
+(backend\controllers\AnggaranLanjutanRakController))
+#15
+/home/sijaksa/=
+public_html/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->=
+render('index', Array,
+Object(backend\controllers\AnggaranLanjutanRakCont=
+roller))
+#16
+/home/sijaksa/public_html/backend/controllers/AnggaranLanj=
+utanRakController.php(43):
+yii\base\Controller->render('index', Array)
+=
+#17 [internal function]:
+backend\controllers\AnggaranLanjutanRakControlle=
+r->actionIndex()
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base=
+/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#19
+/home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base=
+\InlineAction->runWithParams(Array)
+#20
+/home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('', A=
+rray)
+#21
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application=
+.php(103):
+yii\base\Module->runAction('anggaran-lanjut...', Array)
+#22=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):=
+
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /home/=
+sijaksa/public_html/backend/web/index.php(22):
+yii\base\Application->run(=
+)
+#24 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22=
+
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'anggaran_lanjutan_kegia=
+tan' in 'where
+clause'
+)
+
+2020-02-17 21:21:25
+[114.5.244.142][14]=
+[2gbu879vo0uc0ka7ma8bus81kt][info][application]
+$_GET =3D [
+    'Anggar=
+anLanjutanRakSearch' =3D> [
+        'id_anggaran_lanjutan_kegiatan' =3D> =
+'gaji'
+        'bulan_rencana' =3D> '12'
+        'jumlah_penarikan' =3D=
+> ''
+    ]
+    'r' =3D> 'anggaran-lanjutan-rak'
+]
+
+$_POST =3D []=
+
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '2gb=
+u879vo0uc0ka7ma8bus81kt'
+    '_csrf-backend' =3D>
+'b2709634bca26e33bd16=
+98742dd143022922be242a9e84acd46f274e85a7d8cba:2:{i:0;s:13:\"_csrf-backend\"=
+;i:1;s:32:\"7vNsNk3osYl9DahK3Ye0nJPJ4gMlLMzp\";}'
+]
+
+$_SESSION =3D [=
+
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'=
+
+    'user_role' =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D> 'KE=
+CAMATAN'
+        2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATO=
+R'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> =
+3
+        2 =3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 14
+]
+=
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'=
+
+    'PWD' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =
+=3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/u=
+sr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'=
+
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>=
+
+'/backend/web/index.php?AnggaranLanjutanRakSearch%5Bid_anggaran_lanjutan=
+_kegiatan%5D=3Dgaji&AnggaranLanjutanRakSearch%5Bbulan_rencana%5D=3D12&Angga=
+ranLanjutanRakSearch%5Bjumlah_penarikan%5D=3D&r=3Danggaran-lanjutan-rak'
+=
+    'QUERY_STRING' =3D>
+'AnggaranLanjutanRakSearch%5Bid_anggaran_lanjutan=
+_kegiatan%5D=3Dgaji&AnggaranLanjutanRakSearch%5Bbulan_rencana%5D=3D12&Angga=
+ranLanjutanRakSearch%5Bjumlah_penarikan%5D=3D&r=3Danggaran-lanjutan-rak'
+=
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+ =
+   'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '65102'
+  =
+  'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/index.php=
+'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_RO=
+OT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    '=
+REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/publi=
+c_html'
+    'REMOTE_ADDR' =3D> '114.5.244.142'
+    'SERVER_PORT' =3D> '=
+80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijak=
+sa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATUR=
+E' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D2gbu879vo0uc0ka7ma8=
+bus81kt;
+_csrf-backend=3Db2709634bca26e33bd1698742dd143022922be242a9e84ac=
+d46f274e85a7d8cba%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs=
+%3A32%3A%227vNsNk3osYl9DahK3Ye0nJPJ4gMlLMzp%22%3B%7D'
+    'HTTP_ACCEPT_LA=
+NGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT=
+_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://sijaksa=
+.com/backend/web/index.php?r=3Danggaran-lanjutan-rak'
+    'HTTP_ACCEPT' =
+=3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,=
+image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'H=
+TTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebK=
+it/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130
+Safari/537.36'
+    '=
+HTTP_DNT' =3D> '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'H=
+TTP_CONNECTION' =3D> 'close'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'SC=
+RIPT_URI' =3D> 'http://sijaksa.com/backend/web/index.php'
+    'SCRIPT_URL=
+' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'P=
+HP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1581=
+949285.4576
+    'REQUEST_TIME' =3D> 1581949285
+]

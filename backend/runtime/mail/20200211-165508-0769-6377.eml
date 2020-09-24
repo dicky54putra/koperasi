@@ -1,0 +1,324 @@
+Message-ID: <5329122da07623eebd97f98b2d6dcbd5@sijaksa.com>
+Date: Tue, 11 Feb 2020 16:55:08 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-11 16:55:08
+[125.166.97.142][3][hoanauee3tm956j4utmieq68u6][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'id_daftar_penganggaran_belanja' in 'where clause' in
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack tr=
+ace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290=
+):
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/=
+yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('\n           =
+   ...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(=
+386):
+yii\db\Command->queryInternal('')
+#3
+/home/sijaksa/public_html/=
+backend/views/daftar-penganggaran-belanja-detail/view.php(147):
+yii\db\Co=
+mmand->query()
+#4 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View=
+.php(348):
+require('/home/sijaksa/p...')
+#5 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/hom=
+e/sijaksa/p...', '[<span
+class=3D"s...')
+#6 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/s=
+ijaksa/p...', Array,
+Object(backend\controllers\DaftarPenganggaranBelanja=
+DetailController))
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/bas=
+e/Controller.php(384):
+yii\base\View->render('view', Array,
+Object(back=
+end\controllers\DaftarPenganggaranBelanjaDetailController))
+#8
+/home/si=
+jaksa/public_html/backend/controllers/DaftarPenganggaranBelanjaDetailContro=
+ller.php(59):
+yii\base\Controller->render('view', Array)
+#9 [internal f=
+unction]:
+backend\controllers\DaftarPenganggaranBelanjaDetailController->=
+actionView('2')
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/=
+InlineAction.php(57):
+call_user_func_array(Array, Array)
+#11
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\=
+InlineAction->runWithParams(Array)
+#12
+/home/sijaksa/public_html/vendor=
+/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('view'=
+, Array)
+#13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Applicat=
+ion.php(103):
+yii\base\Module->runAction('daftar-pengangg...', Array)
+#=
+14
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386=
+):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 /hom=
+e/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Application->ru=
+n()
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not fo=
+und: 1054 Unknown
+column 'id_daftar_penganggaran_belanja' in 'where claus=
+e'
+The SQL being executed was:=20
+                SELECT *
+            =
+    FROM daftar_penganggaran_belanja_detail_detail
+                LEFT J=
+OIN ref_sumberdana ON ref_sumberdana.id_sdana =3D
+daftar_penganggaran_bel=
+anja_detail.id_sdana
+                WHERE id_daftar_penganggaran_belanja=
+ =3D '1'
+                 in
+/home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/db/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/=
+yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object=
+(PDOException), '\n            =20
+...')
+#1 /home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('\=
+n              ...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/=
+Command.php(386):
+yii\db\Command->queryInternal('')
+#3
+/home/sijaksa/=
+public_html/backend/views/daftar-penganggaran-belanja-detail/view.php(147):=
+
+yii\db\Command->query()
+#4 /home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/base/View.php(348):
+require('/home/sijaksa/p...')
+#5 /home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderP=
+hpFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#6 /home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderF=
+ile('/home/sijaksa/p...', Array,
+Object(backend\controllers\DaftarPengang=
+garanBelanjaDetailController))
+#7
+/home/sijaksa/public_html/vendor/yiis=
+oft/yii2/base/Controller.php(384):
+yii\base\View->render('view', Array,=
+
+Object(backend\controllers\DaftarPenganggaranBelanjaDetailController))=
+
+#8
+/home/sijaksa/public_html/backend/controllers/DaftarPenganggaranBel=
+anjaDetailController.php(59):
+yii\base\Controller->render('view', Array)=
+
+#9 [internal function]:
+backend\controllers\DaftarPenganggaranBelanjaD=
+etailController->actionView('2')
+#10
+/home/sijaksa/public_html/vendor/y=
+iisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(=
+157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller-=
+>runAction('view', Array)
+#13
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/web/Application.php(103):
+yii\base\Module->runAction('daftar-pengang=
+g...', Array)
+#14
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Ap=
+plication.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Req=
+uest))
+#15 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\bas=
+e\Application->run()
+#16 {main}
+Additional Information:
+Array
+(
+ =
+   [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'id_daf=
+tar_penganggaran_belanja' in 'where
+clause'
+)
+
+2020-02-11 16:55:08=
+
+[125.166.97.142][3][hoanauee3tm956j4utmieq68u6][info][application]
+$_G=
+ET =3D [
+    'r' =3D> 'daftar-penganggaran-belanja-detail/view'
+    'id=
+' =3D> '2'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [=
+
+    'advanced-backend' =3D> 'hoanauee3tm956j4utmieq68u6'
+    '_csrf-ba=
+ckend' =3D>
+'a871ff953249ee62af4ab33e991df662cbee682fb276d53ce5b02f8cff10=
+0ab1a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"x4Y3vufWE-itMMPWMjX36D15DA7q=
+MHDV\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnU=
+rl' =3D> '/backend/web/index.php'
+    'user_role' =3D> [
+        0 =3D>=
+ 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0 =3D=
+> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> =
+'/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi=
+-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+ =
+   'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/=
+bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'HTTP_CONNECTION' =3D> 'close'=
+
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>=
+
+'/backend/web/index.php?r=3Ddaftar-penganggaran-belanja-detail%2Fview&id=
+=3D2'
+    'QUERY_STRING' =3D>
+'r=3Ddaftar-penganggaran-belanja-detail%2=
+Fview&id=3D2'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D=
+> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =
+=3D> '34643'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/back=
+end/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CO=
+NTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX=
+' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/h=
+ome/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '125.166.97.142'
+    'S=
+ERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER=
+_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+  =
+  'SERVER_SIGNATURE' =3D> ''
+    'HTTP_VIA' =3D> '1.1 25.25.25.1 (Mikroti=
+k HttpProxy)'
+    'HTTP_X_FORWARDED_FOR' =3D> '25.25.25.18'
+    'HTTP_X=
+_PROXY_ID' =3D> '345025106'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dho=
+anauee3tm956j4utmieq68u6;
+_csrf-backend=3Da871ff953249ee62af4ab33e991df66=
+2cbee682fb276d53ce5b02f8cff100ab1a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backe=
+nd%22%3Bi%3A1%3Bs%3A32%3A%22x4Y3vufWE-itMMPWMjX36D15DA7qMHDV%22%3B%7D'
+  =
+  'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'=
+
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D=
+>
+'http://sijaksa.com/backend/web/index.php?r=3Ddaftar-penganggaran-belan=
+ja%2Fview&id=3D1'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+x=
+ml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/si=
+gned-exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Wi=
+ndows NT 6.1; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/8=
+0.0.3987.87
+Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1=
+'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_HOST' =3D> 'sij=
+aksa.com'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/web/index.php=
+'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> '=
+RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TI=
+ME_FLOAT' =3D> 1581414908.0346
+    'REQUEST_TIME' =3D> 1581414908
+]

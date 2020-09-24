@@ -1,0 +1,287 @@
+Message-ID: <cf07dce9e8ae8fe7ca205d45b2cff880@www.sijaksa.com>
+Date: Thu, 13 Feb 2020 16:43:27 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-13 16:43:27
+[125.166.97.142][10][uqijkikl3qpkgbkk9t56p247vc][erro=
+r][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 105=
+4 Unknown column
+'tgl_spp' in 'where clause' in
+/home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->exe=
+cute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(11=
+58):
+yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2 /home/sij=
+aksa/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command-=
+>queryInternal('fetchColumn', 0)
+#3 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/Query.php(463):
+yii\db\Command->queryScalar()
+#4
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Que=
+ry->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#5 /home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->que=
+ryScalar('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/sijaksa/public=
+_html/backend/controllers/DataPencairanSppController.php(77):
+yii\db\Quer=
+y->count()
+#7 [internal function]:
+backend\controllers\DataPencairanSpp=
+Controller->actionCreate()
+#8
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#9=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):=
+
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runA=
+ction('create', Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii=
+2/web/Application.php(103):
+yii\base\Module->runAction('data-pencairan-..=
+.', Array)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Appli=
+cation.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Reques=
+t))
+#13 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\A=
+pplication->run()
+#14 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]:=
+ Column not found: 1054 Unknown
+column 'tgl_spp' in 'where clause'
+The =
+SQL being executed was: SELECT COUNT(*) FROM `data_pencairan_spp`
+WHERE (=
+(month(tgl_spp)=3D'2') AND (year(tgl_spp)=3D'2020')) AND
+(`id_desa`=3D'18=
+') in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+S=
+tack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.p=
+hp(1295):
+yii\db\Schema->convertException(Object(PDOException), 'SELECT=
+
+COUNT(*)...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Comm=
+and.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2=
+ /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\d=
+b\Command->queryInternal('fetchColumn', 0)
+#3 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command->queryScalar()
+#4=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.php(352):=
+
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#5 /h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\Act=
+iveQuery->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/s=
+ijaksa/public_html/backend/controllers/DataPencairanSppController.php(77):=
+
+yii\db\Query->count()
+#7 [internal function]:
+backend\controllers\Da=
+taPencairanSppController->actionCreate()
+#8
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array,=
+ Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controlle=
+r.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/sij=
+aksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Contr=
+oller->runAction('create', Array)
+#11
+/home/sijaksa/public_html/vendor/=
+yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('data-p=
+encairan-...', Array)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2=
+/base/Application.php(386):
+yii\web\Application->handleRequest(Object(yii=
+\web\Request))
+#13 /home/sijaksa/public_html/backend/web/index.php(22):=
+
+yii\base\Application->run()
+#14 {main}
+Additional Information:
+Arr=
+ay
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown colu=
+mn 'tgl_spp' in 'where clause'
+)
+
+2020-02-13 16:43:26
+[125.166.97.1=
+42][10][uqijkikl3qpkgbkk9t56p247vc][info][application]
+$_GET =3D [
+    =
+'r' =3D> 'data-pencairan-spp/create'
+]
+
+$_POST =3D []
+
+$_FILES =
+=3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'uqijkikl3qpkgbkk9=
+t56p247vc'
+    '_csrf-backend' =3D>
+'a9010129ae3add245b8c1e25ba8938b4cd=
+78346b11d9171c92314fc8a7802f84a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"JC=
+qNZE2l_RvVlwh1HlGzJBPkKFGcEaDL\";}'
+]
+
+$_SESSION =3D [
+    '__flash=
+' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.php?r=3D'
+    'use=
+r_role' =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+=
+        2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]=
+
+    'user_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> 3
+      =
+  2 =3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 10
+]
+
+$_SERVE=
+R =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PW=
+D' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'=
+
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin=
+:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRI=
+PT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/backend=
+/web/index.php?r=3Ddata-pencairan-spp%2Fcreate'
+    'QUERY_STRING' =3D> '=
+r=3Ddata-pencairan-spp%2Fcreate'
+    'REQUEST_METHOD' =3D> 'GET'
+    'S=
+ERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+=
+    'REMOTE_PORT' =3D> '16906'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaks=
+a/public_html/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address=
+ given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+ =
+   'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUM=
+ENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '125.16=
+6.97.142'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.18=
+0.2'
+    'SERVER_NAME' =3D> 'www.sijaksa.com'
+    'SERVER_SOFTWARE' =3D=
+> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_CACHE_CONTRO=
+L' =3D> 'max-age=3D0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+   =
+ 'HTTP_COOKIE' =3D> 'advanced-backend=3Duqijkikl3qpkgbkk9t56p247vc;
+_csrf=
+-backend=3Da9010129ae3add245b8c1e25ba8938b4cd78346b11d9171c92314fc8a7802f84=
+a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22JCqNZ=
+E2l_RvVlwh1HlGzJBPkKFGcEaDL%22%3B%7D'
+    'HTTP_CONNECTION' =3D> 'close'=
+
+    'HTTP_REFERER' =3D>
+'http://www.sijaksa.com/backend/web/index.php?=
+r=3Ddata-pencairan-spp'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'=
+
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.5'
+    'HTTP_ACCEPT' =
+=3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,=
+*/*;q=3D0.8'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Wi=
+n64; x64;
+rv:72.0) Gecko/20100101 Firefox/72.0'
+    'HTTP_HOST' =3D> 'w=
+ww.sijaksa.com'
+    'SCRIPT_URI' =3D> 'http://www.sijaksa.com/backend/web=
+/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI_RO=
+LE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    '=
+REQUEST_TIME_FLOAT' =3D> 1581587006.9892
+    'REQUEST_TIME' =3D> 15815870=
+06
+]

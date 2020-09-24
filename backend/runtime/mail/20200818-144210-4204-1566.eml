@@ -1,0 +1,352 @@
+Message-ID: <a5d37aac1ffa43b9e1972406d031494d@localhost>
+Date: Tue, 18 Aug 2020 14:42:10 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-08-18 14:42:09
+[::1][3][n7l98da4ql1d94u88mbkdi43ba][error][yii\db\In=
+tegrityException]
+PDOException: SQLSTATE[23000]: Integrity constraint vio=
+lation: 1048
+Column 'id_produksi_bom' cannot be null in
+C:\xampp\htdocs=
+\accounting\vendor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0
+C=
+:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+PDOSt=
+atement->execute()
+#1
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db=
+\Command.php(1091):
+yii\db\Command->internalExecute('INSERT INTO `ak...')=
+
+#2 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Schema.php(433):
+=
+yii\db\Command->execute()
+#3
+C:\xampp\htdocs\accounting\vendor\yiisoft\=
+yii2\db\ActiveRecord.php(600):
+yii\db\Schema->insert('akt_produksi_bo...'=
+, Array)
+#4
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\ActiveRec=
+ord.php(566):
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+C:\xampp\h=
+tdocs\accounting\vendor\yiisoft\yii2\db\BaseActiveRecord.php(678):
+yii\db=
+\ActiveRecord->insert(false, NULL)
+#6
+C:\xampp\htdocs\accounting\backen=
+d\controllers\AktProduksiBomController.php(227):
+yii\db\BaseActiveRecord-=
+>save(false)
+#7 [internal function]:
+backend\controllers\AktProduksiBom=
+Controller->actionCreate()
+#8
+C:\xampp\htdocs\accounting\vendor\yiisoft=
+\yii2\base\InlineAction.php(57):
+call_user_func_array(Array, Array)
+#9=
+
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):=
+
+yii\base\InlineAction->runWithParams(Array)
+#10
+C:\xampp\htdocs\acco=
+unting\vendor\yiisoft\yii2\base\Module.php(528):
+yii\base\Controller->run=
+Action('create', Array)
+#11
+C:\xampp\htdocs\accounting\vendor\yiisoft\y=
+ii2\web\Application.php(103):
+yii\base\Module->runAction('akt-produksi-bo=
+...', Array)
+#12
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Ap=
+plication.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Req=
+uest))
+#13 C:\xampp\htdocs\accounting\backend\web\index.php(22):
+yii\ba=
+se\Application->run()
+#14 {main}
+
+Next yii\db\IntegrityException: SQL=
+STATE[23000]: Integrity constraint
+violation: 1048 Column 'id_produksi_bo=
+m' cannot be null
+The SQL being executed was: INSERT INTO `akt_produksi_b=
+om_detail_hp`
+(`id_produksi_bom`, `id_item_stok`, `qty`, `keterangan`) VA=
+LUES (NULL,
+1, 5, '') in
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2=
+\db\Schema.php:664
+Stack trace:
+#0
+C:\xampp\htdocs\accounting\vendor\=
+yiisoft\yii2\db\Command.php(1295):
+yii\db\Schema->convertException(Object=
+(PDOException), 'INSERT INTO
+`ak...')
+#1
+C:\xampp\htdocs\accounting\v=
+endor\yiisoft\yii2\db\Command.php(1091):
+yii\db\Command->internalExecute(=
+'INSERT INTO `ak...')
+#2 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\d=
+b\Schema.php(433):
+yii\db\Command->execute()
+#3
+C:\xampp\htdocs\accou=
+nting\vendor\yiisoft\yii2\db\ActiveRecord.php(600):
+yii\db\Schema->insert=
+('akt_produksi_bo...', Array)
+#4
+C:\xampp\htdocs\accounting\vendor\yiis=
+oft\yii2\db\ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInternal(NU=
+LL)
+#5
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\BaseActiveReco=
+rd.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+C:\xampp\htd=
+ocs\accounting\backend\controllers\AktProduksiBomController.php(227):
+yii=
+\db\BaseActiveRecord->save(false)
+#7 [internal function]:
+backend\contr=
+ollers\AktProduksiBomController->actionCreate()
+#8
+C:\xampp\htdocs\acco=
+unting\vendor\yiisoft\yii2\base\InlineAction.php(57):
+call_user_func_arra=
+y(Array, Array)
+#9
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\=
+Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#10
+=
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Module.php(528):
+yii\=
+base\Controller->runAction('create', Array)
+#11
+C:\xampp\htdocs\account=
+ing\vendor\yiisoft\yii2\web\Application.php(103):
+yii\base\Module->runAct=
+ion('akt-produksi-bo...', Array)
+#12
+C:\xampp\htdocs\accounting\vendor\=
+yiisoft\yii2\base\Application.php(386):
+yii\web\Application->handleReques=
+t(Object(yii\web\Request))
+#13 C:\xampp\htdocs\accounting\backend\web\ind=
+ex.php(22):
+yii\base\Application->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1048
+    [2] =3D> Column 'i=
+d_produksi_bom' cannot be null
+)
+
+2020-08-18 14:42:09
+[::1][3][n7l9=
+8da4ql1d94u88mbkdi43ba][info][application] $_GET =3D [
+    'r' =3D> 'akt-=
+produksi-bom/create'
+]
+
+$_POST =3D [
+    '_csrf-backend' =3D>
+'5l=
+Q7L6b-1h61AyF0iQWrYWkV8XOKdv_O-NjY5J028wicFW8WyIyaJoE7ey7aUu8vW3G4Hv4lnJbAj=
+ZylxQbCPw=3D=3D'
+    'AktProduksiBom' =3D> [
+        'no_produksi_bom' =
+=3D> 'PB2008001'
+        'tanggal' =3D> '2020-08-18'
+        'id_pegawa=
+i' =3D> '1'
+        'id_customer' =3D> '3'
+        'id_bom' =3D> '1'
+=
+        'tipe' =3D> '2'
+        'id_akun' =3D> '4'
+    ]
+]
+
+$_FIL=
+ES =3D []
+
+$_COOKIE =3D [
+    '_ga' =3D> 'GA1.1.1348291765.1597241895=
+'
+    'advanced-backend' =3D> 'n7l98da4ql1d94u88mbkdi43ba'
+    '_csrf-b=
+ackend' =3D>
+'0155e28a40193f408ebcdca19c7f34d9b2c90d66cc2c920e53dd8f6f23f=
+4cceda:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"zAT9nrL848ZZSWDN2dImtScX8UD=
+AX017\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    'user_rol=
+e' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_=
+id' =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_SERVER=
+ =3D [
+    'MIBDIRS' =3D> 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' =
+=3D> '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' =3D> 'C:/xampp/apache/bin/o=
+penssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+    'PHPRC' =
+=3D> '\\xampp\\php'
+    'TMP' =3D> '\\xampp\\tmp'
+    'HTTP_HOST' =3D> =
+'localhost'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'CONTENT_LENGTH=
+' =3D> '344'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_UPGR=
+ADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (=
+Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrom=
+e/84.0.4147.125
+Safari/537.36'
+    'HTTP_ORIGIN' =3D> 'http://localhost=
+'
+    'CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded'
+    'HTTP=
+_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,im=
+age/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'=
+
+    'HTTP_SEC_FETCH_SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE'=
+ =3D> 'navigate'
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_SEC_FETC=
+H_DEST' =3D> 'document'
+    'HTTP_REFERER' =3D>
+'http://localhost/accou=
+nting/backend/web/index.php?r=3Dakt-produksi-bom%2Fcreate'
+    'HTTP_ACCE=
+PT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en=
+-US,en;q=3D0.9'
+    'HTTP_COOKIE' =3D> '_ga=3DGA1.1.1348291765.1597241895=
+;
+advanced-backend=3Dn7l98da4ql1d94u88mbkdi43ba;
+_csrf-backend=3D0155e2=
+8a40193f408ebcdca19c7f34d9b2c90d66cc2c920e53dd8f6f23f4cceda%3A2%3A%7Bi%3A0%=
+3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22zAT9nrL848ZZSWDN2dImtS=
+cX8UDAX017%22%3B%7D'
+    'PATH' =3D>
+'C:\\WINDOWS\\system32;C:\\WINDOWS=
+;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0=
+\\;C:\\xampp\\php;C:\\composer;C:\\Program
+Files\\Git\\cmd;C:\\WINDOWS\\S=
+ystem32\\OpenSSH\\;C:\\Program
+Files\\nodejs\\;C:\\ProgramData\\chocolate=
+y\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Android\\Sdk\\platform-t=
+ools;C:\\Program
+Files (x86)\\Yarn\\bin\\;C:\\Users\\Dicky
+Saputra\\App=
+Data\\Local\\Microsoft\\WindowsApps;C:\\Users\\Dicky
+Saputra\\AppData\\Ro=
+aming\\Composer\\vendor\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Pr=
+ograms\\Microsoft VS
+Code\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Local=
+\\GitHubDesktop\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Microsoft\=
+\WindowsApps;C:\\Users\\Dicky
+Saputra\\AppData\\Roaming\\npm;C:\\Users\\D=
+icky
+Saputra\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\Users\\Dic=
+ky
+Saputra\\AppData\\Local\\atom\\bin;C:\\Users\\Dicky
+Saputra\\AppData=
+\\Local\\Yarn\\bin'
+    'SystemRoot' =3D> 'C:\\WINDOWS'
+    'COMSPEC' =
+=3D> 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' =3D>
+'.COM;.EXE;.BA=
+T;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' =3D> 'C:\\WINDOWS'=
+
+    'SERVER_SIGNATURE' =3D> '<address>Apache/2.4.38 (Win64)
+OpenSSL/1.=
+1.1b PHP/7.3.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFT=
+WARE' =3D> 'Apache/2.4.38 (Win64) OpenSSL/1.1.1b
+PHP/7.3.3'
+    'SERVER=
+_NAME' =3D> 'localhost'
+    'SERVER_ADDR' =3D> '::1'
+    'SERVER_PORT' =
+=3D> '80'
+    'REMOTE_ADDR' =3D> '::1'
+    'DOCUMENT_ROOT' =3D> 'C:/xam=
+pp/htdocs'
+    'REQUEST_SCHEME' =3D> 'http'
+    'CONTEXT_PREFIX' =3D> '=
+'
+    'CONTEXT_DOCUMENT_ROOT' =3D> 'C:/xampp/htdocs'
+    'SERVER_ADMIN'=
+ =3D> 'postmaster@localhost'
+    'SCRIPT_FILENAME' =3D>
+'C:/xampp/htdoc=
+s/accounting/backend/web/index.php'
+    'REMOTE_PORT' =3D> '53950'
+    =
+'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'=
+
+    'REQUEST_METHOD' =3D> 'POST'
+    'QUERY_STRING' =3D> 'r=3Dakt-prod=
+uksi-bom%2Fcreate'
+    'REQUEST_URI' =3D>
+'/accounting/backend/web/inde=
+x.php?r=3Dakt-produksi-bom%2Fcreate'
+    'SCRIPT_NAME' =3D> '/accounting/=
+backend/web/index.php'
+    'PHP_SELF' =3D> '/accounting/backend/web/index=
+.php'
+    'REQUEST_TIME_FLOAT' =3D> 1597736529.519
+    'REQUEST_TIME' =
+=3D> 1597736529
+]

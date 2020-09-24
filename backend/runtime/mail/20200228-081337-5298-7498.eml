@@ -1,0 +1,292 @@
+Message-ID: <6fa17f3c580f08d6c8f6d90b8563b367@sijaksa.com>
+Date: Fri, 28 Feb 2020 08:13:37 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-28 08:13:37
+[114.4.219.240][14][1fjqfn0hv2qmks5g29pfup6ruj][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'id_dana_indikatif' in 'field list' in
+/home/sijaksa/pu=
+blic_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home=
+/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStateme=
+nt->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command=
+.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(id...')
+#2 /h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\C=
+ommand->queryInternal('fetchColumn', 0)
+#3
+/home/sijaksa/public_html/ba=
+ckend/controllers/DaftarPenganggaranKegiatanKegiatanController.php(88):
+y=
+ii\db\Command->queryScalar()
+#4 [internal function]:
+backend\controller=
+s\DaftarPenganggaranKegiatanKegiatanController->actionCreate()
+#5
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_=
+user_func_array(Array, Array)
+#6
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Ar=
+ray)
+#7 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528=
+):
+yii\base\Controller->runAction('create', Array)
+#8
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module-=
+>runAction('daftar-pengangg...', Array)
+#9
+/home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleR=
+equest(Object(yii\web\Request))
+#10 /home/sijaksa/public_html/backend/web=
+/index.php(22):
+yii\base\Application->run()
+#11 {main}
+
+Next yii\db=
+\Exception: SQLSTATE[42S22]: Column not found: 1054 Unknown
+column 'id_da=
+na_indikatif' in 'field list'
+The SQL being executed was: SELECT COUNT(id=
+_dana_indikatif)
+                            FROM daftar_penganggaran_keg=
+iatan_kegiatan
+                            WHERE
+id_daftar_penganggaran=
+_sub_bidang_kegiatan =3D '1'
+                            AND id_dana_indi=
+katif_rpjm =3D '29'
+                             in
+/home/sijaksa/publi=
+c_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /home/sija=
+ksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->=
+convertException(Object(PDOException), 'SELECT
+COUNT(id...')
+#1 /home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Comma=
+nd->internalExecute('SELECT COUNT(id...')
+#2 /home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fet=
+chColumn', 0)
+#3
+/home/sijaksa/public_html/backend/controllers/DaftarPe=
+nganggaranKegiatanKegiatanController.php(88):
+yii\db\Command->queryScalar=
+()
+#4 [internal function]:
+backend\controllers\DaftarPenganggaranKegiat=
+anKegiatanController->actionCreate()
+#5
+/home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Arr=
+ay)
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.ph=
+p(157):
+yii\base\InlineAction->runWithParams(Array)
+#7 /home/sijaksa/pu=
+blic_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->=
+runAction('create', Array)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/web/Application.php(103):
+yii\base\Module->runAction('daftar-pengang=
+g...', Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/App=
+lication.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Requ=
+est))
+#10 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base=
+\Application->run()
+#11 {main}
+Additional Information:
+Array
+(
+  =
+  [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'id_dana=
+_indikatif' in 'field list'
+)
+
+2020-02-28 08:13:37
+[114.4.219.240][=
+14][1fjqfn0hv2qmks5g29pfup6ruj][info][application]
+$_GET =3D [
+    'r' =
+=3D> 'daftar-penganggaran-kegiatan-kegiatan/create'
+    'id_daftar_pengan=
+ggaran_sub_bidang_kegiatan' =3D> '1'
+    'id_sub' =3D> '1'
+]
+
+$_POS=
+T =3D [
+    '_csrf-backend' =3D>
+'jrxBzU5u4Wkuxe4-N6bQhn6np-ZUGmDqghU24=
+o5Dg-XU9TaVCimVPneMsW1z3-X_KsXzuRVoEZPXQ0zb6wjm1Q=3D=3D'
+    'DaftarPenga=
+nggaranKegiatanKegiatan' =3D> [
+        'id_daftar_penganggaran_sub_bidan=
+g_kegiatan' =3D> '1'
+        'id_dana_indikatif_rpjm' =3D> '29'
+    ]=
+
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> =
+'1fjqfn0hv2qmks5g29pfup6ruj'
+    '_csrf-backend' =3D>
+'66dd84a1ed1802f9=
+edefcb3df45e9afcf0f27a282db5edb902c579b6c34135c5a:2:{i:0;s:13:\"_csrf-backe=
+nd\";i:1;s:32:\"ZIwXDGtWYI_SDy5yTbT_ArqyUVz9eKe0\";}'
+]
+
+$_SESSION =
+=3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.=
+php'
+    'user_role' =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D>=
+ 'KECAMATAN'
+        2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINIST=
+RATOR'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 2
+        1 =
+=3D> 3
+        2 =3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 14=
+
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/=
+php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUE=
+STS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sb=
+in:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SCRIPT_NAME' =3D> '=
+/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/backend/web/index.php?=
+r=3Ddaftar-penganggaran-kegiatan-kegiatan%2Fcreate&id_daftar_penganggaran_s=
+ub_bidang_kegiatan=3D1&id_sub=3D1'
+    'QUERY_STRING' =3D>
+'r=3Ddaftar-=
+penganggaran-kegiatan-kegiatan%2Fcreate&id_daftar_penganggaran_sub_bidang_k=
+egiatan=3D1&id_sub=3D1'
+    'REQUEST_METHOD' =3D> 'POST'
+    'SERVER_PR=
+OTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REM=
+OTE_PORT' =3D> '49415'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public=
+_html/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'=
+
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONT=
+EXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT=
+' =3D> '/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '114.4.219.240'=
+
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+  =
+  'SERVER_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4=
+.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-ba=
+ckend=3D1fjqfn0hv2qmks5g29pfup6ruj;
+_csrf-backend=3D66dd84a1ed1802f9edefc=
+b3df45e9afcf0f27a282db5edb902c579b6c34135c5a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_=
+csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ZIwXDGtWYI_SDy5yTbT_ArqyUVz9eKe0%22%3=
+B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;=
+q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFE=
+RER' =3D>
+'http://sijaksa.com/backend/web/index.php?r=3Ddaftar-penganggar=
+an-kegiatan-kegiatan%2Fcreate&id_daftar_penganggaran_sub_bidang_kegiatan=3D=
+1&id_sub=3D1'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,a=
+pplication/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed=
+-exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Window=
+s NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0=
+.3987.122
+Safari/537.36'
+    'CONTENT_TYPE' =3D> 'application/x-www-for=
+m-urlencoded'
+    'HTTP_DNT' =3D> '1'
+    'HTTP_UPGRADE_INSECURE_REQUES=
+TS' =3D> '1'
+    'HTTP_ORIGIN' =3D> 'http://sijaksa.com'
+    'HTTP_CACH=
+E_CONTROL' =3D> 'max-age=3D0'
+    'CONTENT_LENGTH' =3D> '257'
+    'HTTP=
+_CONNECTION' =3D> 'close'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'SCRIP=
+T_URI' =3D> 'http://sijaksa.com/backend/web/index.php'
+    'SCRIPT_URL' =
+=3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP=
+_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 158285=
+2417.5024
+    'REQUEST_TIME' =3D> 1582852417
+]

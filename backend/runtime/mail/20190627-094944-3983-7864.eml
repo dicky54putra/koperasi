@@ -1,0 +1,452 @@
+Message-ID: <3f4d3eb57e3618e9b2556b9d14811fa4@cvajm.com>
+Date: Thu, 27 Jun 2019 09:49:44 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-06-27 09:49:44
+[178.128.57.177][2][vnublcfrodbpv96p0vjquplg91][error=
+][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity con=
+straint violation: 1052
+Column 'status' in where clause is ambiguous in=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+=
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Co=
+mmand.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalEx=
+ecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn=
+', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php=
+(463):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('=
+COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('C=
+OUNT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count(=
+'*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/Ba=
+seDataProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()=
+
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridVie=
+w.php(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvaj=
+m/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kar=
+tik\grid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#1=
+1
+/home/cvajm/public_html/cvajm/backend/views/kas-kecil-surat-jalan/index=
+.php(24):
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...=
+')
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(=
+257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=
+=3D"s...')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/V=
+iew.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Ob=
+ject(backend\controllers\KasKecilSuratJalanController))
+#15
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base=
+\View->render('index', Array,
+Object(backend\controllers\KasKecilSuratJal=
+anController))
+#16
+/home/cvajm/public_html/cvajm/backend/controllers/Ka=
+sKecilSuratJalanController.php(43):
+yii\base\Controller->render('index', =
+Array)
+#17 [internal function]:
+backend\controllers\KasKecilSuratJalanC=
+ontroller->actionIndex()
+#18
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#=
+19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(=
+157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Control=
+ler->runAction('', Array)
+#21
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/web/Application.php(103):
+yii\base\Module->runAction('/kas-kecil=
+-sura...', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/base/Application.php(386):
+yii\web\Application->handleRequest(Object(yii=
+\web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/index.php(22=
+):
+yii\base\Application->run()
+#24 {main}
+
+Next yii\db\IntegrityExc=
+eption: SQLSTATE[23000]: Integrity constraint
+violation: 1052 Column 'sta=
+tus' in where clause is ambiguous
+The SQL being executed was: SELECT COUN=
+T(*) FROM
+`kas_kecil_surat_jalan` LEFT JOIN `surat_jalan` ON
+`kas_kecil=
+_surat_jalan`.`id_surat_jalan` =3D
+`surat_jalan`.`id_surat_jalan` WHERE `=
+status` LIKE '%1%' in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/d=
+b/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Objec=
+t(PDOException), 'SELECT
+COUNT(*)...')
+#1
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExec=
+ute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn',=
+ 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(4=
+63):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('CO=
+UNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COU=
+NT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*=
+', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/Base=
+DataProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()=
+
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridVie=
+w.php(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvaj=
+m/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kar=
+tik\grid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#1=
+1
+/home/cvajm/public_html/cvajm/backend/views/kas-kecil-surat-jalan/index=
+.php(24):
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...=
+')
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(=
+257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=
+=3D"s...')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/V=
+iew.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Ob=
+ject(backend\controllers\KasKecilSuratJalanController))
+#15
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base=
+\View->render('index', Array,
+Object(backend\controllers\KasKecilSuratJal=
+anController))
+#16
+/home/cvajm/public_html/cvajm/backend/controllers/Ka=
+sKecilSuratJalanController.php(43):
+yii\base\Controller->render('index', =
+Array)
+#17 [internal function]:
+backend\controllers\KasKecilSuratJalanC=
+ontroller->actionIndex()
+#18
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#=
+19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(=
+157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Control=
+ler->runAction('', Array)
+#21
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/web/Application.php(103):
+yii\base\Module->runAction('/kas-kecil=
+-sura...', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/base/Application.php(386):
+yii\web\Application->handleRequest(Object(yii=
+\web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/index.php(22=
+):
+yii\base\Application->run()
+#24 {main}
+Additional Information:
+A=
+rray
+(
+    [0] =3D> 23000
+    [1] =3D> 1052
+    [2] =3D> Column 'st=
+atus' in where clause is ambiguous
+)
+
+2019-06-27 09:49:44
+[178.128.=
+57.177][2][vnublcfrodbpv96p0vjquplg91][info][application]
+$_GET =3D [
+ =
+   'KasKecilSuratJalanSearch' =3D> [
+        'tanggal' =3D> ''
+        =
+'keterangan' =3D> ''
+        'id_surat_jalan' =3D> ''
+        'id_karya=
+wan' =3D> ''
+        'jumlah' =3D> ''
+        'status' =3D> '1'
+    ]=
+
+    'r' =3D> '/kas-kecil-surat-jalan'
+]
+
+$_POST =3D []
+
+$_FILE=
+S =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'vnublcfrodbpv96=
+p0vjquplg91'
+    '_csrf-backend' =3D>
+'d333f812cf963f76d0373f9ffd6c27d3=
+9457f3ae549088e65d0194b6593ab53ea:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"=
+MoV2o7fA3Xx7mu0xAXoeJXzUNZPnY5U3\";}'
+]
+
+$_SESSION =3D [
+    '__fla=
+sh' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+    '=
+user_role' =3D> [
+        0 =3D> 'ADMIN'
+        1 =3D> 'CHECKER'
+   =
+     2 =3D> 'FINANCE'
+        3 =3D> 'GPS'
+        4 =3D> 'HRD'
+     =
+   5 =3D> 'INVOICE'
+        6 =3D> 'KORLAP'
+        7 =3D> 'LOGISTIC'=
+
+        8 =3D> 'PEMESANAN'
+        9 =3D> 'PURCHASING'
+        10 =
+=3D> 'SURAT JALAN'
+        11 =3D> 'SYSTEM ADMINISTRATOR'
+        12 =
+=3D> 'TAMBANG'
+        13 =3D> 'WORKSHOP'
+    ]
+    'user_role_id' =
+=3D> [
+        0 =3D> 2
+        1 =3D> 6
+        2 =3D> 3
+        3=
+ =3D> 7
+        4 =3D> 14
+        5 =3D> 8
+        6 =3D> 9
+       =
+ 7 =3D> 11
+        8 =3D> 5
+        9 =3D> 12
+        10 =3D> 4
+   =
+     11 =3D> 1
+        12 =3D> 13
+        13 =3D> 10
+    ]
+    '__i=
+d' =3D> 2
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/=
+../etc/php7.0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_=
+REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/loc=
+al/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH=
+' =3D> '0'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'R=
+EQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?KasKecilSuratJalanSearch%5=
+Btanggal%5D=3D&KasKecilSuratJalanSearch%5Bketerangan%5D=3D&KasKecilSuratJal=
+anSearch%5Bid_surat_jalan%5D=3D&KasKecilSuratJalanSearch%5Bid_karyawan%5D=
+=3D&KasKecilSuratJalanSearch%5Bjumlah%5D=3D&KasKecilSuratJalanSearch%5Bstat=
+us%5D=3D1&r=3D%2Fkas-kecil-surat-jalan'
+    'QUERY_STRING' =3D>
+'KasKec=
+ilSuratJalanSearch%5Btanggal%5D=3D&KasKecilSuratJalanSearch%5Bketerangan%5D=
+=3D&KasKecilSuratJalanSearch%5Bid_surat_jalan%5D=3D&KasKecilSuratJalanSearc=
+h%5Bid_karyawan%5D=3D&KasKecilSuratJalanSearch%5Bjumlah%5D=3D&KasKecilSurat=
+JalanSearch%5Bstatus%5D=3D1&r=3D%2Fkas-kecil-surat-jalan'
+    'REQUEST_ME=
+THOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INT=
+ERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '52399'
+    'SCRIPT_FILEN=
+AME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+    'SE=
+RVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/=
+home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEM=
+E' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    '=
+REMOTE_ADDR' =3D> '178.128.57.177'
+    'SERVER_PORT' =3D> '80'
+    'SER=
+VER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    =
+'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+ =
+   'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=
+=3D0'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'HTTP_COOKIE' =3D> 'advanced=
+-backend=3Dvnublcfrodbpv96p0vjquplg91;
+_csrf-backend=3Dd333f812cf963f76d0=
+373f9ffd6c27d39457f3ae549088e65d0194b6593ab53ea%3A2%3A%7Bi%3A0%3Bs%3A13%3A%=
+22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22MoV2o7fA3Xx7mu0xAXoeJXzUNZPnY5U3%2=
+2%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8'
+=
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>=
+
+'http://cvajm.com/cvajm/backend/web/index.php?r=3D/kas-kecil-surat-jalan=
+'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/x=
+ml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=
+=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x=
+64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100
+Safari/=
+537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'SCRIPT_URI' =
+=3D> 'http://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D>=
+ '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'P=
+HP_SELF' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D=
+> 1561603784.3806
+    'REQUEST_TIME' =3D> 1561603784
+]

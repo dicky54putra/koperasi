@@ -1,0 +1,343 @@
+Message-ID: <e347c05df92b9307eae5e21bc4fe5a58@cvajm.com>
+Date: Wed, 06 Nov 2019 22:33:18 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-11-06 22:33:18
+[36.90.99.153][24][874d654ff4nlf3k9mms786bn55][error]=
+[yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity cons=
+traint violation: 1048
+Column 'id_sub_pelanggan' cannot be null in
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack t=
+race:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.p=
+hp(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->internalExecute('=
+INSERT INTO `pu...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/db/Schema.php(433):
+yii\db\Command->execute()
+#3
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema-=
+>insert('purchase_order', Array)
+#4
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInter=
+nal(NULL)
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/BaseA=
+ctiveRecord.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+/ho=
+me/cvajm/public_html/cvajm/backend/controllers/PurchaseOrderController.php(=
+201):
+yii\db\BaseActiveRecord->save(false)
+#7 [internal function]:
+ba=
+ckend\controllers\PurchaseOrderController->actionCreate()
+#8
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_u=
+ser_func_array(Array, Array)
+#9
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams=
+(Array)
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Modu=
+le.php(528):
+yii\base\Controller->runAction('create', Array)
+#11
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+y=
+ii\base\Module->runAction('purchase-order/...', Array)
+#12
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\=
+Application->handleRequest(Object(yii\web\Request))
+#13 /home/cvajm/publi=
+c_html/cvajm/backend/web/index.php(22):
+yii\base\Application->run()
+#14=
+ {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: Integrity con=
+straint
+violation: 1048 Column 'id_sub_pelanggan' cannot be null
+The SQ=
+L being executed was: INSERT INTO `purchase_order` (`no_po`,
+`tanggal_po`=
+, `id_pelanggan`, `id_sub_pelanggan`, `id_tujuan_bongkar`,
+`id_kota`, `de=
+adline`, `jumlah`, `id_uom`, `id_jenis_muatan`, `harga`,
+`status`) VALUES=
+ ('1003516', '2019-11-06', 68, NULL, 126, 11,
+'2019-11-06', '780', 16, 27=
+, '0', 1) in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.=
+php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(PDOExce=
+ption), 'INSERT INTO
+`pu...')
+#1
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSE=
+RT INTO `pu...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/d=
+b/Schema.php(433):
+yii\db\Command->execute()
+#3
+/home/cvajm/public_ht=
+ml/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->ins=
+ert('purchase_order', Array)
+#4
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInternal(=
+NULL)
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/BaseActiv=
+eRecord.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+/home/c=
+vajm/public_html/cvajm/backend/controllers/PurchaseOrderController.php(201)=
+:
+yii\db\BaseActiveRecord->save(false)
+#7 [internal function]:
+backen=
+d\controllers\PurchaseOrderController->actionCreate()
+#8
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_=
+func_array(Array, Array)
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Arr=
+ay)
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.p=
+hp(528):
+yii\base\Controller->runAction('create', Array)
+#11
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\b=
+ase\Module->runAction('purchase-order/...', Array)
+#12
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Appl=
+ication->handleRequest(Object(yii\web\Request))
+#13 /home/cvajm/public_ht=
+ml/cvajm/backend/web/index.php(22):
+yii\base\Application->run()
+#14 {ma=
+in}
+Additional Information:
+Array
+(
+    [0] =3D> 23000
+    [1] =
+=3D> 1048
+    [2] =3D> Column 'id_sub_pelanggan' cannot be null
+)
+
+=
+2019-11-06 22:33:18
+[36.90.99.153][24][874d654ff4nlf3k9mms786bn55][info][=
+application]
+$_GET =3D [
+    'r' =3D> 'purchase-order/create'
+]
+
+=
+$_POST =3D [
+    '_csrf-backend' =3D>
+'4ncd8Eip3RRhzSBWRGCuuCxPITv7fJK5=
+llOp2dbK9yyBWiinJ-KRdg7gdG8NTcHVbgtFcpIz8crcNJuMn6yWVA=3D=3D'
+    'Purcha=
+seOrder' =3D> [
+        'no_po' =3D> '1003516'
+        'tanggal_po' =3D=
+> '2019-11-06'
+        'id_pelanggan' =3D> '68'
+        'id_sub_pelangg=
+an' =3D> ''
+        'id_tujuan_bongkar' =3D> '126'
+        'id_kota' =
+=3D> '11'
+        'deadline' =3D> '2019-11-06'
+        'jumlah' =3D> '7=
+80'
+        'id_uom' =3D> '16'
+        'id_jenis_muatan' =3D> '27'
+  =
+      'harga' =3D> '0'
+        'status' =3D> '1'
+    ]
+    'SuratJala=
+n' =3D> [
+        'pelanggan' =3D> 'PT CONCH CEMENT INDONESIA'
+        =
+'sub_pelanggan' =3D> 'pt sama jaya sukses abadi'
+        'tujuanbongkar' =
+=3D> 'PEL. TRISAKTI / P. DIDIN 08538797769'
+        'kota' =3D> 'BANJARMA=
+SIN'
+        'uom' =3D> 'TON'
+        'jenis_muatan' =3D> 'SAK 50 KG'=
+
+    ]
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backen=
+d' =3D> '874d654ff4nlf3k9mms786bn55'
+    '_csrf-backend' =3D>
+'3591f3f6=
+6adda140df42d6548c0212b9c0f339320f648b9de2a5ee49bee08905a:2:{i:0;s:13:\"_cs=
+rf-backend\";i:1;s:32:\"c-5WoKLbo-T9I-omBDdIiOcsJg2UIfax\";}'
+]
+
+$_SE=
+SSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backen=
+d/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'STAF HRD KARYAW=
+AN'
+        1 =3D> 'HRD'
+        2 =3D> 'CHECKER'
+        3 =3D> 'SUR=
+AT JALAN'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 16
+       =
+ 1 =3D> 14
+        2 =3D> 6
+        3 =3D> 4
+    ]
+    '__id' =3D> =
+24
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+    'HOME' =3D> '/ho=
+me/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'RE=
+QUEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dpurchase-order%2Fcreate=
+'
+    'QUERY_STRING' =3D> 'r=3Dpurchase-order%2Fcreate'
+    'REQUEST_ME=
+THOD' =3D> 'POST'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_IN=
+TERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '53742'
+    'SCRIPT_FILE=
+NAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+    'S=
+ERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '=
+/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHE=
+ME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    =
+'REMOTE_ADDR' =3D> '36.90.99.153'
+    'SERVER_PORT' =3D> '80'
+    'SERV=
+ER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    '=
+SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+  =
+  'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b=
+in'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D874d654ff4nlf3k9mms786bn55=
+;
+_csrf-backend=3D3591f3f66adda140df42d6548c0212b9c0f339320f648b9de2a5ee4=
+9bee08905a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3=
+A%22c-5WoKLbo-T9I-omBDdIiOcsJg2UIfax%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE'=
+ =3D> 'en-US,en;q=3D0.9'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'=
+
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/index.php?=
+r=3Dpurchase-order%2Fcreate'
+    'HTTP_ACCEPT' =3D>
+'text/html,applicat=
+ion/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,app=
+lication/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 =
+(Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chro=
+me/78.0.3904.87
+Safari/537.36'
+    'CONTENT_TYPE' =3D> 'application/x-w=
+ww-form-urlencoded'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    '=
+HTTP_ORIGIN' =3D> 'http://cvajm.com'
+    'HTTP_CACHE_CONTROL' =3D> 'max-a=
+ge=3D0'
+    'CONTENT_LENGTH' =3D> '787'
+    'HTTP_CONNECTION' =3D> 'kee=
+p-alive'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepalive' =3D> =
+'1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/index.php'=
+
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =
+=3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.php'
+   =
+ 'REQUEST_TIME_FLOAT' =3D> 1573050798.1554
+    'REQUEST_TIME' =3D> 157305=
+0798
+]

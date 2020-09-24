@@ -1,0 +1,332 @@
+Message-ID: <d67405e728c65b14febed809746f57a4@sijaksa.online>
+Date: Thu, 05 Mar 2020 08:45:49 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-03-05 08:45:49
+[103.247.122.10][1020][4634f1500a85c46d9bfe7922fecc22=
+d5][error][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Inte=
+grity constraint violation: 1048
+Column 'id_tabel' cannot be null in
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack tra=
+ce:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290)=
+:
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSERT INTO `g=
+r...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php(433=
+):
+yii\db\Command->execute()
+#3
+/home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->insert('grafik_desa', A=
+rray)
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.=
+php(566):
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+/home/sijaksa/=
+public_html/vendor/yiisoft/yii2/db/BaseActiveRecord.php(678):
+yii\db\Acti=
+veRecord->insert(false, NULL)
+#6
+/home/sijaksa/public_html/backend/cont=
+rollers/DataOutputDanaDesaController.php(86):
+yii\db\BaseActiveRecord->sa=
+ve(false)
+#7 [internal function]:
+backend\controllers\DataOutputDanaDes=
+aController->actionCreate()
+#8
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#9=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):=
+
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runA=
+ction('create', Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii=
+2/web/Application.php(103):
+yii\base\Module->runAction('data-output-dan..=
+.', Array)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Appli=
+cation.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Reques=
+t))
+#13 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\A=
+pplication->run()
+#14 {main}
+
+Next yii\db\IntegrityException: SQLSTAT=
+E[23000]: Integrity constraint
+violation: 1048 Column 'id_tabel' cannot b=
+e null
+The SQL being executed was: INSERT INTO `grafik_desa` (`id_desa`,=
+
+`nama_tabel`, `id_tabel`, `nama_kelompok`, `point`) VALUES (642,
+'data=
+_output_dana_desa', NULL, 'Penatausahaan 4', 10) in
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->co=
+nvertException(Object(PDOException), 'INSERT INTO
+`gr...')
+#1 /home/sij=
+aksa/public_html/vendor/yiisoft/yii2/db/Command.php(1091):
+yii\db\Command=
+->internalExecute('INSERT INTO `gr...')
+#2 /home/sijaksa/public_html/vend=
+or/yiisoft/yii2/db/Schema.php(433):
+yii\db\Command->execute()
+#3
+/hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\d=
+b\Schema->insert('grafik_desa', Array)
+#4
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInt=
+ernal(NULL)
+#5
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/BaseAct=
+iveRecord.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+/home=
+/sijaksa/public_html/backend/controllers/DataOutputDanaDesaController.php(8=
+6):
+yii\db\BaseActiveRecord->save(false)
+#7 [internal function]:
+back=
+end\controllers\DataOutputDanaDesaController->actionCreate()
+#8
+/home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_us=
+er_func_array(Array, Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Arra=
+y)
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(52=
+8):
+yii\base\Controller->runAction('create', Array)
+#11
+/home/sijaksa=
+/public_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Modul=
+e->runAction('data-output-dan...', Array)
+#12
+/home/sijaksa/public_html=
+/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->hand=
+leRequest(Object(yii\web\Request))
+#13 /home/sijaksa/public_html/backend/=
+web/index.php(22):
+yii\base\Application->run()
+#14 {main}
+Additional =
+Information:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1048
+    [2]=
+ =3D> Column 'id_tabel' cannot be null
+)
+
+2020-03-05 08:45:49
+[103.=
+247.122.10][1020][4634f1500a85c46d9bfe7922fecc22d5][info][application]
+$_=
+GET =3D [
+    'r' =3D> 'data-output-dana-desa/create'
+]
+
+$_POST =3D=
+ [
+    '_csrf-backend' =3D>
+'FI8gons-u9iZy6yNUKwKLR799O2G4G7oY2woEk9cep=
+dk3krzPE_PiO645Ppg4lVfdo3Fn-rVBaVaKGF2LDgKoA=3D=3D'
+    'DataOutputDanaDe=
+sa' =3D> [
+        'id_daftar_penganggaran_paket_kegiatan' =3D> ''
+    =
+    'tahap' =3D> '1'
+        'volume' =3D> '20'
+        'durasi' =3D> '=
+2'
+        'nilai' =3D> '2000'
+        'id_desa' =3D> '642'
+    ]
+]=
+
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '463=
+4f1500a85c46d9bfe7922fecc22d5'
+    '_csrf-backend' =3D>
+'ffa93a745e4b10=
+70817fd63ea0521bb8b816125d988c1bc8606a305446eedf6aa:2:{i:0;s:13:\"_csrf-bac=
+kend\";i:1;s:32:\"pQjQGqtPwsHw0N_rhp1rl5kM9DIdcdp7\";}'
+]
+
+$_SESSION =
+=3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.=
+php'
+    'user_role' =3D> [
+        0 =3D> 'KELURAHAN'
+    ]
+    'u=
+ser_role_id' =3D> [
+        0 =3D> 4
+    ]
+    '__id' =3D> 1020
+]=
+
+
+$_SERVER =3D [
+    'PATH' =3D> '/usr/local/bin:/usr/bin:/bin'
+   =
+ 'TZ' =3D> 'UTC'
+    'REDIRECT_HANDLER' =3D> 'application/x-httpd-ea-php7=
+2'
+    'REDIRECT_STATUS' =3D> '200'
+    'UNIQUE_ID' =3D> 'XmBZzfsB7Ig4o=
+ZwTIOhS6gAAAJc'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'SCR=
+IPT_URI' =3D> 'https://sijaksa.online/backend/web/index.php'
+    'HTTPS' =
+=3D> 'on'
+    'SSL_TLS_SNI' =3D> 'sijaksa.online'
+    'HTTP_HOST' =3D> =
+'sijaksa.online'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'CONTENT_L=
+ENGTH' =3D> '339'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP=
+_ORIGIN' =3D> 'https://sijaksa.online'
+    'HTTP_UPGRADE_INSECURE_REQUEST=
+S' =3D> '1'
+    'CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded'=
+
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; WOW64)
+Apple=
+WebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122
+Safari/537.36'
+ =
+   'HTTP_SEC_FETCH_DEST' =3D> 'document'
+    'HTTP_ACCEPT' =3D>
+'text/h=
+tml,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*=
+;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_SEC_FETCH_=
+SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE' =3D> 'navigate'
+    =
+'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_REFERER' =3D>
+'https://sijaks=
+a.online/backend/web/index.php?r=3Ddata-output-dana-desa%2Fcreate'
+    'H=
+TTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' =
+=3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_COOKIE' =3D>=
+
+'advanced-backend=3D4634f1500a85c46d9bfe7922fecc22d5;
+_csrf-backend=3D=
+ffa93a745e4b1070817fd63ea0521bb8b816125d988c1bc8606a305446eedf6aa%3A2%3A%7B=
+i%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22pQjQGqtPwsHw0N_r=
+hp1rl5kM9DIdcdp7%22%3B%7D'
+    'HTTP_X_HTTPS' =3D> '1'
+    'SERVER_SIGN=
+ATURE' =3D> ''
+    'SERVER_SOFTWARE' =3D> 'Apache'
+    'SERVER_NAME' =
+=3D> 'sijaksa.online'
+    'SERVER_ADDR' =3D> '103.247.11.153'
+    'SERV=
+ER_PORT' =3D> '443'
+    'REMOTE_ADDR' =3D> '103.247.122.10'
+    'DOCUME=
+NT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REQUEST_SCHEME' =3D> 'http=
+s'
+    'CONTEXT_PREFIX' =3D> '/cgi-sys'
+    'CONTEXT_DOCUMENT_ROOT' =3D=
+> '/usr/local/cpanel/cgi-sys/'
+    'SERVER_ADMIN' =3D> 'webmaster@sijaksa=
+.online'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/=
+web/index.php'
+    'REMOTE_PORT' =3D> '58581'
+    'REDIRECT_URL' =3D> '=
+/backend/web/index.php'
+    'REDIRECT_QUERY_STRING' =3D> 'r=3Ddata-output=
+-dana-desa%2Fcreate'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'SERVER=
+_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHOD' =3D> 'POST'
+    'QUERY_=
+STRING' =3D> 'r=3Ddata-output-dana-desa%2Fcreate'
+    'REQUEST_URI' =3D>=
+
+'/backend/web/index.php?r=3Ddata-output-dana-desa%2Fcreate'
+    'SCRIP=
+T_NAME' =3D> '/backend/web/index.php'
+    'ORIG_SCRIPT_FILENAME' =3D> '/u=
+sr/local/cpanel/cgi-sys/ea-php72'
+    'ORIG_PATH_INFO' =3D> '/backend/web=
+/index.php'
+    'ORIG_PATH_TRANSLATED' =3D>
+'/home/sijaksa/public_html/=
+backend/web/index.php'
+    'ORIG_SCRIPT_NAME' =3D> '/cgi-sys/ea-php72'
+=
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D=
+> 1583372749.4612
+    'REQUEST_TIME' =3D> 1583372749
+    'argv' =3D> [=
+
+        0 =3D> 'r=3Ddata-output-dana-desa%2Fcreate'
+    ]
+    'argc'=
+ =3D> 1
+]

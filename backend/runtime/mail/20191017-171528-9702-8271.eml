@@ -1,0 +1,415 @@
+Message-ID: <ceef23f2ff89ed8ef7dbb6dc7daa9aff@cvajm.com>
+Date: Thu, 17 Oct 2019 17:15:28 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-10-17 17:15:28
+[182.1.208.110][37][vsk1to1igh69h5h5a4pa151tg7][error=
+][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity con=
+straint violation: 1052
+Column 'nama_menu' in where clause is ambiguous i=
+n
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290=
+
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db=
+/Command.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->interna=
+lExecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchCol=
+umn', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.=
+php(463):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScala=
+r('COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar=
+('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->cou=
+nt('*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data=
+/BaseDataProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCoun=
+t()
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/Grid=
+View.php(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/c=
+vajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+=
+kartik\grid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()=
+
+#11
+/home/cvajm/public_html/cvajm/backend/views/menu-navigasi/view.php=
+(66):
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')=
+
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(25=
+7):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D=
+"s...')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View=
+.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Objec=
+t(backend\controllers\MenuNavigasiController))
+#15
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->re=
+nder('view', Array,
+Object(backend\controllers\MenuNavigasiController))=
+
+#16
+/home/cvajm/public_html/cvajm/backend/controllers/MenuNavigasiCont=
+roller.php(112):
+yii\base\Controller->render('view', Array)
+#17 [intern=
+al function]:
+backend\controllers\MenuNavigasiController->actionView('27'=
+)
+#18
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineActi=
+on.php(57):
+call_user_func_array(Array, Array)
+#19
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inline=
+Action->runWithParams(Array)
+#20
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('view', =
+Array)
+#21
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Applic=
+ation.php(103):
+yii\base\Module->runAction('menu-navigasi/v...', Array)=
+
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application=
+.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+=
+#23 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\App=
+lication->run()
+#24 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[=
+23000]: Integrity constraint
+violation: 1052 Column 'nama_menu' in where =
+clause is ambiguous
+The SQL being executed was: SELECT COUNT(*) FROM `men=
+u_navigasi` LEFT
+JOIN `menu_navigasi` `b` ON menu_navigasi.id_parent =3D =
+b.id_menu WHERE
+(`menu_navigasi`.`id_parent`=3D'27') AND (`nama_menu` LIK=
+E '%Master%')
+in /home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Sch=
+ema.php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(PDO=
+Exception), 'SELECT
+COUNT(*)...')
+#1
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('=
+SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)=
+
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463)=
+:
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUNT=
+(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT(=
+*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*', =
+NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/BaseDat=
+aProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8=
+
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php=
+(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvajm/pub=
+lic_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\g=
+rid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#11
+/=
+home/cvajm/public_html/cvajm/backend/views/menu-navigasi/view.php(66):
+yi=
+i\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#13
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\ba=
+se\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#1=
+4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):=
+
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(backend\=
+controllers\MenuNavigasiController))
+#15
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('view=
+', Array,
+Object(backend\controllers\MenuNavigasiController))
+#16
+/ho=
+me/cvajm/public_html/cvajm/backend/controllers/MenuNavigasiController.php(1=
+12):
+yii\base\Controller->render('view', Array)
+#17 [internal function]=
+:
+backend\controllers\MenuNavigasiController->actionView('27')
+#18
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):=
+
+call_user_func_array(Array, Array)
+#19
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->run=
+WithParams(Array)
+#20
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/base/Module.php(528):
+yii\base\Controller->runAction('view', Array)
+#2=
+1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(1=
+03):
+yii\base\Module->runAction('menu-navigasi/v...', Array)
+#22
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+=
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /home/cva=
+jm/public_html/cvajm/backend/web/index.php(22):
+yii\base\Application->run=
+()
+#24 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 23000=
+
+    [1] =3D> 1052
+    [2] =3D> Column 'nama_menu' in where clause is a=
+mbiguous
+)
+
+2019-10-17 17:15:28
+[182.1.208.110][37][vsk1to1igh69h5h=
+5a4pa151tg7][info][application]
+$_GET =3D [
+    'MenuNavigasiSubSearch'=
+ =3D> [
+        'nama_menu' =3D> 'Master'
+        'url' =3D> ''
+     =
+   'parent' =3D> ''
+        'no_urut' =3D> ''
+        'icon' =3D> ''
+=
+        'status' =3D> ''
+    ]
+    'r' =3D> 'menu-navigasi/view'
+    =
+'id' =3D> '27'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D=
+ [
+    'advanced-backend' =3D> 'vsk1to1igh69h5h5a4pa151tg7'
+    '_csrf-=
+backend' =3D>
+'78e4e7e5b9ceca1feae49e9fcd177c32f0f32dae421903f8d4588acf94=
+d3d338a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"F2Ej9UGCvrjXQJPjHkT3x67Eoc=
+le2nKX\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__retur=
+nUrl' =3D> '/cvajm/backend/web/index.php'
+    'user_role' =3D> [
+      =
+  0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+     =
+   0 =3D> 1
+    ]
+    '__id' =3D> 37
+]
+
+$_SERVER =3D [
+    'PHP=
+RC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.0'
+    'PWD' =3D> '/home/cvajm=
+/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0=
+'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s=
+bin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'HTTP_CONNECTION' =3D> 'clo=
+se'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_=
+URI' =3D>
+'/cvajm/backend/web/index.php?MenuNavigasiSubSearch%5Bnama_menu=
+%5D=3DMaster&MenuNavigasiSubSearch%5Burl%5D=3D&MenuNavigasiSubSearch%5Bpare=
+nt%5D=3D&MenuNavigasiSubSearch%5Bno_urut%5D=3D&MenuNavigasiSubSearch%5Bicon=
+%5D=3D&MenuNavigasiSubSearch%5Bstatus%5D=3D&r=3Dmenu-navigasi%2Fview&id=3D2=
+7'
+    'QUERY_STRING' =3D>
+'MenuNavigasiSubSearch%5Bnama_menu%5D=3DMast=
+er&MenuNavigasiSubSearch%5Burl%5D=3D&MenuNavigasiSubSearch%5Bparent%5D=3D&M=
+enuNavigasiSubSearch%5Bno_urut%5D=3D&MenuNavigasiSubSearch%5Bicon%5D=3D&Men=
+uNavigasiSubSearch%5Bstatus%5D=3D&r=3Dmenu-navigasi%2Fview&id=3D27'
+    '=
+REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'G=
+ATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '41509'
+    'SC=
+RIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'=
+
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROO=
+T' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQ=
+UEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_htm=
+l'
+    'REMOTE_ADDR' =3D> '182.1.208.110'
+    'SERVER_PORT' =3D> '80'=
+
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.=
+com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =
+=3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dvsk1to1igh69h5h5a4pa15=
+1tg7;
+_csrf-backend=3D78e4e7e5b9ceca1feae49e9fcd177c32f0f32dae421903f8d45=
+88acf94d3d338a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A=
+32%3A%22F2Ej9UGCvrjXQJPjHkT3x67Eocle2nKX%22%3B%7D'
+    'HTTP_ACCEPT_LANGU=
+AGE' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8'
+    'HTTP_ACCEPT_ENCODING' =3D> '=
+gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/=
+web/index.php?r=3Dmenu-navigasi%2Fview&id=3D27'
+    'HTTP_ACCEPT' =3D>
+=
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/a=
+png,*/*;q=3D0.8,application/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT'=
+ =3D> 'Mozilla/5.0 (X11; Linux x86_64)
+AppleWebKit/537.36 (KHTML, like Ge=
+cko) Chrome/77.0.3865.116
+Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQ=
+UESTS' =3D> '1'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'SCRIPT_URI' =3D> =
+'http://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cv=
+ajm/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SE=
+LF' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 157=
+1303728.8919
+    'REQUEST_TIME' =3D> 1571303728
+]

@@ -1,0 +1,390 @@
+Message-ID: <132812333b31955ddbc15bed155ca408@localhost>
+Date: Thu, 27 Aug 2020 08:34:42 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-08-27 08:34:42
+[::1][3][jf8l3jqcr0igs80f7id0kvskr9][error][yii\db\Ex=
+ception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown co=
+lumn
+'akt_produksi_bom_detail_bb.id_item' in 'on clause' in
+C:\xampp\ht=
+docs\accounting\vendor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0=
+
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+P=
+DOStatement->execute()
+#1
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii=
+2\db\Command.php(1158):
+yii\db\Command->internalExecute('\r\n            =
+ ...')
+#2 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(3=
+86):
+yii\db\Command->queryInternal('')
+#3
+C:\xampp\htdocs\accounting\=
+backend\views\akt-laporan-produksi\lapproduksidetail.php(84):
+yii\db\Comm=
+and->query()
+#4 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\View.=
+php(348):
+require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\accounting=
+\vendor\yiisoft\yii2\base\View.php(257):
+yii\base\View->renderPhpFile('C:=
+\\xampp\\htdocs...', '[<span
+class=3D"s...')
+#6 C:\xampp\htdocs\account=
+ing\vendor\yiisoft\yii2\base\View.php(156):
+yii\base\View->renderFile('C:=
+\\xampp\\htdocs...', Array,
+Object(backend\controllers\AktLaporanProduksi=
+Controller))
+#7
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Con=
+troller.php(415):
+yii\base\View->render('lapproduksideta...', Array,
+Ob=
+ject(backend\controllers\AktLaporanProduksiController))
+#8
+C:\xampp\htd=
+ocs\accounting\backend\controllers\AktLaporanProduksiController.php(73):
+=
+yii\base\Controller->renderPartial('lapproduksideta...', Array)
+#9 [inter=
+nal function]:
+backend\controllers\AktLaporanProduksiController->actionLa=
+p()
+#10
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\InlineActio=
+n.php(57):
+call_user_func_array(Array, Array)
+#11
+C:\xampp\htdocs\acc=
+ounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base\InlineActi=
+on->runWithParams(Array)
+#12
+C:\xampp\htdocs\accounting\vendor\yiisoft\=
+yii2\base\Module.php(528):
+yii\base\Controller->runAction('lap', Array)=
+
+#13
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\web\Application.php=
+(103):
+yii\base\Module->runAction('akt-laporan-pro...', Array)
+#14
+C:=
+\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Application.php(386):
+y=
+ii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\xampp\h=
+tdocs\accounting\backend\web\index.php(22):
+yii\base\Application->run()=
+
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found=
+: 1054 Unknown
+column 'akt_produksi_bom_detail_bb.id_item' in 'on clause'=
+
+The SQL being executed was:=20
+                SELECT akt_produksi_bom_detail_bb.qty,
+akt_produksi_bom_d=
+etail_bb.keterangan, akt_item.nama_item,
+akt_satuan.nama_satuan, akt_item=
+_harga_jual.harga_satuan
+                FROM akt_produksi_bom_detail_bb=20
+                LEFT JOIN akt_produksi_bom ON
+akt_produksi_bom.id_produks=
+i_bom =3D
+akt_produksi_bom_detail_bb.id_produksi_bom
+                LEFT JOIN akt_item_stok ON akt_item_stok.id_item_stok
+=3D=
+ akt_produksi_bom_detail_bb.id_item
+                LEFT JOIN akt_item ON akt_item.id_item =3D
+akt_item_stok.=
+id_item
+                LEFT JOIN akt_satuan ON akt_item.id_satuan =3D
+akt_item.i=
+d_satuan
+                LEFT JOIN akt_item_harga_jual ON
+akt_item_harga_jual.id_i=
+tem =3D akt_item.id_item
+                WHERE akt_produksi_bom_detail_bb.id_produksi_bom =3D
+'1'
+                 in
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Sch=
+ema.php:664
+Stack trace:
+#0
+C:\xampp\htdocs\accounting\vendor\yiisoft=
+\yii2\db\Command.php(1295):
+yii\db\Schema->convertException(Object(PDOExc=
+eption), '\r\n          =20
+ ...')
+#1
+C:\xampp\htdocs\accounting\vendor=
+\yiisoft\yii2\db\Command.php(1158):
+yii\db\Command->internalExecute('\r\n=
+             ...')
+#2 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\C=
+ommand.php(386):
+yii\db\Command->queryInternal('')
+#3
+C:\xampp\htdocs=
+\accounting\backend\views\akt-laporan-produksi\lapproduksidetail.php(84):=
+
+yii\db\Command->query()
+#4 C:\xampp\htdocs\accounting\vendor\yiisoft\y=
+ii2\base\View.php(348):
+require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htd=
+ocs\accounting\vendor\yiisoft\yii2\base\View.php(257):
+yii\base\View->ren=
+derPhpFile('C:\\xampp\\htdocs...', '[<span
+class=3D"s...')
+#6 C:\xampp\=
+htdocs\accounting\vendor\yiisoft\yii2\base\View.php(156):
+yii\base\View->=
+renderFile('C:\\xampp\\htdocs...', Array,
+Object(backend\controllers\AktL=
+aporanProduksiController))
+#7
+C:\xampp\htdocs\accounting\vendor\yiisoft=
+\yii2\base\Controller.php(415):
+yii\base\View->render('lapproduksideta...=
+', Array,
+Object(backend\controllers\AktLaporanProduksiController))
+#8=
+
+C:\xampp\htdocs\accounting\backend\controllers\AktLaporanProduksiControl=
+ler.php(73):
+yii\base\Controller->renderPartial('lapproduksideta...', Arr=
+ay)
+#9 [internal function]:
+backend\controllers\AktLaporanProduksiContr=
+oller->actionLap()
+#10
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\b=
+ase\InlineAction.php(57):
+call_user_func_array(Array, Array)
+#11
+C:\x=
+ampp\htdocs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\=
+base\InlineAction->runWithParams(Array)
+#12
+C:\xampp\htdocs\accounting\=
+vendor\yiisoft\yii2\base\Module.php(528):
+yii\base\Controller->runAction(=
+'lap', Array)
+#13
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\web\Ap=
+plication.php(103):
+yii\base\Module->runAction('akt-laporan-pro...', Arra=
+y)
+#14
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Application.=
+php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#=
+15 C:\xampp\htdocs\accounting\backend\web\index.php(22):
+yii\base\Applica=
+tion->run()
+#16 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown c=
+olumn 'akt_produksi_bom_detail_bb.id_item' in 'on
+clause'
+)
+
+2020-0=
+8-27 08:34:42
+[::1][3][jf8l3jqcr0igs80f7id0kvskr9][info][application] $_G=
+ET =3D [
+    'r' =3D> 'akt-laporan-produksi/lap'
+]
+
+$_POST =3D [
+=
+    '_csrf-backend' =3D>
+'K4-obZeyZ0qybu_T_uAgrTVPgyv-FM3DEEaNpc7cFxFD6uM=
+-4vU_fPkfo5fOlWHIbxDRf4piqIx8csTwpYR0eg=3D=3D'
+    'type' =3D> '1'
+    =
+'tanggal_awal' =3D> '2020-08-01'
+    'tanggal_akhir' =3D> '2020-08-27'
+=
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    '_ga' =3D> 'GA1.1.134829176=
+5.1597241895'
+    'advanced-backend' =3D> 'jf8l3jqcr0igs80f7id0kvskr9'
+=
+    '_csrf-backend' =3D>
+'affa987dfa0458b335721033669a937e3901feea66aa276=
+53d00b76c92079de9a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"heKSuGX6KqLD0uA=
+eZ_RTtveOl4IUkXck\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+ =
+   'user_role' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+   =
+ 'user_role_id' =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3
+]=
+
+
+$_SERVER =3D [
+    'MIBDIRS' =3D> 'C:/xampp/php/extras/mibs'
+    =
+'MYSQL_HOME' =3D> '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' =3D> 'C:/xampp=
+/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'=
+
+    'PHPRC' =3D> '\\xampp\\php'
+    'TMP' =3D> '\\xampp\\tmp'
+    'H=
+TTP_HOST' =3D> 'localhost'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    =
+'CONTENT_LENGTH' =3D> '162'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'=
+
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_USER_AGENT' =
+=3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML=
+, like Gecko) Chrome/84.0.4147.135
+Safari/537.36'
+    'HTTP_ORIGIN' =3D=
+> 'http://localhost'
+    'CONTENT_TYPE' =3D> 'application/x-www-form-urle=
+ncoded'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,applica=
+tion/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-excha=
+nge;v=3Db3;q=3D0.9'
+    'HTTP_SEC_FETCH_SITE' =3D> 'same-origin'
+    'H=
+TTP_SEC_FETCH_MODE' =3D> 'navigate'
+    'HTTP_SEC_FETCH_USER' =3D> '?1'=
+
+    'HTTP_SEC_FETCH_DEST' =3D> 'document'
+    'HTTP_REFERER' =3D>
+'h=
+ttp://localhost/accounting/backend/web/index.php?r=3Dakt-laporan-produksi%2=
+Findex-detail'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+    =
+'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+    'HTTP_COOKIE' =3D> '_g=
+a=3DGA1.1.1348291765.1597241895;
+advanced-backend=3Djf8l3jqcr0igs80f7id0k=
+vskr9;
+_csrf-backend=3Daffa987dfa0458b335721033669a937e3901feea66aa27653d=
+00b76c92079de9a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3=
+A32%3A%22heKSuGX6KqLD0uAeZ_RTtveOl4IUkXck%22%3B%7D'
+    'PATH' =3D>
+'C:=
+\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\Sy=
+stem32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\composer;C:\\Program=
+
+Files\\Git\\cmd;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program
+Files\\no=
+dejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\Dicky
+Saputra\\AppData=
+\\Local\\Android\\Sdk\\platform-tools;C:\\Program
+Files (x86)\\Yarn\\bin\=
+\;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Us=
+ers\\Dicky
+Saputra\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\Di=
+cky
+Saputra\\AppData\\Local\\Programs\\Microsoft VS
+Code\\bin;C:\\Users=
+\\Dicky
+Saputra\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Dicky
+Sa=
+putra\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Dicky
+Saputra\\A=
+ppData\\Roaming\\npm;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Android\\S=
+dk\\platform-tools;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\atom\\bin;C:=
+\\Users\\Dicky
+Saputra\\AppData\\Local\\Yarn\\bin'
+    'SystemRoot' =3D=
+> 'C:\\WINDOWS'
+    'COMSPEC' =3D> 'C:\\WINDOWS\\system32\\cmd.exe'
+   =
+ 'PATHEXT' =3D>
+'.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'=
+
+    'WINDIR' =3D> 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' =3D> '<address>=
+Apache/2.4.38 (Win64)
+OpenSSL/1.1.1b PHP/7.3.3 Server at localhost Port 8=
+0</address>
+'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.38 (Win64) OpenSSL=
+/1.1.1b
+PHP/7.3.3'
+    'SERVER_NAME' =3D> 'localhost'
+    'SERVER_ADD=
+R' =3D> '::1'
+    'SERVER_PORT' =3D> '80'
+    'REMOTE_ADDR' =3D> '::1'=
+
+    'DOCUMENT_ROOT' =3D> 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' =3D> '=
+http'
+    'CONTEXT_PREFIX' =3D> ''
+    'CONTEXT_DOCUMENT_ROOT' =3D> 'C:=
+/xampp/htdocs'
+    'SERVER_ADMIN' =3D> 'postmaster@localhost'
+    'SCRI=
+PT_FILENAME' =3D>
+'C:/xampp/htdocs/accounting/backend/web/index.php'
+  =
+  'REMOTE_PORT' =3D> '51643'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+   =
+ 'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHOD' =3D> 'POST'
+   =
+ 'QUERY_STRING' =3D> 'r=3Dakt-laporan-produksi%2Flap'
+    'REQUEST_URI' =
+=3D>
+'/accounting/backend/web/index.php?r=3Dakt-laporan-produksi%2Flap'=
+
+    'SCRIPT_NAME' =3D> '/accounting/backend/web/index.php'
+    'PHP_SE=
+LF' =3D> '/accounting/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D=
+> 1598492082.667
+    'REQUEST_TIME' =3D> 1598492082
+]

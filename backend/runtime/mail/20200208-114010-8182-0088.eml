@@ -1,0 +1,382 @@
+Message-ID: <5d3dba7563c4df42d6fbd8849542858d@sijaksa.com>
+Date: Sat, 08 Feb 2020 11:40:10 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-08 11:40:10
+[125.166.97.142][5][622nhs61d9ejcgpcdbsplaf03m][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access=
+ violation: 1064
+You have an error in your SQL syntax; check the manual t=
+hat
+corresponds to your MariaDB server version for the right syntax to us=
+e
+near '.`nama_akun` FROM `rek_kelompok_apbd` LEFT JOIN `rek_akun_apbd`=
+
+ON rek_akun_apbd' at line 1 in
+/home/sijaksa/public_html/vendor/yiisof=
+t/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1 /hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Co=
+mmand->internalExecute('SELECT rek_kelo...')
+#2 /home/sijaksa/public_html=
+/vendor/yiisoft/yii2/db/Command.php(399):
+yii\db\Command->queryInternal('=
+fetchAll', NULL)
+#3 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Quer=
+y.php(237):
+yii\db\Command->queryAll()
+#4
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/db/ActiveQuery.php(133):
+yii\db\Query->all(NULL)
+#5=
+
+/home/sijaksa/public_html/backend/views/rek-jenis-apbd/_form.php(27):
+=
+yii\db\ActiveQuery->all()
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii=
+2/base/View.php(348):
+require('/home/sijaksa/p...')
+#7 /home/sijaksa/pu=
+blic_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPh=
+pFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#8 /home/sijaksa/pu=
+blic_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFi=
+le('/home/sijaksa/p...', Array, NULL)
+#9
+/home/sijaksa/public_html/back=
+end/views/rek-jenis-apbd/create.php(17):
+yii\base\View->render('_form', A=
+rray)
+#10 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348=
+):
+require('/home/sijaksa/p...')
+#11 /home/sijaksa/public_html/vendor/y=
+iisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijak=
+sa/p...', '[<span
+class=3D"s...')
+#12 /home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa=
+/p...', Array,
+Object(backend\controllers\RekJenisApbdController))
+#13=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(384):=
+
+yii\base\View->render('create', Array,
+Object(backend\controllers\RekJ=
+enisApbdController))
+#14
+/home/sijaksa/public_html/backend/controllers/=
+RekJenisApbdController.php(74):
+yii\base\Controller->render('create', Arr=
+ay)
+#15 [internal function]:
+backend\controllers\RekJenisApbdController=
+->actionCreate()
+#16
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base=
+/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#17
+/home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base=
+\InlineAction->runWithParams(Array)
+#18
+/home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('crea=
+te', Array)
+#19
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Appli=
+cation.php(103):
+yii\base\Module->runAction('rek-jenis-apbd/...', Array)=
+
+#20
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php=
+(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 =
+/home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Application=
+->run()
+#22 {main}
+
+Next yii\db\Exception: SQLSTATE[42000]: Syntax er=
+ror or access
+violation: 1064 You have an error in your SQL syntax; check=
+ the manual
+that corresponds to your MariaDB server version for the right=
+ syntax
+to use near '.`nama_akun` FROM `rek_kelompok_apbd` LEFT JOIN
+`r=
+ek_akun_apbd` ON rek_akun_apbd' at line 1
+The SQL being executed was: SEL=
+ECT rek_kelompok_apbd.nama_kel
+`rek_akun_apbd`.`nama_akun` FROM `rek_kelo=
+mpok_apbd` LEFT JOIN
+`rek_akun_apbd` ON rek_akun_apbd.id_akun =3D rek_kel=
+ompok_apbd.id_akun
+in /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Sc=
+hema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(PDOExcep=
+tion), 'SELECT
+rek_kelo...')
+#1 /home/sijaksa/public_html/vendor/yiisof=
+t/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT rek_=
+kelo...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php=
+(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 /home/sijaksa=
+/public_html/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->query=
+All()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.p=
+hp(133):
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_html/backend=
+/views/rek-jenis-apbd/_form.php(27):
+yii\db\ActiveQuery->all()
+#6 /home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/ho=
+me/sijaksa/p...')
+#7 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/V=
+iew.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span=
+
+class=3D"s...')
+#8 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/=
+View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array, NUL=
+L)
+#9
+/home/sijaksa/public_html/backend/views/rek-jenis-apbd/create.php=
+(17):
+yii\base\View->render('_form', Array)
+#10 /home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')=
+
+#11 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+=
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...'=
+)
+#12 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):=
+
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(backend\=
+controllers\RekJenisApbdController))
+#13
+/home/sijaksa/public_html/vend=
+or/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('create',=
+ Array,
+Object(backend\controllers\RekJenisApbdController))
+#14
+/home=
+/sijaksa/public_html/backend/controllers/RekJenisApbdController.php(74):
+=
+yii\base\Controller->render('create', Array)
+#15 [internal function]:
+b=
+ackend\controllers\RekJenisApbdController->actionCreate()
+#16
+/home/sij=
+aksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user=
+_func_array(Array, Array)
+#17
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array=
+)
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528=
+):
+yii\base\Controller->runAction('create', Array)
+#19
+/home/sijaksa/=
+public_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module=
+->runAction('rek-jenis-apbd/...', Array)
+#20
+/home/sijaksa/public_html/=
+vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handl=
+eRequest(Object(yii\web\Request))
+#21 /home/sijaksa/public_html/backend/w=
+eb/index.php(22):
+yii\base\Application->run()
+#22 {main}
+Additional I=
+nformation:
+Array
+(
+    [0] =3D> 42000
+    [1] =3D> 1064
+    [2] =
+=3D> You have an error in your SQL syntax; check the manual that
+correspo=
+nds to your MariaDB server version for the right syntax to use
+near '.`na=
+ma_akun` FROM `rek_kelompok_apbd` LEFT JOIN `rek_akun_apbd`
+ON rek_akun_a=
+pbd' at line 1
+)
+
+2020-02-08 11:40:10
+[125.166.97.142][5][622nhs61d=
+9ejcgpcdbsplaf03m][info][application]
+$_GET =3D [
+    'r' =3D> 'rek-jen=
+is-apbd/create'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =
+=3D [
+    'advanced-backend' =3D> '622nhs61d9ejcgpcdbsplaf03m'
+    '_cs=
+rf-backend' =3D>
+'88e6ae420364d7099437fc9aadd003c5ac6b740bf9ec39ac6da8420=
+1f5bb5cf9a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"53mQ1rG624Cmp8-6eFgZ0ib=
+OqexS_cPE\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__re=
+turnUrl' =3D> '/backend/web/index.php'
+    'user_role' =3D> [
+        0=
+ =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+        2 =3D> 'KELURAHAN'=
+
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> =
+[
+        0 =3D> 2
+        1 =3D> 3
+        2 =3D> 4
+        3 =3D>=
+ 1
+    ]
+    '__id' =3D> 5
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '=
+/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi-=
+bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+  =
+  'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b=
+in'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '/backend/web/=
+index.php'
+    'REQUEST_URI' =3D>
+'/backend/web/index.php?r=3Drek-jenis=
+-apbd%2Fcreate'
+    'QUERY_STRING' =3D> 'r=3Drek-jenis-apbd%2Fcreate'
+ =
+   'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+  =
+  'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '58706'
+   =
+ 'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/index.php'=
+
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROO=
+T' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'R=
+EQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public=
+_html'
+    'REMOTE_ADDR' =3D> '125.166.97.142'
+    'SERVER_PORT' =3D> '=
+80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijak=
+sa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATUR=
+E' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D622nhs61d9ejcgpcdbs=
+plaf03m;
+_csrf-backend=3D88e6ae420364d7099437fc9aadd003c5ac6b740bf9ec39ac=
+6da84201f5bb5cf9a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs=
+%3A32%3A%2253mQ1rG624Cmp8-6eFgZ0ibOqexS_cPE%22%3B%7D'
+    'HTTP_ACCEPT_LA=
+NGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT=
+_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://sijaksa=
+.com/backend/web/index.php?r=3Drek-jenis-apbd'
+    'HTTP_ACCEPT' =3D>
+'=
+text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/ap=
+ng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER=
+_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.3=
+6 (KHTML, like Gecko) Chrome/79.0.3945.130
+Safari/537.36'
+    'HTTP_UPG=
+RADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_DNT' =3D> '1'
+    'HTTP_CACH=
+E_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_CONNECTION' =3D> 'close'
+    'H=
+TTP_HOST' =3D> 'sijaksa.com'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/ba=
+ckend/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+   =
+ 'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php=
+'
+    'REQUEST_TIME_FLOAT' =3D> 1581136810.7889
+    'REQUEST_TIME' =3D>=
+ 1581136810
+]

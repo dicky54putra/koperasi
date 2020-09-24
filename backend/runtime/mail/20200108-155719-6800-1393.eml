@@ -1,0 +1,426 @@
+Message-ID: <a081917382d209985d713cfab993b363@cvajm.com>
+Date: Wed, 08 Jan 2020 15:57:19 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-01-08 15:57:19
+[36.90.103.116][62][9opn009o7uqnndsmufvsk0gsp5][error=
+][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity con=
+straint violation: 1052
+Column 'keterangan' in where clause is ambiguous =
+in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290=
+
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db=
+/Command.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->interna=
+lExecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchCol=
+umn', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.=
+php(463):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScala=
+r('COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar=
+('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->cou=
+nt('*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data=
+/BaseDataProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCoun=
+t()
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/Grid=
+View.php(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/c=
+vajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+=
+kartik\grid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()=
+
+#11 /home/cvajm/public_html/cvajm/backend/views/gps/view.php(46):
+yii\=
+base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#13
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base=
+\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#14=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+=
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(backend\con=
+trollers\GpsController))
+#15
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/base/Controller.php(384):
+yii\base\View->render('view', Array,
+=
+Object(backend\controllers\GpsController))
+#16
+/home/cvajm/public_html/=
+cvajm/backend/controllers/GpsController.php(96):
+yii\base\Controller->ren=
+der('view', Array)
+#17 [internal function]:
+backend\controllers\GpsCont=
+roller->actionView('432')
+#18
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+=
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php=
+(157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Contro=
+ller->runAction('view', Array)
+#21
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('gps/v=
+iew', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base=
+/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web\=
+Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+=
+yii\base\Application->run()
+#24 {main}
+
+Next yii\db\IntegrityExceptio=
+n: SQLSTATE[23000]: Integrity constraint
+violation: 1052 Column 'keterang=
+an' in where clause is ambiguous
+The SQL being executed was: SELECT COUNT=
+(*) FROM `gps_detail` LEFT
+JOIN `gps` ON `gps_detail`.`id_gps` =3D `gps`.=
+`id_gps` LEFT JOIN
+`surat_jalan` ON `gps_detail`.`id_surat_jalan` =3D
+`=
+surat_jalan`.`id_surat_jalan` WHERE (`gps_detail`.`id_gps`=3D432) AND
+(`p=
+osition_time` LIKE '%8%') AND (`keterangan` LIKE '%kosongan%') in
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:=
+
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(12=
+95):
+yii\db\Schema->convertException(Object(PDOException), 'SELECT
+COUN=
+T(*)...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Comma=
+nd.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):=
+
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command->query=
+Scalar()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Active=
+Query.php(352):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Conne=
+ction))
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.p=
+hp(347):
+yii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connec=
+tion))
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/Active=
+DataProvider.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii=
+\data\ActiveDataProvider->prepareTotalCount()
+#8
+/home/cvajm/public_htm=
+l/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDa=
+taProvider->getTotalCount()
+#9
+/home/cvajm/public_html/cvajm/vendor/kar=
+tik-v/yii2-grid/src/GridView.php(1163):
+kartik\grid\GridView->initToggleD=
+ata()
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Widget=
+.php(140):
+kartik\grid\GridView->run()
+#11 /home/cvajm/public_html/cvaj=
+m/backend/views/gps/view.php(46):
+yii\base\Widget::widget(Array)
+#12
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+req=
+uire('/home/cvajm/pub...')
+#13
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/p=
+ub...', '[<span
+class=3D"s...')
+#14
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/cva=
+jm/pub...', Array,
+Object(backend\controllers\GpsController))
+#15
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+=
+yii\base\View->render('view', Array,
+Object(backend\controllers\GpsContro=
+ller))
+#16
+/home/cvajm/public_html/cvajm/backend/controllers/GpsControl=
+ler.php(96):
+yii\base\Controller->render('view', Array)
+#17 [internal f=
+unction]:
+backend\controllers\GpsController->actionView('432')
+#18
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):=
+
+call_user_func_array(Array, Array)
+#19
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->run=
+WithParams(Array)
+#20
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/base/Module.php(528):
+yii\base\Controller->runAction('view', Array)
+#2=
+1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(1=
+03):
+yii\base\Module->runAction('gps/view', Array)
+#22
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Ap=
+plication->handleRequest(Object(yii\web\Request))
+#23 /home/cvajm/public_=
+html/cvajm/backend/web/index.php(22):
+yii\base\Application->run()
+#24 {=
+main}
+Additional Information:
+Array
+(
+    [0] =3D> 23000
+    [1] =
+=3D> 1052
+    [2] =3D> Column 'keterangan' in where clause is ambiguous=
+
+)
+
+2020-01-08 15:57:19
+[36.90.103.116][62][9opn009o7uqnndsmufvsk0g=
+sp5][info][application]
+$_GET =3D [
+    'GpsdetailSearch' =3D> [
+    =
+    'id_surat_jalan' =3D> ''
+        'license_plat_no' =3D> ''
+        =
+'latitude' =3D> ''
+        'longitude' =3D> ''
+        'status' =3D> ''=
+
+        'position_time' =3D> '8'
+        'lokasi' =3D> ''
+        'k=
+eterangan' =3D> 'kosongan'
+        'parkir' =3D> ''
+    ]
+    'r' =3D=
+> 'gps/view'
+    'id' =3D> '432'
+    'page' =3D> '3'
+]
+
+$_POST =
+=3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D=
+> '9opn009o7uqnndsmufvsk0gsp5'
+    '_csrf-backend' =3D>
+'6e76d09e38e5d4=
+7558f649f1529fba4d7803207b07465d54fa458701d6c03c83a:2:{i:0;s:13:\"_csrf-bac=
+kend\";i:1;s:32:\"iLXafxe6cIPc98eCCDZePVdgsfZE0j__\";}'
+]
+
+$_SESSION =
+=3D [
+    '__flash' =3D> []
+    'user_role' =3D> [
+        0 =3D> 'SY=
+STEM ADMINISTRATOR'
+        1 =3D> 'FULL ACCESS'
+    ]
+    'user_role=
+_id' =3D> [
+        0 =3D> 1
+        1 =3D> 19
+    ]
+    '__id' =3D=
+> 62
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+    'HOME' =3D> '/=
+home/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    '=
+REQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?GpsdetailSearch%5Bid_sura=
+t_jalan%5D=3D&GpsdetailSearch%5Blicense_plat_no%5D=3D&GpsdetailSearch%5Blat=
+itude%5D=3D&GpsdetailSearch%5Blongitude%5D=3D&GpsdetailSearch%5Bstatus%5D=
+=3D&GpsdetailSearch%5Bposition_time%5D=3D8&GpsdetailSearch%5Blokasi%5D=3D&G=
+psdetailSearch%5Bketerangan%5D=3Dkosongan&GpsdetailSearch%5Bparkir%5D=3D&r=
+=3Dgps%2Fview&id=3D432&page=3D3'
+    'QUERY_STRING' =3D>
+'GpsdetailSear=
+ch%5Bid_surat_jalan%5D=3D&GpsdetailSearch%5Blicense_plat_no%5D=3D&Gpsdetail=
+Search%5Blatitude%5D=3D&GpsdetailSearch%5Blongitude%5D=3D&GpsdetailSearch%5=
+Bstatus%5D=3D&GpsdetailSearch%5Bposition_time%5D=3D8&GpsdetailSearch%5Bloka=
+si%5D=3D&GpsdetailSearch%5Bketerangan%5D=3Dkosongan&GpsdetailSearch%5Bparki=
+r%5D=3D&r=3Dgps%2Fview&id=3D432&page=3D3'
+    'REQUEST_METHOD' =3D> 'GET'=
+
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CG=
+I/1.1'
+    'REMOTE_PORT' =3D> '54497'
+    'SCRIPT_FILENAME' =3D>
+'/ho=
+me/cvajm/public_html/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D>=
+ '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/publi=
+c_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'=
+
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =
+=3D> '36.90.103.116'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D>=
+ '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWA=
+RE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'PATH' =3D>=
+
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HT=
+TP_COOKIE' =3D> 'advanced-backend=3D9opn009o7uqnndsmufvsk0gsp5;
+_csrf-bac=
+kend=3D6e76d09e38e5d47558f649f1529fba4d7803207b07465d54fa458701d6c03c83a%3A=
+2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22iLXafxe6c=
+IPc98eCCDZePVdgsfZE0j__%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,=
+id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzi=
+p, deflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web=
+/index.php?GpsdetailSearch%5Bid_surat_jalan%5D=3D&GpsdetailSearch%5Blicense=
+_plat_no%5D=3D&GpsdetailSearch%5Blatitude%5D=3D&GpsdetailSearch%5Blongitude=
+%5D=3D&GpsdetailSearch%5Bstatus%5D=3D&GpsdetailSearch%5Bposition_time%5D=3D=
+8&GpsdetailSearch%5Blokasi%5D=3D&GpsdetailSearch%5Bketerangan%5D=3D&Gpsdeta=
+ilSearch%5Bparkir%5D=3D&r=3Dgps%2Fview&id=3D432&page=3D3'
+    'HTTP_ACCEP=
+T' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/we=
+bp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+   =
+ 'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleW=
+ebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88
+Safari/537.36'
+   =
+ 'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CONNECTION' =3D> 'ke=
+ep-alive'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepalive' =3D>=
+ '1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/index.php'=
+
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =
+=3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.php'
+   =
+ 'REQUEST_TIME_FLOAT' =3D> 1578470239.6607
+    'REQUEST_TIME' =3D> 157847=
+0239
+]

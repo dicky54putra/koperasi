@@ -1,0 +1,315 @@
+Message-ID: <8c1ea923630ed559a564ba175e38364e@cvajm.com>
+Date: Sat, 29 Jun 2019 18:18:34 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-06-29 18:18:34
+[36.92.48.63][8][dt86h6pdbvuhcn137vppi2bof5][error][y=
+ii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity constr=
+aint violation: 1048
+Column 'tanggal_bayar' cannot be null in
+/home/cva=
+jm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:=
+
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(12=
+90):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSER=
+T INTO `in...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db=
+/Schema.php(433):
+yii\db\Command->execute()
+#3
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->inse=
+rt('invoice', Array)
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInternal(NULL)
+=
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/BaseActiveRecord.=
+php(678):
+yii\db\ActiveRecord->insert(true, NULL)
+#6
+/home/cvajm/publ=
+ic_html/cvajm/backend/controllers/InvoiceController.php(168):
+yii\db\Base=
+ActiveRecord->save()
+#7 [internal function]:
+backend\controllers\Invoic=
+eController->actionCreate()
+#8
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.p=
+hp(157):
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Cont=
+roller->runAction('create', Array)
+#11
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('i=
+nvoice/create', Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Objec=
+t(yii\web\Request))
+#13 /home/cvajm/public_html/cvajm/backend/web/index.p=
+hp(22):
+yii\base\Application->run()
+#14 {main}
+
+Next yii\db\Integri=
+tyException: SQLSTATE[23000]: Integrity constraint
+violation: 1048 Column=
+ 'tanggal_bayar' cannot be null
+The SQL being executed was: INSERT INTO `=
+invoice` (`id_po`,
+`no_invoice`, `tanggal_tagihan`, `tanggal_bayar`, `sta=
+tus`) VALUES
+(3830, '1', '2019-06-29', NULL, 1) in
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db=
+\Schema->convertException(Object(PDOException), 'INSERT INTO
+`in...')
+#=
+1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1091):=
+
+yii\db\Command->internalExecute('INSERT INTO `in...')
+#2
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php(433):
+yii\db\Command=
+->execute()
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Act=
+iveRecord.php(600):
+yii\db\Schema->insert('invoice', Array)
+#4
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(566):
+yii=
+\db\ActiveRecord->insertInternal(NULL)
+#5
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/BaseActiveRecord.php(678):
+yii\db\ActiveRecord->i=
+nsert(true, NULL)
+#6
+/home/cvajm/public_html/cvajm/backend/controllers/=
+InvoiceController.php(168):
+yii\db\BaseActiveRecord->save()
+#7 [interna=
+l function]:
+backend\controllers\InvoiceController->actionCreate()
+#8=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(=
+57):
+call_user_func_array(Array, Array)
+#9
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->=
+runWithParams(Array)
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/base/Module.php(528):
+yii\base\Controller->runAction('create', Array)=
+
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.=
+php(103):
+yii\base\Module->runAction('invoice/create', Array)
+#12
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):=
+
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 /home/=
+cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\Application->=
+run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 230=
+00
+    [1] =3D> 1048
+    [2] =3D> Column 'tanggal_bayar' cannot be null=
+
+)
+
+2019-06-29 18:18:34
+[36.92.48.63][8][dt86h6pdbvuhcn137vppi2bof5=
+][info][application] $_GET
+=3D [
+    'r' =3D> 'invoice/create'
+]
+=
+
+$_POST =3D [
+    '_csrf-backend' =3D>
+'4jv8Ms4u410hbNo3TWptKBbDkglar=
+wGRkZUuB_0S4gCuZL5kth6bZEsjl1wlBi9AfLqqUxzWY8X7z2ZPqEWKNQ=3D=3D'
+    'Inv=
+oice' =3D> [
+        'id_po' =3D> '3830'
+        'no_invoice' =3D> '1'=
+
+        'tanggal_tagihan' =3D> '2019-06-29'
+        'tanggal_bayar' =
+=3D> ''
+        'status' =3D> '1'
+    ]
+]
+
+$_FILES =3D []
+
+$_=
+COOKIE =3D [
+    'advanced-backend' =3D> 'dt86h6pdbvuhcn137vppi2bof5'
+ =
+   '_csrf-backend' =3D>
+'ca37f487227d2281d0cfbc9a59d74bce9291016589a9ad7b=
+40a17a89ccc74e16a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"L_BVx0x9jOMkhlBh=
+jy8ZFybTjZHHUWh5\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+  =
+  '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+    'user_role' =3D> =
+[
+        0 =3D> 'INVOICE'
+        1 =3D> 'CHECKER'
+        2 =3D> 'P=
+EMESANAN'
+        3 =3D> 'SURAT JALAN'
+    ]
+    'user_role_id' =3D> =
+[
+        0 =3D> 8
+        1 =3D> 6
+        2 =3D> 5
+        3 =3D>=
+ 4
+    ]
+    '__id' =3D> 8
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '=
+/home/cvajm/fcgi-bin/../etc/php7.0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'=
+
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'P=
+ATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'=
+
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_URI=
+' =3D> '/cvajm/backend/web/index.php?r=3Dinvoice%2Fcreate'
+    'QUERY_STR=
+ING' =3D> 'r=3Dinvoice%2Fcreate'
+    'REQUEST_METHOD' =3D> 'POST'
+    '=
+SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'=
+
+    'REMOTE_PORT' =3D> '65027'
+    'SCRIPT_FILENAME' =3D>
+'/home/cva=
+jm/public_html/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no =
+address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html=
+'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    '=
+DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '36.=
+92.48.63'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.2=
+5.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'A=
+pache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'ad=
+vanced-backend=3Ddt86h6pdbvuhcn137vppi2bof5;
+_csrf-backend=3Dca37f487227d=
+2281d0cfbc9a59d74bce9291016589a9ad7b40a17a89ccc74e16a%3A2%3A%7Bi%3A0%3Bs%3A=
+13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22L_BVx0x9jOMkhlBhjy8ZFybTjZHH=
+UWh5%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+    '=
+HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'htt=
+p://cvajm.com/cvajm/backend/web/index.php?r=3Dinvoice%2Fcreate'
+    'HTTP=
+_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,im=
+age/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3'
+    '=
+HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 6.1)
+AppleWebKit/537.36 (K=
+HTML, like Gecko) Chrome/75.0.3770.100
+Safari/537.36'
+    'CONTENT_TYPE=
+' =3D> 'application/x-www-form-urlencoded'
+    'HTTP_UPGRADE_INSECURE_REQ=
+UESTS' =3D> '1'
+    'HTTP_ORIGIN' =3D> 'http://cvajm.com'
+    'HTTP_CAC=
+HE_CONTROL' =3D> 'max-age=3D0'
+    'CONTENT_LENGTH' =3D> '246'
+    'HTT=
+P_CONNECTION' =3D> 'close'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'SCRIPT=
+_URI' =3D> 'http://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL=
+' =3D> '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+=
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOA=
+T' =3D> 1561807114.3325
+    'REQUEST_TIME' =3D> 1561807114
+]

@@ -1,0 +1,330 @@
+Message-ID: <8ff5386fb6b4e6fc6df0bb6439ca2278@sijaksa.com>
+Date: Tue, 25 Feb 2020 13:16:07 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-25 13:16:07
+[190.2.145.41][14][urkqjsq45fqqqf8nu66ojarler][error]=
+[yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access =
+violation: 1064
+You have an error in your SQL syntax; check the manual th=
+at
+corresponds to your MariaDB server version for the right syntax to use=
+
+near 'AND daftar_penganggaran_pendapatan.id_kel =3D 1
+                =
+WHERE id_desa =3D '7' at line 3 in
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1 /ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\C=
+ommand->internalExecute('\n              ...')
+#2 /home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/db/Command.php(386):
+yii\db\Command->queryInternal=
+('')
+#3
+/home/sijaksa/public_html/backend/views/daftar-penganggaran-pen=
+dapatan/cetak.php(120):
+yii\db\Command->query()
+#4 /home/sijaksa/public=
+_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...=
+')
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):=
+
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[]')
+#6 /home/sija=
+ksa/public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->re=
+nderFile('/home/sijaksa/p...', Array,
+Object(backend\controllers\DaftarPe=
+nganggaranPendapatanController))
+#7
+/home/sijaksa/public_html/vendor/yi=
+isoft/yii2/base/Controller.php(415):
+yii\base\View->render('cetak', Array=
+,
+Object(backend\controllers\DaftarPenganggaranPendapatanController))
+#=
+8
+/home/sijaksa/public_html/backend/controllers/DaftarPenganggaranPendapa=
+tanController.php(205):
+yii\base\Controller->renderPartial('cetak')
+#9 =
+[internal function]:
+backend\controllers\DaftarPenganggaranPendapatanCont=
+roller->actionCetak()
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2=
+/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#11
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii=
+\base\InlineAction->runWithParams(Array)
+#12
+/home/sijaksa/public_html/=
+vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction(=
+'cetak', Array)
+#13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/A=
+pplication.php(103):
+yii\base\Module->runAction('daftar-pengangg...', Arr=
+ay)
+#14
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.=
+php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#=
+15 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Applicat=
+ion->run()
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[42000]: Syntax=
+ error or access
+violation: 1064 You have an error in your SQL syntax; ch=
+eck the manual
+that corresponds to your MariaDB server version for the ri=
+ght syntax
+to use near 'AND daftar_penganggaran_pendapatan.id_kel =3D 1=
+
+                WHERE id_desa =3D '7' at line 3
+The SQL being executed=
+ was:=20
+                SELECT DISTINCT id_jenis
+                FROM da=
+ftar_penganggaran_pendapatan
+                AND daftar_penganggaran_pend=
+apatan.id_kel =3D 1
+                WHERE id_desa =3D '755'
+           =
+  in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+St=
+ack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.ph=
+p(1295):
+yii\db\Schema->convertException(Object(PDOException), '\n       =
+     =20
+...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Comman=
+d.php(1158):
+yii\db\Command->internalExecute('\n              ...')
+#2 =
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(386):
+yii\db=
+\Command->queryInternal('')
+#3
+/home/sijaksa/public_html/backend/views/=
+daftar-penganggaran-pendapatan/cetak.php(120):
+yii\db\Command->query()
+=
+#4 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+requ=
+ire('/home/sijaksa/p...')
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii=
+2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', =
+'[]')
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156)=
+:
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(backend=
+\controllers\DaftarPenganggaranPendapatanController))
+#7
+/home/sijaksa/=
+public_html/vendor/yiisoft/yii2/base/Controller.php(415):
+yii\base\View->=
+render('cetak', Array,
+Object(backend\controllers\DaftarPenganggaranPenda=
+patanController))
+#8
+/home/sijaksa/public_html/backend/controllers/Daft=
+arPenganggaranPendapatanController.php(205):
+yii\base\Controller->renderP=
+artial('cetak')
+#9 [internal function]:
+backend\controllers\DaftarPenga=
+nggaranPendapatanController->actionCetak()
+#10
+/home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Arr=
+ay, Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Contr=
+oller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\C=
+ontroller->runAction('cetak', Array)
+#13
+/home/sijaksa/public_html/vend=
+or/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('daf=
+tar-pengangg...', Array)
+#14
+/home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/base/Application.php(386):
+yii\web\Application->handleRequest(Object(=
+yii\web\Request))
+#15 /home/sijaksa/public_html/backend/web/index.php(22)=
+:
+yii\base\Application->run()
+#16 {main}
+Additional Information:
+Ar=
+ray
+(
+    [0] =3D> 42000
+    [1] =3D> 1064
+    [2] =3D> You have an=
+ error in your SQL syntax; check the manual that
+corresponds to your Mari=
+aDB server version for the right syntax to use
+near 'AND daftar_pengangga=
+ran_pendapatan.id_kel =3D 1
+                WHERE id_desa =3D '7' at line=
+ 3
+)
+
+2020-02-25 13:16:07
+[190.2.145.41][14][urkqjsq45fqqqf8nu66oja=
+rler][info][application]
+$_GET =3D [
+    'r' =3D> 'daftar-penganggaran-=
+pendapatan/cetak'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =
+=3D [
+    'advanced-backend' =3D> 'urkqjsq45fqqqf8nu66ojarler'
+    '_cs=
+rf-backend' =3D>
+'5dedeb698e3e9efc2f8e5051ef91be2d242efc38d7bd7688139a681=
+48f0d6fcea:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"JydZGCe4W-daIqGYjEHzexO=
+TxTQNeYV8\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__re=
+turnUrl' =3D> '/backend/web/index.php'
+    'user_role' =3D> [
+        0=
+ =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+        2 =3D> 'KELURAHAN'=
+
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> =
+[
+        0 =3D> 2
+        1 =3D> 3
+        2 =3D> 4
+        3 =3D>=
+ 1
+    ]
+    '__id' =3D> 14
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> =
+'/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi=
+-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+ =
+   'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/=
+bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '/backend/web=
+/index.php'
+    'REQUEST_URI' =3D>
+'/backend/web/index.php?r=3Ddaftar-p=
+enganggaran-pendapatan%2Fcetak'
+    'QUERY_STRING' =3D> 'r=3Ddaftar-penga=
+nggaran-pendapatan%2Fcetak'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER=
+_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    '=
+REMOTE_PORT' =3D> '47728'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/pub=
+lic_html/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address give=
+n]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'C=
+ONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_R=
+OOT' =3D> '/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '190.2.145.4=
+1'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+=
+    'SERVER_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2=
+.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_CONNECTION' =3D> 'close=
+'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_HOST' =3D> 'sij=
+aksa.com'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Durkqjsq45fqqqf8nu66o=
+jarler;
+_csrf-backend=3D5dedeb698e3e9efc2f8e5051ef91be2d242efc38d7bd76881=
+39a68148f0d6fcea%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%=
+3A32%3A%22JydZGCe4W-daIqGYjEHzexOTxTQNeYV8%22%3B%7D'
+    'HTTP_ACCEPT_LAN=
+GUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_=
+ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT' =3D>
+'text/html,applic=
+ation/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,a=
+pplication/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mo=
+zilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like G=
+ecko) Chrome/79.0.3945.130
+Safari/537.36'
+    'SCRIPT_URI' =3D> 'http:/=
+/sijaksa.com/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/i=
+ndex.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backen=
+d/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1582611367.3721
+    'REQ=
+UEST_TIME' =3D> 1582611367
+]

@@ -1,0 +1,408 @@
+Message-ID: <d7ffc02af2f48d1e452ccbab85836fe1@sijaksa.com>
+Date: Wed, 05 Feb 2020 03:15:01 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-05 03:15:01
+[66.249.75.220][-][pq7qi2fgjpt1rdpjm2cn2q0lvf][error]=
+[yii\db\Exception]
+PDOException: SQLSTATE[HY000] [1045] Access denied for=
+ user
+'sijaksa'@'localhost' (using password: YES) in
+/home/sijaksa/publ=
+ic_html/vendor/yiisoft/yii2/db/Connection.php:687
+Stack trace:
+#0
+/ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/db/Connection.php(687):
+PDO->_=
+_construct('mysql:host=3Dloca...', 'sijaksa', 'indonesia-hebat',
+NULL)
+=
+#1
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Connection.php(613):=
+
+yii\db\Connection->createPdoInstance()
+#2
+/home/sijaksa/public_html/=
+vendor/yiisoft/yii2/db/Connection.php(997):
+yii\db\Connection->open()
+#=
+3
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Connection.php(984):=
+
+yii\db\Connection->getMasterPdo()
+#4 /home/sijaksa/public_html/vendor/=
+yiisoft/yii2/db/Command.php(253):
+yii\db\Connection->getSlavePdo()
+#5 /=
+home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1153):
+yii\db=
+\Command->prepare(true)
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii2/=
+db/Command.php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#7=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/mysql/Schema.php(319):=
+
+yii\db\Command->queryAll()
+#8
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/db/mysql/Schema.php(125):
+yii\db\mysql\Schema->findColumns(Object=
+(yii\db\TableSchema))
+#9 /home/sijaksa/public_html/vendor/yiisoft/yii2/db=
+/Schema.php(744):
+yii\db\mysql\Schema->loadTableSchema('login')
+#10 /ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php(194):
+yii\db\Sch=
+ema->getTableMetadata('{{login}}', 'schema', false)
+#11
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/db/ActiveRecord.php(435):
+yii\db\Schema->g=
+etTableSchema('{{login}}')
+#12
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/db/ActiveRecord.php(469):
+yii\db\ActiveRecord::getTableSchema()
+#=
+13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/BaseActiveRecord.php(=
+500):
+yii\db\ActiveRecord->attributes()
+#14
+/home/sijaksa/public_html=
+/vendor/yiisoft/yii2/db/BaseActiveRecord.php(291):
+yii\db\BaseActiveRecor=
+d->hasAttribute('username')
+#15
+/home/sijaksa/public_html/vendor/yiisof=
+t/yii2/helpers/BaseHtml.php(2227):
+yii\db\BaseActiveRecord->__get('userna=
+me')
+#16
+/home/sijaksa/public_html/vendor/yiisoft/yii2/helpers/BaseHtml=
+.php(1353):
+yii\helpers\BaseHtml::getAttributeValue(Object(backend\models=
+\LoginForm),
+'username')
+#17
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/helpers/BaseHtml.php(1407):
+yii\helpers\BaseHtml::activeInput('text=
+',
+Object(backend\models\LoginForm), 'username', Array)
+#18
+/home/sij=
+aksa/public_html/vendor/yiisoft/yii2/widgets/ActiveField.php(404):
+yii\he=
+lpers\BaseHtml::activeTextInput(Object(backend\models\LoginForm),
+'userna=
+me', Array)
+#19 /home/sijaksa/public_html/backend/views/site/login.php(40=
+):
+yii\widgets\ActiveField->textInput('[<span class=3D"s...')
+#20 /home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/ho=
+me/sijaksa/p...')
+#21 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/=
+View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span=
+
+class=3D"s...')
+#22 /home/sijaksa/public_html/vendor/yiisoft/yii2/base=
+/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+=
+Object(backend\controllers\SiteController))
+#23
+/home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('l=
+ogin', Array,
+Object(backend\controllers\SiteController))
+#24
+/home/s=
+ijaksa/public_html/backend/controllers/SiteController.php(99):
+yii\base\C=
+ontroller->render('login', Array)
+#25 [internal function]:
+backend\cont=
+rollers\SiteController->actionLogin()
+#26
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, A=
+rray)
+#27
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller=
+.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#28
+/home/sija=
+ksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Contro=
+ller->runAction('login', Array)
+#29
+/home/sijaksa/public_html/vendor/yi=
+isoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('site/log=
+in', Array)
+#30
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Appl=
+ication.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Reque=
+st))
+#31 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\=
+Application->run()
+#32 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]=
+ [1045] Access denied for user
+'sijaksa'@'localhost' (using password: YES=
+) in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Connection.php:624=
+
+Stack trace:
+#0
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Con=
+nection.php(997):
+yii\db\Connection->open()
+#1
+/home/sijaksa/public_h=
+tml/vendor/yiisoft/yii2/db/Connection.php(984):
+yii\db\Connection->getMas=
+terPdo()
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(=
+253):
+yii\db\Connection->getSlavePdo()
+#3 /home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/db/Command.php(1153):
+yii\db\Command->prepare(true)
+#4=
+ /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(399):
+yii\d=
+b\Command->queryInternal('fetchAll', NULL)
+#5
+/home/sijaksa/public_html=
+/vendor/yiisoft/yii2/db/mysql/Schema.php(319):
+yii\db\Command->queryAll()=
+
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/mysql/Schema.php(1=
+25):
+yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php(744):
+yii\db\my=
+sql\Schema->loadTableSchema('login')
+#8 /home/sijaksa/public_html/vendor/=
+yiisoft/yii2/db/Schema.php(194):
+yii\db\Schema->getTableMetadata('{{login=
+}}', 'schema', false)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/=
+db/ActiveRecord.php(435):
+yii\db\Schema->getTableSchema('{{login}}')
+#1=
+0
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(469):=
+
+yii\db\ActiveRecord::getTableSchema()
+#11
+/home/sijaksa/public_html/=
+vendor/yiisoft/yii2/db/BaseActiveRecord.php(500):
+yii\db\ActiveRecord->at=
+tributes()
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/BaseAct=
+iveRecord.php(291):
+yii\db\BaseActiveRecord->hasAttribute('username')
+#=
+13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/helpers/BaseHtml.php(222=
+7):
+yii\db\BaseActiveRecord->__get('username')
+#14
+/home/sijaksa/publ=
+ic_html/vendor/yiisoft/yii2/helpers/BaseHtml.php(1353):
+yii\helpers\BaseH=
+tml::getAttributeValue(Object(backend\models\LoginForm),
+'username')
+#1=
+5
+/home/sijaksa/public_html/vendor/yiisoft/yii2/helpers/BaseHtml.php(1407=
+):
+yii\helpers\BaseHtml::activeInput('text',
+Object(backend\models\Logi=
+nForm), 'username', Array)
+#16
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/widgets/ActiveField.php(404):
+yii\helpers\BaseHtml::activeTextInput=
+(Object(backend\models\LoginForm),
+'username', Array)
+#17 /home/sijaksa=
+/public_html/backend/views/site/login.php(40):
+yii\widgets\ActiveField->t=
+extInput('[<span class=3D"s...')
+#18 /home/sijaksa/public_html/vendor/yii=
+soft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')
+#19 /home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View-=
+>renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#20 /home/=
+sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View=
+->renderFile('/home/sijaksa/p...', Array,
+Object(backend\controllers\Site=
+Controller))
+#21
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Con=
+troller.php(384):
+yii\base\View->render('login', Array,
+Object(backend\=
+controllers\SiteController))
+#22
+/home/sijaksa/public_html/backend/cont=
+rollers/SiteController.php(99):
+yii\base\Controller->render('login', Arra=
+y)
+#23 [internal function]:
+backend\controllers\SiteController->actionL=
+ogin()
+#24
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAct=
+ion.php(57):
+call_user_func_array(Array, Array)
+#25
+/home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAct=
+ion->runWithParams(Array)
+#26
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/Module.php(528):
+yii\base\Controller->runAction('login', Array)=
+
+#27
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(=
+103):
+yii\base\Module->runAction('site/login', Array)
+#28
+/home/sijak=
+sa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\App=
+lication->handleRequest(Object(yii\web\Request))
+#29 /home/sijaksa/public=
+_html/backend/web/index.php(22):
+yii\base\Application->run()
+#30 {main}=
+
+Additional Information:
+
+2020-02-05 03:15:01
+[66.249.75.220][-][pq=
+7qi2fgjpt1rdpjm2cn2q0lvf][info][application]
+$_GET =3D [
+    'r' =3D> '=
+site/login'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [=
+
+    'advanced-backend' =3D> 'pq7qi2fgjpt1rdpjm2cn2q0lvf'
+]
+
+$_SESS=
+ION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/in=
+dex.php'
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin=
+/../etc/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_M=
+AX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/=
+local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LEN=
+GTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQU=
+EST_URI' =3D> '/backend/web/index.php?r=3Dsite%2Flogin'
+    'QUERY_STRING=
+' =3D> 'r=3Dsite%2Flogin'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_P=
+ROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'RE=
+MOTE_PORT' =3D> '41741'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/publi=
+c_html/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]=
+'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CON=
+TEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROO=
+T' =3D> '/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '66.249.75.220=
+'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+ =
+   'SERVER_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.=
+4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_ACCEPT_ENCODING' =3D> 'g=
+zip,deflate,br'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (compatible; Goog=
+lebot/2.1;
++http://www.google.com/bot.html)'
+    'HTTP_FROM' =3D> 'goog=
+lebot(at)googlebot.com'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/x=
+html+xml,application/xml;q=3D0.9,*/*;q=3D0.8'
+    'HTTP_CONNECTION' =3D> =
+'close'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dpq7qi2fgjpt1rdpjm2cn2q=
+0lvf'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'SCRIPT_URI' =3D> 'http://=
+sijaksa.com/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/in=
+dex.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend=
+/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1580847301.9472
+    'REQU=
+EST_TIME' =3D> 1580847301
+]

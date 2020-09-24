@@ -1,0 +1,313 @@
+Message-ID: <18adeef3550746dab0939d23e245c12c@sijaksa.com>
+Date: Tue, 11 Feb 2020 13:30:40 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-11 13:30:40
+[125.166.97.142][3][ahh3deflp7506ib3cavnq4vuq0][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'daftar_dana_indikatif_rpjm.id_daftar_dana_indikatif_rpjm=
+' in 'on
+clause' in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Co=
+mmand.php:1290
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft=
+/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1 /home/sijaksa/pu=
+blic_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->inter=
+nalExecute('SELECT `daftar_...')
+#2 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/Command.php(399):
+yii\db\Command->queryInternal('fetchAll', N=
+ULL)
+#3 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(237):=
+
+yii\db\Command->queryAll()
+#4
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/db/ActiveQuery.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/sij=
+aksa/public_html/backend/controllers/DaftarPenganggaranBelanjaController.ph=
+p(139):
+yii\db\ActiveQuery->all()
+#6 [internal function]:
+backend\con=
+trollers\DaftarPenganggaranBelanjaController->actionLists('1')
+#7
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_=
+user_func_array(Array, Array)
+#8
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Ar=
+ray)
+#9 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528=
+):
+yii\base\Controller->runAction('lists', Array)
+#10
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module-=
+>runAction('daftar-pengangg...', Array)
+#11
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handle=
+Request(Object(yii\web\Request))
+#12 /home/sijaksa/public_html/backend/we=
+b/index.php(22):
+yii\base\Application->run()
+#13 {main}
+
+Next yii\d=
+b\Exception: SQLSTATE[42S22]: Column not found: 1054 Unknown
+column 'daft=
+ar_dana_indikatif_rpjm.id_daftar_dana_indikatif_rpjm' in
+'on clause'
+Th=
+e SQL being executed was: SELECT
+`daftar_penganggaran_kegiatan_kegiatan`.=
+`id_daftar_penganggaran_kegiatan_kegiatan`,
+`ref_kegiatan`.`nama_kegiatan=
+` FROM
+`daftar_penganggaran_bidang_kegiatan` LEFT JOIN
+`daftar_pengangg=
+aran_sub_bidang_kegiatan` ON
+daftar_penganggaran_sub_bidang_kegiatan.id_d=
+aftar_penganggaran_bidang_kegiatan
+=3D
+daftar_penganggaran_bidang_kegia=
+tan.id_daftar_penganggaran_bidang_kegiatan
+LEFT JOIN `daftar_penganggaran=
+_kegiatan_kegiatan` ON
+daftar_penganggaran_kegiatan_kegiatan.id_daftar_pe=
+nganggaran_sub_bidang_kegiatan
+=3D
+daftar_penganggaran_sub_bidang_kegia=
+tan.id_daftar_penganggaran_sub_bidang_kegiatan
+LEFT JOIN `daftar_dana_ind=
+ikatif_rpjm` ON
+daftar_dana_indikatif_rpjm.id_daftar_dana_indikatif_rpjm =
+=3D
+daftar_penganggaran_kegiatan_kegiatan.id_daftar_dana_indikatif_rpjm=
+
+LEFT JOIN `daftar_kegiatan_rpjm` ON
+daftar_kegiatan_rpjm.id_kegiatan_r=
+pjm =3D
+daftar_dana_indikatif_rpjm.id_kegiatan_rpjm LEFT JOIN `ref_kegiat=
+an`
+ON ref_kegiatan.id_kegiatan =3D daftar_kegiatan_rpjm.id_kegiatan WHER=
+E
+`id_bidang`=3D'1' in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db=
+/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisof=
+t/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(PDOEx=
+ception), 'SELECT
+`daftar_...')
+#1 /home/sijaksa/public_html/vendor/yii=
+soft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT `=
+daftar_...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.=
+php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 /home/sija=
+ksa/public_html/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->qu=
+eryAll()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuer=
+y.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_html/back=
+end/controllers/DaftarPenganggaranBelanjaController.php(139):
+yii\db\Acti=
+veQuery->all()
+#6 [internal function]:
+backend\controllers\DaftarPengan=
+ggaranBelanjaController->actionLists('1')
+#7
+/home/sijaksa/public_html/=
+vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array=
+, Array)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controll=
+er.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#9 /home/sijak=
+sa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Control=
+ler->runAction('lists', Array)
+#10
+/home/sijaksa/public_html/vendor/yii=
+soft/yii2/web/Application.php(103):
+yii\base\Module->runAction('daftar-pe=
+ngangg...', Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\we=
+b\Request))
+#12 /home/sijaksa/public_html/backend/web/index.php(22):
+yi=
+i\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+=
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown column
+=
+'daftar_dana_indikatif_rpjm.id_daftar_dana_indikatif_rpjm' in 'on
+clause'=
+
+)
+
+2020-02-11 13:30:40
+[125.166.97.142][3][ahh3deflp7506ib3cavnq4v=
+uq0][info][application]
+$_GET =3D [
+    'r' =3D> 'daftar-penganggaran-b=
+elanja/lists'
+    'id' =3D> '1'
+]
+
+$_POST =3D []
+
+$_FILES =3D [=
+]
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'ahh3deflp7506ib3cavnq4=
+vuq0'
+    '_csrf-backend' =3D>
+'7f845b858e5142a63e0c404a9b97e3668528a42=
+419d00f8340fa05fb19b572b9a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"Q_NlEgq=
+bTpFjpRDGbDcU90vyDiGEj43b\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D=
+> []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_role' =
+=3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id'=
+ =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_SERVER =
+=3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD'=
+ =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'=
+
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin=
+:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_CONNECTION' =3D> 'close'
+    =
+'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/ba=
+ckend/web/index.php?r=3Ddaftar-penganggaran-belanja/lists&id=3D1'
+    'QU=
+ERY_STRING' =3D> 'r=3Ddaftar-penganggaran-belanja/lists&id=3D1'
+    'REQU=
+EST_METHOD' =3D> 'POST'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATE=
+WAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '33703'
+    'SCRIP=
+T_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/index.php'
+    =
+'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D>=
+ '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_=
+SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'=
+
+    'REMOTE_ADDR' =3D> '125.166.97.142'
+    'SERVER_PORT' =3D> '80'
+=
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijaksa.com=
+'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D=
+> ''
+    'HTTP_VIA' =3D> '1.1 25.25.25.1 (Mikrotik HttpProxy)'
+    'HTT=
+P_X_FORWARDED_FOR' =3D> '25.25.25.18'
+    'HTTP_X_PROXY_ID' =3D> '3450251=
+06'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dahh3deflp7506ib3cavnq4vuq0=
+;
+_csrf-backend=3D7f845b858e5142a63e0c404a9b97e3668528a42419d00f8340fa05f=
+b19b572b9a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3=
+A%22Q_NlEgqbTpFjpRDGbDcU90vyDiGEj43b%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE'=
+ =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODI=
+NG' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://sijaksa.com/ba=
+ckend/web/index.php?r=3Ddaftar-penganggaran-belanja%2Fcreate'
+    'HTTP_O=
+RIGIN' =3D> 'http://sijaksa.com'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 =
+(Windows NT 6.1; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrom=
+e/80.0.3987.87
+Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' =3D> 'XMLHttp=
+Request'
+    'HTTP_X_CSRF_TOKEN' =3D>
+'d2w5ICk2wMjHYWX8mCkVS5MCYLdHnqJn=
+SqV4Egk4YBImM3dMbFGxqpMRI5boe1EM8UYD4n6u1B4OzD9XYwxTcA=3D=3D'
+    'HTTP_A=
+CCEPT' =3D> '*/*'
+    'CONTENT_LENGTH' =3D> '0'
+    'HTTP_HOST' =3D> 's=
+ijaksa.com'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/web/index.p=
+hp'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D>=
+ 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_=
+TIME_FLOAT' =3D> 1581402640.0893
+    'REQUEST_TIME' =3D> 1581402640
+]

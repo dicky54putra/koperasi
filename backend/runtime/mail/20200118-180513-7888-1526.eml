@@ -1,0 +1,352 @@
+Message-ID: <d450bb76cee1092d0622aa9fed16faf4@cvajm.com>
+Date: Sat, 18 Jan 2020 18:05:13 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-01-18 18:05:13
+[114.5.245.132][2][hqcr3jrppn8llcgos4qet6r1p2][error]=
+[yii\db\Exception]
+PDOException: SQLSTATE[42S02]: Base table or view not =
+found: 1146
+Table 'cvajm.payroll_karyawan_detail_gaji_kotor' doesn't exis=
+t in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:129=
+0
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/d=
+b/Command.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_ht=
+ml/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->intern=
+alExecute('SELECT upah_pok...')
+#2
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchCo=
+lumn', 0)
+#3
+/home/cvajm/public_html/cvajm/backend/views/payroll-karyaw=
+an/view.php(283):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/=
+pub...')
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View=
+.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+c=
+lass=3D"s...')
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/bas=
+e/View.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,=
+
+Object(backend\controllers\PayrollKaryawanController))
+#7
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\bas=
+e\View->render('view', Array,
+Object(backend\controllers\PayrollKaryawanC=
+ontroller))
+#8
+/home/cvajm/public_html/cvajm/backend/controllers/Payrol=
+lKaryawanController.php(59):
+yii\base\Controller->render('view', Array)=
+
+#9 [internal function]:
+backend\controllers\PayrollKaryawanController-=
+>actionView('1')
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#11
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+=
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->run=
+Action('view', Array)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/web/Application.php(103):
+yii\base\Module->runAction('payroll-karyaw=
+a...', Array)
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/bas=
+e/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web=
+\Request))
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php(22):=
+
+yii\base\Application->run()
+#16 {main}
+
+Next yii\db\Exception: SQL=
+STATE[42S02]: Base table or view not found:
+1146 Table 'cvajm.payroll_kar=
+yawan_detail_gaji_kotor' doesn't exist
+The SQL being executed was: SELECT=
+ upah_pokok FROM
+payroll_karyawan_detail_gaji_kotor WHERE id_payroll_kary=
+awan =3D '1' in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Sche=
+ma.php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(PDOE=
+xception), 'SELECT
+upah_pok...')
+#1
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('S=
+ELECT upah_pok...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+=
+#3
+/home/cvajm/public_html/cvajm/backend/views/payroll-karyawan/view.php(=
+283):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#=
+5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):=
+
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s.=
+..')
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php=
+(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(ba=
+ckend\controllers\PayrollKaryawanController))
+#7
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->rend=
+er('view', Array,
+Object(backend\controllers\PayrollKaryawanController))=
+
+#8
+/home/cvajm/public_html/cvajm/backend/controllers/PayrollKaryawanCo=
+ntroller.php(59):
+yii\base\Controller->render('view', Array)
+#9 [intern=
+al function]:
+backend\controllers\PayrollKaryawanController->actionView('=
+1')
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAc=
+tion.php(57):
+call_user_func_array(Array, Array)
+#11
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inli=
+neAction->runWithParams(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('view'=
+, Array)
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Appl=
+ication.php(103):
+yii\base\Module->runAction('payroll-karyawa...', Array)=
+
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application=
+.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+=
+#15 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\App=
+lication->run()
+#16 {main}
+Additional Information:
+Array
+(
+    [0=
+] =3D> 42S02
+    [1] =3D> 1146
+    [2] =3D> Table 'cvajm.payroll_karyaw=
+an_detail_gaji_kotor' doesn't
+exist
+)
+
+2020-01-18 18:05:13
+[114.5=
+.245.132][2][hqcr3jrppn8llcgos4qet6r1p2][info][application]
+$_GET =3D [=
+
+    'r' =3D> 'payroll-karyawan/view'
+    'id' =3D> '1'
+]
+
+$_POST=
+ =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =
+=3D> 'hqcr3jrppn8llcgos4qet6r1p2'
+    '_csrf-backend' =3D>
+'ef2c5a0f6dd=
+471043b99d65a146cbc55f55ce19c2239839acf9ddfb70037721fa:2:{i:0;s:13:\"_csrf-=
+backend\";i:1;s:32:\"YZMTgW3u4ux07FkRmk5YWnDg9Sjuuuor\";}'
+]
+
+$_SESSI=
+ON =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/w=
+eb/index.php'
+    'user_role' =3D> [
+        0 =3D> 'ADMIN'
+        1=
+ =3D> 'CHECKER'
+        2 =3D> 'FINANCE'
+        3 =3D> 'GPS'
+       =
+ 4 =3D> 'HRD'
+        5 =3D> 'INVOICE'
+        6 =3D> 'KORLAP'
+      =
+  7 =3D> 'LOGISTIC'
+        8 =3D> 'PEMESANAN'
+        9 =3D> 'PURCHASI=
+NG'
+        10 =3D> 'SURAT JALAN'
+        11 =3D> 'SYSTEM ADMINISTRATOR=
+'
+        12 =3D> 'TAMBANG'
+        13 =3D> 'WORKSHOP'
+    ]
+    'u=
+ser_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> 6
+        2 =3D> =
+3
+        3 =3D> 7
+        4 =3D> 14
+        5 =3D> 8
+        6 =3D=
+> 9
+        7 =3D> 11
+        8 =3D> 5
+        9 =3D> 12
+        10=
+ =3D> 4
+        11 =3D> 1
+        12 =3D> 13
+        13 =3D> 10
+   =
+ ]
+    '__id' =3D> 2
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+=
+    'HOME' =3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/=
+index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dpay=
+roll-karyawan%2Fview&id=3D1'
+    'QUERY_STRING' =3D> 'r=3Dpayroll-karyawa=
+n%2Fview&id=3D1'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =
+=3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT=
+' =3D> '51687'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvaj=
+m/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+ =
+   'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PR=
+EFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D>=
+ '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '114.5.245.132'
+    '=
+SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SER=
+VER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+ =
+   'SERVER_SIGNATURE' =3D> ''
+    'PATH' =3D>
+'/usr/local/sbin:/usr/loc=
+al/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HTTP_COOKIE' =3D> 'advanced-ba=
+ckend=3Dhqcr3jrppn8llcgos4qet6r1p2;
+_csrf-backend=3Def2c5a0f6dd471043b99d=
+65a146cbc55f55ce19c2239839acf9ddfb70037721fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_=
+csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22YZMTgW3u4ux07FkRmk5YWnDg9Sjuuuor%22%3=
+B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8'
+   =
+ 'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'h=
+ttp://cvajm.com/cvajm/backend/web/index.php?r=3Dpayroll-karyawan'
+    'HT=
+TP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,=
+image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.=
+9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)=
+
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117
+Safari/537=
+.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CONNECTION=
+' =3D> 'keep-alive'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepa=
+live' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/=
+index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FC=
+GI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.p=
+hp'
+    'REQUEST_TIME_FLOAT' =3D> 1579341913.755
+    'REQUEST_TIME' =3D=
+> 1579341913
+]

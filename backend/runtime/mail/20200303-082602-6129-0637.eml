@@ -1,0 +1,333 @@
+Message-ID: <08322dbf7c232615aeea2af2897a63b9@sijaksa.online>
+Date: Tue, 03 Mar 2020 08:26:02 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-03-03 08:26:02
+[103.247.122.10][88][2c01d2eb24dedde559ddc2a8d49c24ed=
+][error][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integr=
+ity constraint violation: 1048
+Column 'id_tabel' cannot be null in
+/hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace=
+:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):=
+
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSERT INTO `gr=
+...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php(433)=
+:
+yii\db\Command->execute()
+#3
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->insert('grafik_desa', Ar=
+ray)
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.p=
+hp(566):
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/db/BaseActiveRecord.php(678):
+yii\db\Activ=
+eRecord->insert(false, NULL)
+#6
+/home/sijaksa/public_html/backend/contr=
+ollers/DataRincianPenyetoranDanaController.php(86):
+yii\db\BaseActiveReco=
+rd->save(false)
+#7 [internal function]:
+backend\controllers\DataRincian=
+PenyetoranDanaController->actionCreate()
+#8
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array,=
+ Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controlle=
+r.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/sij=
+aksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Contr=
+oller->runAction('create', Array)
+#11
+/home/sijaksa/public_html/vendor/=
+yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('data-r=
+incian-pe...', Array)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2=
+/base/Application.php(386):
+yii\web\Application->handleRequest(Object(yii=
+\web\Request))
+#13 /home/sijaksa/public_html/backend/web/index.php(22):=
+
+yii\base\Application->run()
+#14 {main}
+
+Next yii\db\IntegrityExcep=
+tion: SQLSTATE[23000]: Integrity constraint
+violation: 1048 Column 'id_ta=
+bel' cannot be null
+The SQL being executed was: INSERT INTO `grafik_desa`=
+ (`id_desa`,
+`nama_tabel`, `id_tabel`, `nama_kelompok`, `point`) VALUES (=
+838,
+'data_rincian_penyetoran_dana', NULL, 'Penatausahaan 1.2', 5) in
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trac=
+e:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):=
+
+yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO
+`gr=
+...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(109=
+1):
+yii\db\Command->internalExecute('INSERT INTO `gr...')
+#2 /home/sija=
+ksa/public_html/vendor/yiisoft/yii2/db/Schema.php(433):
+yii\db\Command->e=
+xecute()
+#3
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveReco=
+rd.php(600):
+yii\db\Schema->insert('grafik_desa', Array)
+#4
+/home/sij=
+aksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(566):
+yii\db\Act=
+iveRecord->insertInternal(NULL)
+#5
+/home/sijaksa/public_html/vendor/yii=
+soft/yii2/db/BaseActiveRecord.php(678):
+yii\db\ActiveRecord->insert(false=
+, NULL)
+#6
+/home/sijaksa/public_html/backend/controllers/DataRincianPen=
+yetoranDanaController.php(86):
+yii\db\BaseActiveRecord->save(false)
+#7 =
+[internal function]:
+backend\controllers\DataRincianPenyetoranDanaControl=
+ler->actionCreate()
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#9
+/home/=
+sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\bas=
+e\InlineAction->runWithParams(Array)
+#10
+/home/sijaksa/public_html/vend=
+or/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('cre=
+ate', Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Appl=
+ication.php(103):
+yii\base\Module->runAction('data-rincian-pe...', Array)=
+
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php=
+(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 =
+/home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Application=
+->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 2=
+3000
+    [1] =3D> 1048
+    [2] =3D> Column 'id_tabel' cannot be null
+=
+)
+
+2020-03-03 08:26:02
+[103.247.122.10][88][2c01d2eb24dedde559ddc2a8d=
+49c24ed][info][application]
+$_GET =3D [
+    'r' =3D> 'data-rincian-peny=
+etoran-dana/create'
+    'id' =3D> '5'
+]
+
+$_POST =3D [
+    '_csrf-=
+backend' =3D>
+'QMpq7SNalj8AP7iiQnmVpHUe_z0yywUEhnBYiEtbZuIJ-DO9RhniCzh2gc=
+YpFdfHR3eJUFSMPUz_RgLRKisJqA=3D=3D'
+    'DataRincianPenyetoranDana' =3D> =
+[
+        'id_data_penyetoran_dana' =3D> '5'
+        'id_data_penerimaa=
+n_dana' =3D> ''
+    ]
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    '=
+advanced-backend' =3D> '2c01d2eb24dedde559ddc2a8d49c24ed'
+    '_csrf-back=
+end' =3D>
+'ee3b40ccc648d4788f359aeebaaa2ce197202ac7619736a43d264088fb3ba5=
+7aa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"I2YPeCt48I9dklBc2ivmfG8Hy6ZYap=
+oJ\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl=
+' =3D> '/backend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> '=
+KELURAHAN'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 4
+    ]=
+
+    '__id' =3D> 88
+]
+
+$_SERVER =3D [
+    'PATH' =3D> '/usr/local=
+/bin:/usr/bin:/bin'
+    'TZ' =3D> 'UTC'
+    'REDIRECT_HANDLER' =3D> 'ap=
+plication/x-httpd-ea-php72'
+    'REDIRECT_STATUS' =3D> '200'
+    'UNIQU=
+E_ID' =3D> 'Xl2yKgFUkXXK9pdGyypu1wAAAIY'
+    'SCRIPT_URL' =3D> '/backend/=
+web/index.php'
+    'SCRIPT_URI' =3D> 'https://sijaksa.online/backend/web/=
+index.php'
+    'HTTPS' =3D> 'on'
+    'SSL_TLS_SNI' =3D> 'sijaksa.online=
+'
+    'HTTP_HOST' =3D> 'sijaksa.online'
+    'HTTP_CONNECTION' =3D> 'kee=
+p-alive'
+    'CONTENT_LENGTH' =3D> '219'
+    'HTTP_CACHE_CONTROL' =3D> =
+'max-age=3D0'
+    'HTTP_ORIGIN' =3D> 'https://sijaksa.online'
+    'HTTP=
+_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'CONTENT_TYPE' =3D> 'application=
+/x-www-form-urlencoded'
+    'HTTP_SAVE_DATA' =3D> 'on'
+    'HTTP_USER_A=
+GENT' =3D> 'Mozilla/5.0 (Linux; Android 9; vivo 1727)
+AppleWebKit/537.36 =
+(KHTML, like Gecko) Chrome/80.0.3987.119 Mobile
+Safari/537.36'
+    'HTT=
+P_SEC_FETCH_DEST' =3D> 'document'
+    'HTTP_ACCEPT' =3D>
+'text/html,app=
+lication/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.=
+8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_SEC_FETCH_SITE' =
+=3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE' =3D> 'navigate'
+    'HTTP_=
+SEC_FETCH_USER' =3D> '?1'
+    'HTTP_REFERER' =3D>
+'https://sijaksa.onli=
+ne/backend/web/index.php?r=3Ddata-rincian-penyetoran-dana%2Fcreate&id=3D5'=
+
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT_L=
+ANGUAGE' =3D>
+'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7,th;q=3D0.6'
+  =
+  'HTTP_COOKIE' =3D>
+'advanced-backend=3D2c01d2eb24dedde559ddc2a8d49c24ed=
+;
+_csrf-backend=3Dee3b40ccc648d4788f359aeebaaa2ce197202ac7619736a43d26408=
+8fb3ba57aa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3=
+A%22I2YPeCt48I9dklBc2ivmfG8Hy6ZYapoJ%22%3B%7D'
+    'HTTP_X_HTTPS' =3D> '1=
+'
+    'SERVER_SIGNATURE' =3D> ''
+    'SERVER_SOFTWARE' =3D> 'Apache'
+=
+    'SERVER_NAME' =3D> 'sijaksa.online'
+    'SERVER_ADDR' =3D> '103.247.1=
+1.153'
+    'SERVER_PORT' =3D> '443'
+    'REMOTE_ADDR' =3D> '103.247.122=
+.10'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REQUEST_=
+SCHEME' =3D> 'https'
+    'CONTEXT_PREFIX' =3D> '/cgi-sys'
+    'CONTEXT_=
+DOCUMENT_ROOT' =3D> '/usr/local/cpanel/cgi-sys/'
+    'SERVER_ADMIN' =3D> =
+'webmaster@sijaksa.online'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/pu=
+blic_html/backend/web/index.php'
+    'REMOTE_PORT' =3D> '38689'
+    'RE=
+DIRECT_URL' =3D> '/backend/web/index.php'
+    'REDIRECT_QUERY_STRING' =3D=
+>
+'r=3Ddata-rincian-penyetoran-dana%2Fcreate&id=3D5'
+    'GATEWAY_INTER=
+FACE' =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST=
+_METHOD' =3D> 'POST'
+    'QUERY_STRING' =3D> 'r=3Ddata-rincian-penyetoran=
+-dana%2Fcreate&id=3D5'
+    'REQUEST_URI' =3D>
+'/backend/web/index.php?r=
+=3Ddata-rincian-penyetoran-dana%2Fcreate&id=3D5'
+    'SCRIPT_NAME' =3D> '=
+/backend/web/index.php'
+    'ORIG_SCRIPT_FILENAME' =3D> '/usr/local/cpane=
+l/cgi-sys/ea-php72'
+    'ORIG_PATH_INFO' =3D> '/backend/web/index.php'
+=
+    'ORIG_PATH_TRANSLATED' =3D>
+'/home/sijaksa/public_html/backend/web/in=
+dex.php'
+    'ORIG_SCRIPT_NAME' =3D> '/cgi-sys/ea-php72'
+    'PHP_SELF'=
+ =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1583198762.3=
+179
+    'REQUEST_TIME' =3D> 1583198762
+    'argv' =3D> [
+        0 =
+=3D> 'r=3Ddata-rincian-penyetoran-dana%2Fcreate&id=3D5'
+    ]
+    'argc=
+' =3D> 1
+]

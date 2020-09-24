@@ -1,0 +1,355 @@
+Message-ID: <28502c406962077ad7cd33f91ad91475@sijaksa.com>
+Date: Fri, 14 Feb 2020 08:49:31 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-14 08:49:31
+[209.58.180.2][14][g1srfao22b4sfiqnuetesqdkmo][error]=
+[yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access =
+violation: 1064
+You have an error in your SQL syntax; check the manual th=
+at
+corresponds to your MariaDB server version for the right syntax to use=
+
+near 'FROM daftar_dana_indikatif_rpjm=20
+                               =
+         LEFT JO' at line 2 in
+/home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1 /home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Comma=
+nd->internalExecute('\n              ...')
+#2 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/db/Command.php(386):
+yii\db\Command->queryInternal('')=
+
+#3
+/home/sijaksa/public_html/backend/views/daftar-kegiatan-rpjm/view.p=
+hp(81):
+yii\db\Command->query()
+#4 /home/sijaksa/public_html/vendor/yii=
+soft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')
+#5 /home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->=
+renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#6 /home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->=
+renderFile('/home/sijaksa/p...', Array,
+Object(backend\controllers\Daftar=
+KegiatanRpjmController))
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/base/Controller.php(384):
+yii\base\View->render('view', Array,
+Objec=
+t(backend\controllers\DaftarKegiatanRpjmController))
+#8
+/home/sijaksa/p=
+ublic_html/backend/controllers/DaftarKegiatanRpjmController.php(60):
+yii\=
+base\Controller->render('view', Array)
+#9 [internal function]:
+backend\=
+controllers\DaftarKegiatanRpjmController->actionView('33')
+#10
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_use=
+r_func_array(Array, Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Arra=
+y)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(52=
+8):
+yii\base\Controller->runAction('view', Array)
+#13
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module-=
+>runAction('daftar-kegiatan...', Array)
+#14
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handle=
+Request(Object(yii\web\Request))
+#15 /home/sijaksa/public_html/backend/we=
+b/index.php(22):
+yii\base\Application->run()
+#16 {main}
+
+Next yii\d=
+b\Exception: SQLSTATE[42000]: Syntax error or access
+violation: 1064 You =
+have an error in your SQL syntax; check the manual
+that corresponds to yo=
+ur MariaDB server version for the right syntax
+to use near 'FROM daftar_d=
+ana_indikatif_rpjm=20
+                                        LEFT JO' at l=
+ine 2
+The SQL being executed was:=20
+                                    =
+    SELECT
+daftar_pelaksana_kegiatan.nama_pelaksana, ref_sumberdana.nama_=
+sdana,
+                                        FROM
+daftar_dana_indikat=
+if_rpjm=20
+                                        LEFT JOIN
+daftar_pelak=
+sana_kegiatan ON
+daftar_pelaksana_kegiatan.id_pelaksana_kegiatan =3D
+da=
+ftar_dana_indikatif_rpjm.id_pelaksana_kegiatan
+                          =
+              LEFT JOIN ref_sumberdana ON
+ref_sumberdana.id_sdana =3D daf=
+tar_dana_indikatif_rpjm.id_sdana
+                                        =
+WHERE
+daftar_dana_indikatif_rpjm.id_kegiatan_rpjm =3D '33'
+            =
+                         in
+/home/sijaksa/public_html/vendor/yiisoft/yii2=
+/db/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yii=
+soft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(PD=
+OException), '\n            =20
+...')
+#1 /home/sijaksa/public_html/vendor=
+/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('\n  =
+            ...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Com=
+mand.php(386):
+yii\db\Command->queryInternal('')
+#3
+/home/sijaksa/pub=
+lic_html/backend/views/daftar-kegiatan-rpjm/view.php(81):
+yii\db\Command-=
+>query()
+#4 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(3=
+48):
+require('/home/sijaksa/p...')
+#5 /home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sija=
+ksa/p...', '[<span
+class=3D"s...')
+#6 /home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa=
+/p...', Array,
+Object(backend\controllers\DaftarKegiatanRpjmController))=
+
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(3=
+84):
+yii\base\View->render('view', Array,
+Object(backend\controllers\Da=
+ftarKegiatanRpjmController))
+#8
+/home/sijaksa/public_html/backend/contr=
+ollers/DaftarKegiatanRpjmController.php(60):
+yii\base\Controller->render(=
+'view', Array)
+#9 [internal function]:
+backend\controllers\DaftarKegiat=
+anRpjmController->actionView('33')
+#10
+/home/sijaksa/public_html/vendor=
+/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Arra=
+y)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.ph=
+p(157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/sijaksa=
+/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controlle=
+r->runAction('view', Array)
+#13
+/home/sijaksa/public_html/vendor/yiisof=
+t/yii2/web/Application.php(103):
+yii\base\Module->runAction('daftar-kegia=
+tan...', Array)
+#14
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/=
+Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web\R=
+equest))
+#15 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\b=
+ase\Application->run()
+#16 {main}
+Additional Information:
+Array
+(=
+
+    [0] =3D> 42000
+    [1] =3D> 1064
+    [2] =3D> You have an error =
+in your SQL syntax; check the manual that
+corresponds to your MariaDB ser=
+ver version for the right syntax to use
+near 'FROM daftar_dana_indikatif_=
+rpjm=20
+                                        LEFT JO' at line 2
+)
+=
+
+2020-02-14 08:49:31
+[209.58.180.2][14][g1srfao22b4sfiqnuetesqdkmo][inf=
+o][application]
+$_GET =3D [
+    'r' =3D> 'daftar-kegiatan-rpjm/view'
+=
+    'id' =3D> '33'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE=
+ =3D [
+    'advanced-backend' =3D> 'g1srfao22b4sfiqnuetesqdkmo'
+    '_c=
+srf-backend' =3D>
+'39ba1f9742527c5af8ed22b515fdc3e811bbb6a146f91b3bfc1969=
+de17724099a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nG_wSzPTS3OyB1DlaLrzOS=
+80CQx6HX1L\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__r=
+eturnUrl' =3D> '/backend/web/index.php'
+    'user_role' =3D> [
+        =
+0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+        2 =3D> 'KELURAHAN=
+'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D>=
+ [
+        0 =3D> 2
+        1 =3D> 3
+        2 =3D> 4
+        3 =3D=
+> 1
+    ]
+    '__id' =3D> 14
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D>=
+ '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcg=
+i-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+=
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:=
+/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '/backend/we=
+b/index.php'
+    'REQUEST_URI' =3D>
+'/backend/web/index.php?r=3Ddaftar-=
+kegiatan-rpjm%2Fview&id=3D33'
+    'QUERY_STRING' =3D> 'r=3Ddaftar-kegiata=
+n-rpjm%2Fview&id=3D33'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROT=
+OCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOT=
+E_PORT' =3D> '38280'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_h=
+tml/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'=
+
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONT=
+EXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT=
+' =3D> '/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '209.58.180.2'=
+
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+  =
+  'SERVER_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4=
+.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_CONNECTION' =3D> 'close'=
+
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_X_FORWARDED_FOR'=
+ =3D> '180.254.4.190'
+    'HTTP_VIA' =3D> '1.1 singapore.rastavarian.com =
+(squid/3.5.23)'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'HTTP_COOKIE' =
+=3D> 'advanced-backend=3Dg1srfao22b4sfiqnuetesqdkmo;
+_csrf-backend=3D39ba=
+1f9742527c5af8ed22b515fdc3e811bbb6a146f91b3bfc1969de17724099a%3A2%3A%7Bi%3A=
+0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22nG_wSzPTS3OyB1DlaLrz=
+OS80CQx6HX1L%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,=
+en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'=
+
+    'HTTP_REFERER' =3D>
+'http://sijaksa.com/backend/web/index.php?r=3D=
+daftar-dana-indikatif-rpjm%2Fcreate&id=3D33'
+    'HTTP_ACCEPT' =3D>
+'te=
+xt/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng=
+,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER_A=
+GENT' =3D> 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)
+AppleWebKit/537.36 (=
+KHTML, like Gecko) Chrome/80.0.3987.87
+Safari/537.36'
+    'HTTP_UPGRADE=
+_INSECURE_REQUESTS' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/ba=
+ckend/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+   =
+ 'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php=
+'
+    'REQUEST_TIME_FLOAT' =3D> 1581644971.2066
+    'REQUEST_TIME' =3D>=
+ 1581644971
+]

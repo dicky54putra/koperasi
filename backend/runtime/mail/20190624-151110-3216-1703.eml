@@ -1,0 +1,433 @@
+Message-ID: <776b6d6b5dce935f9f3494743580000e@cvajm.com>
+Date: Mon, 24 Jun 2019 15:11:10 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-06-24 15:11:10
+[37.120.151.83][4][7colqiak0su8qih1da29og04b5][error]=
+[yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 =
+Unknown column
+'surat_jalan.id_purchase_order' in 'on clause' in
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack tra=
+ce:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php=
+(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SE=
+LECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#=
+3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463):
+=
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUNT(*)'=
+, Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT(*)',=
+ Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*', NULL=
+)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/BaseDataPro=
+vider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8
+/=
+home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(175=
+4):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvajm/public_=
+html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\grid\=
+GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#11 /home/c=
+vajm/public_html/cvajm/backend/views/invoice/index.php(24):
+yii\base\Widg=
+et::widget(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/base/View.php(348):
+require('/home/cvajm/pub...')
+#13
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->re=
+nderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#14
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\V=
+iew->renderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\I=
+nvoiceController))
+#15
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/base/Controller.php(384):
+yii\base\View->render('index', Array,
+Objec=
+t(backend\controllers\InvoiceController))
+#16
+/home/cvajm/public_html/c=
+vajm/backend/controllers/InvoiceController.php(50):
+yii\base\Controller->=
+render('index', Array)
+#17 [internal function]:
+backend\controllers\Inv=
+oiceController->actionIndex()
+#18
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array=
+)
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller=
+.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#20
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Co=
+ntroller->runAction('', Array)
+#21
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('invoi=
+ce', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/=
+Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web\R=
+equest))
+#23 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+y=
+ii\base\Application->run()
+#24 {main}
+
+Next yii\db\Exception: SQLSTAT=
+E[42S22]: Column not found: 1054 Unknown
+column 'surat_jalan.id_purchase_=
+order' in 'on clause'
+The SQL being executed was: SELECT COUNT(*) FROM `i=
+nvoice` LEFT JOIN
+`surat_jalan` ON `invoice`.`id_purchase_order` =3D
+`s=
+urat_jalan`.`id_purchase_order` in
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertEx=
+ception(Object(PDOException), 'SELECT
+COUNT(*)...')
+#1
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command-=
+>internalExecute('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('=
+fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/d=
+b/Query.php(463):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->qu=
+eryScalar('COUNT(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->que=
+ryScalar('COUNT(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Qu=
+ery->count('*', NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/data/BaseDataProvider.php(169):
+yii\data\ActiveDataProvider->prepareT=
+otalCount()
+#8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/=
+src/GridView.php(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9=
+
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php=
+(1163):
+kartik\grid\GridView->initToggleData()
+#10
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridVie=
+w->run()
+#11 /home/cvajm/public_html/cvajm/backend/views/invoice/index.ph=
+p(24):
+yii\base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')=
+
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(25=
+7):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D=
+"s...')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View=
+.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Objec=
+t(backend\controllers\InvoiceController))
+#15
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render(=
+'index', Array,
+Object(backend\controllers\InvoiceController))
+#16
+/h=
+ome/cvajm/public_html/cvajm/backend/controllers/InvoiceController.php(50):=
+
+yii\base\Controller->render('index', Array)
+#17 [internal function]:=
+
+backend\controllers\InvoiceController->actionIndex()
+#18
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_us=
+er_func_array(Array, Array)
+#19
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams=
+(Array)
+#20
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Modu=
+le.php(528):
+yii\base\Controller->runAction('', Array)
+#21
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\bas=
+e\Module->runAction('invoice', Array)
+#22
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->hand=
+leRequest(Object(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/back=
+end/web/index.php(22):
+yii\base\Application->run()
+#24 {main}
+Additio=
+nal Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+   =
+ [2] =3D> Unknown column 'surat_jalan.id_purchase_order' in 'on
+clause'=
+
+)
+
+2019-06-24 15:11:10
+[37.120.151.83][4][7colqiak0su8qih1da29og04=
+b5][info][application]
+$_GET =3D [
+    'r' =3D> 'invoice'
+]
+
+$_PO=
+ST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =
+=3D> '7colqiak0su8qih1da29og04b5'
+    '_csrf-backend' =3D>
+'ad3d9f2a6f0=
+6a1c809150f2f272a69cbffd19db4672bed93e1846a4ba602b2b3a:2:{i:0;s:13:\"_csrf-=
+backend\";i:1;s:32:\"RBItKrB2lXarzQomwLnmXaqAlQPhNoO3\";}'
+]
+
+$_SESSI=
+ON =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/w=
+eb/index.php'
+    'user_role' =3D> [
+        0 =3D> 'SURAT JALAN'
+   =
+     1 =3D> 'STAF HRD UNIT'
+        2 =3D> 'STAF HRD KARYAWAN'
+        =
+3 =3D> 'PURCHASING'
+        4 =3D> 'PEMESANAN'
+        5 =3D> 'LOGISTIC=
+'
+        6 =3D> 'KORLAP'
+        7 =3D> 'KEPALA HRD'
+        8 =3D> =
+'INVOICE'
+        9 =3D> 'HRD'
+        10 =3D> 'GPS'
+        11 =3D> =
+'FINANCE'
+        12 =3D> 'CHECKER'
+        13 =3D> 'ADMIN'
+        1=
+4 =3D> 'SYSTEM ADMINISTRATOR'
+        15 =3D> 'TAMBANG'
+        16 =3D>=
+ 'WORKSHOP'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 4
+      =
+  1 =3D> 17
+        2 =3D> 16
+        3 =3D> 12
+        4 =3D> 5
+  =
+      5 =3D> 11
+        6 =3D> 9
+        7 =3D> 15
+        8 =3D> 8=
+
+        9 =3D> 14
+        10 =3D> 7
+        11 =3D> 3
+        12 =
+=3D> 6
+        13 =3D> 2
+        14 =3D> 1
+        15 =3D> 13
+     =
+   16 =3D> 10
+    ]
+    '__id' =3D> 4
+]
+
+$_SERVER =3D [
+    'PH=
+PRC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.0'
+    'PWD' =3D> '/home/cvaj=
+m/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '=
+0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/=
+sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '/cvajm=
+/backend/web/index.php'
+    'REQUEST_URI' =3D> '/cvajm/backend/web/index.=
+php?r=3Dinvoice'
+    'QUERY_STRING' =3D> 'r=3Dinvoice'
+    'REQUEST_MET=
+HOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTE=
+RFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '43119'
+    'SCRIPT_FILENA=
+ME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+    'SER=
+VER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/h=
+ome/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME=
+' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'R=
+EMOTE_ADDR' =3D> '37.120.151.83'
+    'SERVER_PORT' =3D> '80'
+    'SERVE=
+R_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'S=
+ERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+   =
+ 'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D=
+0'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'HTTP_UPGRADE_INSECURE_REQUESTS=
+' =3D> '1'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D7colqiak0su8qih1da2=
+9og04b5;
+_csrf-backend=3Dad3d9f2a6f06a1c809150f2f272a69cbffd19db4672bed93=
+e1846a4ba602b2b3a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs=
+%3A32%3A%22RBItKrB2lXarzQomwLnmXaqAlQPhNoO3%22%3B%7D'
+    'HTTP_REFERER' =
+=3D>
+'http://cvajm.com/cvajm/backend/web/index.php?r=3Dpengajuan-bbm%2Fcr=
+eate'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT_=
+LANGUAGE' =3D> 'en-US,en;q=3D0.5'
+    'HTTP_ACCEPT' =3D>
+'text/html,app=
+lication/xhtml+xml,application/xml;q=3D0.9,*/*;q=3D0.8'
+    'HTTP_USER_AG=
+ENT' =3D> 'Mozilla/5.0 (Windows NT 6.1; Win64; x64;
+rv:67.0) Gecko/201001=
+01 Firefox/67.0'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/we=
+b/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    '=
+FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index=
+.php'
+    'REQUEST_TIME_FLOAT' =3D> 1561363870.2976
+    'REQUEST_TIME' =
+=3D> 1561363870
+]

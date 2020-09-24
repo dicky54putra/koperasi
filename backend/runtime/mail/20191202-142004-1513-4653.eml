@@ -1,0 +1,500 @@
+Message-ID: <e55c2f40d562ed9ff38e1b975d5ad511@cvajm.com>
+Date: Mon, 02 Dec 2019 14:20:04 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-12-02 14:20:04
+[36.90.99.42][9][shd6dbmv6r5ijioftvm3s9osd2][error][y=
+ii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access vi=
+olation: 1064
+You have an error in your SQL syntax; check the manual that=
+
+corresponds to your MariaDB server version for the right syntax to use=
+
+near '' at line 1 in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/db/Command.php:1290
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii=
+\db\Command->internalExecute('SELECT nama FRO...')
+#2
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->que=
+ryInternal('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm/backend/v=
+iews/gps/laporan_unit_muatan.php(95):
+yii\db\Command->queryScalar()
+#4 =
+[internal function]:
+yii\base\View->{closure}(Object(backend\models\Gpsde=
+tail), 45720, 15,
+Object(kartik\grid\DataColumn))
+#5
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/grid/DataColumn.php(230):
+call_user_fun=
+c(Object(Closure), Object(backend\models\Gpsdetail),
+45720, 15, Object(ka=
+rtik\grid\DataColumn))
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/grid/DataColumn.php(244):
+yii\grid\DataColumn->getDataCellValue(Obje=
+ct(backend\models\Gpsdetail),
+45720, 15)
+#7
+/home/cvajm/public_html/c=
+vajm/vendor/kartik-v/yii2-grid/src/DataColumn.php(242):
+yii\grid\DataColu=
+mn->renderDataCellContent(Object(backend\models\Gpsdetail),
+45720, 15)
+=
+#8
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(52=
+5):
+kartik\grid\DataColumn->renderDataCell(Object(backend\models\Gpsdetai=
+l),
+45720, 15)
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/g=
+rid/GridView.php(494):
+yii\grid\GridView->renderTableRow(Object(backend\m=
+odels\Gpsdetail),
+45720, 15)
+#10
+/home/cvajm/public_html/cvajm/vendor=
+/kartik-v/yii2-grid/src/GridView.php(1220):
+yii\grid\GridView->renderTabl=
+eBody()
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/Grid=
+View.php(358):
+kartik\grid\GridView->renderTableBody()
+#12
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/widgets/BaseListView.php(160):
+yi=
+i\grid\GridView->renderItems()
+#13
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/grid/GridView.php(326):
+yii\widgets\BaseListView->renderSec=
+tion('{items}')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/w=
+idgets/BaseListView.php(135):
+yii\grid\GridView->renderSection('{items}')=
+
+#15 [internal function]:
+yii\widgets\BaseListView->yii\widgets\{closur=
+e}(Array)
+#16
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/widgets=
+/BaseListView.php(138):
+preg_replace_callback('/{\\w+}/', Object(Closure)=
+, '<div
+class=3D"pan...')
+#17
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/grid/GridView.php(301):
+yii\widgets\BaseListView->run()
+#18=
+
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php=
+(1186):
+yii\grid\GridView->run()
+#19
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#20=
+
+/home/cvajm/public_html/cvajm/backend/views/gps/laporan_unit_muatan.php(=
+25):
+yii\base\Widget::widget(Array)
+#21
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+=
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):=
+
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s.=
+..')
+#23
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.ph=
+p(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(b=
+ackend\controllers\GpsController))
+#24
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('lapora=
+n_unit_mu...', Array,
+Object(backend\controllers\GpsController))
+#25
+=
+/home/cvajm/public_html/cvajm/backend/controllers/GpsController.php(395):=
+
+yii\base\Controller->render('laporan_unit_mu...', Array)
+#26 [internal=
+ function]:
+backend\controllers\GpsController->actionLaporanUnitMuatan()=
+
+#27
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineActio=
+n.php(57):
+call_user_func_array(Array, Array)
+#28
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineA=
+ction->runWithParams(Array)
+#29
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('laporan-=
+unit-mu...', Array)
+#30
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/web/Application.php(103):
+yii\base\Module->runAction('gps/laporan-uni.=
+..', Array)
+#31
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/=
+Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web\R=
+equest))
+#32 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+y=
+ii\base\Application->run()
+#33 {main}
+
+Next yii\db\Exception: SQLSTAT=
+E[42000]: Syntax error or access
+violation: 1064 You have an error in you=
+r SQL syntax; check the manual
+that corresponds to your MariaDB server ve=
+rsion for the right syntax
+to use near '' at line 1
+The SQL being execu=
+ted was: SELECT nama FROM karyawan WHERE
+id_karyawan =3D  in
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+=
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295)=
+:
+yii\db\Schema->convertException(Object(PDOException), 'SELECT nama
+FR=
+O...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.=
+php(1158):
+yii\db\Command->internalExecute('SELECT nama FRO...')
+#2
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii=
+\db\Command->queryInternal('fetchColumn', 0)
+#3
+/home/cvajm/public_html=
+/cvajm/backend/views/gps/laporan_unit_muatan.php(95):
+yii\db\Command->que=
+ryScalar()
+#4 [internal function]:
+yii\base\View->{closure}(Object(back=
+end\models\Gpsdetail), 45720, 15,
+Object(kartik\grid\DataColumn))
+#5
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/DataColumn.php(230):=
+
+call_user_func(Object(Closure), Object(backend\models\Gpsdetail),
+4572=
+0, 15, Object(kartik\grid\DataColumn))
+#6
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/grid/DataColumn.php(244):
+yii\grid\DataColumn->getDa=
+taCellValue(Object(backend\models\Gpsdetail),
+45720, 15)
+#7
+/home/cva=
+jm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/DataColumn.php(242):
+y=
+ii\grid\DataColumn->renderDataCellContent(Object(backend\models\Gpsdetail),=
+
+45720, 15)
+#8
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid=
+/GridView.php(525):
+kartik\grid\DataColumn->renderDataCell(Object(backend=
+\models\Gpsdetail),
+45720, 15)
+#9
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/grid/GridView.php(494):
+yii\grid\GridView->renderTableRow(=
+Object(backend\models\Gpsdetail),
+45720, 15)
+#10
+/home/cvajm/public_h=
+tml/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1220):
+yii\grid\Grid=
+View->renderTableBody()
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/grid/GridView.php(358):
+kartik\grid\GridView->renderTableBody()
+=
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/widgets/BaseListVie=
+w.php(160):
+yii\grid\GridView->renderItems()
+#13
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/grid/GridView.php(326):
+yii\widgets\BaseLis=
+tView->renderSection('{items}')
+#14
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/widgets/BaseListView.php(135):
+yii\grid\GridView->renderSe=
+ction('{items}')
+#15 [internal function]:
+yii\widgets\BaseListView->yii=
+\widgets\{closure}(Array)
+#16
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/widgets/BaseListView.php(138):
+preg_replace_callback('/{\\w+}/',=
+ Object(Closure), '<div
+class=3D"pan...')
+#17
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/grid/GridView.php(301):
+yii\widgets\BaseListVi=
+ew->run()
+#18
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/s=
+rc/GridView.php(1186):
+yii\grid\GridView->run()
+#19
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridVi=
+ew->run()
+#20
+/home/cvajm/public_html/cvajm/backend/views/gps/laporan_u=
+nit_muatan.php(25):
+yii\base\Widget::widget(Array)
+#21
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cv=
+ajm/pub...')
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base=
+/View.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<spa=
+n
+class=3D"s...')
+#23
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Ar=
+ray,
+Object(backend\controllers\GpsController))
+#24
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View-=
+>render('laporan_unit_mu...', Array,
+Object(backend\controllers\GpsContro=
+ller))
+#25
+/home/cvajm/public_html/cvajm/backend/controllers/GpsControl=
+ler.php(395):
+yii\base\Controller->render('laporan_unit_mu...', Array)
+=
+#26 [internal function]:
+backend\controllers\GpsController->actionLaporan=
+UnitMuatan()
+#27
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base=
+/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#28
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\=
+base\InlineAction->runWithParams(Array)
+#29
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runActi=
+on('laporan-unit-mu...', Array)
+#30
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('gps/=
+laporan-uni...', Array)
+#31
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Obje=
+ct(yii\web\Request))
+#32 /home/cvajm/public_html/cvajm/backend/web/index.=
+php(22):
+yii\base\Application->run()
+#33 {main}
+Additional Informatio=
+n:
+Array
+(
+    [0] =3D> 42000
+    [1] =3D> 1064
+    [2] =3D> You =
+have an error in your SQL syntax; check the manual that
+corresponds to yo=
+ur MariaDB server version for the right syntax to use
+near '' at line 1=
+
+)
+
+2019-12-02 14:20:04
+[36.90.99.42][9][shd6dbmv6r5ijioftvm3s9osd2=
+][info][application] $_GET
+=3D [
+    'r' =3D> 'gps/laporan-unit-muatan'=
+
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'adva=
+nced-backend' =3D> 'shd6dbmv6r5ijioftvm3s9osd2'
+    '_csrf-backend' =3D>=
+
+'ba5100663f70ecbc0083bed241178220e253b2aa2c3b9088af8f5ac6a6806b3ca:2:{i:=
+0;s:13:\"_csrf-backend\";i:1;s:32:\"FZ1aTUNbcDexC7mbxKxvq4kUnhCGU4ZU\";}'=
+
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> =
+'/cvajm/backend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'G=
+PS'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 7
+    ]
+    '_=
+_id' =3D> 9
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+    'HOME' =
+=3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'=
+
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dgps/laporan-u=
+nit-muatan'
+    'QUERY_STRING' =3D> 'r=3Dgps/laporan-unit-muatan'
+    '=
+REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'G=
+ATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '58837'
+    'SC=
+RIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'=
+
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROO=
+T' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQ=
+UEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_htm=
+l'
+    'REMOTE_ADDR' =3D> '36.90.99.42'
+    'SERVER_PORT' =3D> '80'
+ =
+   'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'=
+
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D>=
+ ''
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:=
+/sbin:/bin'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dshd6dbmv6r5ijioftv=
+m3s9osd2;
+_csrf-backend=3Dba5100663f70ecbc0083bed241178220e253b2aa2c3b908=
+8af8f5ac6a6806b3ca%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3B=
+s%3A32%3A%22FZ1aTUNbcDexC7mbxKxvq4kUnhCGU4ZU%22%3B%7D'
+    'HTTP_ACCEPT_L=
+ANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEP=
+T_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm.=
+com/cvajm/backend/web/index.php?r=3Dgps%2Flaporan-rekap-angkutan-per-po&1%5=
+Bclass%5D=3Dform-inline'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/=
+xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,applica=
+tion/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Win=
+dows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/7=
+8.0.3904.97
+Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1=
+'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_HOST' =3D> 'cvajm.c=
+om'
+    'proxy-nokeepalive' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://cvaj=
+m.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/=
+web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/c=
+vajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1575267604.0909=
+
+    'REQUEST_TIME' =3D> 1575267604
+]

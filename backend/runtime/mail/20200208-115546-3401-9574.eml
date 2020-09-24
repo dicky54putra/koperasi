@@ -1,0 +1,365 @@
+Message-ID: <05584f1770dd2d9789e90b8cc04c71df@sijaksa.com>
+Date: Sat, 08 Feb 2020 11:55:46 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-08 11:55:46
+[125.166.97.142][5][622nhs61d9ejcgpcdbsplaf03m][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access=
+ violation: 1066
+Not unique table/alias: 'rek_akun_apbd' in
+/home/sijak=
+sa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0 =
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOSt=
+atement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Co=
+mmand.php(1158):
+yii\db\Command->internalExecute('SELECT `rek_aku...')
+=
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(399):
+yii=
+\db\Command->queryInternal('fetchAll', NULL)
+#3 /home/sijaksa/public_html=
+/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->queryAll()
+#4=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.php(133):=
+
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_html/backend/views/r=
+ek-jenis-apbd/_form.php(32):
+yii\db\ActiveQuery->all()
+#6 /home/sijaksa=
+/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijak=
+sa/p...')
+#7 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(=
+257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=
+=3D"s...')
+#8 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php=
+(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array, NULL)
+#9=
+
+/home/sijaksa/public_html/backend/views/rek-jenis-apbd/create.php(17):=
+
+yii\base\View->render('_form', Array)
+#10 /home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')
+#11=
+ /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\ba=
+se\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#1=
+2 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\b=
+ase\View->renderFile('/home/sijaksa/p...', Array,
+Object(backend\controll=
+ers\RekJenisApbdController))
+#13
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/base/Controller.php(384):
+yii\base\View->render('create', Array,=
+
+Object(backend\controllers\RekJenisApbdController))
+#14
+/home/sijaks=
+a/public_html/backend/controllers/RekJenisApbdController.php(74):
+yii\bas=
+e\Controller->render('create', Array)
+#15 [internal function]:
+backend\=
+controllers\RekJenisApbdController->actionCreate()
+#16
+/home/sijaksa/pu=
+blic_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_a=
+rray(Array, Array)
+#17
+/home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#18=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yi=
+i\base\Controller->runAction('create', Array)
+#19
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAc=
+tion('rek-jenis-apbd/...', Array)
+#20
+/home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleReques=
+t(Object(yii\web\Request))
+#21 /home/sijaksa/public_html/backend/web/inde=
+x.php(22):
+yii\base\Application->run()
+#22 {main}
+
+Next yii\db\Exce=
+ption: SQLSTATE[42000]: Syntax error or access
+violation: 1066 Not unique=
+ table/alias: 'rek_akun_apbd'
+The SQL being executed was: SELECT `rek_aku=
+n_apbd`.`nama_akun`,
+`rek_kelompok_apbd`.`nama_kel` FROM `rek_akun_apbd` =
+LEFT JOIN
+`rek_akun_apbd` ON rek_akun_apbd.id_akun =3D rek_kelompok_apbd.=
+id_akun
+in /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:66=
+4
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Comm=
+and.php(1295):
+yii\db\Schema->convertException(Object(PDOException), 'SEL=
+ECT
+`rek_aku...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/C=
+ommand.php(1158):
+yii\db\Command->internalExecute('SELECT `rek_aku...')=
+
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(399):
+=
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 /home/sijaksa/public_h=
+tml/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->queryAll()
+#=
+4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.php(133):=
+
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_html/backend/views/r=
+ek-jenis-apbd/_form.php(32):
+yii\db\ActiveQuery->all()
+#6 /home/sijaksa=
+/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijak=
+sa/p...')
+#7 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(=
+257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=
+=3D"s...')
+#8 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php=
+(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array, NULL)
+#9=
+
+/home/sijaksa/public_html/backend/views/rek-jenis-apbd/create.php(17):=
+
+yii\base\View->render('_form', Array)
+#10 /home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')
+#11=
+ /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\ba=
+se\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#1=
+2 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\b=
+ase\View->renderFile('/home/sijaksa/p...', Array,
+Object(backend\controll=
+ers\RekJenisApbdController))
+#13
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/base/Controller.php(384):
+yii\base\View->render('create', Array,=
+
+Object(backend\controllers\RekJenisApbdController))
+#14
+/home/sijaks=
+a/public_html/backend/controllers/RekJenisApbdController.php(74):
+yii\bas=
+e\Controller->render('create', Array)
+#15 [internal function]:
+backend\=
+controllers\RekJenisApbdController->actionCreate()
+#16
+/home/sijaksa/pu=
+blic_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_a=
+rray(Array, Array)
+#17
+/home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#18=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yi=
+i\base\Controller->runAction('create', Array)
+#19
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAc=
+tion('rek-jenis-apbd/...', Array)
+#20
+/home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleReques=
+t(Object(yii\web\Request))
+#21 /home/sijaksa/public_html/backend/web/inde=
+x.php(22):
+yii\base\Application->run()
+#22 {main}
+Additional Informat=
+ion:
+Array
+(
+    [0] =3D> 42000
+    [1] =3D> 1066
+    [2] =3D> No=
+t unique table/alias: 'rek_akun_apbd'
+)
+
+2020-02-08 11:55:46
+[125.1=
+66.97.142][5][622nhs61d9ejcgpcdbsplaf03m][info][application]
+$_GET =3D [=
+
+    'r' =3D> 'rek-jenis-apbd/create'
+]
+
+$_POST =3D []
+
+$_FILES=
+ =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '622nhs61d9ejcgpc=
+dbsplaf03m'
+    '_csrf-backend' =3D>
+'88e6ae420364d7099437fc9aadd003c5a=
+c6b740bf9ec39ac6da84201f5bb5cf9a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"5=
+3mQ1rG624Cmp8-6eFgZ0ibOqexS_cPE\";}'
+]
+
+$_SESSION =3D [
+    '__flas=
+h' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_ro=
+le' =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+    =
+    2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+  =
+  'user_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> 3
+        2 =
+=3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 5
+]
+
+$_SERVER =3D=
+ [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =
+=3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+=
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/u=
+sr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_=
+NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/backend/we=
+b/index.php?r=3Drek-jenis-apbd%2Fcreate'
+    'QUERY_STRING' =3D> 'r=3Drek=
+-jenis-apbd%2Fcreate'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTO=
+COL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE=
+_PORT' =3D> '59123'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_ht=
+ml/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+=
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT=
+_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =
+=3D> '/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '125.166.97.142'=
+
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+  =
+  'SERVER_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4=
+.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-ba=
+ckend=3D622nhs61d9ejcgpcdbsplaf03m;
+_csrf-backend=3D88e6ae420364d7099437f=
+c9aadd003c5ac6b740bf9ec39ac6da84201f5bb5cf9a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_=
+csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%2253mQ1rG624Cmp8-6eFgZ0ibOqexS_cPE%22%3=
+B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;=
+q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFE=
+RER' =3D>
+'http://sijaksa.com/backend/web/index.php?r=3Drek-jenis-apbd'=
+
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xm=
+l;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=
+=3Db3;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Linux; Android 6.=
+0; Nexus 5
+Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko)
+Chrome/=
+79.0.3945.130 Mobile Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =
+=3D> '1'
+    'HTTP_DNT' =3D> '1'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=
+=3D0'
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_HOST' =3D> 'sijaksa.=
+com'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/web/index.php'
+ =
+   'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPO=
+NDER'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FL=
+OAT' =3D> 1581137746.3039
+    'REQUEST_TIME' =3D> 1581137746
+]

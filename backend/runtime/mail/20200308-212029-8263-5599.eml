@@ -1,0 +1,524 @@
+Message-ID: <2957e3ef42ef7de7407132154073195a@sijaksa.online>
+Date: Sun, 08 Mar 2020 21:20:29 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-03-08 21:20:29
+[36.80.200.174][1][86cd76ed145c2ac4ea67293a2e5f99f1][=
+error][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found:=
+ 1054 Unknown column
+'nama' in 'field list' in
+/home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa=
+/public_html/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->exec=
+ute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(115=
+8):
+yii\db\Command->internalExecute('SELECT `nama`, ...')
+#2 /home/sija=
+ksa/public_html/vendor/yiisoft/yii2/db/Command.php(413):
+yii\db\Command->=
+queryInternal('fetch', NULL)
+#3 /home/sijaksa/public_html/vendor/yiisoft/=
+yii2/db/Query.php(274):
+yii\db\Command->queryOne()
+#4
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/db/ActiveQuery.php(304):
+yii\db\Query->one=
+(NULL)
+#5 /home/sijaksa/public_html/backend/views/site/index.php(870):
+=
+yii\db\ActiveQuery->one()
+#6 [internal function]:
+yii\base\View->{closu=
+re}(Object(backend\models\DataDesa), 736, 0,
+Object(kartik\grid\DataColum=
+n))
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/DataColumn.ph=
+p(230):
+call_user_func(Object(Closure), Object(backend\models\DataDesa), =
+736,
+0, Object(kartik\grid\DataColumn))
+#8
+/home/sijaksa/public_html/=
+vendor/yiisoft/yii2/grid/DataColumn.php(244):
+yii\grid\DataColumn->getDat=
+aCellValue(Object(backend\models\DataDesa),
+736, 0)
+#9
+/home/sijaksa/=
+public_html/vendor/kartik-v/yii2-grid/src/DataColumn.php(242):
+yii\grid\D=
+ataColumn->renderDataCellContent(Object(backend\models\DataDesa),
+736, 0)=
+
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.php(52=
+5):
+kartik\grid\DataColumn->renderDataCell(Object(backend\models\DataDesa=
+),
+736, 0)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/Gri=
+dView.php(494):
+yii\grid\GridView->renderTableRow(Object(backend\models\D=
+ataDesa),
+736, 0)
+#12
+/home/sijaksa/public_html/vendor/kartik-v/yii2-=
+grid/src/GridView.php(1220):
+yii\grid\GridView->renderTableBody()
+#13=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.php(358):
+=
+kartik\grid\GridView->renderTableBody()
+#14
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/widgets/BaseListView.php(160):
+yii\grid\GridView->rend=
+erItems()
+#15
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridVi=
+ew.php(326):
+yii\widgets\BaseListView->renderSection('{items}')
+#16
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/widgets/BaseListView.php(135):=
+
+yii\grid\GridView->renderSection('{items}')
+#17 [internal function]:=
+
+yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#18
+/home/sij=
+aksa/public_html/vendor/yiisoft/yii2/widgets/BaseListView.php(138):
+preg_=
+replace_callback('/{\\w+}/', Object(Closure), '<div
+class=3D"pan...')
+#=
+19
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.php(301):=
+
+yii\widgets\BaseListView->run()
+#20
+/home/sijaksa/public_html/vendor=
+/kartik-v/yii2-grid/src/GridView.php(1186):
+yii\grid\GridView->run()
+#2=
+1
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Widget.php(140):
+k=
+artik\grid\GridView->run()
+#22 /home/sijaksa/public_html/backend/views/si=
+te/index.php(842):
+yii\base\Widget::widget(Array)
+#23 /home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p=
+...')
+#24 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257=
+):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"=
+s...')
+#25 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(15=
+6):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(backe=
+nd\controllers\SiteController))
+#26
+/home/sijaksa/public_html/vendor/yi=
+isoft/yii2/base/Controller.php(384):
+yii\base\View->render('index', Array=
+,
+Object(backend\controllers\SiteController))
+#27
+/home/sijaksa/publi=
+c_html/backend/controllers/SiteController.php(92):
+yii\base\Controller->r=
+ender('index', Array)
+#28 [internal function]:
+backend\controllers\Site=
+Controller->actionIndex()
+#29
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#30=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):=
+
+yii\base\InlineAction->runWithParams(Array)
+#31
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runA=
+ction('', Array)
+#32
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/=
+Application.php(103):
+yii\base\Module->runAction('', Array)
+#33
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\w=
+eb\Application->handleRequest(Object(yii\web\Request))
+#34 /home/sijaksa/=
+public_html/backend/web/index.php(22):
+yii\base\Application->run()
+#35 =
+{main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 1054 =
+Unknown
+column 'nama' in 'field list'
+The SQL being executed was: SELEC=
+T `nama`, `id_kec` AS `id` FROM
+`data_kecamatan` WHERE `id_kec`=3D'51' in=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack =
+trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(12=
+95):
+yii\db\Schema->convertException(Object(PDOException), 'SELECT `nama`=
+,
+...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php=
+(1158):
+yii\db\Command->internalExecute('SELECT `nama`, ...')
+#2 /home/=
+sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(413):
+yii\db\Comma=
+nd->queryInternal('fetch', NULL)
+#3 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/Query.php(274):
+yii\db\Command->queryOne()
+#4
+/home/sijak=
+sa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.php(304):
+yii\db\Query-=
+>one(NULL)
+#5 /home/sijaksa/public_html/backend/views/site/index.php(870)=
+:
+yii\db\ActiveQuery->one()
+#6 [internal function]:
+yii\base\View->{c=
+losure}(Object(backend\models\DataDesa), 736, 0,
+Object(kartik\grid\DataC=
+olumn))
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/DataColum=
+n.php(230):
+call_user_func(Object(Closure), Object(backend\models\DataDes=
+a), 736,
+0, Object(kartik\grid\DataColumn))
+#8
+/home/sijaksa/public_h=
+tml/vendor/yiisoft/yii2/grid/DataColumn.php(244):
+yii\grid\DataColumn->ge=
+tDataCellValue(Object(backend\models\DataDesa),
+736, 0)
+#9
+/home/sija=
+ksa/public_html/vendor/kartik-v/yii2-grid/src/DataColumn.php(242):
+yii\gr=
+id\DataColumn->renderDataCellContent(Object(backend\models\DataDesa),
+736=
+, 0)
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.ph=
+p(525):
+kartik\grid\DataColumn->renderDataCell(Object(backend\models\Data=
+Desa),
+736, 0)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid=
+/GridView.php(494):
+yii\grid\GridView->renderTableRow(Object(backend\mode=
+ls\DataDesa),
+736, 0)
+#12
+/home/sijaksa/public_html/vendor/kartik-v/y=
+ii2-grid/src/GridView.php(1220):
+yii\grid\GridView->renderTableBody()
+#=
+13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.php(358):=
+
+kartik\grid\GridView->renderTableBody()
+#14
+/home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/widgets/BaseListView.php(160):
+yii\grid\GridView->r=
+enderItems()
+#15
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/Gri=
+dView.php(326):
+yii\widgets\BaseListView->renderSection('{items}')
+#16=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/widgets/BaseListView.php(1=
+35):
+yii\grid\GridView->renderSection('{items}')
+#17 [internal function=
+]:
+yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#18
+/home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/widgets/BaseListView.php(138):
+pre=
+g_replace_callback('/{\\w+}/', Object(Closure), '<div
+class=3D"pan...')=
+
+#19
+/home/sijaksa/public_html/vendor/yiisoft/yii2/grid/GridView.php(30=
+1):
+yii\widgets\BaseListView->run()
+#20
+/home/sijaksa/public_html/ven=
+dor/kartik-v/yii2-grid/src/GridView.php(1186):
+yii\grid\GridView->run()=
+
+#21
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Widget.php(140)=
+:
+kartik\grid\GridView->run()
+#22 /home/sijaksa/public_html/backend/vie=
+ws/site/index.php(842):
+yii\base\Widget::widget(Array)
+#23 /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sija=
+ksa/p...')
+#24 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.ph=
+p(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+clas=
+s=3D"s...')
+#25 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.p=
+hp(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(=
+backend\controllers\SiteController))
+#26
+/home/sijaksa/public_html/vend=
+or/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('index', =
+Array,
+Object(backend\controllers\SiteController))
+#27
+/home/sijaksa/=
+public_html/backend/controllers/SiteController.php(92):
+yii\base\Controll=
+er->render('index', Array)
+#28 [internal function]:
+backend\controllers=
+\SiteController->actionIndex()
+#29
+/home/sijaksa/public_html/vendor/yii=
+soft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#30
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(=
+157):
+yii\base\InlineAction->runWithParams(Array)
+#31
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller-=
+>runAction('', Array)
+#32
+/home/sijaksa/public_html/vendor/yiisoft/yii2=
+/web/Application.php(103):
+yii\base\Module->runAction('', Array)
+#33
+=
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+=
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#34 /home/sij=
+aksa/public_html/backend/web/index.php(22):
+yii\base\Application->run()=
+
+#35 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+=
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'nama' in 'field list'
+)=
+
+
+2020-03-08 21:20:29
+[36.80.200.174][1][86cd76ed145c2ac4ea67293a2e5f=
+99f1][info][application]
+$_GET =3D [
+    'DataDesaSearch' =3D> [
+    =
+    'nama_kec' =3D> ''
+        'nama_desa' =3D> ''
+        'sum_point' =
+=3D> ''
+        'id_kec' =3D> ''
+    ]
+]
+
+$_POST =3D []
+
+$_FI=
+LES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '86cd76ed145c2=
+ac4ea67293a2e5f99f1'
+    '_csrf-backend' =3D>
+'771b609aea4100aa5b1f5396=
+41bf240e712863b04ac61df6c0c22c5243f9bcbca:2:{i:0;s:13:\"_csrf-backend\";i:1=
+;s:32:\"QWSdRXb8uGxjDqdqqj08ccl60v1XANWf\";}'
+    'cpsession' =3D>
+':Xo=
+wP9KtK6_iqTxKD,96377ecd5a84dd6203a15da6531662a8'
+    'timezone' =3D> 'Asi=
+a/Jakarta'
+    'session_locale' =3D> 'en'
+]
+
+$_SESSION =3D [
+    =
+'__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    '=
+user_role' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'us=
+er_role_id' =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 1
+]
+
+=
+$_SERVER =3D [
+    'PATH' =3D> '/usr/local/bin:/usr/bin:/bin'
+    'TZ' =
+=3D> 'UTC'
+    'REDIRECT_HANDLER' =3D> 'application/x-httpd-ea-php72'
+ =
+   'REDIRECT_STATUS' =3D> '200'
+    'UNIQUE_ID' =3D> 'XmT-LU0Y4LtVgQmYE4a=
+HWQAAAQY'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'SCRIPT_UR=
+I' =3D> 'https://sijaksa.online/backend/web/index.php'
+    'HTTPS' =3D> '=
+on'
+    'SSL_TLS_SNI' =3D> 'sijaksa.online'
+    'HTTP_HOST' =3D> 'sijak=
+sa.online'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win6=
+4; x64;
+rv:73.0) Gecko/20100101 Firefox/73.0'
+    'HTTP_ACCEPT' =3D>
+=
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,*/*;q=
+=3D0.8'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.5'
+    'HTTP_AC=
+CEPT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_CONNECTION' =3D> 'keep-=
+alive'
+    'HTTP_COOKIE' =3D>
+'advanced-backend=3D86cd76ed145c2ac4ea672=
+93a2e5f99f1;
+_csrf-backend=3D771b609aea4100aa5b1f539641bf240e712863b04ac6=
+1df6c0c22c5243f9bcbca%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1=
+%3Bs%3A32%3A%22QWSdRXb8uGxjDqdqqj08ccl60v1XANWf%22%3B%7D;
+cpsession=3D%3a=
+XowP9KtK6_iqTxKD%2c96377ecd5a84dd6203a15da6531662a8;
+timezone=3DAsia/Jaka=
+rta; session_locale=3Den'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'=
+
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_X_HTTPS' =3D> '1=
+'
+    'SERVER_SIGNATURE' =3D> ''
+    'SERVER_SOFTWARE' =3D> 'Apache'
+=
+    'SERVER_NAME' =3D> 'sijaksa.online'
+    'SERVER_ADDR' =3D> '103.247.1=
+1.153'
+    'SERVER_PORT' =3D> '443'
+    'REMOTE_ADDR' =3D> '36.80.200.1=
+74'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REQUEST_S=
+CHEME' =3D> 'https'
+    'CONTEXT_PREFIX' =3D> '/cgi-sys'
+    'CONTEXT_D=
+OCUMENT_ROOT' =3D> '/usr/local/cpanel/cgi-sys/'
+    'SERVER_ADMIN' =3D> '=
+webmaster@sijaksa.online'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/pub=
+lic_html/backend/web/index.php'
+    'REMOTE_PORT' =3D> '56388'
+    'RED=
+IRECT_URL' =3D> '/backend/web/index.php'
+    'REDIRECT_QUERY_STRING' =3D>=
+
+'DataDesaSearch%5Bnama_kec%5D=3D&DataDesaSearch%5Bnama_desa%5D=3D&DataDe=
+saSearch%5Bsum_point%5D=3D&DataDesaSearch%5Bid_kec%5D=3D'
+    'GATEWAY_IN=
+TERFACE' =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQU=
+EST_METHOD' =3D> 'GET'
+    'QUERY_STRING' =3D>
+'DataDesaSearch%5Bnama_k=
+ec%5D=3D&DataDesaSearch%5Bnama_desa%5D=3D&DataDesaSearch%5Bsum_point%5D=3D&=
+DataDesaSearch%5Bid_kec%5D=3D'
+    'REQUEST_URI' =3D>
+'/backend/web/ind=
+ex.php?DataDesaSearch%5Bnama_kec%5D=3D&DataDesaSearch%5Bnama_desa%5D=3D&Dat=
+aDesaSearch%5Bsum_point%5D=3D&DataDesaSearch%5Bid_kec%5D=3D'
+    'SCRIPT_=
+NAME' =3D> '/backend/web/index.php'
+    'ORIG_SCRIPT_FILENAME' =3D> '/usr=
+/local/cpanel/cgi-sys/ea-php72'
+    'ORIG_PATH_INFO' =3D> '/backend/web/i=
+ndex.php'
+    'ORIG_PATH_TRANSLATED' =3D>
+'/home/sijaksa/public_html/ba=
+ckend/web/index.php'
+    'ORIG_SCRIPT_NAME' =3D> '/cgi-sys/ea-php72'
+  =
+  'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> =
+1583677229.3528
+    'REQUEST_TIME' =3D> 1583677229
+    'argv' =3D> [
+=
+        0 =3D>
+'DataDesaSearch%5Bnama_kec%5D=3D&DataDesaSearch%5Bnama_des=
+a%5D=3D&DataDesaSearch%5Bsum_point%5D=3D&DataDesaSearch%5Bid_kec%5D=3D'
+ =
+   ]
+    'argc' =3D> 1
+]

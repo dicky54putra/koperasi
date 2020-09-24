@@ -1,0 +1,345 @@
+Message-ID: <1726aa3dde3b43592da7029ff50820d4@cvajm.com>
+Date: Thu, 11 Jul 2019 07:55:58 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-07-11 07:55:58
+[209.58.180.2][1][ri6f55ri3li2urvijq936epcl1][error][=
+yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity const=
+raint violation: 1048
+Column 'jumlah' cannot be null in
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):=
+
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSERT IN=
+TO `wo...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Sch=
+ema.php(433):
+yii\db\Command->execute()
+#3
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->insert('=
+workshop_reques...', Array)
+#4
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInternal(N=
+ULL)
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/BaseActive=
+Record.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+/home/cv=
+ajm/public_html/cvajm/backend/controllers/WorkshopRequestController.php(268=
+):
+yii\db\BaseActiveRecord->save(false)
+#7 [internal function]:
+backe=
+nd\controllers\WorkshopRequestController->actionTambahSparePart('8')
+#8=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(=
+57):
+call_user_func_array(Array, Array)
+#9
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->=
+runWithParams(Array)
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/base/Module.php(528):
+yii\base\Controller->runAction('tambah-spare-pa=
+...', Array)
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/=
+Application.php(103):
+yii\base\Module->runAction('workshop-reques...', Ar=
+ray)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Applica=
+tion.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request)=
+)
+#13 /home/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base=
+\Application->run()
+#14 {main}
+
+Next yii\db\IntegrityException: SQLST=
+ATE[23000]: Integrity constraint
+violation: 1048 Column 'jumlah' cannot b=
+e null
+The SQL being executed was: INSERT INTO `workshop_request_detail`=
+
+(`id_workshop_request`, `id_spare_part`, `jumlah`, `keterangan`)
+VALUE=
+S (8, 1680, NULL, '') in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Ob=
+ject(PDOException), 'INSERT INTO
+`wo...')
+#1
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->internalE=
+xecute('INSERT INTO `wo...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/db/Schema.php(433):
+yii\db\Command->execute()
+#3
+/home/cva=
+jm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db=
+\Schema->insert('workshop_reques...', Array)
+#4
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord-=
+>insertInternal(NULL)
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/db/BaseActiveRecord.php(678):
+yii\db\ActiveRecord->insert(false, NULL=
+)
+#6
+/home/cvajm/public_html/cvajm/backend/controllers/WorkshopRequestC=
+ontroller.php(268):
+yii\db\BaseActiveRecord->save(false)
+#7 [internal f=
+unction]:
+backend\controllers\WorkshopRequestController->actionTambahSpar=
+ePart('8')
+#8
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/In=
+lineAction.php(57):
+call_user_func_array(Array, Array)
+#9
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base=
+\InlineAction->runWithParams(Array)
+#10
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('=
+tambah-spare-pa...', Array)
+#11
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('workshop=
+-reques...', Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/base/Application.php(386):
+yii\web\Application->handleRequest(Object(y=
+ii\web\Request))
+#13 /home/cvajm/public_html/cvajm/backend/web/index.php(=
+22):
+yii\base\Application->run()
+#14 {main}
+Additional Information:=
+
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1048
+    [2] =3D> Column=
+ 'jumlah' cannot be null
+)
+
+2019-07-11 07:55:58
+[209.58.180.2][1][r=
+i6f55ri3li2urvijq936epcl1][info][application] $_GET
+=3D [
+    'r' =3D> =
+'workshop-request/tambah-spare-part'
+    'id' =3D> '8'
+]
+
+$_POST =
+=3D [
+    '_csrf-backend' =3D>
+'mftMVw60jF5sDa5UtOdcPbsXzl3cm3OAGJNCi09=
+Muj6prnoCb97uFgFd2AeBhhtV_jr2a5TKR7lp_gnmIgTCeA=3D=3D'
+    'id_spare_part=
+' =3D> '1680'
+    'jumlah' =3D> ''
+    'keterangan' =3D> ''
+]
+
+$_=
+FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'ri6f55ri3li=
+2urvijq936epcl1'
+    '_csrf-backend' =3D>
+'ddf3b02bdc57fafeec26976d4678=
+ae687eee6ab39d3eccc92b889124b884717fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:3=
+2:\"0U6UajbHmPvS5aGhE-86HQ49qmKmmHxF\";}'
+]
+
+$_SESSION =3D [
+    '_=
+_flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+ =
+   'user_role' =3D> [
+        0 =3D> 'WORKSHOP'
+        1 =3D> 'TAMBANG=
+'
+        2 =3D> 'SYSTEM ADMINISTRATOR'
+        3 =3D> 'SURAT JALAN'
+=
+        4 =3D> 'PURCHASING'
+        5 =3D> 'PEMESANAN'
+        6 =3D> '=
+LOGISTIC'
+        7 =3D> 'KORLAP'
+        8 =3D> 'INVOICE'
+        9 =
+=3D> 'HRD'
+        10 =3D> 'GPS'
+        11 =3D> 'FINANCE'
+        12=
+ =3D> 'CHECKER'
+        13 =3D> 'ADMIN'
+    ]
+    'user_role_id' =3D>=
+ [
+        0 =3D> 10
+        1 =3D> 13
+        2 =3D> 1
+        3 =
+=3D> 4
+        4 =3D> 12
+        5 =3D> 5
+        6 =3D> 11
+       =
+ 7 =3D> 9
+        8 =3D> 8
+        9 =3D> 14
+        10 =3D> 7
+    =
+    11 =3D> 3
+        12 =3D> 6
+        13 =3D> 2
+    ]
+    '__id' =
+=3D> 1
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../=
+etc/php7.0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQ=
+UESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/=
+sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SCRIPT_NAME' =3D>=
+ '/cvajm/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/=
+web/index.php?r=3Dworkshop-request%2Ftambah-spare-part&id=3D8'
+    'QUERY=
+_STRING' =3D> 'r=3Dworkshop-request%2Ftambah-spare-part&id=3D8'
+    'REQU=
+EST_METHOD' =3D> 'POST'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATE=
+WAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '34462'
+    'SCRIP=
+T_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+=
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =
+=3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUES=
+T_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'=
+
+    'REMOTE_ADDR' =3D> '209.58.180.2'
+    'SERVER_PORT' =3D> '80'
+  =
+  'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'=
+
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D>=
+ ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CONTROL' =3D> 'm=
+ax-age=3D0'
+    'HTTP_X_FORWARDED_FOR' =3D> '36.72.217.45'
+    'HTTP_VI=
+A' =3D> '1.1 singapore.rastavarian.com (squid/3.5.23)'
+    'HTTP_HOST' =
+=3D> 'cvajm.com'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dri6f55ri3li2u=
+rvijq936epcl1;
+_csrf-backend=3Dddf3b02bdc57fafeec26976d4678ae687eee6ab39d=
+3eccc92b889124b884717fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3=
+A1%3Bs%3A32%3A%220U6UajbHmPvS5aGhE-86HQ49qmKmmHxF%22%3B%7D'
+    'HTTP_ACC=
+EPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8'
+    'HTTP_ACCEPT_ENCODIN=
+G' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm=
+/backend/web/index.php?r=3Dworkshop-request%2Fview&id=3D8'
+    'HTTP_ACCE=
+PT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/w=
+ebp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3'
+    'HTTP_=
+USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/5=
+37.36 (KHTML, like Gecko) Chrome/75.0.3770.100
+Safari/537.36'
+    'CONT=
+ENT_TYPE' =3D> 'application/x-www-form-urlencoded'
+    'HTTP_UPGRADE_INSE=
+CURE_REQUESTS' =3D> '1'
+    'HTTP_ORIGIN' =3D> 'http://cvajm.com'
+    '=
+CONTENT_LENGTH' =3D> '145'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/=
+backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.ph=
+p'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend=
+/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1562806558.4729
+    'REQU=
+EST_TIME' =3D> 1562806558
+]

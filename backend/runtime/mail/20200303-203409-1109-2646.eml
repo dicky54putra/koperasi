@@ -1,0 +1,329 @@
+Message-ID: <682f36bb5453741514003d9d989df878@sijaksa.online>
+Date: Tue, 03 Mar 2020 20:34:09 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-03-03 20:34:09
+[103.247.122.10][854][de286ebb746b677755d52b2a516e344=
+b][error][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integ=
+rity constraint violation: 1048
+Column 'id_tabel' cannot be null in
+/ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trac=
+e:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):=
+
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSERT INTO `gr=
+...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php(433)=
+:
+yii\db\Command->execute()
+#3
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->insert('grafik_desa', Ar=
+ray)
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.p=
+hp(566):
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/db/BaseActiveRecord.php(678):
+yii\db\Activ=
+eRecord->insert(false, NULL)
+#6
+/home/sijaksa/public_html/backend/contr=
+ollers/DaftarKegiatanRpjmController.php(93):
+yii\db\BaseActiveRecord->sav=
+e(false)
+#7 [internal function]:
+backend\controllers\DaftarKegiatanRpjm=
+Controller->actionCreate()
+#8
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#9=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):=
+
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runA=
+ction('create', Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii=
+2/web/Application.php(103):
+yii\base\Module->runAction('daftar-kegiatan..=
+.', Array)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Appli=
+cation.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Reques=
+t))
+#13 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\A=
+pplication->run()
+#14 {main}
+
+Next yii\db\IntegrityException: SQLSTAT=
+E[23000]: Integrity constraint
+violation: 1048 Column 'id_tabel' cannot b=
+e null
+The SQL being executed was: INSERT INTO `grafik_desa` (`id_desa`,=
+
+`nama_tabel`, `id_tabel`, `nama_kelompok`, `point`) VALUES (806,
+'daft=
+ar_kegiatan_rpjm', NULL, 'Perencanaan 4', 15) in
+/home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->conve=
+rtException(Object(PDOException), 'INSERT INTO
+`gr...')
+#1 /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->i=
+nternalExecute('INSERT INTO `gr...')
+#2 /home/sijaksa/public_html/vendor/=
+yiisoft/yii2/db/Schema.php(433):
+yii\db\Command->execute()
+#3
+/home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\S=
+chema->insert('grafik_desa', Array)
+#4
+/home/sijaksa/public_html/vendor=
+/yiisoft/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord->insertIntern=
+al(NULL)
+#5
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/BaseActive=
+Record.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+/home/si=
+jaksa/public_html/backend/controllers/DaftarKegiatanRpjmController.php(93):=
+
+yii\db\BaseActiveRecord->save(false)
+#7 [internal function]:
+backend=
+\controllers\DaftarKegiatanRpjmController->actionCreate()
+#8
+/home/sija=
+ksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_=
+func_array(Array, Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)=
+
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528)=
+:
+yii\base\Controller->runAction('create', Array)
+#11
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module-=
+>runAction('daftar-kegiatan...', Array)
+#12
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handle=
+Request(Object(yii\web\Request))
+#13 /home/sijaksa/public_html/backend/we=
+b/index.php(22):
+yii\base\Application->run()
+#14 {main}
+Additional In=
+formation:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1048
+    [2] =
+=3D> Column 'id_tabel' cannot be null
+)
+
+2020-03-03 20:34:08
+[103.2=
+47.122.10][854][de286ebb746b677755d52b2a516e344b][info][application]
+$_GE=
+T =3D [
+    'r' =3D> 'daftar-kegiatan-rpjm/create'
+    'idb' =3D> '1703=
+'
+    'id_sub' =3D> '1'
+]
+
+$_POST =3D [
+    '_csrf-backend' =3D>=
+
+'_nowFd9b5NTD6gd-ZrAKDgQszF34J5r9wcmszerM12fMAEZZ5y6LsYivUh0IgDJCb1WWK8l=
+eq6ywu9ius5qvJQ=3D=3D'
+    'DaftarKegiatanRpjm' =3D> [
+        'id_sub_=
+bidang_rpjm' =3D> '1703'
+        'id_kegiatan' =3D> '13'
+        'id_sa=
+saran' =3D> ''
+        'lokasi' =3D> 'Jatimakmur'
+        'keluaran' =
+=3D> 'Terbayarnya Siltap Aparatur pemerintah Desa'
+        'manfaat' =3D>=
+ 'Kepala Desa'
+    ]
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'a=
+dvanced-backend' =3D> 'de286ebb746b677755d52b2a516e344b'
+    '_csrf-backe=
+nd' =3D>
+'3c1d48877edc23bf239c80828b8b988ed208621e9ee2ca4d7fc9db413a62386=
+ca:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"2zvL8uoeKEUcn08LkyZv1y1QqrtcYVx=
+B\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl'=
+ =3D> '/backend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'K=
+ELURAHAN'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 4
+    ]
+=
+    '__id' =3D> 854
+]
+
+$_SERVER =3D [
+    'PATH' =3D> '/usr/local/b=
+in:/usr/bin:/bin'
+    'TZ' =3D> 'UTC'
+    'REDIRECT_HANDLER' =3D> 'appl=
+ication/x-httpd-ea-php72'
+    'REDIRECT_STATUS' =3D> '200'
+    'UNIQUE_=
+ID' =3D> 'Xl5c0Non5Yi71pJpkeRzzwAAABU'
+    'SCRIPT_URL' =3D> '/backend/we=
+b/index.php'
+    'SCRIPT_URI' =3D> 'https://sijaksa.online/backend/web/in=
+dex.php'
+    'HTTPS' =3D> 'on'
+    'SSL_TLS_SNI' =3D> 'sijaksa.online'=
+
+    'HTTP_HOST' =3D> 'sijaksa.online'
+    'HTTP_USER_AGENT' =3D> 'Mozi=
+lla/5.0 (Windows NT 10.0; Win64; x64;
+rv:73.0) Gecko/20100101 Firefox/73.=
+0'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/=
+xml;q=3D0.9,image/webp,*/*;q=3D0.8'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-U=
+S,en;q=3D0.5'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+    '=
+CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded'
+    'CONTENT_LENGT=
+H' =3D> '392'
+    'HTTP_ORIGIN' =3D> 'https://sijaksa.online'
+    'HTTP=
+_DNT' =3D> '1'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_REFERE=
+R' =3D>
+'https://sijaksa.online/backend/web/index.php?r=3Ddaftar-kegiatan=
+-rpjm%2Fcreate&idb=3D1703&id_sub=3D1'
+    'HTTP_COOKIE' =3D>
+'advanced-=
+backend=3Dde286ebb746b677755d52b2a516e344b;
+_csrf-backend=3D3c1d48877edc2=
+3bf239c80828b8b988ed208621e9ee2ca4d7fc9db413a62386ca%3A2%3A%7Bi%3A0%3Bs%3A1=
+3%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%222zvL8uoeKEUcn08LkyZv1y1QqrtcY=
+VxB%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_X=
+_HTTPS' =3D> '1'
+    'SERVER_SIGNATURE' =3D> ''
+    'SERVER_SOFTWARE' =
+=3D> 'Apache'
+    'SERVER_NAME' =3D> 'sijaksa.online'
+    'SERVER_ADDR'=
+ =3D> '103.247.11.153'
+    'SERVER_PORT' =3D> '443'
+    'REMOTE_ADDR' =
+=3D> '103.247.122.10'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html=
+'
+    'REQUEST_SCHEME' =3D> 'https'
+    'CONTEXT_PREFIX' =3D> '/cgi-sys=
+'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/usr/local/cpanel/cgi-sys/'
+    'SE=
+RVER_ADMIN' =3D> 'webmaster@sijaksa.online'
+    'SCRIPT_FILENAME' =3D>
+=
+'/home/sijaksa/public_html/backend/web/index.php'
+    'REMOTE_PORT' =3D> =
+'52184'
+    'REDIRECT_URL' =3D> '/backend/web/index.php'
+    'REDIRECT_=
+QUERY_STRING' =3D>
+'r=3Ddaftar-kegiatan-rpjm%2Fcreate&idb=3D1703&id_sub=
+=3D1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D>=
+ 'HTTP/1.1'
+    'REQUEST_METHOD' =3D> 'POST'
+    'QUERY_STRING' =3D>
+=
+'r=3Ddaftar-kegiatan-rpjm%2Fcreate&idb=3D1703&id_sub=3D1'
+    'REQUEST_UR=
+I' =3D>
+'/backend/web/index.php?r=3Ddaftar-kegiatan-rpjm%2Fcreate&idb=3D1=
+703&id_sub=3D1'
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'OR=
+IG_SCRIPT_FILENAME' =3D> '/usr/local/cpanel/cgi-sys/ea-php72'
+    'ORIG_P=
+ATH_INFO' =3D> '/backend/web/index.php'
+    'ORIG_PATH_TRANSLATED' =3D>=
+
+'/home/sijaksa/public_html/backend/web/index.php'
+    'ORIG_SCRIPT_NAM=
+E' =3D> '/cgi-sys/ea-php72'
+    'PHP_SELF' =3D> '/backend/web/index.php'=
+
+    'REQUEST_TIME_FLOAT' =3D> 1583242448.9241
+    'REQUEST_TIME' =3D> =
+1583242448
+    'argv' =3D> [
+        0 =3D> 'r=3Ddaftar-kegiatan-rpjm%2=
+Fcreate&idb=3D1703&id_sub=3D1'
+    ]
+    'argc' =3D> 1
+]

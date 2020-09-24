@@ -1,0 +1,337 @@
+Message-ID: <08f267f131d0a732fd82a5489fc65097@cvajm.com>
+Date: Sat, 30 Nov 2019 16:15:30 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-11-30 16:15:30
+[36.92.48.63][36][0eecc7k69fbneppfft731d1pf7][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 U=
+nknown column
+'unit.nopol' in 'field list' in
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatem=
+ent->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/=
+Command.php(1158):
+yii\db\Command->internalExecute('SELECT `surat_j...')=
+
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(39=
+9):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->qu=
+eryAll()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Active=
+Query.php(133):
+yii\db\Query->all(NULL)
+#5 /home/cvajm/public_html/cvaj=
+m/backend/views/invoice/view.php(267):
+yii\db\ActiveQuery->all()
+#6
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+requ=
+ire('/home/cvajm/pub...')
+#7
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub=
+...', '[<span
+class=3D"s...')
+#8
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm/=
+pub...', Array,
+Object(backend\controllers\InvoiceController))
+#9
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+=
+yii\base\View->render('view', Array,
+Object(backend\controllers\InvoiceCo=
+ntroller))
+#10
+/home/cvajm/public_html/cvajm/backend/controllers/Invoic=
+eController.php(77):
+yii\base\Controller->render('view', Array)
+#11 [in=
+ternal function]:
+backend\controllers\InvoiceController->actionView('28')=
+
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineActio=
+n.php(57):
+call_user_func_array(Array, Array)
+#13
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineA=
+ction->runWithParams(Array)
+#14
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('view', A=
+rray)
+#15
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Applica=
+tion.php(103):
+yii\base\Module->runAction('invoice/view', Array)
+#16
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386)=
+:
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 /home=
+/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\Application-=
+>run()
+#18 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not=
+ found: 1054 Unknown
+column 'unit.nopol' in 'field list'
+The SQL being =
+executed was: SELECT `surat_jalan`.`no_surat_jalan`,
+`surat_jalan`.`no_co=
+nch`, `unit`.`nopol`,
+`surat_jalan`.`tanggal_surat_jalan`, count(surat_ja=
+lan.id_surat_jalan)
+as retase, sum(surat_jalan.tonase) as volume FROM `su=
+rat_jalan` LEFT
+JOIN `invoice_detail` ON invoice_detail.id_po =3D surat_j=
+alan.id_po
+WHERE `surat_jalan`.`id_po`=3D'3939' GROUP BY
+`surat_jalan`.=
+`tanggal_surat_jalan` in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Ob=
+ject(PDOException), 'SELECT
+`surat_j...')
+#1
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalE=
+xecute('SELECT `surat_j...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/db/Command.php(399):
+yii\db\Command->queryInternal('fetchAll',=
+ NULL)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.ph=
+p(237):
+yii\db\Command->queryAll()
+#4
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/db/ActiveQuery.php(133):
+yii\db\Query->all(NULL)
+#5 =
+/home/cvajm/public_html/cvajm/backend/views/invoice/view.php(267):
+yii\db=
+\ActiveQuery->all()
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/base/View.php(348):
+require('/home/cvajm/pub...')
+#7
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->re=
+nderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#8
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\Vi=
+ew->renderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\In=
+voiceController))
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/Controller.php(384):
+yii\base\View->render('view', Array,
+Object(b=
+ackend\controllers\InvoiceController))
+#10
+/home/cvajm/public_html/cvaj=
+m/backend/controllers/InvoiceController.php(77):
+yii\base\Controller->ren=
+der('view', Array)
+#11 [internal function]:
+backend\controllers\Invoice=
+Controller->actionView('28')
+#12
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.=
+php(157):
+yii\base\InlineAction->runWithParams(Array)
+#14
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Con=
+troller->runAction('view', Array)
+#15
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('in=
+voice/view', Array)
+#16
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/base/Application.php(386):
+yii\web\Application->handleRequest(Object(y=
+ii\web\Request))
+#17 /home/cvajm/public_html/cvajm/backend/web/index.php(=
+22):
+yii\base\Application->run()
+#18 {main}
+Additional Information:=
+
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknow=
+n column 'unit.nopol' in 'field list'
+)
+
+2019-11-30 16:15:30
+[36.92=
+.48.63][36][0eecc7k69fbneppfft731d1pf7][info][application] $_GET
+=3D [
+=
+    'r' =3D> 'invoice/view'
+    'id' =3D> '28'
+]
+
+$_POST =3D []
+=
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '0eecc7=
+k69fbneppfft731d1pf7'
+    '_csrf-backend' =3D>
+'adf11d7dafe197c233cce97=
+fbc6e6393da3fb39749f5e371636d694da02fa1afa:2:{i:0;s:13:\"_csrf-backend\";i:=
+1;s:32:\"6e8NziSIGBkGHCL8YDXyVrtWdmPXBMMo\";}'
+]
+
+$_SESSION =3D [
+ =
+   '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index.php=
+'
+    'user_role' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]=
+
+    'user_role_id' =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3=
+6
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+    'HOME' =3D> '/hom=
+e/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQ=
+UEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dinvoice%2Fview&id=3D28'=
+
+    'QUERY_STRING' =3D> 'r=3Dinvoice%2Fview&id=3D28'
+    'REQUEST_METH=
+OD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTER=
+FACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '50517'
+    'SCRIPT_FILENAM=
+E' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+    'SERV=
+ER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/ho=
+me/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME'=
+ =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'RE=
+MOTE_ADDR' =3D> '36.92.48.63'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_A=
+DDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERV=
+ER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'P=
+ATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'=
+
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D0eecc7k69fbneppfft731d1pf7;=
+
+_csrf-backend=3Dadf11d7dafe197c233cce97fbc6e6393da3fb39749f5e371636d694d=
+a02fa1afa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A=
+%226e8NziSIGBkGHCL8YDXyVrtWdmPXBMMo%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =
+=3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_ACCEPT_ENCODIN=
+G' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/x=
+html+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,applicat=
+ion/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Wind=
+ows NT 6.1; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.=
+0.3904.108
+Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'=
+
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_CONNECTION' =3D>=
+ 'keep-alive'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepalive' =
+=3D> '1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/index.=
+php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FCGI_ROL=
+E' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.php'
+=
+    'REQUEST_TIME_FLOAT' =3D> 1575101730.5161
+    'REQUEST_TIME' =3D> 157=
+5101730
+]

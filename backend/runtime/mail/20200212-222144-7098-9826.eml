@@ -1,0 +1,272 @@
+Message-ID: <3f7563e943acb50e185353c95ae7c312@sijaksa.com>
+Date: Wed, 12 Feb 2020 22:21:44 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-12 22:21:44
+[120.188.83.199][11][eiarcq40ud5jjfas4fie3tiqh5][erro=
+r][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 105=
+4 Unknown column
+'id_rincian_data_penyetoran_bank' in 'where clause' in=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stac=
+k trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(=
+1290):
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/Command.php(1091):
+yii\db\Command->internalExecute('DELETE FR=
+OM `da...')
+#2
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveR=
+ecord.php(401):
+yii\db\Command->execute()
+#3
+/home/sijaksa/public_htm=
+l/backend/controllers/DataPenyetoranBankController.php(83):
+yii\db\Active=
+Record::deleteAll(Array)
+#4 [internal function]:
+backend\controllers\Da=
+taPenyetoranBankController->actionView('2')
+#5
+/home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Arr=
+ay, Array)
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Contro=
+ller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#7 /home/sij=
+aksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Contr=
+oller->runAction('view', Array)
+#8
+/home/sijaksa/public_html/vendor/yii=
+soft/yii2/web/Application.php(103):
+yii\base\Module->runAction('data-peny=
+etoran...', Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/bas=
+e/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web=
+\Request))
+#10 /home/sijaksa/public_html/backend/web/index.php(22):
+yii=
+\base\Application->run()
+#11 {main}
+
+Next yii\db\Exception: SQLSTATE[=
+42S22]: Column not found: 1054 Unknown
+column 'id_rincian_data_penyetoran=
+_bank' in 'where clause'
+The SQL being executed was: DELETE FROM `data_pe=
+nyetoran_bank` WHERE
+`id_rincian_data_penyetoran_bank`=3D'2' in
+/home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#=
+0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yii=
+\db\Schema->convertException(Object(PDOException), 'DELETE FROM
+`da...')=
+
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1091):=
+
+yii\db\Command->internalExecute('DELETE FROM `da...')
+#2
+/home/sijak=
+sa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(401):
+yii\db\Comma=
+nd->execute()
+#3
+/home/sijaksa/public_html/backend/controllers/DataPeny=
+etoranBankController.php(83):
+yii\db\ActiveRecord::deleteAll(Array)
+#4 =
+[internal function]:
+backend\controllers\DataPenyetoranBankController->ac=
+tionView('2')
+#5
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Inl=
+ineAction.php(57):
+call_user_func_array(Array, Array)
+#6
+/home/sijaks=
+a/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inli=
+neAction->runWithParams(Array)
+#7 /home/sijaksa/public_html/vendor/yiisof=
+t/yii2/base/Module.php(528):
+yii\base\Controller->runAction('view', Array=
+)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(=
+103):
+yii\base\Module->runAction('data-penyetoran...', Array)
+#9
+/hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\=
+web\Application->handleRequest(Object(yii\web\Request))
+#10 /home/sijaksa=
+/public_html/backend/web/index.php(22):
+yii\base\Application->run()
+#11=
+ {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1=
+] =3D> 1054
+    [2] =3D> Unknown column 'id_rincian_data_penyetoran_bank'=
+ in 'where
+clause'
+)
+
+2020-02-12 22:21:44
+[120.188.83.199][11][ei=
+arcq40ud5jjfas4fie3tiqh5][info][application]
+$_GET =3D [
+    'r' =3D> '=
+data-penyetoran-bank/view'
+    'id' =3D> '2'
+    'action' =3D> 'rincian=
+'
+    'id_rincian_data_penyetoran_bank' =3D> '2'
+]
+
+$_POST =3D []=
+
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'eia=
+rcq40ud5jjfas4fie3tiqh5'
+    '_csrf-backend' =3D>
+'ba5632c4b47fcf6ad320=
+8bf89b598a1c17527f477dc1ab880b86028ed266aa0ba:2:{i:0;s:13:\"_csrf-backend\"=
+;i:1;s:32:\"Tl7uUxH3afcMt7B_1KDTz9CGJYu4QZIO\";}'
+]
+
+$_SESSION =3D [=
+
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'=
+
+    'user_role' =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D> 'KE=
+CAMATAN'
+        2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATO=
+R'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> =
+3
+        2 =3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 11
+]
+=
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'=
+
+    'PWD' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =
+=3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/u=
+sr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'=
+
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>=
+
+'/backend/web/index.php?r=3Ddata-penyetoran-bank/view&id=3D2&action=3Dri=
+ncian&id_rincian_data_penyetoran_bank=3D2'
+    'QUERY_STRING' =3D>
+'r=
+=3Ddata-penyetoran-bank/view&id=3D2&action=3Drincian&id_rincian_data_penyet=
+oran_bank=3D2'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =
+=3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT=
+' =3D> '52643'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/ba=
+ckend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    '=
+CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREF=
+IX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '=
+/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '120.188.83.199'
+    =
+'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERV=
+ER_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+=
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=
+=3Deiarcq40ud5jjfas4fie3tiqh5;
+_csrf-backend=3Dba5632c4b47fcf6ad3208bf89b=
+598a1c17527f477dc1ab880b86028ed266aa0ba%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-=
+backend%22%3Bi%3A1%3Bs%3A32%3A%22Tl7uUxH3afcMt7B_1KDTz9CGJYu4QZIO%22%3B%7D'=
+
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0=
+.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =
+=3D>
+'http://sijaksa.com/backend/web/index.php?r=3Ddata-penyetoran-bank/v=
+iew&id=3D2&action=3Drincian&id_rincian_data_penyetoran_bank=3D2'
+    'HTT=
+P_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,i=
+mage/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9=
+'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)=
+
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130
+Safari/537=
+.36'
+    'HTTP_DNT' =3D> '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> =
+'1'
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_HOST' =3D> 'sijaksa.co=
+m'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/web/index.php'
+   =
+ 'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPOND=
+ER'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOA=
+T' =3D> 1581520904.5177
+    'REQUEST_TIME' =3D> 1581520904
+]

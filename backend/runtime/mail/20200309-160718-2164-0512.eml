@@ -1,0 +1,335 @@
+Message-ID: <e484079632cbe5c42fc60c7d8d90982e@sijaksa.online>
+Date: Mon, 09 Mar 2020 16:07:18 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-03-09 16:07:18
+[180.246.82.199][1101][af0607eaf446d360461f4dbe86ce77=
+87][error][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Inte=
+grity constraint violation: 1052
+Column 'id_daftar_penganggaran_belanja' =
+in field list is ambiguous in
+/home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/public_html/vendor=
+/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1 /home/si=
+jaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Comman=
+d->internalExecute('SELECT COUNT(id...')
+#2 /home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetc=
+hColumn', 0)
+#3
+/home/sijaksa/public_html/backend/controllers/DaftarPen=
+ganggaranBelanjaDetailController.php(89):
+yii\db\Command->queryScalar()=
+
+#4 [internal function]:
+backend\controllers\DaftarPenganggaranBelanjaD=
+etailController->actionCreate()
+#5
+/home/sijaksa/public_html/vendor/yii=
+soft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(1=
+57):
+yii\base\InlineAction->runWithParams(Array)
+#7 /home/sijaksa/publi=
+c_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->run=
+Action('create', Array)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii=
+2/web/Application.php(103):
+yii\base\Module->runAction('daftar-pengangg..=
+.', Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Applic=
+ation.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request=
+))
+#10 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Ap=
+plication->run()
+#11 {main}
+
+Next yii\db\IntegrityException: SQLSTATE=
+[23000]: Integrity constraint
+violation: 1052 Column 'id_daftar_pengangga=
+ran_belanja' in field list
+is ambiguous
+The SQL being executed was: SEL=
+ECT
+COUNT(id_daftar_penganggaran_belanja)
+                            F=
+ROM daftar_penganggaran_belanja_detail
+                            LEFT J=
+OIN daftar_penganggaran_belanja ON
+daftar_penganggaran_belanja.id_daftar_=
+penganggaran_belanja =3D
+daftar_penganggaran_belanja_detail.id_daftar_pen=
+ganggaran_belanja
+                            WHERE id_akun =3D '5'
+   =
+                         AND id_kel =3D '4'
+                            A=
+ND id_jenis =3D '17'
+                            AND id_oby =3D '58'
+  =
+                          AND daftar_penganggaran_belanja.id_desa =3D
+'39=
+8'
+                             in
+/home/sijaksa/public_html/vendor/yii=
+soft/yii2/db/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(=
+Object(PDOException), 'SELECT
+COUNT(id...')
+#1 /home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecu=
+te('SELECT COUNT(id...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2=
+/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#=
+3
+/home/sijaksa/public_html/backend/controllers/DaftarPenganggaranBelanja=
+DetailController.php(89):
+yii\db\Command->queryScalar()
+#4 [internal fu=
+nction]:
+backend\controllers\DaftarPenganggaranBelanjaDetailController->a=
+ctionCreate()
+#5
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Inl=
+ineAction.php(57):
+call_user_func_array(Array, Array)
+#6
+/home/sijaks=
+a/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Inli=
+neAction->runWithParams(Array)
+#7 /home/sijaksa/public_html/vendor/yiisof=
+t/yii2/base/Module.php(528):
+yii\base\Controller->runAction('create', Arr=
+ay)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.ph=
+p(103):
+yii\base\Module->runAction('daftar-pengangg...', Array)
+#9
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yi=
+i\web\Application->handleRequest(Object(yii\web\Request))
+#10 /home/sijak=
+sa/public_html/backend/web/index.php(22):
+yii\base\Application->run()
+#=
+11 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 23000
+    =
+[1] =3D> 1052
+    [2] =3D> Column 'id_daftar_penganggaran_belanja' in fie=
+ld list is
+ambiguous
+)
+
+2020-03-09 16:07:18
+[180.246.82.199][1101=
+][af0607eaf446d360461f4dbe86ce7787][info][application]
+$_GET =3D [
+    =
+'r' =3D> 'daftar-penganggaran-belanja-detail/create'
+    'id' =3D> '117'=
+
+]
+
+$_POST =3D [
+    '_csrf-backend' =3D>
+'87yzzVfM2zIYz5-spdSx-C=
+Z-X3oz_0PrVZLSoR219BCn7IX1Ev-3cHb-8vbMvdmcTSE0S32ec64wqqLrVsewXQ=3D=3D'
+ =
+   'DaftarPenganggaranBelanjaDetail' =3D> [
+        'id_daftar_penganggar=
+an_belanja' =3D> '117'
+        'id_akun' =3D> '5'
+        'id_kel' =3D>=
+ '4'
+        'id_jenis' =3D> '17'
+        'id_oby' =3D> '58'
+    ]
+=
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'timezone' =3D> 'Asia/Jakar=
+ta'
+    'cpsession' =3D>
+'sijaksa:xm8IzWeRf8MwauTK,b26e658cc55d81b18e1c=
+d8d71cfdf49c'
+    'advanced-backend' =3D> 'af0607eaf446d360461f4dbe86ce77=
+87'
+    '_csrf-backend' =3D>
+'c76a78b502982fa388caf5551c6bac0f4980572c3=
+1c360c08afe3e5d69a507c1a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"TP68E3lBn=
+1mZiihdk_k1Na0Ee8pJKrDM\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> =
+[]
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_role' =3D>=
+ [
+        0 =3D> 'KELURAHAN'
+    ]
+    'user_role_id' =3D> [
+     =
+   0 =3D> 4
+    ]
+    '__id' =3D> 1101
+]
+
+$_SERVER =3D [
+    'P=
+ATH' =3D> '/usr/local/bin:/usr/bin:/bin'
+    'TZ' =3D> 'UTC'
+    'REDIR=
+ECT_HANDLER' =3D> 'application/x-httpd-ea-php72'
+    'REDIRECT_STATUS' =
+=3D> '200'
+    'UNIQUE_ID' =3D> 'XmYHRV-gT6LnGhNmuiSc2QAAAM4'
+    'SCRI=
+PT_URL' =3D> '/backend/web/index.php'
+    'SCRIPT_URI' =3D> 'https://sija=
+ksa.online/backend/web/index.php'
+    'HTTPS' =3D> 'on'
+    'SSL_TLS_SN=
+I' =3D> 'sijaksa.online'
+    'HTTP_HOST' =3D> 'sijaksa.online'
+    'HTT=
+P_CONNECTION' =3D> 'keep-alive'
+    'CONTENT_LENGTH' =3D> '367'
+    'HT=
+TP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_ORIGIN' =3D> 'https://sija=
+ksa.online'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_DNT=
+' =3D> '1'
+    'CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded'
+=
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+App=
+leWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132
+Safari/537.36'=
+
+    'HTTP_SEC_FETCH_DEST' =3D> 'document'
+    'HTTP_ACCEPT' =3D>
+'te=
+xt/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng=
+,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_SEC_FE=
+TCH_SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE' =3D> 'navigate'
+=
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_REFERER' =3D>
+'https://si=
+jaksa.online/backend/web/index.php?r=3Ddaftar-penganggaran-belanja-detail%2=
+Fcreate&id=3D117'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+ =
+   'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'=
+
+    'HTTP_COOKIE' =3D> 'timezone=3DAsia/Jakarta;
+cpsession=3Dsijaksa%3=
+axm8IzWeRf8MwauTK%2cb26e658cc55d81b18e1cd8d71cfdf49c;
+advanced-backend=3D=
+af0607eaf446d360461f4dbe86ce7787;
+_csrf-backend=3Dc76a78b502982fa388caf55=
+51c6bac0f4980572c31c360c08afe3e5d69a507c1a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_cs=
+rf-backend%22%3Bi%3A1%3Bs%3A32%3A%22TP68E3lBn1mZiihdk_k1Na0Ee8pJKrDM%22%3B%=
+7D'
+    'HTTP_X_HTTPS' =3D> '1'
+    'SERVER_SIGNATURE' =3D> ''
+    'S=
+ERVER_SOFTWARE' =3D> 'Apache'
+    'SERVER_NAME' =3D> 'sijaksa.online'
+ =
+   'SERVER_ADDR' =3D> '103.247.11.153'
+    'SERVER_PORT' =3D> '443'
+   =
+ 'REMOTE_ADDR' =3D> '180.246.82.199'
+    'DOCUMENT_ROOT' =3D> '/home/sija=
+ksa/public_html'
+    'REQUEST_SCHEME' =3D> 'https'
+    'CONTEXT_PREFIX'=
+ =3D> '/cgi-sys'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/usr/local/cpanel/cgi-=
+sys/'
+    'SERVER_ADMIN' =3D> 'webmaster@sijaksa.online'
+    'SCRIPT_FI=
+LENAME' =3D>
+'/home/sijaksa/public_html/backend/web/index.php'
+    'REM=
+OTE_PORT' =3D> '52847'
+    'REDIRECT_URL' =3D> '/backend/web/index.php'=
+
+    'REDIRECT_QUERY_STRING' =3D>
+'r=3Ddaftar-penganggaran-belanja-deta=
+il%2Fcreate&id=3D117'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'SERVE=
+R_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHOD' =3D> 'POST'
+    'QUERY=
+_STRING' =3D>
+'r=3Ddaftar-penganggaran-belanja-detail%2Fcreate&id=3D117'=
+
+    'REQUEST_URI' =3D>
+'/backend/web/index.php?r=3Ddaftar-penganggaran=
+-belanja-detail%2Fcreate&id=3D117'
+    'SCRIPT_NAME' =3D> '/backend/web/i=
+ndex.php'
+    'ORIG_SCRIPT_FILENAME' =3D> '/usr/local/cpanel/cgi-sys/ea-p=
+hp72'
+    'ORIG_PATH_INFO' =3D> '/backend/web/index.php'
+    'ORIG_PATH=
+_TRANSLATED' =3D>
+'/home/sijaksa/public_html/backend/web/index.php'
+   =
+ 'ORIG_SCRIPT_NAME' =3D> '/cgi-sys/ea-php72'
+    'PHP_SELF' =3D> '/backen=
+d/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1583744838.0373
+    'REQ=
+UEST_TIME' =3D> 1583744838
+    'argv' =3D> [
+        0 =3D> 'r=3Ddaftar=
+-penganggaran-belanja-detail%2Fcreate&id=3D117'
+    ]
+    'argc' =3D> 1=
+
+]

@@ -1,0 +1,362 @@
+Message-ID: <d96948741dae9f572feb8644cb251264@cvajm.com>
+Date: Fri, 28 Jun 2019 12:17:19 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-06-28 12:17:19
+[36.75.21.241][4][tutmke9d52a31mdebgnolbbef6][error][=
+yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity const=
+raint violation: 1048
+Column 'speed_limit' cannot be null in
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:=
+
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(12=
+90):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSER=
+T INTO `gp...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db=
+/Schema.php(433):
+yii\db\Command->execute()
+#3
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->inse=
+rt('gps_detail', Array)
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInternal(NULL)=
+
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/BaseActiveReco=
+rd.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+/home/cvajm/=
+public_html/cvajm/backend/controllers/GpsController.php(142):
+yii\db\Base=
+ActiveRecord->save(false)
+#7 [internal function]:
+backend\controllers\G=
+psController->actionCreate()
+#8
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.p=
+hp(157):
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Cont=
+roller->runAction('create', Array)
+#11
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('g=
+ps/create', Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/base/Application.php(386):
+yii\web\Application->handleRequest(Object(yi=
+i\web\Request))
+#13 /home/cvajm/public_html/cvajm/backend/web/index.php(2=
+2):
+yii\base\Application->run()
+#14 {main}
+
+Next yii\db\IntegrityEx=
+ception: SQLSTATE[23000]: Integrity constraint
+violation: 1048 Column 'sp=
+eed_limit' cannot be null
+The SQL being executed was: INSERT INTO `gps_de=
+tail` (`id_gps`,
+`target_nama`, `type`, `license_plat_no`, `speed_limit`,=
+ `latitude`,
+`longitude`, `speed`, `direction`, `total_milage_kilometer`,=
+ `status`,
+`position_time`, `lokasi`, `keterangan`) VALUES (1, '=C2=A0#SR=
+ 1231 HB',
+'TQ', '=C2=A0DA 1231 HB', NULL, -2.08084, 115.49665, NULL, 'So=
+uthwest',
+16012.1426, '=C2=A0ACC ON,Disarm,Door Close,Power connected', '=
+2019-06-27
+09:25:46', '', 'a') in
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertE=
+xception(Object(PDOException), 'INSERT INTO
+`gp...')
+#1
+/home/cvajm/p=
+ublic_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1091):
+yii\db\Command=
+->internalExecute('INSERT INTO `gp...')
+#2
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/db/Schema.php(433):
+yii\db\Command->execute()
+#3=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(60=
+0):
+yii\db\Schema->insert('gps_detail', Array)
+#4
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRec=
+ord->insertInternal(NULL)
+#5
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/db/BaseActiveRecord.php(678):
+yii\db\ActiveRecord->insert(false, =
+NULL)
+#6
+/home/cvajm/public_html/cvajm/backend/controllers/GpsControlle=
+r.php(142):
+yii\db\BaseActiveRecord->save(false)
+#7 [internal function]=
+:
+backend\controllers\GpsController->actionCreate()
+#8
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_=
+func_array(Array, Array)
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisof=
+t/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Arr=
+ay)
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.p=
+hp(528):
+yii\base\Controller->runAction('create', Array)
+#11
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\b=
+ase\Module->runAction('gps/create', Array)
+#12
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application-=
+>handleRequest(Object(yii\web\Request))
+#13 /home/cvajm/public_html/cvajm=
+/backend/web/index.php(22):
+yii\base\Application->run()
+#14 {main}
+Ad=
+ditional Information:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1048=
+
+    [2] =3D> Column 'speed_limit' cannot be null
+)
+
+2019-06-28 12:=
+17:19
+[36.75.21.241][4][tutmke9d52a31mdebgnolbbef6][info][application] $_=
+GET
+=3D [
+    'r' =3D> 'gps/create'
+]
+
+$_POST =3D [
+    '_csrf-=
+backend' =3D>
+'qHGzGbkiWRC09omuLAIiucxN_KpnQPs684LBBeDr-3fiScdLz1EtevbFve=
+96ZFjfgiSe4w0yr3K97I9o2bqCGw=3D=3D'
+    'Gps' =3D> [
+        'tanggal_u=
+pload' =3D> '2019-06-28 12:17:09'
+        'id_login' =3D> '4'
+    ]
+]=
+
+
+$_FILES =3D [
+    'file' =3D> [
+        'name' =3D> 'gps.xlsx'
+=
+        'type' =3D>
+'application/vnd.openxmlformats-officedocument.spread=
+sheetml.sheet'
+        'tmp_name' =3D> '/home/cvajm/tmp/phplMnvdR'
+    =
+    'error' =3D> 0
+        'size' =3D> 24592
+    ]
+]
+
+$_COOKIE =
+=3D [
+    'advanced-backend' =3D> 'tutmke9d52a31mdebgnolbbef6'
+    '_cs=
+rf-backend' =3D>
+'b57d511b0332ec6d8120aadbb170b4eb4cb7d235528a9d49ba8f724=
+9aaf8a925a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"J8tRvstjB34AVfzfNibIjrT=
+HNnNm9Qyl\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__re=
+turnUrl' =3D> '/cvajm/backend/web/index.php'
+    'user_role' =3D> [
+   =
+     0 =3D> 'SURAT JALAN'
+        1 =3D> 'STAF HRD UNIT'
+        2 =3D>=
+ 'STAF HRD KARYAWAN'
+        3 =3D> 'PURCHASING'
+        4 =3D> 'PEMESA=
+NAN'
+        5 =3D> 'LOGISTIC'
+        6 =3D> 'KORLAP'
+        7 =3D>=
+ 'KEPALA HRD'
+        8 =3D> 'INVOICE'
+        9 =3D> 'HRD'
+        1=
+0 =3D> 'GPS'
+        11 =3D> 'FINANCE'
+        12 =3D> 'CHECKER'
+    =
+    13 =3D> 'ADMIN'
+        14 =3D> 'SYSTEM ADMINISTRATOR'
+        15 =
+=3D> 'TAMBANG'
+        16 =3D> 'WORKSHOP'
+    ]
+    'user_role_id' =
+=3D> [
+        0 =3D> 4
+        1 =3D> 17
+        2 =3D> 16
+       =
+ 3 =3D> 12
+        4 =3D> 5
+        5 =3D> 11
+        6 =3D> 9
+    =
+    7 =3D> 15
+        8 =3D> 8
+        9 =3D> 14
+        10 =3D> 7
+=
+        11 =3D> 3
+        12 =3D> 6
+        13 =3D> 2
+        14 =3D>=
+ 1
+        15 =3D> 13
+        16 =3D> 10
+    ]
+    '__id' =3D> 4
+=
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.=
+0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =
+=3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/u=
+sr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SCRIPT_NAME' =3D> '/cvaj=
+m/backend/web/index.php'
+    'REQUEST_URI' =3D> '/cvajm/backend/web/index=
+.php?r=3Dgps%2Fcreate'
+    'QUERY_STRING' =3D> 'r=3Dgps%2Fcreate'
+    '=
+REQUEST_METHOD' =3D> 'POST'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    '=
+GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '49982'
+    'S=
+CRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php=
+'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_RO=
+OT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'RE=
+QUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_ht=
+ml'
+    'REMOTE_ADDR' =3D> '36.75.21.241'
+    'SERVER_PORT' =3D> '80'=
+
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.=
+com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =
+=3D> ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_UPGRADE_INSECURE_R=
+EQUESTS' =3D> '1'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dtutmke9d52a3=
+1mdebgnolbbef6;
+_csrf-backend=3Db57d511b0332ec6d8120aadbb170b4eb4cb7d2355=
+28a9d49ba8f7249aaf8a925a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%=
+3A1%3Bs%3A32%3A%22J8tRvstjB34AVfzfNibIjrTHNnNm9Qyl%22%3B%7D'
+    'CONTENT=
+_LENGTH' =3D> '25263'
+    'CONTENT_TYPE' =3D> 'multipart/form-data;
+bou=
+ndary=3D---------------------------284523240427497'
+    'HTTP_REFERER' =
+=3D>
+'http://cvajm.com/cvajm/backend/web/index.php?r=3Dgps%2Fcreate'
+  =
+  'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' =
+=3D> 'en-US,en;q=3D0.5'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/x=
+html+xml,application/xml;q=3D0.9,*/*;q=3D0.8'
+    'HTTP_USER_AGENT' =3D> =
+'Mozilla/5.0 (Windows NT 6.1; Win64; x64;
+rv:67.0) Gecko/20100101 Firefox=
+/67.0'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'SCRIPT_URI' =3D> 'http://c=
+vajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backe=
+nd/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> =
+'/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1561699039.4=
+67
+    'REQUEST_TIME' =3D> 1561699039
+]

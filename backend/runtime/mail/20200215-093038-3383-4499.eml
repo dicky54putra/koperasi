@@ -1,0 +1,321 @@
+Message-ID: <4a71acd1aebff2056cf5de8e19eac4bd@sijaksa.com>
+Date: Sat, 15 Feb 2020 09:30:38 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-15 09:30:38
+[178.128.209.48][15][7d0j5vjkvofg5nh4krolohj5o5][erro=
+r][yii\db\Exception]
+PDOException: SQLSTATE[42S02]: Base table or view no=
+t found: 1146
+Table 'sijaksa.anggaran_kas_desa_belanja' doesn't exist in=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stac=
+k trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(=
+1290):
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT SU=
+M(nomi...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.p=
+hp(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+/home/sij=
+aksa/public_html/backend/views/anggaran-kas-desa-belanja/view_detail.php(85=
+):
+yii\db\Command->queryScalar()
+#4 /home/sijaksa/public_html/vendor/yi=
+isoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')
+#5 /home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View-=
+>renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#6 /home/s=
+ijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View-=
+>renderFile('/home/sijaksa/p...', Array,
+Object(backend\controllers\Angga=
+ranKasDesaBelanjaController))
+#7
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/base/Controller.php(384):
+yii\base\View->render('view_detail', Ar=
+ray,
+Object(backend\controllers\AnggaranKasDesaBelanjaController))
+#8=
+
+/home/sijaksa/public_html/backend/controllers/AnggaranKasDesaBelanjaCont=
+roller.php(113):
+yii\base\Controller->render('view_detail', Array)
+#9 [=
+internal function]:
+backend\controllers\AnggaranKasDesaBelanjaController-=
+>actionViewDetail('13')
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#11
+=
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+y=
+ii\base\InlineAction->runWithParams(Array)
+#12
+/home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runActio=
+n('view-detail', Array)
+#13
+/home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/web/Application.php(103):
+yii\base\Module->runAction('anggaran-kas-de.=
+..', Array)
+#14
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Appl=
+ication.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Reque=
+st))
+#15 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\=
+Application->run()
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[42S02]=
+: Base table or view not found:
+1146 Table 'sijaksa.anggaran_kas_desa_bel=
+anja' doesn't exist
+The SQL being executed was: SELECT SUM(nominal) FROM=
+
+anggaran_kas_desa_belanja=20
+                                           =
+    WHERE
+id_daftar_penganggaran_belanja_detail_detail =3D '13' in
+/hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:=
+
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):=
+
+yii\db\Schema->convertException(Object(PDOException), 'SELECT
+SUM(nomi=
+...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(115=
+8):
+yii\db\Command->internalExecute('SELECT SUM(nomi...')
+#2 /home/sija=
+ksa/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->=
+queryInternal('fetchColumn', 0)
+#3
+/home/sijaksa/public_html/backend/vi=
+ews/anggaran-kas-desa-belanja/view_detail.php(85):
+yii\db\Command->queryS=
+calar()
+#4 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(34=
+8):
+require('/home/sijaksa/p...')
+#5 /home/sijaksa/public_html/vendor/y=
+iisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijak=
+sa/p...', '[<span
+class=3D"s...')
+#6 /home/sijaksa/public_html/vendor/y=
+iisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/=
+p...', Array,
+Object(backend\controllers\AnggaranKasDesaBelanjaController=
+))
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php=
+(384):
+yii\base\View->render('view_detail', Array,
+Object(backend\contr=
+ollers\AnggaranKasDesaBelanjaController))
+#8
+/home/sijaksa/public_html/=
+backend/controllers/AnggaranKasDesaBelanjaController.php(113):
+yii\base\C=
+ontroller->render('view_detail', Array)
+#9 [internal function]:
+backend=
+\controllers\AnggaranKasDesaBelanjaController->actionViewDetail('13')
+#10=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):=
+
+call_user_func_array(Array, Array)
+#11
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWith=
+Params(Array)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Mo=
+dule.php(528):
+yii\base\Controller->runAction('view-detail', Array)
+#13=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(103):=
+
+yii\base\Module->runAction('anggaran-kas-de...', Array)
+#14
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\=
+Application->handleRequest(Object(yii\web\Request))
+#15 /home/sijaksa/pub=
+lic_html/backend/web/index.php(22):
+yii\base\Application->run()
+#16 {ma=
+in}
+Additional Information:
+Array
+(
+    [0] =3D> 42S02
+    [1] =
+=3D> 1146
+    [2] =3D> Table 'sijaksa.anggaran_kas_desa_belanja' doesn't =
+exist
+)
+
+2020-02-15 09:30:38
+[178.128.209.48][15][7d0j5vjkvofg5nh4k=
+rolohj5o5][info][application]
+$_GET =3D [
+    'r' =3D> 'anggaran-kas-de=
+sa-belanja/view-detail'
+    'id' =3D> '13'
+]
+
+$_POST =3D []
+
+$_=
+FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '7d0j5vjkvof=
+g5nh4krolohj5o5'
+    '_csrf-backend' =3D>
+'2a3d874316b92ff59525cb594d2d=
+49b8a1282dd9797c7fda50d2cf3b15d732f7a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:3=
+2:\"19q13pYUUgRW7ya9VUJeYK4n1K20Xo16\";}'
+]
+
+$_SESSION =3D [
+    '_=
+_flash' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'us=
+er_role' =3D> [
+        0 =3D> 'KELURAHAN'
+        1 =3D> 'KECAMATAN'=
+
+        2 =3D> 'KABUPATEN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+   =
+ ]
+    'user_role_id' =3D> [
+        0 =3D> 4
+        1 =3D> 3
+    =
+    2 =3D> 2
+        3 =3D> 1
+    ]
+    '__id' =3D> 15
+]
+
+$_SER=
+VER =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    '=
+PWD' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '9999=
+9'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/b=
+in:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SC=
+RIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/backe=
+nd/web/index.php?r=3Danggaran-kas-desa-belanja%2Fview-detail&id=3D13'
+   =
+ 'QUERY_STRING' =3D>
+'r=3Danggaran-kas-desa-belanja%2Fview-detail&id=3D13=
+'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'=
+
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '62659'=
+
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/inde=
+x.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUME=
+NT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+=
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/=
+public_html'
+    'REMOTE_ADDR' =3D> '178.128.209.48'
+    'SERVER_PORT' =
+=3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> =
+'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SI=
+GNATURE' =3D> ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CON=
+TROL' =3D> 'max-age=3D0'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'HTTP_C=
+OOKIE' =3D> 'advanced-backend=3D7d0j5vjkvofg5nh4krolohj5o5;
+_csrf-backend=
+=3D2a3d874316b92ff59525cb594d2d49b8a1282dd9797c7fda50d2cf3b15d732f7a%3A2%3A=
+%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%2219q13pYUUgRW7=
+ya9VUJeYK4n1K20Xo16%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=
+=3D0.9,id;q=3D0.8'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    =
+'HTTP_REFERER' =3D>
+'http://sijaksa.com/backend/web/index.php?r=3Danggara=
+n-kas-desa/belanja'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml=
++xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/=
+signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (=
+Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrom=
+e/80.0.3987.100
+Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D=
+> '1'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/web/index.php'
+=
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESP=
+ONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_F=
+LOAT' =3D> 1581733838.319
+    'REQUEST_TIME' =3D> 1581733838
+]

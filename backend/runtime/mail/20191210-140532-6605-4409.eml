@@ -1,0 +1,287 @@
+Message-ID: <f9128d6d2f248b1f9bfd5f9ad4634cb8@cvajm.com>
+Date: Tue, 10 Dec 2019 14:05:32 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-12-10 14:05:32
+[182.1.177.131][23][a7u0960f2vrlr2s7ll0gj0su40][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'stok' in 'where clause' in
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatemen=
+t->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Co=
+mmand.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM `...')
+=
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(399):=
+
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->query=
+All()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQue=
+ry.php(133):
+yii\db\Query->all(NULL)
+#5
+/home/cvajm/public_html/cvajm=
+/backend/controllers/WorkshopRequestController.php(235):
+yii\db\ActiveQue=
+ry->all()
+#6
+/home/cvajm/public_html/cvajm/backend/controllers/Workshop=
+RequestController.php(97):
+backend\controllers\WorkshopRequestController-=
+>getArraySparePart()
+#7 [internal function]:
+backend\controllers\Worksh=
+opRequestController->actionView('54')
+#8
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array=
+, Array)
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Cont=
+roller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#10
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\b=
+ase\Controller->runAction('view', Array)
+#11
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAct=
+ion('workshop-reques...', Array)
+#12
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleReq=
+uest(Object(yii\web\Request))
+#13 /home/cvajm/public_html/cvajm/backend/w=
+eb/index.php(22):
+yii\base\Application->run()
+#14 {main}
+
+Next yii\=
+db\Exception: SQLSTATE[42S22]: Column not found: 1054 Unknown
+column 'sto=
+k' in 'where clause'
+The SQL being executed was: SELECT * FROM `spare_par=
+t` WHERE `stok` >
+0 ORDER BY `no_spare_part` in
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Sc=
+hema->convertException(Object(PDOException), 'SELECT * FROM
+`...')
+#1=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):=
+
+yii\db\Command->internalExecute('SELECT * FROM `...')
+#2
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(399):
+yii\db\Comman=
+d->queryInternal('fetchAll', NULL)
+#3
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->queryAll()
+#4
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(133):
+y=
+ii\db\Query->all(NULL)
+#5
+/home/cvajm/public_html/cvajm/backend/control=
+lers/WorkshopRequestController.php(235):
+yii\db\ActiveQuery->all()
+#6=
+
+/home/cvajm/public_html/cvajm/backend/controllers/WorkshopRequestControl=
+ler.php(97):
+backend\controllers\WorkshopRequestController->getArraySpare=
+Part()
+#7 [internal function]:
+backend\controllers\WorkshopRequestContr=
+oller->actionView('54')
+#8
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#9=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(15=
+7):
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controlle=
+r->runAction('view', Array)
+#11
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('workshop=
+-reques...', Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/base/Application.php(386):
+yii\web\Application->handleRequest(Object(y=
+ii\web\Request))
+#13 /home/cvajm/public_html/cvajm/backend/web/index.php(=
+22):
+yii\base\Application->run()
+#14 {main}
+Additional Information:=
+
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknow=
+n column 'stok' in 'where clause'
+)
+
+2019-12-10 14:05:32
+[182.1.177=
+.131][23][a7u0960f2vrlr2s7ll0gj0su40][info][application]
+$_GET =3D [
+  =
+  'r' =3D> 'workshop-request/view'
+    'id' =3D> '54'
+]
+
+$_POST =3D=
+ []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '=
+a7u0960f2vrlr2s7ll0gj0su40'
+    '_csrf-backend' =3D>
+'07b9e78f36a926f4b=
+b00e9713cc4400a37c716c0e42fff502d7767d57842e2f0a:2:{i:0;s:13:\"_csrf-backen=
+d\";i:1;s:32:\"voWmqKdF_TS7TytLYcdTS1kJuOVxwfae\";}'
+]
+
+$_SESSION =3D=
+ [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/ind=
+ex.php'
+    'user_role' =3D> [
+        0 =3D> 'WORKSHOP'
+    ]
+    =
+'user_role_id' =3D> [
+        0 =3D> 10
+    ]
+    '__id' =3D> 23
+]=
+
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+    'HOME' =3D> '/home/cva=
+jm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_=
+URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dworkshop-request%2Fview&id=3D=
+54'
+    'QUERY_STRING' =3D> 'r=3Dworkshop-request%2Fview&id=3D54'
+    '=
+REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'G=
+ATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '46215'
+    'SC=
+RIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend/web/index.php'=
+
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROO=
+T' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQ=
+UEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_htm=
+l'
+    'REMOTE_ADDR' =3D> '182.1.177.131'
+    'SERVER_PORT' =3D> '80'=
+
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.=
+com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =
+=3D> ''
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/=
+bin:/sbin:/bin'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Da7u0960f2vrlr2=
+s7ll0gj0su40;
+_csrf-backend=3D07b9e78f36a926f4bb00e9713cc4400a37c716c0e42=
+fff502d7767d57842e2f0a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A=
+1%3Bs%3A32%3A%22voWmqKdF_TS7TytLYcdTS1kJuOVxwfae%22%3B%7D'
+    'HTTP_ACCE=
+PT_LANGUAGE' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8,ms;q=3D0.7'
+    'HTTP_ACCE=
+PT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm=
+.com/cvajm/backend/web/index.php?r=3Dworkshop-request%2Fcreate&id=3D220'
+=
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=
+=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3=
+'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (X11; Linux x86_64)
+AppleWebK=
+it/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108
+Safari/537.36'
+    '=
+HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CACHE_CONTROL' =3D> 'm=
+ax-age=3D0'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'proxy-nokeepalive' =
+=3D> '1'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/web/index.=
+php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+    'FCGI_ROL=
+E' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/index.php'
+=
+    'REQUEST_TIME_FLOAT' =3D> 1575957932.6438
+    'REQUEST_TIME' =3D> 157=
+5957932
+]

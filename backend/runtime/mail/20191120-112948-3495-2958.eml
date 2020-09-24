@@ -1,0 +1,343 @@
+Message-ID: <833eadb4c13cef79b186450a612a861f@cvajm.com>
+Date: Wed, 20 Nov 2019 11:29:48 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-11-20 11:29:48
+[36.92.48.63][37][fkl6unpc471m31f69ff3froqc7][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access v=
+iolation: 1064
+You have an error in your SQL syntax; check the manual tha=
+t
+corresponds to your MariaDB server version for the right syntax to use=
+
+near 'order by a.tanggal_surat_jalan desc' at line 1 in
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):=
+
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('select * =
+from s...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Com=
+mand.php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3
+/ho=
+me/cvajm/public_html/cvajm/backend/views/surat-jalan/laporan_surat_jalan_pe=
+langgan.php(71):
+yii\db\Command->queryAll()
+#4
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvajm/pub.=
+..')
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php=
+(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[]')
+#6
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\b=
+ase\View->renderFile('/home/cvajm/pub...', Array,
+Object(backend\controll=
+ers\SuratJalanController))
+#7
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/base/Controller.php(384):
+yii\base\View->render('laporan_surat_j=
+...', Array,
+Object(backend\controllers\SuratJalanController))
+#8
+/ho=
+me/cvajm/public_html/cvajm/backend/controllers/SuratJalanController.php(803=
+):
+yii\base\Controller->render('laporan_surat_j...', Array)
+#9 [interna=
+l function]:
+backend\controllers\SuratJalanController->actionLaporanSurat=
+JalanPelanggan()
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#11
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+=
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->run=
+Action('laporan-surat-j...', Array)
+#13
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('=
+surat-jalan/lap...', Array)
+#14
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(=
+Object(yii\web\Request))
+#15 /home/cvajm/public_html/cvajm/backend/web/in=
+dex.php(22):
+yii\base\Application->run()
+#16 {main}
+
+Next yii\db\Ex=
+ception: SQLSTATE[42000]: Syntax error or access
+violation: 1064 You have=
+ an error in your SQL syntax; check the manual
+that corresponds to your M=
+ariaDB server version for the right syntax
+to use near 'order by a.tangga=
+l_surat_jalan desc' at line 1
+The SQL being executed was: select * from s=
+urat_jalan a =09left join
+purchase_order b on b.id_po =3D a.id_po =09left=
+ join pelanggan c on
+c.id_pelanggan =3D b.id_pelanggan =09left join unit =
+d on d.id_unit =3D
+a.id_unit =09left join karyawan e on e.id_karyawan =3D=
+ a.id_karyawan =09left
+join jenis_muatan f on f.id_jenis_muatan =3D a.id_=
+jenis_muatan =09left
+join sub_pelanggan g on g.id_sub_pelanggan =3D a.id_=
+sub_pelanggan =09left
+join tujuan_bongkar h on h.id_tujuan_bongkar =3D a.=
+id_tujuan_bongkar
+=09left join kota i on i.id_kota =3D a.id_kota =09left =
+join
+biaya_operasional j on j.id_surat_jalan =3D a.id_surat_jalan =09wher=
+e
+a.status =3D 2 =09and b.id_pelanggan =3D  =09order by a.tanggal_surat_j=
+alan
+desc =09 in
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/S=
+chema.php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(P=
+DOException), 'select * from
+s...')
+#1
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute=
+('select * from s...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/db/Command.php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)=
+
+#3
+/home/cvajm/public_html/cvajm/backend/views/surat-jalan/laporan_sur=
+at_jalan_pelanggan.php(71):
+yii\db\Command->queryAll()
+#4
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home=
+/cvajm/pub...')
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/ba=
+se/View.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[]'=
+)
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(15=
+6):
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(backe=
+nd\controllers\SuratJalanController))
+#7
+/home/cvajm/public_html/cvajm/=
+vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('lapo=
+ran_surat_j...', Array,
+Object(backend\controllers\SuratJalanController))=
+
+#8
+/home/cvajm/public_html/cvajm/backend/controllers/SuratJalanControl=
+ler.php(803):
+yii\base\Controller->render('laporan_surat_j...', Array)
+=
+#9 [internal function]:
+backend\controllers\SuratJalanController->actionL=
+aporanSuratJalanPelanggan()
+#10
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#11
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.=
+php(157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Con=
+troller->runAction('laporan-surat-j...', Array)
+#13
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module-=
+>runAction('surat-jalan/lap...', Array)
+#14
+/home/cvajm/public_html/cva=
+jm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->ha=
+ndleRequest(Object(yii\web\Request))
+#15 /home/cvajm/public_html/cvajm/ba=
+ckend/web/index.php(22):
+yii\base\Application->run()
+#16 {main}
+Addit=
+ional Information:
+Array
+(
+    [0] =3D> 42000
+    [1] =3D> 1064
+ =
+   [2] =3D> You have an error in your SQL syntax; check the manual that
+c=
+orresponds to your MariaDB server version for the right syntax to use
+nea=
+r 'order by a.tanggal_surat_jalan desc' at line 1
+)
+
+2019-11-20 11:28=
+:44
+[36.92.48.63][37][fkl6unpc471m31f69ff3froqc7][info][application] $_GE=
+T
+=3D [
+    'r' =3D> 'surat-jalan/laporan-surat-jalan-pelanggan'
+]
+=
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-ba=
+ckend' =3D> 'fkl6unpc471m31f69ff3froqc7'
+    '_csrf-backend' =3D>
+'6ed0=
+fac1995963d89bcd0d7342307b7ff80d907e11483be8924a21690afd91f9a:2:{i:0;s:13:\=
+"_csrf-backend\";i:1;s:32:\"ELiFdzEI66IH069xpaU92aIp9etTQo9C\";}'
+]
+
+=
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/ba=
+ckend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'SYSTEM ADMI=
+NISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 1
+    ]=
+
+    '__id' =3D> 37
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'cvajm'
+ =
+   'HOME' =3D> '/home/cvajm'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/i=
+ndex.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.php?r=3Dsura=
+t-jalan%2Flaporan-surat-jalan-pelanggan'
+    'QUERY_STRING' =3D> 'r=3Dsur=
+at-jalan%2Flaporan-surat-jalan-pelanggan'
+    'REQUEST_METHOD' =3D> 'GET'=
+
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CG=
+I/1.1'
+    'REMOTE_PORT' =3D> '51935'
+    'SCRIPT_FILENAME' =3D>
+'/ho=
+me/cvajm/public_html/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D>=
+ '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/publi=
+c_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'=
+
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =
+=3D> '36.92.48.63'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '=
+178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE=
+' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'PATH' =3D>=
+
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'HT=
+TP_COOKIE' =3D> 'advanced-backend=3Dfkl6unpc471m31f69ff3froqc7;
+_csrf-bac=
+kend=3D6ed0fac1995963d89bcd0d7342307b7ff80d907e11483be8924a21690afd91f9a%3A=
+2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ELiFdzEI6=
+6IH069xpaU92aIp9etTQo9C%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,=
+en;q=3D0.9'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_R=
+EFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/index.php?r=3Dsurat-jala=
+n/laporan-surat-jalan-delivery-order'
+    'HTTP_ACCEPT' =3D>
+'text/html=
+,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*;q=
+=3D0.8,application/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mo=
+zilla/5.0 (Windows NT 6.1)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/=
+78.0.3904.97
+Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '=
+1'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_HOST' =3D> 'cvajm.=
+com'
+    'proxy-nokeepalive' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://cva=
+jm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend=
+/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/=
+cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1574220524.024=
+7
+    'REQUEST_TIME' =3D> 1574220524
+]

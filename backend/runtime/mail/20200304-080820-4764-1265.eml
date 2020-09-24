@@ -1,0 +1,411 @@
+Message-ID: <8f2abef5442a83788ca7a860acda5b82@sijaksa.online>
+Date: Wed, 04 Mar 2020 08:08:20 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-03-04 08:08:20
+[103.247.122.10][854][4d0dfa03ca69cb21daade7f42d2f308=
+3][error][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integ=
+rity constraint violation: 1052
+Column 'id_rencana' in where clause is am=
+biguous in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1=
+290
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Co=
+mmand.php(1290):
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute(=
+'SELECT COUNT(*)...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db=
+/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3 /=
+home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Co=
+mmand->queryScalar()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/d=
+b/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\=
+db\Connection))
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query=
+.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Conn=
+ection))
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/data/ActiveDa=
+taProvider.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/sijaksa/=
+public_html/vendor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data\=
+ActiveDataProvider->prepareTotalCount()
+#8
+/home/sijaksa/public_html/ve=
+ndor/kartik-v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider=
+->getTotalCount()
+#9
+/home/sijaksa/public_html/vendor/kartik-v/yii2-gri=
+d/src/GridView.php(1163):
+kartik\grid\GridView->initToggleData()
+#10
+=
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Widget.php(140):
+karti=
+k\grid\GridView->run()
+#11
+/home/sijaksa/public_html/backend/views/perd=
+es-apbdes/index.php(37):
+yii\base\Widget::widget(Array)
+#12 /home/sijak=
+sa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sij=
+aksa/p...')
+#13 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.p=
+hp(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+cla=
+ss=3D"s...')
+#14 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.=
+php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object=
+(backend\controllers\PerdesApbdesController))
+#15
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render(=
+'index', Array,
+Object(backend\controllers\PerdesApbdesController))
+#16=
+
+/home/sijaksa/public_html/backend/controllers/PerdesApbdesController.php=
+(47):
+yii\base\Controller->render('index', Array)
+#17 [internal functio=
+n]:
+backend\controllers\PerdesApbdesController->actionIndex()
+#18
+/ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+cal=
+l_user_func_array(Array, Array)
+#19
+/home/sijaksa/public_html/vendor/yi=
+isoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams=
+(Array)
+#20
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.p=
+hp(528):
+yii\base\Controller->runAction('', Array)
+#21
+/home/sijaksa/=
+public_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module=
+->runAction('perdes-apbdes', Array)
+#22
+/home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleRequ=
+est(Object(yii\web\Request))
+#23 /home/sijaksa/public_html/backend/web/in=
+dex.php(22):
+yii\base\Application->run()
+#24 {main}
+
+Next yii\db\In=
+tegrityException: SQLSTATE[23000]: Integrity constraint
+violation: 1052 C=
+olumn 'id_rencana' in where clause is ambiguous
+The SQL being executed wa=
+s: SELECT COUNT(*) FROM `perdes_apbdes` LEFT
+JOIN `daftar_rencana` ON `pe=
+rdes_apbdes`.`id_rencana` =3D
+`daftar_rencana`.`id_rencana` WHERE (`dafta=
+r_rencana`.`id_desa`=3D'806')
+AND (`id_rencana`=3D'20') in
+/home/sijaks=
+a/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\S=
+chema->convertException(Object(PDOException), 'SELECT
+COUNT(*)...')
+#1 =
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\d=
+b\Command->internalExecute('SELECT COUNT(*)...')
+#2 /home/sijaksa/public_=
+html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryIntern=
+al('fetchColumn', 0)
+#3 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/=
+Query.php(463):
+yii\db\Command->queryScalar()
+#4
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->querySca=
+lar('COUNT(*)', Object(yii\db\Connection))
+#5 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('CO=
+UNT(*)', Object(yii\db\Connection))
+#6
+/home/sijaksa/public_html/vendor=
+/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*', =
+NULL)
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/data/BaseDataPro=
+vider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8
+/=
+home/sijaksa/public_html/vendor/kartik-v/yii2-grid/src/GridView.php(1754):=
+
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/sijaksa/public_h=
+tml/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\grid\GridVie=
+w->initToggleData()
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2/b=
+ase/Widget.php(140):
+kartik\grid\GridView->run()
+#11
+/home/sijaksa/pu=
+blic_html/backend/views/perdes-apbdes/index.php(37):
+yii\base\Widget::wid=
+get(Array)
+#12 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.ph=
+p(348):
+require('/home/sijaksa/p...')
+#13 /home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/=
+sijaksa/p...', '[<span
+class=3D"s...')
+#14 /home/sijaksa/public_html/ve=
+ndor/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/si=
+jaksa/p...', Array,
+Object(backend\controllers\PerdesApbdesController))=
+
+#15
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(=
+384):
+yii\base\View->render('index', Array,
+Object(backend\controllers\=
+PerdesApbdesController))
+#16
+/home/sijaksa/public_html/backend/controll=
+ers/PerdesApbdesController.php(47):
+yii\base\Controller->render('index', =
+Array)
+#17 [internal function]:
+backend\controllers\PerdesApbdesControl=
+ler->actionIndex()
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#19
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\ba=
+se\InlineAction->runWithParams(Array)
+#20
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('',=
+ Array)
+#21
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Applicati=
+on.php(103):
+yii\base\Module->runAction('perdes-apbdes', Array)
+#22
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+y=
+ii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /home/sija=
+ksa/public_html/backend/web/index.php(22):
+yii\base\Application->run()
+=
+#24 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 23000
+   =
+ [1] =3D> 1052
+    [2] =3D> Column 'id_rencana' in where clause is ambigu=
+ous
+)
+
+2020-03-04 08:08:20
+[103.247.122.10][854][4d0dfa03ca69cb21da=
+ade7f42d2f3083][info][application]
+$_GET =3D [
+    'PerdesApbdesSearch'=
+ =3D> [
+        'id_rencana' =3D> '20'
+        'no_peraturan' =3D> ''=
+
+        'tanggal_a' =3D> ''
+    ]
+    'r' =3D> 'perdes-apbdes'
+]=
+
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced=
+-backend' =3D> '4d0dfa03ca69cb21daade7f42d2f3083'
+    '_csrf-backend' =3D=
+>
+'811339453f2b16b41399b3fe438da28be22865d860cb5ce9f6a76a5a849d3722a:2:{i=
+:0;s:13:\"_csrf-backend\";i:1;s:32:\"8FIqcqYjSbWuXl5FOx3DBXZoc0-zVXua\";}'=
+
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> =
+'/backend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'KELURAH=
+AN'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 4
+    ]
+    '_=
+_id' =3D> 854
+]
+
+$_SERVER =3D [
+    'PATH' =3D> '/usr/local/bin:/us=
+r/bin:/bin'
+    'TZ' =3D> 'UTC'
+    'REDIRECT_HANDLER' =3D> 'applicatio=
+n/x-httpd-ea-php72'
+    'REDIRECT_STATUS' =3D> '200'
+    'UNIQUE_ID' =
+=3D> 'Xl7-hIi-wgD75lmD7beyjwAAAUo'
+    'SCRIPT_URL' =3D> '/backend/web/in=
+dex.php'
+    'SCRIPT_URI' =3D> 'https://sijaksa.online/backend/web/index.=
+php'
+    'HTTPS' =3D> 'on'
+    'SSL_TLS_SNI' =3D> 'sijaksa.online'
+  =
+  'HTTP_HOST' =3D> 'sijaksa.online'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5=
+.0 (Windows NT 10.0; Win64; x64;
+rv:73.0) Gecko/20100101 Firefox/73.0'
+=
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=
+=3D0.9,image/webp,*/*;q=3D0.8'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;=
+q=3D0.5'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_=
+DNT' =3D> '1'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_REFERER=
+' =3D>
+'https://sijaksa.online/backend/web/index.php?r=3Dperdes-apbdes'=
+
+    'HTTP_COOKIE' =3D>
+'advanced-backend=3D4d0dfa03ca69cb21daade7f42d2=
+f3083;
+_csrf-backend=3D811339453f2b16b41399b3fe438da28be22865d860cb5ce9f6=
+a76a5a849d3722a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3=
+A32%3A%228FIqcqYjSbWuXl5FOx3DBXZoc0-zVXua%22%3B%7D'
+    'HTTP_UPGRADE_INS=
+ECURE_REQUESTS' =3D> '1'
+    'HTTP_X_HTTPS' =3D> '1'
+    'SERVER_SIGNAT=
+URE' =3D> ''
+    'SERVER_SOFTWARE' =3D> 'Apache'
+    'SERVER_NAME' =3D>=
+ 'sijaksa.online'
+    'SERVER_ADDR' =3D> '103.247.11.153'
+    'SERVER_P=
+ORT' =3D> '443'
+    'REMOTE_ADDR' =3D> '103.247.122.10'
+    'DOCUMENT_R=
+OOT' =3D> '/home/sijaksa/public_html'
+    'REQUEST_SCHEME' =3D> 'https'=
+
+    'CONTEXT_PREFIX' =3D> '/cgi-sys'
+    'CONTEXT_DOCUMENT_ROOT' =3D> =
+'/usr/local/cpanel/cgi-sys/'
+    'SERVER_ADMIN' =3D> 'webmaster@sijaksa.o=
+nline'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/we=
+b/index.php'
+    'REMOTE_PORT' =3D> '52736'
+    'REDIRECT_URL' =3D> '/b=
+ackend/web/index.php'
+    'REDIRECT_QUERY_STRING' =3D>
+'PerdesApbdesSea=
+rch%5Bid_rencana%5D=3D20&PerdesApbdesSearch%5Bno_peraturan%5D=3D&PerdesApbd=
+esSearch%5Btanggal_a%5D=3D&r=3Dperdes-apbdes'
+    'GATEWAY_INTERFACE' =3D=
+> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHOD' =
+=3D> 'GET'
+    'QUERY_STRING' =3D>
+'PerdesApbdesSearch%5Bid_rencana%5D=
+=3D20&PerdesApbdesSearch%5Bno_peraturan%5D=3D&PerdesApbdesSearch%5Btanggal_=
+a%5D=3D&r=3Dperdes-apbdes'
+    'REQUEST_URI' =3D>
+'/backend/web/index.p=
+hp?PerdesApbdesSearch%5Bid_rencana%5D=3D20&PerdesApbdesSearch%5Bno_peratura=
+n%5D=3D&PerdesApbdesSearch%5Btanggal_a%5D=3D&r=3Dperdes-apbdes'
+    'SCRI=
+PT_NAME' =3D> '/backend/web/index.php'
+    'ORIG_SCRIPT_FILENAME' =3D> '/=
+usr/local/cpanel/cgi-sys/ea-php72'
+    'ORIG_PATH_INFO' =3D> '/backend/we=
+b/index.php'
+    'ORIG_PATH_TRANSLATED' =3D>
+'/home/sijaksa/public_html=
+/backend/web/index.php'
+    'ORIG_SCRIPT_NAME' =3D> '/cgi-sys/ea-php72'=
+
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =
+=3D> 1583284100.2851
+    'REQUEST_TIME' =3D> 1583284100
+    'argv' =3D>=
+ [
+        0 =3D>
+'PerdesApbdesSearch%5Bid_rencana%5D=3D20&PerdesApbdes=
+Search%5Bno_peraturan%5D=3D&PerdesApbdesSearch%5Btanggal_a%5D=3D&r=3Dperdes=
+-apbdes'
+    ]
+    'argc' =3D> 1
+]

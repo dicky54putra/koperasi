@@ -1,0 +1,323 @@
+Message-ID: <d632dadbe15a95f2239a6688e92024aa@sijaksa.online>
+Date: Wed, 04 Mar 2020 09:04:28 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-03-04 09:04:28
+[103.247.122.10][-][debae66e092f7ca6bee3af584ccf8659]=
+[error][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integri=
+ty constraint violation: 1048
+Column 'id_tabel' cannot be null in
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:=
+
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):=
+
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSERT INTO `gr=
+...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php(433)=
+:
+yii\db\Command->execute()
+#3
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->insert('grafik_desa', Ar=
+ray)
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.p=
+hp(566):
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/db/BaseActiveRecord.php(678):
+yii\db\Activ=
+eRecord->insert(false, NULL)
+#6
+/home/sijaksa/public_html/backend/contr=
+ollers/DaftarPenganggaranPembiayaanDuaController.php(89):
+yii\db\BaseActi=
+veRecord->save(false)
+#7 [internal function]:
+backend\controllers\Dafta=
+rPenganggaranPembiayaanDuaController->actionCreate()
+#8
+/home/sijaksa/p=
+ublic_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_=
+array(Array, Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#10=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yi=
+i\base\Controller->runAction('create', Array)
+#11
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAc=
+tion('daftar-pengangg...', Array)
+#12
+/home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleReques=
+t(Object(yii\web\Request))
+#13 /home/sijaksa/public_html/backend/web/inde=
+x.php(22):
+yii\base\Application->run()
+#14 {main}
+
+Next yii\db\Inte=
+grityException: SQLSTATE[23000]: Integrity constraint
+violation: 1048 Col=
+umn 'id_tabel' cannot be null
+The SQL being executed was: INSERT INTO `gr=
+afik_desa` (`id_desa`,
+`nama_tabel`, `id_tabel`, `nama_kelompok`, `point`=
+) VALUES (0,
+'daftar_penganggaran_pembiayaan_dua', NULL, 'Penganggaran 1.=
+5', 2) in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664=
+
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Comma=
+nd.php(1295):
+yii\db\Schema->convertException(Object(PDOException), 'INSE=
+RT INTO
+`gr...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Co=
+mmand.php(1091):
+yii\db\Command->internalExecute('INSERT INTO `gr...')
+=
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php(433):
+yii\=
+db\Command->execute()
+#3
+/home/sijaksa/public_html/vendor/yiisoft/yii2/=
+db/ActiveRecord.php(600):
+yii\db\Schema->insert('grafik_desa', Array)
+#=
+4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(566):=
+
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+/home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/db/BaseActiveRecord.php(678):
+yii\db\ActiveRecord-=
+>insert(false, NULL)
+#6
+/home/sijaksa/public_html/backend/controllers/D=
+aftarPenganggaranPembiayaanDuaController.php(89):
+yii\db\BaseActiveRecord=
+->save(false)
+#7 [internal function]:
+backend\controllers\DaftarPengang=
+garanPembiayaanDuaController->actionCreate()
+#8
+/home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Ar=
+ray, Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Contr=
+oller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\C=
+ontroller->runAction('create', Array)
+#11
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('da=
+ftar-pengangg...', Array)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Object=
+(yii\web\Request))
+#13 /home/sijaksa/public_html/backend/web/index.php(22=
+):
+yii\base\Application->run()
+#14 {main}
+Additional Information:
+A=
+rray
+(
+    [0] =3D> 23000
+    [1] =3D> 1048
+    [2] =3D> Column 'id=
+_tabel' cannot be null
+)
+
+2020-03-04 09:04:28
+[103.247.122.10][-][d=
+ebae66e092f7ca6bee3af584ccf8659][info][application]
+$_GET =3D [
+    'r'=
+ =3D> 'daftar-penganggaran-pembiayaan-dua/create'
+]
+
+$_POST =3D [
+ =
+   '_csrf-backend' =3D>
+'GwhM7ZcryfkuQUMEpwZC6f7Alus2XLqdhcuJgVrUmuBQbRSZ=
+9F-qy1tzAULPMiqzl_TSmUUq_dPEie_MAOWqqQ=3D=3D'
+    'DaftarPenganggaranPemb=
+iayaanDua' =3D> [
+        'id_akun' =3D> '6'
+        'id_kel' =3D> '11'=
+
+        'id_jenis' =3D> '44'
+        'id_oby' =3D> '212'
+    ]
+]=
+
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'deb=
+ae66e092f7ca6bee3af584ccf8659'
+    '_csrf-backend' =3D>
+'a57283ec2b161c=
+7fdad0363f6419db35279259577184c19efd6e6d44ea8f333ca:2:{i:0;s:13:\"_csrf-bac=
+kend\";i:1;s:32:\"KeXtctc2u2BFh4hZi4DrsvGNABfMZ10I\";}'
+]
+
+$_SESSION =
+=3D [
+    '__flash' =3D> []
+]
+
+$_SERVER =3D [
+    'PATH' =3D> '/u=
+sr/local/bin:/usr/bin:/bin'
+    'TZ' =3D> 'UTC'
+    'REDIRECT_HANDLER' =
+=3D> 'application/x-httpd-ea-php72'
+    'REDIRECT_STATUS' =3D> '200'
+  =
+  'UNIQUE_ID' =3D> 'Xl8MrIi-wgD75lmD7be7jgAAAUY'
+    'SCRIPT_URL' =3D> '/=
+backend/web/index.php'
+    'SCRIPT_URI' =3D> 'https://sijaksa.online/back=
+end/web/index.php'
+    'HTTPS' =3D> 'on'
+    'SSL_TLS_SNI' =3D> 'sijaks=
+a.online'
+    'HTTP_HOST' =3D> 'sijaksa.online'
+    'HTTP_CONNECTION' =
+=3D> 'keep-alive'
+    'CONTENT_LENGTH' =3D> '297'
+    'HTTP_CACHE_CONTR=
+OL' =3D> 'max-age=3D0'
+    'HTTP_ORIGIN' =3D> 'https://sijaksa.online'
+=
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'CONTENT_TYPE' =3D> 'ap=
+plication/x-www-form-urlencoded'
+    'HTTP_SAVE_DATA' =3D> 'on'
+    'HT=
+TP_USER_AGENT' =3D> 'Mozilla/5.0 (Linux; Android 8.1.0; CPH1803)
+AppleWeb=
+Kit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.119 Mobile
+Safari/537.36'=
+
+    'HTTP_SEC_FETCH_DEST' =3D> 'document'
+    'HTTP_ACCEPT' =3D>
+'te=
+xt/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng=
+,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_SEC_FE=
+TCH_SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE' =3D> 'navigate'
+=
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_REFERER' =3D>
+'https://si=
+jaksa.online/backend/web/index.php?r=3Ddaftar-penganggaran-pembiayaan-dua%2=
+Fcreate'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_=
+ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HT=
+TP_COOKIE' =3D>
+'advanced-backend=3Ddebae66e092f7ca6bee3af584ccf8659;
+_=
+csrf-backend=3Da57283ec2b161c7fdad0363f6419db35279259577184c19efd6e6d44ea8f=
+333ca%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22K=
+eXtctc2u2BFh4hZi4DrsvGNABfMZ10I%22%3B%7D'
+    'HTTP_X_HTTPS' =3D> '1'
+ =
+   'SERVER_SIGNATURE' =3D> ''
+    'SERVER_SOFTWARE' =3D> 'Apache'
+    '=
+SERVER_NAME' =3D> 'sijaksa.online'
+    'SERVER_ADDR' =3D> '103.247.11.153=
+'
+    'SERVER_PORT' =3D> '443'
+    'REMOTE_ADDR' =3D> '103.247.122.10'=
+
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REQUEST_SCHE=
+ME' =3D> 'https'
+    'CONTEXT_PREFIX' =3D> '/cgi-sys'
+    'CONTEXT_DOCU=
+MENT_ROOT' =3D> '/usr/local/cpanel/cgi-sys/'
+    'SERVER_ADMIN' =3D> 'web=
+master@sijaksa.online'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public=
+_html/backend/web/index.php'
+    'REMOTE_PORT' =3D> '49674'
+    'REDIRE=
+CT_URL' =3D> '/backend/web/index.php'
+    'REDIRECT_QUERY_STRING' =3D>
+=
+'r=3Ddaftar-penganggaran-pembiayaan-dua%2Fcreate'
+    'GATEWAY_INTERFACE'=
+ =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METH=
+OD' =3D> 'POST'
+    'QUERY_STRING' =3D> 'r=3Ddaftar-penganggaran-pembiaya=
+an-dua%2Fcreate'
+    'REQUEST_URI' =3D>
+'/backend/web/index.php?r=3Ddaf=
+tar-penganggaran-pembiayaan-dua%2Fcreate'
+    'SCRIPT_NAME' =3D> '/backen=
+d/web/index.php'
+    'ORIG_SCRIPT_FILENAME' =3D> '/usr/local/cpanel/cgi-s=
+ys/ea-php72'
+    'ORIG_PATH_INFO' =3D> '/backend/web/index.php'
+    'OR=
+IG_PATH_TRANSLATED' =3D>
+'/home/sijaksa/public_html/backend/web/index.php=
+'
+    'ORIG_SCRIPT_NAME' =3D> '/cgi-sys/ea-php72'
+    'PHP_SELF' =3D> '=
+/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1583287468.7759
+ =
+   'REQUEST_TIME' =3D> 1583287468
+    'argv' =3D> [
+        0 =3D> 'r=
+=3Ddaftar-penganggaran-pembiayaan-dua%2Fcreate'
+    ]
+    'argc' =3D> 1=
+
+]

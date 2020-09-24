@@ -1,0 +1,379 @@
+Message-ID: <53c9dca9f91f0f9b895bd06159b66c91@sijaksa.com>
+Date: Fri, 21 Feb 2020 10:54:28 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-21 10:54:28
+[36.80.112.215][15][sm13s6ep115df1iomg12pd7sbd][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'data_penerimaan_dana.id_desa' in 'where clause' in
+/ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trac=
+e:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):=
+
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(*)=
+...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(425=
+):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3 /home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command->queryScal=
+ar()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.ph=
+p(352):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Connection))=
+
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(347):
+yi=
+i\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/data/ActiveDataProvider.ph=
+p(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data\ActiveDataPro=
+vider->prepareTotalCount()
+#8
+/home/sijaksa/public_html/vendor/kartik-v=
+/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider->getTotalCou=
+nt()
+#9
+/home/sijaksa/public_html/vendor/kartik-v/yii2-grid/src/GridVie=
+w.php(1163):
+kartik\grid\GridView->initToggleData()
+#10
+/home/sijaksa=
+/public_html/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridVi=
+ew->run()
+#11
+/home/sijaksa/public_html/backend/views/data-penerimaan-d=
+ana/index.php(24):
+yii\base\Widget::widget(Array)
+#12 /home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p=
+...')
+#13 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257=
+):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"=
+s...')
+#14 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(15=
+6):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(backe=
+nd\controllers\DataPenerimaanDanaController))
+#15
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render(=
+'index', Array,
+Object(backend\controllers\DataPenerimaanDanaController))=
+
+#16
+/home/sijaksa/public_html/backend/controllers/DataPenerimaanDanaCo=
+ntroller.php(45):
+yii\base\Controller->render('index', Array)
+#17 [inte=
+rnal function]:
+backend\controllers\DataPenerimaanDanaController->actionI=
+ndex()
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineAct=
+ion.php(57):
+call_user_func_array(Array, Array)
+#19
+/home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAct=
+ion->runWithParams(Array)
+#20
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/Module.php(528):
+yii\base\Controller->runAction('', Array)
+#2=
+1
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(103):=
+
+yii\base\Module->runAction('data-penerimaan...', Array)
+#22
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\=
+Application->handleRequest(Object(yii\web\Request))
+#23 /home/sijaksa/pub=
+lic_html/backend/web/index.php(22):
+yii\base\Application->run()
+#24 {ma=
+in}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 1054 Unk=
+nown
+column 'data_penerimaan_dana.id_desa' in 'where clause'
+The SQL be=
+ing executed was: SELECT COUNT(*) FROM `daftar_visi` WHERE
+`data_penerima=
+an_dana`.`id_desa`=3D'26' in
+/home/sijaksa/public_html/vendor/yiisoft/yii=
+2/db/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yi=
+isoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Object(P=
+DOException), 'SELECT
+COUNT(*)...')
+#1 /home/sijaksa/public_html/vendor=
+/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SELE=
+CT COUNT(*)...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Comm=
+and.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3 /home/=
+sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command=
+->queryScalar()
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Act=
+iveQuery.php(352):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Co=
+nnection))
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Query.php(=
+347):
+yii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connectio=
+n))
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/data/ActiveDataPro=
+vider.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/sijaksa/publi=
+c_html/vendor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data\Activ=
+eDataProvider->prepareTotalCount()
+#8
+/home/sijaksa/public_html/vendor/=
+kartik-v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider->get=
+TotalCount()
+#9
+/home/sijaksa/public_html/vendor/kartik-v/yii2-grid/src=
+/GridView.php(1163):
+kartik\grid\GridView->initToggleData()
+#10
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik\gri=
+d\GridView->run()
+#11
+/home/sijaksa/public_html/backend/views/data-pene=
+rimaan-dana/index.php(24):
+yii\base\Widget::widget(Array)
+#12 /home/sij=
+aksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/s=
+ijaksa/p...')
+#13 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View=
+.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+c=
+lass=3D"s...')
+#14 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/Vie=
+w.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Obje=
+ct(backend\controllers\DataPenerimaanDanaController))
+#15
+/home/sijaksa=
+/public_html/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View-=
+>render('index', Array,
+Object(backend\controllers\DataPenerimaanDanaCont=
+roller))
+#16
+/home/sijaksa/public_html/backend/controllers/DataPenerima=
+anDanaController.php(45):
+yii\base\Controller->render('index', Array)
+#=
+17 [internal function]:
+backend\controllers\DataPenerimaanDanaController-=
+>actionIndex()
+#18
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/I=
+nlineAction.php(57):
+call_user_func_array(Array, Array)
+#19
+/home/sij=
+aksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\I=
+nlineAction->runWithParams(Array)
+#20
+/home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('', Arr=
+ay)
+#21
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.p=
+hp(103):
+yii\base\Module->runAction('data-penerimaan...', Array)
+#22
+=
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+=
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /home/sij=
+aksa/public_html/backend/web/index.php(22):
+yii\base\Application->run()=
+
+#24 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+=
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'data_penerimaan_dana.id_de=
+sa' in 'where
+clause'
+)
+
+2020-02-21 10:54:28
+[36.80.112.215][15][=
+sm13s6ep115df1iomg12pd7sbd][info][application]
+$_GET =3D [
+    'r' =3D>=
+ 'data-penerimaan-dana'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_C=
+OOKIE =3D [
+    'advanced-backend' =3D> 'sm13s6ep115df1iomg12pd7sbd'
+  =
+  '_csrf-backend' =3D>
+'874afa5298531a251988e02f8738336b26c622ca11870541c=
+4ed63fd3a8e8489a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"feFU4WuWJrzgMWd4b=
+q0G0gvbL1vXsuKZ\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+   =
+ '__returnUrl' =3D> '/backend/web/index.php?r=3D'
+    'user_role' =3D> [=
+
+        0 =3D> 'KELURAHAN'
+        1 =3D> 'KECAMATAN'
+        2 =3D>=
+ 'KABUPATEN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_ro=
+le_id' =3D> [
+        0 =3D> 4
+        1 =3D> 3
+        2 =3D> 2
+  =
+      3 =3D> 1
+    ]
+    '__id' =3D> 15
+]
+
+$_SERVER =3D [
+    '=
+PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home/=
+sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =
+=3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr=
+/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '=
+/backend/web/index.php'
+    'REQUEST_URI' =3D> '/backend/web/index.php?r=
+=3Ddata-penerimaan-dana'
+    'QUERY_STRING' =3D> 'r=3Ddata-penerimaan-dan=
+a'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1=
+'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '12933'=
+
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/inde=
+x.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUME=
+NT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+=
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/=
+public_html'
+    'REMOTE_ADDR' =3D> '36.80.112.215'
+    'SERVER_PORT' =
+=3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> =
+'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SI=
+GNATURE' =3D> ''
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_=
+UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_COOKIE' =3D> 'advanced-back=
+end=3Dsm13s6ep115df1iomg12pd7sbd;
+_csrf-backend=3D874afa5298531a251988e02=
+f8738336b26c622ca11870541c4ed63fd3a8e8489a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_cs=
+rf-backend%22%3Bi%3A1%3Bs%3A32%3A%22feFU4WuWJrzgMWd4bq0G0gvbL1vXsuKZ%22%3B%=
+7D'
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_ACCEPT_ENCODING' =3D> =
+'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.5'
+    =
+'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0=
+.9,image/webp,*/*;q=3D0.8'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windo=
+ws NT 10.0; Win64; x64;
+rv:72.0) Gecko/20100101 Firefox/72.0'
+    'HTTP=
+_HOST' =3D> 'sijaksa.com'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backe=
+nd/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'F=
+CGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php'=
+
+    'REQUEST_TIME_FLOAT' =3D> 1582257268.6916
+    'REQUEST_TIME' =3D> =
+1582257268
+]

@@ -1,0 +1,412 @@
+Message-ID: <44946e318be39a5ab287ca4a75c3c304@cvajm.com>
+Date: Tue, 20 Aug 2019 17:15:39 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-08-20 17:15:39
+[36.92.48.63][29][jl7bhffvfq1dahaohnd7hs6s16][error][=
+yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity const=
+raint violation: 1052
+Column 'status' in where clause is ambiguous in
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stac=
+k trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Comman=
+d.php(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecut=
+e('SELECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0=
+)
+#3
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463=
+):
+yii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/ven=
+dor/yiisoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUN=
+T(*)', Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT=
+(*)', Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*',=
+ NULL)
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/BaseDa=
+taProvider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#=
+8
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.ph=
+p(1754):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvajm/pu=
+blic_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\=
+grid\GridView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#11
+=
+/home/cvajm/public_html/cvajm/backend/views/workshop/index.php(26):
+yii\b=
+ase\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#13
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\=
+View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#14=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+=
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(backend\con=
+trollers\WorkshopController))
+#15
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('index', Arr=
+ay,
+Object(backend\controllers\WorkshopController))
+#16
+/home/cvajm/p=
+ublic_html/cvajm/backend/controllers/WorkshopController.php(57):
+yii\base=
+\Controller->render('index', Array)
+#17 [internal function]:
+backend\co=
+ntrollers\WorkshopController->actionIndex()
+#18
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_arra=
+y(Array, Array)
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/b=
+ase/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#2=
+0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):=
+
+yii\base\Controller->runAction('', Array)
+#21
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->ru=
+nAction('workshop', Array)
+#22
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(O=
+bject(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/backend/web/ind=
+ex.php(22):
+yii\base\Application->run()
+#24 {main}
+
+Next yii\db\Int=
+egrityException: SQLSTATE[23000]: Integrity constraint
+violation: 1052 Co=
+lumn 'status' in where clause is ambiguous
+The SQL being executed was: SE=
+LECT COUNT(*) FROM `workshop` LEFT JOIN
+`ba_perbaikan` ON workshop.id_ba_=
+perbaikan =3D
+ba_perbaikan.id_ba_perbaikan LEFT JOIN `unit` ON ba_perbaik=
+an.id_unit
+=3D unit.id_unit WHERE `status`=3D'3' in
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\d=
+b\Schema->convertException(Object(PDOException), 'SELECT
+COUNT(*)...')
+=
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158)=
+:
+yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Comma=
+nd->queryInternal('fetchColumn', 0)
+#3
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command->queryScalar()
+#4=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveQuery.php(352=
+):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#5=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(347):
+y=
+ii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/ActiveDataProvide=
+r.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii\data\Activ=
+eDataProvider->prepareTotalCount()
+#8
+/home/cvajm/public_html/cvajm/ven=
+dor/kartik-v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDataProvider-=
+>getTotalCount()
+#9
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-=
+grid/src/GridView.php(1163):
+kartik\grid\GridView->initToggleData()
+#10=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):=
+
+kartik\grid\GridView->run()
+#11
+/home/cvajm/public_html/cvajm/backen=
+d/views/workshop/index.php(26):
+yii\base\Widget::widget(Array)
+#12
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+requi=
+re('/home/cvajm/pub...')
+#13
+/home/cvajm/public_html/cvajm/vendor/yiiso=
+ft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub=
+...', '[<span
+class=3D"s...')
+#14
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm=
+/pub...', Array,
+Object(backend\controllers\WorkshopController))
+#15
+=
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):=
+
+yii\base\View->render('index', Array,
+Object(backend\controllers\Works=
+hopController))
+#16
+/home/cvajm/public_html/cvajm/backend/controllers/W=
+orkshopController.php(57):
+yii\base\Controller->render('index', Array)
+=
+#17 [internal function]:
+backend\controllers\WorkshopController->actionIn=
+dex()
+#18
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Inline=
+Action.php(57):
+call_user_func_array(Array, Array)
+#19
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\In=
+lineAction->runWithParams(Array)
+#20
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('', =
+Array)
+#21
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Applic=
+ation.php(103):
+yii\base\Module->runAction('workshop', Array)
+#22
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):=
+
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /home/=
+cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\Application->=
+run()
+#24 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 230=
+00
+    [1] =3D> 1052
+    [2] =3D> Column 'status' in where clause is am=
+biguous
+)
+
+2019-08-20 17:15:39
+[36.92.48.63][29][jl7bhffvfq1dahaohn=
+d7hs6s16][info][application] $_GET
+=3D [
+    'WorkshopSearch' =3D> [
+=
+        'id_ba_perbaikan' =3D> ''
+        'nopol' =3D> ''
+        'awal=
+' =3D> ''
+        'akhir' =3D> ''
+        'keterangan' =3D> ''
+      =
+  'status' =3D> '3'
+    ]
+    'r' =3D> 'workshop'
+]
+
+$_POST =3D [=
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'jl=
+7bhffvfq1dahaohnd7hs6s16'
+    '_csrf-backend' =3D>
+'e177d6b28708f051558=
+13cb0078539a386ea4f970eea58410637c9e3e5182d40a:2:{i:0;s:13:\"_csrf-backend\=
+";i:1;s:32:\"zhpDy3dt6NbgbE1mtdSvS4-9A5h2I6iA\";}'
+]
+
+$_SESSION =3D [=
+
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index=
+.php'
+    'user_role' =3D> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+  =
+  ]
+    'user_role_id' =3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D=
+> 29
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../et=
+c/php7.0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUE=
+STS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sb=
+in:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D=
+> '0'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUES=
+T_URI' =3D>
+'/cvajm/backend/web/index.php?WorkshopSearch%5Bid_ba_perbaika=
+n%5D=3D&WorkshopSearch%5Bnopol%5D=3D&WorkshopSearch%5Bawal%5D=3D&WorkshopSe=
+arch%5Bakhir%5D=3D&WorkshopSearch%5Bketerangan%5D=3D&WorkshopSearch%5Bstatu=
+s%5D=3D3&r=3Dworkshop'
+    'QUERY_STRING' =3D>
+'WorkshopSearch%5Bid_ba_=
+perbaikan%5D=3D&WorkshopSearch%5Bnopol%5D=3D&WorkshopSearch%5Bawal%5D=3D&Wo=
+rkshopSearch%5Bakhir%5D=3D&WorkshopSearch%5Bketerangan%5D=3D&WorkshopSearch=
+%5Bstatus%5D=3D3&r=3Dworkshop'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SER=
+VER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+  =
+  'REMOTE_PORT' =3D> '50055'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/pu=
+blic_html/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no addre=
+ss given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+ =
+   'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUM=
+ENT_ROOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '36.92.48=
+.63'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198=
+'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache=
+/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'advance=
+d-backend=3Djl7bhffvfq1dahaohnd7hs6s16;
+_csrf-backend=3De177d6b28708f0515=
+5813cb0078539a386ea4f970eea58410637c9e3e5182d40a%3A2%3A%7Bi%3A0%3Bs%3A13%3A=
+%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22zhpDy3dt6NbgbE1mtdSvS4-9A5h2I6iA%=
+22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+    'HTTP_=
+ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://c=
+vajm.com/cvajm/backend/web/index.php?r=3Dworkshop'
+    'HTTP_ACCEPT' =3D>=
+
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,imag=
+e/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3'
+    'HTTP_USER_AGE=
+NT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (K=
+HTML, like Gecko) Chrome/76.0.3809.100
+Safari/537.36'
+    'HTTP_UPGRADE=
+_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_CONNECTION' =3D> 'close'
+    'HT=
+TP_HOST' =3D> 'cvajm.com'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/b=
+ackend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php=
+'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/=
+web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1566292539.6105
+    'REQUE=
+ST_TIME' =3D> 1566292539
+]

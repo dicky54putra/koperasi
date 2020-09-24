@@ -1,0 +1,524 @@
+Message-ID: <05107bd0bf0cd6555c18adefd1557ed6@cvajm.com>
+Date: Mon, 08 Jul 2019 10:13:57 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-07-08 10:13:57
+[36.72.254.139][4][r9cdoqa02tm68gbucpkrkst5a7][error]=
+[yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 =
+Unknown column
+'id_badan_usaha' in 'where clause' in
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1290):
+PD=
+OStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/y=
+ii2/db/Command.php(1158):
+yii\db\Command->internalExecute('select count(i=
+d...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.=
+php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3 /home/cvaj=
+m/public_html/cvajm/backend/views/premi/index.php(30):
+yii\db\Command->qu=
+eryScalar()
+#4 [internal function]:
+yii\base\View->{closure}(Object(bac=
+kend\models\GroupUnit), 1, 0,
+Object(kartik\grid\DataColumn))
+#5
+/hom=
+e/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/DataColumn.php(230):
+c=
+all_user_func(Object(Closure), Object(backend\models\GroupUnit), 1,
+0, Ob=
+ject(kartik\grid\DataColumn))
+#6
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/grid/DataColumn.php(244):
+yii\grid\DataColumn->getDataCellVal=
+ue(Object(backend\models\GroupUnit),
+1, 0)
+#7
+/home/cvajm/public_html=
+/cvajm/vendor/kartik-v/yii2-grid/src/DataColumn.php(242):
+yii\grid\DataCo=
+lumn->renderDataCellContent(Object(backend\models\GroupUnit),
+1, 0)
+#8=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(525)=
+:
+kartik\grid\DataColumn->renderDataCell(Object(backend\models\GroupUnit)=
+,
+1, 0)
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/Gri=
+dView.php(494):
+yii\grid\GridView->renderTableRow(Object(backend\models\G=
+roupUnit), 1,
+0)
+#10
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yi=
+i2-grid/src/GridView.php(1220):
+yii\grid\GridView->renderTableBody()
+#1=
+1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(358=
+):
+kartik\grid\GridView->renderTableBody()
+#12
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/widgets/BaseListView.php(160):
+yii\grid\GridV=
+iew->renderItems()
+#13
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/grid/GridView.php(326):
+yii\widgets\BaseListView->renderSection('{items=
+}')
+#14
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/widgets/BaseL=
+istView.php(135):
+yii\grid\GridView->renderSection('{items}')
+#15 [inte=
+rnal function]:
+yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+=
+#16
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/widgets/BaseListVie=
+w.php(138):
+preg_replace_callback('/{\\w+}/', Object(Closure), '<div
+cl=
+ass=3D"pan...')
+#17
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/g=
+rid/GridView.php(301):
+yii\widgets\BaseListView->run()
+#18
+/home/cvaj=
+m/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1186):
+yii=
+\grid\GridView->run()
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#20 /home/cvajm/=
+public_html/cvajm/backend/views/premi/index.php(20):
+yii\base\Widget::wid=
+get(Array)
+#21
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/V=
+iew.php(348):
+require('/home/cvajm/pub...')
+#22
+/home/cvajm/public_ht=
+ml/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhp=
+File('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#23
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->re=
+nderFile('/home/cvajm/pub...', Array,
+Object(backend\controllers\PremiCon=
+troller))
+#24
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Co=
+ntroller.php(384):
+yii\base\View->render('index', Array,
+Object(backend=
+\controllers\PremiController))
+#25
+/home/cvajm/public_html/cvajm/backen=
+d/controllers/PremiController.php(52):
+yii\base\Controller->render('index=
+', Array)
+#26 [internal function]:
+backend\controllers\PremiController-=
+>actionIndex()
+#27
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/ba=
+se/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#28
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(157):
+yi=
+i\base\InlineAction->runWithParams(Array)
+#29
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAc=
+tion('', Array)
+#30
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/w=
+eb/Application.php(103):
+yii\base\Module->runAction('premi', Array)
+#31=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(3=
+86):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#32 /h=
+ome/cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\Applicati=
+on->run()
+#33 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column =
+not found: 1054 Unknown
+column 'id_badan_usaha' in 'where clause'
+The S=
+QL being executed was: select count(id_unit) from unit where
+id_group_uni=
+t =3D '1' and id_badan_usaha in (1,2,3)  in
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/pu=
+blic_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->=
+convertException(Object(PDOException), 'select
+count(id...')
+#1
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db=
+\Command->internalExecute('select count(id...')
+#2
+/home/cvajm/public_h=
+tml/cvajm/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryI=
+nternal('fetchColumn', 0)
+#3 /home/cvajm/public_html/cvajm/backend/views/=
+premi/index.php(30):
+yii\db\Command->queryScalar()
+#4 [internal functio=
+n]:
+yii\base\View->{closure}(Object(backend\models\GroupUnit), 1, 0,
+Ob=
+ject(kartik\grid\DataColumn))
+#5
+/home/cvajm/public_html/cvajm/vendor/y=
+iisoft/yii2/grid/DataColumn.php(230):
+call_user_func(Object(Closure), Obj=
+ect(backend\models\GroupUnit), 1,
+0, Object(kartik\grid\DataColumn))
+#6=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/grid/DataColumn.php(24=
+4):
+yii\grid\DataColumn->getDataCellValue(Object(backend\models\GroupUnit=
+),
+1, 0)
+#7
+/home/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/s=
+rc/DataColumn.php(242):
+yii\grid\DataColumn->renderDataCellContent(Object=
+(backend\models\GroupUnit),
+1, 0)
+#8
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/grid/GridView.php(525):
+kartik\grid\DataColumn->renderD=
+ataCell(Object(backend\models\GroupUnit),
+1, 0)
+#9
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(494):
+yii\grid\GridView=
+->renderTableRow(Object(backend\models\GroupUnit), 1,
+0)
+#10
+/home/cv=
+ajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1220):
+y=
+ii\grid\GridView->renderTableBody()
+#11
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/grid/GridView.php(358):
+kartik\grid\GridView->renderTa=
+bleBody()
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/widgets=
+/BaseListView.php(160):
+yii\grid\GridView->renderItems()
+#13
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(326):
+yii\wid=
+gets\BaseListView->renderSection('{items}')
+#14
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/widgets/BaseListView.php(135):
+yii\grid\GridVi=
+ew->renderSection('{items}')
+#15 [internal function]:
+yii\widgets\BaseL=
+istView->yii\widgets\{closure}(Array)
+#16
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/widgets/BaseListView.php(138):
+preg_replace_callback=
+('/{\\w+}/', Object(Closure), '<div
+class=3D"pan...')
+#17
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/grid/GridView.php(301):
+yii\widget=
+s\BaseListView->run()
+#18
+/home/cvajm/public_html/cvajm/vendor/kartik-v=
+/yii2-grid/src/GridView.php(1186):
+yii\grid\GridView->run()
+#19
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Widget.php(140):
+kartik=
+\grid\GridView->run()
+#20 /home/cvajm/public_html/cvajm/backend/views/pre=
+mi/index.php(20):
+yii\base\Widget::widget(Array)
+#21
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/cvaj=
+m/pub...')
+#22
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/V=
+iew.php(257):
+yii\base\View->renderPhpFile('/home/cvajm/pub...', '[<span=
+
+class=3D"s...')
+#23
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/base/View.php(156):
+yii\base\View->renderFile('/home/cvajm/pub...', Arr=
+ay,
+Object(backend\controllers\PremiController))
+#24
+/home/cvajm/publ=
+ic_html/cvajm/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View=
+->render('index', Array,
+Object(backend\controllers\PremiController))
+#=
+25
+/home/cvajm/public_html/cvajm/backend/controllers/PremiController.php(=
+52):
+yii\base\Controller->render('index', Array)
+#26 [internal function=
+]:
+backend\controllers\PremiController->actionIndex()
+#27
+/home/cvajm=
+/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_us=
+er_func_array(Array, Array)
+#28
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams=
+(Array)
+#29
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Modu=
+le.php(528):
+yii\base\Controller->runAction('', Array)
+#30
+/home/cvaj=
+m/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\bas=
+e\Module->runAction('premi', Array)
+#31
+/home/cvajm/public_html/cvajm/v=
+endor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handle=
+Request(Object(yii\web\Request))
+#32 /home/cvajm/public_html/cvajm/backen=
+d/web/index.php(22):
+yii\base\Application->run()
+#33 {main}
+Additiona=
+l Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [=
+2] =3D> Unknown column 'id_badan_usaha' in 'where clause'
+)
+
+2019-07-=
+08 10:13:57
+[36.72.254.139][4][r9cdoqa02tm68gbucpkrkst5a7][info][applicat=
+ion]
+$_GET =3D [
+    'r' =3D> 'premi'
+]
+
+$_POST =3D []
+
+$_FIL=
+ES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'r9cdoqa02tm68g=
+bucpkrkst5a7'
+    '_csrf-backend' =3D>
+'70ecf437c2c1b7117494cf238f7aba6=
+95660b1cd5137487efbc4e2e367a67a55a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\=
+"3t2c8BeRSZerJ94nHFvVyQA-Qm6QG3qZ\";}'
+]
+
+$_SESSION =3D [
+    '__fl=
+ash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+    =
+'user_role' =3D> [
+        0 =3D> 'SURAT JALAN'
+        1 =3D> 'STAF HR=
+D UNIT'
+        2 =3D> 'STAF HRD KARYAWAN'
+        3 =3D> 'PURCHASING'=
+
+        4 =3D> 'PEMESANAN'
+        5 =3D> 'LOGISTIC'
+        6 =3D> =
+'KORLAP'
+        7 =3D> 'KEPALA HRD'
+        8 =3D> 'INVOICE'
+       =
+ 9 =3D> 'HRD'
+        10 =3D> 'GPS'
+        11 =3D> 'FINANCE'
+       =
+ 12 =3D> 'CHECKER'
+        13 =3D> 'ADMIN'
+        14 =3D> 'SYSTEM ADMI=
+NISTRATOR'
+        15 =3D> 'TAMBANG'
+        16 =3D> 'WORKSHOP'
+    ]=
+
+    'user_role_id' =3D> [
+        0 =3D> 4
+        1 =3D> 17
+     =
+   2 =3D> 16
+        3 =3D> 12
+        4 =3D> 5
+        5 =3D> 11
+ =
+       6 =3D> 9
+        7 =3D> 15
+        8 =3D> 8
+        9 =3D> 14=
+
+        10 =3D> 7
+        11 =3D> 3
+        12 =3D> 6
+        13 =
+=3D> 2
+        14 =3D> 1
+        15 =3D> 13
+        16 =3D> 10
+    =
+]
+    '__id' =3D> 4
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cva=
+jm/fcgi-bin/../etc/php7.0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'P=
+HP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>=
+
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CO=
+NTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.p=
+hp'
+    'REQUEST_URI' =3D> '/cvajm/backend/web/index.php?r=3Dpremi'
+   =
+ 'QUERY_STRING' =3D> 'r=3Dpremi'
+    'REQUEST_METHOD' =3D> 'GET'
+    'S=
+ERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+=
+    'REMOTE_PORT' =3D> '50534'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/=
+public_html/cvajm/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no add=
+ress given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'=
+
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'D=
+OCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '36.7=
+2.254.139'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.=
+25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> '=
+Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_UPGRADE_INSECUR=
+E_REQUESTS' =3D> '1'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dr9cdoqa02=
+tm68gbucpkrkst5a7;
+_csrf-backend=3D70ecf437c2c1b7117494cf238f7aba695660b1=
+cd5137487efbc4e2e367a67a55a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3=
+Bi%3A1%3Bs%3A32%3A%223t2c8BeRSZerJ94nHFvVyQA-Qm6QG3qZ%22%3B%7D'
+    'HTTP=
+_CONNECTION' =3D> 'close'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cva=
+jm/backend/web/index.php?r=3D/log/rekap-log'
+    'HTTP_ACCEPT_ENCODING' =
+=3D> 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.5'=
+
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xm=
+l;q=3D0.9,*/*;q=3D0.8'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows N=
+T 6.1; Win64; x64;
+rv:67.0) Gecko/20100101 Firefox/67.0'
+    'HTTP_HOST=
+' =3D> 'cvajm.com'
+    'SCRIPT_URI' =3D> 'http://cvajm.com/cvajm/backend/=
+web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/backend/web/index.php'
+   =
+ 'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/cvajm/backend/web/ind=
+ex.php'
+    'REQUEST_TIME_FLOAT' =3D> 1562555637.9472
+    'REQUEST_TIME=
+' =3D> 1562555637
+]

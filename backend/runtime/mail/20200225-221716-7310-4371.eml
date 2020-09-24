@@ -1,0 +1,333 @@
+Message-ID: <8752496819293826d4ae40650923f091@sijaksa.com>
+Date: Tue, 25 Feb 2020 22:17:16 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-25 22:17:16
+[120.188.74.205][14][dr7krukgk2itgbgrkuo1rg926b][erro=
+r][yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or acces=
+s violation: 1064
+You have an error in your SQL syntax; check the manual =
+that
+corresponds to your MariaDB server version for the right syntax to u=
+se
+near 'FROM daftar_penganggaran_belanja_detail' at line 2 in
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+=
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1290):
+PD=
+OStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db=
+/Command.php(1158):
+yii\db\Command->internalExecute('\n              ...'=
+)
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(386):=
+
+yii\db\Command->queryInternal('')
+#3
+/home/sijaksa/public_html/backe=
+nd/views/daftar-penganggaran-belanja/view.php(111):
+yii\db\Command->query=
+()
+#4 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):=
+
+require('/home/sijaksa/p...')
+#5 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/=
+p...', '[<span
+class=3D"s...')
+#6 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p..=
+.', Array,
+Object(backend\controllers\DaftarPenganggaranBelanjaController=
+))
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php=
+(384):
+yii\base\View->render('view', Array,
+Object(backend\controllers\=
+DaftarPenganggaranBelanjaController))
+#8
+/home/sijaksa/public_html/back=
+end/controllers/DaftarPenganggaranBelanjaController.php(59):
+yii\base\Con=
+troller->render('view', Array)
+#9 [internal function]:
+backend\controll=
+ers\DaftarPenganggaranBelanjaController->actionView('5')
+#10
+/home/sija=
+ksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_=
+func_array(Array, Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)=
+
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528)=
+:
+yii\base\Controller->runAction('view', Array)
+#13
+/home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->r=
+unAction('daftar-pengangg...', Array)
+#14
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleRe=
+quest(Object(yii\web\Request))
+#15 /home/sijaksa/public_html/backend/web/=
+index.php(22):
+yii\base\Application->run()
+#16 {main}
+
+Next yii\db\=
+Exception: SQLSTATE[42000]: Syntax error or access
+violation: 1064 You ha=
+ve an error in your SQL syntax; check the manual
+that corresponds to your=
+ MariaDB server version for the right syntax
+to use near 'FROM daftar_pen=
+ganggaran_belanja_detail' at line 2
+The SQL being executed was:=20
+      =
+          SELECT daftar_penganggaran_belanja_detail.*,=20
+                F=
+ROM daftar_penganggaran_belanja_detail
+               =20
+               =
+  in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+St=
+ack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.ph=
+p(1295):
+yii\db\Schema->convertException(Object(PDOException), '\n       =
+     =20
+...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Comman=
+d.php(1158):
+yii\db\Command->internalExecute('\n              ...')
+#2 =
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(386):
+yii\db=
+\Command->queryInternal('')
+#3
+/home/sijaksa/public_html/backend/views/=
+daftar-penganggaran-belanja/view.php(111):
+yii\db\Command->query()
+#4 /=
+home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require(=
+'/home/sijaksa/p...')
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<s=
+pan
+class=3D"s...')
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,=
+
+Object(backend\controllers\DaftarPenganggaranBelanjaController))
+#7
+=
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(384):
+y=
+ii\base\View->render('view', Array,
+Object(backend\controllers\DaftarPeng=
+anggaranBelanjaController))
+#8
+/home/sijaksa/public_html/backend/contro=
+llers/DaftarPenganggaranBelanjaController.php(59):
+yii\base\Controller->r=
+ender('view', Array)
+#9 [internal function]:
+backend\controllers\Daftar=
+PenganggaranBelanjaController->actionView('5')
+#10
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array=
+(Array, Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/C=
+ontroller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/=
+home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\ba=
+se\Controller->runAction('view', Array)
+#13
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('=
+daftar-pengangg...', Array)
+#14
+/home/sijaksa/public_html/vendor/yiisof=
+t/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Obje=
+ct(yii\web\Request))
+#15 /home/sijaksa/public_html/backend/web/index.php(=
+22):
+yii\base\Application->run()
+#16 {main}
+Additional Information:=
+
+Array
+(
+    [0] =3D> 42000
+    [1] =3D> 1064
+    [2] =3D> You ha=
+ve an error in your SQL syntax; check the manual that
+corresponds to your=
+ MariaDB server version for the right syntax to use
+near 'FROM daftar_pen=
+ganggaran_belanja_detail' at line 2
+)
+
+2020-02-25 22:17:16
+[120.188=
+.74.205][14][dr7krukgk2itgbgrkuo1rg926b][info][application]
+$_GET =3D [=
+
+    'r' =3D> 'daftar-penganggaran-belanja/view'
+    'id' =3D> '5'
+]=
+
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced=
+-backend' =3D> 'dr7krukgk2itgbgrkuo1rg926b'
+    '_csrf-backend' =3D>
+'0=
+e72152f05918c7f92027214034e2db057a2ecbdcac6e60182e1fc6520700438a:2:{i:0;s:1=
+3:\"_csrf-backend\";i:1;s:32:\"OvJGswKYQoH83cj1eGct5JAC8CNjNlOb\";}'
+]
+=
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/backe=
+nd/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'KABUPATEN'
+ =
+       1 =3D> 'KECAMATAN'
+        2 =3D> 'KELURAHAN'
+        3 =3D> 'SY=
+STEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 2=
+
+        1 =3D> 3
+        2 =3D> 4
+        3 =3D> 1
+    ]
+    '__=
+id' =3D> 14
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-=
+bin/../etc/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCG=
+I_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/u=
+sr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_=
+LENGTH' =3D> '0'
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'R=
+EQUEST_URI' =3D>
+'/backend/web/index.php?r=3Ddaftar-penganggaran-belanja/=
+view&id=3D5'
+    'QUERY_STRING' =3D> 'r=3Ddaftar-penganggaran-belanja/vie=
+w&id=3D5'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'H=
+TTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> =
+'3324'
+    'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/we=
+b/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_=
+DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D>=
+ ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/si=
+jaksa/public_html'
+    'REMOTE_ADDR' =3D> '120.188.74.205'
+    'SERVER_=
+PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME'=
+ =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SER=
+VER_SIGNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Ddr7kruk=
+gk2itgbgrkuo1rg926b;
+_csrf-backend=3D0e72152f05918c7f92027214034e2db057a2=
+ecbdcac6e60182e1fc6520700438a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22=
+%3Bi%3A1%3Bs%3A32%3A%22OvJGswKYQoH83cj1eGct5JAC8CNjNlOb%22%3B%7D'
+    'HT=
+TP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    =
+'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'ht=
+tp://sijaksa.com/backend/web/index.php?r=3Ddaftar-penganggaran-belanja'
+ =
+   'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=
+=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3=
+;q=3D0.9'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64=
+; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130
+Safa=
+ri/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_DNT'=
+ =3D> '1'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_CONNECT=
+ION' =3D> 'close'
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'SCRIPT_URI' =
+=3D> 'http://sijaksa.com/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/b=
+ackend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =
+=3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1582643836.70=
+37
+    'REQUEST_TIME' =3D> 1582643836
+]

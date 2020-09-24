@@ -1,0 +1,298 @@
+Message-ID: <6224cf8437d45eab713152a47507ef4d@localhost>
+Date: Mon, 13 Jul 2020 13:32:39 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-07-13 13:32:38
+[::1][3][jbqeu3hfj0toop0ut8cuaa7710][error][yii\db\Ex=
+ception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown co=
+lumn
+'nomor_permintaan' in 'field list' in
+C:\xampp7\htdocs\accounting\=
+vendor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0
+C:\xampp7\htd=
+ocs\accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+PDOStatement->ex=
+ecute()
+#1
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Command.p=
+hp(1158):
+yii\db\Command->internalExecute('SELECT `nomor_p...')
+#2
+C:=
+\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(413):
+yii\db=
+\Command->queryInternal('fetch', NULL)
+#3 C:\xampp7\htdocs\accounting\ven=
+dor\yiisoft\yii2\db\Query.php(274):
+yii\db\Command->queryOne()
+#4
+C:\=
+xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\ActiveQuery.php(304):
+yii=
+\db\Query->one(NULL)
+#5
+C:\xampp7\htdocs\accounting\backend\controllers=
+\AktAkunController.php(72):
+yii\db\ActiveQuery->one()
+#6 [internal func=
+tion]:
+backend\controllers\AktAkunController->actionCreate()
+#7
+C:\xa=
+mpp7\htdocs\accounting\vendor\yiisoft\yii2\base\InlineAction.php(57):
+cal=
+l_user_func_array(Array, Array)
+#8
+C:\xampp7\htdocs\accounting\vendor\y=
+iisoft\yii2\base\Controller.php(157):
+yii\base\InlineAction->runWithParam=
+s(Array)
+#9
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\Module=
+.php(528):
+yii\base\Controller->runAction('create', Array)
+#10
+C:\xam=
+pp7\htdocs\accounting\vendor\yiisoft\yii2\web\Application.php(103):
+yii\b=
+ase\Module->runAction('akt-akun/create', Array)
+#11
+C:\xampp7\htdocs\ac=
+counting\vendor\yiisoft\yii2\base\Application.php(386):
+yii\web\Applicati=
+on->handleRequest(Object(yii\web\Request))
+#12 C:\xampp7\htdocs\accountin=
+g\backend\web\index.php(22):
+yii\base\Application->run()
+#13 {main}
+=
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 1054 Unknown=
+
+column 'nomor_permintaan' in 'field list'
+The SQL being executed was: =
+SELECT `nomor_permintaan` FROM `akt_akun`
+WHERE `id_akun` IN (1, NULL, NU=
+LL, NULL, NULL, NULL, NULL, NULL, NULL)
+in C:\xampp7\htdocs\accounting\ve=
+ndor\yiisoft\yii2\db\Schema.php:664
+Stack trace:
+#0
+C:\xampp7\htdocs\=
+accounting\vendor\yiisoft\yii2\db\Command.php(1295):
+yii\db\Schema->conve=
+rtException(Object(PDOException), 'SELECT
+`nomor_p...')
+#1
+C:\xampp7\=
+htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1158):
+yii\db\Comman=
+d->internalExecute('SELECT `nomor_p...')
+#2
+C:\xampp7\htdocs\accounting=
+\vendor\yiisoft\yii2\db\Command.php(413):
+yii\db\Command->queryInternal('=
+fetch', NULL)
+#3 C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\db\Query=
+.php(274):
+yii\db\Command->queryOne()
+#4
+C:\xampp7\htdocs\accounting\=
+vendor\yiisoft\yii2\db\ActiveQuery.php(304):
+yii\db\Query->one(NULL)
+#5=
+
+C:\xampp7\htdocs\accounting\backend\controllers\AktAkunController.php(72=
+):
+yii\db\ActiveQuery->one()
+#6 [internal function]:
+backend\controll=
+ers\AktAkunController->actionCreate()
+#7
+C:\xampp7\htdocs\accounting\ve=
+ndor\yiisoft\yii2\base\InlineAction.php(57):
+call_user_func_array(Array, =
+Array)
+#8
+C:\xampp7\htdocs\accounting\vendor\yiisoft\yii2\base\Controll=
+er.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#9
+C:\xampp7=
+\htdocs\accounting\vendor\yiisoft\yii2\base\Module.php(528):
+yii\base\Con=
+troller->runAction('create', Array)
+#10
+C:\xampp7\htdocs\accounting\ven=
+dor\yiisoft\yii2\web\Application.php(103):
+yii\base\Module->runAction('ak=
+t-akun/create', Array)
+#11
+C:\xampp7\htdocs\accounting\vendor\yiisoft\y=
+ii2\base\Application.php(386):
+yii\web\Application->handleRequest(Object(=
+yii\web\Request))
+#12 C:\xampp7\htdocs\accounting\backend\web\index.php(2=
+2):
+yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown c=
+olumn 'nomor_permintaan' in 'field list'
+)
+
+2020-07-13 13:32:38
+[::=
+1][3][jbqeu3hfj0toop0ut8cuaa7710][info][application] $_GET =3D [
+    'r' =
+=3D> 'akt-akun/create'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_CO=
+OKIE =3D [
+    'advanced-backend' =3D> 'jbqeu3hfj0toop0ut8cuaa7710'
+   =
+ '_csrf-backend' =3D>
+'6bad4d501dd281484d330ef8903d547302ae24290c0b1be609=
+a0827df996d7cda:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"wzUP1agoYHWdNWEyYn=
+lq7ezJk87lFlhL\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    =
+'__returnUrl' =3D> '/accounting/backend/web/'
+    'user_role' =3D> [
+  =
+      0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+ =
+       0 =3D> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_SERVER =3D [
+    '=
+MIBDIRS' =3D> 'C:/xampp7/php/extras/mibs'
+    'MYSQL_HOME' =3D> '\\xampp\=
+\mysql\\bin'
+    'OPENSSL_CONF' =3D> 'C:/xampp7/apache/bin/openssl.cnf'=
+
+    'PHP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+    'PHPRC' =3D> '\\xam=
+pp\\php'
+    'TMP' =3D> '\\xampp\\tmp'
+    'HTTP_HOST' =3D> 'localhost'=
+
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_CACHE_CONTROL' =3D> =
+'max-age=3D0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_U=
+SER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/53=
+7.36 (KHTML, like Gecko) Chrome/83.0.4103.116
+Safari/537.36'
+    'HTTP_=
+ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,ima=
+ge/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'=
+
+    'HTTP_SEC_FETCH_SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE'=
+ =3D> 'navigate'
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_SEC_FETC=
+H_DEST' =3D> 'document'
+    'HTTP_REFERER' =3D>
+'http://localhost/accou=
+nting/backend/web/index.php?r=3Dakt-akun%2Findex'
+    'HTTP_ACCEPT_ENCODI=
+NG' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=
+=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'HTTP_COOKIE' =3D> 'advanced-backend=
+=3Djbqeu3hfj0toop0ut8cuaa7710;
+_csrf-backend=3D6bad4d501dd281484d330ef890=
+3d547302ae24290c0b1be609a0827df996d7cda%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-=
+backend%22%3Bi%3A1%3Bs%3A32%3A%22wzUP1agoYHWdNWEyYnlq7ezJk87lFlhL%22%3B%7D'=
+
+    'PATH' =3D> 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared
+=
+Files\\cpp\\bin\\Intel64;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\Sys=
+tem32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp7\\ph=
+p;C:\\composer;C:\\Program
+Files\\Git\\cmd;C:\\WINDOWS\\System32\\OpenSSH=
+\\;C:\\Users\\GSS\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\GSS\\=
+AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\GSS\\AppData\\Local\\Microsof=
+t\\WindowsApps;C:\\Users\\GSS\\AppData\\Local\\Programs\\Microsoft
+VS Cod=
+e\\bin'
+    'SystemRoot' =3D> 'C:\\WINDOWS'
+    'COMSPEC' =3D> 'C:\\WIN=
+DOWS\\system32\\cmd.exe'
+    'PATHEXT' =3D>
+'.COM;.EXE;.BAT;.CMD;.VBS;.=
+VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' =3D> 'C:\\WINDOWS'
+    'SERVE=
+R_SIGNATURE' =3D> '<address>Apache/2.4.38 (Win64)
+OpenSSL/1.1.1b PHP/7.3.=
+3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' =3D> 'A=
+pache/2.4.38 (Win64) OpenSSL/1.1.1b
+PHP/7.3.3'
+    'SERVER_NAME' =3D> '=
+localhost'
+    'SERVER_ADDR' =3D> '::1'
+    'SERVER_PORT' =3D> '80'
+ =
+   'REMOTE_ADDR' =3D> '::1'
+    'DOCUMENT_ROOT' =3D> 'C:/xampp7/htdocs'=
+
+    'REQUEST_SCHEME' =3D> 'http'
+    'CONTEXT_PREFIX' =3D> ''
+    'C=
+ONTEXT_DOCUMENT_ROOT' =3D> 'C:/xampp7/htdocs'
+    'SERVER_ADMIN' =3D> 'po=
+stmaster@localhost'
+    'SCRIPT_FILENAME' =3D>
+'C:/xampp7/htdocs/accoun=
+ting/backend/web/index.php'
+    'REMOTE_PORT' =3D> '50036'
+    'GATEWAY=
+_INTERFACE' =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'R=
+EQUEST_METHOD' =3D> 'GET'
+    'QUERY_STRING' =3D> 'r=3Dakt-akun%2Fcreate'=
+
+    'REQUEST_URI' =3D>
+'/accounting/backend/web/index.php?r=3Dakt-akun=
+%2Fcreate'
+    'SCRIPT_NAME' =3D> '/accounting/backend/web/index.php'
+ =
+   'PHP_SELF' =3D> '/accounting/backend/web/index.php'
+    'REQUEST_TIME_=
+FLOAT' =3D> 1594621957.781
+    'REQUEST_TIME' =3D> 1594621957
+]

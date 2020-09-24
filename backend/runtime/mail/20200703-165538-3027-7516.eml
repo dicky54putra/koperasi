@@ -1,0 +1,285 @@
+Message-ID: <30963f7cfaaf59d139595de67ba3ad28@localhost>
+Date: Fri, 03 Jul 2020 16:55:38 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-07-03 16:55:38
+[::1][1109][vuoln84c7loe9gobgo1gh752v9][error][yii\db=
+\Exception]
+PDOException: SQLSTATE[42S02]: Base table or view not found: =
+1146
+Table 'accounting.login_kecamatan' doesn't exist in
+D:\xampp\htdoc=
+s\accounting\vendor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0
+=
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+PDOS=
+tatement->execute()
+#1
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\d=
+b\Command.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(id...'=
+)
+#2 D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(425):=
+
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+D:\xampp\htdocs\a=
+ccounting\backend\controllers\SiteController.php(88):
+yii\db\Command->que=
+ryScalar()
+#4 [internal function]:
+backend\controllers\SiteController->=
+actionIndex()
+#5
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\In=
+lineAction.php(57):
+call_user_func_array(Array, Array)
+#6
+D:\xampp\ht=
+docs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base\In=
+lineAction->runWithParams(Array)
+#7
+D:\xampp\htdocs\accounting\vendor\y=
+iisoft\yii2\base\Module.php(528):
+yii\base\Controller->runAction('', Arra=
+y)
+#8
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\web\Application.ph=
+p(103):
+yii\base\Module->runAction('', Array)
+#9
+D:\xampp\htdocs\acco=
+unting\vendor\yiisoft\yii2\base\Application.php(386):
+yii\web\Application=
+->handleRequest(Object(yii\web\Request))
+#10 D:\xampp\htdocs\accounting\b=
+ackend\web\index.php(22):
+yii\base\Application->run()
+#11 {main}
+
+N=
+ext yii\db\Exception: SQLSTATE[42S02]: Base table or view not found:
+1146=
+ Table 'accounting.login_kecamatan' doesn't exist
+The SQL being executed =
+was: SELECT COUNT(id_kec) FROM login_kecamatan
+WHERE id_login =3D '1109' =
+in
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Schema.php:664
+Sta=
+ck trace:
+#0
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.=
+php(1295):
+yii\db\Schema->convertException(Object(PDOException), 'SELECT=
+
+COUNT(id...')
+#1
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\C=
+ommand.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(id...')=
+
+#2 D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(425):=
+
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+D:\xampp\htdocs\a=
+ccounting\backend\controllers\SiteController.php(88):
+yii\db\Command->que=
+ryScalar()
+#4 [internal function]:
+backend\controllers\SiteController->=
+actionIndex()
+#5
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\In=
+lineAction.php(57):
+call_user_func_array(Array, Array)
+#6
+D:\xampp\ht=
+docs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base\In=
+lineAction->runWithParams(Array)
+#7
+D:\xampp\htdocs\accounting\vendor\y=
+iisoft\yii2\base\Module.php(528):
+yii\base\Controller->runAction('', Arra=
+y)
+#8
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\web\Application.ph=
+p(103):
+yii\base\Module->runAction('', Array)
+#9
+D:\xampp\htdocs\acco=
+unting\vendor\yiisoft\yii2\base\Application.php(386):
+yii\web\Application=
+->handleRequest(Object(yii\web\Request))
+#10 D:\xampp\htdocs\accounting\b=
+ackend\web\index.php(22):
+yii\base\Application->run()
+#11 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S02
+    [1] =3D> 1146
+    [2] =3D> Table 'ac=
+counting.login_kecamatan' doesn't exist
+)
+
+2020-07-03 16:55:37
+[::1=
+][1109][vuoln84c7loe9gobgo1gh752v9][info][application] $_GET =3D []
+
+$_=
+POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-fronten=
+d' =3D> '6ql2tci3dh1qm49he716fb2s0f'
+    '_csrf-frontend' =3D>
+'9ed4990=
+7f35021c33b79f65875588e0576abdef9813554459d918f1f339e133fa:2:{i:0;s:14:\"_c=
+srf-frontend\";i:1;s:32:\"1RbyWmxc9_X6pOLhdtkSHVn1r_AJWU8Q\";}'
+    'adva=
+nced-backend' =3D> 'vuoln84c7loe9gobgo1gh752v9'
+    '_csrf-backend' =3D>=
+
+'8e6abc827b6e3a290d60551336d6cae946ffdc63da6dfdc50392fbd33ec7fe45a:2:{i:=
+0;s:13:\"_csrf-backend\";i:1;s:32:\"1d_rsU8iWY7vIOmTUsDmKtnyITiXijpm\";}'=
+
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> =
+'/accounting/backend/web/index.php'
+    'user_role' =3D> [
+        0 =
+=3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0=
+ =3D> 1
+    ]
+    '__id' =3D> 1109
+]
+
+$_SERVER =3D [
+    'MIBDI=
+RS' =3D> 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' =3D> '\\xampp\\mysql=
+\\bin'
+    'OPENSSL_CONF' =3D> 'D:/xampp/apache/bin/openssl.cnf'
+    'P=
+HP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+    'PHPRC' =3D> '\\xampp\\php'=
+
+    'TMP' =3D> '\\xampp\\tmp'
+    'HTTP_HOST' =3D> 'localhost'
+    '=
+HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=
+=3D0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_USER_AGEN=
+T' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KH=
+TML, like Gecko) Chrome/83.0.4103.116
+Safari/537.36'
+    'HTTP_ACCEPT' =
+=3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,=
+image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'H=
+TTP_SEC_FETCH_SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE' =3D> 'na=
+vigate'
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_SEC_FETCH_DEST' =
+=3D> 'document'
+    'HTTP_REFERER' =3D>
+'http://localhost/accounting/ba=
+ckend/web/index.php?r=3Dsite%2Flogin'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gz=
+ip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+   =
+ 'HTTP_COOKIE' =3D> 'advanced-frontend=3D6ql2tci3dh1qm49he716fb2s0f;
+_csr=
+f-frontend=3D9ed49907f35021c33b79f65875588e0576abdef9813554459d918f1f339e13=
+3fa%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%221R=
+byWmxc9_X6pOLhdtkSHVn1r_AJWU8Q%22%3B%7D;
+advanced-backend=3Dvuoln84c7loe9=
+gobgo1gh752v9;
+_csrf-backend=3D8e6abc827b6e3a290d60551336d6cae946ffdc63da=
+6dfdc50392fbd33ec7fe45a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3=
+A1%3Bs%3A32%3A%221d_rsU8iWY7vIOmTUsDmKtnyITiXijpm%22%3B%7D'
+    'PATH' =
+=3D>
+'C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\W=
+INDOWS\\System32\\WindowsPowerShell\\v1.0\\;D:\\xampp\\php;C:\\composer;C:\=
+\Program
+Files\\PuTTY\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Users\\pengu=
+inBulat\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\penguinBulat\\Ap=
+pData\\Local\\atom\\bin;C:\\Users\\penguinBulat\\AppData\\Roaming\\Composer=
+\\vendor\\bin;C:\\Users\\penguinBulat\\AppData\\Local\\Microsoft\\WindowsAp=
+ps;'
+    'SystemRoot' =3D> 'C:\\WINDOWS'
+    'COMSPEC' =3D> 'C:\\WINDOW=
+S\\system32\\cmd.exe'
+    'PATHEXT' =3D>
+'.COM;.EXE;.BAT;.CMD;.VBS;.VBE=
+;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' =3D> 'C:\\WINDOWS'
+    'SERVER_S=
+IGNATURE' =3D> '<address>Apache/2.4.34 (Win32)
+OpenSSL/1.1.0h PHP/7.2.8 S=
+erver at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' =3D> 'Apac=
+he/2.4.34 (Win32) OpenSSL/1.1.0h
+PHP/7.2.8'
+    'SERVER_NAME' =3D> 'loc=
+alhost'
+    'SERVER_ADDR' =3D> '::1'
+    'SERVER_PORT' =3D> '80'
+    =
+'REMOTE_ADDR' =3D> '::1'
+    'DOCUMENT_ROOT' =3D> 'D:/xampp/htdocs'
+   =
+ 'REQUEST_SCHEME' =3D> 'http'
+    'CONTEXT_PREFIX' =3D> ''
+    'CONTEXT=
+_DOCUMENT_ROOT' =3D> 'D:/xampp/htdocs'
+    'SERVER_ADMIN' =3D> 'postmaste=
+r@localhost'
+    'SCRIPT_FILENAME' =3D>
+'D:/xampp/htdocs/accounting/bac=
+kend/web/index.php'
+    'REMOTE_PORT' =3D> '53263'
+    'GATEWAY_INTERFA=
+CE' =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_M=
+ETHOD' =3D> 'GET'
+    'QUERY_STRING' =3D> ''
+    'REQUEST_URI' =3D> '/a=
+ccounting/backend/web/index.php'
+    'SCRIPT_NAME' =3D> '/accounting/back=
+end/web/index.php'
+    'PHP_SELF' =3D> '/accounting/backend/web/index.php=
+'
+    'REQUEST_TIME_FLOAT' =3D> 1593770137.959
+    'REQUEST_TIME' =3D> =
+1593770137
+]

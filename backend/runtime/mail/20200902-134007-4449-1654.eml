@@ -1,0 +1,390 @@
+Message-ID: <dbf9eefd1872e069d04a1143abc10026@localhost>
+Date: Wed, 02 Sep 2020 13:40:07 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-09-02 13:40:07
+[::1][3][ppkpsfkg2r2c3dr95j3j552t43][error][yii\db\Ex=
+ception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown co=
+lumn
+'akt_saldo_awal_akun_detail.id_akun' in 'on clause' in
+C:\xampp\ht=
+docs\accounting\vendor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0=
+
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+P=
+DOStatement->execute()
+#1
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii=
+2\db\Command.php(1158):
+yii\db\Command->internalExecute('SELECT * FROM `.=
+..')
+#2 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(413=
+):
+yii\db\Command->queryInternal('fetch', NULL)
+#3 C:\xampp\htdocs\acco=
+unting\vendor\yiisoft\yii2\db\Query.php(274):
+yii\db\Command->queryOne()=
+
+#4
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\ActiveQuery.php(3=
+04):
+yii\db\Query->one(NULL)
+#5
+C:\xampp\htdocs\accounting\backend\vi=
+ews\akt-laporan-akuntansi\laporan_arus_kas.php(105):
+yii\db\ActiveQuery->=
+one()
+#6 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(348=
+):
+require('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\accounting\vendor=
+\yiisoft\yii2\base\View.php(257):
+yii\base\View->renderPhpFile('C:\\xampp=
+\\htdocs...', '[<span
+class=3D"s...')
+#8 C:\xampp\htdocs\accounting\ven=
+dor\yiisoft\yii2\base\View.php(156):
+yii\base\View->renderFile('C:\\xampp=
+\\htdocs...', Array,
+Object(backend\controllers\AktLaporanAkuntansiContro=
+ller))
+#9
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Controlle=
+r.php(384):
+yii\base\View->render('laporan_arus_ka...', Array,
+Object(b=
+ackend\controllers\AktLaporanAkuntansiController))
+#10
+C:\xampp\htdocs\=
+accounting\backend\controllers\AktLaporanAkuntansiController.php(260):
+yi=
+i\base\Controller->render('laporan_arus_ka...', Array)
+#11 [internal func=
+tion]:
+backend\controllers\AktLaporanAkuntansiController->actionLaporanAr=
+usKas()
+#12
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\InlineA=
+ction.php(57):
+call_user_func_array(Array, Array)
+#13
+C:\xampp\htdocs=
+\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base\Inline=
+Action->runWithParams(Array)
+#14
+C:\xampp\htdocs\accounting\vendor\yiis=
+oft\yii2\base\Module.php(528):
+yii\base\Controller->runAction('laporan-ar=
+us-ka...', Array)
+#15
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\we=
+b\Application.php(103):
+yii\base\Module->runAction('akt-laporan-aku...', =
+Array)
+#16
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Applicat=
+ion.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))=
+
+#17 C:\xampp\htdocs\accounting\backend\web\index.php(22):
+yii\base\App=
+lication->run()
+#18 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: C=
+olumn not found: 1054 Unknown
+column 'akt_saldo_awal_akun_detail.id_akun'=
+ in 'on clause'
+The SQL being executed was: SELECT * FROM `akt_saldo_awal=
+_akun` INNER
+JOIN `akt_akun` ON akt_akun.id_akun =3D
+akt_saldo_awal_aku=
+n_detail.id_akun WHERE `akt_akun`.`nama_akun` =3D
+'kas' LIMIT 1 in
+C:\x=
+ampp\htdocs\accounting\vendor\yiisoft\yii2\db\Schema.php:664
+Stack trace:=
+
+#0
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1295)=
+:
+yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM
+=
+`...')
+#1
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php=
+(1158):
+yii\db\Command->internalExecute('SELECT * FROM `...')
+#2 C:\xam=
+pp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(413):
+yii\db\Comm=
+and->queryInternal('fetch', NULL)
+#3 C:\xampp\htdocs\accounting\vendor\yi=
+isoft\yii2\db\Query.php(274):
+yii\db\Command->queryOne()
+#4
+C:\xampp\=
+htdocs\accounting\vendor\yiisoft\yii2\db\ActiveQuery.php(304):
+yii\db\Que=
+ry->one(NULL)
+#5
+C:\xampp\htdocs\accounting\backend\views\akt-laporan-a=
+kuntansi\laporan_arus_kas.php(105):
+yii\db\ActiveQuery->one()
+#6 C:\xam=
+pp\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(348):
+require('C:\=
+\xampp\\htdocs...')
+#7 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\bas=
+e\View.php(257):
+yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', '[<=
+span
+class=3D"s...')
+#8 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\=
+base\View.php(156):
+yii\base\View->renderFile('C:\\xampp\\htdocs...', Arr=
+ay,
+Object(backend\controllers\AktLaporanAkuntansiController))
+#9
+C:\=
+xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Controller.php(384):
+yii=
+\base\View->render('laporan_arus_ka...', Array,
+Object(backend\controller=
+s\AktLaporanAkuntansiController))
+#10
+C:\xampp\htdocs\accounting\backen=
+d\controllers\AktLaporanAkuntansiController.php(260):
+yii\base\Controller=
+->render('laporan_arus_ka...', Array)
+#11 [internal function]:
+backend\=
+controllers\AktLaporanAkuntansiController->actionLaporanArusKas()
+#12
+C=
+:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\InlineAction.php(57):
+=
+call_user_func_array(Array, Array)
+#13
+C:\xampp\htdocs\accounting\vendo=
+r\yiisoft\yii2\base\Controller.php(157):
+yii\base\InlineAction->runWithPa=
+rams(Array)
+#14
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Mod=
+ule.php(528):
+yii\base\Controller->runAction('laporan-arus-ka...', Array)=
+
+#15
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\web\Application.php=
+(103):
+yii\base\Module->runAction('akt-laporan-aku...', Array)
+#16
+C:=
+\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Application.php(386):
+y=
+ii\web\Application->handleRequest(Object(yii\web\Request))
+#17 C:\xampp\h=
+tdocs\accounting\backend\web\index.php(22):
+yii\base\Application->run()=
+
+#18 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown c=
+olumn 'akt_saldo_awal_akun_detail.id_akun' in 'on
+clause'
+)
+
+2020-0=
+9-02 13:40:07
+[::1][3][ppkpsfkg2r2c3dr95j3j552t43][info][application] $_G=
+ET =3D [
+    'r' =3D> 'akt-laporan-akuntansi/laporan-arus-kas'
+    1 =
+=3D> [
+        'class' =3D> 'form-inline'
+    ]
+]
+
+$_POST =3D [=
+
+    '_csrf-backend' =3D>
+'4t81dvdqmsR0Ack3bvWc3ih7heEZggTGmyOwyvYflWSW=
+vnEkswzCpzZX8XIrs9i2fhTPq0_WU_b1c_ySv1fUKg=3D=3D'
+    'tanggal_awal' =3D>=
+ '2020-08-02'
+    'tanggal_akhir' =3D> '2020-09-02'
+]
+
+$_FILES =3D =
+[]
+
+$_COOKIE =3D [
+    '_ga' =3D> 'GA1.1.1348291765.1597241895'
+   =
+ 'advanced-backend' =3D> 'ppkpsfkg2r2c3dr95j3j552t43'
+    '_csrf-backend'=
+ =3D>
+'da34c199248ba2f2fe3dff511cefd4bcc475739996e7d4696e416e1126c8c23fa:=
+2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"taDRDfXcBV8EEFDhVoJJVTW0nPLXIHAN\"=
+;}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    'user_role' =3D>=
+ [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D=
+> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_SERVER =3D [=
+
+    'MIBDIRS' =3D> 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' =3D> '\=
+\xampp\\mysql\\bin'
+    'OPENSSL_CONF' =3D> 'C:/xampp/apache/bin/openssl.=
+cnf'
+    'PHP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+    'PHPRC' =3D> '\=
+\xampp\\php'
+    'TMP' =3D> '\\xampp\\tmp'
+    'HTTP_HOST' =3D> 'localh=
+ost'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'CONTENT_LENGTH' =3D> =
+'155'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_UPGRADE_INS=
+ECURE_REQUESTS' =3D> '1'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows=
+ NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.=
+4147.135
+Safari/537.36'
+    'HTTP_ORIGIN' =3D> 'http://localhost'
+   =
+ 'CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT=
+' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/web=
+p,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    =
+'HTTP_SEC_FETCH_SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETCH_MODE' =3D> '=
+navigate'
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_SEC_FETCH_DEST'=
+ =3D> 'document'
+    'HTTP_REFERER' =3D>
+'http://localhost/accounting/b=
+ackend/web/index.php?r=3Dakt-laporan-akuntansi%2Flaporan-arus-kas'
+    'H=
+TTP_ACCEPT_ENCODING' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' =
+=3D> 'en-US,en;q=3D0.9'
+    'HTTP_COOKIE' =3D> '_ga=3DGA1.1.1348291765.15=
+97241895;
+advanced-backend=3Dppkpsfkg2r2c3dr95j3j552t43;
+_csrf-backend=
+=3Dda34c199248ba2f2fe3dff511cefd4bcc475739996e7d4696e416e1126c8c23fa%3A2%3A=
+%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22taDRDfXcBV8EE=
+FDhVoJJVTW0nPLXIHAN%22%3B%7D'
+    'PATH' =3D>
+'C:\\WINDOWS\\system32;C:=
+\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerSh=
+ell\\v1.0\\;C:\\xampp\\php;C:\\composer;C:\\Program
+Files\\Git\\cmd;C:\\W=
+INDOWS\\System32\\OpenSSH\\;C:\\Program
+Files\\nodejs\\;C:\\ProgramData\\=
+chocolatey\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Android\\Sdk\\p=
+latform-tools;C:\\Program
+Files (x86)\\Yarn\\bin\\;C:\\Users\\Dicky
+Sap=
+utra\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Dicky
+Saputra\\Ap=
+pData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\=
+Local\\Programs\\Microsoft VS
+Code\\bin;C:\\Users\\Dicky
+Saputra\\AppDa=
+ta\\Local\\GitHubDesktop\\bin;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\M=
+icrosoft\\WindowsApps;C:\\Users\\Dicky
+Saputra\\AppData\\Roaming\\npm;C:\=
+\Users\\Dicky
+Saputra\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\U=
+sers\\Dicky
+Saputra\\AppData\\Local\\Yarn\\bin'
+    'SystemRoot' =3D> '=
+C:\\WINDOWS'
+    'COMSPEC' =3D> 'C:\\WINDOWS\\system32\\cmd.exe'
+    'P=
+ATHEXT' =3D>
+'.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+  =
+  'WINDIR' =3D> 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' =3D> '<address>Apach=
+e/2.4.38 (Win64)
+OpenSSL/1.1.1b PHP/7.3.3 Server at localhost Port 80</ad=
+dress>
+'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.38 (Win64) OpenSSL/1.1.=
+1b
+PHP/7.3.3'
+    'SERVER_NAME' =3D> 'localhost'
+    'SERVER_ADDR' =
+=3D> '::1'
+    'SERVER_PORT' =3D> '80'
+    'REMOTE_ADDR' =3D> '::1'
+ =
+   'DOCUMENT_ROOT' =3D> 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' =3D> 'http=
+'
+    'CONTEXT_PREFIX' =3D> ''
+    'CONTEXT_DOCUMENT_ROOT' =3D> 'C:/xam=
+pp/htdocs'
+    'SERVER_ADMIN' =3D> 'postmaster@localhost'
+    'SCRIPT_F=
+ILENAME' =3D>
+'C:/xampp/htdocs/accounting/backend/web/index.php'
+    'R=
+EMOTE_PORT' =3D> '60424'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'SE=
+RVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHOD' =3D> 'POST'
+    'QU=
+ERY_STRING' =3D>
+'r=3Dakt-laporan-akuntansi%2Flaporan-arus-kas&1%5Bclass%=
+5D=3Dform-inline'
+    'REQUEST_URI' =3D>
+'/accounting/backend/web/index=
+.php?r=3Dakt-laporan-akuntansi%2Flaporan-arus-kas&1%5Bclass%5D=3Dform-inlin=
+e'
+    'SCRIPT_NAME' =3D> '/accounting/backend/web/index.php'
+    'PHP_=
+SELF' =3D> '/accounting/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =
+=3D> 1599028807.104
+    'REQUEST_TIME' =3D> 1599028807
+]

@@ -1,0 +1,333 @@
+Message-ID: <9333ab17ba5097c5605934faaf8385d8@sijaksa.com>
+Date: Sun, 09 Feb 2020 20:45:41 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-09 20:45:41
+[209.58.180.2][3][ahh3deflp7506ib3cavnq4vuq0][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access v=
+iolation: 1064
+You have an error in your SQL syntax; check the manual tha=
+t
+corresponds to your MariaDB server version for the right syntax to use=
+
+near 'LEFT JOIN ref_output ON ref_output.id_output =3D
+daftar_pengangg=
+aran_paket_kegiata' at line 2 in
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1 /home=
+/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Com=
+mand->internalExecute('\n              ...')
+#2 /home/sijaksa/public_html=
+/vendor/yiisoft/yii2/db/Command.php(386):
+yii\db\Command->queryInternal('=
+')
+#3
+/home/sijaksa/public_html/backend/views/daftar-penganggaran-bidan=
+g-kegiatan/view.php(223):
+yii\db\Command->query()
+#4 /home/sijaksa/publ=
+ic_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p.=
+..')
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):=
+
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s.=
+..')
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):=
+
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(backend\=
+controllers\DaftarPenganggaranBidangKegiatanController))
+#7
+/home/sijak=
+sa/public_html/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\base\Vie=
+w->render('view', Array,
+Object(backend\controllers\DaftarPenganggaranBid=
+angKegiatanController))
+#8
+/home/sijaksa/public_html/backend/controller=
+s/DaftarPenganggaranBidangKegiatanController.php(56):
+yii\base\Controller=
+->render('view', Array)
+#9 [internal function]:
+backend\controllers\Daf=
+tarPenganggaranBidangKegiatanController->actionView('1')
+#10
+/home/sija=
+ksa/public_html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_=
+func_array(Array, Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/y=
+ii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)=
+
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528)=
+:
+yii\base\Controller->runAction('view', Array)
+#13
+/home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->r=
+unAction('daftar-pengangg...', Array)
+#14
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleRe=
+quest(Object(yii\web\Request))
+#15 /home/sijaksa/public_html/backend/web/=
+index.php(22):
+yii\base\Application->run()
+#16 {main}
+
+Next yii\db\=
+Exception: SQLSTATE[42000]: Syntax error or access
+violation: 1064 You ha=
+ve an error in your SQL syntax; check the manual
+that corresponds to your=
+ MariaDB server version for the right syntax
+to use near 'LEFT JOIN ref_o=
+utput ON ref_output.id_output =3D
+daftar_penganggaran_paket_kegiata' at l=
+ine 2
+The SQL being executed was:=20
+                SELECT *
+         =
+       LEFT JOIN ref_output ON ref_output.id_output =3D
+daftar_penganggar=
+an_paket_kegiatan.id_output
+                FROM daftar_penganggaran_pake=
+t_kegiatan
+                 in
+/home/sijaksa/public_html/vendor/yiisoft=
+/yii2/db/Schema.php:664
+Stack trace:
+#0 /home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertException(Obje=
+ct(PDOException), '\n            =20
+...')
+#1 /home/sijaksa/public_html/v=
+endor/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute(=
+'\n              ...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/d=
+b/Command.php(386):
+yii\db\Command->queryInternal('')
+#3
+/home/sijaks=
+a/public_html/backend/views/daftar-penganggaran-bidang-kegiatan/view.php(22=
+3):
+yii\db\Command->query()
+#4 /home/sijaksa/public_html/vendor/yiisoft=
+/yii2/base/View.php(348):
+require('/home/sijaksa/p...')
+#5 /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->rend=
+erPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#6 /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->rend=
+erFile('/home/sijaksa/p...', Array,
+Object(backend\controllers\DaftarPeng=
+anggaranBidangKegiatanController))
+#7
+/home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('view', Arra=
+y,
+Object(backend\controllers\DaftarPenganggaranBidangKegiatanController)=
+)
+#8
+/home/sijaksa/public_html/backend/controllers/DaftarPenganggaranBi=
+dangKegiatanController.php(56):
+yii\base\Controller->render('view', Array=
+)
+#9 [internal function]:
+backend\controllers\DaftarPenganggaranBidangK=
+egiatanController->actionView('1')
+#10
+/home/sijaksa/public_html/vendor=
+/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Arra=
+y)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.ph=
+p(157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/home/sijaksa=
+/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controlle=
+r->runAction('view', Array)
+#13
+/home/sijaksa/public_html/vendor/yiisof=
+t/yii2/web/Application.php(103):
+yii\base\Module->runAction('daftar-penga=
+ngg...', Array)
+#14
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/=
+Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web\R=
+equest))
+#15 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\b=
+ase\Application->run()
+#16 {main}
+Additional Information:
+Array
+(=
+
+    [0] =3D> 42000
+    [1] =3D> 1064
+    [2] =3D> You have an error =
+in your SQL syntax; check the manual that
+corresponds to your MariaDB ser=
+ver version for the right syntax to use
+near 'LEFT JOIN ref_output ON ref=
+_output.id_output =3D
+daftar_penganggaran_paket_kegiata' at line 2
+)
+=
+
+2020-02-09 20:45:41
+[209.58.180.2][3][ahh3deflp7506ib3cavnq4vuq0][info=
+][application] $_GET
+=3D [
+    'r' =3D> 'daftar-penganggaran-bidang-keg=
+iatan/view'
+    'id' =3D> '1'
+]
+
+$_POST =3D []
+
+$_FILES =3D []=
+
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'ahh3deflp7506ib3cavnq4v=
+uq0'
+    '_csrf-backend' =3D>
+'7f845b858e5142a63e0c404a9b97e3668528a424=
+19d00f8340fa05fb19b572b9a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"Q_NlEgqb=
+TpFjpRDGbDcU90vyDiGEj43b\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D>=
+ []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_role' =3D=
+> [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =
+=3D> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_SERVER =3D=
+ [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =
+=3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+=
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/u=
+sr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_=
+NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/backend/we=
+b/index.php?r=3Ddaftar-penganggaran-bidang-kegiatan/view&id=3D1'
+    'QUE=
+RY_STRING' =3D>
+'r=3Ddaftar-penganggaran-bidang-kegiatan/view&id=3D1'
+ =
+   'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+  =
+  'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '42296'
+   =
+ 'SCRIPT_FILENAME' =3D>
+'/home/sijaksa/public_html/backend/web/index.php'=
+
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROO=
+T' =3D> '/home/sijaksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'R=
+EQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public=
+_html'
+    'REMOTE_ADDR' =3D> '209.58.180.2'
+    'SERVER_PORT' =3D> '80=
+'
+    'SERVER_ADDR' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijaksa=
+.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE'=
+ =3D> ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CONTROL' =
+=3D> 'max-age=3D0'
+    'HTTP_X_FORWARDED_FOR' =3D> '182.1.100.179'
+    =
+'HTTP_VIA' =3D> '1.1 singapore.rastavarian.com (squid/3.5.23)'
+    'HTTP_=
+HOST' =3D> 'sijaksa.com'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dahh3d=
+eflp7506ib3cavnq4vuq0;
+_csrf-backend=3D7f845b858e5142a63e0c404a9b97e36685=
+28a42419d00f8340fa05fb19b572b9a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%=
+22%3Bi%3A1%3Bs%3A32%3A%22Q_NlEgqbTpFjpRDGbDcU90vyDiGEj43b%22%3B%7D'
+    '=
+HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+  =
+  'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT' =3D>
+'t=
+ext/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apn=
+g,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER_=
+AGENT' =3D> 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)
+AppleWebKit/537.36 =
+(KHTML, like Gecko) Chrome/80.0.3987.87
+Safari/537.36'
+    'HTTP_UPGRAD=
+E_INSECURE_REQUESTS' =3D> '1'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/b=
+ackend/web/index.php'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+  =
+  'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.ph=
+p'
+    'REQUEST_TIME_FLOAT' =3D> 1581255941.0627
+    'REQUEST_TIME' =3D=
+> 1581255941
+]

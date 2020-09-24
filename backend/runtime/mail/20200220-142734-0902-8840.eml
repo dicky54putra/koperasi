@@ -1,0 +1,339 @@
+Message-ID: <d0f7bde5efe3ba005cd35f3fd328628c@sijaksa.com>
+Date: Thu, 20 Feb 2020 14:27:34 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-20 14:27:34
+[89.39.104.238][14][0sdfudptf460cc4i221j00gbgj][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42000]: Syntax error or access=
+ violation: 1064
+You have an error in your SQL syntax; check the manual t=
+hat
+corresponds to your MariaDB server version for the right syntax to us=
+e
+near 'LEFT JOIN data_provinsi ON data_provinsi.id_prov =3D
+data_kabup=
+aten.id_prov
+    WH' at line 2 in
+/home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/public_html/=
+vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+#1 /h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yii\db\=
+Command->internalExecute('\n    SELECT nam...')
+#2 /home/sijaksa/public_h=
+tml/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command->queryInterna=
+l('fetchColumn', 0)
+#3
+/home/sijaksa/public_html/backend/views/daftar-k=
+egiatan-rpjm/cetak.php(60):
+yii\db\Command->queryScalar()
+#4 /home/sija=
+ksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/si=
+jaksa/p...')
+#5 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.p=
+hp(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+cla=
+ss=3D"s...')
+#6 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.p=
+hp(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Object(=
+backend\controllers\DaftarKegiatanRpjmController))
+#7
+/home/sijaksa/pub=
+lic_html/vendor/yiisoft/yii2/base/Controller.php(415):
+yii\base\View->ren=
+der('cetak', Array,
+Object(backend\controllers\DaftarKegiatanRpjmControll=
+er))
+#8
+/home/sijaksa/public_html/backend/controllers/DaftarKegiatanRpj=
+mController.php(143):
+yii\base\Controller->renderPartial('cetak', Array)=
+
+#9 [internal function]:
+backend\controllers\DaftarKegiatanRpjmControll=
+er->actionCetak('13')
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yii2=
+/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#11
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii=
+\base\InlineAction->runWithParams(Array)
+#12
+/home/sijaksa/public_html/=
+vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction(=
+'cetak', Array)
+#13
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/A=
+pplication.php(103):
+yii\base\Module->runAction('daftar-kegiatan...', Arr=
+ay)
+#14
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.=
+php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#=
+15 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Applicat=
+ion->run()
+#16 {main}
+
+Next yii\db\Exception: SQLSTATE[42000]: Syntax=
+ error or access
+violation: 1064 You have an error in your SQL syntax; ch=
+eck the manual
+that corresponds to your MariaDB server version for the ri=
+ght syntax
+to use near 'LEFT JOIN data_provinsi ON data_provinsi.id_prov =
+=3D
+data_kabupaten.id_prov
+    WH' at line 2
+The SQL being executed w=
+as:=20
+    SELECT nama_kab.data_kabupaten, id_prov.data_kabupaten,
+nama_p=
+rov.data_provinsi=20
+    LEFT JOIN data_provinsi ON data_provinsi.id_prov =
+=3D
+data_kabupaten.id_prov
+    WHERE data_kabupaten.id_kab =3D '3'
+  =
+   in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+S=
+tack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.p=
+hp(1295):
+yii\db\Schema->convertException(Object(PDOException), '\n    SE=
+LECT
+nam...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Comma=
+nd.php(1158):
+yii\db\Command->internalExecute('\n    SELECT nam...')
+#2=
+ /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\d=
+b\Command->queryInternal('fetchColumn', 0)
+#3
+/home/sijaksa/public_html=
+/backend/views/daftar-kegiatan-rpjm/cetak.php(60):
+yii\db\Command->queryS=
+calar()
+#4 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(34=
+8):
+require('/home/sijaksa/p...')
+#5 /home/sijaksa/public_html/vendor/y=
+iisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile('/home/sijak=
+sa/p...', '[<span
+class=3D"s...')
+#6 /home/sijaksa/public_html/vendor/y=
+iisoft/yii2/base/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/=
+p...', Array,
+Object(backend\controllers\DaftarKegiatanRpjmController))=
+
+#7
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(4=
+15):
+yii\base\View->render('cetak', Array,
+Object(backend\controllers\D=
+aftarKegiatanRpjmController))
+#8
+/home/sijaksa/public_html/backend/cont=
+rollers/DaftarKegiatanRpjmController.php(143):
+yii\base\Controller->rende=
+rPartial('cetak', Array)
+#9 [internal function]:
+backend\controllers\Da=
+ftarKegiatanRpjmController->actionCetak('13')
+#10
+/home/sijaksa/public_=
+html/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(=
+Array, Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Co=
+ntroller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#12
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\bas=
+e\Controller->runAction('cetak', Array)
+#13
+/home/sijaksa/public_html/v=
+endor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('=
+daftar-kegiatan...', Array)
+#14
+/home/sijaksa/public_html/vendor/yiisof=
+t/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Obje=
+ct(yii\web\Request))
+#15 /home/sijaksa/public_html/backend/web/index.php(=
+22):
+yii\base\Application->run()
+#16 {main}
+Additional Information:=
+
+Array
+(
+    [0] =3D> 42000
+    [1] =3D> 1064
+    [2] =3D> You ha=
+ve an error in your SQL syntax; check the manual that
+corresponds to your=
+ MariaDB server version for the right syntax to use
+near 'LEFT JOIN data_=
+provinsi ON data_provinsi.id_prov =3D
+data_kabupaten.id_prov
+    WH' at=
+ line 2
+)
+
+2020-02-20 14:27:34
+[89.39.104.238][14][0sdfudptf460cc4i=
+221j00gbgj][info][application]
+$_GET =3D [
+    'r' =3D> 'daftar-kegiata=
+n-rpjm/cetak'
+    'id' =3D> '13'
+]
+
+$_POST =3D []
+
+$_FILES =3D =
+[]
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> '0sdfudptf460cc4i221j0=
+0gbgj'
+    '_csrf-backend' =3D>
+'dc657e44a1e3c11398d95e69b5bc60d3b1fe10=
+0cd0313632cba5b45b92b04487a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"tqgEfr=
+iL_fc_hp5l3OsRDpKnBwtmqiQc\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =
+=3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_role'=
+ =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+       =
+ 2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    '=
+user_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> 3
+        2 =3D>=
+ 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 14
+]
+
+$_SERVER =3D [=
+
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D>=
+ '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    =
+'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/s=
+bin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRIPT_NAME=
+' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/backend/web/in=
+dex.php?r=3Ddaftar-kegiatan-rpjm%2Fcetak&id=3D13'
+    'QUERY_STRING' =3D>=
+ 'r=3Ddaftar-kegiatan-rpjm%2Fcetak&id=3D13'
+    'REQUEST_METHOD' =3D> 'GE=
+T'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> '=
+CGI/1.1'
+    'REMOTE_PORT' =3D> '49770'
+    'SCRIPT_FILENAME' =3D>
+'/=
+home/sijaksa/public_html/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '=
+[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/publi=
+c_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'=
+
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REMOTE_ADDR'=
+ =3D> '89.39.104.238'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D=
+> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTW=
+ARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_CONN=
+ECTION' =3D> 'close'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'H=
+TTP_HOST' =3D> 'sijaksa.com'
+    'HTTP_IF_MODIFIED_SINCE' =3D> 'Thu, 20 F=
+eb 2020 07:24:00 GMT'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D0sdfudpt=
+f460cc4i221j00gbgj;
+_csrf-backend=3Ddc657e44a1e3c11398d95e69b5bc60d3b1fe1=
+00cd0313632cba5b45b92b04487a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%=
+3Bi%3A1%3Bs%3A32%3A%22tqgEfriL_fc_hp5l3OsRDpKnBwtmqiQc%22%3B%7D'
+    'HTT=
+P_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    '=
+HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT' =3D>
+'text=
+/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*=
+/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER_AGE=
+NT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (K=
+HTML, like Gecko) Chrome/79.0.3945.130
+Safari/537.36'
+    'SCRIPT_URI' =
+=3D> 'http://sijaksa.com/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/b=
+ackend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =
+=3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1582183654.05=
+82
+    'REQUEST_TIME' =3D> 1582183654
+]

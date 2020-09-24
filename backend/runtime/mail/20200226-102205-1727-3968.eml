@@ -1,0 +1,307 @@
+Message-ID: <fdba5f49d6fbfd2d579aa3c2e55ddf31@sijaksa.com>
+Date: Wed, 26 Feb 2020 10:22:05 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-26 10:22:05
+[212.8.249.177][14][9vule4i1sq6nl5k0nomq3mt7fa][error=
+][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity con=
+straint violation: 1048
+Column 'id_ref_perdes_apbdes' cannot be null in=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php:1290
+Stac=
+k trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(=
+1290):
+PDOStatement->execute()
+#1 /home/sijaksa/public_html/vendor/yiis=
+oft/yii2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSERT IN=
+TO `re...')
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.ph=
+p(433):
+yii\db\Command->execute()
+#3
+/home/sijaksa/public_html/vendor=
+/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->insert('ref_perdes=
+_apbd...', Array)
+#4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/A=
+ctiveRecord.php(566):
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+/h=
+ome/sijaksa/public_html/vendor/yiisoft/yii2/db/BaseActiveRecord.php(678):=
+
+yii\db\ActiveRecord->insert(true, NULL)
+#6
+/home/sijaksa/public_html=
+/backend/controllers/RefPerdesApbdesController.php(69):
+yii\db\BaseActive=
+Record->save()
+#7 [internal function]:
+backend\controllers\RefPerdesApb=
+desController->actionCreate()
+#8
+/home/sijaksa/public_html/vendor/yiiso=
+ft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#=
+9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):=
+
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runA=
+ction('create', Array)
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii=
+2/web/Application.php(103):
+yii\base\Module->runAction('ref-perdes-apbd..=
+.', Array)
+#12
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Appli=
+cation.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Reques=
+t))
+#13 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\A=
+pplication->run()
+#14 {main}
+
+Next yii\db\IntegrityException: SQLSTAT=
+E[23000]: Integrity constraint
+violation: 1048 Column 'id_ref_perdes_apbd=
+es' cannot be null
+The SQL being executed was: INSERT INTO `ref_perdes_ap=
+bdes`
+(`id_ref_perdes_apbdes`, `kode_ref_perdes_apbdes`, `no_urut`,
+`kl=
+ausul`, `keterangan`, `id_desa`) VALUES (NULL, 1, 22, 2, 'wwww',
+755) in=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:664
+Stack =
+trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(12=
+95):
+yii\db\Schema->convertException(Object(PDOException), 'INSERT INTO=
+
+`re...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.p=
+hp(1091):
+yii\db\Command->internalExecute('INSERT INTO `re...')
+#2 /hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php(433):
+yii\db\Comm=
+and->execute()
+#3
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Acti=
+veRecord.php(600):
+yii\db\Schema->insert('ref_perdes_apbd...', Array)
+#=
+4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveRecord.php(566):=
+
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+/home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/db/BaseActiveRecord.php(678):
+yii\db\ActiveRecord-=
+>insert(true, NULL)
+#6
+/home/sijaksa/public_html/backend/controllers/Re=
+fPerdesApbdesController.php(69):
+yii\db\BaseActiveRecord->save()
+#7 [in=
+ternal function]:
+backend\controllers\RefPerdesApbdesController->actionCr=
+eate()
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/InlineActi=
+on.php(57):
+call_user_func_array(Array, Array)
+#9
+/home/sijaksa/publi=
+c_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineActio=
+n->runWithParams(Array)
+#10
+/home/sijaksa/public_html/vendor/yiisoft/yi=
+i2/base/Module.php(528):
+yii\base\Controller->runAction('create', Array)=
+
+#11
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Application.php(=
+103):
+yii\base\Module->runAction('ref-perdes-apbd...', Array)
+#12
+/ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):
+yii=
+\web\Application->handleRequest(Object(yii\web\Request))
+#13 /home/sijaks=
+a/public_html/backend/web/index.php(22):
+yii\base\Application->run()
+#1=
+4 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 23000
+    [=
+1] =3D> 1048
+    [2] =3D> Column 'id_ref_perdes_apbdes' cannot be null
+=
+)
+
+2020-02-26 10:22:04
+[212.8.249.177][14][9vule4i1sq6nl5k0nomq3mt7fa=
+][info][application]
+$_GET =3D [
+    'r' =3D> 'ref-perdes-apbdes/create=
+'
+]
+
+$_POST =3D [
+    '_csrf-backend' =3D>
+'eFGounSLNG3A3kJKyqa0S=
+q70VbU3lqGnY6NvBEJa7wgCAOGXLd9gGaekcyeGzOclwbsE3WD1luNS1j13BBKMXw=3D=3D'
+=
+    'RefPerdesApbdes' =3D> [
+        'id_ref_perdes_apbdes' =3D> ''
+   =
+     'kode_ref_perdes_apbdes' =3D> '1'
+        'no_urut' =3D> '22'
+    =
+    'klausul' =3D> '2'
+        'keterangan' =3D> 'wwww'
+        'id_des=
+a' =3D> '755'
+    ]
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'ad=
+vanced-backend' =3D> '9vule4i1sq6nl5k0nomq3mt7fa'
+    '_csrf-backend' =3D=
+>
+'4efc6204b0f8fc1db1a24dee331c8dc7cf8410fbf553b30ede3185b1a1104ea4a:2:{i=
+:0;s:13:\"_csrf-backend\";i:1;s:32:\"zQI-YTTtgz1mLjSooOQhWc7D1uRsFHcW\";}'=
+
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '__returnUrl' =3D> =
+'/backend/web/index.php'
+    'user_role' =3D> [
+        0 =3D> 'KABUPAT=
+EN'
+        1 =3D> 'KECAMATAN'
+        2 =3D> 'KELURAHAN'
+        3 =
+=3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0=
+ =3D> 2
+        1 =3D> 3
+        2 =3D> 4
+        3 =3D> 1
+    ]
+=
+    '__id' =3D> 14
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/sijaks=
+a/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home/sijaksa/fcgi-bin'
+    '=
+PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D=
+>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'S=
+CRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/back=
+end/web/index.php?r=3Dref-perdes-apbdes%2Fcreate'
+    'QUERY_STRING' =3D>=
+ 'r=3Dref-perdes-apbdes%2Fcreate'
+    'REQUEST_METHOD' =3D> 'POST'
+    =
+'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'=
+
+    'REMOTE_PORT' =3D> '35472'
+    'SCRIPT_FILENAME' =3D>
+'/home/sij=
+aksa/public_html/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no addr=
+ess given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'=
+
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'D=
+OCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REMOTE_ADDR' =3D> '21=
+2.8.249.177'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '209.58=
+.180.2'
+    'SERVER_NAME' =3D> 'sijaksa.com'
+    'SERVER_SOFTWARE' =3D>=
+ 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_CONNECTION' =
+=3D> 'close'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_HOST=
+' =3D> 'sijaksa.com'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3D9vule4i1s=
+q6nl5k0nomq3mt7fa;
+_csrf-backend=3D4efc6204b0f8fc1db1a24dee331c8dc7cf8410=
+fbf553b30ede3185b1a1104ea4a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3=
+Bi%3A1%3Bs%3A32%3A%22zQI-YTTtgz1mLjSooOQhWc7D1uRsFHcW%22%3B%7D'
+    'HTTP=
+_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D0.7'
+    'H=
+TTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT' =3D>
+'text/=
+html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/=
+*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'HTTP_USER_AGEN=
+T' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KH=
+TML, like Gecko) Chrome/79.0.3945.130
+Safari/537.36'
+    'CONTENT_TYPE'=
+ =3D> 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' =3D> '328'=
+
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/web/index.php'
+    '=
+SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER=
+'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT'=
+ =3D> 1582687324.9878
+    'REQUEST_TIME' =3D> 1582687324
+]

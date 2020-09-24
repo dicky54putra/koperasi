@@ -1,0 +1,460 @@
+Message-ID: <23306eda78f7b6b2efe5883cd28cb6a2@cvajm.com>
+Date: Fri, 19 Jul 2019 15:33:46 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-07-19 15:33:46
+[209.58.180.2][1][jvr36lqtff8eg8ohlgfktvqga4][error][=
+yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 U=
+nknown column
+'ba_rampung_muat.keterangan' in 'where clause' in
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trac=
+e:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(=
+1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendo=
+r/yiisoft/yii2/db/Command.php(1158):
+yii\db\Command->internalExecute('SEL=
+ECT COUNT(*)...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+db/Command.php(425):
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463):
+y=
+ii\db\Command->queryScalar()
+#4
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/db/ActiveQuery.php(352):
+yii\db\Query->queryScalar('COUNT(*)',=
+ Object(yii\db\Connection))
+#5
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/db/Query.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT(*)', =
+Object(yii\db\Connection))
+#6
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/data/ActiveDataProvider.php(169):
+yii\db\Query->count('*', NULL)=
+
+#7
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/BaseDataProv=
+ider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8
+/h=
+ome/cvajm/public_html/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1754=
+):
+yii\data\BaseDataProvider->getTotalCount()
+#9
+/home/cvajm/public_h=
+tml/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1163):
+kartik\grid\G=
+ridView->initToggleData()
+#10
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/base/Widget.php(140):
+kartik\grid\GridView->run()
+#11
+/home/=
+cvajm/public_html/cvajm/backend/views/ba-rampung-muat/index.php(27):
+yii\=
+base\Widget::widget(Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/base/View.php(348):
+require('/home/cvajm/pub...')
+#13
+/home=
+/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base=
+\View->renderPhpFile('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#14=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+=
+yii\base\View->renderFile('/home/cvajm/pub...', Array,
+Object(backend\con=
+trollers\BaRampungMuatController))
+#15
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('index'=
+, Array,
+Object(backend\controllers\BaRampungMuatController))
+#16
+/ho=
+me/cvajm/public_html/cvajm/backend/controllers/BaRampungMuatController.php(=
+52):
+yii\base\Controller->render('index', Array)
+#17 [internal function=
+]:
+backend\controllers\BaRampungMuatController->actionIndex()
+#18
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):=
+
+call_user_func_array(Array, Array)
+#19
+/home/cvajm/public_html/cvajm=
+/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\InlineAction->run=
+WithParams(Array)
+#20
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/base/Module.php(528):
+yii\base\Controller->runAction('index', Array)
+#=
+21
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(=
+103):
+yii\base\Module->runAction('ba-rampung-muat...', Array)
+#22
+/ho=
+me/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Application.php(386):=
+
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /home/=
+cvajm/public_html/cvajm/backend/web/index.php(22):
+yii\base\Application->=
+run()
+#24 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not =
+found: 1054 Unknown
+column 'ba_rampung_muat.keterangan' in 'where clause'=
+
+The SQL being executed was: SELECT COUNT(*) FROM `surat_jalan` LEFT
+JO=
+IN `unit` ON `surat_jalan`.`id_unit` =3D `unit`.`id_unit` LEFT JOIN
+`kary=
+awan` ON `surat_jalan`.`id_karyawan` =3D `karyawan`.`id_karyawan`
+WHERE (=
+karyawan.id_jabatan in (37,38,39,40,41,42,43,63)) AND
+(`surat_jalan`.`sta=
+tus`=3D2) AND (`ba_rampung_muat`.`keterangan` LIKE
+'%test%') in
+/home/c=
+vajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:=
+
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(12=
+95):
+yii\db\Schema->convertException(Object(PDOException), 'SELECT
+COUN=
+T(*)...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Comma=
+nd.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(425):=
+
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/Query.php(463):
+yii\db\Command->query=
+Scalar()
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Active=
+Query.php(352):
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Conne=
+ction))
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Query.p=
+hp(347):
+yii\db\ActiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connec=
+tion))
+#6
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/data/Active=
+DataProvider.php(169):
+yii\db\Query->count('*', NULL)
+#7
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/data/BaseDataProvider.php(169):
+yii=
+\data\ActiveDataProvider->prepareTotalCount()
+#8
+/home/cvajm/public_htm=
+l/cvajm/vendor/kartik-v/yii2-grid/src/GridView.php(1754):
+yii\data\BaseDa=
+taProvider->getTotalCount()
+#9
+/home/cvajm/public_html/cvajm/vendor/kar=
+tik-v/yii2-grid/src/GridView.php(1163):
+kartik\grid\GridView->initToggleD=
+ata()
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Widget=
+.php(140):
+kartik\grid\GridView->run()
+#11
+/home/cvajm/public_html/cv=
+ajm/backend/views/ba-rampung-muat/index.php(27):
+yii\base\Widget::widget(=
+Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/View.=
+php(348):
+require('/home/cvajm/pub...')
+#13
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\View->renderPhpFile=
+('/home/cvajm/pub...', '[<span
+class=3D"s...')
+#14
+/home/cvajm/public=
+_html/cvajm/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\View->render=
+File('/home/cvajm/pub...', Array,
+Object(backend\controllers\BaRampungMua=
+tController))
+#15
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/bas=
+e/Controller.php(384):
+yii\base\View->render('index', Array,
+Object(bac=
+kend\controllers\BaRampungMuatController))
+#16
+/home/cvajm/public_html/=
+cvajm/backend/controllers/BaRampungMuatController.php(52):
+yii\base\Contr=
+oller->render('index', Array)
+#17 [internal function]:
+backend\controll=
+ers\BaRampungMuatController->actionIndex()
+#18
+/home/cvajm/public_html/=
+cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array=
+(Array, Array)
+#19
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/ba=
+se/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#20=
+
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):=
+
+yii\base\Controller->runAction('index', Array)
+#21
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Modul=
+e->runAction('ba-rampung-muat...', Array)
+#22
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->=
+handleRequest(Object(yii\web\Request))
+#23 /home/cvajm/public_html/cvajm/=
+backend/web/index.php(22):
+yii\base\Application->run()
+#24 {main}
+Add=
+itional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054=
+
+    [2] =3D> Unknown column 'ba_rampung_muat.keterangan' in 'where
+cla=
+use'
+)
+
+2019-07-19 15:33:46
+[209.58.180.2][1][jvr36lqtff8eg8ohlgfkt=
+vqga4][info][application] $_GET
+=3D [
+    'SuratJalanSearch' =3D> [
+ =
+       'tanggal_surat_jalan' =3D> ''
+        'no_surat_jalan' =3D> ''
+ =
+       'nopol' =3D> ''
+        'nama_karyawan' =3D> ''
+        'tanggal=
+_bongkar' =3D> ''
+        'keterangan_bongkar' =3D> 'test'
+    ]
+    =
+'r' =3D> 'ba-rampung-muat/index'
+]
+
+$_POST =3D []
+
+$_FILES =3D []=
+
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'jvr36lqtff8eg8ohlgfktvq=
+ga4'
+    '_csrf-backend' =3D>
+'f5fc472665dbe886e381fd10f5844740eda32a91=
+7958d449d1c124faededc1eda:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"jDsAfgOV=
+91FG1roOxB2Y6tLwKaT9D7uw\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D>=
+ []
+    '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+    'user_rol=
+e' =3D> [
+        0 =3D> 'WORKSHOP'
+        1 =3D> 'TAMBANG'
+        =
+2 =3D> 'SYSTEM ADMINISTRATOR'
+        3 =3D> 'SURAT JALAN'
+        4 =
+=3D> 'PURCHASING'
+        5 =3D> 'PEMESANAN'
+        6 =3D> 'LOGISTIC'=
+
+        7 =3D> 'KORLAP'
+        8 =3D> 'INVOICE'
+        9 =3D> 'HRD=
+'
+        10 =3D> 'GPS'
+        11 =3D> 'FINANCE'
+        12 =3D> 'CH=
+ECKER'
+        13 =3D> 'ADMIN'
+    ]
+    'user_role_id' =3D> [
+    =
+    0 =3D> 10
+        1 =3D> 13
+        2 =3D> 1
+        3 =3D> 4
+ =
+       4 =3D> 12
+        5 =3D> 5
+        6 =3D> 11
+        7 =3D> 9=
+
+        8 =3D> 8
+        9 =3D> 14
+        10 =3D> 7
+        11 =
+=3D> 3
+        12 =3D> 6
+        13 =3D> 2
+    ]
+    '__id' =3D> 1=
+
+]
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../etc/ph=
+p7.0'
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS'=
+ =3D> '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/=
+usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0=
+'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_UR=
+I' =3D>
+'/cvajm/backend/web/index.php?SuratJalanSearch%5Btanggal_surat_ja=
+lan%5D=3D&SuratJalanSearch%5Bno_surat_jalan%5D=3D&SuratJalanSearch%5Bnopol%=
+5D=3D&SuratJalanSearch%5Bnama_karyawan%5D=3D&SuratJalanSearch%5Btanggal_bon=
+gkar%5D=3D&SuratJalanSearch%5Bketerangan_bongkar%5D=3Dtest&r=3Dba-rampung-m=
+uat%2Findex'
+    'QUERY_STRING' =3D>
+'SuratJalanSearch%5Btanggal_surat_=
+jalan%5D=3D&SuratJalanSearch%5Bno_surat_jalan%5D=3D&SuratJalanSearch%5Bnopo=
+l%5D=3D&SuratJalanSearch%5Bnama_karyawan%5D=3D&SuratJalanSearch%5Btanggal_b=
+ongkar%5D=3D&SuratJalanSearch%5Bketerangan_bongkar%5D=3Dtest&r=3Dba-rampung=
+-muat%2Findex'
+    'REQUEST_METHOD' =3D> 'GET'
+    'SERVER_PROTOCOL' =
+=3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT=
+' =3D> '45566'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvaj=
+m/backend/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+ =
+   'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PR=
+EFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D>=
+ '/home/cvajm/public_html'
+    'REMOTE_ADDR' =3D> '209.58.180.2'
+    'S=
+ERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERV=
+ER_NAME' =3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+  =
+  'SERVER_SIGNATURE' =3D> ''
+    'HTTP_CONNECTION' =3D> 'close'
+    'HT=
+TP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'HTTP_X_FORWARDED_FOR' =3D> '182=
+.1.98.53'
+    'HTTP_VIA' =3D> '1.1 singapore.rastavarian.com (squid/3.5.2=
+3)'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'HTTP_COOKIE' =3D> 'advanced-b=
+ackend=3Djvr36lqtff8eg8ohlgfktvqga4;
+_csrf-backend=3Df5fc472665dbe886e381=
+fd10f5844740eda32a917958d449d1c124faededc1eda%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22=
+_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22jDsAfgOV91FG1roOxB2Y6tLwKaT9D7uw%22%=
+3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9,id;q=3D0.8'
+  =
+  'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'=
+http://cvajm.com/cvajm/backend/web/index.php?r=3Dba-rampung-muat%2Findex'=
+
+    'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xm=
+l;q=3D0.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=
+=3Db3'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x=
+64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142
+Safari/=
+537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'SCRIPT_URI' =
+=3D> 'http://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D>=
+ '/cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'P=
+HP_SELF' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D=
+> 1563525226.7513
+    'REQUEST_TIME' =3D> 1563525226
+]

@@ -1,0 +1,268 @@
+Message-ID: <d47680e875deede57576a6df53f5e39b@sijaksa.com>
+Date: Sat, 08 Feb 2020 14:12:08 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-08 14:12:08
+[217.23.5.42][5][622nhs61d9ejcgpcdbsplaf03m][error][y=
+ii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 Un=
+known column
+'kode_kelompok' in 'field list' in
+/home/sijaksa/public_ht=
+ml/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaks=
+a/public_html/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->exe=
+cute()
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(11=
+58):
+yii\db\Command->internalExecute('SELECT max(kode...')
+#2 /home/sij=
+aksa/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+yii\db\Command-=
+>queryInternal('fetchColumn', 0)
+#3
+/home/sijaksa/public_html/backend/c=
+ontrollers/RekKelompokApbdController.php(71):
+yii\db\Command->queryScalar=
+()
+#4 [internal function]:
+backend\controllers\RekKelompokApbdControlle=
+r->actionCreate()
+#5
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base=
+/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#6
+/home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\=
+InlineAction->runWithParams(Array)
+#7 /home/sijaksa/public_html/vendor/yi=
+isoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('create',=
+ Array)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Applicatio=
+n.php(103):
+yii\base\Module->runAction('rek-kelompok-ap...', Array)
+#9=
+
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php(386):=
+
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /home/=
+sijaksa/public_html/backend/web/index.php(22):
+yii\base\Application->run(=
+)
+#11 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not foun=
+d: 1054 Unknown
+column 'kode_kelompok' in 'field list'
+The SQL being ex=
+ecuted was: SELECT max(kode_kelompok) FROM
+rek_kelompok_apbd WHERE id_aku=
+n =3D '1' in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:=
+664
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Co=
+mmand.php(1295):
+yii\db\Schema->convertException(Object(PDOException), 'S=
+ELECT
+max(kode...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db=
+/Command.php(1158):
+yii\db\Command->internalExecute('SELECT max(kode...')=
+
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(425):
+=
+yii\db\Command->queryInternal('fetchColumn', 0)
+#3
+/home/sijaksa/public=
+_html/backend/controllers/RekKelompokApbdController.php(71):
+yii\db\Comma=
+nd->queryScalar()
+#4 [internal function]:
+backend\controllers\RekKelomp=
+okApbdController->actionCreate()
+#5
+/home/sijaksa/public_html/vendor/yi=
+isoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#6
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(1=
+57):
+yii\base\InlineAction->runWithParams(Array)
+#7 /home/sijaksa/publi=
+c_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->run=
+Action('create', Array)
+#8
+/home/sijaksa/public_html/vendor/yiisoft/yii=
+2/web/Application.php(103):
+yii\base\Module->runAction('rek-kelompok-ap..=
+.', Array)
+#9
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Applic=
+ation.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request=
+))
+#10 /home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Ap=
+plication->run()
+#11 {main}
+Additional Information:
+Array
+(
+    [=
+0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown column 'kode_kelom=
+pok' in 'field list'
+)
+
+2020-02-08 14:12:08
+[217.23.5.42][5][622nhs=
+61d9ejcgpcdbsplaf03m][info][application] $_GET
+=3D [
+    'r' =3D> 'rek-=
+kelompok-apbd/create'
+]
+
+$_POST =3D [
+    '_csrf-backend' =3D>
+'F=
+HXOt72JTjYrRDLKj17bjQLsxG7FF7H51QDmgTE6g34hRqPmjPsJABlwcaf_Zva7Z6qjNPV-07ak=
+ZZ7SblnTOw=3D=3D'
+    'RekKelompokApbd' =3D> [
+        'id_akun' =3D> '=
+1'
+        'nama_kel' =3D> 'cek'
+    ]
+]
+
+$_FILES =3D []
+
+$_C=
+OOKIE =3D [
+    'advanced-backend' =3D> '622nhs61d9ejcgpcdbsplaf03m'
+  =
+  '_csrf-backend' =3D>
+'88e6ae420364d7099437fc9aadd003c5ac6b740bf9ec39ac6=
+da84201f5bb5cf9a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"53mQ1rG624Cmp8-6e=
+FgZ0ibOqexS_cPE\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+   =
+ '__returnUrl' =3D> '/backend/web/index.php'
+    'user_role' =3D> [
+   =
+     0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+        2 =3D> 'KELU=
+RAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id'=
+ =3D> [
+        0 =3D> 2
+        1 =3D> 3
+        2 =3D> 4
+        =
+3 =3D> 1
+    ]
+    '__id' =3D> 5
+]
+
+$_SERVER =3D [
+    'PHPRC' =
+=3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD' =3D> '/home/sijaksa=
+/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHLVL' =3D> '0=
+'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s=
+bin:/bin'
+    'SCRIPT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_=
+URI' =3D>
+'/backend/web/index.php?r=3Drek-kelompok-apbd%2Fcreate'
+    '=
+QUERY_STRING' =3D> 'r=3Drek-kelompok-apbd%2Fcreate'
+    'REQUEST_METHOD' =
+=3D> 'POST'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFAC=
+E' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '47852'
+    'SCRIPT_FILENAME' =
+=3D>
+'/home/sijaksa/public_html/backend/web/index.php'
+    'SERVER_ADMI=
+N' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sija=
+ksa/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D>=
+ 'http'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REMOT=
+E_ADDR' =3D> '217.23.5.42'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR=
+' =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijaksa.com'
+    'SERVER_=
+SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP=
+_CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+ =
+   'HTTP_HOST' =3D> 'sijaksa.com'
+    'HTTP_COOKIE' =3D> 'advanced-backen=
+d=3D622nhs61d9ejcgpcdbsplaf03m;
+_csrf-backend=3D88e6ae420364d7099437fc9aa=
+dd003c5ac6b740bf9ec39ac6da84201f5bb5cf9a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf=
+-backend%22%3Bi%3A1%3Bs%3A32%3A%2253mQ1rG624Cmp8-6eFgZ0ibOqexS_cPE%22%3B%7D=
+'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;q=3D=
+0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT' =
+=3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/webp,=
+image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+    'H=
+TTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebK=
+it/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130
+Safari/537.36'
+    '=
+CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded'
+    'CONTENT_LENGT=
+H' =3D> '171'
+    'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/web/index=
+.php'
+    'SCRIPT_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =
+=3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQU=
+EST_TIME_FLOAT' =3D> 1581145928.5181
+    'REQUEST_TIME' =3D> 1581145928=
+
+]

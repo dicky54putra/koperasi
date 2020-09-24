@@ -1,0 +1,308 @@
+Message-ID: <66a865f6771d9156d6693e9fbb455f11@localhost>
+Date: Wed, 19 Aug 2020 18:40:27 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-08-19 18:40:26
+[::1][3][tg3f75u8lh52fls03duoa2746g][error][yii\db\Ex=
+ception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown co=
+lumn
+'id_item_stok' in 'where clause' in
+C:\xampp\htdocs\accounting\ven=
+dor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0
+C:\xampp\htdocs\=
+accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+PDOStatement->execut=
+e()
+#1
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(11=
+58):
+yii\db\Command->internalExecute('SELECT `akt_ite...')
+#2 C:\xampp\=
+htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(399):
+yii\db\Command=
+->queryInternal('fetchAll', NULL)
+#3 C:\xampp\htdocs\accounting\vendor\yi=
+isoft\yii2\db\Query.php(237):
+yii\db\Command->queryAll()
+#4
+C:\xampp\=
+htdocs\accounting\vendor\yiisoft\yii2\db\ActiveQuery.php(133):
+yii\db\Que=
+ry->all(NULL)
+#5
+C:\xampp\htdocs\accounting\backend\controllers\AktPena=
+waranPenjualanController.php(129):
+yii\db\ActiveQuery->all()
+#6 [intern=
+al function]:
+backend\controllers\AktPenawaranPenjualanController->action=
+GetHargaJual()
+#7
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\I=
+nlineAction.php(57):
+call_user_func_array(Array, Array)
+#8
+C:\xampp\h=
+tdocs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+yii\base\I=
+nlineAction->runWithParams(Array)
+#9
+C:\xampp\htdocs\accounting\vendor\=
+yiisoft\yii2\base\Module.php(528):
+yii\base\Controller->runAction('get-ha=
+rga-jual', Array)
+#10
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\we=
+b\Application.php(103):
+yii\base\Module->runAction('akt-penawaran-p...', =
+Array)
+#11
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Applicat=
+ion.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))=
+
+#12 C:\xampp\htdocs\accounting\backend\web\index.php(22):
+yii\base\App=
+lication->run()
+#13 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: C=
+olumn not found: 1054 Unknown
+column 'id_item_stok' in 'where clause'
+T=
+he SQL being executed was: SELECT `akt_item`.`nama_item`,
+`akt_item_harga=
+_jual`.`harga_satuan` FROM `akt_item_harga_jual` LEFT
+JOIN `akt_item` ON =
+akt_item.id_item =3D akt_item_stok.id_item WHERE
+`id_item_stok`=3D'1' ORD=
+ER BY `akt_item`.`nama_item` in
+C:\xampp\htdocs\accounting\vendor\yiisoft=
+\yii2\db\Schema.php:664
+Stack trace:
+#0
+C:\xampp\htdocs\accounting\ve=
+ndor\yiisoft\yii2\db\Command.php(1295):
+yii\db\Schema->convertException(O=
+bject(PDOException), 'SELECT
+`akt_ite...')
+#1
+C:\xampp\htdocs\account=
+ing\vendor\yiisoft\yii2\db\Command.php(1158):
+yii\db\Command->internalExe=
+cute('SELECT `akt_ite...')
+#2 C:\xampp\htdocs\accounting\vendor\yiisoft\y=
+ii2\db\Command.php(399):
+yii\db\Command->queryInternal('fetchAll', NULL)=
+
+#3 C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Query.php(237):
+y=
+ii\db\Command->queryAll()
+#4
+C:\xampp\htdocs\accounting\vendor\yiisoft\=
+yii2\db\ActiveQuery.php(133):
+yii\db\Query->all(NULL)
+#5
+C:\xampp\htd=
+ocs\accounting\backend\controllers\AktPenawaranPenjualanController.php(129)=
+:
+yii\db\ActiveQuery->all()
+#6 [internal function]:
+backend\controlle=
+rs\AktPenawaranPenjualanController->actionGetHargaJual()
+#7
+C:\xampp\ht=
+docs\accounting\vendor\yiisoft\yii2\base\InlineAction.php(57):
+call_user_=
+func_array(Array, Array)
+#8
+C:\xampp\htdocs\accounting\vendor\yiisoft\y=
+ii2\base\Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)=
+
+#9
+C:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Module.php(528)=
+:
+yii\base\Controller->runAction('get-harga-jual', Array)
+#10
+C:\xamp=
+p\htdocs\accounting\vendor\yiisoft\yii2\web\Application.php(103):
+yii\bas=
+e\Module->runAction('akt-penawaran-p...', Array)
+#11
+C:\xampp\htdocs\ac=
+counting\vendor\yiisoft\yii2\base\Application.php(386):
+yii\web\Applicati=
+on->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs\accounting=
+\backend\web\index.php(22):
+yii\base\Application->run()
+#13 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown c=
+olumn 'id_item_stok' in 'where clause'
+)
+
+2020-08-19 18:40:26
+[::1]=
+[3][tg3f75u8lh52fls03duoa2746g][info][application] $_GET =3D [
+    'r' =
+=3D> 'akt-penawaran-penjualan/get-harga-jual'
+    'id' =3D> '1'
+]
+
+=
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backe=
+nd' =3D> 'tg3f75u8lh52fls03duoa2746g'
+    '_csrf-backend' =3D>
+'0c16aec=
+b76d23e91f301f0dbc38dde0d9b7d874c4bdd9615d5c49e9239941431a:2:{i:0;s:13:\"_c=
+srf-backend\";i:1;s:32:\"ggWVkOrISFpgSY11CcSyZHrkn4dFzLkB\";}'
+]
+
+$_S=
+ESSION =3D [
+    '__flash' =3D> []
+    'user_role' =3D> [
+        0 =
+=3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D> [
+        0=
+ =3D> 1
+    ]
+    '__id' =3D> 3
+]
+
+$_SERVER =3D [
+    'MIBDIRS'=
+ =3D> 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' =3D> '\\xampp\\mysql\\b=
+in'
+    'OPENSSL_CONF' =3D> 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_=
+PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+    'PHPRC' =3D> '\\xampp\\php'
+ =
+   'TMP' =3D> '\\xampp\\tmp'
+    'HTTP_HOST' =3D> 'localhost'
+    'HTTP=
+_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64;
+rv:79.0) Gec=
+ko/20100101 Firefox/79.0'
+    'HTTP_ACCEPT' =3D>
+'text/html,application=
+/xhtml+xml,application/xml;q=3D0.9,image/webp,*/*;q=3D0.8'
+    'HTTP_ACCE=
+PT_LANGUAGE' =3D> 'id,en-US;q=3D0.7,en;q=3D0.3'
+    'HTTP_ACCEPT_ENCODING=
+' =3D> 'gzip, deflate'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTT=
+P_COOKIE' =3D> 'advanced-backend=3Dtg3f75u8lh52fls03duoa2746g;
+_csrf-back=
+end=3D0c16aecb76d23e91f301f0dbc38dde0d9b7d874c4bdd9615d5c49e9239941431a%3A2=
+%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ggWVkOrISF=
+pgSY11CcSyZHrkn4dFzLkB%22%3B%7D'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D=
+> '1'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D0'
+    'PATH' =3D>
+'C:=
+\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\Sy=
+stem32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\composer;C:\\Program=
+
+Files\\Git\\cmd;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program
+Files\\no=
+dejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\Dicky
+Saputra\\AppData=
+\\Local\\Android\\Sdk\\platform-tools;C:\\Program
+Files (x86)\\Yarn\\bin\=
+\;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Us=
+ers\\Dicky
+Saputra\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\Di=
+cky
+Saputra\\AppData\\Local\\Programs\\Microsoft VS
+Code\\bin;C:\\Users=
+\\Dicky
+Saputra\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Dicky
+Sa=
+putra\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Dicky
+Saputra\\A=
+ppData\\Roaming\\npm;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\Android\\S=
+dk\\platform-tools;C:\\Users\\Dicky
+Saputra\\AppData\\Local\\atom\\bin;C:=
+\\Users\\Dicky
+Saputra\\AppData\\Local\\Yarn\\bin'
+    'SystemRoot' =3D=
+> 'C:\\WINDOWS'
+    'COMSPEC' =3D> 'C:\\WINDOWS\\system32\\cmd.exe'
+   =
+ 'PATHEXT' =3D>
+'.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'=
+
+    'WINDIR' =3D> 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' =3D> '<address>=
+Apache/2.4.38 (Win64)
+OpenSSL/1.1.1b PHP/7.3.3 Server at localhost Port 8=
+0</address>
+'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.38 (Win64) OpenSSL=
+/1.1.1b
+PHP/7.3.3'
+    'SERVER_NAME' =3D> 'localhost'
+    'SERVER_ADD=
+R' =3D> '::1'
+    'SERVER_PORT' =3D> '80'
+    'REMOTE_ADDR' =3D> '::1'=
+
+    'DOCUMENT_ROOT' =3D> 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' =3D> '=
+http'
+    'CONTEXT_PREFIX' =3D> ''
+    'CONTEXT_DOCUMENT_ROOT' =3D> 'C:=
+/xampp/htdocs'
+    'SERVER_ADMIN' =3D> 'postmaster@localhost'
+    'SCRI=
+PT_FILENAME' =3D>
+'C:/xampp/htdocs/accounting/backend/web/index.php'
+  =
+  'REMOTE_PORT' =3D> '58187'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+   =
+ 'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'REQUEST_METHOD' =3D> 'GET'
+    =
+'QUERY_STRING' =3D>
+'r=3Dakt-penawaran-penjualan%2Fget-harga-jual&id=3D1'=
+
+    'REQUEST_URI' =3D>
+'/accounting/backend/web/index.php?r=3Dakt-pena=
+waran-penjualan%2Fget-harga-jual&id=3D1'
+    'SCRIPT_NAME' =3D> '/account=
+ing/backend/web/index.php'
+    'PHP_SELF' =3D> '/accounting/backend/web/i=
+ndex.php'
+    'REQUEST_TIME_FLOAT' =3D> 1597837226.587
+    'REQUEST_TIM=
+E' =3D> 1597837226
+]

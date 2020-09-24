@@ -1,0 +1,367 @@
+Message-ID: <eaceca9393c0eed7968e61485e8cd792@cvajm.com>
+Date: Fri, 01 Nov 2019 04:43:51 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-11-01 04:43:51
+[36.90.96.3][30][lc01fvv925daoojcdcokjiq6v3][error][y=
+ii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity constr=
+aint violation: 1048
+Column 'id_sub_pelanggan' cannot be null in
+/home/=
+cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack tra=
+ce:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php=
+(1290):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->internalExecute('IN=
+SERT INTO `su...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2=
+/db/Schema.php(433):
+yii\db\Command->execute()
+#3
+/home/cvajm/public_=
+html/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->i=
+nsert('surat_jalan', Array)
+#4
+/home/cvajm/public_html/cvajm/vendor/yii=
+soft/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInternal(N=
+ULL)
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/BaseActive=
+Record.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+/home/cv=
+ajm/public_html/cvajm/backend/controllers/SuratJalanController.php(298):
+=
+yii\db\BaseActiveRecord->save(false)
+#7 [internal function]:
+backend\co=
+ntrollers\SuratJalanController->actionCreate()
+#8
+/home/cvajm/public_ht=
+ml/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_ar=
+ray(Array, Array)
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/=
+base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#=
+10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528)=
+:
+yii\base\Controller->runAction('create', Array)
+#11
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Mod=
+ule->runAction('surat-jalan/cre...', Array)
+#12
+/home/cvajm/public_html=
+/cvajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application=
+->handleRequest(Object(yii\web\Request))
+#13 /home/cvajm/public_html/cvaj=
+m/backend/web/index.php(22):
+yii\base\Application->run()
+#14 {main}
+=
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: Integrity constraint
+=
+violation: 1048 Column 'id_sub_pelanggan' cannot be null
+The SQL being ex=
+ecuted was: INSERT INTO `surat_jalan`
+(`no_surat_jalan`, `tanggal_surat_j=
+alan`, `id_po`, `id_sub_pelanggan`,
+`id_tujuan_bongkar`, `id_kota`, `shif=
+t`, `no_conch`, `no_seri_pabrik`,
+`id_jenis_muatan`, `tonase`, `jumlah_sa=
+k`, `id_unit`, `id_karyawan`,
+`cash_voucher`, `id_jarak`, `id_spbu`, `dp`=
+, `status`, `keterangan`,
+`tanggal_kembali`, `id_login`) VALUES ('74515',=
+ '2019-11-01 04:43:44',
+3961, NULL, 178, 55, 2, '1308702', '0', 14, '21.2=
+', '0', 8, 225, 2,
+24, 3, 0, 2, 'FUSO DUMP', '0000-00-00 00:00:00', 30) i=
+n
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.php:664
+S=
+tack trace:
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Com=
+mand.php(1295):
+yii\db\Schema->convertException(Object(PDOException), 'IN=
+SERT INTO
+`su...')
+#1
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yi=
+i2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSERT INTO `su=
+...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Schema.ph=
+p(433):
+yii\db\Command->execute()
+#3
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->insert('surat_=
+jalan', Array)
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/=
+ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInternal(NULL)
+#5
+/=
+home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/BaseActiveRecord.php(67=
+8):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+/home/cvajm/public_ht=
+ml/cvajm/backend/controllers/SuratJalanController.php(298):
+yii\db\BaseAc=
+tiveRecord->save(false)
+#7 [internal function]:
+backend\controllers\Sur=
+atJalanController->actionCreate()
+#8
+/home/cvajm/public_html/cvajm/vend=
+or/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Ar=
+ray)
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controll=
+er.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/cv=
+ajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\=
+Controller->runAction('create', Array)
+#11
+/home/cvajm/public_html/cvaj=
+m/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runActio=
+n('surat-jalan/cre...', Array)
+#12
+/home/cvajm/public_html/cvajm/vendor=
+/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleReque=
+st(Object(yii\web\Request))
+#13 /home/cvajm/public_html/cvajm/backend/web=
+/index.php(22):
+yii\base\Application->run()
+#14 {main}
+Additional Inf=
+ormation:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1048
+    [2] =
+=3D> Column 'id_sub_pelanggan' cannot be null
+)
+
+2019-11-01 04:43:51=
+
+[36.90.96.3][30][lc01fvv925daoojcdcokjiq6v3][info][application] $_GET
+=
+=3D [
+    'r' =3D> 'surat-jalan/create'
+]
+
+$_POST =3D [
+    '_csr=
+f-backend' =3D>
+'-P7Qes2JmkeSXKp3ONgLpqP8CDMpDI6MrJNOpWFCHUqbj-EXvfOoLfxr=
+khlCi0bV0rNYdRx82dziyXrKVhBIfA=3D=3D'
+    'SuratJalan' =3D> [
+        '=
+no_surat_jalan' =3D> '74515'
+        'tanggal_surat_jalan' =3D> '2019-11-=
+01 04:43:44'
+        'nomor_po' =3D> '201910056'
+        'id_po' =3D> '=
+3961'
+        'sub_pelanggan' =3D> 'INDUSTRY GYPSUM'
+        'id_sub_pe=
+langgan' =3D> ''
+        'tujuanbongkar' =3D> 'CONCH'
+        'id_tujua=
+n_bongkar' =3D> '178'
+        'kota' =3D> 'TANJUNG'
+        'id_kota' =
+=3D> '55'
+        'shift' =3D> '2'
+        'no_conch' =3D> '1308702'
+=
+        'no_seri_pabrik' =3D> '0'
+        'jenis_muatan' =3D> 'GYPSUM'
+=
+        'id_jenis_muatan' =3D> '14'
+        'tonase' =3D> '21.2'
+      =
+  'jumlah_sak' =3D> '0'
+        'unit' =3D> 'DA 1356 HB'
+        'id_un=
+it' =3D> '8'
+        'driver' =3D> 'Hamdan'
+        'id_karyawan' =3D> =
+'225'
+        'cash_voucher' =3D> '2'
+        'id_jarak' =3D> '24'
+  =
+      'id_spbu' =3D> '3'
+        'dp' =3D> '0'
+        'status' =3D> '2=
+'
+        'keterangan' =3D> 'FUSO DUMP'
+        'tanggal_kembali' =3D> =
+'0000-00-00 00:00:00'
+        'id_login' =3D> '30'
+    ]
+    'Jarak' =
+=3D> [
+        'id_jarak' =3D> 'BANJARMASIN - CONCH (260 km)'
+    ]
+]=
+
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'lc0=
+1fvv925daoojcdcokjiq6v3'
+    '_csrf-backend' =3D>
+'7a9726e6c22b1aafef91=
+28f70efb61a5dc761e17a390d38e9ed0cc97e2e09807a:2:{i:0;s:13:\"_csrf-backend\"=
+;i:1;s:32:\"cq1mpz2jn78nzSMsqOPF5pWPNZ4o7RU6\";}'
+]
+
+$_SESSION =3D [=
+
+    '__flash' =3D> []
+    '__returnUrl' =3D> '/cvajm/backend/web/index=
+.php'
+    'user_role' =3D> [
+        0 =3D> 'STAF HRD KARYAWAN'
+     =
+   1 =3D> 'CHECKER'
+        2 =3D> 'ADMIN'
+        3 =3D> 'SURAT JALAN'=
+
+    ]
+    'user_role_id' =3D> [
+        0 =3D> 16
+        1 =3D> 6=
+
+        2 =3D> 2
+        3 =3D> 4
+    ]
+    '__id' =3D> 30
+]
+=
+
+$_SERVER =3D [
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.0'=
+
+    'PWD' =3D> '/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D>=
+ '99999'
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/l=
+ocal/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SCRIPT_NAME' =3D> '/cvajm/ba=
+ckend/web/index.php'
+    'REQUEST_URI' =3D>
+'/cvajm/backend/web/index.p=
+hp?r=3Dsurat-jalan%2Fcreate'
+    'QUERY_STRING' =3D> 'r=3Dsurat-jalan%2Fc=
+reate'
+    'REQUEST_METHOD' =3D> 'POST'
+    'SERVER_PROTOCOL' =3D> 'HTT=
+P/1.1'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '5=
+1893'
+    'SCRIPT_FILENAME' =3D>
+'/home/cvajm/public_html/cvajm/backend=
+/web/index.php'
+    'SERVER_ADMIN' =3D> '[no address given]'
+    'CONTE=
+XT_DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'CONTEXT_PREFIX' =3D=
+> ''
+    'REQUEST_SCHEME' =3D> 'http'
+    'DOCUMENT_ROOT' =3D> '/home/c=
+vajm/public_html'
+    'REMOTE_ADDR' =3D> '36.90.96.3'
+    'SERVER_PORT'=
+ =3D> '80'
+    'SERVER_ADDR' =3D> '178.128.25.198'
+    'SERVER_NAME' =
+=3D> 'cvajm.com'
+    'SERVER_SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER=
+_SIGNATURE' =3D> ''
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Dlc01fvv925=
+daoojcdcokjiq6v3;
+_csrf-backend=3D7a9726e6c22b1aafef9128f70efb61a5dc761e1=
+7a390d38e9ed0cc97e2e09807a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3B=
+i%3A1%3Bs%3A32%3A%22cq1mpz2jn78nzSMsqOPF5pWPNZ4o7RU6%22%3B%7D'
+    'HTTP_=
+ACCEPT_LANGUAGE' =3D> 'en-US,en;q=3D0.9'
+    'HTTP_ACCEPT_ENCODING' =3D> =
+'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://cvajm.com/cvajm/backend=
+/web/index.php?r=3Dsurat-jalan%2Fcreate'
+    'HTTP_ACCEPT' =3D>
+'text/h=
+tml,application/xhtml+xml,application/xml;q=3D0.9,image/webp,image/apng,*/*=
+;q=3D0.8,application/signed-exchange;v=3Db3'
+    'HTTP_USER_AGENT' =3D> '=
+Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like=
+ Gecko) Chrome/77.0.3865.120
+Safari/537.36'
+    'CONTENT_TYPE' =3D> 'ap=
+plication/x-www-form-urlencoded'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D=
+> '1'
+    'HTTP_ORIGIN' =3D> 'http://cvajm.com'
+    'HTTP_CACHE_CONTROL=
+' =3D> 'max-age=3D0'
+    'CONTENT_LENGTH' =3D> '1118'
+    'HTTP_CONNECT=
+ION' =3D> 'close'
+    'HTTP_HOST' =3D> 'cvajm.com'
+    'SCRIPT_URI' =3D=
+> 'http://cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/=
+cvajm/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_=
+SELF' =3D> '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1=
+572554631.8063
+    'REQUEST_TIME' =3D> 1572554631
+]

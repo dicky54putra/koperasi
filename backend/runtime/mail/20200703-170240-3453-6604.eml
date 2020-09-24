@@ -1,0 +1,406 @@
+Message-ID: <6a35a2fb5acb78949020f17a9452756c@localhost>
+Date: Fri, 03 Jul 2020 17:02:40 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-07-03 17:02:40
+[::1][1109][u997jmhiiuh15hd2aab5cb588l][error][yii\db=
+\Exception]
+PDOException: SQLSTATE[42S02]: Base table or view not found: =
+1146
+Table 'accounting.data_desa' doesn't exist in
+D:\xampp\htdocs\acco=
+unting\vendor\yiisoft\yii2\db\Command.php:1290
+Stack trace:
+#0
+D:\xam=
+pp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1290):
+PDOStateme=
+nt->execute()
+#1
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Comm=
+and.php(1158):
+yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2=
+ D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(425):
+yii\=
+db\Command->queryInternal('fetchColumn', 0)
+#3 D:\xampp\htdocs\accounting=
+\vendor\yiisoft\yii2\db\Query.php(463):
+yii\db\Command->queryScalar()
+#=
+4
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\ActiveQuery.php(352):=
+
+yii\db\Query->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#5 D:=
+\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Query.php(347):
+yii\db\Ac=
+tiveQuery->queryScalar('COUNT(*)', Object(yii\db\Connection))
+#6
+D:\xam=
+pp\htdocs\accounting\vendor\yiisoft\yii2\data\ActiveDataProvider.php(169):=
+
+yii\db\Query->count('*', NULL)
+#7
+D:\xampp\htdocs\accounting\vendor\=
+yiisoft\yii2\data\BaseDataProvider.php(169):
+yii\data\ActiveDataProvider-=
+>prepareTotalCount()
+#8
+D:\xampp\htdocs\accounting\vendor\kartik-v\yii2=
+-grid\src\GridView.php(1754):
+yii\data\BaseDataProvider->getTotalCount()=
+
+#9
+D:\xampp\htdocs\accounting\vendor\kartik-v\yii2-grid\src\GridView.p=
+hp(1163):
+kartik\grid\GridView->initToggleData()
+#10
+D:\xampp\htdocs\=
+accounting\vendor\yiisoft\yii2\base\Widget.php(140):
+kartik\grid\GridView=
+->run()
+#11 D:\xampp\htdocs\accounting\backend\views\login\index.php(32):=
+
+yii\base\Widget::widget(Array)
+#12 D:\xampp\htdocs\accounting\vendor\y=
+iisoft\yii2\base\View.php(348):
+require('D:\\xampp\\htdocs...')
+#13 D:\=
+xampp\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(257):
+yii\base\=
+View->renderPhpFile('D:\\xampp\\htdocs...', '[<span
+class=3D"s...')
+#14=
+ D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(156):
+yii\b=
+ase\View->renderFile('D:\\xampp\\htdocs...', Array,
+Object(backend\contro=
+llers\LoginController))
+#15
+D:\xampp\htdocs\accounting\vendor\yiisoft\y=
+ii2\base\Controller.php(384):
+yii\base\View->render('index', Array,
+Obj=
+ect(backend\controllers\LoginController))
+#16
+D:\xampp\htdocs\accountin=
+g\backend\controllers\LoginController.php(56):
+yii\base\Controller->rende=
+r('index', Array)
+#17 [internal function]:
+backend\controllers\LoginCon=
+troller->actionIndex()
+#18
+D:\xampp\htdocs\accounting\vendor\yiisoft\yi=
+i2\base\InlineAction.php(57):
+call_user_func_array(Array, Array)
+#19
+=
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Controller.php(157):
+=
+yii\base\InlineAction->runWithParams(Array)
+#20
+D:\xampp\htdocs\account=
+ing\vendor\yiisoft\yii2\base\Module.php(528):
+yii\base\Controller->runAct=
+ion('', Array)
+#21
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\web\A=
+pplication.php(103):
+yii\base\Module->runAction('login', Array)
+#22
+D=
+:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Application.php(386):
+=
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 D:\xampp\=
+htdocs\accounting\backend\web\index.php(22):
+yii\base\Application->run()=
+
+#24 {main}
+
+Next yii\db\Exception: SQLSTATE[42S02]: Base table or vi=
+ew not found:
+1146 Table 'accounting.data_desa' doesn't exist
+The SQL b=
+eing executed was: SELECT COUNT(*) FROM `login` LEFT JOIN
+`data_desa` ON =
+`login`.`id_desa` =3D `data_desa`.`id_desa` in
+D:\xampp\htdocs\accounting=
+\vendor\yiisoft\yii2\db\Schema.php:664
+Stack trace:
+#0
+D:\xampp\htdoc=
+s\accounting\vendor\yiisoft\yii2\db\Command.php(1295):
+yii\db\Schema->con=
+vertException(Object(PDOException), 'SELECT
+COUNT(*)...')
+#1
+D:\xampp=
+\htdocs\accounting\vendor\yiisoft\yii2\db\Command.php(1158):
+yii\db\Comma=
+nd->internalExecute('SELECT COUNT(*)...')
+#2 D:\xampp\htdocs\accounting\v=
+endor\yiisoft\yii2\db\Command.php(425):
+yii\db\Command->queryInternal('fe=
+tchColumn', 0)
+#3 D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\db\Query=
+.php(463):
+yii\db\Command->queryScalar()
+#4
+D:\xampp\htdocs\accountin=
+g\vendor\yiisoft\yii2\db\ActiveQuery.php(352):
+yii\db\Query->queryScalar(=
+'COUNT(*)', Object(yii\db\Connection))
+#5 D:\xampp\htdocs\accounting\vend=
+or\yiisoft\yii2\db\Query.php(347):
+yii\db\ActiveQuery->queryScalar('COUNT=
+(*)', Object(yii\db\Connection))
+#6
+D:\xampp\htdocs\accounting\vendor\y=
+iisoft\yii2\data\ActiveDataProvider.php(169):
+yii\db\Query->count('*', NU=
+LL)
+#7
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\data\BaseDataProv=
+ider.php(169):
+yii\data\ActiveDataProvider->prepareTotalCount()
+#8
+D:=
+\xampp\htdocs\accounting\vendor\kartik-v\yii2-grid\src\GridView.php(1754):=
+
+yii\data\BaseDataProvider->getTotalCount()
+#9
+D:\xampp\htdocs\accoun=
+ting\vendor\kartik-v\yii2-grid\src\GridView.php(1163):
+kartik\grid\GridVi=
+ew->initToggleData()
+#10
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2=
+\base\Widget.php(140):
+kartik\grid\GridView->run()
+#11 D:\xampp\htdocs\=
+accounting\backend\views\login\index.php(32):
+yii\base\Widget::widget(Arr=
+ay)
+#12 D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\View.php(348)=
+:
+require('D:\\xampp\\htdocs...')
+#13 D:\xampp\htdocs\accounting\vendor=
+\yiisoft\yii2\base\View.php(257):
+yii\base\View->renderPhpFile('D:\\xampp=
+\\htdocs...', '[<span
+class=3D"s...')
+#14 D:\xampp\htdocs\accounting\ve=
+ndor\yiisoft\yii2\base\View.php(156):
+yii\base\View->renderFile('D:\\xamp=
+p\\htdocs...', Array,
+Object(backend\controllers\LoginController))
+#15=
+
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\Controller.php(384):=
+
+yii\base\View->render('index', Array,
+Object(backend\controllers\Login=
+Controller))
+#16
+D:\xampp\htdocs\accounting\backend\controllers\LoginCo=
+ntroller.php(56):
+yii\base\Controller->render('index', Array)
+#17 [inte=
+rnal function]:
+backend\controllers\LoginController->actionIndex()
+#18=
+
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base\InlineAction.php(57)=
+:
+call_user_func_array(Array, Array)
+#19
+D:\xampp\htdocs\accounting\v=
+endor\yiisoft\yii2\base\Controller.php(157):
+yii\base\InlineAction->runWi=
+thParams(Array)
+#20
+D:\xampp\htdocs\accounting\vendor\yiisoft\yii2\base=
+\Module.php(528):
+yii\base\Controller->runAction('', Array)
+#21
+D:\xa=
+mpp\htdocs\accounting\vendor\yiisoft\yii2\web\Application.php(103):
+yii\b=
+ase\Module->runAction('login', Array)
+#22
+D:\xampp\htdocs\accounting\ve=
+ndor\yiisoft\yii2\base\Application.php(386):
+yii\web\Application->handleR=
+equest(Object(yii\web\Request))
+#23 D:\xampp\htdocs\accounting\backend\we=
+b\index.php(22):
+yii\base\Application->run()
+#24 {main}
+Additional Information:
+Array
+(
+    [0] =3D> 42S02
+    [1] =3D> 1146
+    [2] =3D> Table 'ac=
+counting.data_desa' doesn't exist
+)
+
+2020-07-03 17:02:40
+[::1][1109=
+][u997jmhiiuh15hd2aab5cb588l][info][application] $_GET =3D [
+    'r' =3D>=
+ 'login'
+]
+
+$_POST =3D []
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+ =
+   'advanced-frontend' =3D> '6ql2tci3dh1qm49he716fb2s0f'
+    '_csrf-front=
+end' =3D>
+'9ed49907f35021c33b79f65875588e0576abdef9813554459d918f1f339e13=
+3fa:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"1RbyWmxc9_X6pOLhdtkSHVn1r_AJW=
+U8Q\";}'
+    'advanced-backend' =3D> 'u997jmhiiuh15hd2aab5cb588l'
+    '=
+_csrf-backend' =3D>
+'b9b07664764a80f6bff83eef0798e29741d252fdc16bd77a5277=
+e295668cd409a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"5J6WSb1tkG5PzAg51SJ2=
+TMtFjIv7yL61\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '_=
+_returnUrl' =3D> '/accounting/backend/web/index.php'
+    'user_role' =3D>=
+ [
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D=
+> [
+        0 =3D> 1
+    ]
+    '__id' =3D> 1109
+]
+
+$_SERVER =3D=
+ [
+    'MIBDIRS' =3D> 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' =3D> =
+'\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' =3D> 'D:/xampp/apache/bin/openss=
+l.cnf'
+    'PHP_PEAR_SYSCONF_DIR' =3D> '\\xampp\\php'
+    'PHPRC' =3D> =
+'\\xampp\\php'
+    'TMP' =3D> '\\xampp\\tmp'
+    'HTTP_HOST' =3D> 'loca=
+lhost'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_CACHE_CONTROL'=
+ =3D> 'max-age=3D0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    '=
+HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWeb=
+Kit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116
+Safari/537.36'
+    =
+'HTTP_ACCEPT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0=
+.9,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=
+=3D0.9'
+    'HTTP_SEC_FETCH_SITE' =3D> 'same-origin'
+    'HTTP_SEC_FETC=
+H_MODE' =3D> 'navigate'
+    'HTTP_SEC_FETCH_USER' =3D> '?1'
+    'HTTP_S=
+EC_FETCH_DEST' =3D> 'document'
+    'HTTP_REFERER' =3D>
+'http://localhos=
+t/accounting/backend/web/index.php?r=3Dmenu-navigasi'
+    'HTTP_ACCEPT_EN=
+CODING' =3D> 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'en-US,e=
+n;q=3D0.9'
+    'HTTP_COOKIE' =3D> 'advanced-frontend=3D6ql2tci3dh1qm49he7=
+16fb2s0f;
+_csrf-frontend=3D9ed49907f35021c33b79f65875588e0576abdef9813554=
+459d918f1f339e133fa%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%=
+3Bs%3A32%3A%221RbyWmxc9_X6pOLhdtkSHVn1r_AJWU8Q%22%3B%7D;
+advanced-backend=
+=3Du997jmhiiuh15hd2aab5cb588l;
+_csrf-backend=3Db9b07664764a80f6bff83eef07=
+98e29741d252fdc16bd77a5277e295668cd409a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-=
+backend%22%3Bi%3A1%3Bs%3A32%3A%225J6WSb1tkG5PzAg51SJ2TMtFjIv7yL61%22%3B%7D'=
+
+    'PATH' =3D>
+'C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System=
+32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;D:\\xampp\\php;C:=
+\\composer;C:\\Program
+Files\\PuTTY\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:=
+\\Users\\penguinBulat\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\pe=
+nguinBulat\\AppData\\Local\\atom\\bin;C:\\Users\\penguinBulat\\AppData\\Roa=
+ming\\Composer\\vendor\\bin;C:\\Users\\penguinBulat\\AppData\\Local\\Micros=
+oft\\WindowsApps;'
+    'SystemRoot' =3D> 'C:\\WINDOWS'
+    'COMSPEC' =
+=3D> 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' =3D>
+'.COM;.EXE;.BA=
+T;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' =3D> 'C:\\WINDOWS'=
+
+    'SERVER_SIGNATURE' =3D> '<address>Apache/2.4.34 (Win32)
+OpenSSL/1.=
+1.0h PHP/7.2.8 Server at localhost Port 80</address>
+'
+    'SERVER_SOFT=
+WARE' =3D> 'Apache/2.4.34 (Win32) OpenSSL/1.1.0h
+PHP/7.2.8'
+    'SERVER=
+_NAME' =3D> 'localhost'
+    'SERVER_ADDR' =3D> '::1'
+    'SERVER_PORT' =
+=3D> '80'
+    'REMOTE_ADDR' =3D> '::1'
+    'DOCUMENT_ROOT' =3D> 'D:/xam=
+pp/htdocs'
+    'REQUEST_SCHEME' =3D> 'http'
+    'CONTEXT_PREFIX' =3D> '=
+'
+    'CONTEXT_DOCUMENT_ROOT' =3D> 'D:/xampp/htdocs'
+    'SERVER_ADMIN'=
+ =3D> 'postmaster@localhost'
+    'SCRIPT_FILENAME' =3D>
+'D:/xampp/htdoc=
+s/accounting/backend/web/index.php'
+    'REMOTE_PORT' =3D> '53317'
+    =
+'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'=
+
+    'REQUEST_METHOD' =3D> 'GET'
+    'QUERY_STRING' =3D> 'r=3Dlogin'
+=
+    'REQUEST_URI' =3D> '/accounting/backend/web/index.php?r=3Dlogin'
+    =
+'SCRIPT_NAME' =3D> '/accounting/backend/web/index.php'
+    'PHP_SELF' =3D=
+> '/accounting/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 15937=
+70559.963
+    'REQUEST_TIME' =3D> 1593770559
+]

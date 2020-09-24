@@ -1,0 +1,390 @@
+Message-ID: <5e1c9f63ba98aa3e5271f80d53989255@sijaksa.com>
+Date: Mon, 17 Feb 2020 11:35:31 +0700
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2020-02-17 11:35:31
+[89.39.104.238][14][i3hknvkjt1tr7c795obf0lgmhv][error=
+][yii\db\Exception]
+PDOException: SQLSTATE[42S22]: Column not found: 1054=
+ Unknown column
+'daftar_penganggaran_apket_kegiatan.id_daftar_penganggara=
+n_kegiatan_kegiatan'
+in 'on clause' in
+/home/sijaksa/public_html/vendor=
+/yiisoft/yii2/db/Command.php:1290
+Stack trace:
+#0 /home/sijaksa/public_=
+html/vendor/yiisoft/yii2/db/Command.php(1290):
+PDOStatement->execute()
+=
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(1158):
+yi=
+i\db\Command->internalExecute('SELECT `daftar_...')
+#2 /home/sijaksa/publ=
+ic_html/vendor/yiisoft/yii2/db/Command.php(399):
+yii\db\Command->queryInt=
+ernal('fetchAll', NULL)
+#3 /home/sijaksa/public_html/vendor/yiisoft/yii2/=
+db/Query.php(237):
+yii\db\Command->queryAll()
+#4
+/home/sijaksa/public=
+_html/vendor/yiisoft/yii2/db/ActiveQuery.php(133):
+yii\db\Query->all(NULL=
+)
+#5
+/home/sijaksa/public_html/backend/views/anggaran-lanjutan-kegiatan=
+/_form.php(30):
+yii\db\ActiveQuery->all()
+#6 /home/sijaksa/public_html/=
+vendor/yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')
+#=
+7 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\b=
+ase\View->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#=
+8 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\b=
+ase\View->renderFile('/home/sijaksa/p...', Array, NULL)
+#9
+/home/sijaks=
+a/public_html/backend/views/anggaran-lanjutan-kegiatan/create.php(17):
+yi=
+i\base\View->render('_form', Array)
+#10 /home/sijaksa/public_html/vendor/=
+yiisoft/yii2/base/View.php(348):
+require('/home/sijaksa/p...')
+#11 /hom=
+e/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(257):
+yii\base\Vi=
+ew->renderPhpFile('/home/sijaksa/p...', '[<span
+class=3D"s...')
+#12 /ho=
+me/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(156):
+yii\base\V=
+iew->renderFile('/home/sijaksa/p...', Array,
+Object(backend\controllers\A=
+nggaranLanjutanKegiatanController))
+#13
+/home/sijaksa/public_html/vendo=
+r/yiisoft/yii2/base/Controller.php(384):
+yii\base\View->render('create', =
+Array,
+Object(backend\controllers\AnggaranLanjutanKegiatanController))
+=
+#14
+/home/sijaksa/public_html/backend/controllers/AnggaranLanjutanKegiata=
+nController.php(74):
+yii\base\Controller->render('create', Array)
+#15 [=
+internal function]:
+backend\controllers\AnggaranLanjutanKegiatanControlle=
+r->actionCreate()
+#16
+/home/sijaksa/public_html/vendor/yiisoft/yii2/bas=
+e/InlineAction.php(57):
+call_user_func_array(Array, Array)
+#17
+/home/=
+sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\bas=
+e\InlineAction->runWithParams(Array)
+#18
+/home/sijaksa/public_html/vend=
+or/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('cre=
+ate', Array)
+#19
+/home/sijaksa/public_html/vendor/yiisoft/yii2/web/Appl=
+ication.php(103):
+yii\base\Module->runAction('anggaran-lanjut...', Array)=
+
+#20
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Application.php=
+(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 =
+/home/sijaksa/public_html/backend/web/index.php(22):
+yii\base\Application=
+->run()
+#22 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column no=
+t found: 1054 Unknown
+column
+'daftar_penganggaran_apket_kegiatan.id_daf=
+tar_penganggaran_kegiatan_kegiatan'
+in 'on clause'
+The SQL being execut=
+ed was: SELECT
+`daftar_penganggaran_paket_kegiatan`.* FROM
+`daftar_peng=
+anggaran_paket_kegiatan` LEFT JOIN
+`daftar_penganggaran_kegiatan_kegiatan=
+` ON
+daftar_penganggaran_kegiatan_kegiatan.id_daftar_penganggaran_kegiata=
+n_kegiatan
+=3D
+daftar_penganggaran_apket_kegiatan.id_daftar_penganggara=
+n_kegiatan_kegiatan
+LEFT JOIN `daftar_penganggaran_sub_bidang_kegiatan` O=
+N
+daftar_penganggaran_sub_bidang_kegiatan.id_daftar_penganggaran_sub_bida=
+ng_kegiatan
+=3D
+daftar_penganggaran_kegiatan_kegiatan.id_daftar_pengang=
+garan_sub_bidang_kegiatan
+LEFT JOIN `daftar_penganggaran_bidang_kegiatan`=
+ ON
+daftar_penganggaran_bidang_kegiatan.id_daftar_penganggaran_bidang_keg=
+iatan
+=3D
+daftar_penganggaran_sub_bidang_kegiatan.id_daftar_penganggara=
+n_bidang_kegiatan
+WHERE `daftar_penganggaran_bidang_kegiatan`.`id_desa`=
+=3D'755' in
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/Schema.php:6=
+64
+Stack trace:
+#0 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Com=
+mand.php(1295):
+yii\db\Schema->convertException(Object(PDOException), 'SE=
+LECT
+`daftar_...')
+#1 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/=
+Command.php(1158):
+yii\db\Command->internalExecute('SELECT `daftar_...')=
+
+#2 /home/sijaksa/public_html/vendor/yiisoft/yii2/db/Command.php(399):
+=
+yii\db\Command->queryInternal('fetchAll', NULL)
+#3 /home/sijaksa/public_h=
+tml/vendor/yiisoft/yii2/db/Query.php(237):
+yii\db\Command->queryAll()
+#=
+4
+/home/sijaksa/public_html/vendor/yiisoft/yii2/db/ActiveQuery.php(133):=
+
+yii\db\Query->all(NULL)
+#5
+/home/sijaksa/public_html/backend/views/a=
+nggaran-lanjutan-kegiatan/_form.php(30):
+yii\db\ActiveQuery->all()
+#6 /=
+home/sijaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require(=
+'/home/sijaksa/p...')
+#7 /home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/View.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<s=
+pan
+class=3D"s...')
+#8 /home/sijaksa/public_html/vendor/yiisoft/yii2/ba=
+se/View.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array, =
+NULL)
+#9
+/home/sijaksa/public_html/backend/views/anggaran-lanjutan-kegi=
+atan/create.php(17):
+yii\base\View->render('_form', Array)
+#10 /home/si=
+jaksa/public_html/vendor/yiisoft/yii2/base/View.php(348):
+require('/home/=
+sijaksa/p...')
+#11 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/Vie=
+w.php(257):
+yii\base\View->renderPhpFile('/home/sijaksa/p...', '[<span
+=
+class=3D"s...')
+#12 /home/sijaksa/public_html/vendor/yiisoft/yii2/base/Vi=
+ew.php(156):
+yii\base\View->renderFile('/home/sijaksa/p...', Array,
+Obj=
+ect(backend\controllers\AnggaranLanjutanKegiatanController))
+#13
+/home/=
+sijaksa/public_html/vendor/yiisoft/yii2/base/Controller.php(384):
+yii\bas=
+e\View->render('create', Array,
+Object(backend\controllers\AnggaranLanjut=
+anKegiatanController))
+#14
+/home/sijaksa/public_html/backend/controller=
+s/AnggaranLanjutanKegiatanController.php(74):
+yii\base\Controller->render=
+('create', Array)
+#15 [internal function]:
+backend\controllers\Anggaran=
+LanjutanKegiatanController->actionCreate()
+#16
+/home/sijaksa/public_htm=
+l/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Arr=
+ay, Array)
+#17
+/home/sijaksa/public_html/vendor/yiisoft/yii2/base/Contr=
+oller.php(157):
+yii\base\InlineAction->runWithParams(Array)
+#18
+/home=
+/sijaksa/public_html/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\C=
+ontroller->runAction('create', Array)
+#19
+/home/sijaksa/public_html/ven=
+dor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('an=
+ggaran-lanjut...', Array)
+#20
+/home/sijaksa/public_html/vendor/yiisoft/=
+yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Object=
+(yii\web\Request))
+#21 /home/sijaksa/public_html/backend/web/index.php(22=
+):
+yii\base\Application->run()
+#22 {main}
+Additional Information:
+A=
+rray
+(
+    [0] =3D> 42S22
+    [1] =3D> 1054
+    [2] =3D> Unknown co=
+lumn
+'daftar_penganggaran_apket_kegiatan.id_daftar_penganggaran_kegiatan_=
+kegiatan'
+in 'on clause'
+)
+
+2020-02-17 11:35:31
+[89.39.104.238][1=
+4][i3hknvkjt1tr7c795obf0lgmhv][info][application]
+$_GET =3D [
+    'r' =
+=3D> 'anggaran-lanjutan-kegiatan/create'
+]
+
+$_POST =3D []
+
+$_FILE=
+S =3D []
+
+$_COOKIE =3D [
+    'advanced-backend' =3D> 'i3hknvkjt1tr7c7=
+95obf0lgmhv'
+    '_csrf-backend' =3D>
+'7c56bb3b1d7dfa42c37cee0e3cc10d9f=
+45c0012c6bf1ac33add15cde641bd861a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"=
+giD7q8eZssPDm4ac2CWeE2uN3mkqfdXk\";}'
+]
+
+$_SESSION =3D [
+    '__fla=
+sh' =3D> []
+    '__returnUrl' =3D> '/backend/web/index.php'
+    'user_r=
+ole' =3D> [
+        0 =3D> 'KABUPATEN'
+        1 =3D> 'KECAMATAN'
+   =
+     2 =3D> 'KELURAHAN'
+        3 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+ =
+   'user_role_id' =3D> [
+        0 =3D> 2
+        1 =3D> 3
+        2 =
+=3D> 4
+        3 =3D> 1
+    ]
+    '__id' =3D> 14
+]
+
+$_SERVER =
+=3D [
+    'PHPRC' =3D> '/home/sijaksa/fcgi-bin/../etc/php7.2'
+    'PWD'=
+ =3D> '/home/sijaksa/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'=
+
+    'SHLVL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin=
+:/usr/sbin:/usr/bin:/sbin:/bin'
+    'CONTENT_LENGTH' =3D> '0'
+    'SCRI=
+PT_NAME' =3D> '/backend/web/index.php'
+    'REQUEST_URI' =3D>
+'/backend=
+/web/index.php?r=3Danggaran-lanjutan-kegiatan%2Fcreate'
+    'QUERY_STRING=
+' =3D> 'r=3Danggaran-lanjutan-kegiatan%2Fcreate'
+    'REQUEST_METHOD' =3D=
+> 'GET'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =
+=3D> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '37948'
+    'SCRIPT_FILENAME' =3D=
+>
+'/home/sijaksa/public_html/backend/web/index.php'
+    'SERVER_ADMIN' =
+=3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/sijaksa=
+/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> 'h=
+ttp'
+    'DOCUMENT_ROOT' =3D> '/home/sijaksa/public_html'
+    'REMOTE_A=
+DDR' =3D> '89.39.104.238'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR'=
+ =3D> '209.58.180.2'
+    'SERVER_NAME' =3D> 'sijaksa.com'
+    'SERVER_S=
+OFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP_=
+CONNECTION' =3D> 'close'
+    'HTTP_CACHE_CONTROL' =3D> 'max-age=3D259200'=
+
+    'HTTP_HOST' =3D> 'sijaksa.com'
+    'HTTP_COOKIE' =3D> 'advanced-ba=
+ckend=3Di3hknvkjt1tr7c795obf0lgmhv;
+_csrf-backend=3D7c56bb3b1d7dfa42c37ce=
+e0e3cc10d9f45c0012c6bf1ac33add15cde641bd861a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_=
+csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22giD7q8eZssPDm4ac2CWeE2uN3mkqfdXk%22%3=
+B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'id-ID,id;q=3D0.9,en-US;q=3D0.8,en;=
+q=3D0.7'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCE=
+PT' =3D>
+'text/html,application/xhtml+xml,application/xml;q=3D0.9,image/w=
+ebp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3Db3;q=3D0.9'
+  =
+  'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+Apple=
+WebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130
+Safari/537.36'
+ =
+   'SCRIPT_URI' =3D> 'http://sijaksa.com/backend/web/index.php'
+    'SCRI=
+PT_URL' =3D> '/backend/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+=
+    'PHP_SELF' =3D> '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D=
+> 1581914131.1921
+    'REQUEST_TIME' =3D> 1581914131
+]

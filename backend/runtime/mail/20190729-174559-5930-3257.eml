@@ -1,0 +1,319 @@
+Message-ID: <e2632e33485126729ca679eef5a0f654@cvajm.com>
+Date: Mon, 29 Jul 2019 17:45:59 +0800
+Subject: Database errors at example.com
+From: log@example.com
+To: admin@example.com, developer@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+2019-07-29 17:45:59
+[180.246.103.184][36][u7qti1u74fst6t30r50n3mjuc6][err=
+or][yii\db\IntegrityException]
+PDOException: SQLSTATE[23000]: Integrity c=
+onstraint violation: 1048
+Column 'latitude' cannot be null in
+/home/cva=
+jm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php:1290
+Stack trace:=
+
+#0
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/Command.php(12=
+90):
+PDOStatement->execute()
+#1
+/home/cvajm/public_html/cvajm/vendor/=
+yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->internalExecute('INSER=
+T INTO `gp...')
+#2
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db=
+/Schema.php(433):
+yii\db\Command->execute()
+#3
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(600):
+yii\db\Schema->inse=
+rt('gps_detail', Array)
+#4
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord->insertInternal(NULL)=
+
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/BaseActiveReco=
+rd.php(678):
+yii\db\ActiveRecord->insert(false, NULL)
+#6
+/home/cvajm/=
+public_html/cvajm/backend/controllers/GpsController.php(181):
+yii\db\Base=
+ActiveRecord->save(false)
+#7 [internal function]:
+backend\controllers\G=
+psController->actionCreate()
+#8
+/home/cvajm/public_html/cvajm/vendor/yi=
+isoft/yii2/base/InlineAction.php(57):
+call_user_func_array(Array, Array)=
+
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Controller.p=
+hp(157):
+yii\base\InlineAction->runWithParams(Array)
+#10
+/home/cvajm/=
+public_html/cvajm/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Cont=
+roller->runAction('create', Array)
+#11
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('g=
+ps/create', Array)
+#12
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii=
+2/base/Application.php(386):
+yii\web\Application->handleRequest(Object(yi=
+i\web\Request))
+#13 /home/cvajm/public_html/cvajm/backend/web/index.php(2=
+2):
+yii\base\Application->run()
+#14 {main}
+
+Next yii\db\IntegrityEx=
+ception: SQLSTATE[23000]: Integrity constraint
+violation: 1048 Column 'la=
+titude' cannot be null
+The SQL being executed was: INSERT INTO `gps_detai=
+l` (`id_gps`,
+`target_nama`, `type`, `license_plat_no`, `speed_limit`, `l=
+atitude`,
+`longitude`, `speed`, `direction`, `total_milage_kilometer`, `s=
+tatus`,
+`position_time`, `lokasi`, `keterangan`, `parkir`, `id_surat_jala=
+n`)
+VALUES (208, '', '', '', 0, NULL, NULL, 0, '', NULL, '', '1970-01-01=
+
+01:00:00', '', '', '', 0) in
+/home/cvajm/public_html/cvajm/vendor/yiis=
+oft/yii2/db/Schema.php:664
+Stack trace:
+#0
+/home/cvajm/public_html/cv=
+ajm/vendor/yiisoft/yii2/db/Command.php(1295):
+yii\db\Schema->convertExcep=
+tion(Object(PDOException), 'INSERT INTO
+`gp...')
+#1
+/home/cvajm/publi=
+c_html/cvajm/vendor/yiisoft/yii2/db/Command.php(1091):
+yii\db\Command->in=
+ternalExecute('INSERT INTO `gp...')
+#2
+/home/cvajm/public_html/cvajm/ve=
+ndor/yiisoft/yii2/db/Schema.php(433):
+yii\db\Command->execute()
+#3
+/h=
+ome/cvajm/public_html/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(600):=
+
+yii\db\Schema->insert('gps_detail', Array)
+#4
+/home/cvajm/public_htm=
+l/cvajm/vendor/yiisoft/yii2/db/ActiveRecord.php(566):
+yii\db\ActiveRecord=
+->insertInternal(NULL)
+#5
+/home/cvajm/public_html/cvajm/vendor/yiisoft/=
+yii2/db/BaseActiveRecord.php(678):
+yii\db\ActiveRecord->insert(false, NUL=
+L)
+#6
+/home/cvajm/public_html/cvajm/backend/controllers/GpsController.p=
+hp(181):
+yii\db\BaseActiveRecord->save(false)
+#7 [internal function]:=
+
+backend\controllers\GpsController->actionCreate()
+#8
+/home/cvajm/pub=
+lic_html/cvajm/vendor/yiisoft/yii2/base/InlineAction.php(57):
+call_user_f=
+unc_array(Array, Array)
+#9
+/home/cvajm/public_html/cvajm/vendor/yiisoft=
+/yii2/base/Controller.php(157):
+yii\base\InlineAction->runWithParams(Arra=
+y)
+#10
+/home/cvajm/public_html/cvajm/vendor/yiisoft/yii2/base/Module.ph=
+p(528):
+yii\base\Controller->runAction('create', Array)
+#11
+/home/cva=
+jm/public_html/cvajm/vendor/yiisoft/yii2/web/Application.php(103):
+yii\ba=
+se\Module->runAction('gps/create', Array)
+#12
+/home/cvajm/public_html/c=
+vajm/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->=
+handleRequest(Object(yii\web\Request))
+#13 /home/cvajm/public_html/cvajm/=
+backend/web/index.php(22):
+yii\base\Application->run()
+#14 {main}
+Add=
+itional Information:
+Array
+(
+    [0] =3D> 23000
+    [1] =3D> 1048=
+
+    [2] =3D> Column 'latitude' cannot be null
+)
+
+2019-07-29 17:45:=
+58
+[180.246.103.184][36][u7qti1u74fst6t30r50n3mjuc6][info][application]=
+
+$_GET =3D [
+    'r' =3D> 'gps/create'
+]
+
+$_POST =3D [
+    '_cs=
+rf-backend' =3D>
+'7UZ8NBGX2ba38rXJbQbBgZBpkOmQYbCDlu-9P9v0JnreMwkZYtyb7Ma=
+c96IrQ4zjoC_zg9NTiLX-pPVHoqJcQw=3D=3D'
+    'Gps' =3D> [
+        'tangga=
+l_upload' =3D> '2019-07-29 17:45:50'
+        'id_login' =3D> '36'
+    ]=
+
+]
+
+$_FILES =3D [
+    'file' =3D> [
+        'name' =3D> 'system 2=
+.xlsx'
+        'type' =3D>
+'application/vnd.openxmlformats-officedocume=
+nt.spreadsheetml.sheet'
+        'tmp_name' =3D> '/home/cvajm/tmp/php5qsnz=
+F'
+        'error' =3D> 0
+        'size' =3D> 32173
+    ]
+]
+
+$_=
+COOKIE =3D [
+    'advanced-backend' =3D> 'u7qti1u74fst6t30r50n3mjuc6'
+ =
+   '_csrf-backend' =3D>
+'4879fa5b780a8d8f36fc9880899036175ac0759d16b5a8fc=
+cbb989eb3bfee3cea:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"3uu-sKBZqnBkFEMb=
+0FcjC286hKHxyVz9\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+  =
+  '__returnUrl' =3D> '/cvajm/backend/web/index.php'
+    'user_role' =3D> =
+[
+        0 =3D> 'SYSTEM ADMINISTRATOR'
+    ]
+    'user_role_id' =3D>=
+ [
+        0 =3D> 1
+    ]
+    '__id' =3D> 36
+]
+
+$_SERVER =3D [=
+
+    'PHPRC' =3D> '/home/cvajm/fcgi-bin/../etc/php7.0'
+    'PWD' =3D> '=
+/home/cvajm/fcgi-bin'
+    'PHP_FCGI_MAX_REQUESTS' =3D> '99999'
+    'SHL=
+VL' =3D> '0'
+    'PATH' =3D>
+'/usr/local/sbin:/usr/local/bin:/usr/sbin:=
+/usr/bin:/sbin:/bin'
+    'SCRIPT_NAME' =3D> '/cvajm/backend/web/index.php=
+'
+    'REQUEST_URI' =3D> '/cvajm/backend/web/index.php?r=3Dgps%2Fcreate'=
+
+    'QUERY_STRING' =3D> 'r=3Dgps%2Fcreate'
+    'REQUEST_METHOD' =3D> '=
+POST'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'GATEWAY_INTERFACE' =3D=
+> 'CGI/1.1'
+    'REMOTE_PORT' =3D> '54794'
+    'SCRIPT_FILENAME' =3D>=
+
+'/home/cvajm/public_html/cvajm/backend/web/index.php'
+    'SERVER_ADMI=
+N' =3D> '[no address given]'
+    'CONTEXT_DOCUMENT_ROOT' =3D> '/home/cvaj=
+m/public_html'
+    'CONTEXT_PREFIX' =3D> ''
+    'REQUEST_SCHEME' =3D> '=
+http'
+    'DOCUMENT_ROOT' =3D> '/home/cvajm/public_html'
+    'REMOTE_AD=
+DR' =3D> '180.246.103.184'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR=
+' =3D> '178.128.25.198'
+    'SERVER_NAME' =3D> 'cvajm.com'
+    'SERVER_=
+SOFTWARE' =3D> 'Apache/2.4.25'
+    'SERVER_SIGNATURE' =3D> ''
+    'HTTP=
+_UPGRADE_INSECURE_REQUESTS' =3D> '1'
+    'HTTP_DNT' =3D> '1'
+    'HTTP_=
+REFERER' =3D>
+'http://cvajm.com/cvajm/backend/web/index.php?r=3Dgps%2Fcre=
+ate'
+    'HTTP_COOKIE' =3D> 'advanced-backend=3Du7qti1u74fst6t30r50n3mjuc=
+6;
+_csrf-backend=3D4879fa5b780a8d8f36fc9880899036175ac0759d16b5a8fccbb989=
+eb3bfee3cea%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%=
+3A%223uu-sKBZqnBkFEMb0FcjC286hKHxyVz9%22%3B%7D'
+    'CONTENT_LENGTH' =3D>=
+ '32845'
+    'CONTENT_TYPE' =3D> 'multipart/form-data;
+boundary=3D-----=
+----------------------18467633426500'
+    'HTTP_USER_AGENT' =3D> 'Mozilla=
+/5.0 (Windows NT 10.0; WOW64;
+rv:68.0) Gecko/20100101 Firefox/68.0'
+   =
+ 'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' =
+=3D> 'en-US,en;q=3D0.5'
+    'HTTP_ACCEPT' =3D>
+'text/html,application/x=
+html+xml,application/xml;q=3D0.9,*/*;q=3D0.8'
+    'HTTP_HOST' =3D> 'cvajm=
+.com'
+    'HTTP_CONNECTION' =3D> 'close'
+    'SCRIPT_URI' =3D> 'http://=
+cvajm.com/cvajm/backend/web/index.php'
+    'SCRIPT_URL' =3D> '/cvajm/back=
+end/web/index.php'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D>=
+ '/cvajm/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1564393558.=
+3649
+    'REQUEST_TIME' =3D> 1564393558
+]
