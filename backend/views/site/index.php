@@ -9,13 +9,13 @@ if (Yii::$app->user->isGuest) {
     header("Location: index.php");
     exit;
 }
-$this->title = 'Home';
+$this->title = 'Dashboard';
 ?>
 <div class="site-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
+        <li><a href="/"><?= $this->title ?></a></li>
     </ul>
 
 </div>
