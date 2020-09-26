@@ -38,7 +38,7 @@ class KategoriBarang extends \yii\db\ActiveRecord
     {
         return [
             'id_kategori' => 'Id Kategori',
-            'nama_kategori' => 'Nama Kategori',
+            'nama_kategori' => 'Kategori',
         ];
     }
 }

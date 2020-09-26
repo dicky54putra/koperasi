@@ -56,4 +56,19 @@ class DataBarang extends \yii\db\ActiveRecord
             'is_active' => 'Is Active',
         ];
     }
+
+    public function getkategori_barang()
+    {
+        return $this->hasOne(KategoriBarang::className(), ['id_kategori' => 'id_kategori']);
+    }
+
+    public function getsatuan()
+    {
+        return $this->hasOne(DataSatuan::className(), ['id_satuan' => 'id_satuan']);
+    }
+
+    public function getanggota()
+    {
+        return $this->hasOne(AnggotaKoperasi::className(), ['id_anggota' => 'id_anggota']);
+    }
 }

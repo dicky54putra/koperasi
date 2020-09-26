@@ -38,7 +38,7 @@ class DataSatuan extends \yii\db\ActiveRecord
     {
         return [
             'id_satuan' => 'Id Satuan',
-            'nama_satuan' => 'Nama Satuan',
+            'nama_satuan' => 'Satuan',
         ];
     }
 }
