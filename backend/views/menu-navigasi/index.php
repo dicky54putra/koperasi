@@ -32,13 +32,9 @@ $this->title = 'Menu Navigasi';
     // var_dump($userrole);
     ?>
 
-    <?php
-    if ($userrole == 'DEVELOPER') {
-    ?>
         <p>
             <?= Html::a('<span class="glyphicon glyphicon-plus"></span>Tambah Menu Navigasi', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
-    <?php } ?>
 
 
 
