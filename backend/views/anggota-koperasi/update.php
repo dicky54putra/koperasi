@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\AnggotaKoperasi */
 
-$this->title = 'Ubah Anggota Koperasi: ' . $model->nama_anggota;
+$this->title = 'Ubah Anggota Koperasi : ' . $model->nama_anggota;
 ?>
 <div class="anggota-koperasi-update">
 
