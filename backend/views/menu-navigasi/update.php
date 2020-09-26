@@ -14,7 +14,7 @@ $this->title = 'Ubah Menu Navigasi: ' . $model->nama_menu;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
+        <li><a href="/">Dashboard</a></li>
         <li><?= Html::a('Daftar Menu Navigasi', ['index']) ?></li>
         <li class="active"><?= $this->title ?></li>
     </ul>

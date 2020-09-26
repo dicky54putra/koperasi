@@ -14,16 +14,11 @@ $this->title = 'Ubah Data Barang';
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li class="active"><?= $this->title ?></li>
-    </ul>
-
     <?= $this->render('_form', [
         'model' => $model,
-            'data_satuan' => $data_satuan,
-            'data_kategori' => $data_kategori,
-            'data_supplier' => $data_supplier,
+        'data_satuan' => $data_satuan,
+        'data_kategori' => $data_kategori,
+        'data_supplier' => $data_supplier,
     ]) ?>
 
 </div>
