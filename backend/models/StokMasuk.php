@@ -29,7 +29,7 @@ class StokMasuk extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_barang', 'total_qty', 'tanggal_masuk', 'keterangan'], 'required'],
+            [['id_barang', 'tanggal_masuk'], 'required'],
             [['id_barang', 'total_qty'], 'integer'],
             [['tanggal_masuk'], 'safe'],
             [['keterangan'], 'string'],

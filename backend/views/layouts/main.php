@@ -107,6 +107,7 @@ if (Yii::$app->user->isGuest) {
     <script>
         $(document).ready(function() {
             $('#table-index').DataTable();
+            $('.datatables').DataTable();
         });
     </script>
 
