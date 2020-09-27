@@ -9,6 +9,12 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use yii\helpers\ArrayHelper;
+
+use backend\models\DataBarang;
+use backend\models\StokMasuk;
+use yii\helpers\Json;
+
 /**
  * DataPembelianDetailController implements the CRUD actions for DataPembelianDetail model.
  */
@@ -62,16 +68,38 @@ class DataPembelianDetailController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new DataPembelianDetail();
 
+        $data_barang = ArrayHelper::map(
+            DataBarang::find()->all(),
+            'id_barang',
+            function ($model) {
+                return $model['nama_barang'];
+            }
+        );
+
+        $data_stok_masuk = ArrayHelper::map(
+            StokMasuk::find()->all(),
+            'id_stok_masuk',
+            function ($model) {
+                return tanggal_indo($model['tanggal_masuk'], true) .' - '. $model['keterangan'];
+            }
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_pembelian_detail]);
+
+            Yii::$app->session->setFlash("success","Data pembelian detail telah ditambahkan");
+            return $this->redirect(['data-pembelian-barang/view', 'id' => $id]);
+
+
         }
 
         return $this->renderAjax('create', [
             'model' => $model,
+            'data_barang' => $data_barang,
+            'data_stok_masuk' => $data_stok_masuk,
         ]);
     }
 
@@ -82,16 +110,34 @@ class DataPembelianDetailController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $id_detail)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, $id_detail);
+
+        $data_barang = ArrayHelper::map(
+            DataBarang::find()->all(),
+            'id_barang',
+            function ($model) {
+                return $model['nama_barang'];
+            }
+        );
+
+        $data_stok_masuk = ArrayHelper::map(
+            StokMasuk::find()->all(),
+            'id_stok_masuk',
+            function ($model) {
+                return tanggal_indo($model['tanggal_masuk'], true) .' - '. $model['keterangan'];
+            }
+        );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_pembelian_detail]);
+            return $this->redirect(['data-pembelian-barang/view', 'id' => $id]);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
+            'data_barang' => $data_barang,
+            'data_stok_masuk' => $data_stok_masuk,
         ]);
     }
 

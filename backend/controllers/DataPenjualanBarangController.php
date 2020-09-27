@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\AnggotaKoperasi;
+use backend\models\DataPenjualanDetail;
 use yii\helpers\ArrayHelper;
 
 use yii\helpers\Json;
@@ -60,8 +61,13 @@ class DataPenjualanBarangController extends Controller
      */
     public function actionView($id)
     {
+
+        $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
+
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'penjualan_detail' => $penjualan_detail,
         ]);
     }
 
@@ -74,16 +80,20 @@ class DataPenjualanBarangController extends Controller
     {
         $model = new DataPenjualanBarang();
 
+        $model->tanggal_penjualan = date('Y-m-d');
+
 
         $data_anggota = ArrayHelper::map(
             AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
             'id_anggota',
             function ($model) {
-                return $model['nama_anggota'];
+                return $model['kode_anggota'] .' - '.$model['nama_anggota'];
             }
         );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            Yii::$app->session->setFlash("success","Disimpan");
             return $this->redirect(['view', 'id' => $model->id_penjualan]);
         }
 
@@ -114,6 +124,8 @@ class DataPenjualanBarangController extends Controller
         );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            Yii::$app->session->setFlash("success","Disimpan");
             return $this->redirect(['view', 'id' => $model->id_penjualan]);
         }
 

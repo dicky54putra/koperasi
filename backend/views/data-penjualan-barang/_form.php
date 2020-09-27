@@ -41,7 +41,7 @@ use kartik\select2\Select2;
                 ],
             ])->label('Anggota') ?>
 
-    <?= $form->field($model, 'jenis_pembayaran')->dropDownList([ 1 => 'CASH', 2 => 'TAGIHAN', ], ['prompt' => 'Pilih Jenis Pembayaran']) ?>
+    <?= $form->field($model, 'jenis_pembayaran')->dropDownList([ 1 => 'LUNAS', 2 => 'TAGIHAN', ], ['prompt' => 'Pilih Status Pembayaran']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) ?>

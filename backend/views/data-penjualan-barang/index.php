@@ -72,7 +72,7 @@ $this->title = 'Data Penjualan Barang';
                                     </td>
                                     <td><?= $value->tanggal_penjualan ?></td>
                                     <td><?= $value->anggota->nama_anggota ?></td>
-                                    <td><?= $value->jenis_pembayaran == 1 ? 'CASH' : 'TAGIHAN' ?></td>
+                                    <td><?= $value->jenis_pembayaran == 1 ? 'LUNAS' : 'TAGIHAN' ?></td>
                                     <td><?= $value->grandtotal ?></td>
 
 

@@ -55,4 +55,15 @@ class DataPenjualanDetail extends \yii\db\ActiveRecord
             'total_jual' => 'Total Jual',
         ];
     }
+
+
+    public function getBarang()
+    {
+        return $this->hasOne(DataBarang::className(), ["id_barang"=>"id_barang"]);
+    }
+
+    public function getStok_keluar()
+    {
+        return $this->hasOne(StokKeluar::className(), ["id_stok_keluar"=>"id_stok_keluar"]);
+    }
 }
