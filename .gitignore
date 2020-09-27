@@ -37,6 +37,7 @@ phpunit.phar
 
 # backend runtime
 /runtime
+*.data
 
 # ignore generated files
 /frontend/web/index.php
