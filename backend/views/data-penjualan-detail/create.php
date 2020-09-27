@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\DataPenjualanDetail */
 
-$this->title = 'Create Data Penjualan Detail';
+$this->title = 'Data Penjualan Detail';
 $this->params['breadcrumbs'][] = ['label' => 'Data Penjualan Details', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,6 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+            'data_barang' => $data_barang,
+            'data_stok_keluar' => $data_stok_keluar,
+
     ]) ?>
 
 </div>

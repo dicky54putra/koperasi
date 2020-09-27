@@ -44,7 +44,7 @@ class DataPenjualanBarang extends \yii\db\ActiveRecord
             'id_penjualan' => 'Id Penjualan',
             'tanggal_penjualan' => 'Tanggal Penjualan',
             'id_anggota' => 'Id Anggota',
-            'jenis_pembayaran' => 'Jenis Pembayaran',
+            'jenis_pembayaran' => 'Status Pembayaran',
         ];
     }
 

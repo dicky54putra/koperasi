@@ -9,6 +9,13 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
+use yii\helpers\ArrayHelper;
+
+use backend\models\DataBarang;
+use backend\models\StokKeluar;
+use yii\helpers\Json;
+
 /**
  * DataPenjualanDetailController implements the CRUD actions for DataPenjualanDetail model.
  */
@@ -62,17 +69,35 @@ class DataPenjualanDetailController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new DataPenjualanDetail();
 
+        $data_barang = ArrayHelper::map(
+            DataBarang::find()->all(),
+            'id_barang',
+            function ($model) {
+                return $model['nama_barang'];
+            }
+        );
+
+        $data_stok_keluar = ArrayHelper::map(
+            StokKeluar::find()->all(),
+            'id_stok_keluar',
+            function ($model) {
+                return tanggal_indo($model['tanggal_keluar'], true) .' - '. $model['keterangan'];
+            }
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Disimpan');
-            return $this->redirect(['view', 'id' => $model->id_penjualan_detail]);
+            Yii::$app->session->setFlash("success","Disimpan");
+            return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
         }
 
         return $this->renderAjax('create', [
             'model' => $model,
+            'data_barang' => $data_barang,
+            'data_stok_keluar' => $data_stok_keluar,
         ]);
     }
 
@@ -83,17 +108,35 @@ class DataPenjualanDetailController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id,$id_detail)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id_detail);
+
+        $data_barang = ArrayHelper::map(
+            DataBarang::find()->all(),
+            'id_barang',
+            function ($model) {
+                return $model['nama_barang'];
+            }
+        );
+
+        $data_stok_keluar = ArrayHelper::map(
+            StokKeluar::find()->all(),
+            'id_stok_keluar',
+            function ($model) {
+                return tanggal_indo($model['tanggal_keluar'], true) .' - '. $model['keterangan'];
+            }
+        );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Disimpan');
-            return $this->redirect(['view', 'id' => $model->id_penjualan_detail]);
+            Yii::$app->session->setFlash("success","Disimpan");
+            return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
         }
 
         return $this->renderAjax('update', [
             'model' => $model,
+            'data_barang' => $data_barang,
+            'data_stok_keluar' => $data_stok_keluar,
         ]);
     }
 

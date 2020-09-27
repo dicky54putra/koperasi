@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\DataPenjualanDetail */
@@ -19,11 +20,29 @@ use yii\widgets\ActiveForm;
         ]
     ]); ?>
 
-    <?= $form->field($model, 'id_penjualan')->textInput() ?>
+    <?= $form->field($model, 'id_penjualan')->textInput(['value' => $_GET['id'], 'type' => 'hidden'])->label(false) ?>
 
-    <?= $form->field($model, 'id_stok_keluar')->textInput() ?>
+    <?= $form->field($model, 'id_stok_keluar')->widget(Select2::classname(), [
+                // 'name' => 'test',
+                'data' => $data_stok_keluar,
+                // 'hashVarLoadPosition' => View::POS_READY,
+                'language' => 'en',
+                'options' => ['placeholder' => 'Pilih Data Stok Keluar'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label('Stok Keluar Pada Bulan') ?>
 
-    <?= $form->field($model, 'id_barang')->textInput() ?>
+    <?= $form->field($model, 'id_barang')->widget(Select2::classname(), [
+                // 'name' => 'test',
+                'data' => $data_barang,
+                // 'hashVarLoadPosition' => View::POS_READY,
+                'language' => 'en',
+                'options' => ['placeholder' => 'Pilih Barang'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label('Barang') ?>
 
     <?= $form->field($model, 'qty')->textInput() ?>
 

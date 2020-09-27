@@ -29,7 +29,7 @@ class StokKeluar extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_barang', 'total_qty'], 'required'],
+            [['id_barang'], 'required'],
             [['id_barang', 'total_qty'], 'integer'],
             [['tanggal_keluar'], 'safe'],
             [['keterangan'], 'string'],

@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use backend\models\AnggotaKoperasi;
+use backend\models\DataPembelianDetail;
 
 use yii\helpers\Json;
 
@@ -59,8 +60,12 @@ class DataPembelianBarangController extends Controller
      */
     public function actionView($id)
     {
+
+        $pembelian_detail = DataPembelianDetail::find()->where(['id_pembelian' => $id])->all();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'pembelian_detail' => $pembelian_detail,
         ]);
     }
 
