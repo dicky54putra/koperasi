@@ -37,10 +37,12 @@ class AnggotaKoperasiController extends Controller
     {
         $searchModel = new AnggotaKoperasiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $anggota = AnggotaKoperasi::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'anggota' => $anggota,
         ]);
     }
 
@@ -67,10 +69,10 @@ class AnggotaKoperasiController extends Controller
         $model = new AnggotaKoperasi();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_anggota]);
+            return $this->redirect(['index']);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
@@ -87,10 +89,10 @@ class AnggotaKoperasiController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_anggota]);
+            return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }

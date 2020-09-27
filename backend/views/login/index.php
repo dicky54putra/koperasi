@@ -21,7 +21,7 @@ $this->title = 'Data Login';
 
     <h1><?= Html::encode($this->title) ?></h1>
     <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
+        <li><a href="/">Dashboard</a></li>
         <li class="active"><?= $this->title ?></li>
     </ul>
 

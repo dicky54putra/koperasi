@@ -22,7 +22,7 @@ $this->title = 'Data Hak Akses';
     <?php // echo $this->render('_search', ['model' => $searchModel]); 
     ?>
     <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
+        <li><a href="/">Dashboard</a></li>
         <li class="active"><?= $this->title ?></li>
     </ul>
 

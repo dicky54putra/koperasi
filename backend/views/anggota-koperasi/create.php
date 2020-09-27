@@ -5,9 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\AnggotaKoperasi */
 
-$this->title = 'Create Anggota Koperasi';
-$this->params['breadcrumbs'][] = ['label' => 'Anggota Koperasis', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Tambah Anggota Koperasi';
 ?>
 <div class="anggota-koperasi-create">
 

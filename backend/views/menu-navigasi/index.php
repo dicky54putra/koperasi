@@ -17,7 +17,7 @@ $this->title = 'Menu Navigasi';
     <?php // echo $this->render('_search', ['model' => $searchModel]); 
     ?>
     <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
+        <li><a href="/">Dashboard</a></li>
         <li class="active"><?= $this->title ?></li>
     </ul>
 
@@ -32,9 +32,9 @@ $this->title = 'Menu Navigasi';
     // var_dump($userrole);
     ?>
 
-        <p>
-            <?= Html::a('<span class="glyphicon glyphicon-plus"></span>Tambah Menu Navigasi', ['create'], ['class' => 'btn btn-success']) ?>
-        </p>
+    <p>
+        <?= Html::a('<span class="glyphicon glyphicon-plus"></span>Tambah Menu Navigasi', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 
 
 
