@@ -70,7 +70,7 @@ class DataPenjualanDetailController extends Controller
             return $this->redirect(['view', 'id' => $model->id_penjualan_detail]);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
@@ -90,7 +90,7 @@ class DataPenjualanDetailController extends Controller
             return $this->redirect(['view', 'id' => $model->id_penjualan_detail]);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }

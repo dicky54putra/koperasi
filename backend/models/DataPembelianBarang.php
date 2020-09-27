@@ -30,7 +30,7 @@ class DataPembelianBarang extends \yii\db\ActiveRecord
         return [
             [['tanggal_pembelian'], 'required'],
             [['tanggal_pembelian'], 'safe'],
-            [['id_anggota'], 'integer'],
+            [['id_anggota', 'grandtotal'], 'integer'],
             [['no_faktur'], 'string', 'max' => 255],
         ];
     }
@@ -46,5 +46,10 @@ class DataPembelianBarang extends \yii\db\ActiveRecord
             'id_anggota' => 'Id Anggota',
             'no_faktur' => 'No Faktur',
         ];
+    }
+
+    public function getAnggota()
+    {
+        return $this->hasOne(AnggotaKoperasi::className(), ["id_anggota"=>"id_anggota"]);
     }
 }

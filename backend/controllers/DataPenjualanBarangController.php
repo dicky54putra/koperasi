@@ -8,6 +8,10 @@ use backend\models\DataPenjualanBarangSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\AnggotaKoperasi;
+use yii\helpers\ArrayHelper;
+
+use yii\helpers\Json;
 
 /**
  * DataPenjualanBarangController implements the CRUD actions for DataPenjualanBarang model.
@@ -38,9 +42,13 @@ class DataPenjualanBarangController extends Controller
         $searchModel = new DataPenjualanBarangSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+
+        $data_penjualan = DataPenjualanBarang::find()->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'data_penjualan' => $data_penjualan,
         ]);
     }
 
@@ -66,12 +74,22 @@ class DataPenjualanBarangController extends Controller
     {
         $model = new DataPenjualanBarang();
 
+
+        $data_anggota = ArrayHelper::map(
+            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
+            'id_anggota',
+            function ($model) {
+                return $model['nama_anggota'];
+            }
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_penjualan]);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
+            'data_anggota' => $data_anggota,
         ]);
     }
 
@@ -86,12 +104,22 @@ class DataPenjualanBarangController extends Controller
     {
         $model = $this->findModel($id);
 
+
+        $data_anggota = ArrayHelper::map(
+            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
+            'id_anggota',
+            function ($model) {
+                return $model['nama_anggota'];
+            }
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_penjualan]);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
+            'data_anggota' => $data_anggota,
         ]);
     }
 

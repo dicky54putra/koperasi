@@ -70,7 +70,7 @@ class DataPembelianDetailController extends Controller
             return $this->redirect(['view', 'id' => $model->id_pembelian_detail]);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
