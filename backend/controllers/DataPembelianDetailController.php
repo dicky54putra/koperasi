@@ -29,7 +29,7 @@ class DataPembelianDetailController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -89,11 +89,8 @@ class DataPembelianDetailController extends Controller
         );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            Yii::$app->session->setFlash("success","Data pembelian detail telah ditambahkan");
+            Yii::$app->session->setFlash("success","Disimpan");
             return $this->redirect(['data-pembelian-barang/view', 'id' => $id]);
-
-
         }
 
         return $this->renderAjax('create', [
@@ -131,6 +128,7 @@ class DataPembelianDetailController extends Controller
         );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['data-pembelian-barang/view', 'id' => $id]);
         }
 
@@ -152,6 +150,7 @@ class DataPembelianDetailController extends Controller
     {
         $this->findModel($id)->delete();
 
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
     }
 

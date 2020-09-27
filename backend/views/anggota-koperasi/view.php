@@ -52,10 +52,39 @@ $this->params['breadcrumbs'][] = $this->title;
                         'kota',
                         'telp',
                         'npwp',
-                        'id_jenis_anggota',
+                        [
+                            'attribute' => 'id_jenis_anggota',
+                            'label' => 'Jenis Anggota',
+                            'format' => 'raw',
+                            'value' => function ($model) {
+                                if ($model->id_jenis_anggota == 1) {
+                                    return 'Customer';
+                                } else {
+                                    return 'Supplier';
+                                }
+                            }
+                        ],
                         'id_pangkat',
-                        'tanggal_keanggotaan',
-                        'is_active',
+                        'pangkat.nama_pangkat',
+                        [
+                            'attribute' => 'tanggal_keanggotaan',
+                            'format' => 'raw',
+                            'value' => function ($model) {
+                                return tanggal_indo($model->tanggal_keanggotaan);
+                            }
+                        ],
+                        [
+                            'attribute' => 'is_active',
+                            'label' => 'Status',
+                            'format' => 'raw',
+                            'value' => function ($model) {
+                                if ($model->is_active == 1) {
+                                    return '<label class="label label-success">Aktif</label>';
+                                } else {
+                                    return '<label class="label label-danger">Tidak Aktif</label>';
+                                }
+                            }
+                        ]
                     ],
                 ]) ?>
 

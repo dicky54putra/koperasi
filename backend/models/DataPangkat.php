@@ -38,7 +38,7 @@ class DataPangkat extends \yii\db\ActiveRecord
     {
         return [
             'id_pangkat' => 'Id Pangkat',
-            'nama_pangkat' => 'Nama Pangkat',
+            'nama_pangkat' => 'Pangkat',
         ];
     }
 }

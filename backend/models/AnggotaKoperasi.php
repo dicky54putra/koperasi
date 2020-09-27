@@ -56,10 +56,15 @@ class AnggotaKoperasi extends \yii\db\ActiveRecord
             'kota' => 'Kota',
             'telp' => 'Telp',
             'npwp' => 'Npwp',
-            'id_jenis_anggota' => 'Id Jenis Anggota',
+            'id_jenis_anggota' => 'Jenis Anggota',
             'id_pangkat' => 'Id Pangkat',
             'tanggal_keanggotaan' => 'Tanggal Keanggotaan',
             'is_active' => 'Is Active',
         ];
+    }
+
+    public function getpangkat()
+    {
+        return $this->hasOne(DataPangkat::className(), ['id_pangkat' => 'id_pangkat']);
     }
 }

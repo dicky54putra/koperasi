@@ -24,7 +24,7 @@ class SystemroleController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -36,15 +36,15 @@ class SystemroleController extends Controller
      */
     public function actionIndex()
     {
-        if (Yii::$app->user->isGuest) { 
+        if (Yii::$app->user->isGuest) {
             header("Location: index.php");
             exit;
         }
-        
+
         $searchModel = new SystemroleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $dataProvider->pagination->pageSize=10;
+        $dataProvider->pagination->pageSize = 10;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -60,16 +60,16 @@ class SystemroleController extends Controller
      */
     public function actionView($id)
     {
-        if (Yii::$app->user->isGuest) { 
+        if (Yii::$app->user->isGuest) {
             header("Location: index.php");
             exit;
         }
-		
-		$userrole = Userrole::find()
-			->joinWith("login")
-			->where(["id_system_role"=>$id])
-			->orderBy("login.nama")->all();
-        
+
+        $userrole = Userrole::find()
+            ->joinWith("login")
+            ->where(["id_system_role" => $id])
+            ->orderBy("login.nama")->all();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
             'userrole' => $userrole,
@@ -83,14 +83,15 @@ class SystemroleController extends Controller
      */
     public function actionCreate()
     {
-        if (Yii::$app->user->isGuest) { 
+        if (Yii::$app->user->isGuest) {
             header("Location: index.php");
             exit;
         }
-        
+
         $model = new Systemrole();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id_system_role]);
         }
 
@@ -108,14 +109,15 @@ class SystemroleController extends Controller
      */
     public function actionUpdate($id)
     {
-        if (Yii::$app->user->isGuest) { 
+        if (Yii::$app->user->isGuest) {
             header("Location: index.php");
             exit;
         }
-        
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id_system_role]);
         }
 
@@ -133,13 +135,14 @@ class SystemroleController extends Controller
      */
     public function actionDelete($id)
     {
-		if (Yii::$app->user->isGuest) {
-			header("Location: index.php");
-			exit();
-		}
+        if (Yii::$app->user->isGuest) {
+            header("Location: index.php");
+            exit();
+        }
 
         $this->findModel($id)->delete();
 
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
     }
 

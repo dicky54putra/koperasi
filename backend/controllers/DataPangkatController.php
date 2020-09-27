@@ -23,7 +23,7 @@ class DataPangkatController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -37,10 +37,12 @@ class DataPangkatController extends Controller
     {
         $searchModel = new DataPangkatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $data_pangkat = DataPangkat::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'data_pangkat' => $data_pangkat,
         ]);
     }
 
@@ -66,11 +68,13 @@ class DataPangkatController extends Controller
     {
         $model = new DataPangkat();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_pangkat]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->save();
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
@@ -87,10 +91,11 @@ class DataPangkatController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_pangkat]);
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }
@@ -105,7 +110,7 @@ class DataPangkatController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
     }
 

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\KategoriBarang */
 
-$this->title = 'Create Kategori Barang';
+$this->title = 'Tambah Kategori Barang';
 $this->params['breadcrumbs'][] = ['label' => 'Kategori Barangs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

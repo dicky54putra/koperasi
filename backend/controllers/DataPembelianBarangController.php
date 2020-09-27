@@ -28,7 +28,7 @@ class DataPembelianBarangController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -87,6 +87,7 @@ class DataPembelianBarangController extends Controller
         );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id_pembelian]);
         }
 
@@ -116,6 +117,7 @@ class DataPembelianBarangController extends Controller
         );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id_pembelian]);
         }
 
@@ -136,6 +138,7 @@ class DataPembelianBarangController extends Controller
     {
         $this->findModel($id)->delete();
 
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
     }
 

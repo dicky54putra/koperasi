@@ -23,7 +23,7 @@ class StokMasukController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -67,6 +67,7 @@ class StokMasukController extends Controller
         $model = new StokMasuk();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['data-barang/view', 'id' => $model->id_barang]);
         }
 
@@ -87,6 +88,7 @@ class StokMasukController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['data-barang/view', 'id' => $model->id_barang]);
         }
 
@@ -107,6 +109,7 @@ class StokMasukController extends Controller
         $model = $this->findModel($id);
         $model->delete();
 
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['data-barang/view', 'id' => $model->id_barang]);
     }
 

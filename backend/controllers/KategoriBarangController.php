@@ -23,7 +23,7 @@ class KategoriBarangController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -37,10 +37,12 @@ class KategoriBarangController extends Controller
     {
         $searchModel = new KategoriBarangSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $data_kategori_barang = KategoriBarang::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'data_kategori_barang' => $data_kategori_barang,
         ]);
     }
 
@@ -67,10 +69,11 @@ class KategoriBarangController extends Controller
         $model = new KategoriBarang();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_kategori]);
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
@@ -87,10 +90,11 @@ class KategoriBarangController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_kategori]);
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }
@@ -106,6 +110,7 @@ class KategoriBarangController extends Controller
     {
         $this->findModel($id)->delete();
 
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
     }
 
