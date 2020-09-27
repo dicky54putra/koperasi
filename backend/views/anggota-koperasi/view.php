@@ -41,8 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <div class="box box-warning">
-        <!-- <div class="box-header">
-            </div> -->
         <div class="box-body">
             <div class="col-md-12" style="padding: 0;">
                 <?= DetailView::widget([
