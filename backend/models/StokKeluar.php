@@ -29,8 +29,8 @@ class StokKeluar extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_barang', 'qty', 'tanggal_keluar', 'keterangan'], 'required'],
-            [['id_barang', 'qty'], 'integer'],
+            [['id_barang', 'total_qty'], 'required'],
+            [['id_barang', 'total_qty'], 'integer'],
             [['tanggal_keluar'], 'safe'],
             [['keterangan'], 'string'],
         ];
@@ -44,7 +44,7 @@ class StokKeluar extends \yii\db\ActiveRecord
         return [
             'id_stok_keluar' => 'Id Stok Keluar',
             'id_barang' => 'Id Barang',
-            'qty' => 'Qty',
+            'total_qty' => 'Qty',
             'tanggal_keluar' => 'Tanggal Keluar',
             'keterangan' => 'Keterangan',
         ];

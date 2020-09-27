@@ -67,10 +67,10 @@ class StokMasukController extends Controller
         $model = new StokMasuk();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_stok_masuk]);
+            return $this->redirect(['data-barang/view', 'id' => $model->id_barang]);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
@@ -87,10 +87,10 @@ class StokMasukController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_stok_masuk]);
+            return $this->redirect(['data-barang/view', 'id' => $model->id_barang]);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }
@@ -104,9 +104,10 @@ class StokMasukController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['data-barang/view', 'id' => $model->id_barang]);
     }
 
     /**

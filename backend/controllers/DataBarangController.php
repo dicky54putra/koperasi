@@ -13,7 +13,8 @@ use yii\helpers\ArrayHelper;
 use backend\models\KategoriBarang;
 use backend\models\DataSatuan;
 use backend\models\AnggotaKoperasi;
-
+use backend\models\StokKeluar;
+use backend\models\StokMasuk;
 use yii\helpers\Json;
 
 /**
@@ -62,8 +63,12 @@ class DataBarangController extends Controller
      */
     public function actionView($id)
     {
+        $stok_masuk = StokMasuk::find()->where(['id_barang' => $id])->all();
+        $stok_keluar = StokKeluar::find()->where(['id_barang' => $id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'stok_masuk' => $stok_masuk,
+            'stok_keluar' => $stok_keluar,
         ]);
     }
 
