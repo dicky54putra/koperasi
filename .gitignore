@@ -38,6 +38,7 @@ phpunit.phar
 # backend runtime
 /runtime
 backend/runtime/*
+backend/runtime/debug/index.data
 *.data
 
 # ignore generated files

@@ -37,10 +37,12 @@ class DataSatuanController extends Controller
     {
         $searchModel = new DataSatuanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $data_satuan = DataSatuan::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'data_satuan' => $data_satuan,
         ]);
     }
 
@@ -67,10 +69,10 @@ class DataSatuanController extends Controller
         $model = new DataSatuan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_satuan]);
+            return $this->redirect(['index']);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
@@ -87,10 +89,10 @@ class DataSatuanController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_satuan]);
+            return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }
