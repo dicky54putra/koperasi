@@ -58,7 +58,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             'nama_barang',
                         ],
                     ]) ?>
-
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0;">
@@ -83,7 +82,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]
                         ],
                     ]) ?>
-
                 </div>
             </div>
 

@@ -8,6 +8,10 @@ use backend\models\DataPembelianBarangSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use backend\models\AnggotaKoperasi;
+
+use yii\helpers\Json;
 
 /**
  * DataPembelianBarangController implements the CRUD actions for DataPembelianBarang model.
@@ -38,9 +42,12 @@ class DataPembelianBarangController extends Controller
         $searchModel = new DataPembelianBarangSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $data_pembelian = DataPembelianBarang::find()->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'data_pembelian' => $data_pembelian,
         ]);
     }
 
@@ -66,12 +73,21 @@ class DataPembelianBarangController extends Controller
     {
         $model = new DataPembelianBarang();
 
+        $data_supplier = ArrayHelper::map(
+            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 2])->all(),
+            'id_anggota',
+            function ($model) {
+                return $model['nama_anggota'];
+            }
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_pembelian]);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
+            'data_supplier' => $data_supplier,
         ]);
     }
 
@@ -86,12 +102,21 @@ class DataPembelianBarangController extends Controller
     {
         $model = $this->findModel($id);
 
+        $data_supplier = ArrayHelper::map(
+            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 2])->all(),
+            'id_anggota',
+            function ($model) {
+                return $model['nama_anggota'];
+            }
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_pembelian]);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
+            'data_supplier' => $data_supplier,
         ]);
     }
 

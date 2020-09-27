@@ -10,7 +10,14 @@ use yii\widgets\ActiveForm;
 
 <div class="data-penjualan-detail-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'enableClientValidation' => true,
+        'options' => [
+            'data-pjax' => 1,
+            'id' => 'create-data-barang',
+            'tabindex' => false,
+        ]
+    ]); ?>
 
     <?= $form->field($model, 'id_penjualan')->textInput() ?>
 

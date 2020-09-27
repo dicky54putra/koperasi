@@ -2,35 +2,94 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\DataPenjualanBarangSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Data Penjualan Barangs';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Data Penjualan Barang';
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="data-penjualan-barang-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <ul class="breadcrumb">
+        <li><a href="/">Dashboard</a></li>
+        <li class="active"><?= $this->title ?></li>
+    </ul>
+
     <p>
-        <?= Html::a('Create Data Penjualan Barang', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::button(
+            '<i class="glyphicon glyphicon-plus"></i> Tambah Data Penjualan',
+            [
+                'value' => Url::to(['create']),
+                'title' => '', 'class' => 'showModalButton btn btn-success'
+            ]
+        );  ?>
+
     </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+ <div class="box box-warning">
+        <div class="box-header">
+            <div class="col-md-12" style="padding: 0;">
+                <div class="box-body" style="overflow-x: auto;">
+                    <table class="table" id="table-index">
+                        <thead>
+                            <tr>
+                                <th style="white-space: nowrap;">#</th>
+                                <th style="white-space: nowrap;">Aksi</th>
+                                <th style="white-space: nowrap;">Tanggal Penjualan</th>
+                                <th style="white-space: nowrap;">Nama Anggota</th>
+                                <th style="white-space: nowrap;">Jenis Pembayaran</th>
+                                <th style="white-space: nowrap;">Grandtotal Penjualan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 1;
+                            foreach ($data_penjualan as $key => $value) {
+                            ?>
 
-            'id_penjualan',
-            'tanggal_penjualan',
-            'id_anggota',
-            'jenis_pembayaran',
+                                <tr>
+                                    <td><?= $i++; ?>.</td>
+                                    <td>
+                                        <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_penjualan], [
+                                            'title' => Yii::t('app', 'Lihat Detail'),
+                                        ]); ?>
+                                        <?= Html::button(
+                                            '<span class="glyphicon glyphicon-edit"></span>',
+                                            [
+                                                'value' => Url::to(['update', 'id' => $value->id_penjualan]),
+                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-success'
+                                            ]
+                                        ); ?>
+                                        <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_penjualan], [
+                                            'title' => Yii::t('app', 'Hapus data'),
+                                        ]); ?>
+                                    </td>
+                                    <td><?= $value->tanggal_penjualan ?></td>
+                                    <td><?= $value->anggota->nama_anggota ?></td>
+                                    <td><?= $value->jenis_pembayaran == 1 ? 'CASH' : 'TAGIHAN' ?></td>
+                                    <td><?= $value->grandtotal ?></td>
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+
+                                </tr>
+
+                            <?php } ?>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <!-- <td>T</td> -->
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+

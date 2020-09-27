@@ -30,7 +30,7 @@ class DataPenjualanBarang extends \yii\db\ActiveRecord
         return [
             [['tanggal_penjualan', 'id_anggota', 'jenis_pembayaran'], 'required'],
             [['tanggal_penjualan'], 'safe'],
-            [['id_anggota'], 'integer'],
+            [['id_anggota', 'grandtotal'], 'integer'],
             [['jenis_pembayaran'], 'string'],
         ];
     }
@@ -46,5 +46,10 @@ class DataPenjualanBarang extends \yii\db\ActiveRecord
             'id_anggota' => 'Id Anggota',
             'jenis_pembayaran' => 'Jenis Pembayaran',
         ];
+    }
+
+    public function getAnggota()
+    {
+        return $this->hasOne(AnggotaKoperasi::className(), ["id_anggota"=>"id_anggota"]);
     }
 }
