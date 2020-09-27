@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-print"></span> Print Karu Anggota', ['print-kartu', 'id' => $model->id_anggota], ['class' => 'btn btn-default text-blue', 'target' => '_BLANK']) ?>
     </p>
 
     <div class="box box-warning">
@@ -64,7 +65,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 }
                             }
                         ],
-                        'id_pangkat',
                         'pangkat.nama_pangkat',
                         [
                             'attribute' => 'tanggal_keanggotaan',

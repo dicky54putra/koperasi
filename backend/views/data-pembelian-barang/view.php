@@ -78,77 +78,79 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="box box-warning">
-        <div class="box-header"><h3 style="font-weight: bold;">History Pembelian</h3></div>
-            <div class="box-body">
+        <div class="box-header">
+            <h3 style="font-weight: bold;">History Pembelian</h3>
+        </div>
+        <div class="box-body">
 
-                <p>
-                    <?= Html::button(
-                        '<span class="glyphicon glyphicon-plus"></span> Tambah Data',
-                        [
-                            'value' => Url::to(['data-pembelian-detail/create', 'id' => $_GET['id']]),
-                            'title' => 'Buat Data Pembelian', 'class' => 'showModalButton btn btn-success'
-                        ]
-                    ); ?>
-                </p><br>
+            <p>
+                <?= Html::button(
+                    '<span class="glyphicon glyphicon-plus"></span> Tambah Data',
+                    [
+                        'value' => Url::to(['data-pembelian-detail/create', 'id' => $_GET['id']]),
+                        'title' => 'Buat Data Pembelian', 'class' => 'showModalButton btn btn-success'
+                    ]
+                ); ?>
+            </p><br>
 
-                <table class="table" id="table-index">
-                        <thead>
-                            <tr>
-                                <th style="white-space: nowrap;">#</th>
-                                <th style="white-space: nowrap;">Aksi</th>
-                                <th style="white-space: nowrap;">Keterangan Stok</th>
-                                <th style="white-space: nowrap;">Nama Barang</th>
-                                <th style="white-space: nowrap;">Qty</th>
-                                <th style="white-space: nowrap;">Diskon</th>
-                                <th style="white-space: nowrap;">Harga Beli</th>
-                                <th style="white-space: nowrap;">PPN</th>
-                                <th style="white-space: nowrap;">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            foreach ($pembelian_detail as $key => $value) {
-                            ?>
+            <table class="table" id="table-index">
+                <thead>
+                    <tr>
+                        <th style="white-space: nowrap;">#</th>
+                        <th style="white-space: nowrap;">Aksi</th>
+                        <th style="white-space: nowrap;">Keterangan Stok</th>
+                        <th style="white-space: nowrap;">Nama Barang</th>
+                        <th style="white-space: nowrap;">Qty</th>
+                        <th style="white-space: nowrap;">Diskon</th>
+                        <th style="white-space: nowrap;">Harga Beli</th>
+                        <th style="white-space: nowrap;">PPN</th>
+                        <th style="white-space: nowrap;">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $i = 1;
+                    foreach ($pembelian_detail as $key => $value) {
+                    ?>
 
-                                <tr>
-                                   
-                                    <td><?= $i++; ?>.</td>
-                                    <td>
-                                       
-                                        <?= Html::button(
-                                            '<span class="glyphicon glyphicon-edit"></span>',
-                                            [
-                                                'value' => Url::to(['data-pembelian-detail/update', , 'id' => $_GET['id'], 'id_detail' => $value->id_pembelian_detail]),
-                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
-                                            ]
-                                        ); ?>
-                                        <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_pembelian_detail], [
-                                            'title' => Yii::t('app', 'Hapus data'),
-                                        ]); ?>
-                                    </td>
-                                    <td><?= tanggal_indo($value->stok_masuk->tanggal_masuk, true) .' - '. $value->stok_masuk->keterangan?></td>
-                                    <td><?= $value->barang->nama_barang ?></td>
-                                    <td><?= $value->qty ?></td>
-                                    <td><?= $value->diskon ?></td>
-                                    <td><?= $value->harga_beli ?></td>
-                                    <td><?= $value->ppn ?></td>
-                                    <td><?= $value->total_beli ?></td>
+                        <tr>
 
-                                </tr>
+                            <td><?= $i++; ?>.</td>
+                            <td>
 
-                            <?php } ?>
-                        </tbody>
+                                <?= Html::button(
+                                    '<span class="glyphicon glyphicon-edit"></span>',
+                                    [
+                                        'value' => Url::to(['data-pembelian-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_pembelian_detail]),
+                                        'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
+                                    ]
+                                ); ?>
+                                <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_pembelian_detail], [
+                                    'title' => Yii::t('app', 'Hapus data'),
+                                ]); ?>
+                            </td>
+                            <td><?= tanggal_indo($value->stok_masuk->tanggal_masuk, true) . ' - ' . $value->stok_masuk->keterangan ?></td>
+                            <td><?= $value->barang->nama_barang ?></td>
+                            <td><?= $value->qty ?></td>
+                            <td><?= $value->diskon ?></td>
+                            <td><?= $value->harga_beli ?></td>
+                            <td><?= $value->ppn ?></td>
+                            <td><?= $value->total_beli ?></td>
 
-                        <tfoot>
-                            <tr>
-                                <!-- <td>T</td> -->
-                            </tr>
-                        </tfoot>
-                    </table>
+                        </tr>
 
-            
-            </div>
+                    <?php } ?>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <!-- <td>T</td> -->
+                    </tr>
+                </tfoot>
+            </table>
+
+
+        </div>
     </div>
 
 </div>

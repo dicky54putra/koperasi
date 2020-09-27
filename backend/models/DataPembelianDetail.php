@@ -58,11 +58,16 @@ class DataPembelianDetail extends \yii\db\ActiveRecord
 
     public function getBarang()
     {
-        return $this->hasOne(DataBarang::className(), ["id_barang"=>"id_barang"]);
+        return $this->hasOne(DataBarang::className(), ["id_barang" => "id_barang"]);
     }
 
     public function getStok_masuk()
     {
-        return $this->hasOne(StokMasuk::className(), ["id_stok_masuk"=>"id_stok_masuk"]);
+        return $this->hasOne(StokMasuk::className(), ["id_stok_masuk" => "id_stok_masuk"]);
+    }
+
+    public function getPembelian()
+    {
+        return $this->hasOne(DataPembelianBarang::className(), ["id_pembelian" => "id_pembelian"]);
     }
 }

@@ -65,6 +65,7 @@ class DataBarangController extends Controller
     {
         $stok_masuk = StokMasuk::find()->where(['id_barang' => $id])->all();
         $stok_keluar = StokKeluar::find()->where(['id_barang' => $id])->all();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
             'stok_masuk' => $stok_masuk,
