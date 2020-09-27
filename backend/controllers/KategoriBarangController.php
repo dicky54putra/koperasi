@@ -23,7 +23,7 @@ class KategoriBarangController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -69,6 +69,7 @@ class KategoriBarangController extends Controller
         $model = new KategoriBarang();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['index']);
         }
 
@@ -89,6 +90,7 @@ class KategoriBarangController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['index']);
         }
 
@@ -108,6 +110,7 @@ class KategoriBarangController extends Controller
     {
         $this->findModel($id)->delete();
 
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
     }
 

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\DataPangkat */
 
-$this->title = 'Create Data Pangkat';
+$this->title = 'Tambah Data Pangkat';
 $this->params['breadcrumbs'][] = ['label' => 'Data Pangkats', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

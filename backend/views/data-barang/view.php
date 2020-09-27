@@ -65,9 +65,28 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'anggota.nama_anggota',
-                            'harga_jual',
-                            'harga_beli',
+                            [
+                                'attribute' => 'id_anggota',
+                                'label' => 'Supplier',
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    return $model->anggota->nama_anggota;
+                                }
+                            ],
+                            [
+                                'attribute' => 'harga_jual',
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    return 'Rp. ' . ribuan($model->harga_jual) . ',-';
+                                }
+                            ],
+                            [
+                                'attribute' => 'harga_beli',
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    return 'Rp. ' . ribuan($model->harga_beli) . ',-';
+                                }
+                            ],
                             [
                                 'attribute' => 'is_active',
                                 'label' => 'Status',
@@ -113,7 +132,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <div class="panel">
                                         <div class="panel-heading" role="tab" id="heading<?= $i; ?>">
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsemasuk<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsemasuk<?= $i; ?>" class="drop">
-                                                #<?php echo $i . ' : ' . tanggal_indo($value->tanggal_masuk) ?>
+                                                #<?php echo $i . ' : ' . tanggal_indo($value->tanggal_masuk) . ' || ' . $value->keterangan ?>
                                             </a>
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsemasuk<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsemasuk<?= $i; ?>" style="float: right; margin-left:5px; transition: 0.5s;" class="btn btn-success drop btn-sm btn-flat">
                                                 <span id="glyphicon" style="transition: 0.5s;" class="glyphicon glyphicon-chevron-down"></span>
@@ -171,7 +190,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <div class="panel">
                                         <div class="panel-heading" role="tab" id="heading<?= $i; ?>">
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsekeluar<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsekeluar<?= $i; ?>" class="drop">
-                                                #<?php echo $i . ' : ' . tanggal_indo($value->tanggal_keluar) ?>
+                                                #<?php echo $i . ' : ' . tanggal_indo($value->tanggal_keluar) . ' || ' . $value->keterangan ?>
                                             </a>
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsekeluar<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsekeluar<?= $i; ?>" style="float: right; margin-left:5px; transition: 0.5s;" class="btn btn-success drop btn-sm btn-flat">
                                                 <span id="glyphicon" style="transition: 0.5s;" class="glyphicon glyphicon-chevron-down"></span>

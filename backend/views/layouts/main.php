@@ -33,9 +33,6 @@ if (Yii::$app->user->isGuest) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode(Yii::$app->name) ?></title>
-        <!-- DataTables -->
-        <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css"> -->
-        <link rel="stylesheet" type="text/css" href="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
         <style>
             ::-webkit-scrollbar {
                 width: 10px;
@@ -51,6 +48,10 @@ if (Yii::$app->user->isGuest) {
                 border-radius: 10px;
                 background: rgba(0, 0, 0, 0.2);
                 /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+            }
+
+            .swal2-popup {
+                font-size: 1.5rem !important;
             }
         </style>
         <?php $this->head() ?>
@@ -97,10 +98,7 @@ if (Yii::$app->user->isGuest) {
 
         <?php $this->endBody() ?>
     </body>
-    <script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- datatables -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    <script src="https://adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- <script src="https://adminlte.io/themes/AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script> -->
 
     <!-- $script = <<< JS -->
 

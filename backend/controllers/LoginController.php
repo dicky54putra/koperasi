@@ -29,7 +29,7 @@ class LoginController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -111,7 +111,7 @@ class LoginController extends Controller
             return $this->goHome();
 
             Yii::$app->session->setFlash('success', [['Berhasil!', '
-                <p>Data Profil Berhasil Di Ubah.</p>
+                <p>Data Profil Di Ubah.</p>
                 <p>Silahkan Login Dengan Username dan Password Yang Baru Diubah</p>
             ']]);
         }
@@ -142,7 +142,7 @@ class LoginController extends Controller
                 }
             }
 
-            Yii::$app->session->setFlash("success", "Data hak akses berhasil disimpan.");
+            Yii::$app->session->setFlash("success", "Disimpan.");
         } else {
             Userrole::deleteAll(["id_login" => $id]);
         }
@@ -187,6 +187,7 @@ class LoginController extends Controller
                 return $this->redirect(['create']);
             } else {
                 # code...
+                Yii::$app->session->setFlash('success', 'Disimpan');
                 return $this->redirect(['view', 'id' => $model->id_login]);
             }
         }
@@ -224,6 +225,7 @@ class LoginController extends Controller
             $model->save();
 
 
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id_login]);
         }
 
@@ -248,6 +250,7 @@ class LoginController extends Controller
 
         $this->findModel($id)->delete();
 
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
     }
 

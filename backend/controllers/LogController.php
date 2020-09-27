@@ -35,10 +35,10 @@ class LogController extends Controller
      */
     public function actionIndex()
     {
-		if (Yii::$app->user->isGuest) {
-			header("Location: index.php");
-			exit();
-		}
+        if (Yii::$app->user->isGuest) {
+            header("Location: index.php");
+            exit();
+        }
 
         $searchModel = new LogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -57,10 +57,10 @@ class LogController extends Controller
      */
     public function actionView($id)
     {
-		if (Yii::$app->user->isGuest) {
-			header("Location: index.php");
-			exit();
-		}
+        if (Yii::$app->user->isGuest) {
+            header("Location: index.php");
+            exit();
+        }
 
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -74,14 +74,15 @@ class LogController extends Controller
      */
     public function actionCreate()
     {
-		if (Yii::$app->user->isGuest) {
-			header("Location: index.php");
-			exit();
-		}
+        if (Yii::$app->user->isGuest) {
+            header("Location: index.php");
+            exit();
+        }
 
         $model = new Log();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -99,14 +100,15 @@ class LogController extends Controller
      */
     public function actionUpdate($id)
     {
-		if (Yii::$app->user->isGuest) {
-			header("Location: index.php");
-			exit();
-		}
+        if (Yii::$app->user->isGuest) {
+            header("Location: index.php");
+            exit();
+        }
 
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -124,13 +126,14 @@ class LogController extends Controller
      */
     public function actionDelete($id)
     {
-		if (Yii::$app->user->isGuest) {
-			header("Location: index.php");
-			exit();
-		}
+        if (Yii::$app->user->isGuest) {
+            header("Location: index.php");
+            exit();
+        }
 
         $this->findModel($id)->delete();
 
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
     }
 
@@ -150,19 +153,18 @@ class LogController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-	public function actionRekapLog()
+    public function actionRekapLog()
     {
-		if (Yii::$app->user->isGuest) { 
+        if (Yii::$app->user->isGuest) {
             header("Location: index.php");
             exit;
         }
 
-		$searchModel = new LogSearch();
-		$dataProvider = $searchModel->search(Yii::$app->db->createCommand("select prefix from log where prefix != 'Purwo' group by prefix")->queryOne());
-				
-		return $this->render('rekap_log', [
-			'dataProvider' => $dataProvider	,
-		]);
-	}
+        $searchModel = new LogSearch();
+        $dataProvider = $searchModel->search(Yii::$app->db->createCommand("select prefix from log where prefix != 'Purwo' group by prefix")->queryOne());
 
+        return $this->render('rekap_log', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 }

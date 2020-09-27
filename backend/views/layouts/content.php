@@ -37,11 +37,13 @@ use pa3py6aka\yii2\ModalAlert;
         <?php //"<br>".Alert::widget() 
         ?>
 
-        <?= ModalAlert::widget([
-            'popupCssClass' => 'my-custom-class',
-            // 'popupView' => '@app/views/common/my-custom-alert',
-        ]) ?>
-
+        <?php
+        //  ModalAlert::widget([
+        //     'popupCssClass' => 'my-custom-class',
+        //     // 'popupView' => '@app/views/common/my-custom-alert',
+        // ]) 
+        ?>
+        <div class="success" data-flashdata="<?= Yii::$app->session->getFlash('success') ?>"></div>
         <?= $content ?>
     </section>
 </div>

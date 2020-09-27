@@ -1,7 +1,10 @@
 <?php
 
+use backend\models\DataPangkat;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\AnggotaKoperasi */
@@ -34,13 +37,33 @@ use yii\widgets\ActiveForm;
         <div class="col-md-6">
             <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'id_jenis_anggota')->textInput() ?>
+            <?= $form->field($model, 'id_jenis_anggota')->widget(Select2::classname(), [
+                'data' => array(1 => 'Customer', 2 => 'Supplier'),
+                'language' => 'en',
+                'options' => ['placeholder' => 'Pilih Jenis Anggota'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
 
-            <?= $form->field($model, 'id_pangkat')->textInput() ?>
+            <?= $form->field($model, 'id_pangkat')->widget(Select2::classname(), [
+                'data' => ArrayHelper::map(
+                    DataPangkat::find()->all(),
+                    'id_pangkat',
+                    function ($model) {
+                        return $model['nama_pangkat'];
+                    }
+                ),
+                'language' => 'en',
+                'options' => ['placeholder' => 'Pilih Jenis Anggota'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label('Pangkat'); ?>
 
             <?= $form->field($model, 'tanggal_keanggotaan')->textInput() ?>
 
-            <?= $form->field($model, 'is_active')->textInput() ?>
+            <?= $form->field($model, 'is_active')->dropDownList(array(1 => 'Aktif', 2 => 'Tidak Aktif'))->label('Status') ?>
         </div>
     </div>
 

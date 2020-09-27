@@ -94,7 +94,7 @@ class MenuNavigasiController extends Controller
                     }
                 }
 
-                Yii::$app->session->setFlash("success", "Data hak akses berhasil disimpan.");
+                Yii::$app->session->setFlash("success", "Disimpan.");
             } else {
                 MenuNavigasiRole::deleteAll(["id_menu" => $id]);
             }
@@ -143,6 +143,7 @@ class MenuNavigasiController extends Controller
             $model->no_urut = $menu->no_urut;
             $model->save(false);
 
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id_menu]);
         }
 
@@ -180,8 +181,10 @@ class MenuNavigasiController extends Controller
             $model->save(false);
 
             if (isset($_GET["submenu"])) {
+                Yii::$app->session->setFlash('success', 'Disimpan');
                 return $this->redirect(['view', 'id' => $_GET["submenu"]]);
             } else {
+                Yii::$app->session->setFlash('success', 'Disimpan');
                 return $this->redirect(['view', 'id' => $model->id_menu]);
             }
         }
@@ -209,8 +212,10 @@ class MenuNavigasiController extends Controller
         $this->findModel($id)->delete();
 
         if (isset($_GET["submenu"])) {
+            Yii::$app->session->setFlash('success', 'Dihapus');
             return $this->redirect(['view', 'id' => $_GET["submenu"]]);
         } else {
+            Yii::$app->session->setFlash('success', 'Dihapus');
             return $this->redirect(['index']);
         }
     }

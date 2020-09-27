@@ -23,7 +23,7 @@ class DataPenjualanDetailController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['POST', 'GET'],
                 ],
             ],
         ];
@@ -67,6 +67,7 @@ class DataPenjualanDetailController extends Controller
         $model = new DataPenjualanDetail();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id_penjualan_detail]);
         }
 
@@ -87,6 +88,7 @@ class DataPenjualanDetailController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['view', 'id' => $model->id_penjualan_detail]);
         }
 
@@ -106,6 +108,7 @@ class DataPenjualanDetailController extends Controller
     {
         $this->findModel($id)->delete();
 
+        Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
     }
 
