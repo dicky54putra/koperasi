@@ -91,4 +91,42 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+
+    <div class="box box-warning">
+        <div class="box-header"><h3 style="font-weight: bold;">History Pembelian</h3></div>
+            <div class="box-body">
+
+                <table class="table" id="table-index">
+                        <thead>
+                            <tr>
+                                <th style="white-space: nowrap;">#</th>
+                                <th style="white-space: nowrap;">Tanggal Pembelian</th>
+                                <th style="white-space: nowrap;">Grandtotal</th>
+                                <th style="white-space: nowrap;">Status Pembayaran</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 1;
+                            $grandtotal = 0;
+                            foreach ($pembelian_history as $key => $value) {
+                                // $grandtotal += $value->total_beli;
+                            ?>
+
+                                <tr>
+                                   
+                                    <td><?= $i++; ?>.</td>
+                                    <td><?= tanggal_indo($value->tanggal_penjualan, true) ?></td>
+                                    <td><?= number_format($value->grandtotal) ?></td>
+                                    <td><?= $value->jenis_pembayaran == 1 ? 'LUNAS' : 'TAGIHAN' ?></td>
+
+                                </tr>
+
+                            <?php } ?>
+                        </tbody>
+                    </table>
+
+            
+            </div>
+    </div>
 </div>

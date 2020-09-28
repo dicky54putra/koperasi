@@ -9,6 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use backend\models\DataPenjualanBarang;
+
+
 /**
  * AnggotaKoperasiController implements the CRUD actions for AnggotaKoperasi model.
  */
@@ -54,8 +57,12 @@ class AnggotaKoperasiController extends Controller
      */
     public function actionView($id)
     {
+
+        $pembelian_history = DataPenjualanBarang::find()->where(['id_anggota' => $id])->all();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'pembelian_history' => $pembelian_history,
         ]);
     }
 

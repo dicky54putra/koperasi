@@ -64,7 +64,6 @@ class DataPenjualanBarangController extends Controller
 
         $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
 
-
         return $this->render('view', [
             'model' => $this->findModel($id),
             'penjualan_detail' => $penjualan_detail,
