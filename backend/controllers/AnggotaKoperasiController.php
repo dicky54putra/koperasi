@@ -121,6 +121,14 @@ class AnggotaKoperasiController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionPrintKartu($id)
+    {
+        $model = $this->findModel($id);
+        return $this->renderPartial('print_kartu', [
+            'model' => $model
+        ]);
+    }
+
     /**
      * Finds the AnggotaKoperasi model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

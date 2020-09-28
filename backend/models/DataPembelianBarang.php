@@ -50,6 +50,6 @@ class DataPembelianBarang extends \yii\db\ActiveRecord
 
     public function getAnggota()
     {
-        return $this->hasOne(AnggotaKoperasi::className(), ["id_anggota"=>"id_anggota"]);
+        return $this->hasOne(AnggotaKoperasi::className(), ["id_anggota" => "id_anggota"]);
     }
 }

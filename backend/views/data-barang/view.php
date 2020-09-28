@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Url;
+use backend\models\DataPembelianDetail;
+use backend\models\DataPenjualanDetail;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\DataBarang */
@@ -160,7 +162,48 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                         <div id="collapsemasuk<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?= $i; ?>">
                                             <div class="panel-body">
+                                                <table class="table datatables">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Tanggal Pembelian</th>
+                                                            <th>Qty</th>
+                                                            <th>Diskon</th>
+                                                            <th>harga</th>
+                                                            <th>PPN</th>
+                                                            <th>Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $pembelian = DataPembelianDetail::find()
+                                                            ->select(["data_pembelian_detail.*", "data_pembelian_barang.*"])->joinWith(['pembelian'])->where(['id_barang' => $model->id_barang])->andWhere(['id_stok_masuk' => $value->id_stok_masuk])->all();
 
+                                                        $no = 0;
+                                                        $sum_masuk = 0;
+                                                        foreach ($pembelian as $key => $val) {
+                                                            $no++;
+                                                            $sum_masuk += $val->total_beli;
+                                                        ?>
+                                                            <tr>
+                                                                <td><?= $no ?></td>
+                                                                <td><?= tanggal_indo($val->pembelian->tanggal_pembelian) ?></td>
+                                                                <td><?= $val->qty ?></td>
+                                                                <td><?= $val->diskon ?></td>
+                                                                <td><?= $val->harga_beli ?></td>
+                                                                <td><?= $val->ppn ?></td>
+                                                                <td align="right"><?= 'Rp. ' . number_format($val->total_beli) ?></td>
+                                                            </tr>
+                                                        <?php
+                                                        } ?>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr style="background-color:#bdcfff">
+                                                            <td colspan="6"><b><i>GRANDTOTAL</i></b></td>
+                                                            <td align="right"><b><i><?php echo "Rp. " . number_format($sum_masuk) ?></i></b></td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +261,47 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                         <div id="collapsekeluar<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?= $i; ?>">
                                             <div class="panel-body">
+                                                <table class="table datatables">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Tanggal Penjualan</th>
+                                                            <th>Qty</th>
+                                                            <th>Diskon</th>
+                                                            <th>harga</th>
+                                                            <th>PPN</th>
+                                                            <th>Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $penjualan = DataPenjualanDetail::find()->joinWith(['penjualan'])->where(['id_barang' => $model->id_barang])->andWhere(['id_stok_keluar' => $value->id_stok_keluar])->all();
 
+                                                        $no = 0;
+                                                        $sum_masuk = 0;
+                                                        foreach ($penjualan as $key => $val) {
+                                                            $no++;
+                                                            $sum_masuk += $val->total_jual;
+                                                        ?>
+                                                            <tr>
+                                                                <td><?= $no ?></td>
+                                                                <td><?= tanggal_indo($val->penjualan->tanggal_penjualan) ?></td>
+                                                                <td><?= $val->qty ?></td>
+                                                                <td><?= $val->diskon ?></td>
+                                                                <td><?= $val->harga_jual ?></td>
+                                                                <td><?= $val->ppn ?></td>
+                                                                <td align="right"><?= 'Rp. ' . number_format($val->total_jual) ?></td>
+                                                            </tr>
+                                                        <?php
+                                                        } ?>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr style="background-color:#bdcfff">
+                                                            <td colspan="6"><b><i>GRANDTOTAL</i></b></td>
+                                                            <td align="right"><b><i><?php echo "Rp. " . number_format($sum_masuk) ?></i></b></td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>

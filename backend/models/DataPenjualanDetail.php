@@ -59,11 +59,16 @@ class DataPenjualanDetail extends \yii\db\ActiveRecord
 
     public function getBarang()
     {
-        return $this->hasOne(DataBarang::className(), ["id_barang"=>"id_barang"]);
+        return $this->hasOne(DataBarang::className(), ["id_barang" => "id_barang"]);
     }
 
     public function getStok_keluar()
     {
-        return $this->hasOne(StokKeluar::className(), ["id_stok_keluar"=>"id_stok_keluar"]);
+        return $this->hasOne(StokKeluar::className(), ["id_stok_keluar" => "id_stok_keluar"]);
+    }
+
+    public function getPenjualan()
+    {
+        return $this->hasOne(DataPenjualanBarang::className(), ["id_penjualan" => "id_penjualan"]);
     }
 }
