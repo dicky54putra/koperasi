@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 
 use yii\helpers\ArrayHelper;
 
+use backend\models\DataPembelianBarang;
 use backend\models\DataBarang;
 use backend\models\StokMasuk;
 use yii\helpers\Json;
@@ -89,6 +90,17 @@ class DataPembelianDetailController extends Controller
         );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $pembelian_detail = DataPembelianDetail::find()->where(['id_pembelian' => $id])->all();
+            $grandtotal = 0;
+            foreach ($pembelian_detail as $key => $value) {
+                $grandtotal += $value->total_beli;
+            }
+
+            $pembelian = DataPembelianBarang::find()->where(['id_pembelian' => $id])->one();
+            $pembelian->grandtotal = $grandtotal;
+            $pembelian->save(false);
+
             Yii::$app->session->setFlash("success","Disimpan");
             return $this->redirect(['data-pembelian-barang/view', 'id' => $id]);
         }
@@ -98,6 +110,12 @@ class DataPembelianDetailController extends Controller
             'data_barang' => $data_barang,
             'data_stok_masuk' => $data_stok_masuk,
         ]);
+    }
+
+    public function actionGetDataBarang($id)
+    {
+        $data_barang = DataBarang::find()->where(['id_barang' => $id])->one();
+        echo Json::encode($data_barang);
     }
 
     /**

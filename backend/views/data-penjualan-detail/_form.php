@@ -9,6 +9,38 @@ use kartik\select2\Select2;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+<script>
+    $('#datapenjualandetail-id_barang').change(function(){
+        var id = $(this).val();
+
+
+        $.get('index.php?r=data-penjualan-detail/get-data-barang',{ id : id },function(data){
+            var data = $.parseJSON(data);
+            $('#datapenjualandetail-harga_jual').attr('value',data.harga_jual);
+            $('#datapenjualandetail-qty').val('1');
+            $('#datapenjualandetail-diskon').val('0');
+            $('#datapenjualandetail-ppn').val('0');
+
+        });
+    });
+
+    function hitung() {
+        var harga_jual = $('#datapenjualandetail-harga_jual').val();
+        var qty = $('#datapenjualandetail-qty').val();
+        var diskon = $('#datapenjualandetail-diskon').val();
+        var ppn = $('#datapenjualandetail-ppn').val();
+        var total = harga_jual * qty;
+
+        var diskon = total - (total * diskon/100);
+
+        var pajak = diskon + (diskon * ppn/100);
+
+        // console.log(total);
+        $('#datapenjualandetail-total_jual').val(pajak);
+
+    }
+</script>
+
 <div class="data-penjualan-detail-form">
 
     <?php $form = ActiveForm::begin([
@@ -44,18 +76,34 @@ use kartik\select2\Select2;
                 ],
             ])->label('Barang') ?>
 
-    <?= $form->field($model, 'qty')->textInput() ?>
+        <div class="row">
+            <div class="col-md-5">
+                <?= $form->field($model, 'harga_jual')->textInput() ?>
+            </div>
 
-    <?= $form->field($model, 'diskon')->textInput() ?>
+            <div class="col-md-2">
+                <?= $form->field($model, 'qty')->textInput() ?>
+            </div>
 
-    <?= $form->field($model, 'harga_jual')->textInput() ?>
+            <div class="col-md-2">
+                <?= $form->field($model, 'diskon')->textInput() ?>
+            </div>
 
-    <?= $form->field($model, 'ppn')->textInput() ?>
+            <div class="col-md-2">
+                <?= $form->field($model, 'ppn')->textInput() ?>
+            </div>
 
-    <?= $form->field($model, 'total_jual')->textInput() ?>
+            <div class="col-md-1" style="margin-top: 25px;">
+                <a class="btn btn-success" onclick="hitung()"><i class="fa fa-fw fa-refresh"></i></a>
+            </div>
+
+        </div>
+
+    <?= $form->field($model, 'total_jual')->textInput(['readonly' => 'true']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) ?>
+        <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success pull-right']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

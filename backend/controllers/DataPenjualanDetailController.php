@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 
 use yii\helpers\ArrayHelper;
 
+use backend\models\DataPenjualanBarang;
 use backend\models\DataBarang;
 use backend\models\StokKeluar;
 use yii\helpers\Json;
@@ -90,6 +91,19 @@ class DataPenjualanDetailController extends Controller
         );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
+            $grandtotal = 0;
+            foreach ($penjualan_detail as $key => $value) {
+                $grandtotal += $value->total_jual;
+            }
+
+            $penjualan = DataPenjualanBarang::find()->where(['id_penjualan' => $id])->one();
+            $penjualan->grandtotal = $grandtotal;
+            $penjualan->save(false);
+
+
+
             Yii::$app->session->setFlash("success","Disimpan");
             return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
         }
@@ -99,6 +113,12 @@ class DataPenjualanDetailController extends Controller
             'data_barang' => $data_barang,
             'data_stok_keluar' => $data_stok_keluar,
         ]);
+    }
+
+    public function actionGetDataBarang($id)
+    {
+        $data_barang = DataBarang::find()->where(['id_barang' => $id])->one();
+        echo Json::encode($data_barang);
     }
 
     /**

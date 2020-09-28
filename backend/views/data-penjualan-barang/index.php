@@ -42,7 +42,7 @@ $this->title = 'Data Penjualan Barang';
                                 <th style="white-space: nowrap;">#</th>
                                 <th style="white-space: nowrap;">Aksi</th>
                                 <th style="white-space: nowrap;">Tanggal Penjualan</th>
-                                <th style="white-space: nowrap;">Nama Anggota</th>
+                                <th style="white-space: nowrap;">Nama Customer</th>
                                 <th style="white-space: nowrap;">Jenis Pembayaran</th>
                                 <th style="white-space: nowrap;">Grandtotal Penjualan</th>
                             </tr>
@@ -73,7 +73,7 @@ $this->title = 'Data Penjualan Barang';
                                     <td><?= $value->tanggal_penjualan ?></td>
                                     <td><?= $value->anggota->nama_anggota ?></td>
                                     <td><?= $value->jenis_pembayaran == 1 ? 'LUNAS' : 'TAGIHAN' ?></td>
-                                    <td><?= $value->grandtotal ?></td>
+                                    <td><?= "<b>Rp. ".number_format($value->grandtotal).'</b>' ?></td>
 
 
                                 </tr>

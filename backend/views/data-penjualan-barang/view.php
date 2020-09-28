@@ -71,9 +71,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute' => 'grandtotal',
+                        'format' => 'html',
                         'value' => function ($model) {
 
-                            return $model->grandtotal;
+                            return "<b>Rp. ".number_format($model->grandtotal)."</b>";
                         }
                     ],
                 ],
@@ -102,9 +103,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th style="white-space: nowrap;">Aksi</th>
                                 <th style="white-space: nowrap;">Keterangan Stok</th>
                                 <th style="white-space: nowrap;">Nama Barang</th>
+                                <th style="white-space: nowrap;">Harga Beli</th>
                                 <th style="white-space: nowrap;">Qty</th>
                                 <th style="white-space: nowrap;">Diskon</th>
-                                <th style="white-space: nowrap;">Harga Beli</th>
                                 <th style="white-space: nowrap;">PPN</th>
                                 <th style="white-space: nowrap;">Total</th>
                             </tr>
@@ -112,7 +113,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <tbody>
                             <?php
                             $i = 1;
+                            $grandtotal = 0;
                             foreach ($penjualan_detail as $key => $value) {
+                                $grandtotal += $value->total_jual;
                             ?>
 
                                 <tr>
@@ -133,20 +136,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </td>
                                     <td><?= tanggal_indo($value->stok_keluar->tanggal_keluar, true) .' - '. $value->stok_keluar->keterangan?></td>
                                     <td><?= $value->barang->nama_barang ?></td>
-                                    <td><?= $value->qty ?></td>
-                                    <td><?= $value->diskon ?></td>
-                                    <td><?= $value->harga_jual ?></td>
-                                    <td><?= $value->ppn ?></td>
-                                    <td><?= $value->total_jual ?></td>
+                                    <td><?= number_format($value->harga_jual) ?></td>
+                                    <td align="center"><?= $value->qty ?></td>
+                                    <td align="center"><?= $value->diskon == 0 ? ' - ' : $value->diskon." %" ?></td>
+                                    <td align="center"><?= $value->ppn == 0 ? ' - ' : $value->ppn." %" ?></td>
+                                    <td align="right"><?= number_format($value->total_jual) ?></td>
 
                                 </tr>
 
-                            <?php } ?>
+                            <?php }  ?>
                         </tbody>
 
                         <tfoot>
-                            <tr>
-                                <!-- <td>T</td> -->
+                            <tr style="background-color:#bdcfff">
+                                <td colspan="8"><b><i>GRANDTOTAL</i></b></td>
+                                <td align="right"><b><i><?php echo "Rp. ".number_format($grandtotal) ?></i></b></td>
                             </tr>
                         </tfoot>
                     </table>

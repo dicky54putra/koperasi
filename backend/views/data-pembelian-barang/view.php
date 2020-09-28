@@ -67,9 +67,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     'no_faktur',
                     [
                         'attribute' => 'grandtotal',
+                        'format' => 'html',
                         'value' => function ($model) {
 
-                            return $model->grandtotal;
+                            return "<b>Rp. ".number_format($model->grandtotal)."</b>";
                         }
                     ],
                 ],
@@ -98,9 +99,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th style="white-space: nowrap;">Aksi</th>
                                 <th style="white-space: nowrap;">Keterangan Stok</th>
                                 <th style="white-space: nowrap;">Nama Barang</th>
+                                <th style="white-space: nowrap;">Harga Beli</th>
                                 <th style="white-space: nowrap;">Qty</th>
                                 <th style="white-space: nowrap;">Diskon</th>
-                                <th style="white-space: nowrap;">Harga Beli</th>
                                 <th style="white-space: nowrap;">PPN</th>
                                 <th style="white-space: nowrap;">Total</th>
                             </tr>
@@ -108,7 +109,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <tbody>
                             <?php
                             $i = 1;
+                            $grandtotal = 0;
                             foreach ($pembelian_detail as $key => $value) {
+                                $grandtotal += $value->total_beli;
                             ?>
 
                                 <tr>
@@ -119,7 +122,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?= Html::button(
                                             '<span class="glyphicon glyphicon-edit"></span>',
                                             [
-                                                'value' => Url::to(['data-pembelian-detail/update', , 'id' => $_GET['id'], 'id_detail' => $value->id_pembelian_detail]),
+                                                'value' => Url::to(['data-pembelian-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_pembelian_detail]),
                                                 'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
                                             ]
                                         ); ?>
@@ -129,11 +132,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </td>
                                     <td><?= tanggal_indo($value->stok_masuk->tanggal_masuk, true) .' - '. $value->stok_masuk->keterangan?></td>
                                     <td><?= $value->barang->nama_barang ?></td>
-                                    <td><?= $value->qty ?></td>
-                                    <td><?= $value->diskon ?></td>
-                                    <td><?= $value->harga_beli ?></td>
-                                    <td><?= $value->ppn ?></td>
-                                    <td><?= $value->total_beli ?></td>
+                                    <td><?= number_format($value->harga_beli) ?></td>
+                                    <td align="center"><?= $value->qty ?></td>
+                                    <td align="center"><?= $value->diskon == 0 ? ' - ' : $value->diskon." %" ?></td>
+                                    <td align="center"><?= $value->ppn == 0 ? ' - ' : $value->ppn." %" ?></td>
+                                    <td align="right"><?= number_format($value->total_beli) ?></td>
 
                                 </tr>
 
@@ -141,8 +144,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tbody>
 
                         <tfoot>
-                            <tr>
-                                <!-- <td>T</td> -->
+                            <tr style="background-color:#bdcfff">
+                                <td colspan="8"><b><i>GRANDTOTAL</i></b></td>
+                                <td align="right"><b><i><?php echo "Rp. ".number_format($grandtotal) ?></i></b></td>
                             </tr>
                         </tfoot>
                     </table>
