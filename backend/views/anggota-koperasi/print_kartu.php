@@ -14,10 +14,12 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
         font-weight: bold;
     }*/
 
-    .table {
+    .table_ {
         border: solid 2px;
         border-collapse: collapse;
         text-transform: uppercase;
+        width: 8cm;
+        height: 5cm;
         /* line-height: 1; */
     }
 
@@ -27,87 +29,74 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
         padding: 5px;
     }
 
-    .table td {
-        padding-left: 15px;
-        padding-right: 15px;
+    .table_ td {
+        padding-left: 4px;
+        padding-right: 0px;
     }
 </style>
-<table class="table" border="0" width="321px" height="207px">
+<table class="table_">
     <thead>
         <tr class="bottom_tr">
-            <td colspan="1" align="center"><?php echo Html::img('@web/upload/logo31.png', ['class' => 'pull-left img-responsive', "width" => "37px"]); ?></td>
+            <td align="center"><?php echo Html::img('@web/upload/logo31.png', ['class' => 'pull-left img-responsive', "width" => "40px"]); ?></td>
             <td colspan="2" align="center"><b style="font-size: 15px;">KARTU ANGGOTA KOPERASI SKUADRON 31</b></td>
         </tr>
     </thead>
     <tbody>
-        <tr height="40px" style="vertical-align: baseline; padding-top:50px">
-            <td width="30%">
+        <tr height="40px" style="vertical-align: bottom; padding-top:50px">
+            <td>
                 <p style="font-size: 15px;">Nama</p>
             </td>
-            <td width="2%">
-                <p style="font-size: 15px;">:</p>
-            </td>
-            <td>
-                <p style="font-size: 15px;"><?= $model->nama_anggota ?></p>
+            <td colspan="2">
+                <p style="font-size: 15px;">: <?= $model->nama_anggota ?></p>
             </td>
         </tr>
-        <tr height="12px">
+        <tr height="10px">
             <td>
                 <p style="font-size: 15px;">Alamat</p>
             </td>
-            <td>
-                <p style="font-size: 15px;">:</p>
-            </td>
-            <td>
-                <p style="font-size: 15px;"><?= $model->alamat_anggota ?></p>
+            <td colspan="2">
+                <p style="font-size: 15px;">: <?= $model->alamat_anggota ?></p>
             </td>
         </tr>
         <tr height="40px" style="vertical-align: baseline;">
             <td>
                 <p style="font-size: 15px;">Pangkat</p>
             </td>
-            <td>
-                <p style="font-size: 15px;">:</p>
-            </td>
-            <td>
-                <p style="font-size: 15px;"><?= (!empty($model->pangkat->nama_pangkat)) ? $model->pangkat->nama_pangkat : '' ?></p>
+            <td colspan="2">
+                <p style="font-size: 15px;">: <?= (!empty($model->pangkat->nama_pangkat)) ? $model->pangkat->nama_pangkat : '' ?></p>
             </td>
         </tr>
     </tbody>
 
     <tfoot>
         <tr>
-            <td colspan="3" style="font-size:45px;">
-               
+            <td></td>
+            <td style="font-size:45px;">
+                <div style="width: 100px;"></div>
                 <div id="showBarcode" style="align-content: center;">
-                <?php echo BarcodeGenerator::widget([
-                            'elementId'=> 'showBarcode', 
-                            'value'=> $model->kode_anggota,
-                            'type'=>'code39',
-                            // 'options' => 'center',
-                        ]);
-
-                 ?>
-           
-                 </div>
-
+                    <?php echo BarcodeGenerator::widget([
+                        'elementId' => 'showBarcode',
+                        'value' => $model->kode_anggota,
+                        'type' => 'code39',
+                        // 'options' => 'center',
+                    ]);
+                    ?>
+                </div>
             </td>
+            <td></td>
         </tr>
     </tfoot>
 </table>
 
 
 
-<?php 
-
-
+<?php
 echo BarcodeGenerator::widget([
-    'elementId'=> 'showBarcode', 
-    'value'=> $model->kode_anggota,
-    'type'=>'code39'
+    'elementId' => 'showBarcode',
+    'value' => $model->kode_anggota,
+    'type' => 'code39'
 ]);
-
- ?>
+?>
 
 <script>
     window.print();

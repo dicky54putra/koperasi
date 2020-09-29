@@ -138,9 +138,9 @@ class AnggotaKoperasiController extends Controller
 
         // $print =  $this->renderPartial('print_kartu', [
         // return $this->render('print', [
-            // 'model'       => $this->findModel($id),
-            // 'po'          => $this->getArrayPo(),
-            // 'detailpo'    => $this->getArrayDetailpo($id),
+        // 'model'       => $this->findModel($id),
+        // 'po'          => $this->getArrayPo(),
+        // 'detailpo'    => $this->getArrayDetailpo($id),
         // ]);
 
         // $mPDF = new mPDF();
