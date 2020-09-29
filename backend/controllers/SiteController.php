@@ -79,7 +79,25 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $month = date('m');
+        $year = date('Y');
+
+        $tanggal = Yii::$app->db->createCommand("SELECT tanggal_penjualan FROM data_penjualan_barang WHERE MONTH(tanggal_penjualan) = '$month' AND YEAR(tanggal_penjualan) = '$year' GROUP BY tanggal_penjualan")->query();
+        // echo $month . '-' . $year;
+        // foreach ($tanggal as $key => $value) {
+        //     # code...
+        //     // echo $value->tanggal_penjualan;
+        //     echo $value['tanggal_penjualan'];
+        //     // echo $value;
+        // }
+        // die;
+        $tanggal_labels = Yii::$app->db->createCommand("SELECT tanggal_penjualan FROM data_penjualan_barang WHERE MONTH(tanggal_penjualan) = '$month' AND YEAR(tanggal_penjualan) = '$year' GROUP BY tanggal_penjualan")->query();
+
+        // $pembelian = Yii::$app->db->createCommand("SELECT SUM(akt_penjualan_detail.qty) AS penjualan, akt_item.nama_item FROM `akt_penjualan_detail` LEFT JOIN akt_penjualan ON akt_penjualan.id_penjualan = akt_penjualan_detail.id_penjualan LEFT JOIN akt_item_stok ON akt_item_stok.id_item_stok = akt_penjualan_detail.id_item_stok LEFT JOIN akt_item ON akt_item.id_item = akt_item_stok.id_item WHERE MONTH(tanggal_order_penjualan) = '$month' AND YEAR(tanggal_order_penjualan) = '$year'  GROUP BY akt_item.id_item ORDER BY penjualan DESC LIMIT 5")->query();
+        return $this->render('index', [
+            'tanggal_labels' => $tanggal_labels,
+            'tanggal' => $tanggal
+        ]);
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use backend\models\DataPenjualanDetail;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Url;
@@ -96,38 +97,67 @@ $this->params['breadcrumbs'][] = $this->title;
             <h3 style="font-weight: bold;">History Pembelian</h3>
         </div>
         <div class="box-body">
+            <?php
+            $i = 0;
+            $grandtotal = 0;
+            foreach ($pembelian_history as $key => $value) {
+                $i++;
+                // $grandtotal += $value->total_beli;
+            ?>
+                <div class="panel">
+                    <div class="panel-heading" role="tab" id="heading<?= $i; ?>">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsemasuk<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsemasuk<?= $i; ?>" class="drop">
+                            <button class="form-control" style="border:none;">
+                                <?php
+                                echo '<p style="float: left;">#' . $i . ' : ' . tanggal_indo($value->tanggal_penjualan) . ' | ' . 'Rp. ' . number_format($value->grandtotal) . '</p>' ?>
+                            </button>
+                        </a>
+                    </div>
+                    <div id="collapsemasuk<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?= $i; ?>">
+                        <div class="panel-body">
+                            <div style="overflow: auto;">
+                                <table class="table datatables">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th style="white-space: nowrap;">Keterangan Stok</th>
+                                            <th style="white-space: nowrap;">Nama Barang</th>
+                                            <th style="white-space: nowrap;">Harga Beli</th>
+                                            <th style="white-space: nowrap;">Qty</th>
+                                            <th style="white-space: nowrap;">Diskon</th>
+                                            <th style="white-space: nowrap;">PPN</th>
+                                            <th style="white-space: nowrap;">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $detail = DataPenjualanDetail::find()->where(['id_penjualan' => $value->id_penjualan])->all();
 
-            <table class="table" id="table-index">
-                <thead>
-                    <tr>
-                        <th style="white-space: nowrap;">#</th>
-                        <th style="white-space: nowrap;">Tanggal Pembelian</th>
-                        <th style="white-space: nowrap;">Grandtotal</th>
-                        <th style="white-space: nowrap;">Status Pembayaran</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $i = 1;
-                    $grandtotal = 0;
-                    foreach ($pembelian_history as $key => $value) {
-                        // $grandtotal += $value->total_beli;
-                    ?>
-
-                        <tr>
-
-                            <td><?= $i++; ?>.</td>
-                            <td><?= tanggal_indo($value->tanggal_penjualan, true) ?></td>
-                            <td><?= number_format($value->grandtotal) ?></td>
-                            <td><?= $value->jenis_pembayaran == 1 ? 'LUNAS' : 'TAGIHAN' ?></td>
-
-                        </tr>
-
-                    <?php } ?>
-                </tbody>
-            </table>
-
-
+                                        $no = 0;
+                                        $sum_masuk = 0;
+                                        foreach ($detail as $key => $val) {
+                                            $no++;
+                                            $sum_masuk += $val->total_jual;
+                                        ?>
+                                            <tr>
+                                                <td><?= $no ?></td>
+                                                <td><?= tanggal_indo($val->stok_keluar->tanggal_keluar, true) . ' - ' . $val->stok_keluar->keterangan ?></td>
+                                                <td><?= $val->barang->nama_barang ?></td>
+                                                <td><?= 'Rp. ' . number_format($val->harga_jual) ?></td>
+                                                <td align="center"><?= $val->qty ?></td>
+                                                <td align="center"><?= $val->diskon == 0 ? ' - ' : $val->diskon . " %" ?></td>
+                                                <td align="center"><?= $val->ppn == 0 ? ' - ' : $val->ppn . " %" ?></td>
+                                                <td align="right"><?= 'Rp. ' . number_format($val->total_jual) ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                    <!-- <tfoot></tfoot> -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </div>

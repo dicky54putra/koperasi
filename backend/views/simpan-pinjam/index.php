@@ -15,7 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="simpan-pinjam-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <ul class="breadcrumb">
         <li><a href="/">Dashboard</a></li>
@@ -25,10 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="box box-info">
         <div class="box-body">
             <div class="col-md-12" style="margin-top:20px;">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#simpanan"><span class="fa fa-bank"></span> Simpanan</a></li>
-                        <li><a data-toggle="tab" href="#pinjaman"><span class="fa fa-credit-card"></span> Pinjaman</a></li>
-                    </ul>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#simpanan"><span class="fa fa-bank"></span> Simpanan</a></li>
+                    <li><a data-toggle="tab" href="#pinjaman"><span class="fa fa-credit-card"></span> Pinjaman</a></li>
+                </ul>
                 <div class="tab-content">
 
                     <div id="simpanan" class="tab-pane fade in active" style="margin-top:20px;">
@@ -60,16 +61,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php 
-                                            $i = 0;
-                                            foreach ($data_simpan as $key => $value) {
+                                        <?php
+                                        $i = 0;
+                                        foreach ($data_simpan as $key => $value) {
                                             $i++;
                                         ?>
 
-                                         <tr>
-                                             <td><?= $i ?>.</td>
-                                             <td style="white-space: nowrap;">
-                                                 <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_simpan_pinjam], [
+                                            <tr>
+                                                <td><?= $i ?>.</td>
+                                                <td style="white-space: nowrap;">
+                                                    <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_simpan_pinjam], [
                                                         'title' => Yii::t('app', 'Lihat Detail'),
                                                     ]); ?>
                                                     <?= Html::button(
@@ -82,21 +83,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_simpan_pinjam], [
                                                         'title' => Yii::t('app', 'Hapus data'),
                                                         'data' => [
-                                                            'confirm' => 'Are you sure you want to delete this item?',
                                                             'method' => 'post',
+                                                            'class' => 'tombol-hapus'
                                                         ],
                                                     ]); ?>
-                                             </td>
-                                             <td style="white-space: nowrap;"><?= tanggal_indo($value->tanggal, true) ?></td>
-                                             <td style="white-space: nowrap;"><?= $value->anggota->nama_anggota ?></td>
-                                             <td><?= $value->anggota->pangkat->nama_pangkat ?></td>
-                                             <td><?= $value->jenis == 1 ? 'Simpanan' : 'Pinjaman' ?></td>
-                                             <td><?= number_format($value->nominal) ?></td>
-                                             <td><?= $value->keterangan ?></td>
-                                             <td><?= $value->status == 1 ? '<span class="label label-success">Aktif</span>' : '<span class="label label-danger">Tidak Aktif</span>' ?></td>
+                                                </td>
+                                                <td style="white-space: nowrap;"><?= tanggal_indo($value->tanggal, true) ?></td>
+                                                <td style="white-space: nowrap;"><?= $value->anggota->nama_anggota ?></td>
+                                                <td><?= $value->anggota->pangkat->nama_pangkat ?></td>
+                                                <td><?= $value->jenis == 1 ? 'Simpanan' : 'Pinjaman' ?></td>
+                                                <td><?= number_format($value->nominal) ?></td>
+                                                <td><?= $value->keterangan ?></td>
+                                                <td><?= $value->status == 1 ? '<span class="label label-success">Aktif</span>' : '<span class="label label-danger">Tidak Aktif</span>' ?></td>
 
-                                         </tr>
-                                     <?php } ?>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                     <!-- <tfoot>
                                         <tr style="background-color:#bdcfff">
@@ -137,16 +138,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php 
-                                            $i = 0;
-                                            foreach ($data_pinjam as $key => $value) {
+                                        <?php
+                                        $i = 0;
+                                        foreach ($data_pinjam as $key => $value) {
                                             $i++;
                                         ?>
 
-                                         <tr>
-                                             <td><?= $i ?>.</td>
-                                             <td style="white-space: nowrap;">
-                                                 <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_simpan_pinjam], [
+                                            <tr>
+                                                <td><?= $i ?>.</td>
+                                                <td style="white-space: nowrap;">
+                                                    <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_simpan_pinjam], [
                                                         'title' => Yii::t('app', 'Lihat Detail'),
                                                     ]); ?>
                                                     <?= Html::button(
@@ -163,17 +164,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                                             'method' => 'post',
                                                         ],
                                                     ]); ?>
-                                             </td>
-                                             <td style="white-space: nowrap;"><?= tanggal_indo($value->tanggal, true) ?></td>
-                                             <td style="white-space: nowrap;"><?= $value->anggota->nama_anggota ?></td>
-                                             <td><?= $value->anggota->pangkat->nama_pangkat ?></td>
-                                             <td><?= $value->jenis == 1 ? 'Simpanan' : 'Pinjaman' ?></td>
-                                             <td><?= number_format($value->nominal) ?></td>
-                                             <td><?= $value->keterangan ?></td>
-                                             <td><?= $value->status == 1 ? '<span class="label label-success">Aktif</span>' : '<span class="label label-danger">Tidak Aktif</span>' ?></td>
+                                                </td>
+                                                <td style="white-space: nowrap;"><?= tanggal_indo($value->tanggal, true) ?></td>
+                                                <td style="white-space: nowrap;"><?= $value->anggota->nama_anggota ?></td>
+                                                <td><?= $value->anggota->pangkat->nama_pangkat ?></td>
+                                                <td><?= $value->jenis == 1 ? 'Simpanan' : 'Pinjaman' ?></td>
+                                                <td><?= number_format($value->nominal) ?></td>
+                                                <td><?= $value->keterangan ?></td>
+                                                <td><?= $value->status == 1 ? '<span class="label label-success">Aktif</span>' : '<span class="label label-danger">Tidak Aktif</span>' ?></td>
 
-                                         </tr>
-                                     <?php } ?>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                     <!-- <tfoot>
                                         <tr style="background-color:#bdcfff">

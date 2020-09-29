@@ -150,10 +150,8 @@ $fieldOptions2 = [
     }
 </style>
 <div class="login-box" style="width: 35%; ">
-    <?= ModalAlert::widget([
-        'popupCssClass' => 'my-custom-class',
-        // 'popupView' => '@app/views/common/my-custom-alert',
-    ]) ?>
+
+    <div class="error" data-flashdata="<?= Yii::$app->session->getFlash('error') ?>"></div>
 
     <div class="login-box-body" style="height:100%;">
 
@@ -225,6 +223,19 @@ $(document).ready(function() {
             });
         });
     })
+
+const flashdata2 = $('.error').data('flashdata');
+
+if (flashdata2) {
+    Swal.fire({
+        icon: 'error',
+        title: flashdata2,
+        text: '',
+        // timer: 1500,
+        customClass: 'swal-wide', // agar bisa saya edit ukuran popupnya
+    })
+}
+
 
 JS;
 
