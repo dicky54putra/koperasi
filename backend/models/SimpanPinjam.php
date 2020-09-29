@@ -30,8 +30,8 @@ class SimpanPinjam extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_anggota', 'jenis', 'tanggal', 'status', 'keterangan'], 'required'],
-            [['id_anggota', 'jenis', 'status'], 'integer'],
+            [['id_anggota', 'jenis', 'tanggal', 'status'], 'required'],
+            [['id_anggota', 'jenis', 'status', 'nominal'], 'integer'],
             [['tanggal'], 'safe'],
             [['keterangan'], 'string'],
         ];
@@ -48,7 +48,13 @@ class SimpanPinjam extends \yii\db\ActiveRecord
             'jenis' => 'Jenis',
             'tanggal' => 'Tanggal',
             'status' => 'Status',
+            'nominal' => 'Nominal',
             'keterangan' => 'Keterangan',
         ];
+    }
+
+    public function getAnggota()
+    {
+        return $this->hasOne(AnggotaKoperasi::className(), ['id_anggota' => 'id_anggota']);
     }
 }
