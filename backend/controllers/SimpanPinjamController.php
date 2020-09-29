@@ -8,6 +8,12 @@ use backend\models\SimpanPinjamSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\AnggotaKoperasi;
+use yii\helpers\ArrayHelper;
+
+use yii\helpers\Json;
+use backend\models\Pelunasan;
+
 
 /**
  * SimpanPinjamController implements the CRUD actions for SimpanPinjam model.
@@ -38,9 +44,15 @@ class SimpanPinjamController extends Controller
         $searchModel = new SimpanPinjamSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $data_simpan = SimpanPinjam::find()->where(['jenis' =>1])->all();
+
+        $data_pinjam = SimpanPinjam::find()->where(['jenis' =>2])->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'data_pinjam' => $data_pinjam,
+            'data_simpan' => $data_simpan,
         ]);
     }
 
@@ -52,8 +64,12 @@ class SimpanPinjamController extends Controller
      */
     public function actionView($id)
     {
+
+        $data_pelunasan = Pelunasan::find()->where(['id_simpan_pinjam' => $id])->all();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'data_pelunasan' => $data_pelunasan,
         ]);
     }
 
@@ -62,16 +78,53 @@ class SimpanPinjamController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreateSimpan()
     {
         $model = new SimpanPinjam();
 
+
+        $data_anggota = ArrayHelper::map(
+            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
+            'id_anggota',
+            function ($model) {
+                return $model['kode_anggota'] .' - '.$model['nama_anggota'];
+            }
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_simpan_pinjam]);
+
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create-simpan', [
             'model' => $model,
+            'data_anggota' => $data_anggota,
+        ]);
+    }
+
+    public function actionCreatePinjam()
+    {
+        $model = new SimpanPinjam();
+
+
+        $data_anggota = ArrayHelper::map(
+            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
+            'id_anggota',
+            function ($model) {
+                return $model['kode_anggota'] .' - '.$model['nama_anggota'];
+            }
+        );
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
+        }
+
+        return $this->renderAjax('create-pinjam', [
+            'model' => $model,
+            'data_anggota' => $data_anggota,
         ]);
     }
 
@@ -82,16 +135,53 @@ class SimpanPinjamController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdatePinjam($id)
     {
         $model = $this->findModel($id);
 
+
+        $data_anggota = ArrayHelper::map(
+            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
+            'id_anggota',
+            function ($model) {
+                return $model['nama_anggota'];
+            }
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_simpan_pinjam]);
+
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update-pinjam', [
             'model' => $model,
+            'data_anggota' => $data_anggota,
+        ]);
+    }
+
+    public function actionUpdateSimpan($id)
+    {
+        $model = $this->findModel($id);
+
+
+        $data_anggota = ArrayHelper::map(
+            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
+            'id_anggota',
+            function ($model) {
+                return $model['nama_anggota'];
+            }
+        );
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
+        }
+
+        return $this->renderAjax('update-simpan', [
+            'model' => $model,
+            'data_anggota' => $data_anggota,
         ]);
     }
 
