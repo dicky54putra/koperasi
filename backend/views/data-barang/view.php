@@ -72,7 +72,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'label' => 'Supplier',
                                 'format' => 'raw',
                                 'value' => function ($model) {
-                                    return $model->anggota->nama_anggota;
+
+                                    return $model->id_anggota == NULL ? ' - ' : $model->anggota->nama_anggota;
                                 }
                             ],
                             [

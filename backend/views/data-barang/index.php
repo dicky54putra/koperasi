@@ -48,6 +48,7 @@ $this->title = 'Data Barang';
                                 <th style="white-space: nowrap;">Satuan</th>
                                 <th style="white-space: nowrap;">Harga Jual</th>
                                 <th style="white-space: nowrap;">Harga Beli</th>
+                                <th style="white-space: nowrap;">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,10 +80,11 @@ $this->title = 'Data Barang';
                                     </td>
                                     <td><?= $value->kode_barang ?></td>
                                     <td><?= $value->nama_barang ?></td>
-                                    <td><?= $value->id_kategori ?></td>
-                                    <td><?= $value->id_satuan ?></td>
+                                    <td><?= $value->kategori_barang->nama_kategori ?></td>
+                                    <td><?= $value->satuan->nama_satuan ?></td>
                                     <td><?= $value->harga_jual ?></td>
                                     <td><?= $value->harga_beli ?></td>
+                                    <td><?= $value->is_active == 1 ? '<span class="label label-success">Aktif</span>' : '<span class="label label-danger">Tidak Aktif</span>' ?></td>
 
                                 </tr>
 
