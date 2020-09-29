@@ -1,5 +1,5 @@
 const flashdata = $('.success').data('flashdata');
-
+const flashdata2 = $('.error').data('flashdata');
 
 if (flashdata) {
     Swal.fire({
@@ -7,6 +7,15 @@ if (flashdata) {
         title: 'Data Berhasil ' + flashdata,
         text: '',
         timer: 1500,
+        customClass: 'swal-wide', // agar bisa saya edit ukuran popupnya
+    })
+}
+if (flashdata2) {
+    Swal.fire({
+        icon: 'error',
+        title: flashdata2,
+        text: '',
+        // timer: 1500,
         customClass: 'swal-wide', // agar bisa saya edit ukuran popupnya
     })
 }

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\StokMasuk */
 
-$this->title = 'Update Stok Masuk: ' . tanggal_indo($model->tanggal_masuk);
+$this->title = 'Ubah Stok Masuk: ' . substr(tanggal_indo($model->tanggal_masuk), 2, -4);
 $this->params['breadcrumbs'][] = ['label' => 'Stok Masuks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id_stok_masuk, 'url' => ['view', 'id' => $model->id_stok_masuk]];
 $this->params['breadcrumbs'][] = 'Update';

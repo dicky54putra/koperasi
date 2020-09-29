@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\StokMasuk */
 
-$this->title = 'Create Stok Masuk';
+$this->title = 'Tambah Stok Masuk';
 $this->params['breadcrumbs'][] = ['label' => 'Stok Masuks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

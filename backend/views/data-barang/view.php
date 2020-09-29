@@ -120,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?= Html::button(
                                         '<span class="glyphicon glyphicon-plus"></span> Tambah',
                                         [
-                                            'value' => Url::to(['stok-masuk/create', 'id' => $model->id_barang]),
+                                            'value' => Url::to(['stok-masuk/create', 'id_barang' => $model->id_barang]),
                                             'title' => 'Tambah data',
                                             'class' => 'showModalButton btn btn-primary'
                                         ]
@@ -134,13 +134,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <div class="panel">
                                         <div class="panel-heading" role="tab" id="heading<?= $i; ?>">
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsemasuk<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsemasuk<?= $i; ?>" class="drop">
-                                                #<?php echo $i . ' : ' . tanggal_indo($value->tanggal_masuk) . ' || ' . $value->keterangan ?>
+                                                #<?php
+                                                    $pembelian_sum = DataPembelianDetail::find()->joinWith(['pembelian'])->where(['id_barang' => $model->id_barang])->andWhere(['id_stok_masuk' => $value->id_stok_masuk])->sum("qty");
+
+                                                    $tanggal = substr(tanggal_indo($value->tanggal_masuk), 2, -4);
+                                                    $ket = ($value->keterangan) ? $value->keterangan : '(tidak ada keterangan)';
+                                                    $pem_sum = ($pembelian_sum) ? $pembelian_sum : '(masih kosong)';
+                                                    echo $i . ' : ' . $tanggal . ' | ' . $pem_sum . ' | ' . $ket ?>
                                             </a>
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsemasuk<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsemasuk<?= $i; ?>" style="float: right; margin-left:5px; transition: 0.5s;" class="btn btn-success drop btn-sm btn-flat">
                                                 <span id="glyphicon" style="transition: 0.5s;" class="glyphicon glyphicon-chevron-down"></span>
                                             </a>
-                                            <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete-pembelian-penerimaan', 'id' => $value->id_stok_masuk], [
-                                                'class' => 'btn btn-danger btn-sm btn-flat',
+                                            <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['stok-masuk/delete', 'id' => $value->id_stok_masuk], [
+                                                'class' => 'tombol-hapus btn btn-danger btn-sm btn-flat',
                                                 'style' => [
                                                     'float' => 'right',
                                                 ],
@@ -152,7 +158,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <?= Html::button(
                                                 '<span class="glyphicon glyphicon-edit"></span>',
                                                 [
-                                                    'value' => Url::to(['stok-masuk/update', 'id' => $value->id_stok_masuk]),
+                                                    'value' => Url::to(['stok-masuk/update', 'id' => $value->id_stok_masuk, 'id_barang' => $value->id_barang]),
                                                     'title' => ' Terima Barang', 'class' => 'showModalButton btn btn-primary btn-sm btn-flat',
                                                     'style' => [
                                                         'float' => 'right'
@@ -218,7 +224,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?= Html::button(
                                         '<span class="glyphicon glyphicon-plus"></span> Tambah',
                                         [
-                                            'value' => Url::to(['stok-keluar/create', 'id' => $model->id_barang]),
+                                            'value' => Url::to(['stok-keluar/create', 'id_barang' => $model->id_barang]),
                                             'title' => 'Tambah data',
                                             'class' => 'showModalButton btn btn-primary'
                                         ]
@@ -233,13 +239,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <div class="panel">
                                         <div class="panel-heading" role="tab" id="heading<?= $i; ?>">
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsekeluar<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsekeluar<?= $i; ?>" class="drop">
-                                                #<?php echo $i . ' : ' . tanggal_indo($value->tanggal_keluar) . ' || ' . $value->keterangan ?>
+                                                #<?php
+                                                    $pejualan_sum = DataPenjualanDetail::find()->joinWith(['penjualan'])->where(['id_barang' => $model->id_barang])->andWhere(['id_stok_keluar' => $value->id_stok_keluar])->sum("qty");
+
+                                                    $tanggal = substr(tanggal_indo($value->tanggal_keluar), 2, -4);
+                                                    $ket = ($value->keterangan) ? $value->keterangan : '(tidak ada keterangan)';
+                                                    $pen_sum = ($pejualan_sum) ? $pejualan_sum : '(masih kosong)';
+                                                    echo $i . ' : ' . $tanggal . ' | ' . $pen_sum . ' | ' . $ket ?>
                                             </a>
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsekeluar<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsekeluar<?= $i; ?>" style="float: right; margin-left:5px; transition: 0.5s;" class="btn btn-success drop btn-sm btn-flat">
                                                 <span id="glyphicon" style="transition: 0.5s;" class="glyphicon glyphicon-chevron-down"></span>
                                             </a>
-                                            <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['stok-keluar/delete', 'id' => $value->id_stok_keluar], [
-                                                'class' => 'btn btn-danger btn-sm btn-flat',
+                                            <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['stok-keluar/delete', 'id' => $value->id_stok_keluar, 'id_barang' => $value->id_barang], [
+                                                'class' => 'btn tombol-hapus btn-danger btn-sm btn-flat',
                                                 'style' => [
                                                     'float' => 'right',
                                                 ],

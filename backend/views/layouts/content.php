@@ -44,6 +44,7 @@ use pa3py6aka\yii2\ModalAlert;
         // ]) 
         ?>
         <div class="success" data-flashdata="<?= Yii::$app->session->getFlash('success') ?>"></div>
+        <div class="error" data-flashdata="<?= Yii::$app->session->getFlash('error') ?>"></div>
         <?= $content ?>
     </section>
 </div>

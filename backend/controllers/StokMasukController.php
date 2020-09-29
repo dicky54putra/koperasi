@@ -66,8 +66,16 @@ class StokMasukController extends Controller
     {
         $model = new StokMasuk();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Disimpan');
+        if ($model->load(Yii::$app->request->post())) {
+            $cek = StokMasuk::find()->where(['LIKE', 'tanggal_masuk', $model->tanggal_masuk])->count();
+
+            if ($cek == 0) {
+                $model->save();
+                Yii::$app->session->setFlash('success', 'Disimpan');
+            } else {
+                Yii::$app->session->setFlash('error', 'Bulan yang anda masukan sudah ada!');
+            }
+            // die;
             return $this->redirect(['data-barang/view', 'id' => $model->id_barang]);
         }
 
