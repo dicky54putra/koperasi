@@ -44,19 +44,12 @@ $this->title = 'Dashboard';
             datasets: [{
                 data: [
                     <?php
-                    // foreach ($tanggal as $key => $value) {
-                    //     $data_count = DataPenjualanBarang::find()->where(['tanggal_pembelian' => $value['tanggal_pembelian']])->count('id_pembelian');
-                    //     foreach ($data_count as $key => $value) {
-                    //         echo '"' . $value->tanggal_pembelian . '",';
-                    //     }
-                    // }
-                    // foreach ($tanggal as $t) {
-                    // echo $t['tanggal_pembelian'];
-                    // $data_count = Yii::$app->db->createCommand("SELECT COUNT(id_pembelian) as pembelian FROM data_pembelian_barang WHERE tanggal_pembelian = '$t[tanggal_pembelian]'")->query();
-                    // foreach ($data_count as $g) {
-                    //     echo '"' . $g['tanggal_pembelian'] . '",';
-                    // }
-                    // }
+                    foreach ($tanggal as $t) {
+                        $data_count = Yii::$app->db->createCommand("SELECT COUNT(id_penjualan) as penjualan FROM data_penjualan_barang WHERE tanggal_penjualan = '$t[tanggal_penjualan]'")->query();
+                        foreach ($data_count as $g) {
+                            echo '"' . $g['penjualan'] . '",';
+                        }
+                    }
                     ?>, '0'
                 ],
                 backgroundColor: 'green',
@@ -67,9 +60,9 @@ $this->title = 'Dashboard';
             }],
             labels: [
                 <?php
-                // foreach ($tanggal_labels as $tgl) {
-                //     echo '"' . tanggal_indo($tgl['tanggal_pembelian']) . '",';
-                // }
+                foreach ($tanggal_label as $tgl) {
+                    echo '"' . tanggal_indo($tgl['tanggal_penjualan']) . '",';
+                }
                 ?>
             ]
         },
