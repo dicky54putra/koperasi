@@ -1,17 +1,18 @@
 <?php
 
 use yii\helpers\Html;
-
+use yii\widgets\DetailView;
+use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
 ?>
 
 <style>
     /* @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended+Text&display=swap'); */
     /* @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128&display=swap'); */
-    @font-face {
+    /*@font-face {
         font-family: barcode;
         src: url(web/font/Code39-hoch-Logitogo.tff);
         font-weight: bold;
-    }
+    }*/
 
     .table {
         border: solid 2px;
@@ -73,27 +74,41 @@ use yii\helpers\Html;
             </td>
         </tr>
     </tbody>
-    <?php
-    //Widht of the barcode image. 
-    $width  = 284;
-    //Height of the barcode image.
-    $height = 184;
-    //Quality of the barcode image. Only for JPEG.
-    $quality = 100;
-    //1 if text should appear below the barcode. Otherwise 0.
-    $text = 1;
-    // Location of barcode image storage.
-    // $location = Yii::setPathOfAlias("webroot") . '/web/barcode';
 
-    // Yii::import("application.extensions.barcode.*");
-    Yii::$app->runAction("application.extensions.barcode.*");
-    ?>
     <tfoot>
         <tr>
-            <td colspan="3" align="center" style="font-size:45px;"><?= barcode::Barcode39($model->kode_anggota, $width, $height, $quality, $text, $location); ?></td>
+            <td colspan="3" style="font-size:45px;">
+               
+                <div id="showBarcode" style="align-content: center;">
+                <?php echo BarcodeGenerator::widget([
+                            'elementId'=> 'showBarcode', 
+                            'value'=> $model->kode_anggota,
+                            'type'=>'code39',
+                            // 'options' => 'center',
+                        ]);
+
+                 ?>
+           
+                 </div>
+
+            </td>
         </tr>
     </tfoot>
 </table>
+
+
+
+<?php 
+
+
+echo BarcodeGenerator::widget([
+    'elementId'=> 'showBarcode', 
+    'value'=> $model->kode_anggota,
+    'type'=>'code39'
+]);
+
+ ?>
+
 <script>
     window.print();
 </script>

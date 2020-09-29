@@ -30,6 +30,30 @@ $this->title = 'Anggota Koperasi';
         );  ?>
     </p>
 
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+             [
+                'attribute' => 'kode_anggota', 
+                'format' => 'raw', 
+                'value'=> function($model){
+                    return yii\helpers\Html::tag('div', '', ['id' => 'barcode-'.$model->kode_anggota]).
+                    \barcode\barcode\BarcodeGenerator::widget([
+                        'elementId' => 'barcode-'.$model->kode_anggota,
+                        'value'=> $model->kode_anggota, 
+                        'type'=>'ean13',
+                    ]);
+                },
+            ],
+            'nama_anggota',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
     <div class="box box-warning">
         <div class="box-header">
             <div class="col-md-12" style="padding: 0;">
