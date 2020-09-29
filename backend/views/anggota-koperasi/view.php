@@ -48,6 +48,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attributes' => [
                         'kode_anggota',
                         'nama_anggota',
+                        [
+                            'attribute' => 'kode_anggota', 
+                            'format' => 'raw', 
+                            'value'=> function($model){
+                                return yii\helpers\Html::tag('div', '', ['id' => 'barcode-'.$model->kode_anggota]).
+                                \barcode\barcode\BarcodeGenerator::widget([
+                                    'elementId' => 'barcode-'.$model->kode_anggota,
+                                    'value'=> $model->kode_anggota, 
+                                    'type'=>'ean13',
+                                ]);
+                            },
+                        ],
                         'alamat_anggota',
                         'kota',
                         'telp',

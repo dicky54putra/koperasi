@@ -54,6 +54,7 @@ if (Yii::$app->user->isGuest) {
                 font-size: 1.5rem !important;
             }
         </style>
+        <link href='https://fonts.googleapis.com/css?family=Libre Barcode 39' rel='stylesheet'>
         <?php $this->head() ?>
     </head>
 

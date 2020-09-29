@@ -8,7 +8,7 @@ use backend\models\AnggotaKoperasiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use Mpdf\Mpdf;
 use backend\models\DataPenjualanBarang;
 
 
@@ -124,9 +124,30 @@ class AnggotaKoperasiController extends Controller
     public function actionPrintKartu($id)
     {
         $model = $this->findModel($id);
-        return $this->renderPartial('print_kartu', [
+        $searchModel = new AnggotaKoperasiSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('print_kartu', [
+            'dataProvider' => $dataProvider,
             'model' => $model
         ]);
+
+        // $pdf = Yii::$app->pdf;
+        // $pdf->content = $this->renderPartial('print_kartu');
+        // return $pdf->render();  
+
+        // $print =  $this->renderPartial('print_kartu', [
+        // return $this->render('print', [
+            // 'model'       => $this->findModel($id),
+            // 'po'          => $this->getArrayPo(),
+            // 'detailpo'    => $this->getArrayDetailpo($id),
+        // ]);
+
+        // $mPDF = new mPDF();
+        // $mPDF->showImageErrors = true;
+        // $mPDF->writeHTML($print);
+        // $mPDF->Output();
+        // exit();
     }
 
     /**
