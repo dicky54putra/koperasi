@@ -32,9 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ); ?>
         <?= Html::a('<span class="glyphicon glyphicon-trash"></span> Hapus', ['delete', 'id' => $model->id_pembelian], [
-            'class' => 'btn btn-danger',
+            'class' => 'tombol-hapus btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -70,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'html',
                         'value' => function ($model) {
 
-                            return "<b>Rp. ".number_format($model->grandtotal)."</b>";
+                            return "<b>Rp. " . number_format($model->grandtotal) . "</b>";
                         }
                     ],
                 ],
@@ -79,78 +78,80 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="box box-warning">
-        <div class="box-header"><h3 style="font-weight: bold;">History Pembelian</h3></div>
-            <div class="box-body">
+        <div class="box-header">
+            <h3 style="font-weight: bold;">History Pembelian</h3>
+        </div>
+        <div class="box-body">
 
-                <p>
-                    <?= Html::button(
-                        '<span class="glyphicon glyphicon-plus"></span> Tambah Data',
-                        [
-                            'value' => Url::to(['data-pembelian-detail/create', 'id' => $_GET['id']]),
-                            'title' => 'Buat Data Pembelian', 'class' => 'showModalButton btn btn-success'
-                        ]
-                    ); ?>
-                </p><br>
+            <p>
+                <?= Html::button(
+                    '<span class="glyphicon glyphicon-plus"></span> Tambah Data',
+                    [
+                        'value' => Url::to(['data-pembelian-detail/create', 'id' => $_GET['id']]),
+                        'title' => 'Buat Data Pembelian', 'class' => 'showModalButton btn btn-success'
+                    ]
+                ); ?>
+            </p><br>
 
-                <table class="table" id="table-index">
-                        <thead>
-                            <tr>
-                                <th style="white-space: nowrap;">#</th>
-                                <th style="white-space: nowrap;">Aksi</th>
-                                <th style="white-space: nowrap;">Keterangan Stok</th>
-                                <th style="white-space: nowrap;">Nama Barang</th>
-                                <th style="white-space: nowrap;">Harga Beli</th>
-                                <th style="white-space: nowrap;">Qty</th>
-                                <th style="white-space: nowrap;">Diskon</th>
-                                <th style="white-space: nowrap;">PPN</th>
-                                <th style="white-space: nowrap;">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            $grandtotal = 0;
-                            foreach ($pembelian_detail as $key => $value) {
-                                $grandtotal += $value->total_beli;
-                            ?>
+            <table class="table" id="table-index">
+                <thead>
+                    <tr>
+                        <th style="white-space: nowrap;">#</th>
+                        <th style="white-space: nowrap;">Aksi</th>
+                        <th style="white-space: nowrap;">Keterangan Stok</th>
+                        <th style="white-space: nowrap;">Nama Barang</th>
+                        <th style="white-space: nowrap;">Harga Beli</th>
+                        <th style="white-space: nowrap;">Qty</th>
+                        <th style="white-space: nowrap;">Diskon</th>
+                        <th style="white-space: nowrap;">PPN</th>
+                        <th style="white-space: nowrap;">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $i = 1;
+                    $grandtotal = 0;
+                    foreach ($pembelian_detail as $key => $value) {
+                        $grandtotal += $value->total_beli;
+                    ?>
 
-                                <tr>
-                                   
-                                    <td><?= $i++; ?>.</td>
-                                    <td>
-                                       
-                                        <?= Html::button(
-                                            '<span class="glyphicon glyphicon-edit"></span>',
-                                            [
-                                                'value' => Url::to(['data-pembelian-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_pembelian_detail]),
-                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
-                                            ]
-                                        ); ?>
-                                        <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_pembelian_detail], [
-                                            'title' => Yii::t('app', 'Hapus data'),
-                                        ]); ?>
-                                    </td>
-                                    <td><?= tanggal_indo($value->stok_masuk->tanggal_masuk, true) .' - '. $value->stok_masuk->keterangan?></td>
-                                    <td><?= $value->barang->nama_barang ?></td>
-                                    <td><?= number_format($value->harga_beli) ?></td>
-                                    <td align="center"><?= $value->qty ?></td>
-                                    <td align="center"><?= $value->diskon == 0 ? ' - ' : $value->diskon." %" ?></td>
-                                    <td align="center"><?= $value->ppn == 0 ? ' - ' : $value->ppn." %" ?></td>
-                                    <td align="right"><?= number_format($value->total_beli) ?></td>
+                        <tr>
 
-                                </tr>
+                            <td><?= $i++; ?>.</td>
+                            <td>
 
-                            <?php } ?>
-                        </tbody>
+                                <?= Html::button(
+                                    '<span class="glyphicon glyphicon-edit"></span>',
+                                    [
+                                        'value' => Url::to(['data-pembelian-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_pembelian_detail]),
+                                        'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
+                                    ]
+                                ); ?>
+                                <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_pembelian_detail], [
+                                    'title' => Yii::t('app', 'Hapus data'),
+                                ]); ?>
+                            </td>
+                            <td><?= tanggal_indo($value->stok_masuk->tanggal_masuk, true) . ' - ' . $value->stok_masuk->keterangan ?></td>
+                            <td><?= $value->barang->nama_barang ?></td>
+                            <td><?= number_format($value->harga_beli) ?></td>
+                            <td align="center"><?= $value->qty ?></td>
+                            <td align="center"><?= $value->diskon == 0 ? ' - ' : $value->diskon . " %" ?></td>
+                            <td align="center"><?= $value->ppn == 0 ? ' - ' : $value->ppn . " %" ?></td>
+                            <td align="right"><?= number_format($value->total_beli) ?></td>
 
-                        <tfoot>
-                            <tr style="background-color:#bdcfff">
-                                <td colspan="8"><b><i>GRANDTOTAL</i></b></td>
-                                <td align="right"><b><i><?php echo "Rp. ".number_format($grandtotal) ?></i></b></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                        </tr>
 
-            
-            </div>
+                    <?php } ?>
+                </tbody>
+
+                <tfoot>
+                    <tr style="background-color:#bdcfff">
+                        <td colspan="8"><b><i>GRANDTOTAL</i></b></td>
+                        <td align="right"><b><i><?php echo "Rp. " . number_format($grandtotal) ?></i></b></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+        </div>
     </div>

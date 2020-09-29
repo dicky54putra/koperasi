@@ -84,9 +84,9 @@ $this->title = 'Menu Navigasi';
                         return Html::a('<button class = "btn btn-danger ' . $hidden . '"><span class="glyphicon glyphicon-trash"></span> Hapus</button>', $url, [
                             'title' => Yii::t('app', 'lead-delete'),
                             'data' => [
-                                'confirm' => 'Anda yakin ingin menghapus data?',
                                 'method' => 'post',
                             ],
+                            'class' => 'tombol-hapus'
                         ]);
                     },
 

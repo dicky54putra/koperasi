@@ -14,7 +14,8 @@ $this->title = 'Data Penjualan Barang';
 <div class="data-penjualan-barang-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <ul class="breadcrumb">
         <li><a href="/">Dashboard</a></li>
@@ -32,7 +33,7 @@ $this->title = 'Data Penjualan Barang';
 
     </p>
 
- <div class="box box-warning">
+    <div class="box box-warning">
         <div class="box-header">
             <div class="col-md-12" style="padding: 0;">
                 <div class="box-body" style="overflow-x: auto;">
@@ -68,12 +69,13 @@ $this->title = 'Data Penjualan Barang';
                                         ); ?>
                                         <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_penjualan], [
                                             'title' => Yii::t('app', 'Hapus data'),
+                                            'class' => 'tombol-hapus'
                                         ]); ?>
                                     </td>
                                     <td><?= $value->tanggal_penjualan ?></td>
                                     <td><?= $value->anggota->nama_anggota ?></td>
                                     <td><?= $value->jenis_pembayaran == 1 ? 'LUNAS' : 'TAGIHAN' ?></td>
-                                    <td><?= "<b>Rp. ".number_format($value->grandtotal).'</b>' ?></td>
+                                    <td><?= "<b>Rp. " . number_format($value->grandtotal) . '</b>' ?></td>
 
 
                                 </tr>
@@ -92,4 +94,3 @@ $this->title = 'Data Penjualan Barang';
         </div>
     </div>
 </div>
-

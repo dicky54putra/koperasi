@@ -73,9 +73,9 @@ $this->title = 'Data Barang';
                                         <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_barang], [
                                             'title' => Yii::t('app', 'Hapus data'),
                                             'data' => [
-                                                'confirm' => 'Are you sure you want to delete this item?',
                                                 'method' => 'post',
                                             ],
+                                            'class' => 'tombol-hapus'
                                         ]); ?>
                                     </td>
                                     <td><?= $value->kode_barang ?></td>

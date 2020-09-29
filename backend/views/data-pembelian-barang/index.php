@@ -14,7 +14,8 @@ $this->title = 'Data Pembelian Barang';
 <div class="data-pembelian-barang-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <ul class="breadcrumb">
         <li><a href="/">Dashboard</a></li>
@@ -31,7 +32,7 @@ $this->title = 'Data Pembelian Barang';
         );  ?>
     </p>
 
- <div class="box box-warning">
+    <div class="box box-warning">
         <div class="box-header">
             <div class="col-md-12" style="padding: 0;">
                 <div class="box-body" style="overflow-x: auto;">
@@ -67,6 +68,7 @@ $this->title = 'Data Pembelian Barang';
                                         ); ?>
                                         <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_pembelian], [
                                             'title' => Yii::t('app', 'Hapus data'),
+                                            'class' => 'tombol-hapus'
                                         ]); ?>
                                     </td>
                                     <td><?= $value->tanggal_pembelian ?></td>

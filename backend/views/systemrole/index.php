@@ -59,9 +59,9 @@ $this->title = 'Data Hak Akses';
                         return Html::a('<button class = "btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Hapus</button>', $url, [
                             'title' => Yii::t('app', 'lead-delete'),
                             'data' => [
-                                'confirm' => 'Anda yakin ingin menghapus data?',
                                 'method' => 'post'
                             ],
+                            'class' => 'tombol-hapus'
                         ]);
                     },
 

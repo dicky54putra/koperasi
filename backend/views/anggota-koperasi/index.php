@@ -62,11 +62,12 @@ $this->title = 'Anggota Koperasi';
                                             '<span class="glyphicon glyphicon-edit"></span>',
                                             [
                                                 'value' => Url::to(['update', 'id' => $value->id_anggota]),
-                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-success'
+                                                'title' => 'Ubah data', 'class' => 'showModalButton  btn btn-sm btn-success'
                                             ]
                                         ); ?>
                                         <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_anggota], [
                                             'title' => Yii::t('app', 'Hapus data'),
+                                            'class' => 'tombol-hapus'
                                         ]); ?>
                                     </td>
                                     <td><?= $value->kode_anggota ?></td>

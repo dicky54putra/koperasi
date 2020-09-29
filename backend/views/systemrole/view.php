@@ -27,9 +27,8 @@ $this->title = "Detail Hak Akses: " . $model->nama_role;
 		<?= Html::a('<span class="glyphicon glyphicon-circle-arrow-left"></span> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>
 		<?= Html::a('<span class="glyphicon glyphicon-edit"></span> Ubah', ['update', 'id' => $model->id_system_role], ['class' => 'btn btn-primary']) ?>
 		<?= Html::a('<span class="glyphicon glyphicon-trash"></span> Hapus', ['delete', 'id' => $model->id_system_role], [
-			'class' => 'btn btn-danger',
+			'class' => 'tombol-hapus btn btn-danger',
 			'data' => [
-				'confirm' => 'Are you sure you want to delete this item?',
 				'method' => 'post',
 			],
 		]) ?>

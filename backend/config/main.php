@@ -289,5 +289,10 @@ return [
             return Yii::$app->response->redirect(['site/login']);
         },
     ],
+    'controllerMap' => array(
+        'barcodegenerator' => array(
+            'class' => 'ext.barcodegenerator.BarcodeGeneratorController',
+        ),
+    ),
     'params' => $params,
 ];

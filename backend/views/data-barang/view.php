@@ -37,9 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ); ?>
         <?= Html::a('<span class="glyphicon glyphicon-trash"></span> Hapus', ['delete', 'id' => $model->id_barang], [
-            'class' => 'btn btn-danger',
+            'class' => 'tombol-hapus btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>

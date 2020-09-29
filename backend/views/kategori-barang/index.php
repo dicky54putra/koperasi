@@ -63,9 +63,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_kategori], [
                                             'title' => Yii::t('app', 'Hapus data'),
                                             'data' => [
-                                                'confirm' => 'Are you sure you want to delete this item?',
                                                 'method' => 'post',
                                             ],
+                                            'class' => 'tombol-hapus'
                                         ]); ?>
                                     </td>
                                     <td><?= $value->nama_kategori ?></td>
