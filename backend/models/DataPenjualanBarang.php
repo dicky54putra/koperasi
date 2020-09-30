@@ -31,7 +31,7 @@ class DataPenjualanBarang extends \yii\db\ActiveRecord
             [['tanggal_penjualan', 'id_anggota', 'jenis_pembayaran'], 'required'],
             [['tanggal_penjualan'], 'safe'],
             [['id_anggota', 'grandtotal'], 'integer'],
-            [['jenis_pembayaran'], 'string'],
+            [['jenis_pembayaran', 'no_invoice', 'jumlah_bayar'], 'string'],
         ];
     }
 

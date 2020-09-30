@@ -163,4 +163,32 @@ class DataPenjualanBarangController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionCetak($id)
+    {
+        $model = $this->findModel($id);
+
+        $update = DataPenjualanBarang::findOne($id);
+
+        // $bayar = Yii::$app->request->post('bayar');
+
+        // echo $bayar;exit();
+
+        if ($update->no_invoice == '') {
+            
+            $generate = DataPenjualanBarang::find()->count();
+            $update->no_invoice = date('Ymd') . str_pad($generate + 1, 3, "0", STR_PAD_LEFT);
+            $update->jumlah_bayar = Yii::$app->request->post('bayar');
+            $update->save(false);
+
+            return $this->redirect(['data-penjualan-barang/cetak', 'id' => $id]);
+        }   
+
+
+
+        return $this->renderPartial('cetak', [
+            'model' => $model,
+            // 'data_anggota' => $data_anggota,
+        ]);
+    }
 }
