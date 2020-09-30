@@ -30,10 +30,15 @@ $this->title = 'Menu Navigasi';
     //     // ->andWhere(["nama_role" => 'DEVELOPER'])
     //     ->one();
     // var_dump($userrole);
+    if ($userrole == 'DEVELOPER') {
+        $hidden = '';
+    } else {
+        $hidden = 'hidden';
+    }
     ?>
 
     <p>
-        <?= Html::a('<span class="glyphicon glyphicon-plus"></span>Tambah Menu Navigasi', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus"></span>Tambah Menu Navigasi', ['create'], ['class' => 'btn btn-success ' . $hidden . '']) ?>
     </p>
 
 

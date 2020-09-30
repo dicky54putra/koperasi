@@ -149,7 +149,12 @@ class LoginController extends Controller
 
 
 
-        $hakakses = Systemrole::find()->orderBy("nama_role")->all();
+        $userrole = Yii::$app->db->createCommand("SELECT system_role.nama_role FROM user_role INNER JOIN system_role ON system_role.id_system_role = user_role.id_system_role WHERE user_role.id_login = " . Yii::$app->user->id . " AND  system_role.nama_role = 'DEVELOPER'")->queryScalar();
+        if ($userrole == 'DEVELOPER') {
+            $hakakses = Systemrole::find()->orderBy("nama_role")->all();
+        } else {
+            $hakakses = Systemrole::find()->orderBy("nama_role")->where(['!=', 'nama_role', 'DEVELOPER'])->all();
+        }
 
         return $this->render('view', [
             'model' => $this->findModel($id),

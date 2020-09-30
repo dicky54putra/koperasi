@@ -25,9 +25,21 @@ $this->title = "Detail Hak Akses: " . $model->nama_role;
 
 	<p>
 		<?= Html::a('<span class="glyphicon glyphicon-circle-arrow-left"></span> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>
-		<?= Html::a('<span class="glyphicon glyphicon-edit"></span> Ubah', ['update', 'id' => $model->id_system_role], ['class' => 'btn btn-primary']) ?>
+		<?php
+		$userrole_ = Yii::$app->db->createCommand("SELECT system_role.nama_role FROM user_role INNER JOIN system_role ON system_role.id_system_role = user_role.id_system_role WHERE user_role.id_login = " . Yii::$app->user->id . " AND  system_role.nama_role = 'DEVELOPER'")->queryScalar();
+		if ($userrole_ == 'DEVELOPER') {
+			$hidden = '';
+		} else {
+			if ($model->nama_role == 'DEVELOPER') {
+				$hidden = 'hidden';
+			} else {
+				$hidden = '';
+			}
+		}
+		?>
+		<?= Html::a('<span class="glyphicon glyphicon-edit"></span> Ubah', ['update', 'id' => $model->id_system_role], ['class' => 'btn btn-primary ' . $hidden]) ?>
 		<?= Html::a('<span class="glyphicon glyphicon-trash"></span> Hapus', ['delete', 'id' => $model->id_system_role], [
-			'class' => 'tombol-hapus btn btn-danger',
+			'class' => 'tombol-hapus btn btn-danger ' . $hidden,
 			'data' => [
 				'method' => 'post',
 			],

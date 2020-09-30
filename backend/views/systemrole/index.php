@@ -51,12 +51,32 @@ $this->title = 'Data Hak Akses';
                     },
 
                     'update' => function ($url, $model) {
-                        return Html::a('<button class = "btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Ubah</button>', $url, [
+                        $userrole = Yii::$app->db->createCommand("SELECT system_role.nama_role FROM user_role INNER JOIN system_role ON system_role.id_system_role = user_role.id_system_role WHERE user_role.id_login = " . Yii::$app->user->id . " AND  system_role.nama_role = 'DEVELOPER'")->queryScalar();
+                        if ($userrole == 'DEVELOPER') {
+                            $hidden = '';
+                        } else {
+                            if ($model->nama_role == 'DEVELOPER') {
+                                $hidden = 'hidden';
+                            } else {
+                                $hidden = '';
+                            }
+                        }
+                        return Html::a('<button class = "btn btn-primary ' . $hidden . '"><span class="glyphicon glyphicon-edit"></span> Ubah</button>', $url, [
                             'title' => Yii::t('app', 'lead-update'),
                         ]);
                     },
                     'delete' => function ($url, $model) {
-                        return Html::a('<button class = "btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Hapus</button>', $url, [
+                        $userrole = Yii::$app->db->createCommand("SELECT system_role.nama_role FROM user_role INNER JOIN system_role ON system_role.id_system_role = user_role.id_system_role WHERE user_role.id_login = " . Yii::$app->user->id . " AND  system_role.nama_role = 'DEVELOPER'")->queryScalar();
+                        if ($userrole == 'DEVELOPER') {
+                            $hidden = '';
+                        } else {
+                            if ($model->nama_role == 'DEVELOPER') {
+                                $hidden = 'hidden';
+                            } else {
+                                $hidden = '';
+                            }
+                        }
+                        return Html::a('<button class = "btn btn-danger ' . $hidden . '"><span class="glyphicon glyphicon-trash"></span> Hapus</button>', $url, [
                             'title' => Yii::t('app', 'lead-delete'),
                             'data' => [
                                 'method' => 'post'
