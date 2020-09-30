@@ -104,6 +104,7 @@ $fieldOptions2 = [
     }
 
     .info a {
+        /* color: rgba(22, 194, 230, 1); */
         color: black;
     }
 
@@ -185,19 +186,23 @@ $fieldOptions2 = [
                             </div>
                         </div>
                         <div class="col-md-1"></div>
-
                         <br>
                     </div>
-                    <!-- <div class="row" style="margin-top: -50px;">
-                        <div class="col-lg-12 info">
-                            <p>About Developer</p>
-                            <a href=""><i class="fa fa-facebook"></i></a> &nbsp;
-                            <a href=""><i class="fa fa-instagram"></i></a> &nbsp;
-                            <a href=""><i class="fa fa-globe"></i></a> &nbsp;
-                            <a href=""><i class="fa fa-envelope"></i></a> &nbsp;
-                            <a href=""><i class="fa fa-whatsapp"></i></a>
+                    <!-- <div class="row">
+                        <div class="col-md-12 info">
+                            <a href="http://klikgss.com" style="font-size: 1.3em;">www.klikgss.com</a>
                         </div>
                     </div> -->
+                    <div class="row" style="margin-top: -50px;">
+                        <div class="col-lg-12 info">
+                            <p>About Developer</p>
+                            <a href="https://www.facebook.com/garudasaranasejahtera"><i class="fa fa-facebook"></i></a> &nbsp;
+                            <a href="https://www.instagram.com/gss_software/"><i class="fa fa-instagram"></i></a> &nbsp;
+                            <a href="http://klikgss.com"><i class="fa fa-globe"></i></a> &nbsp;
+                            <a href="mailto:informasi@klikgss.com"><i class="fa fa-envelope"></i></a> &nbsp;
+                            <a href="https://api.whatsapp.com/send?phone=6289668303824"><i class="fa fa-whatsapp"></i></a>
+                        </div>
+                    </div>
 
                 </div>
 

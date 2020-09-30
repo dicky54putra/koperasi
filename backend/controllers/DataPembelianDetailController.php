@@ -59,8 +59,9 @@ class DataPembelianDetailController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -72,6 +73,7 @@ class DataPembelianDetailController extends Controller
     public function actionCreate($id)
     {
         $model = new DataPembelianDetail();
+        $model2 = new StokMasuk();
 
         $data_barang = ArrayHelper::map(
             DataBarang::find()->all(),
@@ -85,7 +87,7 @@ class DataPembelianDetailController extends Controller
             StokMasuk::find()->all(),
             'id_stok_masuk',
             function ($model) {
-                return tanggal_indo($model['tanggal_masuk'], true) . ' - ' . $model['keterangan'];
+                return tanggal_indo2(date('F', strtotime($model['tanggal_masuk']))) . ' - ' . $model['keterangan'];
             }
         );
 
@@ -107,6 +109,7 @@ class DataPembelianDetailController extends Controller
 
         return $this->renderAjax('create', [
             'model' => $model,
+            'model2' => $model2,
             'data_barang' => $data_barang,
             'data_stok_masuk' => $data_stok_masuk,
         ]);
@@ -166,7 +169,7 @@ class DataPembelianDetailController extends Controller
         $i = 0;
         foreach ($state as $value) {
             $all_state[$i]['id'] = empty($value['id_stok_masuk']) ? 0 : $value['id_stok_masuk'];
-            $all_state[$i]['name'] = empty($value['tanggal_masuk']) ? 'Data Kosong' : tanggal_indo($value['tanggal_masuk']);
+            $all_state[$i]['name'] = empty($value['tanggal_masuk']) ? 'Data Kosong' : tanggal_indo2(date('F', strtotime($value['tanggal_masuk'])));
             $i++;
         }
 

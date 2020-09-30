@@ -45,9 +45,9 @@ class DataPembelianDetail extends \yii\db\ActiveRecord
     {
         return [
             'id_pembelian_detail' => 'Id Pembelian Detail',
-            'id_pembelian' => 'Id Pembelian',
-            'id_stok_masuk' => 'Id Stok Masuk',
-            'id_barang' => 'Id Barang',
+            'id_pembelian' => 'Pembelian',
+            'id_stok_masuk' => 'Stok Masuk',
+            'id_barang' => 'Barang',
             'qty' => 'Qty',
             'diskon' => 'Diskon',
             'harga_beli' => 'Harga Beli',

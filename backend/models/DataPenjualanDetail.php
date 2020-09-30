@@ -45,9 +45,9 @@ class DataPenjualanDetail extends \yii\db\ActiveRecord
     {
         return [
             'id_penjualan_detail' => 'Id Penjualan Detail',
-            'id_penjualan' => 'Id Penjualan',
-            'id_stok_keluar' => 'Id Stok Keluar',
-            'id_barang' => 'Id Barang',
+            'id_penjualan' => 'Penjualan',
+            'id_stok_keluar' => 'Stok Keluar',
+            'id_barang' => 'Barang',
             'qty' => 'Qty',
             'diskon' => 'Diskon',
             'harga_jual' => 'Harga Jual',

@@ -87,33 +87,31 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="box-body">
             <div class="row">
-                <div class="col-md-12">
-                <div class="col-md-3">
+                <div class="col-sm-6">
                     <?= Html::button(
-                    '<span class="glyphicon glyphicon-plus"></span> Tambah Data',
-                    [
-                        'value' => Url::to(['data-penjualan-detail/create', 'id' => $_GET['id']]),
-                        'title' => 'Buat Data Pembelian', 'class' => 'showModalButton btn btn-success'
-                    ]
-                ); ?>
+                        '<span class="glyphicon glyphicon-plus"></span> Tambah Data',
+                        [
+                            'value' => Url::to(['data-penjualan-detail/create', 'id' => $_GET['id']]),
+                            'title' => 'Buat Data Pembelian', 'class' => 'showModalButton btn btn-success'
+                        ]
+                    ); ?>
                 </div>
 
                 <?= Html::beginForm(['data-penjualan-barang/cetak', 'id' => $_GET['id']], 'post') ?>
 
-                <div class="col-md-3" style="margin-left: 420px;">
-                    <input class="form-control" type="number" id="bayar" name="bayar" placeholder="Input Pembayaran" />
+                <div class="col-sm-6" style="float:right">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="number" id="bayar" name="bayar" placeholder="Input Pembayaran" aria-describedby="basic-addon1" />
+                        <span class="input-group-btn" id="basic-addon1">
+                            <?= Html::submitButton('<span class="glyphicon glyphicon-print"></span> Cetak Struk Penjualan', ['class' => 'btn btn-primary pull-right']) ?>
+                        </span>
+                    </div>
                 </div>
-                    
-                <?= Html::submitButton('<span class="glyphicon glyphicon-print"></span> Cetak Struk Penjualan', ['class' => 'btn btn-primary pull-right']) ?>
-
-
-                
                 <?= Html::endForm() ?>
 
             </div>
-        </div>
-           <br>
-
+            <br>
+            <!-- <div class="col-lg-12"> -->
             <table class="table" id="table-index">
                 <thead>
                     <tr>
@@ -152,7 +150,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'title' => Yii::t('app', 'Hapus data'),
                                 ]); ?>
                             </td>
-                            <td><?= tanggal_indo($value->stok_keluar->tanggal_keluar, true) . ' - ' . $value->stok_keluar->keterangan ?></td>
+                            <td><?= 'Bulan ' . tanggal_indo2(date('F', strtotime($value->stok_keluar->tanggal_keluar))) . ' - ' . $value->stok_keluar->keterangan ?></td>
                             <td><?= $value->barang->nama_barang ?></td>
                             <td><?= number_format($value->harga_jual) ?></td>
                             <td align="center"><?= $value->qty ?></td>
@@ -172,9 +170,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     </tr>
                 </tfoot>
             </table>
-
-
+            <!-- </div> -->
         </div>
+
+
     </div>
+</div>
 
 </div>

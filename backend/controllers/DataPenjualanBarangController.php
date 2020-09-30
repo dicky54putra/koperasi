@@ -4,6 +4,8 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\DataPenjualanBarang;
+use backend\models\DataBarang;
+use backend\models\StokKeluar;
 use backend\models\DataPenjualanBarangSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -86,7 +88,7 @@ class DataPenjualanBarangController extends Controller
             AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
             'id_anggota',
             function ($model) {
-                return $model['kode_anggota'] .' - '.$model['nama_anggota'];
+                return $model['kode_anggota'] . ' - ' . $model['nama_anggota'];
             }
         );
 
@@ -99,6 +101,16 @@ class DataPenjualanBarangController extends Controller
             'model' => $model,
             'data_anggota' => $data_anggota,
         ]);
+    }
+
+    public function actionCreateStok($id)
+    {
+        $model = new StokKeluar();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
+        }
     }
 
     /**
@@ -175,14 +187,14 @@ class DataPenjualanBarangController extends Controller
         // echo $bayar;exit();
 
         if ($update->no_invoice == '') {
-            
+
             $generate = DataPenjualanBarang::find()->count();
             $update->no_invoice = date('Ymd') . str_pad($generate + 1, 3, "0", STR_PAD_LEFT);
             $update->jumlah_bayar = Yii::$app->request->post('bayar');
             $update->save(false);
 
             return $this->redirect(['data-penjualan-barang/cetak', 'id' => $id]);
-        }   
+        }
 
 
 

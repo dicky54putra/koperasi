@@ -24,7 +24,7 @@ use yii\helpers\Url;
             $('#datapenjualandetail-qty').val('1');
             $('#datapenjualandetail-diskon').val('0');
             $('#datapenjualandetail-ppn').val('0');
-
+            $('#stokkeluar-id_barang').val(data.id_barang);
         });
     });
 
@@ -73,7 +73,23 @@ use yii\helpers\Url;
         // 'data' => $data_stok_keluar,
         'type' => DepDrop::TYPE_SELECT2,
         'options' => ['placeholder' => 'Select ...'],
-        'select2Options' => ['pluginOptions' => ['allowClear' => true]],
+        'select2Options' => [
+            'pluginOptions' => ['allowClear' => true],
+            'addon' => [
+                'prepend' => [
+                    'content' => Html::a('<span class="glyphicon glyphicon-plus"></span>', '#', [
+                        'class' => 'btn btn-success plus ',
+                        'data-toggle' => 'modal',
+                        'data-target' => '#modal-add',
+                        'style' => [
+                            'float' => 'right'
+                        ],
+                        // 'data-id' => $d->id_pembelian_penerimaan
+                    ]),
+                    'asButton' => true
+                ],
+            ],
+        ],
         'pluginOptions' => [
             'depends' => ['id_barang'],
             'url' => Url::to(['/data-penjualan-detail/stok']),
@@ -113,4 +129,67 @@ use yii\helpers\Url;
 
     <?php ActiveForm::end(); ?>
 
+</div>
+
+
+<div class="modal fade" id="modal-add">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Terima Barang Detail</h4>
+            </div>
+            <?php //$form = ActiveForm::begin(['akt-pembelian/view', 'aksi' => 'ubah_data_pembelian', 'id' => $model->id_pembelian]); 
+            ?>
+            <?php $form = ActiveForm::begin([
+                'action' => 'index.php?r=data-penjualan-barang/create-stok&id=' . $_GET['id'],
+            ]); ?>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <?= $form->field($model2, 'id_barang')->textInput(['type' => 'hidden'])->label(false) ?>
+
+                        <?= $form->field($model2, 'total_qty')->textInput(['type' => 'hidden'])->label(false) ?>
+
+                        <?= $form->field($model2, 'tanggal_keluar')->widget(Select2::classname(), [
+                            // 'name' => 'test',
+                            'data' => array(
+                                date('Y') . '-01-' . date('d', strtotime(1)) => 'Januari',
+                                date('Y') . '-02-' . date('d', strtotime(1)) => 'Febuari',
+                                date('Y') . '-03-' . date('d', strtotime(1)) => 'Maret',
+                                date('Y') . '-04-' . date('d', strtotime(1)) => 'April',
+                                date('Y') . '-05-' . date('d', strtotime(1)) => 'Mei',
+                                date('Y') . '-06-' . date('d', strtotime(1)) => 'Juni',
+                                date('Y') . '-07-' . date('d', strtotime(1)) => 'Juli',
+                                date('Y') . '-08-' . date('d', strtotime(1)) => 'Agustus',
+                                date('Y') . '-09-' . date('d', strtotime(1)) => 'September',
+                                date('Y') . '-10-' . date('d', strtotime(1)) => 'Oktober',
+                                date('Y') . '-11-' . date('d', strtotime(1)) => 'November',
+                                date('Y') . '-12-' . date('d', strtotime(1)) => 'Desember',
+                            ),
+                            // 'hashVarLoadPosition' => View::POS_READY,
+                            'language' => 'en',
+                            'options' => ['placeholder' => 'Pilih Kategori'],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ]) ?>
+                        <?= $form->field($model2, 'keterangan')->textarea(['rows' => 6]) ?>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success']) ?>
+                <?php // Html::endForm() 
+                ?>
+            </div>
+            <?php ActiveForm::end(); ?>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

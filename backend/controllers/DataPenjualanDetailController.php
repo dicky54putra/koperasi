@@ -73,6 +73,7 @@ class DataPenjualanDetailController extends Controller
     public function actionCreate($id)
     {
         $model = new DataPenjualanDetail();
+        $model2 = new StokKeluar();
 
         $data_barang = ArrayHelper::map(
             DataBarang::find()->all(),
@@ -98,6 +99,15 @@ class DataPenjualanDetailController extends Controller
                 $grandtotal += $value->total_jual;
             }
 
+            $data_stok_barang = StokKeluar::find()
+                ->where(['id_stok_keluar' => Yii::$app->request->post('DataPenjualanDetail')['id_stok_keluar']])
+                ->andWhere(['id_barang' => Yii::$app->request->post('DataPenjualanDetail')['id_barang']])
+                ->one();
+            $data_stok_barang->total_qty = $data_stok_barang->total_qty + Yii::$app->request->post('DataPenjualanDetail')['qty'];
+            // var_dump($data_stok_barang->total_qty);
+            // die;
+            $data_stok_barang->save(false);
+
             $penjualan = DataPenjualanBarang::find()->where(['id_penjualan' => $id])->one();
             $penjualan->grandtotal = $grandtotal;
             $penjualan->save(false);
@@ -110,6 +120,7 @@ class DataPenjualanDetailController extends Controller
 
         return $this->renderAjax('create', [
             'model' => $model,
+            'model2' => $model2,
             'data_barang' => $data_barang,
             'data_stok_keluar' => $data_stok_keluar,
         ]);
@@ -118,13 +129,12 @@ class DataPenjualanDetailController extends Controller
     public function actionStok()
     {
         $country_id = $_POST['depdrop_parents'][0];
-        $state = Yii::$app->db->createCommand("
-        SELECT * FROM stok_keluar WHERE id_barang = '$country_id'")->query();
+        $state = Yii::$app->db->createCommand("SELECT * FROM stok_keluar WHERE id_barang = '$country_id'")->query();
         $all_state = array();
         $i = 0;
         foreach ($state as $value) {
             $all_state[$i]['id'] = empty($value['id_stok_keluar']) ? 0 : $value['id_stok_keluar'];
-            $all_state[$i]['name'] = empty($value['tanggal_keluar']) ? 'Data Kosong' : tanggal_indo($value['tanggal_keluar']);
+            $all_state[$i]['name'] = empty($value['tanggal_keluar']) ? 'Data Kosong' : tanggal_indo2(date('F', strtotime($value['tanggal_keluar'])));
             $i++;
         }
 

@@ -50,15 +50,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         'kode_anggota',
                         'nama_anggota',
                         [
-                            'attribute' => 'kode_anggota', 
-                            'format' => 'raw', 
-                            'value'=> function($model){
-                                return yii\helpers\Html::tag('div', '', ['id' => 'barcode-'.$model->kode_anggota]).
-                                \barcode\barcode\BarcodeGenerator::widget([
-                                    'elementId' => 'barcode-'.$model->kode_anggota,
-                                    'value'=> $model->kode_anggota, 
-                                    'type'=>'ean13',
-                                ]);
+                            'attribute' => 'kode_anggota',
+                            'format' => 'raw',
+                            'value' => function ($model) {
+                                return yii\helpers\Html::tag('div', '', ['id' => 'barcode-' . $model->kode_anggota]) .
+                                    \barcode\barcode\BarcodeGenerator::widget([
+                                        'elementId' => 'barcode-' . $model->kode_anggota,
+                                        'value' => $model->kode_anggota,
+                                        'type' => 'ean13',
+                                    ]);
                             },
                         ],
                         'alamat_anggota',
@@ -119,9 +119,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="panel">
                     <div class="panel-heading" role="tab" id="heading<?= $i; ?>">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsemasuk<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsemasuk<?= $i; ?>" class="drop">
-                            <button class="form-control" style="border:none;">
+                            <button class="form-control" style="border:none; background: rgba(0, 0, 0, 0.1); border-radius: 30px;">
                                 <?php
-                                echo '<p style="float: left;">#' . $i . ' : ' . tanggal_indo($value->tanggal_penjualan) . ' | ' . 'Rp. ' . number_format($value->grandtotal) . '</p>' ?>
+                                $jenis = ($value->jenis_pembayaran == 1) ? '<label class="label label-warning">Lunas</label>' : '<label class="label label-danger">Tagihan</label>';
+                                echo '<p style="float: left; color:rgba(60, 141, 188, 1);">#' . $i . ' : ' . tanggal_indo($value->tanggal_penjualan) . ' | ' . 'Rp. ' . number_format($value->grandtotal) . ' | ' . $jenis . '</p>' ?>
                             </button>
                         </a>
                     </div>

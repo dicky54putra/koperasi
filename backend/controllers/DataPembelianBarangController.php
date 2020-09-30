@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\DataPembelianBarang;
+use backend\models\StokMasuk;
 use backend\models\DataPembelianBarangSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -95,6 +96,28 @@ class DataPembelianBarangController extends Controller
             'model' => $model,
             'data_supplier' => $data_supplier,
         ]);
+    }
+
+    public function actionCreateStok($id)
+    {
+        // echo $id;
+        // die;
+        $model = new StokMasuk();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            // $pembelian_detail = DataPembelianDetail::find()->where(['id_pembelian' => $id])->all();
+            // $grandtotal = 0;
+            // foreach ($pembelian_detail as $key => $value) {
+            //     $grandtotal += $value->total_beli;
+            // }
+
+            // $pembelian = DataPembelianBarang::find()->where(['id_pembelian' => $id])->one();
+            // $pembelian->grandtotal = $grandtotal;
+            // $pembelian->save(false);
+
+            Yii::$app->session->setFlash("success", "Disimpan");
+            return $this->redirect(['data-pembelian-barang/view', 'id' => $id]);
+        }
     }
 
     /**
