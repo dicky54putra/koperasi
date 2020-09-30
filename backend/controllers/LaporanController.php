@@ -55,6 +55,28 @@ class LaporanController extends Controller
         ]);
     }
 
+    public function actionLaporanPenjualan()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->render('laporan-penjualan', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
+    public function actionLaporanStokBarang()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->render('laporan-stok-barang', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
     public function actionExportExcelLaporanHutang()
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
@@ -72,6 +94,28 @@ class LaporanController extends Controller
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
 
         return $this->renderPartial('export_excel_laporan_hutang_toko', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
+    public function actionExportExcelLaporanPenjualan()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->renderPartial('export_excel_laporan_penjualan', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
+    public function actionExportExcelLaporanStokBarang()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->renderPartial('export_excel_laporan_stok_barang', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
         ]);

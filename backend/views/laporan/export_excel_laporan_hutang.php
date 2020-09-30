@@ -23,7 +23,7 @@ th, td {
 <table class="table" border="1">
     <thead>
         <tr>
-            <th colspan="11">Laporan Pinjaman Besar Pertanggal <?= tanggal_indo($tanggal_awal, true) ?> - <?= tanggal_indo($tanggal_akhir, true) ?></th>
+            <th colspan="11">Laporan Pinjaman Besar & Pelunasan Pertanggal <?= tanggal_indo($tanggal_awal, true) ?> - <?= tanggal_indo($tanggal_akhir, true) ?></th>
         </tr>
         <tr>
             <th>No</th>
@@ -31,6 +31,9 @@ th, td {
             <th>Tanggal Pinjaman</th>
             <th>Nominal</th>
             <th>Keterangan</th>
+            <th>Tanggal Pelunasan</th>
+            <th>Nominal Pelunasan</th>
+            <th>Grandtotal Pelunasan</th>
         </tr>
     </thead>
     <tbody>
@@ -48,6 +51,14 @@ th, td {
             ")->query();
         foreach ($query1 as $key => $data) {
             # code...
+            $detail = Pelunasan::find()->where(['id_simpan_pinjam' => $data['id_simpan_pinjam']])->all();
+               foreach ($detail as $key => $value) {
+                   # code...
+                    $tgl_ .= tanggal_indo($value->tanggal, true). "<br>";
+                    $nominal .= 'Rp. '.number_format($value->nominal).'<br>';
+                    $gd += $value->nominal;
+                    // $ppn .= $value->ppn.'<br>';
+               }
         ?>
         <tr>
             <td><?= $no++.'.' ?></td>
@@ -55,6 +66,9 @@ th, td {
             <td><?= tanggal_indo($data['tanggal'], true) ?></td>
             <td><?= 'Rp. '. ribuan($data['nominal']) ?></td>
             <td><?= $data['keterangan'] ?></td>
+            <td><?= $tgl_ ?></td>
+            <td><?= $nominal ?></td>
+            <td><?= 'Rp. '.number_format($gd) ?></td>
         </tr>       
          <?php } ?>
     </tbody>

@@ -89,6 +89,9 @@ class DataPembelianDetailController extends Controller
             }
         );
 
+
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             $pembelian_detail = DataPembelianDetail::find()->where(['id_pembelian' => $id])->all();
@@ -96,6 +99,14 @@ class DataPembelianDetailController extends Controller
             foreach ($pembelian_detail as $key => $value) {
                 $grandtotal += $value->total_beli;
             }
+
+            $data_stok_barang = StokMasuk::find()
+                                ->where(['id_stok_masuk' => Yii::$app->request->post('DataPembelianDetail')['id_barang']])
+                                ->andWhere(['id_barang' => Yii::$app->request->post('DataPembelianDetail')['id_stok_masuk']])
+                                ->one();
+            $data_stok_barang->total_qty = 
+                                    $data_stok_barang->total_qty + Yii::$app->request->post('DataPembelianDetail')['qty'];
+            $data_stok_barang->save(false);
 
             $pembelian = DataPembelianBarang::find()->where(['id_pembelian' => $id])->one();
             $pembelian->grandtotal = $grandtotal;
