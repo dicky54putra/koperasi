@@ -82,14 +82,21 @@ class SiteController extends Controller
         $month = date('m');
         $year = date('Y');
 
-        $tanggal = Yii::$app->db->createCommand("SELECT tanggal_penjualan FROM data_penjualan_barang WHERE  MONTH(tanggal_penjualan) = '$month' AND YEAR(tanggal_penjualan) = '$year' GROUP BY tanggal_penjualan")->query();
+        $tanggal = Yii::$app->db->createCommand("SELECT tanggal_penjualan FROM data_penjualan_barang WHERE  MONTH(tanggal_penjualan) = '$month' AND YEAR(tanggal_penjualan) = '$year' GROUP BY tanggal_penjualan ORDER BY tanggal_penjualan ASC")->query();
+        $tanggal2 = Yii::$app->db->createCommand("SELECT tanggal_pembelian FROM data_pembelian_barang WHERE  MONTH(tanggal_pembelian) = '$month' AND YEAR(tanggal_pembelian) = '$year' GROUP BY tanggal_pembelian ORDER BY tanggal_pembelian ASC")->query();
 
-        $tanggal_labels = Yii::$app->db->createCommand("SELECT tanggal_penjualan FROM data_penjualan_barang WHERE  MONTH(tanggal_penjualan) = '$month' AND YEAR(tanggal_penjualan) = '$year' GROUP BY tanggal_penjualan")->query();
+        // $tanggal_penjualan = Yii::$app->db->createCommand("SELECT tanggal_penjualan FROM data_penjualan_barang WHERE  MONTH(tanggal_penjualan) = '$month' AND YEAR(tanggal_penjualan) = '$year' GROUP BY tanggal_penjualan")->query();
+        // $tanggal_pembelian = Yii::$app->db->createCommand("SELECT tanggal_pembelian FROM data_pembelian_barang 
+        // WHERE  MONTH(tanggal_pembelian) = '$month' AND YEAR(tanggal_pembelian) = '$year' GROUP BY 
+        // tanggal_pembelian")->query();
+
+        $tanggal_labels = Yii::$app->db->createCommand("SELECT tanggal_penjualan FROM data_penjualan_barang WHERE  MONTH(tanggal_penjualan) = '$month' AND YEAR(tanggal_penjualan) = '$year' GROUP BY tanggal_penjualan UNION SELECT tanggal_pembelian FROM data_pembelian_barang WHERE  MONTH(tanggal_pembelian) = '$month' AND YEAR(tanggal_pembelian) = '$year' GROUP BY tanggal_pembelian ORDER BY tanggal_penjualan ASC")->query();
 
 
         return $this->render('index', [
             'tanggal_label' => $tanggal_labels,
-            'tanggal' => $tanggal
+            'tanggal' => $tanggal,
+            'tanggal2' => $tanggal2
         ]);
     }
 

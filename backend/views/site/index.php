@@ -97,27 +97,62 @@ $this->title = 'Dashboard';
 <script>
     const ctx = document.getElementById("chart-area").getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             datasets: [{
-                data: [
-                    <?php
-                    foreach ($tanggal as $t) {
-                        $data_count = Yii::$app->db->createCommand("SELECT COUNT(id_penjualan) as penjualan FROM data_penjualan_barang WHERE tanggal_penjualan = '$t[tanggal_penjualan]'")->query();
-                        foreach ($data_count as $g) {
-                            echo '"' . $g['penjualan'] . '",';
+                    data: [
+                        <?php
+                        foreach ($tanggal as $t) {
+                            $data_count = Yii::$app->db->createCommand("SELECT COUNT(id_penjualan_detail) as penjualan FROM data_penjualan_detail LEFT JOIN data_penjualan_barang ON data_penjualan_barang.id_penjualan = data_penjualan_detail.id_penjualan WHERE tanggal_penjualan = '$t[tanggal_penjualan]'")->query();
+                            foreach ($data_count as $g) {
+                                if (!empty($g['penjualan'])) {
+                                    echo '"' . $g['penjualan'] . '",';
+                                } else {
+                                    echo '0';
+                                }
+                            }
                         }
-                    }
-                    ?>, '0'
-                ],
-                backgroundColor: 'green',
-                borderColor: 'green',
-                fill: false,
-                lineTension: 0.5,
-                label: 'Pembelian'
-            }],
+                        ?>, '0'
+                    ],
+                    backgroundColor: 'green',
+                    borderColor: 'green',
+                    fill: false,
+                    lineTension: 0,
+                    // lineTension: 0.5,
+                    label: ['Pembelian']
+                },
+                {
+                    data: ['0',
+                        <?php
+                        foreach ($tanggal2 as $t) {
+                            $data_count = Yii::$app->db->createCommand("SELECT COUNT(id_pembelian_detail) as pembelian FROM data_pembelian_detail LEFT JOIN data_pembelian_barang ON data_pembelian_barang.id_pembelian = data_pembelian_detail.id_pembelian WHERE data_pembelian_barang.tanggal_pembelian = '$t[tanggal_pembelian]'")->query();
+                            foreach ($data_count as $g) {
+                                if (!empty($g['pembelian'])) {
+                                    echo '"' . $g['pembelian'] . '",';
+                                } else {
+                                    echo '0';
+                                }
+                            }
+                        }
+                        ?>, '0'
+                    ],
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    fill: false,
+                    lineTension: 0,
+                    // lineTension: 0.5,
+                    label: ['Penjualan']
+                },
+            ],
             labels: [
                 <?php
+                // $day = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+                // $bln = tanggal_indo(date('Y') . '-' . date('m') . '-');
+                // // $thn = date('Y');
+                // foreach ($day as $tgl) {
+                //     echo '"' . $tgl . $bln . '",';
+                // }
+
                 foreach ($tanggal_label as $tgl) {
                     echo '"' . tanggal_indo($tgl['tanggal_penjualan']) . '",';
                 }

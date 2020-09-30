@@ -18,8 +18,8 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
         border: solid 2px;
         border-collapse: collapse;
         text-transform: uppercase;
-        width: 8cm;
-        height: 3cm;
+        width: 9cm;
+        height: 5cm;
         /* line-height: 1; */
     }
 
@@ -33,6 +33,10 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
         padding-left: 4px;
         padding-right: 0px;
     }
+
+    @page {
+        size: A3;
+    }
 </style>
 <?php foreach ($data as $key => $model) { ?>
     <br>
@@ -40,11 +44,11 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
         <thead>
             <tr class="bottom_tr">
                 <td colspan="2" align="center"><?php echo Html::img('@web/upload/logo31.png', ['class' => ' img-responsive', "width" => "40px"]); ?></td>
-                <td colspan="2" align="center"><b style="font-size: 15px;">KARTU ANGGOTA KOPERASI SKUADRON 31</b></td>
+                <td colspan="2" align="center"><b style="font-size: 15px;">KARTU ANGGOTA KOPERASI SKADRON 31</b></td>
             </tr>
         </thead>
         <tbody>
-            <tr height="7px" style="vertical-align: bottom;">
+            <tr height="7px" style="vertical-align: text-top;">
                 <td colspan="2">
                     <p style="font-size: 15px;">Nama</p>
                 </td>
@@ -69,25 +73,24 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
                 </td>
             </tr>
         </tbody>
-
         <tfoot>
             <tr height="10px">
-                <td width="45px"></td>
-                <td style="font-size:25px;" colspan="2">
-                    <div id="<?= $model->kode_anggota ?>" style="align-content: center; width:20px;">
-                        <?= $model->kode_anggota ?>
-                        <?php
-                        echo BarcodeGenerator::widget([
-                            'elementId' => $model->kode_anggota,
-                            // 'class' => 'showBarcode',
-                            'value' => $model->kode_anggota,
-                            'type' => 'code39',
-                            // 'options' => 'center',
-                        ]);
-                        ?>
-                    </div>
+                <td style="font-size:25px;" colspan="4">
+                    <center>
+                        <div id="<?= $model->kode_anggota ?>" style="align-content: center; width:20px;">
+                            <?= $model->kode_anggota ?>
+                            <?php
+                            echo BarcodeGenerator::widget([
+                                'elementId' => $model->kode_anggota,
+                                // 'class' => 'showBarcode',
+                                'value' => $model->kode_anggota,
+                                'type' => 'code39',
+                                // 'options' => 'center',
+                            ]);
+                            ?>
+                        </div>
+                    </center>
                 </td>
-                <td width="25px"></td>
             </tr>
         </tfoot>
     </table>

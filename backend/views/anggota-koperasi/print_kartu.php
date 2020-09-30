@@ -38,7 +38,7 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
     <thead>
         <tr class="bottom_tr">
             <td colspan="2" align="center"><?php echo Html::img('@web/upload/logo31.png', ['class' => ' img-responsive', "width" => "40px"]); ?></td>
-            <td colspan="2" align="center"><b style="font-size: 15px;">KARTU ANGGOTA KOPERASI SKUADRON 31</b></td>
+            <td colspan="2" align="center"><b style="font-size: 15px;">KARTU ANGGOTA KOPERASI SKADRON 31</b></td>
         </tr>
     </thead>
     <tbody>

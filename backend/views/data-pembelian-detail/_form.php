@@ -3,19 +3,23 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
+use kartik\depdrop\DepDrop;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\DataPembelianDetail */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <script>
-    $('#datapembeliandetail-id_barang').change(function(){
+    $('#id_barang').change(function() {
         var id = $(this).val();
 
 
-        $.get('index.php?r=data-pembelian-detail/get-data-barang',{ id : id },function(data){
+        $.get('index.php?r=data-pembelian-detail/get-data-barang', {
+            id: id
+        }, function(data) {
             var data = $.parseJSON(data);
-            $('#datapembeliandetail-harga_beli').attr('value',data.harga_beli);
+            $('#datapembeliandetail-harga_beli').attr('value', data.harga_beli);
             $('#datapembeliandetail-qty').val('1');
             $('#datapembeliandetail-diskon').val('0');
             $('#datapembeliandetail-ppn').val('0');
@@ -30,9 +34,9 @@ use kartik\select2\Select2;
         var ppn = $('#datapembeliandetail-ppn').val();
         var total = harga_beli * qty;
 
-        var diskon = total - (total * diskon/100);
+        var diskon = total - (total * diskon / 100);
 
-        var pajak = diskon + (diskon * ppn/100);
+        var pajak = diskon + (diskon * ppn / 100);
 
         // console.log(total);
         $('#datapembeliandetail-total_beli').val(pajak);
@@ -52,50 +56,51 @@ use kartik\select2\Select2;
 
     <?= $form->field($model, 'id_pembelian')->textInput(['value' => $_GET['id'], 'type' => 'hidden'])->label(false) ?>
 
-    <?= $form->field($model, 'id_stok_masuk')->widget(Select2::classname(), [
-                // 'name' => 'test',
-                'data' => $data_stok_masuk,
-                // 'hashVarLoadPosition' => View::POS_READY,
-                'language' => 'en',
-                'options' => ['placeholder' => 'Pilih Data Stok Masuk'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label('Stok Masuk Pada Tanggal') ?>
-
     <?= $form->field($model, 'id_barang')->widget(Select2::classname(), [
-                // 'name' => 'test',
-                'data' => $data_barang,
-                // 'hashVarLoadPosition' => View::POS_READY,
-                'language' => 'en',
-                'options' => ['placeholder' => 'Pilih Barang'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label('Barang') ?>
+        // 'name' => 'test',
+        'data' => $data_barang,
+        // 'hashVarLoadPosition' => View::POS_READY,
+        'language' => 'en',
+        'options' => ['placeholder' => 'Pilih Barang', 'id' => 'id_barang'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])->label('Barang') ?>
 
-        <div class="row">
-            <div class="col-md-5">
-                <?= $form->field($model, 'harga_beli')->textInput() ?>
-            </div>
+    <?= $form->field($model, 'id_stok_masuk')->widget(DepDrop::classname(), [
+        // 'data' => $data_stok_keluar,
+        'type' => DepDrop::TYPE_SELECT2,
+        'options' => ['placeholder' => 'Select ...'],
+        'select2Options' => ['pluginOptions' => ['allowClear' => true]],
+        'pluginOptions' => [
+            'depends' => ['id_barang'],
+            'url' => Url::to(['/data-pembelian-detail/stok']),
+            // 'loadingText' => 'Loading  Keluar Pada Bulan ...',
+        ]
+    ])->label('Stok Masuk Pada Tanggal') ?>
 
-            <div class="col-md-2">
-                <?= $form->field($model, 'qty')->textInput() ?>
-            </div>
-
-            <div class="col-md-2">
-                <?= $form->field($model, 'diskon')->textInput() ?>
-            </div>
-
-            <div class="col-md-2">
-                <?= $form->field($model, 'ppn')->textInput() ?>
-            </div>
-
-            <div class="col-md-1" style="margin-top: 25px;">
-                <a class="btn btn-success" onclick="hitung()"><i class="fa fa-fw fa-refresh"></i></a>
-            </div>
-
+    <div class="row">
+        <div class="col-md-5">
+            <?= $form->field($model, 'harga_beli')->textInput() ?>
         </div>
+
+        <div class="col-md-2">
+            <?= $form->field($model, 'qty')->textInput() ?>
+        </div>
+
+        <div class="col-md-2">
+            <?= $form->field($model, 'diskon')->textInput() ?>
+        </div>
+
+        <div class="col-md-2">
+            <?= $form->field($model, 'ppn')->textInput() ?>
+        </div>
+
+        <div class="col-md-1" style="margin-top: 25px;">
+            <a class="btn btn-success" onclick="hitung()"><i class="fa fa-fw fa-refresh"></i></a>
+        </div>
+
+    </div>
 
     <?= $form->field($model, 'total_beli')->textInput(['readonly' => 'true']) ?>
 

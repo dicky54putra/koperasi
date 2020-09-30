@@ -86,7 +86,7 @@ class DataPenjualanDetailController extends Controller
             StokKeluar::find()->all(),
             'id_stok_keluar',
             function ($model) {
-                return tanggal_indo($model['tanggal_keluar'], true) .' - '. $model['keterangan'];
+                return tanggal_indo($model['tanggal_keluar'], true) . ' - ' . $model['keterangan'];
             }
         );
 
@@ -104,7 +104,7 @@ class DataPenjualanDetailController extends Controller
 
 
 
-            Yii::$app->session->setFlash("success","Disimpan");
+            Yii::$app->session->setFlash("success", "Disimpan");
             return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
         }
 
@@ -113,6 +113,23 @@ class DataPenjualanDetailController extends Controller
             'data_barang' => $data_barang,
             'data_stok_keluar' => $data_stok_keluar,
         ]);
+    }
+
+    public function actionStok()
+    {
+        $country_id = $_POST['depdrop_parents'][0];
+        $state = Yii::$app->db->createCommand("
+        SELECT * FROM stok_keluar WHERE id_barang = '$country_id'")->query();
+        $all_state = array();
+        $i = 0;
+        foreach ($state as $value) {
+            $all_state[$i]['id'] = empty($value['id_stok_keluar']) ? 0 : $value['id_stok_keluar'];
+            $all_state[$i]['name'] = empty($value['tanggal_keluar']) ? 'Data Kosong' : tanggal_indo($value['tanggal_keluar']);
+            $i++;
+        }
+
+        echo Json::encode(['output' => $all_state, 'selected' => '']);
+        return;
     }
 
     public function actionGetDataBarang($id)
@@ -128,7 +145,7 @@ class DataPenjualanDetailController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id,$id_detail)
+    public function actionUpdate($id, $id_detail)
     {
         $model = $this->findModel($id_detail);
 
@@ -144,12 +161,12 @@ class DataPenjualanDetailController extends Controller
             StokKeluar::find()->all(),
             'id_stok_keluar',
             function ($model) {
-                return tanggal_indo($model['tanggal_keluar'], true) .' - '. $model['keterangan'];
+                return tanggal_indo($model['tanggal_keluar'], true) . ' - ' . $model['keterangan'];
             }
         );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash("success","Disimpan");
+            Yii::$app->session->setFlash("success", "Disimpan");
             return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
         }
 

@@ -85,7 +85,7 @@ class DataPembelianDetailController extends Controller
             StokMasuk::find()->all(),
             'id_stok_masuk',
             function ($model) {
-                return tanggal_indo($model['tanggal_masuk'], true) .' - '. $model['keterangan'];
+                return tanggal_indo($model['tanggal_masuk'], true) . ' - ' . $model['keterangan'];
             }
         );
 
@@ -101,7 +101,7 @@ class DataPembelianDetailController extends Controller
             $pembelian->grandtotal = $grandtotal;
             $pembelian->save(false);
 
-            Yii::$app->session->setFlash("success","Disimpan");
+            Yii::$app->session->setFlash("success", "Disimpan");
             return $this->redirect(['data-pembelian-barang/view', 'id' => $id]);
         }
 
@@ -141,7 +141,7 @@ class DataPembelianDetailController extends Controller
             StokMasuk::find()->all(),
             'id_stok_masuk',
             function ($model) {
-                return tanggal_indo($model['tanggal_masuk'], true) .' - '. $model['keterangan'];
+                return tanggal_indo($model['tanggal_masuk'], true) . ' - ' . $model['keterangan'];
             }
         );
 
@@ -155,6 +155,23 @@ class DataPembelianDetailController extends Controller
             'data_barang' => $data_barang,
             'data_stok_masuk' => $data_stok_masuk,
         ]);
+    }
+
+    public function actionStok()
+    {
+        $country_id = $_POST['depdrop_parents'][0];
+        $state = Yii::$app->db->createCommand("
+        SELECT * FROM stok_masuk WHERE id_barang = '$country_id'")->query();
+        $all_state = array();
+        $i = 0;
+        foreach ($state as $value) {
+            $all_state[$i]['id'] = empty($value['id_stok_masuk']) ? 0 : $value['id_stok_masuk'];
+            $all_state[$i]['name'] = empty($value['tanggal_masuk']) ? 'Data Kosong' : tanggal_indo($value['tanggal_masuk']);
+            $i++;
+        }
+
+        echo Json::encode(['output' => $all_state, 'selected' => '']);
+        return;
     }
 
     /**
