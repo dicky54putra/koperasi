@@ -86,16 +86,33 @@ $this->params['breadcrumbs'][] = $this->title;
             <h3 style="font-weight: bold;">History Penjualan</h3>
         </div>
         <div class="box-body">
-
-            <p>
-                <?= Html::button(
+            <div class="row">
+                <div class="col-md-12">
+                <div class="col-md-3">
+                    <?= Html::button(
                     '<span class="glyphicon glyphicon-plus"></span> Tambah Data',
                     [
                         'value' => Url::to(['data-penjualan-detail/create', 'id' => $_GET['id']]),
                         'title' => 'Buat Data Pembelian', 'class' => 'showModalButton btn btn-success'
                     ]
                 ); ?>
-            </p><br>
+                </div>
+
+                <?= Html::beginForm(['data-penjualan-barang/cetak', 'id' => $_GET['id']], 'post') ?>
+
+                <div class="col-md-3" style="margin-left: 420px;">
+                    <input class="form-control" type="number" id="bayar" name="bayar" placeholder="Input Pembayaran" />
+                </div>
+                    
+                <?= Html::submitButton('<span class="glyphicon glyphicon-print"></span> Cetak Struk Penjualan', ['class' => 'btn btn-primary pull-right']) ?>
+
+
+                
+                <?= Html::endForm() ?>
+
+            </div>
+        </div>
+           <br>
 
             <table class="table" id="table-index">
                 <thead>
