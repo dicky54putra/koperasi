@@ -19,6 +19,64 @@ $this->title = 'Dashboard';
     <ul class="breadcrumb">
         <li><a href="/"><?= $this->title ?></a></li>
     </ul>
+    <div class="row">
+        <div class="col-lg-3">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>Rp. <?php //pretty_money_minus($sum_omzet) 
+                            ?> </h3>
+                    <p>Total Omzet</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-dollar"></i>
+                </div>
+                <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>Rp.<?php //pretty_money_minus($saldo_kas->saldo_akun) 
+                            ?> </h3>
+                    <p>Total Kas</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-dollar"></i>
+                </div>
+                <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>Rp. <?php //pretty_money_minus($saldo_piutang) 
+                            ?> </h3>
+                    <p>Total Piutang</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-funnel-dollar"></i>
+                </div>
+                <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>Rp. <?php //pretty_money_minus($saldo_hutang) 
+                            ?> </h3>
+                    <p>Total Hutang</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-funnel-dollar"></i>
+                </div>
+                <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+            </div>
+        </div>
+    </div>
     <!-- label -->
     <div class="row" style="margin-top: 30px;">
         <div class="col-md-12">

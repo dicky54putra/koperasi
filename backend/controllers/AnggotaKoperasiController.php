@@ -150,6 +150,34 @@ class AnggotaKoperasiController extends Controller
         // exit();
     }
 
+    public function actionPrintKartuAll()
+    {
+        $searchModel = new AnggotaKoperasiSearch();
+        $data = AnggotaKoperasi::find()->all();
+
+        return $this->render('print_kartu_all', [
+            // 'dataProvider' => $dataProvider,
+            'data' => $data
+        ]);
+
+        // $pdf = Yii::$app->pdf;
+        // $pdf->content = $this->renderPartial('print_kartu');
+        // return $pdf->render();  
+
+        // $print =  $this->renderPartial('print_kartu', [
+        // return $this->render('print', [
+        // 'model'       => $this->findModel($id),
+        // 'po'          => $this->getArrayPo(),
+        // 'detailpo'    => $this->getArrayDetailpo($id),
+        // ]);
+
+        // $mPDF = new mPDF();
+        // $mPDF->showImageErrors = true;
+        // $mPDF->writeHTML($print);
+        // $mPDF->Output();
+        // exit();
+    }
+
     /**
      * Finds the AnggotaKoperasi model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

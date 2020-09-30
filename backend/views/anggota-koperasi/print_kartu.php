@@ -19,7 +19,7 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
         border-collapse: collapse;
         text-transform: uppercase;
         width: 8cm;
-        height: 5cm;
+        height: 3cm;
         /* line-height: 1; */
     }
 
@@ -34,32 +34,43 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
         padding-right: 0px;
     }
 </style>
-<table class="table_">
+<table class="table_" border="0">
     <thead>
         <tr class="bottom_tr">
-            <td align="center"><?php echo Html::img('@web/upload/logo31.png', ['class' => 'pull-left img-responsive', "width" => "40px"]); ?></td>
+            <td colspan="2" align="center"><?php echo Html::img('@web/upload/logo31.png', ['class' => ' img-responsive', "width" => "40px"]); ?></td>
             <td colspan="2" align="center"><b style="font-size: 15px;">KARTU ANGGOTA KOPERASI SKUADRON 31</b></td>
         </tr>
     </thead>
     <tbody>
-        <tr height="40px" style="vertical-align: bottom; padding-top:50px">
-            <td>
+        <tr height="7px" style="vertical-align: bottom;">
+            <td colspan="2">
                 <p style="font-size: 15px;">Nama</p>
             </td>
             <td colspan="2">
-                <p style="font-size: 15px;">: <?= $model->nama_anggota ?></p>
+                <?php
+                // $text = $model->nama_anggota;
+                // $num_char = 10;
+                // $char     = $text{
+                //     $num_char - 1};
+                // while ($char != ' ') {
+                //     $char = $text{
+                //         --$num_char}; // Cari spasi pada posisi 49, 48, 47, dst...
+                // }
+                // $tampil = substr($text, 0, $num_char) . '...';
+                ?>
+                <p style="font-size: 15px;">: <?= $model->nama_anggota; ?></p>
             </td>
         </tr>
-        <tr height="10px">
-            <td>
+        <tr height="7px">
+            <td colspan="2">
                 <p style="font-size: 15px;">Alamat</p>
             </td>
             <td colspan="2">
                 <p style="font-size: 15px;">: <?= $model->alamat_anggota ?></p>
             </td>
         </tr>
-        <tr height="40px" style="vertical-align: baseline;">
-            <td>
+        <tr height="7px" style="vertical-align: baseline;">
+            <td colspan="2">
                 <p style="font-size: 15px;">Pangkat</p>
             </td>
             <td colspan="2">
@@ -69,13 +80,12 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
     </tbody>
 
     <tfoot>
-        <tr>
-            <td></td>
-            <td style="font-size:45px;">
-                <div style="width: 100px;"></div>
-                <div id="showBarcode" style="align-content: center;">
+        <tr height="10px">
+            <td width="45px"></td>
+            <td style="font-size:25px;" colspan="2">
+                <div id="<?= $model->kode_anggota ?>" style="align-content: center; width:20px;">
                     <?php echo BarcodeGenerator::widget([
-                        'elementId' => 'showBarcode',
+                        'elementId' => $model->kode_anggota,
                         'value' => $model->kode_anggota,
                         'type' => 'code39',
                         // 'options' => 'center',
@@ -83,19 +93,20 @@ use barcode\barcode\BarcodeGenerator as BarcodeGenerator;
                     ?>
                 </div>
             </td>
-            <td></td>
+            <td width="25px"></td>
         </tr>
     </tfoot>
 </table>
 
 
 
+
 <?php
-echo BarcodeGenerator::widget([
-    'elementId' => 'showBarcode',
-    'value' => $model->kode_anggota,
-    'type' => 'code39'
-]);
+// echo BarcodeGenerator::widget([
+//     'elementId' => 'showBarcode',
+//     'value' => $model->kode_anggota,
+//     'type' => 'code39'
+// ]);
 ?>
 
 <script>

@@ -28,6 +28,7 @@ $this->title = 'Anggota Koperasi';
                 'title' => '', 'class' => 'showModalButton btn btn-success'
             ]
         );  ?>
+        <!-- <?= Html::a('<span class="glyphicon glyphicon-print"></span> Print Karu Anggota ALL', ['print-kartu-all'], ['class' => 'btn btn-default text-blue', 'target' => '_BLANK']) ?> -->
     </p>
 
     <?php

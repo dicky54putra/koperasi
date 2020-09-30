@@ -48,3 +48,4 @@ backend/runtime/debug/index.data
 /backend/web/index.php
 /backend/web/index-test.php
 /backend/web/robots.txt
+/backend/config/main.php
