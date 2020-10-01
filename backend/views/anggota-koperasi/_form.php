@@ -38,7 +38,7 @@ use yii\helpers\ArrayHelper;
             <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'id_jenis_anggota')->widget(Select2::classname(), [
-                'data' => array(1 => 'Customer', 2 => 'Supplier'),
+                'data' => array(1 => 'Customer', 2 => 'Supplier', 3 => 'Pengunjung'),
                 'language' => 'en',
                 'options' => ['placeholder' => 'Pilih Jenis Anggota'],
                 'pluginOptions' => [
@@ -61,7 +61,15 @@ use yii\helpers\ArrayHelper;
                 ],
             ])->label('Pangkat'); ?>
 
-            <?= $form->field($model, 'tanggal_keanggotaan')->textInput() ?>
+            <?= $form->field($model, 'tanggal_keanggotaan')->widget(\yii\jui\DatePicker::classname(), [
+
+            'clientOptions' => [
+                        'changeMonth'=>true, 
+                        'changeYear'=>true,
+            ],
+            'dateFormat' => 'yyyy-MM-dd',
+            'options' => ['class' => 'form-control', 'autocomplete'=>'off']
+    ]) ?>
 
             <?= $form->field($model, 'is_active')->dropDownList(array(1 => 'Aktif', 2 => 'Tidak Aktif'))->label('Status') ?>
         </div>
