@@ -17,19 +17,21 @@ function ribuan($string)
 
 function pretty_money($n)
 {
-    // first strip any formatting;
-    $n = (0 + str_replace(",", "", $n));
+    if ($n > 0) {
+        // first strip any formatting;
+        $n = (0 + str_replace(",", "", $n));
 
-    // is this a number?
-    if (!is_numeric($n)) return false;
+        // is this a number?
+        if (!is_numeric($n)) return false;
 
-    // now filter it;
-    if ($n >= 1000000000000) return round(($n / 1000000000000), 1) . ' T';
-    else if ($n >= 1000000000) return round(($n / 1000000000), 1) . ' M';
-    else if ($n >= 1000000) return round(($n / 1000000), 1) . ' Jt';
-    else if ($n >= 1000) return round(($n / 1000), 1) . ' Rb';
+        // now filter it;
+        if ($n >= 1000000000000) return round(($n / 1000000000000), 1) . ' T';
+        else if ($n >= 1000000000) return round(($n / 1000000000), 1) . ' M';
+        else if ($n >= 1000000) return round(($n / 1000000), 1) . ' Jt';
+        else if ($n >= 1000) return round(($n / 1000), 1) . ' Rb';
 
-    return number_format($n);
+        return number_format($n);
+    }
 }
 
 function pretty_money_minus($nilai)
