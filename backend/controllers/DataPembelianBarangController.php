@@ -42,12 +42,14 @@ class DataPembelianBarangController extends Controller
     public function actionIndex()
     {
         $searchModel = new DataPembelianBarangSearch();
+        $model2 = new AnggotaKoperasi();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $data_pembelian = DataPembelianBarang::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
+            'model2' => $model2,
             'dataProvider' => $dataProvider,
             'data_pembelian' => $data_pembelian,
         ]);
@@ -78,6 +80,7 @@ class DataPembelianBarangController extends Controller
     public function actionCreate()
     {
         $model = new DataPembelianBarang();
+        $model2 = new AnggotaKoperasi();
 
         $data_supplier = ArrayHelper::map(
             AnggotaKoperasi::find()->where(['id_jenis_anggota' => 2])->all(),
@@ -94,6 +97,7 @@ class DataPembelianBarangController extends Controller
 
         return $this->renderAjax('create', [
             'model' => $model,
+            'model2' => $model2,
             'data_supplier' => $data_supplier,
         ]);
     }
@@ -163,6 +167,16 @@ class DataPembelianBarangController extends Controller
 
         Yii::$app->session->setFlash('success', 'Dihapus');
         return $this->redirect(['index']);
+    }
+
+    public function actionCreateAnggota()
+    {
+        $model = new AnggotaKoperasi();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
+        }
     }
 
     /**

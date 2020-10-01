@@ -80,6 +80,7 @@ class DataPenjualanBarangController extends Controller
     public function actionCreate()
     {
         $model = new DataPenjualanBarang();
+        $model2 = new AnggotaKoperasi();
 
         $model->tanggal_penjualan = date('Y-m-d');
 
@@ -99,6 +100,7 @@ class DataPenjualanBarangController extends Controller
 
         return $this->renderAjax('create', [
             'model' => $model,
+            'model2' => $model2,
             'data_anggota' => $data_anggota,
         ]);
     }
@@ -110,6 +112,16 @@ class DataPenjualanBarangController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
+        }
+    }
+
+    public function actionCreateAnggota()
+    {
+        $model = new AnggotaKoperasi();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Disimpan');
+            return $this->redirect(['index']);
         }
     }
 
