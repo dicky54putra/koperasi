@@ -85,7 +85,7 @@ class DataPenjualanBarangController extends Controller
 
 
         $data_anggota = ArrayHelper::map(
-            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
+            AnggotaKoperasi::find()->where('id_jenis_anggota != 2')->all(),
             'id_anggota',
             function ($model) {
                 return $model['kode_anggota'] . ' - ' . $model['nama_anggota'];

@@ -35,7 +35,7 @@ class AnggotaKoperasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kode_anggota', 'nama_anggota', 'alamat_anggota', 'kota', 'telp', 'id_jenis_anggota', 'id_pangkat', 'tanggal_keanggotaan', 'is_active'], 'required'],
+            [['nama_anggota', 'alamat_anggota', 'kota', 'telp', 'id_jenis_anggota', 'tanggal_keanggotaan', 'is_active'], 'required'],
             [['id_jenis_anggota', 'id_pangkat', 'is_active'], 'integer'],
             [['tanggal_keanggotaan'], 'safe'],
             [['kode_anggota', 'nama_anggota', 'kota', 'telp', 'npwp'], 'string', 'max' => 225],

@@ -74,7 +74,7 @@ $this->title = 'Data Pembelian Barang';
                                     <td><?= $value->tanggal_pembelian ?></td>
                                     <td><?= $value->id_anggota == NULL ? '<i>Tidak ada supplier</i>' : $value->anggota->nama_anggota ?></td>
                                     <td><?= $value->no_faktur ?></td>
-                                    <td><?= $value->grandtotal ?></td>
+                                    <td><?= 'Rp. '.number_format($value->grandtotal) ?></td>
 
                                 </tr>
 
