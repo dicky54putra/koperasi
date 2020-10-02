@@ -120,7 +120,7 @@ use kartik\select2\Select2;
                             ],
                         ])->label('Pangkat'); ?>
 
-                        <?= $form->field($model2, 'tanggal_keanggotaan')->textInput() ?>
+                        <?= $form->field($model2, 'tanggal_keanggotaan')->textInput(['type' => 'date']) ?>
 
                         <?= $form->field($model2, 'is_active')->dropDownList(array(1 => 'Aktif', 2 => 'Tidak Aktif'))->label('Status') ?>
                     </div>
