@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h4><?= Html::encode($this->title) ?></h4>
 
-<!-- <div class="box">
+ <div class="box">
     <div class="box-header">
         <div class="col-md-12" style="padding: 0;">
             <div class="box-body">
@@ -81,20 +81,20 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             </div>
             </div>
-            </div> -->
+            </div>
 
         <div class="box box-info" style="overflow: auto">
         <div class="col-md-12" style="padding: 0;">
             <div class="box-body">
-                <!-- <p style="font-family: 'Times New Roman'"><h4>Periode : <?= ($tanggal_awal != '') ? date('d/m/Y', strtotime($tanggal_awal)) : '-' ; ?> Sampai <?= ($tanggal_akhir != '') ? date('d/m/Y', strtotime($tanggal_akhir)) : '-' ; ?></h4></p> -->
+                 <p style="font-family: 'Times New Roman'"><h4>Periode Bulan: <?= ($tanggal_awal != '') ? tanggal_indo2(date('F', strtotime($tanggal_awal))) : '-' ; ?></h4></p>
         
                             <table class="table" id="table-index">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Barang</th>
-                                        <th>Kategori</th>
-                                        <th>Harga Jual</th>
+                                        <!-- <th>Kategori</th> -->
+                                        <!-- <th>Harga Jual</th> -->
                                         <th>Harga Beli</th>
                                         <th>Detail Stok Masuk</th>
                                         <th>Detail Stok Keluar</th>
@@ -123,51 +123,65 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $total_stok_kosong = '';
 
 
-                                       $stok_masuk = StokMasuk::find()->where(['id_barang' => $data['id_barang']])->all();
-                                       $tgl_a = "";
-                                       foreach ($stok_masuk as $key => $value) {
-                                           # code...
+
+                                       $stok_masuk = Yii::$app->db->createCommand("
+                                        SELECT total_qty
+                                        FROM stok_masuk
+                                        WHERE id_barang = '$data[id_barang]'
+                                        AND tanggal_masuk = '$tanggal_awal'
+                                        ")->queryScalar();
+                                       $stok_keluar = Yii::$app->db->createCommand("
+                                        SELECT total_qty
+                                        FROM stok_keluar
+                                        WHERE id_barang = '$data[id_barang]'
+                                        AND tanggal_keluar = '$tanggal_awal'
+                                        ")->queryScalar();
+                                       // echo $stok_masuk;
+                                       // die;
+                                       // echo $total_stok_kosong;
+                                       // $tgl_a = "";
+                                       // foreach ($stok_masuk as $key => $value) {
+                                       //     # code...
                                             
                                             
 
-                                            $detail_beli = DataPembelianDetail::find()
-                                                    ->where(['id_barang' => $data['id_barang']])
-                                                    ->andWhere(['id_stok_masuk'=> $value->id_stok_masuk])
-                                                    ->all();
-                                            $qty_in = 0 ;
-                                            foreach ($detail_beli as $key => $equal) {
-                                                # code...
-                                                $qty_in .= $equal->qty;
-                                            }
+                                       //      $detail_beli = DataPembelianDetail::find()
+                                       //              ->where(['id_barang' => $data['id_barang']])
+                                       //              ->andWhere(['id_stok_masuk'=> $value->id_stok_masuk])
+                                       //              ->all();
+                                       //      $qty_in = 0 ;
+                                       //      foreach ($detail_beli as $key => $equal) {
+                                       //          # code...
+                                       //          $qty_in .= $equal->qty;
+                                       //      }
 
-                                            $tgl_masuk .= '<b>'.tanggal_indo2(date('F', strtotime($value->tanggal_masuk))).' : <br></b>';
+                                       //      $tgl_masuk .= '<b>'.tanggal_indo2(date('F', strtotime($value->tanggal_masuk))).' : <br></b>';
 
 
-                                            $qty_masuk .= $value->total_qty;
-                                            $tgl_a .= $value->tanggal_masuk;
-                                       }
+                                       //      $qty_masuk .= $value->total_qty;
+                                       //      $tgl_a .= $value->tanggal_masuk;
+                                       // }
 
-                                       $stok_keluar = StokKeluar::find()->where(['id_barang' => $data['id_barang']])->all();
-                                       $tgl_b = "";
-                                       foreach ($stok_keluar as $key => $value) {
-                                           # code...
-                                            $tgl_keluar .= tanggal_indo2(date('F', strtotime($value->tanggal_keluar))).'<br>';
-                                            $qty_keluar .= $value->total_qty;
-                                            $tgl_b = $value->tanggal_keluar;
-                                       }
+                                       // $stok_keluar = StokKeluar::find()->where(['id_barang' => $data['id_barang']])->all();
+                                       // $tgl_b = "";
+                                       // foreach ($stok_keluar as $key => $value) {
+                                       //     # code...
+                                       //      $tgl_keluar .= tanggal_indo2(date('F', strtotime($value->tanggal_keluar))).'<br>';
+                                       //      $qty_keluar .= $value->total_qty;
+                                       //      $tgl_b = $value->tanggal_keluar;
+                                       // }
 
-                                       $total_stok = $qty_masuk - $qty_keluar;
+                                       // $total_stok = $qty_masuk - $qty_keluar;
                                     ?>
                                     <tr> 
                                         <td><?= $no++.'.' ?></td>
-                                        <td><?= $data['kode_barang']?></td>
+                                        <!-- <td><?= $data['kode_barang']?></td> -->
                                         <td><?= $data['nama_barang'] ?></td>
-                                        <td><?= 'Rp. '.number_format($data['harga_jual']) ?></td>
                                         <td><?= 'Rp. '.number_format($data['harga_beli']) ?></td>
-                                        <td><?= $tgl_a != '' ? $tgl_masuk . $qty_in : '' ?></td>
-                                        <td><?=  $tgl_b != '' ? $tgl_keluar : '' ?></td>
+                                        <td><?= $stok_masuk ?></td>
+                                        <td><?= $stok_keluar ?></td>
 
-                                        <td><?= $total_stok_kosong != '' ? $total_stok : '' ?></td>
+                                        <td><?= $stok_masuk-$stok_keluar ?></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
