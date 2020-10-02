@@ -59,7 +59,7 @@ use kartik\select2\Select2;
     <?= $form->field($model, 'no_faktur')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) ?>
+        <?= Html::Button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) ?>
         <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success pull-right']) ?> </div>
 
     <?php ActiveForm::end(); ?>
@@ -120,7 +120,7 @@ use kartik\select2\Select2;
                             ],
                         ])->label('Pangkat'); ?>
 
-                        <?= $form->field($model2, 'tanggal_keanggotaan')->textInput() ?>
+                        <?= $form->field($model2, 'tanggal_keanggotaan')->textInput(['type' => 'date']) ?>
 
                         <?= $form->field($model2, 'is_active')->dropDownList(array(1 => 'Aktif', 2 => 'Tidak Aktif'))->label('Status') ?>
                     </div>
@@ -128,7 +128,7 @@ use kartik\select2\Select2;
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <a href="#" class="btn btn-default pull-left" data-dismiss="modal">Close</a>
                 <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success']) ?>
                 <?php // Html::endForm() 
                 ?>

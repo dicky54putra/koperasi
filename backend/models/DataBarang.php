@@ -33,7 +33,7 @@ class DataBarang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_kategori', 'id_satuan', 'kode_barang', 'nama_barang', 'harga_jual', 'harga_beli', 'is_active'], 'required'],
+            [['id_kategori', 'id_satuan', 'nama_barang', 'harga_jual', 'harga_beli', 'is_active'], 'required'],
             [['id_kategori', 'id_satuan', 'id_anggota', 'harga_jual', 'harga_beli', 'is_active'], 'integer'],
             [['kode_barang', 'nama_barang'], 'string', 'max' => 255],
         ];
