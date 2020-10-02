@@ -22,7 +22,7 @@ dmstr\web\AdminLteAsset::register($this);
     <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
     <style type="text/css">
         .login-page {
-            background-image: url('https://pict.sindonews.net/dyn/620/jateng/news/2019/06/26/1/6401/tni-miliki-7-alutsista-canggih-yang-bikin-negara-lain-segan-rjm.jpg');
+            background-image: url('images/pst.jpg');
             background-size: cover;
         }
 
