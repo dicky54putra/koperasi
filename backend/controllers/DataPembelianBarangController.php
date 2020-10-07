@@ -134,6 +134,7 @@ class DataPembelianBarangController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model2 = new AnggotaKoperasi();
 
         $data_supplier = ArrayHelper::map(
             AnggotaKoperasi::find()->where(['id_jenis_anggota' => 2])->all(),
@@ -150,6 +151,7 @@ class DataPembelianBarangController extends Controller
 
         return $this->renderAjax('update', [
             'model' => $model,
+            'model2' => $model2,
             'data_supplier' => $data_supplier,
         ]);
     }
