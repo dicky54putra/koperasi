@@ -79,7 +79,7 @@ class DataPenjualanDetailController extends Controller
             DataBarang::find()->all(),
             'id_barang',
             function ($model) {
-                return $model['nama_barang'];
+                return $model['kode_barang'] . ' - ' . $model['nama_barang'];
             }
         );
 
@@ -158,12 +158,13 @@ class DataPenjualanDetailController extends Controller
     public function actionUpdate($id, $id_detail)
     {
         $model = $this->findModel($id_detail);
+        $model2 = new StokKeluar();
 
         $data_barang = ArrayHelper::map(
             DataBarang::find()->all(),
             'id_barang',
             function ($model) {
-                return $model['nama_barang'];
+                return $model['kode_barang'] . ' - ' . $model['nama_barang'];
             }
         );
 
@@ -182,6 +183,7 @@ class DataPenjualanDetailController extends Controller
 
         return $this->renderAjax('update', [
             'model' => $model,
+            'model2' => $model2,
             'data_barang' => $data_barang,
             'data_stok_keluar' => $data_stok_keluar,
         ]);
@@ -196,10 +198,11 @@ class DataPenjualanDetailController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->delete();
 
         Yii::$app->session->setFlash('success', 'Dihapus');
-        return $this->redirect(['index']);
+        return $this->redirect(['data-pembelian-barang/view', 'id' => $model->id_penjualan]);
     }
 
     /**

@@ -193,7 +193,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         ?>
                                                             <tr>
                                                                 <td><?= $no ?></td>
-                                                                <td><?= tanggal_indo($val->pembelian->tanggal_pembelian) ?></td>
+                                                                <td><?= (!empty($val->pembelian->tanggal_pembelian)) ? tanggal_indo($val->pembelian->tanggal_pembelian)  : '-'; ?></td>
                                                                 <td><?= $val->qty ?></td>
                                                                 <td><?= $val->diskon ?></td>
                                                                 <td><?= $val->harga_beli ?></td>
@@ -297,7 +297,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         ?>
                                                             <tr>
                                                                 <td><?= $no ?></td>
-                                                                <td><?= tanggal_indo($val->penjualan->tanggal_penjualan) ?></td>
+                                                                <td><?= (!empty($val->penjualan->tanggal_penjualan)) ? tanggal_indo($val->penjualan->tanggal_penjualan) : ''; ?></td>
                                                                 <td><?= $val->qty ?></td>
                                                                 <td><?= $val->diskon ?></td>
                                                                 <td><?= $val->harga_jual ?></td>

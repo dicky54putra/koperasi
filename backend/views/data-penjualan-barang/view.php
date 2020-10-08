@@ -138,16 +138,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <td><?= $i++; ?>.</td>
                             <td>
-
-                                <?= Html::button(
-                                    '<span class="glyphicon glyphicon-edit"></span>',
-                                    [
-                                        'value' => Url::to(['data-penjualan-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_penjualan_detail]),
-                                        'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
-                                    ]
-                                ); ?>
+                                <!-- <?= Html::button(
+                                            '<span class="glyphicon glyphicon-edit"></span>',
+                                            [
+                                                'value' => Url::to(['data-penjualan-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_penjualan_detail]),
+                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
+                                            ]
+                                        ); ?> -->
                                 <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_penjualan_detail], [
                                     'title' => Yii::t('app', 'Hapus data'),
+                                    'class' => 'tombol-hapus'
                                 ]); ?>
                             </td>
                             <td><?= 'Bulan ' . tanggal_indo2(date('F', strtotime($value->stok_keluar->tanggal_keluar))) . ' - ' . $value->stok_keluar->keterangan ?></td>

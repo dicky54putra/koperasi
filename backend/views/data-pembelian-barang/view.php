@@ -119,16 +119,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <td><?= $i++; ?>.</td>
                             <td>
-
-                                <?= Html::button(
-                                    '<span class="glyphicon glyphicon-edit"></span>',
-                                    [
-                                        'value' => Url::to(['data-pembelian-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_pembelian_detail]),
-                                        'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
-                                    ]
-                                ); ?>
-                                <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_pembelian_detail], [
+                                <!-- <?= Html::button(
+                                            '<span class="glyphicon glyphicon-edit"></span>',
+                                            [
+                                                'value' => Url::to(['data-pembelian-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_pembelian_detail]),
+                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
+                                            ]
+                                        ); ?> -->
+                                <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['data-pembelian-detail/delete', 'id' => $value->id_pembelian_detail], [
                                     'title' => Yii::t('app', 'Hapus data'),
+                                    'class' => 'tombol-hapus'
                                 ]); ?>
                             </td>
                             <td><?= tanggal_indo($value->stok_masuk->tanggal_masuk, true) . ' - ' . $value->stok_masuk->keterangan ?></td>

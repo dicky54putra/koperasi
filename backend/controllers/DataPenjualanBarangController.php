@@ -135,7 +135,7 @@ class DataPenjualanBarangController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model2 = new AnggotaKoperasi();
 
         $data_anggota = ArrayHelper::map(
             AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all(),
@@ -153,6 +153,7 @@ class DataPenjualanBarangController extends Controller
 
         return $this->renderAjax('update', [
             'model' => $model,
+            'model2' => $model2,
             'data_anggota' => $data_anggota,
         ]);
     }
