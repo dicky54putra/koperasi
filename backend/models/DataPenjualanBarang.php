@@ -28,7 +28,7 @@ class DataPenjualanBarang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tanggal_penjualan', 'id_anggota', 'jenis_pembayaran'], 'required'],
+            [['tanggal_penjualan', 'jenis_pembayaran'], 'required'],
             [['tanggal_penjualan'], 'safe'],
             [['id_anggota', 'grandtotal'], 'integer'],
             [['jenis_pembayaran', 'no_invoice', 'jumlah_bayar'], 'string'],

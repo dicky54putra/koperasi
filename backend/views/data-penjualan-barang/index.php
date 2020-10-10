@@ -1,6 +1,10 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+use yii\jui\AutoComplete;
+use yii\web\JsExpression;
 use yii\grid\GridView;
 use yii\helpers\Url;
 
@@ -11,6 +15,7 @@ use yii\helpers\Url;
 $this->title = 'Data Penjualan Barang';
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="data-penjualan-barang-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -22,75 +27,73 @@ $this->title = 'Data Penjualan Barang';
         <li class="active"><?= $this->title ?></li>
     </ul>
 
-    <p>
-        <?= Html::button(
-            '<i class="glyphicon glyphicon-plus"></i> Tambah Data Penjualan',
-            [
-                'value' => Url::to(['create']),
-                'title' => '', 'class' => 'showModalButton btn btn-success'
-            ]
-        );  ?>
-
-    </p>
-
-    <div class="box box-warning">
-        <div class="box-header">
-            <div class="col-md-12" style="padding: 0;">
-                <div class="box-body" style="overflow-x: auto;">
-                    <table class="table" id="table-index">
-                        <thead>
-                            <tr>
-                                <th style="white-space: nowrap;">#</th>
-                                <th style="white-space: nowrap;">Aksi</th>
-                                <th style="white-space: nowrap;">Tanggal Penjualan</th>
-                                <th style="white-space: nowrap;">Nama Customer</th>
-                                <th style="white-space: nowrap;">Jenis Pembayaran</th>
-                                <th style="white-space: nowrap;">Grandtotal Penjualan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            foreach ($data_penjualan as $key => $value) {
-                            ?>
-
-                                <tr>
-                                    <td><?= $i++; ?>.</td>
-                                    <td>
-                                        <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_penjualan], [
-                                            'title' => Yii::t('app', 'Lihat Detail'),
-                                        ]); ?>
-                                        <?= Html::button(
-                                            '<span class="glyphicon glyphicon-edit"></span>',
-                                            [
-                                                'value' => Url::to(['update', 'id' => $value->id_penjualan]),
-                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-success'
-                                            ]
-                                        ); ?>
-                                        <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_penjualan], [
-                                            'title' => Yii::t('app', 'Hapus data'),
-                                            'class' => 'tombol-hapus'
-                                        ]); ?>
-                                    </td>
-                                    <td><?= $value->tanggal_penjualan ?></td>
-                                    <td><?= $value->anggota->nama_anggota ?></td>
-                                    <td><?= $value->jenis_pembayaran == 1 ? 'LUNAS' : 'TAGIHAN' ?></td>
-                                    <td><?= "<b>Rp. " . number_format($value->grandtotal) . '</b>' ?></td>
-
-
-                                </tr>
-
-                            <?php } ?>
-                        </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <!-- <td>T</td> -->
-                            </tr>
-                        </tfoot>
-                    </table>
+    <div class="row">
+        <!-- <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body"></div>
+            </div>
+        </div> -->
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <?php $form = ActiveForm::begin(); ?>
+                    <?php
+                    echo $form->field($model, 'id_anggota')->widget(Select2::classname(), [
+                        // 'name' => 'test',
+                        'data' => $data_anggota_,
+                        // 'hashVarLoadPosition' => View::POS_READY,
+                        'language' => 'en',
+                        'options' => ['placeholder' => 'Pilih Anggota', 'id' => 'data_anggota_', 'name' => 'data_anggota_', 'class' => 'hidden'],
+                        'pluginOptions' => [
+                            'allowClear' => true,
+                            'open' => true,
+                            'hide' => true,
+                        ],
+                    ])->label(false)
+                    ?>
+                    <?php
+                    echo $form->field($model, 'id_anggota')->textInput(['type' => 'text', 'autofocus' => true])->label(false);
+                    ?>
+                    <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success']) ?>
+                    <?php ActiveForm::end(); ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <button class="btn btn-info form-control" id="customer_manual">Cari Manual</button>
+                    <button class="btn btn-success form-control" id="customer_barcode" style="margin-top: 20px;">Dengan Barcode</button>
+                    <!-- <button class="btn btn-warning form-control" style="margin-top: 20px;" id="customer_umum">Customer Umum</button> -->
+                    <?= Html::a('Customer Umum', ['penjualan-umum'], ['class' => 'btn btn-warning form-control', 'style' => 'margin-top: 20px;']) ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<?php
+$script = <<< JS
+    $('#data_anggota_').parent().hide();
+    $('#customer_barcode').addClass('disabled');
+    $('#data_anggota_').change(function (){
+        const isi = $('#data_anggota_').val();
+        $('#datapenjualanbarang-id_anggota').val(isi);
+    })
+    $('#customer_manual').click(function (){
+        $('#datapenjualanbarang-id_anggota').hide();
+        $('#data_anggota_').parent().show();
+        $(this).addClass('disabled');
+        $('#customer_barcode').removeClass('disabled');
+    })
+    $('#customer_barcode').click(function (){
+        $('#datapenjualanbarang-id_anggota').show();
+        $('#data_anggota_').parent().hide();
+        $(this).addClass('disabled');
+        $('#customer_manual').removeClass('disabled');
+        $('#datapenjualanbarang-id_anggota').focus();
+        $('#datapenjualanbarang-id_anggota').val(null);
+    })
+    JS;
+$this->registerJs($script);
+?>
