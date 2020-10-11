@@ -5,12 +5,14 @@ namespace backend\controllers;
 use Yii;
 use backend\models\AnggotaKoperasi;
 use backend\models\AnggotaKoperasiSearch;
+use backend\models\DataBarang;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Mpdf\Mpdf;
 use backend\models\DataPenjualanBarang;
-
+use backend\models\DataPenjualanDetail;
+use yii\data\Pagination;
 
 /**
  * AnggotaKoperasiController implements the CRUD actions for AnggotaKoperasi model.
@@ -57,12 +59,20 @@ class AnggotaKoperasiController extends Controller
      */
     public function actionView($id)
     {
+        $query = DataPenjualanBarang::find()->where(['id_anggota' => $id])->orderBy('id_penjualan DESC');
+        // $countQuery = clone $query;
+        $count = $query->count();
+        $pages = new Pagination(['totalCount' => $count, 'pageSize' => 15]);
+        $pembelian_history = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
 
-        $pembelian_history = DataPenjualanBarang::find()->where(['id_anggota' => $id])->all();
+        // $pembelian_history = DataPenjualanBarang::find()->where(['id_anggota' => $id])->orderBy('id_penjualan DESC')->all();
 
         return $this->render('view', [
             'model' => $this->findModel($id),
             'pembelian_history' => $pembelian_history,
+            'pages' => $pages,
         ]);
     }
 
@@ -176,6 +186,50 @@ class AnggotaKoperasiController extends Controller
         // $mPDF->writeHTML($print);
         // $mPDF->Output();
         // exit();
+    }
+
+    public function actionPrintTagihan($id)
+    {
+        $model = $this->findModel($id);
+        $update = DataPenjualanBarang::findOne($id);
+        $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
+
+        $generate = DataPenjualanBarang::find()->count();
+        $total = 0;
+        foreach ($penjualan_detail as $key => $val) {
+            $total += $val->total_jual;
+        }
+        // var_dump($total, Yii::$app->request->post('bayar'));
+        // die;
+        if (Yii::$app->request->post('bayar') >= $total) {
+            // echo 'ok';
+            foreach ($penjualan_detail as $key => $val) {
+                $barang = DataBarang::find()->where(['id_barang' => $val->id_barang])->one();
+                $barang->stok = $barang->stok - $val->qty;
+                $barang->save(false);
+            }
+            $update->no_invoice = date('Ymd') . str_pad($generate + 1, 3, "0", STR_PAD_LEFT);
+            $update->jenis_pembayaran = 1;
+            $update->jumlah_bayar = Yii::$app->request->post('bayar');
+
+            $update->save(false);
+            return $this->redirect(['anggota-koperasi/print-struk', 'id' => $id]);
+        } else if (Yii::$app->request->post('bayar') < $total) {
+            Yii::$app->session->setFlash('error', 'Jumlah Uang yang anda masukan kurang dari total tagihan!');
+            return $this->redirect(['anggota-koperasi/view', 'id' => $update->id_anggota]);
+        }
+    }
+
+    public function actionPrintStruk($id)
+    {
+        // $update = DataPenjualanBarang::findOne($id);
+        $model = DataPenjualanBarang::findOne($id);
+        $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
+        return $this->renderPartial('print_tagihan', [
+            'model' => $model,
+            'penjualan_detail' => $penjualan_detail,
+            // 'data_anggota' => $data_anggota,
+        ]);
     }
 
     /**

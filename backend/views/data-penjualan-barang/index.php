@@ -68,7 +68,7 @@ $this->title = 'Data Penjualan Barang';
                                             'class' => 'tombol-hapus'
                                         ]); ?>
                                     </td> -->
-                                    <td><?= $value->tanggal_penjualan ?></td>
+                                    <td><?= tanggal_indo($value->tanggal_penjualan) ?></td>
                                     <td><?= ($value->id_anggota != 0) ? $value->anggota->nama_anggota : 'Customer Umum';
                                         ?></td>
                                     <td><?= ($value->jenis_pembayaran == null) ? 'Belum dikonfirmasi' : $retVal = ($value->jenis_pembayaran == 2) ? 'TAGIHAN' : 'LUNAS'; ?></td>

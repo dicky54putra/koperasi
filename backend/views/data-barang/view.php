@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 use yii\helpers\Url;
 use backend\models\DataPembelianDetail;
 use backend\models\DataPenjualanDetail;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\DataBarang */
@@ -214,7 +215,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                             </div>
                                         </div>
                                     </div>
-                                <?php } ?>
+                                <?php }
+                                // display pagination
+                                echo LinkPager::widget([
+                                    'pagination' => $pages_masuk,
+                                ]); ?>
                             </div>
                         </div>
                     </div>
@@ -318,7 +323,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                             </div>
                                         </div>
                                     </div>
-                                <?php } ?>
+                                <?php }
+                                // display pagination
+                                echo LinkPager::widget([
+                                    'pagination' => $pages_keluar,
+                                ]);
+                                ?>
                             </div>
                         </div>
                     </div>

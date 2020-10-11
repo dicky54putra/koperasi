@@ -15,6 +15,7 @@ use backend\models\DataSatuan;
 use backend\models\AnggotaKoperasi;
 use backend\models\StokKeluar;
 use backend\models\StokMasuk;
+use yii\data\Pagination;
 use yii\helpers\Json;
 
 /**
@@ -63,13 +64,28 @@ class DataBarangController extends Controller
      */
     public function actionView($id)
     {
-        $stok_masuk = StokMasuk::find()->where(['id_barang' => $id])->orderBy('id_stok_masuk DESC')->all();
-        $stok_keluar = StokKeluar::find()->where(['id_barang' => $id])->orderBy('id_stok_keluar DESC')->all();
+        $query_masuk = StokMasuk::find()->where(['id_barang' => $id])->orderBy('id_stok_masuk DESC');
+        // $countQuery = clone $query;
+        $count_masuk = $query_masuk->count();
+        $pages_masuk = new Pagination(['totalCount' => $count_masuk, 'pageSize' => 15]);
+        $stok_masuk = $query_masuk->offset($pages_masuk->offset)
+            ->limit($pages_masuk->limit)
+            ->all();
+
+        $query_keluar = StokKeluar::find()->where(['id_barang' => $id])->orderBy('id_stok_keluar DESC');
+        // $countQuery = clone $query;
+        $count_keluar = $query_keluar->count();
+        $pages_keluar = new Pagination(['totalCount' => $count_keluar, 'pageSize' => 15]);
+        $stok_keluar = $query_keluar->offset($pages_keluar->offset)
+            ->limit($pages_keluar->limit)
+            ->all();
 
         return $this->render('view', [
             'model' => $this->findModel($id),
             'stok_masuk' => $stok_masuk,
+            'pages_masuk' => $pages_masuk,
             'stok_keluar' => $stok_keluar,
+            'pages_keluar' => $pages_keluar,
         ]);
     }
 

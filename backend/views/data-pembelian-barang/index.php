@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 use yii\grid\GridView;
 use yii\helpers\Url;
 
@@ -22,29 +24,20 @@ $this->title = 'Data Pembelian Barang';
         <li class="active"><?= $this->title ?></li>
     </ul>
 
-    <p>
-        <?= Html::button(
-            '<i class="glyphicon glyphicon-plus"></i> Tambah Data Pembelian',
-            [
-                'value' => Url::to(['create']),
-                'title' => '', 'class' => 'showModalButton btn btn-success'
-            ]
-        );  ?>
-    </p>
-
-    <div class="box box-warning">
-        <div class="box-header">
-            <div class="col-md-12" style="padding: 0;">
-                <div class="box-body" style="overflow-x: auto;">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 style="margin-left: 10px;">History Pembelian Baru</h3>
+                </div>
+                <div class="panel-body">
                     <table class="table" id="table-index">
                         <thead>
                             <tr>
                                 <th style="white-space: nowrap;">#</th>
-                                <th style="white-space: nowrap;">Aksi</th>
                                 <th style="white-space: nowrap;">Tanggal Pembelian</th>
                                 <th style="white-space: nowrap;">Supplier</th>
                                 <th style="white-space: nowrap;">No. Faktur</th>
-                                <th style="white-space: nowrap;">Grandtotal Pembelian</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,29 +46,11 @@ $this->title = 'Data Pembelian Barang';
                             foreach ($data_pembelian as $key => $value) {
                             ?>
 
-                                <tr>
+                                <tr class='clickable-row' data-href="index.php?r=data-pembelian-barang/view&id=<?= $value->id_pembelian ?>" style="cursor: pointer;">
                                     <td><?= $i++; ?>.</td>
-                                    <td>
-                                        <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_pembelian], [
-                                            'title' => Yii::t('app', 'Lihat Detail'),
-                                        ]); ?>
-                                        <?= Html::button(
-                                            '<span class="glyphicon glyphicon-edit"></span>',
-                                            [
-                                                'value' => Url::to(['update', 'id' => $value->id_pembelian]),
-                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-success'
-                                            ]
-                                        ); ?>
-                                        <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_pembelian], [
-                                            'title' => Yii::t('app', 'Hapus data'),
-                                            'class' => 'tombol-hapus'
-                                        ]); ?>
-                                    </td>
-                                    <td><?= $value->tanggal_pembelian ?></td>
+                                    <td><?= tanggal_indo($value->tanggal_pembelian) ?></td>
                                     <td><?= $value->id_anggota == NULL ? '<i>Tidak ada supplier</i>' : $value->anggota->nama_anggota ?></td>
                                     <td><?= $value->no_faktur ?></td>
-                                    <td><?= 'Rp. '.number_format($value->grandtotal) ?></td>
-
                                 </tr>
 
                             <?php } ?>
@@ -90,5 +65,48 @@ $this->title = 'Data Pembelian Barang';
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>Tambah Pembelian Baru</h3>
+                    <?php $form = ActiveForm::begin(); ?>
+
+                    <?= $form->field($model, 'id_anggota')->widget(Select2::classname(), [
+                        'data' => $data_supplier,
+                        'language' => 'en',
+                        'options' => ['placeholder' => 'Pilih Supplier'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ])->label('Supplier') ?>
+
+                    <?= $form->field($model, 'tanggal_pembelian')->widget(\yii\jui\DatePicker::classname(), [
+
+                        'clientOptions' => [
+                            'changeMonth' => true,
+                            'changeYear' => true,
+                        ],
+                        'dateFormat' => 'yyyy-MM-dd',
+                        'options' => ['class' => 'form-control', 'autocomplete' => 'off']
+                    ]) ?>
+
+
+                    <?= $form->field($model, 'no_faktur')->textInput(['maxlength' => true]) ?>
+
+                    <div class="form-group">
+                        <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success']) ?> </div>
+
+                    <?php ActiveForm::end(); ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<?php
+$script = <<< JS
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+    JS;
+$this->registerJs($script);
+?>

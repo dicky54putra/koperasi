@@ -87,7 +87,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <thead>
                             <tr>
                                 <th style="white-space: nowrap;">#</th>
-                                <th style="white-space: nowrap;">Aksi</th>
+                                <?php if ($model->jenis_pembayaran == null) { ?>
+                                    <th style="white-space: nowrap;">Aksi</th>
+                                <?php } ?>
                                 <th style="white-space: nowrap;">Keterangan Stok</th>
                                 <th style="white-space: nowrap;">Nama Barang</th>
                                 <th style="white-space: nowrap;">Harga</th>
@@ -106,19 +108,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <tr>
 
                                     <td><?= $i++; ?>.</td>
-                                    <td>
-                                        <!-- <?= Html::button(
-                                                    '<span class="glyphicon glyphicon-edit"></span>',
-                                                    [
-                                                        'value' => Url::to(['data-penjualan-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_penjualan_detail]),
-                                                        'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
-                                                    ]
-                                                ); ?> -->
-                                        <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete-penjualan-detail', 'id' => $value->id_penjualan_detail], [
-                                            'title' => Yii::t('app', 'Hapus data'),
-                                            'class' => 'tombol-hapus'
-                                        ]); ?>
-                                    </td>
+                                    <?php if ($model->jenis_pembayaran == null) { ?>
+                                        <td>
+                                            <!-- <?= Html::button(
+                                                        '<span class="glyphicon glyphicon-edit"></span>',
+                                                        [
+                                                            'value' => Url::to(['data-penjualan-detail/update', 'id' => $_GET['id'], 'id_detail' => $value->id_penjualan_detail]),
+                                                            'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-primary'
+                                                        ]
+                                                    ); ?> -->
+                                            <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete-penjualan-detail', 'id' => $value->id_penjualan_detail], [
+                                                'title' => Yii::t('app', 'Hapus data'),
+                                                'class' => 'tombol-hapus'
+                                            ]); ?>
+                                        </td>
+                                    <?php } ?>
                                     <td><?= 'Bulan ' . tanggal_indo2(date('F', strtotime($value->stok_keluar->tanggal_keluar))) . ' - ' . $value->stok_keluar->keterangan ?></td>
                                     <td><?= $value->barang->nama_barang ?></td>
                                     <td><?= number_format($value->harga_jual) ?></td>
@@ -132,7 +136,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <tfoot>
                             <tr style="background-color:#bdcfff">
-                                <td colspan="6"><b><i>GRANDTOTAL</i></b></td>
+                                <?php if ($model->jenis_pembayaran == null) {
+                                    $col = 6;
+                                } else {
+                                    $col = 5;
+                                } ?>
+                                <td colspan="<?= $col ?>"><b><i>GRANDTOTAL</i></b></td>
                                 <td align="right"><b><i><?php echo "Rp. " . number_format($grandtotal) ?></i></b></td>
                             </tr>
                         </tfoot>

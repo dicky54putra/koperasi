@@ -4,6 +4,7 @@ use backend\models\DataPenjualanDetail;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\AnggotaKoperasi */
@@ -120,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsemasuk<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsemasuk<?= $i; ?>" class="drop">
                             <button class="form-control" style="border:none; background: rgba(0, 0, 0, 0.1); border-radius: 30px;">
                                 <?php
-                                $jenis = ($value->jenis_pembayaran == 1) ? '<label class="label label-warning">Lunas</label>' : '<label class="label label-danger">Tagihan</label>';
+                                $jenis = ($value->jenis_pembayaran == 1) ? '<label class="label label-warning">Lunas</label>' : $retVal = ($value->jenis_pembayaran == 2) ? '<label class="label label-danger">Tagihan</label>' : '<label class="label label-info">Belum dikonfirmasi</label>';
                                 echo '<p style="float: left; color:rgba(60, 141, 188, 1);">#' . $i . ' : ' . tanggal_indo($value->tanggal_penjualan) . ' | ' . 'Rp. ' . number_format($value->grandtotal) . ' | ' . $jenis . '</p>' ?>
                             </button>
                         </a>
@@ -128,6 +129,26 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div id="collapsemasuk<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?= $i; ?>">
                         <div class="panel-body">
                             <div style="overflow: auto;">
+                                <?php
+                                if ($value->jenis_pembayaran == 2) {
+                                ?>
+                                    <?= Html::beginForm(['anggota-koperasi/print-tagihan', 'id' => $value->id_penjualan], 'post') ?>
+                                    <div class="col-xs-12" style="float:right;margin-top: 10px;margin-bottom: 10px;" id="form-tunai">
+                                        <div class="input-group mt-3">
+                                            <input class="form-control" type="number" id="bayar" name="bayar" placeholder="Input Pembayaran" aria-describedby="basic-addon1" />
+                                            <span class="input-group-btn" id="basic-addon1">
+                                                <?= Html::submitButton('<span class="glyphicon glyphicon-print"></span> Cetak', ['class' => 'btn btn-warning pull-right']) ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <?= Html::endForm() ?>
+                                <?php }
+                                ?>
+                                <?php
+                                if ($value->jenis_pembayaran == 1) {
+                                    echo Html::a('Cetak', ['print-struk', 'id' => $value->id_penjualan], ['class' => 'btn btn-warning', 'style' => ['margin-bottom' => '10px']]);
+                                }
+                                ?>
                                 <table class="table datatables">
                                     <thead>
                                         <tr>
@@ -161,7 +182,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <td align="center"><?= $val->ppn == 0 ? ' - ' : $val->ppn . " %" ?></td>
                                                 <td align="right"><?= 'Rp. ' . number_format($val->total_jual) ?></td>
                                             </tr>
-                                        <?php } ?>
+                                        <?php
+                                        }
+                                        ?>
                                     </tbody>
                                     <!-- <tfoot></tfoot> -->
                                 </table>
@@ -169,7 +192,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                 </div>
-            <?php } ?>
+            <?php }
+            // display pagination
+            echo LinkPager::widget([
+                'pagination' => $pages,
+            ]); ?>
         </div>
     </div>
 </div>

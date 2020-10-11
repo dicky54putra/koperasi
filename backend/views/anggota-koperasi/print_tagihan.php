@@ -152,7 +152,7 @@ use backend\models\DataPenjualanDetail;
 
 <script>
     window.print();
-    var link = 'index.php?r=data-penjualan-barang/view&id=' + <?= $model->id_penjualan ?>;
+    var link = 'index.php?r=anggota-koperasi%2Fview&id=' + <?= $model->id_anggota ?>;
     console.log(link);
     setTimeout(window.location = link, 500);
 </script>

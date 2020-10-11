@@ -56,7 +56,7 @@ class DataPenjualanBarangController extends Controller
         $data_anggota = AnggotaKoperasi::find()->select(["CONCAT(kode_anggota) as value", "id_anggota as id"])->where('id_jenis_anggota != 2')->asArray()->all();
 
 
-        $data_penjualan = DataPenjualanBarang::find()->all();
+        $data_penjualan = DataPenjualanBarang::find()->orderBy('id_penjualan DESC')->all();
 
         if ($model->load(Yii::$app->request->post())) {
             $cek_anggota = AnggotaKoperasi::find()->where(['kode_anggota' => $model->id_anggota])->one();

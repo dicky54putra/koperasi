@@ -73,10 +73,10 @@ $this->title = 'Dashboard';
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <canvas id="chart-area" style="height:350px;"></canvas>
+                            <canvas id="chart-area2" style="height:350px;"></canvas>
                         </div>
                         <div class="col-md-6">
-                            <canvas id="chart-area2" style="height:350px;"></canvas>
+                            <canvas id="chart-area" style="height:350px;"></canvas>
                         </div>
                     </div>
                 </div>
@@ -115,12 +115,12 @@ $this->title = 'Dashboard';
                     }
                     ?>, '0'
                 ],
-                backgroundColor: 'green',
-                borderColor: 'green',
+                backgroundColor: 'red',
+                borderColor: 'red',
                 fill: false,
                 lineTension: 0,
                 // lineTension: 0.5,
-                label: ['Pembelian']
+                label: ['Penjualan']
             }, ],
         },
         options: {
@@ -188,12 +188,12 @@ $this->title = 'Dashboard';
                     }
                     ?>, '0'
                 ],
-                backgroundColor: 'red',
-                borderColor: 'red',
+                backgroundColor: 'green',
+                borderColor: 'green',
                 fill: false,
                 lineTension: 0,
                 // lineTension: 0.5,
-                label: ['Penjualan']
+                label: ['Pembelian']
             }, ],
         },
         options: {
