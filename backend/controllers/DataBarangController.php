@@ -63,8 +63,8 @@ class DataBarangController extends Controller
      */
     public function actionView($id)
     {
-        $stok_masuk = StokMasuk::find()->where(['id_barang' => $id])->all();
-        $stok_keluar = StokKeluar::find()->where(['id_barang' => $id])->all();
+        $stok_masuk = StokMasuk::find()->where(['id_barang' => $id])->orderBy('id_stok_masuk DESC')->all();
+        $stok_keluar = StokKeluar::find()->where(['id_barang' => $id])->orderBy('id_stok_keluar DESC')->all();
 
         return $this->render('view', [
             'model' => $this->findModel($id),

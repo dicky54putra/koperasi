@@ -6,7 +6,7 @@ if (flashdata) {
         icon: 'success',
         title: 'Data Berhasil ' + flashdata,
         text: '',
-        timer: 1500,
+        timer: 1000,
         customClass: 'swal-wide', // agar bisa saya edit ukuran popupnya
     })
 }

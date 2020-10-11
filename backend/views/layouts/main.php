@@ -107,6 +107,14 @@ if (Yii::$app->user->isGuest) {
         $(document).ready(function() {
             $('#table-index').DataTable();
             $('.datatables').DataTable();
+            $('#pagination').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            });
         });
     </script>
 

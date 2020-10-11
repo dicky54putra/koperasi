@@ -122,7 +122,7 @@ class DataPenjualanBarangController extends Controller
             DataBarang::find()->all(),
             'id_barang',
             function ($model) {
-                return $model['kode_barang'] . ' - ' . $model['nama_barang'];
+                return $model['kode_barang'] . ' - ' . $model['nama_barang'] . ' - ' . $model['stok'];
             }
         );
 
@@ -141,43 +141,46 @@ class DataPenjualanBarangController extends Controller
             $id = $model->id_penjualan;
             $cek_stok_keluar = StokKeluar::find()->where('YEAR(tanggal_keluar) = ' . date('Y'))->andWhere('MONTH(tanggal_keluar) = ' . date('m'))->andWhere(['id_barang' => $model->id_barang])->count();
 
-            if ($cek_stok_keluar == 0) {
-                # insert
-                $stok_keluar_tambah = new StokKeluar();
-                $stok_keluar_tambah->id_barang = $model->id_barang;
-                $stok_keluar_tambah->tanggal_keluar = date('Y-m-d');
-                $stok_keluar_tambah->save(false);
-                $model->id_stok_keluar = $stok_keluar_tambah->id_stok_keluar;
-            } else {
-                # update
-                $stok_keluar_ubah = StokKeluar::find()
-                    ->where('YEAR(tanggal_keluar) = ' . date('Y'))->andWhere('MONTH(tanggal_keluar) = ' . date('m'))
-                    ->andWhere(['id_barang' => $model->id_barang])
-                    ->one();
-                $stok_keluar_ubah->total_qty = $stok_keluar_ubah->total_qty + $model->qty;
-                // var_dump($stok_keluar_ubah->total_qty);
-                // die;
-                $stok_keluar_ubah->save(false);
-                $model->id_stok_keluar = $stok_keluar_ubah->id_stok_keluar;
-            }
-
             $cek_harga = DataBarang::find()->where(['id_barang' => $model->id_barang])->one();
 
-            $model->harga_jual = $cek_harga->harga_jual;
-            $model->total_jual = $model->harga_jual * $model->qty;
-            $model->save(false);
+            if ($model->qty > $cek_harga->stok) {
+                Yii::$app->session->setFlash("error", "Stok Barang tidak mencukupi");
+            } else {
+                if ($cek_stok_keluar == 0) {
+                    # insert
+                    $stok_keluar_tambah = new StokKeluar();
+                    $stok_keluar_tambah->id_barang = $model->id_barang;
+                    $stok_keluar_tambah->tanggal_keluar = date('Y-m-d');
+                    $stok_keluar_tambah->save(false);
+                    $model->id_stok_keluar = $stok_keluar_tambah->id_stok_keluar;
+                } else {
+                    # update
+                    $stok_keluar_ubah = StokKeluar::find()
+                        ->where('YEAR(tanggal_keluar) = ' . date('Y'))->andWhere('MONTH(tanggal_keluar) = ' . date('m'))
+                        ->andWhere(['id_barang' => $model->id_barang])
+                        ->one();
+                    $stok_keluar_ubah->total_qty = $stok_keluar_ubah->total_qty + $model->qty;
+                    // var_dump($stok_keluar_ubah->total_qty);
+                    // die;
+                    $stok_keluar_ubah->save(false);
+                    $model->id_stok_keluar = $stok_keluar_ubah->id_stok_keluar;
+                }
 
-            $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
-            $grandtotal = 0;
-            foreach ($penjualan_detail as $key => $value) {
-                $grandtotal += $value->total_jual;
+                $model->harga_jual = $cek_harga->harga_jual;
+                $model->total_jual = $model->harga_jual * $model->qty;
+                $model->save(false);
+
+                $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
+                $grandtotal = 0;
+                foreach ($penjualan_detail as $key => $value) {
+                    $grandtotal += $value->total_jual;
+                }
+
+                $penjualan = DataPenjualanBarang::find()->where(['id_penjualan' => $id])->one();
+                $penjualan->grandtotal = $grandtotal;
+                $penjualan->save(false);
+                Yii::$app->session->setFlash("success", "Disimpan");
             }
-
-            $penjualan = DataPenjualanBarang::find()->where(['id_penjualan' => $id])->one();
-            $penjualan->grandtotal = $grandtotal;
-            $penjualan->save(false);
-
-            Yii::$app->session->setFlash("success", "Disimpan");
             return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
         }
     }
@@ -185,6 +188,9 @@ class DataPenjualanBarangController extends Controller
     public function actionDeletePenjualanDetail($id)
     {
         $model = DataPenjualanDetail::find()->where(['id_penjualan_detail' => $id])->one();
+        $stok_keluar = StokKeluar::find()->where(['id_stok_keluar' => $model->id_stok_keluar]);
+        $stok_keluar->total_qty = $stok_keluar->total_qty - $model->qty;
+        $stok_keluar->save(false);
         $model->delete();
 
         Yii::$app->session->setFlash('success', 'Dihapus');
@@ -331,6 +337,11 @@ class DataPenjualanBarangController extends Controller
             // die;
             if (Yii::$app->request->post('bayar') >= $total) {
                 // echo 'ok';
+                foreach ($penjualan_detail as $key => $val) {
+                    $barang = DataBarang::find()->where(['id_barang' => $val->id_barang])->one();
+                    $barang->stok = $barang->stok - $val->qty;
+                    $barang->save(false);
+                }
                 $update->no_invoice = date('Ymd') . str_pad($generate + 1, 3, "0", STR_PAD_LEFT);
                 $update->jenis_pembayaran = 1;
                 $update->jumlah_bayar = Yii::$app->request->post('bayar');
@@ -359,15 +370,17 @@ class DataPenjualanBarangController extends Controller
         $update = DataPenjualanBarang::findOne($id);
         $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
 
-        // $bayar = Yii::$app->request->post('bayar');
-
-        // echo $bayar;exit();
-
         if ($update->no_invoice == '') {
 
             $generate = DataPenjualanBarang::find()->count();
             $update->no_invoice = date('Ymd') . str_pad($generate + 1, 3, "0", STR_PAD_LEFT);
             $update->jenis_pembayaran = 2;
+
+            foreach ($penjualan_detail as $key => $val) {
+                $barang = DataBarang::find()->where(['id_barang' => $val->id_barang])->one();
+                $barang->stok = $barang->stok - $val->qty;
+                $barang->save(false);
+            }
             // $update->jumlah_bayar = Yii::$app->request->post('bayar');
             $update->save(false);
 

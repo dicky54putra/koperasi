@@ -28,14 +28,67 @@ $this->title = 'Data Penjualan Barang';
     </ul>
 
     <div class="row">
-        <!-- <div class="col-md-12">
-            <div class="panel">
-                <div class="panel-body"></div>
-            </div>
-        </div> -->
         <div class="col-md-8">
             <div class="panel">
+                <div class="panel-header">
+                    <h3 style="margin-left: 10px;">History Penjualan</h3>
+                </div>
                 <div class="panel-body">
+                    <table class="table" id="table-index">
+                        <thead>
+                            <tr>
+                                <th style="white-space: nowrap;">#</th>
+                                <!-- <th style="white-space: nowrap;">Aksi</th> -->
+                                <th style="white-space: nowrap;">Tanggal Penjualan</th>
+                                <th style="white-space: nowrap;">Nama Customer</th>
+                                <th style="white-space: nowrap;">Jenis Pembayaran</th>
+                                <!-- <th style="white-space: nowrap;">Grandtotal Penjualan</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 1;
+                            foreach ($data_penjualan as $key => $value) {
+                            ?>
+                                <tr class='clickable-row' data-href="index.php?r=data-penjualan-barang/view&id=<?= $value->id_penjualan ?>" style="cursor: pointer;">
+                                    <td><?= $i++; ?>.</td>
+                                    <!-- <td>
+                                        <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_penjualan], [
+                                            'title' => Yii::t('app', 'Lihat Detail'),
+                                        ]); ?>
+                                        <?= Html::button(
+                                            '<span class="glyphicon glyphicon-edit"></span>',
+                                            [
+                                                'value' => Url::to(['update', 'id' => $value->id_penjualan]),
+                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-success'
+                                            ]
+                                        ); ?>
+                                        <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_penjualan], [
+                                            'title' => Yii::t('app', 'Hapus data'),
+                                            'class' => 'tombol-hapus'
+                                        ]); ?>
+                                    </td> -->
+                                    <td><?= $value->tanggal_penjualan ?></td>
+                                    <td><?= ($value->id_anggota != 0) ? $value->anggota->nama_anggota : 'Customer Umum';
+                                        ?></td>
+                                    <td><?= ($value->jenis_pembayaran == null) ? 'Belum dikonfirmasi' : $retVal = ($value->jenis_pembayaran == 2) ? 'TAGIHAN' : 'LUNAS'; ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <!-- <td>T</td> -->
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>Tambah Penjualan Baru</h3>
                     <?php $form = ActiveForm::begin(); ?>
                     <?php
                     echo $form->field($model, 'id_anggota')->widget(Select2::classname(), [
@@ -58,8 +111,6 @@ $this->title = 'Data Penjualan Barang';
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
             <div class="panel">
                 <div class="panel-body">
                     <button class="btn btn-info form-control" id="customer_manual">Cari Manual</button>
@@ -94,6 +145,9 @@ $script = <<< JS
         $('#datapenjualanbarang-id_anggota').focus();
         $('#datapenjualanbarang-id_anggota').val(null);
     })
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
     JS;
 $this->registerJs($script);
 ?>

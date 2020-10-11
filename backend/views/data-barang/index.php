@@ -41,13 +41,14 @@ $this->title = 'Data Barang';
                         <thead>
                             <tr>
                                 <th style="white-space: nowrap;">#</th>
-                                <th style="white-space: nowrap;">Aksi</th>
+                                <th>Aksi</th>
                                 <th style="white-space: nowrap;">Kode Barang</th>
                                 <th style="white-space: nowrap;">Nama Barang</th>
                                 <th style="white-space: nowrap;">Kategori</th>
                                 <th style="white-space: nowrap;">Satuan</th>
                                 <th style="white-space: nowrap;">Harga Jual</th>
                                 <th style="white-space: nowrap;">Harga Beli</th>
+                                <th style="white-space: nowrap;">Stok</th>
                                 <th style="white-space: nowrap;">Status</th>
                             </tr>
                         </thead>
@@ -59,7 +60,7 @@ $this->title = 'Data Barang';
 
                                 <tr>
                                     <td><?= $i++; ?>.</td>
-                                    <td>
+                                    <td style="white-space: nowrap;">
                                         <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_barang], [
                                             'title' => Yii::t('app', 'Lihat Detail'),
                                         ]); ?>
@@ -84,6 +85,7 @@ $this->title = 'Data Barang';
                                     <td><?= $value->satuan->nama_satuan ?></td>
                                     <td><?= $value->harga_jual ?></td>
                                     <td><?= $value->harga_beli ?></td>
+                                    <td><?= $value->stok ?></td>
                                     <td><?= $value->is_active == 1 ? '<span class="label label-success">Aktif</span>' : '<span class="label label-danger">Tidak Aktif</span>' ?></td>
 
                                 </tr>

@@ -57,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'satuan.nama_satuan',
                             'kode_barang',
                             'nama_barang',
+                            'stok',
                         ],
                     ]) ?>
                 </div>
@@ -117,14 +118,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="row" style="margin-top:30px;">
                             <div class="col-md-12" style="overflow: auto;">
                                 <p>
-                                    <?= Html::button(
-                                        '<span class="glyphicon glyphicon-plus"></span> Tambah',
-                                        [
-                                            'value' => Url::to(['stok-masuk/create', 'id_barang' => $model->id_barang]),
-                                            'title' => 'Tambah data',
-                                            'class' => 'showModalButton btn btn-primary'
-                                        ]
-                                    ); ?>
+                                    <!-- <?= Html::button(
+                                                '<span class="glyphicon glyphicon-plus"></span> Tambah',
+                                                [
+                                                    'value' => Url::to(['stok-masuk/create', 'id_barang' => $model->id_barang]),
+                                                    'title' => 'Tambah data',
+                                                    'class' => 'showModalButton btn btn-primary'
+                                                ]
+                                            ); ?> -->
                                 </p>
                                 <?php
                                 $i = 0;
@@ -145,16 +146,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsemasuk<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsemasuk<?= $i; ?>" style="float: right; margin-left:5px; transition: 0.5s;" class="btn btn-success drop btn-sm btn-flat">
                                                 <span id="glyphicon" style="transition: 0.5s;" class="glyphicon glyphicon-chevron-down"></span>
                                             </a>
-                                            <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['stok-masuk/delete', 'id' => $value->id_stok_masuk], [
-                                                'class' => 'tombol-hapus btn btn-danger btn-sm btn-flat',
-                                                'style' => [
-                                                    'float' => 'right',
-                                                ],
-                                                'data' => [
-                                                    'confirm' => 'Are you sure you want to delete this item?',
-                                                    'method' => 'post',
-                                                ],
-                                            ]) ?>
+                                            <!--<?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['stok-masuk/delete', 'id' => $value->id_stok_masuk], [
+                                                    'class' => 'tombol-hapus btn btn-danger btn-sm btn-flat',
+                                                    'style' => [
+                                                        'float' => 'right',
+                                                    ],
+                                                    'data' => [
+                                                        'confirm' => 'Are you sure you want to delete this item?',
+                                                        'method' => 'post',
+                                                    ],
+                                                ]) ?>
                                             <?= Html::button(
                                                 '<span class="glyphicon glyphicon-edit"></span>',
                                                 [
@@ -164,7 +165,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         'float' => 'right'
                                                     ],
                                                 ]
-                                            ); ?>
+                                            ); ?>-->
                                         </div>
                                         <div id="collapsemasuk<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?= $i; ?>">
                                             <div class="panel-body">
@@ -221,14 +222,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="row" style="margin-top:30px;">
                             <div class="col-md-12" style="overflow: auto;">
                                 <p>
-                                    <?= Html::button(
-                                        '<span class="glyphicon glyphicon-plus"></span> Tambah',
-                                        [
-                                            'value' => Url::to(['stok-keluar/create', 'id_barang' => $model->id_barang]),
-                                            'title' => 'Tambah data',
-                                            'class' => 'showModalButton btn btn-primary'
-                                        ]
-                                    ); ?>
+                                    <!-- <?= Html::button(
+                                                '<span class="glyphicon glyphicon-plus"></span> Tambah',
+                                                [
+                                                    'value' => Url::to(['stok-keluar/create', 'id_barang' => $model->id_barang]),
+                                                    'title' => 'Tambah data',
+                                                    'class' => 'showModalButton btn btn-primary'
+                                                ]
+                                            ); ?> -->
                                 </p>
 
                                 <?php
@@ -250,16 +251,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsekeluar<?php echo $i; ?>" aria-expanded="true" aria-controls="collapsekeluar<?= $i; ?>" style="float: right; margin-left:5px; transition: 0.5s;" class="btn btn-success drop btn-sm btn-flat">
                                                 <span id="glyphicon" style="transition: 0.5s;" class="glyphicon glyphicon-chevron-down"></span>
                                             </a>
-                                            <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['stok-keluar/delete', 'id' => $value->id_stok_keluar, 'id_barang' => $value->id_barang], [
-                                                'class' => 'btn tombol-hapus btn-danger btn-sm btn-flat',
-                                                'style' => [
-                                                    'float' => 'right',
-                                                ],
-                                                'data' => [
-                                                    'confirm' => 'Are you sure you want to delete this item?',
-                                                    'method' => 'post',
-                                                ],
-                                            ]) ?>
+                                            <!-- <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['stok-keluar/delete', 'id' => $value->id_stok_keluar, 'id_barang' => $value->id_barang], [
+                                                        'class' => 'btn tombol-hapus btn-danger btn-sm btn-flat',
+                                                        'style' => [
+                                                            'float' => 'right',
+                                                        ],
+                                                        'data' => [
+                                                            'confirm' => 'Are you sure you want to delete this item?',
+                                                            'method' => 'post',
+                                                        ],
+                                                    ]) ?>
                                             <?= Html::button(
                                                 '<span class="glyphicon glyphicon-edit"></span>',
                                                 [
@@ -269,7 +270,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         'float' => 'right'
                                                     ],
                                                 ]
-                                            ); ?>
+                                            ); ?> -->
                                         </div>
                                         <div id="collapsekeluar<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?= $i; ?>">
                                             <div class="panel-body">

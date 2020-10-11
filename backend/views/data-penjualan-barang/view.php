@@ -55,28 +55,32 @@ $this->params['breadcrumbs'][] = $this->title;
                     </h3>
                 </div>
                 <div class="box-body">
-                    <div class="row">
-                        <?php $form = ActiveForm::begin(['action' => ['data-penjualan-barang/tambah-penjualan-detail']]); ?>
-                        <div class="col-md-6">
-                            <?= $form->field($model2, 'id_barang')->widget(Select2::classname(), [
-                                'data' => $data_barang,
-                                'language' => 'en',
-                                'options' => ['placeholder' => 'Pilih Barang'],
-                                'pluginOptions' => [
-                                    'allowClear' => true
-                                ],
-                            ])->label('Barang') ?>
-                        </div>
-                        <div class="col-md-3">
-                            <?= $form->field($model2, 'qty')->textInput(['type' => 'number', 'value' => 1]) ?>
-                            <?= $form->field($model2, 'id_penjualan')->textInput(['type' => 'hidden', 'value' => $model->id_penjualan])->label(false) ?>
-                        </div>
-                        <div class="col-md-3">
-                            <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success pull-right', 'style' => 'margin-top: 24px;']) ?>
-                        </div>
+                    <?php
+                    if ($model->jenis_pembayaran == null) {
+                    ?>
+                        <div class="row">
+                            <?php $form = ActiveForm::begin(['action' => ['data-penjualan-barang/tambah-penjualan-detail']]); ?>
+                            <div class="col-md-6">
+                                <?= $form->field($model2, 'id_barang')->widget(Select2::classname(), [
+                                    'data' => $data_barang,
+                                    'language' => 'en',
+                                    'options' => ['placeholder' => 'Pilih Barang'],
+                                    'pluginOptions' => [
+                                        'allowClear' => true
+                                    ],
+                                ])->label('Barang') ?>
+                            </div>
+                            <div class="col-md-3">
+                                <?= $form->field($model2, 'qty')->textInput(['type' => 'number', 'value' => 1]) ?>
+                                <?= $form->field($model2, 'id_penjualan')->textInput(['type' => 'hidden', 'value' => $model->id_penjualan])->label(false) ?>
+                            </div>
+                            <div class="col-md-3">
+                                <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success pull-right', 'style' => 'margin-top: 24px;']) ?>
+                            </div>
 
-                        <?php ActiveForm::end(); ?>
-                    </div>
+                            <?php ActiveForm::end(); ?>
+                        </div>
+                    <?php } ?>
                     <br>
                     <!-- <div class="col-lg-12"> -->
                     <table class="table" id="table-index">
