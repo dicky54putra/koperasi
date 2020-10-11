@@ -8,14 +8,16 @@ use yii\widgets\ActiveForm;
 
 use yii\jui\AutoComplete;
 use yii\web\JsExpression;
-use backend\models\DataPenjualanDetail;
+use backend\models\StokMasuk;
+use backend\models\StokKeluar;
+use backend\models\DataPembelianDetail;
 
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\PurchaseOrderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Laporan Pinjaman Toko';
+$this->title = 'Laporan Stok Barang';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -27,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="box-header">
             <div class="col-md-12" style="padding: 0;">
                 <div class="box-body">
-                    <?= Html::beginForm(['laporan-hutang-toko', array('class' => 'form-inline')]) ?>
+                    <?= Html::beginForm(['laporan-stok-penyesuaian', array('class' => 'form-inline')]) ?>
 
                     <table border="0" width="100%">
                         <tr>
@@ -66,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     if ($tanggal_awal != 0 && $tanggal_akhir != 0) {
                                         # code...
                                     ?>
-                                        <?= Html::a('Export Laporan', ['export-excel-laporan-hutang-toko', 'tanggal_awal' => $tanggal_awal, 'tanggal_akhir' => $tanggal_akhir], ['class' => 'btn btn-primary', 'target' => '_blank', 'method' => 'post']) ?>
+                                        <?= Html::a('Export Laporan', ['export-excel-laporan-stok-penyesuaian', 'tanggal_awal' => $tanggal_awal, 'tanggal_akhir' => $tanggal_akhir], ['class' => 'btn btn-primary', 'target' => '_blank', 'method' => 'post']) ?>
                                     <?php
                                     }
                                     ?>
@@ -85,55 +87,58 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12" style="padding: 0;">
             <div class="box-body">
                 <p style="font-family: 'Times New Roman'">
-                    <h4>Periode : <?= ($tanggal_awal != '') ? date('d/m/Y', strtotime($tanggal_awal)) : '-'; ?> Sampai <?= ($tanggal_akhir != '') ? date('d/m/Y', strtotime($tanggal_akhir)) : '-'; ?></h4>
+                    <h4>Periode Bulan: <?= ($tanggal_awal != '') ? tanggal_indo2(date('F', strtotime($tanggal_awal))) : '-'; ?></h4>
                 </p>
 
                 <table class="table" id="table-index">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Anggota</th>
-                            <th>Tanggal Pembelian</th>
-                            <th>Pembelian Detail (qty x harga satuan)</th>
-                            <th>Harga</th>
-                            <th>Grandtotal</th>
+                            <th>Nama Barang</th>
+                            <th>Qty</th>
+                            <th>Stok Sekarang</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
                         $totalan_pengurangan = 0;
-                        $barang = '';
-                        $hrg_barang = '';
+                        $tgl_masuk = '';
+                        $tgl_keluar = '';
+                        $qty_masuk = 0;
+                        $qty_keluar = 0;
                         $query1 = Yii::$app->db->createCommand("
-                                        SELECT data_penjualan_barang.id_penjualan, data_penjualan_barang.id_anggota, data_penjualan_barang.tanggal_penjualan, data_penjualan_barang.grandtotal, anggota_koperasi.nama_anggota
-                                        FROM data_penjualan_barang
-                                        LEFT JOIN anggota_koperasi ON anggota_koperasi.id_anggota = data_penjualan_barang.id_anggota
-                                        WHERE data_penjualan_barang.tanggal_penjualan
-                                        BETWEEN '$tanggal_awal' AND '$tanggal_akhir'
-                                        AND data_penjualan_barang.jenis_pembayaran = 2
-                                        ORDER BY data_penjualan_barang.tanggal_penjualan
+                                        SELECT *
+                                        FROM stok_penyesuaian
+                                        LEFT JOIN data_barang ON data_barang.id_barang = stok_penyesuaian.id_barang
+                                        GROUP BY data_barang.id_barang
+                                        ORDER BY data_barang.id_barang
                                         ")->query();
                         foreach ($query1 as $key => $data) {
-                            $detail = DataPenjualanDetail::find()->where(['id_penjualan' => $data['id_penjualan']])->all();
+                            $total_stok = 0;
+                            $total_stok_kosong = '';
+                            if (!empty($tanggal_awal) && !empty($tanggal_akhir)) {
+                                $stok_penyesuaian = Yii::$app->db->createCommand("
+                                        SELECT *
+                                        FROM stok_penyesuaian
+                                        WHERE id_barang = '$data[id_barang]'
+                                        AND tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'
+                                        ")->queryAll();
+                            }
                         ?>
                             <tr>
                                 <td><?= $no++ . '.' ?></td>
-                                <td><?= $data['nama_anggota'] ?></td>
-                                <td><?= tanggal_indo($data['tanggal_penjualan'], true) ?></td>
-                                <td><?php
-                                    $grandtotal = 0;
-                                    foreach ($detail as $key => $value) {
-                                        echo $barang = $value->barang->nama_barang . ' ( ' . $value->qty . ' x ' . $value->harga_jual . ' ) ' . "<br>";
-                                    } ?></td>
-                                <td><?php
-                                    foreach ($detail as $key => $value) {
-                                        $hrg_barang = $value->harga_jual * $value->qty;
-                                        echo 'Rp. ' . number_format($hrg_barang) . '<br>';
-                                        $grandtotal += $hrg_barang;
+                                <td><?= $data['nama_barang'] ?></td>
+                                <td>
+                                    <?php
+                                    if (!empty($stok_penyesuaian)) {
+                                        foreach ($stok_penyesuaian as $key => $val) {
+                                            echo ($val['tipe'] == 1) ? $val['qty'] . '<br>' : '(' . $val['qty'] . ')' . '<br>';
+                                        }
                                     }
-                                    ?></td>
-                                <td><?= 'Rp. ' . ribuan($grandtotal) ?></td>
+                                    ?>
+                                </td>
+                                <td><?= $data['stok'] ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
