@@ -189,7 +189,7 @@ class DataPenjualanBarangController extends Controller
     public function actionDeletePenjualanDetail($id)
     {
         $model = DataPenjualanDetail::find()->where(['id_penjualan_detail' => $id])->one();
-        $stok_keluar = StokKeluar::find()->where(['id_stok_keluar' => $model->id_stok_keluar]);
+        $stok_keluar = StokKeluar::find()->where(['id_stok_keluar' => $model->id_stok_keluar])->one();
         $stok_keluar->total_qty = $stok_keluar->total_qty - $model->qty;
         $stok_keluar->save(false);
         $model->delete();

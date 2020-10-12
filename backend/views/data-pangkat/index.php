@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::button(
-            '<i class="glyphicon glyphicon-plus"></i> Tambah Data Kategori Barang',
+            '<i class="glyphicon glyphicon-plus"></i> Tambah Data Pangkat',
             [
                 'value' => Url::to(['create']),
                 'title' => '', 'class' => 'showModalButton btn btn-success'

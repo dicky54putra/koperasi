@@ -186,7 +186,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                         }
                                         ?>
                                     </tbody>
-                                    <!-- <tfoot></tfoot> -->
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="7">Total</th>
+                                            <th style="float: right;">Rp. <?= number_format($sum_masuk) ?></th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
