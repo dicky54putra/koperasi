@@ -111,6 +111,7 @@ class DataPembelianBarangController extends Controller
                 $stok_masuk_tambah = new StokMasuk();
                 $stok_masuk_tambah->id_barang = $model->id_barang;
                 $stok_masuk_tambah->tanggal_masuk = date('Y-m-d');
+                $stok_masuk_tambah->total_qty = $model->qty;
                 $stok_masuk_tambah->save(false);
                 $model->id_stok_masuk = $stok_masuk_tambah->id_stok_masuk;
             } else {

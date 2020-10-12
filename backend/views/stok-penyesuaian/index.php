@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?= $no ?>
                                     </td>
                                     <td>
-                                        <?= $val->nama_barang ?>
+                                        <?= $val->kode_barang . ' - ' . $val->nama_barang ?>
                                     </td>
                                     <td>
                                         <?= $val->stok ?>

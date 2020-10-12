@@ -151,6 +151,7 @@ class DataPenjualanBarangController extends Controller
                     $stok_keluar_tambah = new StokKeluar();
                     $stok_keluar_tambah->id_barang = $model->id_barang;
                     $stok_keluar_tambah->tanggal_keluar = date('Y-m-d');
+                    $stok_keluar_tambah->total_qty = $model->qty;
                     $stok_keluar_tambah->save(false);
                     $model->id_stok_keluar = $stok_keluar_tambah->id_stok_keluar;
                 } else {
