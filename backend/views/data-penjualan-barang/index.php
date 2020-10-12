@@ -34,7 +34,7 @@ $this->title = 'Data Penjualan Barang';
                     <h3 style="margin-left: 10px;">History Penjualan</h3>
                 </div>
                 <div class="panel-body">
-                    <table class="table" id="table-index">
+                    <table class="table table-hover" id="table-index">
                         <thead>
                             <tr>
                                 <th style="white-space: nowrap;">#</th>
