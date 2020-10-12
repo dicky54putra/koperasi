@@ -109,7 +109,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <div class="col-md-12" style="margin-top:20px;">
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs" id="tabForRefreshPage">
                     <li class="active"><a data-toggle="tab" href="#stok-masuk"><span class="fa fa-truck-loading"></span> Stok Masuk</a></li>
                     <li><a data-toggle="tab" href="#stok-keluar"><span class="fa fa-truck-loading"></span> Stok Keluar</a></li>
                 </ul>

@@ -139,6 +139,7 @@ class DataPenjualanBarangController extends Controller
         $model = new DataPenjualanDetail();
         if ($model->load(Yii::$app->request->post())) {
             $id = $model->id_penjualan;
+            $model->qty = 1;
             $cek_stok_keluar = StokKeluar::find()->where('YEAR(tanggal_keluar) = ' . date('Y'))->andWhere('MONTH(tanggal_keluar) = ' . date('m'))->andWhere(['id_barang' => $model->id_barang])->count();
 
             $cek_harga = DataBarang::find()->where(['id_barang' => $model->id_barang])->one();
@@ -169,7 +170,15 @@ class DataPenjualanBarangController extends Controller
 
                 $model->harga_jual = $cek_harga->harga_jual;
                 $model->total_jual = $model->harga_jual * $model->qty;
-                $model->save(false);
+
+                $penjualan_detail = DataPenjualanDetail::find()->where(['id_barang' => $model->id_barang])->andWhere(['id_penjualan' => $model->id_penjualan])->one();
+                if (!empty($penjualan_detail->id_penjualan_detail)) {
+                    $penjualan_detail->qty = $penjualan_detail->qty + $model->qty;
+                    $penjualan_detail->total_jual = $penjualan_detail->harga_jual * $penjualan_detail->qty;
+                    $penjualan_detail->save(false);
+                } else {
+                    $model->save(false);
+                }
 
                 $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
                 $grandtotal = 0;
@@ -180,10 +189,91 @@ class DataPenjualanBarangController extends Controller
                 $penjualan = DataPenjualanBarang::find()->where(['id_penjualan' => $id])->one();
                 $penjualan->grandtotal = $grandtotal;
                 $penjualan->save(false);
-                Yii::$app->session->setFlash("success", "Disimpan");
+                // Yii::$app->session->setFlash("success", "Disimpan");
             }
             return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
         }
+    }
+
+    public function actionTambahPenjualanDetailBarcode()
+    {
+        $model = new DataPenjualanDetail();
+        if ($model->load(Yii::$app->request->post())) {
+            $id = $model->id_penjualan;
+            $model->qty = 1;
+            $barang = DataBarang::find()->where(['kode_barang' => $model->id_barang])->one();
+            if (!empty($barang->id_barang)) {
+
+                $cek_stok_keluar = StokKeluar::find()->where('YEAR(tanggal_keluar) = ' . date('Y'))->andWhere('MONTH(tanggal_keluar) = ' . date('m'))->andWhere(['id_barang' => $barang->id_barang])->count();
+
+                if ($model->qty > $barang->stok) {
+                    Yii::$app->session->setFlash("error", "Stok Barang tidak mencukupi");
+                } else {
+                    if ($cek_stok_keluar == 0) {
+                        # insert
+                        $stok_keluar_tambah = new StokKeluar();
+                        $stok_keluar_tambah->id_barang = $barang->id_barang;
+                        $stok_keluar_tambah->tanggal_keluar = date('Y-m-d');
+                        $stok_keluar_tambah->total_qty = $model->qty;
+                        $stok_keluar_tambah->save(false);
+                        $model->id_stok_keluar = $stok_keluar_tambah->id_stok_keluar;
+                    } else {
+                        # update
+                        $stok_keluar_ubah = StokKeluar::find()
+                            ->where('YEAR(tanggal_keluar) = ' . date('Y'))->andWhere('MONTH(tanggal_keluar) = ' . date('m'))
+                            ->andWhere(['id_barang' => $barang->id_barang])
+                            ->one();
+                        $stok_keluar_ubah->total_qty = $stok_keluar_ubah->total_qty + $model->qty;
+                        // var_dump($stok_keluar_ubah->total_qty);
+                        // die;
+                        $stok_keluar_ubah->save(false);
+                        $model->id_stok_keluar = $stok_keluar_ubah->id_stok_keluar;
+                    }
+
+                    $model->id_barang = $barang->id_barang;
+                    $model->harga_jual = $barang->harga_jual;
+                    $model->total_jual = $model->harga_jual * $model->qty;
+                    $penjualan_detail = DataPenjualanDetail::find()->where(['id_barang' => $model->id_barang])->andWhere(['id_penjualan' => $model->id_penjualan])->one();
+                    if (!empty($penjualan_detail->id_penjualan_detail)) {
+                        $penjualan_detail->qty = $penjualan_detail->qty + $model->qty;
+                        $penjualan_detail->total_jual = $penjualan_detail->harga_jual * $penjualan_detail->qty;
+                        $penjualan_detail->save(false);
+                    } else {
+                        $model->save(false);
+                    }
+
+                    $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
+                    $grandtotal = 0;
+                    foreach ($penjualan_detail as $key => $value) {
+                        $grandtotal += $value->total_jual;
+                    }
+
+                    $penjualan = DataPenjualanBarang::find()->where(['id_penjualan' => $id])->one();
+                    $penjualan->grandtotal = $grandtotal;
+                    $penjualan->save(false);
+                    // Yii::$app->session->setFlash("success", "Disimpan");
+                }
+            } else {
+                Yii::$app->session->setFlash("error", "Barang tidak ada!");
+            }
+            return $this->redirect(['data-penjualan-barang/view', 'id' => $id]);
+        }
+    }
+
+    public function actionGetPenjualanDetail($id)
+    {
+        $model = DataPenjualanDetail::find()->where(['id_penjualan_detail' => $id])->asArray()->one();
+        return json_encode($model);
+    }
+
+    public function actionEditQty($id)
+    {
+        $model = DataPenjualanDetail::find()->where(['id_penjualan_detail' => $id])->one();
+        $model->qty = $_POST['qty'];
+        $model->total_jual = $model->harga_jual * $model->qty;
+        $model->save(false);
+        // Yii::$app->session->setFlash("success", "Disimpan");
+        return $this->redirect(['data-penjualan-barang/view', 'id' => $model->id_penjualan]);
     }
 
     public function actionDeletePenjualanDetail($id)

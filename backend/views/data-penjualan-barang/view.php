@@ -59,26 +59,45 @@ $this->params['breadcrumbs'][] = $this->title;
                     if ($model->jenis_pembayaran == null) {
                     ?>
                         <div class="row">
-                            <?php $form = ActiveForm::begin(['action' => ['data-penjualan-barang/tambah-penjualan-detail']]); ?>
-                            <div class="col-md-6">
-                                <?= $form->field($model2, 'id_barang')->widget(Select2::classname(), [
-                                    'data' => $data_barang,
-                                    'language' => 'en',
-                                    'options' => ['placeholder' => 'Pilih Barang'],
-                                    'pluginOptions' => [
-                                        'allowClear' => true
-                                    ],
-                                ])->label('Barang') ?>
-                            </div>
-                            <div class="col-md-3">
-                                <?= $form->field($model2, 'qty')->textInput(['type' => 'number', 'value' => 1]) ?>
-                                <?= $form->field($model2, 'id_penjualan')->textInput(['type' => 'hidden', 'value' => $model->id_penjualan])->label(false) ?>
-                            </div>
-                            <div class="col-md-3">
-                                <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success pull-right', 'style' => 'margin-top: 24px;']) ?>
-                            </div>
+                            <div class="col-md-12" style="margin-top:20px;">
+                                <ul class="nav nav-tabs" id="tabForRefreshPage">
+                                    <li class="active"><a data-toggle="tab" href="#barcode"><span class="fa fa-barcode"></span> Cari Barcode</a></li>
+                                    <li><a data-toggle="tab" href="#nama"><span class="fa fa-tags"></span> Cari Nama</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="nama" class="tab-pane fade" style="margin-top:20px;">
+                                        <?php $form = ActiveForm::begin(['action' => ['data-penjualan-barang/tambah-penjualan-detail'], 'options' => ['name' => 'TambahDetail']]); ?>
+                                        <div class="col-md-8">
+                                            <?= $form->field($model2, 'id_barang')->widget(Select2::classname(), [
+                                                'data' => $data_barang,
+                                                'language' => 'en',
+                                                'options' => ['placeholder' => 'Pilih Barang'],
+                                                'pluginOptions' => [
+                                                    'allowClear' => true
+                                                ],
+                                            ])->label('Barang') ?>
+                                            <?= $form->field($model2, 'id_penjualan')->textInput(['type' => 'hidden', 'value' => $model->id_penjualan])->label(false) ?>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success pull-right', 'style' => 'margin-top: 24px;']) ?>
+                                        </div>
 
-                            <?php ActiveForm::end(); ?>
+                                        <?php ActiveForm::end(); ?>
+                                    </div>
+                                    <div id="barcode" class="tab-pane fade in active" style="margin-top:20px;">
+                                        <?php $form = ActiveForm::begin(['action' => ['data-penjualan-barang/tambah-penjualan-detail-barcode'], 'options' => ['id' => 'TambahDetailBarcode', 'name' => 'TambahDetailBarcode', 'class' => '']]); ?>
+                                        <div class="col-md-8">
+                                            <?= $form->field($model2, 'id_barang')->textInput(['autofocus' => true])->label('Barang') ?>
+                                            <?= $form->field($model2, 'id_penjualan')->textInput(['type' => 'hidden', 'value' => $model->id_penjualan])->label(false) ?>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-saved"></span> Simpan', ['class' => 'btn btn-success pull-right hidden', 'style' => 'margin-top: 24px;']) ?>
+                                        </div>
+
+                                        <?php ActiveForm::end(); ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     <?php } ?>
                     <br>
@@ -126,7 +145,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td><?= 'Bulan ' . tanggal_indo2(date('F', strtotime($value->stok_keluar->tanggal_keluar))) . ' - ' . $value->stok_keluar->keterangan ?></td>
                                     <td><?= $value->barang->nama_barang ?></td>
                                     <td><?= number_format($value->harga_jual) ?></td>
-                                    <td align="center"><?= $value->qty ?></td>
+                                    <td align="center">
+                                        <a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#modal-view" data-id="<?= $value->id_penjualan_detail ?>" class="label label-default edit-qty"><?= $value->qty ?></a>
+                                    </td>
                                     <td align="right"><?= number_format($value->total_jual) ?></td>
 
                                 </tr>
@@ -318,6 +339,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
+<div class="modal fade" id="modal-view">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Terima Barang Detail</h4>
+            </div>
+            <div class="modal-body">
+                <?= Html::beginForm(['edit-qty', array('class' => 'form-inline')]) ?>
+                <label for="qty">Qty</label>
+                <input type="number" name="qty" id="qty" class="form-control" style="margin-bottom: 10px;" required>
+                <input type="hidden" name="id_penjualan_detail" id="id_penjualan_detail" class="form-control" style="margin-bottom: 10px;">
+                <?= Html::submitButton('Submit', ['class' => 'btn btn-success']) ?>
+                <?= Html::endForm() ?>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
 <?php
 $script = <<< JS
     $('#datapenjualandetail-id_barang').select2('open').select2('close');
@@ -329,6 +374,44 @@ $script = <<< JS
         $('#form-tagihan').removeAttr('hidden');
         $("#form-tunai").attr("hidden",true);
     })
+    $(".edit-qty").click(function() {
+        // mengambil data berdasarkan id
+        const id = $(this).data('id');
+        console.log(id);
+        // pindahin action
+        $("#form").show();
+        $('form').attr('action', 'index.php?r=data-penjualan-barang%2Fedit-qty&id='+id);
+        $.ajax({
+            url: 'index.php?r=data-penjualan-barang%2Fget-penjualan-detail&id='+id,
+            data: {id : id},
+            method: 'post',
+            dataType: 'json',
+            success: function(data) {
+                $('#id_penjualan_detail').val(data.id_penjualan_detail);
+                $('#qty').focus();
+                $('#qty').val(data.qty);
+                // $('#stokpenyesuaian-keterangan').val(data.keterangan);
+            }
+        });
+    });
     JS;
 $this->registerJs($script);
 ?>
+<!-- <script>
+    document.onkeydown = function(teziger) {
+        switch (teziger.keyCode) {
+            case 48: // KeyCode tombol Enter
+                // document.TambahDetail.submit();
+                <?php
+                foreach ($penjualan_detail as $key => $value) {
+                }
+                ?>
+                break;
+                // Menambah fungsi shortcut lain
+            case 8: // KeyCode tombol backspace
+                window.location = 'keluar.php';
+                break;
+        }
+        // teziger.preventDefault(); // Menghapus fungsi default tombol
+    }
+</script> -->
