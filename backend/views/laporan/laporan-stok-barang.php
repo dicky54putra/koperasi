@@ -11,7 +11,7 @@ use yii\web\JsExpression;
 use backend\models\StokMasuk;
 use backend\models\StokKeluar;
 use backend\models\DataPembelianDetail;
-
+use backend\models\StokPenyesuaian;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\PurchaseOrderSearch */
@@ -85,22 +85,41 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box box-info" style="overflow: auto">
         <div class="col-md-12" style="padding: 0;">
-            <div class="box-body">
+            <div class="box-body" style="overflow: auto;">
                 <p style="font-family: 'Times New Roman'">
                     <h4>Periode Bulan: <?= ($tanggal_awal != '') ? tanggal_indo2(date('F', strtotime($tanggal_awal))) : '-'; ?></h4>
                 </p>
 
-                <table class="table" id="table-index">
+                <table class="table table-bordered" id="table-index">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Nama Barang</th>
-                            <!-- <th>Kategori</th> -->
-                            <!-- <th>Harga Jual</th> -->
-                            <th>Harga Beli</th>
-                            <th>Detail Stok Masuk</th>
-                            <th>Detail Stok Keluar</th>
-                            <th>Margin (Stok Masuk - Stok Keluar)</th>
+                            <th rowspan="2">No</th>
+                            <th rowspan="2">Kode Barang</th>
+                            <th rowspan="2">Nama Barang</th>
+                            <th rowspan="2">Harga Beli</th>
+                            <th rowspan="2">Harga Jual</th>
+                            <th colspan="2" style="white-space: nowrap;">Persediaan Awal</th>
+                            <th colspan="2" style="white-space: nowrap;">Penjualan</th>
+                            <th colspan="2" style="white-space: nowrap;">Barang Masuk</th>
+                            <th colspan="2" style="white-space: nowrap;">Persediaan Akhir</th>
+                            <th colspan="2" style="white-space: nowrap;">Persediaan Dikoperasi</th>
+                            <th colspan="2" style="white-space: nowrap;">Selisih Kurang/Lebih</th>
+                            <th rowspan="2">Keterangan</th>
+                            <!-- <th>Margin (Stok Masuk - Stok Keluar)</th> -->
+                        </tr>
+                        <tr>
+                            <th>Qty</th>
+                            <th>Nominal</th>
+                            <th>Qty</th>
+                            <th>Nominal</th>
+                            <th>Qty</th>
+                            <th>Nominal</th>
+                            <th>Qty</th>
+                            <th>Nominal</th>
+                            <th>Qty</th>
+                            <th>Nominal</th>
+                            <th>Qty</th>
+                            <th>Nominal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,8 +130,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         $tgl_keluar = '';
                         $qty_masuk = 0;
                         $qty_keluar = 0;
+                        // SELECT data_barang.id_barang, data_barang.kode_barang, data_barang.nama_barang, kategori_barang.nama_kategori, data_barang.harga_jual, data_barang.harga_beli, data_barang.stok
                         $query1 = Yii::$app->db->createCommand("
-                                        SELECT data_barang.id_barang, data_barang.kode_barang, data_barang.nama_barang, kategori_barang.nama_kategori, data_barang.harga_jual, data_barang.harga_beli
+                                        SELECT *
                                         FROM data_barang
                                         LEFT JOIN data_satuan ON data_satuan.id_satuan = data_barang.id_satuan
                                         LEFT JOIN kategori_barang ON kategori_barang.id_kategori = data_barang.id_kategori
@@ -136,13 +156,120 @@ $this->params['breadcrumbs'][] = $this->title;
                         ?>
                             <tr>
                                 <td><?= $no++ . '.' ?></td>
-                                <!-- <td><?= $data['kode_barang'] ?></td> -->
+                                <td><?= $data['kode_barang'] ?></td>
                                 <td><?= $data['nama_barang'] ?></td>
-                                <td><?= 'Rp. ' . number_format($data['harga_beli']) ?></td>
-                                <td><?= $stok_masuk ?></td>
-                                <td><?= $stok_keluar ?></td>
-
-                                <td><?= $stok_masuk - $stok_keluar ?></td>
+                                <td><?= number_format($data['harga_beli']) ?></td>
+                                <td><?= number_format($data['harga_jual']) ?></td>
+                                <?php
+                                $stok_penyesuaian = StokPenyesuaian::find()->where(['id_barang' => $data['id_barang']])->all();
+                                $jml = 0;
+                                $jml_ = 0;
+                                foreach ($stok_penyesuaian as $key => $val) {
+                                    if ($val->tipe == 1) {
+                                        $jml += $val['qty'];
+                                        // $qty = $val['qty'] . '<br>';
+                                    } else {
+                                        $jml_ += $val['qty'];
+                                        // $qty = '(' . $val['qty'] . ')<br>';
+                                    }
+                                }
+                                // if ($jml_ > $jml) {
+                                $jmll = $jml_ - $jml;
+                                // } else {
+                                //     $jmll = $jml - $jml_;
+                                // }
+                                // echo '<b>' . $jmll . '</b>';
+                                ?>
+                                <td>
+                                    <!-- qty persediaan awal -->
+                                    <?php
+                                    $stok_awal = $data['stok'] + $jmll + $stok_keluar - $stok_masuk;
+                                    echo $stok_awal;
+                                    ?>
+                                </td>
+                                <td>
+                                    <!-- nominal persediaan awal -->
+                                    <?= number_format($stok_awal *  $data['harga_beli']) ?>
+                                </td>
+                                <td>
+                                    <!-- qty persediaan penjualan -->
+                                    <?= (!empty($stok_keluar)) ? $stok_keluar : '-' ?>
+                                </td>
+                                <td>
+                                    <!-- nominal persediaan penjualan -->
+                                    <?= number_format($stok_keluar * $data['harga_jual']) ?>
+                                </td>
+                                <td>
+                                    <!-- qty persediaan barang masuk -->
+                                    <?= (!empty($stok_masuk)) ? $stok_masuk : '-' ?>
+                                </td>
+                                <td>
+                                    <!-- nominal persediaan barang masuk -->
+                                    <?= number_format($stok_masuk * $data['harga_beli']) ?>
+                                </td>
+                                <td>
+                                    <!-- qty persediaan akhir -->
+                                    <?php
+                                    $p_akhir = $stok_awal + $stok_masuk - $stok_keluar;
+                                    echo $p_akhir;
+                                    ?>
+                                </td>
+                                <td>
+                                    <!-- nominal persediaan akhir -->
+                                    <?= number_format($p_akhir * $data['harga_beli']) ?>
+                                </td>
+                                <td>
+                                    <!-- qty persediaan gudang -->
+                                    <?= $data['stok'] ?>
+                                </td>
+                                <td>
+                                    <?= number_format($data['stok'] * $data['harga_beli']) ?>
+                                    <!-- nominal persediaan gudang -->
+                                </td>
+                                <td>
+                                    <?php
+                                    $stok_penyesuaian = StokPenyesuaian::find()->where(['id_barang' => $data['id_barang']])->all();
+                                    $jml = 0;
+                                    $jml_ = 0;
+                                    foreach ($stok_penyesuaian as $key => $val) {
+                                        if ($val->tipe == 1) {
+                                            $jml += $val['qty'];
+                                            echo (!empty($val['qty'])) ? $val['qty'] . '<br>' : '-';
+                                        } else {
+                                            $jml_ += $val['qty'];
+                                            echo (!empty($val['qty'])) ? $val['qty'] . '<br>' : '-';
+                                        }
+                                    }
+                                    // if ($jml_ > $jml) {
+                                    //     $jmll = $jml_ - $jml;
+                                    // } else {
+                                    $jmll = $jml - $jml_;
+                                    // }
+                                    // echo '<b>' . $jmll . '</b>';
+                                    ?>
+                                    <!-- qty persediaan penyesuaian -->
+                                </td>
+                                <td>
+                                    <?php
+                                    $stok_penyesuaian = StokPenyesuaian::find()->where(['id_barang' => $data['id_barang']])->all();
+                                    foreach ($stok_penyesuaian as $key => $val) {
+                                        if ($val->tipe == 1) {
+                                            echo number_format($val['qty'] *  $data['harga_jual']) . '<br>';
+                                        } else {
+                                            echo '(' . number_format($val['qty'] *  $data['harga_jual']) . ')<br>';
+                                        }
+                                    }
+                                    ?>
+                                    <!-- nominal persediaan penyesuaian -->
+                                </td>
+                                <td>
+                                    <?php
+                                    $stok_penyesuaian = StokPenyesuaian::find()->where(['id_barang' => $data['id_barang']])->all();
+                                    foreach ($stok_penyesuaian as $key => $val) {
+                                        echo $val['keterangan'] . '<br>';
+                                    }
+                                    ?>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>

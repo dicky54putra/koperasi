@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="col-md-12" style="margin-top:20px;">
                                 <ul class="nav nav-tabs" id="tabForRefreshPage">
                                     <li class="active"><a data-toggle="tab" href="#barcode"><span class="fa fa-barcode"></span> Cari Barcode</a></li>
-                                    <li><a data-toggle="tab" href="#nama"><span class="fa fa-tags"></span> Cari Nama</a></li>
+                                    <li><a data-toggle="tab" href="#nama"><span class="fa fa-tags"></span> Cari Nama Barang</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div id="nama" class="tab-pane fade" style="margin-top:20px;">
