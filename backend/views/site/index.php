@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use dosamigos\chartjs\ChartJs;
 use backend\models\AktPenjualan;
+use backend\models\DataPembelianDetail;
 use backend\models\DataPenjualanBarang;
 
 /* @var $this yii\web\View */

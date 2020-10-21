@@ -44,6 +44,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
     <?php
     $no = 1;
     $totalan_pengurangan = 0;
+    $totalan = 0;
     $barang = '';
     $hrg_barang = '';
     $query1 = Yii::$app->db->createCommand("
@@ -73,13 +74,18 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
               echo 'Rp. ' . number_format($hrg_barang) . '<br>';
               $grandtotal += $hrg_barang;
             }
+
+            $totalan += $grandtotal;
             ?></td>
         <td><?= 'Rp. ' . ribuan($grandtotal) ?></td>
       </tr>
     <?php } ?>
   </tbody>
   <tfoot>
-
+    <tr>
+      <th colspan="5">Total</th>
+      <th><?= 'Rp. ' . ribuan($totalan) ?></th>
+    </tr>
   </tfoot>
 </table>
 <?php

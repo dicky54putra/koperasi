@@ -1,5 +1,6 @@
 <?php
 
+use backend\models\DataPenjualanDetail;
 use yii\helpers\Html;
 use kartik\select2\Select2;
 use yii\widgets\ActiveForm;
@@ -175,18 +176,19 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="col-md-4">
             <?php
-            if ($model->jenis_pembayaran == null) {
+            $penjualan_detail_count = DataPenjualanDetail::find()->where(['id_penjualan' => $model->id_penjualan])->count();
+            if ($model->jenis_pembayaran == null && $penjualan_detail_count > 0) {
             ?>
                 <div class="box box-warning">
                     <div class="box-body">
                         <div class="col-xs-6">
-                            <button class="btn btn-primary form-control" id="pembayaran-tunai">Tunai</button>
+                            <button class="btn btn-primary form-control pembayaran" id="pembayaran-tunai">Tunai</button>
                         </div>
                         <?php
                         if ($model->id_anggota > 0) {
                         ?>
                             <div class="col-xs-6">
-                                <button class="btn btn-success form-control" id="pembayaran-tagihan">Tagihan</button>
+                                <button class="btn btn-success form-control pembayaran" id="pembayaran-tagihan">Tagihan</button>
                             </div>
                         <?php } ?>
                         <?= Html::beginForm(['data-penjualan-barang/cetak', 'id' => $_GET['id']], 'post') ?>

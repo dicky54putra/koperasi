@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="box-header">
             <div class="col-md-12" style="padding: 0;">
                 <div class="box-body">
-                    <?= Html::beginForm(['laporan-hutang-toko', array('class' => 'form-inline')]) ?>
+                    <?= Html::beginForm(['laporan-piutang-toko', array('class' => 'form-inline')]) ?>
 
                     <table border="0" width="100%">
                         <tr>
@@ -112,7 +112,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         LEFT JOIN anggota_koperasi ON anggota_koperasi.id_anggota = data_penjualan_barang.id_anggota
                                         WHERE data_penjualan_barang.tanggal_penjualan
                                         BETWEEN '$tanggal_awal' AND '$tanggal_akhir'
-                                        AND data_penjualan_barang.jenis_pembayaran = 2
+                                        AND data_penjualan_barang.jenis_pembayaran = 1
                                         ORDER BY data_penjualan_barang.tanggal_penjualan
                                         ")->query();
                         foreach ($query1 as $key => $data) {
@@ -120,7 +120,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         ?>
                             <tr>
                                 <td><?= $no++ . '.' ?></td>
-                                <td><?= $data['nama_anggota'] ?></td>
+                                <td>
+                                    <?php
+                                    if ($data['nama_anggota'] == '') {
+                                        echo 'Customer Umum';
+                                    } else {
+                                        echo $data['nama_anggota'];
+                                    }
+                                    ?>
+                                </td>
                                 <td><?= tanggal_indo($data['tanggal_penjualan'], true) ?></td>
                                 <td><?php
                                     $grandtotal = 0;

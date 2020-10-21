@@ -55,6 +55,17 @@ class LaporanController extends Controller
         ]);
     }
 
+    public function actionLaporanPiutangToko()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->render('laporan-piutang-toko', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
     public function actionLaporanPenjualan()
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
@@ -88,6 +99,17 @@ class LaporanController extends Controller
         ]);
     }
 
+    public function actionLaporanLabaRugi()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->render('laporan-laba-rugi', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
     public function actionExportExcelLaporanHutang()
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
@@ -105,6 +127,17 @@ class LaporanController extends Controller
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
 
         return $this->renderPartial('export_excel_laporan_hutang_toko', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
+    public function actionExportExcelLaporanPiutangToko()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->renderPartial('export_excel_laporan_piutang_toko', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
         ]);
@@ -138,6 +171,17 @@ class LaporanController extends Controller
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
 
         return $this->renderPartial('export_excel_laporan_stok_penyesuaian', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
+    public function actionExportExcelLaporanLabaRugi()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->renderPartial('export_excel_laporan_laba_rugi', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
         ]);
