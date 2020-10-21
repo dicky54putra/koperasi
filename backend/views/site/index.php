@@ -84,6 +84,97 @@ $this->title = 'Dashboard';
             </div>
         </div>
     </div>
+    <!-- labarugi -->
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading panel-primary">
+                    <h4 style="font-weight: bold;"><a style="color: white;" href="index.php?r=laporan/laporan-laba-rugi">Data Laba/Rugi Per Hari <?= tanggal_indo(date('Y-m-d')) ?></a></h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table" id="table-index">
+                        <tbody>
+                            <?php $tanggal_hari_ini = date('Y-m-d'); ?>
+                            <tr>
+                                <th>Pendapatan</th>
+                                <th></th>
+                                <th>Pengeluaran</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>Pejualan Cash</td>
+                                <td align="right">
+                                    <?php
+                                    $pendapatan_cash =  Yii::$app->db->createCommand("SELECT SUM(total_jual) FROM data_penjualan_detail INNER JOIN data_penjualan_barang ON data_penjualan_detail.id_penjualan = data_penjualan_barang.id_penjualan WHERE jenis_pembayaran = 1 AND data_penjualan_barang.tanggal_penjualan = '$tanggal_hari_ini'")->queryScalar();
+                                    echo ribuan($pendapatan_cash);
+                                    ?>
+                                </td>
+                                <td>Pembelian</td>
+                                <td align="right">
+                                    <?php
+                                    $pembelian =  Yii::$app->db->createCommand("SELECT SUM(total_beli) FROM data_pembelian_detail  INNER JOIN data_pembelian_barang ON data_pembelian_detail.id_pembelian = data_pembelian_barang.id_pembelian WHERE data_pembelian_barang.tanggal_pembelian = '$tanggal_hari_ini'")->queryScalar();
+                                    echo ribuan($pembelian);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pejualan Kredit</td>
+                                <td align="right">
+                                    <?php
+                                    $pendapatan_kredit =  Yii::$app->db->createCommand("SELECT SUM(total_jual) FROM data_penjualan_detail INNER JOIN data_penjualan_barang ON data_penjualan_detail.id_penjualan = data_penjualan_barang.id_penjualan WHERE jenis_pembayaran = 2 AND data_penjualan_barang.tanggal_penjualan = '$tanggal_hari_ini'")->queryScalar();
+                                    echo ribuan($pendapatan_kredit);
+                                    ?>
+                                </td>
+                                <td>Pinjaman</td>
+                                <td align="right">
+                                    <?php
+                                    $pinjam =  Yii::$app->db->createCommand("SELECT SUM(nominal) FROM simpan_pinjam WHERE jenis = 2 AND tanggal = '$tanggal_hari_ini'")->queryScalar();
+                                    echo ribuan($pinjam);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Simpan</td>
+                                <td align="right">
+                                    <?php
+                                    $simpan =  Yii::$app->db->createCommand("SELECT SUM(nominal) FROM simpan_pinjam WHERE jenis = 1 AND tanggal = '$tanggal_hari_ini'")->queryScalar();
+                                    echo ribuan($simpan);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Total Pendapatan</th>
+                                <th style="border-top: 1px solid #000000; float: right;">
+                                    <?php
+                                    $total_pendapatan = $simpan + $pendapatan_cash + $pendapatan_kredit;
+                                    echo ribuan($total_pendapatan);
+                                    ?>
+                                </th>
+                                <th>Total Pengeluaran</th>
+                                <th style="border-top: 1px solid #000000;float: right;">
+                                    <?php
+                                    $total_pengeluaran = $pinjam + $pembelian;
+                                    echo ribuan($total_pengeluaran);
+                                    ?>
+                                </th>
+                            </tr>
+                            <tr style="border-top: 1px solid #000000;">
+                                <th>Laba/Rugi</th>
+                                <th></th>
+                                <th></th>
+                                <th style="float: right;">
+                                    <?php
+                                    $laba_rugi = $total_pendapatan - $total_pengeluaran;
+                                    echo ribuan($laba_rugi);
+                                    ?>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
