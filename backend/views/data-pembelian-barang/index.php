@@ -1,5 +1,6 @@
 <?php
 
+use backend\models\AnggotaKoperasi;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
@@ -44,12 +45,13 @@ $this->title = 'Data Pembelian Barang';
                             <?php
                             $i = 1;
                             foreach ($data_pembelian as $key => $value) {
+                                $anggota = AnggotaKoperasi::find()->where(['id_anggota' => $value->id_anggota])->one();
                             ?>
 
                                 <tr class='clickable-row' data-href="index.php?r=data-pembelian-barang/view&id=<?= $value->id_pembelian ?>" style="cursor: pointer;">
                                     <td><?= $i++; ?>.</td>
                                     <td><?= tanggal_indo($value->tanggal_pembelian) ?></td>
-                                    <td><?= $value->id_anggota == NULL ? '<i>Tidak ada supplier</i>' : $value->anggota->nama_anggota ?></td>
+                                    <td><?= $value->id_anggota == NULL ? '<i>Tidak ada supplier</i>' : $retVal = (!empty($anggota->nama_anggota)) ? $anggota->nama_anggota : ''; ?></td>
                                     <td><?= $value->no_faktur ?></td>
                                 </tr>
 
