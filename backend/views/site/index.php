@@ -159,14 +159,16 @@ $this->title = 'Dashboard';
                                 </th>
                             </tr>
                             <tr style="border-top: 1px solid #000000;">
-                                <th>Laba/Rugi</th>
-                                <th></th>
-                                <th></th>
-                                <th style="float: right;">
-                                    <?php
-                                    $laba_rugi = $total_pendapatan - $total_pengeluaran;
-                                    echo ribuan($laba_rugi);
-                                    ?>
+                                <th style="border-top: 1px solid #000000;">Laba/Rugi</th>
+                                <th style="border-top: 1px solid #000000;"></th>
+                                <th style="border-top: 1px solid #000000;"></th>
+                                <th style="border-top: 1px solid #000000;">
+                                    <p style="float: right;">
+                                        <?php
+                                        $laba_rugi = $total_pendapatan - $total_pengeluaran;
+                                        echo ribuan($laba_rugi);
+                                        ?>
+                                    </p>
                                 </th>
                             </tr>
                         </tbody>

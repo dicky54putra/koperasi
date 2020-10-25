@@ -54,8 +54,22 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'kategori_barang.nama_kategori',
-                            'satuan.nama_satuan',
+                            [
+                                'attribute' => 'id_kategori',
+                                'label' => 'Kategori',
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    return (!empty($model->kategori_barang->nama_kategori)) ? $model->kategori_barang->nama_kategori : 'Kategori tidak ada/ sudah dihapus';
+                                }
+                            ],
+                            [
+                                'attribute' => 'id_satuan',
+                                'label' => 'Satuan',
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    return (!empty($model->satuan->nama_satuan)) ? $model->satuan->nama_satuan : 'Satuan tidak ada/ sudah dihapus';
+                                }
+                            ],
                             'kode_barang',
                             'nama_barang',
                             'stok',
@@ -73,8 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'label' => 'Supplier',
                                 'format' => 'raw',
                                 'value' => function ($model) {
-
-                                    return $model->id_anggota == NULL ? ' - ' : $model->anggota->nama_anggota;
+                                    return ($model->id_anggota == NULL) ? ' - ' : $retVal = (!empty($model->anggota->nama_anggota)) ? $model->anggota->nama_anggota : 'Suplier tidak ada/ sudah dihapus';
                                 }
                             ],
                             [

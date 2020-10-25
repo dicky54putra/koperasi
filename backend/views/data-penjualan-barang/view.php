@@ -234,7 +234,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <div style="font-size: 11px;">Nama Anggota</div>
                                     </td>
                                     <td colspan="2">
-                                        <p style="font-size: 11px;">: <?= $model->anggota->nama_anggota ?></p>
+                                        <p style="font-size: 11px;">: <?= (!empty($model->anggota->nama_anggota)) ? $model->anggota->nama_anggota : 'Anggota tidak ada/ sudah dihapus' ?></p>
                                     </td>
                                 </tr>
                             <?php } ?>

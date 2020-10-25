@@ -92,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <table class="table" id="table-index">
                         <tbody>
                             <tr>
-                                <th>Pendapatan</th>
+                                <th colspan="2">Pendapatan</th>
                                 <th></th>
                             </tr>
                             <tr>
@@ -103,6 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     echo ribuan($pendapatan_cash);
                                     ?>
                                 </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Pejualan Kredit</td>
@@ -112,6 +113,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     echo ribuan($pendapatan_kredit);
                                     ?>
                                 </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Simpan</td>
@@ -121,18 +123,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                     echo ribuan($simpan);
                                     ?>
                                 </td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <th>Total Pendapatan</th>
-                                <th style="border-top: 1px solid #000000; float: right;">
-                                    <?php
-                                    $total_pendapatan = $simpan + $pendapatan_cash + $pendapatan_kredit;
-                                    echo ribuan($total_pendapatan);
-                                    ?>
+                                <th colspan="2">Total Pendapatan</th>
+                                <th style="border-top: 1px solid #000000;">
+                                    <p style="float: right;">
+                                        <?php
+                                        $total_pendapatan = $simpan + $pendapatan_cash + $pendapatan_kredit;
+                                        echo ribuan($total_pendapatan);
+                                        ?>
+                                    </p>
                                 </th>
                             </tr>
                             <tr>
-                                <th>Pengeluaran</th>
+                                <th colspan="2">Pengeluaran</th>
                                 <th></th>
                             </tr>
                             <tr>
@@ -143,6 +148,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     echo ribuan($pembelian);
                                     ?>
                                 </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Pinjaman</td>
@@ -152,23 +158,28 @@ $this->params['breadcrumbs'][] = $this->title;
                                     echo ribuan($pinjam);
                                     ?>
                                 </td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <th>Total Pengeluaran</th>
-                                <th style="border-top: 1px solid #000000;float: right;">
-                                    <?php
-                                    $total_pengeluaran = $pinjam + $pembelian;
-                                    echo ribuan($total_pengeluaran);
-                                    ?>
+                                <th colspan="2">Total Pengeluaran</th>
+                                <th style="border-top: 1px solid #000000;">
+                                    <p style="float: right;">
+                                        <?php
+                                        $total_pengeluaran = $pinjam + $pembelian;
+                                        echo ribuan($total_pengeluaran);
+                                        ?>
+                                    </p>
                                 </th>
                             </tr>
                             <tr style="border-top: 1px solid #000000;">
-                                <th>Laba/Rugi</th>
-                                <th style="float: right;">
-                                    <?php
-                                    $laba_rugi = $total_pendapatan - $total_pengeluaran;
-                                    echo ribuan($laba_rugi);
-                                    ?>
+                                <th style="border-top: 1px solid #000000;" colspan="2">Laba/Rugi</th>
+                                <th style="border-top: 1px solid #000000;">
+                                    <p style="float: right;">
+                                        <?php
+                                        $laba_rugi = $total_pendapatan - $total_pengeluaran;
+                                        echo ribuan($laba_rugi);
+                                        ?>
+                                    </p>
                                 </th>
                             </tr>
                         </tbody>

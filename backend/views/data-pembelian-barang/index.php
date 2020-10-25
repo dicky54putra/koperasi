@@ -51,7 +51,7 @@ $this->title = 'Data Pembelian Barang';
                                 <tr class='clickable-row' data-href="index.php?r=data-pembelian-barang/view&id=<?= $value->id_pembelian ?>" style="cursor: pointer;">
                                     <td><?= $i++; ?>.</td>
                                     <td><?= tanggal_indo($value->tanggal_pembelian) ?></td>
-                                    <td><?= $value->id_anggota == NULL ? '<i>Tidak ada supplier</i>' : $retVal = (!empty($anggota->nama_anggota)) ? $anggota->nama_anggota : ''; ?></td>
+                                    <td><?= $value->id_anggota == NULL ? '<i>Tidak ada supplier</i>' : $retVal = (!empty($anggota->nama_anggota)) ? $anggota->nama_anggota : 'Supplier tidak ada/ sudah dihapus'; ?></td>
                                     <td><?= $value->no_faktur ?></td>
                                 </tr>
 

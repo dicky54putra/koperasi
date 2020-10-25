@@ -81,8 +81,8 @@ $this->title = 'Data Barang';
                                     </td>
                                     <td><?= $value->kode_barang ?></td>
                                     <td><?= $value->nama_barang ?></td>
-                                    <td><?= $value->kategori_barang->nama_kategori ?></td>
-                                    <td><?= $value->satuan->nama_satuan ?></td>
+                                    <td><?= (!empty($value->kategori_barang->nama_kategori)) ? $value->kategori_barang->nama_kategori : 'Kategori tidak ada/ sudah dihapus'; ?></td>
+                                    <td><?= (!empty($value->satuan->nama_satuan)) ? $value->satuan->nama_satuan : 'Satuan tidak ada/ sudah dihapus' ?></td>
                                     <td><?= $value->harga_jual ?></td>
                                     <td><?= $value->harga_beli ?></td>
                                     <td><?= $value->stok ?></td>

@@ -174,8 +174,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ?>
                                             <tr>
                                                 <td><?= $no ?></td>
-                                                <td><?= tanggal_indo($val->stok_keluar->tanggal_keluar, true) . ' - ' . $val->stok_keluar->keterangan ?></td>
-                                                <td><?= $val->barang->nama_barang ?></td>
+                                                <td><?= (!empty($val->stok_keluar->tanggal_keluar)) ? tanggal_indo($val->stok_keluar->tanggal_keluar, true) . ' - ' . $val->stok_keluar->keterangan : 'Data tidak ada/ sudah dihapus' ?></td>
+                                                <td><?= (!empty($val->barang->nama_barang)) ? $$val->barang->nama_barang : 'Barang tidak ada/ sudah dihapus' ?></td>
                                                 <td><?= 'Rp. ' . number_format($val->harga_jual) ?></td>
                                                 <td align="center"><?= $val->qty ?></td>
                                                 <td align="center"><?= $val->diskon == 0 ? ' - ' : $val->diskon . " %" ?></td>
