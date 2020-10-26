@@ -67,6 +67,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
       $tgl_masuk = '';
       $tgl_keluar = '';
       $qty_masuk = 0;
+      $gt_persediaan_stok = 0;
       $qty_keluar = 0;
       // SELECT data_barang.id_barang, data_barang.kode_barang, data_barang.nama_barang, kategori_barang.nama_kategori, data_barang.harga_jual, data_barang.harga_beli, data_barang.stok
       $query1 = Yii::$app->db->createCommand("
@@ -77,6 +78,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                                         ORDER BY data_barang.id_barang
                                         ")->query();
       foreach ($query1 as $key => $data) {
+        $gt_persediaan_stok += $data['stok'] * $data['harga_beli'];
         $total_stok = 0;
         $total_stok_kosong = '';
         $stok_masuk = Yii::$app->db->createCommand("
@@ -199,6 +201,13 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
         </tr>
       <?php } ?>
     </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="12"></th>
+        <th><?= number_format($gt_persediaan_stok) ?></th>
+        <th colspan="5"></th>
+      </tr>
+    </tfoot>
   <?php } ?>
 </table>
 <?php

@@ -1,6 +1,8 @@
 <?php
 // use backend\models\PendaftaranPengujian;
 
+use backend\models\Pelunasan;
+
 $tanggal_awal = $_GET['tanggal_awal'];
 $tanggal_akhir = $_GET['tanggal_akhir'];
 ?>

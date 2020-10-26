@@ -29,12 +29,12 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
 <table class="table" border="1">
     <thead>
         <tr>
-            <td colspan="6">Periode Bulan: <?= ($tanggal_awal != '') ? tanggal_indo2(date('F', strtotime($tanggal_awal))) : '-'; ?></td>
+            <td colspan="4">Periode Bulan: <?= ($tanggal_awal != '') ? tanggal_indo2(date('F', strtotime($tanggal_awal))) : '-'; ?></td>
         </tr>
         <tr>
             <th>No</th>
             <th>Nama Barang</th>
-            <th>Qty</th>
+            <th>Tanggal, Qty, & Keterangan</th>
             <th>Stok Sekarang</th>
         </tr>
     </thead>
@@ -69,13 +69,19 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                 <td><?= $no++ . '.' ?></td>
                 <td><?= $data['nama_barang'] ?></td>
                 <td>
-                    <?php
-                    if (!empty($stok_penyesuaian)) {
-                        foreach ($stok_penyesuaian as $key => $val) {
-                            echo ($val['tipe'] == 1) ? $val['qty'] . '<br>' : '(' . $val['qty'] . ')' . '<br>';
-                        }
-                    }
-                    ?>
+                    <table style="width: 100%;">
+                        <?php
+                        if (!empty($stok_penyesuaian)) {
+                            foreach ($stok_penyesuaian as $key => $val) {
+                        ?>
+                                <tr>
+                                    <td style="width: 35%;"><?= (!empty($val['tanggal'])) ? tanggal_indo($val['tanggal']) . ',' : ''; ?></td>
+                                    <td style="width: 15%;"><?= ($val['tipe'] == 1) ? $val['qty'] . ',' : '(' . $val['qty'] . '),'; ?></td>
+                                    <td><?= $val['keterangan']; ?></td>
+                                </tr>
+                            <?php  } ?>
+                        <?php  } ?>
+                    </table>
                 </td>
                 <td><?= $data['stok'] ?></td>
             </tr>

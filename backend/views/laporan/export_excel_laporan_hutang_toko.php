@@ -66,7 +66,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
         <td><?php
             $grandtotal = 0;
             foreach ($detail as $key => $value) {
-              echo $barang = $value->barang->nama_barang . ' ( ' . $value->qty . ' x ' . $value->harga_jual . ' ) ' . "<br>";
+              echo $barang = (!empty($value->barang->nama_barang)) ? $value->barang->nama_barang : 'Barang tidak ada/ sudah dihapus' . ' ( ' . $value->qty . ' x ' . $value->harga_jual . ' ) ' . "<br>";
             } ?></td>
         <td><?php
             foreach ($detail as $key => $value) {

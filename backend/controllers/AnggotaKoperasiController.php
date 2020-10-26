@@ -190,7 +190,6 @@ class AnggotaKoperasiController extends Controller
 
     public function actionPrintTagihan($id)
     {
-        $model = $this->findModel($id);
         $update = DataPenjualanBarang::findOne($id);
         $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
 
@@ -203,11 +202,11 @@ class AnggotaKoperasiController extends Controller
         // die;
         if (Yii::$app->request->post('bayar') >= $total) {
             // echo 'ok';
-            foreach ($penjualan_detail as $key => $val) {
-                $barang = DataBarang::find()->where(['id_barang' => $val->id_barang])->one();
-                $barang->stok = $barang->stok - $val->qty;
-                $barang->save(false);
-            }
+            // foreach ($penjualan_detail as $key => $val) {
+            //     $barang = DataBarang::find()->where(['id_barang' => $val->id_barang])->one();
+            //     $barang->stok = $barang->stok - $val->qty;
+            //     $barang->save(false);
+            // }
             $update->no_invoice = date('Ymd') . str_pad($generate + 1, 3, "0", STR_PAD_LEFT);
             $update->jenis_pembayaran = 1;
             $update->jumlah_bayar = Yii::$app->request->post('bayar');
@@ -220,12 +219,51 @@ class AnggotaKoperasiController extends Controller
         }
     }
 
+    public function actionPrintTagihanSemua($id)
+    {
+        $model = $this->findModel($id);
+        $penjualan = DataPenjualanBarang::find()->where(['id_anggota' => $id])->andWhere(['jenis_pembayaran' => 2])->all();
+
+        $total = 0;
+        $generate = DataPenjualanBarang::find()->count();
+        foreach ($penjualan as $key => $value) {
+            $total_nominal = Yii::$app->db->createCommand("SELECT SUM(total_jual) FROM data_penjualan_detail LEFT JOIN data_penjualan_barang ON data_penjualan_barang.id_penjualan = data_penjualan_detail.id_penjualan WHERE data_penjualan_barang.id_anggota = '$model->id_anggota' AND data_penjualan_barang.jenis_pembayaran = '2'")->queryScalar();
+            $u_penjualan = DataPenjualanBarang::find()->where(['id_penjualan' => $value->id_penjualan])->one();
+            $u_penjualan->no_invoice = date('Ymd') . str_pad($generate + 1, 3, "0", STR_PAD_LEFT);
+            $u_penjualan->jenis_pembayaran = 1;
+
+            $u_penjualan->save(false);
+            // if (Yii::$app->request->post('bayar') >= $total_nominal) {
+            // echo $total_nominal;
+            // } else {
+            //     // var_dump($total_nominal);
+            //     return $this->redirect(['anggota-koperasi/view', 'id' => $id]);
+            // }
+            // die;
+            // echo $value->id_penjualan . '-' . $u_penjualan->jenis_pembayaran . '<br>';
+        }
+        return $this->redirect(['anggota-koperasi/view', 'id' => $id]);
+        // return $this->redirect(['anggota-koperasi/print-struk-semua', 'id' => $id]);
+    }
+
     public function actionPrintStruk($id)
     {
         // $update = DataPenjualanBarang::findOne($id);
         $model = DataPenjualanBarang::findOne($id);
         $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
         return $this->renderPartial('print_tagihan', [
+            'model' => $model,
+            'penjualan_detail' => $penjualan_detail,
+            // 'data_anggota' => $data_anggota,
+        ]);
+    }
+
+    public function actionPrintStrukSemua($id)
+    {
+        $model = AnggotaKoperasi::findOne($id);
+        // $model = DataPenjualanBarang::find()->where(['id_anggota' => $id])->one();
+        $penjualan_detail = DataPenjualanDetail::find()->where(['id_penjualan' => $id])->all();
+        return $this->renderPartial('print-struk-semua', [
             'model' => $model,
             'penjualan_detail' => $penjualan_detail,
             // 'data_anggota' => $data_anggota,

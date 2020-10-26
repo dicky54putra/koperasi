@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-7">
             <div class="box box-warning">
                 <div class="box-body">
-                    <h3 style="margin-left: 10px;">Stok Penyesuaian</h3>
+                    <h3 style="margin-left: 10px;">Stok Penyesuaian <?= Html::a('Cetak Stok Barang', ['cetak-stok-barang'], ['class' => 'btn btn-default', 'target' => '_BLANK']) ?> &nbsp; <?= Html::a('Ekspor Stok Barang', ['ekspor-stok-barang'], ['class' => 'btn btn-success']) ?></h3>
                     <table class="table datatables">
                         <thead>
                             <tr>
@@ -108,7 +108,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ?>
                                 <tr>
                                     <td><?= $no ?></td>
-                                    <td><?= $barang->nama_barang ?></td>
+                                    <td><?= (!empty($barang->nama_barang)) ? $barang->nama_barang : "Barang tidak ada/ sudah dihapus" ?></td>
                                     <td><?= $val->qty ?></td>
                                     <td>
                                         <?= Html::a('Delete', ['delete', 'id' => $val->id_stok_penyesuaian], [

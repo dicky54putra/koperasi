@@ -92,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <tr>
                                     <td><?= $no ?></td>
                                     <td></td>
-                                    <td><?= $barang->nama_barang ?></td>
+                                    <td><?= (!empty($barang->nama_barang)) ? $barang->nama_barang : 'Barang tidak ada/ sudah dihapus' ?></td>
                                     <td><?= $val->qty ?></td>
                                 </tr>
                             <?php } ?>

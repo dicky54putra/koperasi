@@ -152,6 +152,16 @@ class StokPenyesuaianController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionCetakStokBarang()
+    {
+        return $this->renderPartial('stok-barang');
+    }
+
+    public function actionEksporStokBarang()
+    {
+        return $this->renderPartial('ekspor-stok-barang');
+    }
+
     /**
      * Finds the StokPenyesuaian model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

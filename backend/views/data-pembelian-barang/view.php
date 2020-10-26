@@ -96,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </td>
                                     <?php } ?>
                                     <td><?= tanggal_indo($value->stok_masuk->tanggal_masuk, true) . ' - ' . $value->stok_masuk->keterangan ?></td>
-                                    <td><?= $value->barang->nama_barang ?></td>
+                                    <td><?= (!empty($value->barang->nama_barang)) ? $value->barang->nama_barang : 'Barang tidak ada/ sudah dihapus'; ?></td>
                                     <td><?= number_format($value->harga_beli) ?></td>
                                     <td align="center"><?= $value->qty ?></td>
                                     <td align="right"><?= number_format($value->total_beli) ?></td>
@@ -136,7 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <tr>
                                 <td>Supplier</td>
                                 <td>:</td>
-                                <td><?= $model->id_anggota == NULL ? '<i>Tidak ada Supplier</i>' : $model->anggota->nama_anggota; ?></td>
+                                <td><?= $model->id_anggota == NULL ? '<i>Tidak ada Supplier</i>' : $retVal = (!empty($model->anggota->nama_anggota)) ? $model->anggota->nama_anggota : 'Supplier tidak ada/ sudah dihapus'; ?></td>
                             </tr>
                             <tr>
                                 <td>No Faktur</td>

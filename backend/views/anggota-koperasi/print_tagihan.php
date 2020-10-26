@@ -45,7 +45,7 @@ use backend\models\DataPenjualanDetail;
                     <div style="font-size: 11px;">Nama Anggota</div>
                 </td>
                 <td colspan="2">
-                    <p style="font-size: 11px;">: <?= $model->anggota->nama_anggota ?></p>
+                    <p style="font-size: 11px;">: <?= (!empty($model->anggota->nama_anggota)) ? $model->anggota->nama_anggota : '' ?></p>
                 </td>
             </tr>
         <?php } ?>
@@ -74,7 +74,7 @@ use backend\models\DataPenjualanDetail;
         ?>
                 <tr>
                     <td>
-                        <p style="font-size: 11px;"><?= $value->barang->nama_barang ?>
+                        <p style="font-size: 11px;"><?= (!empty($value->barang->nama_barang)) ? $value->barang->nama_barang : 'Barang tidak ada/ sudah dihapus' ?>
                         </p>
                     </td>
                     <td>
