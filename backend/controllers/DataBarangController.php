@@ -135,6 +135,59 @@ class DataBarangController extends Controller
         ]);
     }
 
+    public function actionTambahBarangBanyak()
+    {
+        $model = new DataBarang();
+
+        $data_kategori = ArrayHelper::map(
+            KategoriBarang::find()->all(),
+            'id_kategori',
+            function ($model) {
+                return $model['nama_kategori'];
+            }
+        );
+
+        $data_satuan = ArrayHelper::map(
+            DataSatuan::find()->all(),
+            'id_satuan',
+            function ($model) {
+                return $model['nama_satuan'];
+            }
+        );
+
+        $data_supplier = ArrayHelper::map(
+            AnggotaKoperasi::find()->where(['id_jenis_anggota' => 2])->all(),
+            'id_anggota',
+            function ($model) {
+                return $model['nama_anggota'];
+            }
+        );
+
+        $count = 0;
+        if (Yii::$app->request->get()) {
+            $count = Yii::$app->request->get('count');
+        }
+        if ($model->load(Yii::$app->request->post())) {
+            if (sizeof(array_filter($_POST['DataBarang']['harga_jual'])) > 0) {
+                foreach ($_POST['DataBarang']['harga_jual'] as $key => $row) {
+                    // var_dump($model->harga_jual);
+                    die;
+                    $model->save();
+                    Yii::$app->session->setFlash('success', 'Disimpan');
+                    return $this->redirect(['index']);
+                }
+            }
+        }
+
+        return $this->render('tambah-barang-banyak', [
+            'model' => $model,
+            'data_satuan' => $data_satuan,
+            'data_kategori' => $data_kategori,
+            'data_supplier' => $data_supplier,
+            'count' => $count,
+        ]);
+    }
+
     /**
      * Updates an existing DataBarang model.
      * If update is successful, the browser will be redirected to the 'view' page.

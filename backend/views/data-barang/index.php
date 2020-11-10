@@ -31,6 +31,7 @@ $this->title = 'Data Barang';
                 'title' => '', 'class' => 'showModalButton btn btn-success'
             ]
         );  ?>
+        <!-- <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Tambah Barang Banyak', ['tambah-barang-banyak'], ['class' => 'btn btn-warning']) ?> -->
     </p>
 
     <div class="box box-warning">

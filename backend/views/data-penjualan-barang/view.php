@@ -144,7 +144,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </td>
                                     <?php } ?>
                                     <td><?= 'Bulan ' . tanggal_indo2(date('F', strtotime($value->stok_keluar->tanggal_keluar))) . ' - ' . $value->stok_keluar->keterangan ?></td>
-                                    <td><?= $value->barang->nama_barang ?></td>
+                                    <td><?= (!empty($value->barang->nama_barang)) ? $value->barang->nama_barang : 'Barang sudah dihapus'; ?></td>
                                     <td><?= number_format($value->harga_jual) ?></td>
                                     <td align="center">
                                         <a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#modal-view" data-id="<?= $value->id_penjualan_detail ?>" class="label label-default edit-qty"><?= $value->qty ?></a>
@@ -263,7 +263,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ?>
                                     <tr>
                                         <td>
-                                            <p style="font-size: 11px;"><?= $value->barang->nama_barang ?>
+                                            <p style="font-size: 11px;"><?= (!empty($value->barang->nama_barang)) ? $value->barang->nama_barang : 'Barang Sudah dihapus' ?>
                                             </p>
                                         </td>
                                         <td>

@@ -28,7 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-7">
             <div class="box box-warning">
                 <div class="box-body">
-                    <h3 style="margin-left: 10px;">Stok Penyesuaian <?= Html::a('Cetak Stok Barang', ['cetak-stok-barang'], ['class' => 'btn btn-default', 'target' => '_BLANK']) ?> &nbsp; <?= Html::a('Ekspor Stok Barang', ['ekspor-stok-barang'], ['class' => 'btn btn-success']) ?></h3>
+                    <h3 style="margin-left: 10px;">Stok Penyesuaian
+                        <!-- <?= Html::a('Cetak Stok Barang', ['cetak-stok-barang'], ['class' => 'btn btn-default', 'target' => '_BLANK']) ?> -->
+                        &nbsp;
+                        <?= Html::a('Ekspor Stok Barang', ['ekspor-stok-barang'], ['class' => 'btn btn-success']) ?></h3>
                     <table class="table datatables">
                         <thead>
                             <tr>
@@ -137,7 +140,7 @@ $script = <<< JS
     $("#form").hide();
     $(".edit").click(function() {
         // mengambil data berdasarkan id
-        const id = $(this).data('id');
+        var id = $(this).data('id');
         console.log(id);
         // pindahin action
         $("#form").show();
@@ -148,7 +151,7 @@ $script = <<< JS
             method: 'post',
             dataType: 'json',
             success: function(data) {
-                const d = new Date(),
+                var d = new Date(),
                 month = '' + (d.getMonth() + 1),
                 day = '' + d.getDate(),
                 year = d.getFullYear();
@@ -156,7 +159,7 @@ $script = <<< JS
                 month = '0' + month;
                 if (day.length < 2) 
                 day = '0' + day;
-                const date = [year, month, day].join('-');
+                var date = [year, month, day].join('-');
                 console.log(date);
                 $("#judul-barang").html(data.nama_barang);
                 $('#stokpenyesuaian-id_barang').val(data.id_barang);
