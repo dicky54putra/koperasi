@@ -264,14 +264,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </tr>
                             <?php } ?>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="12"></th>
+                                <th><?= number_format($gt_persediaan_stok) ?></th>
+                                <th colspan="5"></th>
+                            </tr>
+                        </tfoot>
                     <?php } ?>
-                    <tfoot>
-                        <tr>
-                            <th colspan="12"></th>
-                            <th><?= number_format($gt_persediaan_stok) ?></th>
-                            <th colspan="5"></th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

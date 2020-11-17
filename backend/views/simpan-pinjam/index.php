@@ -63,8 +63,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <tbody>
                                         <?php
                                         $i = 0;
+                                        $total_ = 0;
                                         foreach ($data_simpan as $key => $value) {
                                             $i++;
+                                            $total_ += $value->nominal;
                                         ?>
 
                                             <tr>
@@ -92,19 +94,20 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <td style="white-space: nowrap;"><?= $value->anggota->nama_anggota ?></td>
                                                 <td><?= $value->anggota->pangkat->nama_pangkat ?></td>
                                                 <td><?= $value->jenis == 1 ? 'Simpanan' : 'Pinjaman' ?></td>
-                                                <td><?= number_format($value->nominal) ?></td>
+                                                <td align="right"><?= number_format($value->nominal) ?></td>
                                                 <td><?= $value->keterangan ?></td>
-                                                <td><?= $value->status == 1 ? '<span class="label label-success">Aktif</span>' : '<span class="label label-danger">Tidak Aktif</span>' ?></td>
+                                                <td><?= $value->status == 1 ? '<span class="label label-success">Disimpan</span>' : '<span class="label label-danger">Diambil</span>' ?></td>
 
                                             </tr>
                                         <?php } ?>
                                     </tbody>
-                                    <!-- <tfoot>
+                                    <tfoot>
                                         <tr style="background-color:#bdcfff">
                                             <td colspan="6"><b><i>GRANDTOTAL</i></b></td>
-                                            <td align="right"><b><i></i></b></td>
+                                            <td align="right"><b><i><?= number_format($total_) ?></i></b></td>
+                                            <td colspan="2"></td>
                                         </tr>
-                                    </tfoot> -->
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -140,8 +143,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <tbody>
                                         <?php
                                         $i = 0;
+                                        $total_ = 0;
                                         foreach ($data_pinjam as $key => $value) {
                                             $i++;
+                                            $total_ += $value->nominal;
                                         ?>
 
                                             <tr>
@@ -169,19 +174,20 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <td style="white-space: nowrap;"><?= $value->anggota->nama_anggota ?></td>
                                                 <td><?= $value->anggota->pangkat->nama_pangkat ?></td>
                                                 <td><?= $value->jenis == 1 ? 'Simpanan' : 'Pinjaman' ?></td>
-                                                <td><?= number_format($value->nominal) ?></td>
+                                                <td align="right"><?= number_format($value->nominal) ?></td>
                                                 <td><?= $value->keterangan ?></td>
-                                                <td><?= $value->status == 1 ? '<span class="label label-success">Aktif</span>' : '<span class="label label-danger">Tidak Aktif</span>' ?></td>
+                                                <td><?= $value->status == 1 ? '<span class="label label-success">Tagihan</span>' : '<span class="label label-danger">Lunas</span>' ?></td>
 
                                             </tr>
                                         <?php } ?>
                                     </tbody>
-                                    <!-- <tfoot>
+                                    <tfoot>
                                         <tr style="background-color:#bdcfff">
                                             <td colspan="6"><b><i>GRANDTOTAL</i></b></td>
-                                            <td align="right"><b><i></i></b></td>
+                                            <td align="right"><b><i><?= number_format($total_) ?></i></b></td>
+                                            <td colspan="2"></td>
                                         </tr>
-                                    </tfoot> -->
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>

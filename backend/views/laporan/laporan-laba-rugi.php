@@ -15,7 +15,7 @@ use backend\models\DataPenjualanDetail;
 /* @var $searchModel backend\models\PurchaseOrderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Laporan Pinjaman Toko';
+$this->title = 'Laporan Laba Rugi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
