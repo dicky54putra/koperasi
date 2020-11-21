@@ -46,6 +46,7 @@ $this->title = 'Data Barang';
                                 <th style="white-space: nowrap;">Kode Barang</th>
                                 <th style="white-space: nowrap;">Nama Barang</th>
                                 <th style="white-space: nowrap;">Kategori</th>
+                                <th style="white-space: nowrap;">Tipe</th>
                                 <th style="white-space: nowrap;">Satuan</th>
                                 <th style="white-space: nowrap;">Harga Jual</th>
                                 <th style="white-space: nowrap;">Harga Beli</th>
@@ -83,6 +84,7 @@ $this->title = 'Data Barang';
                                     <td><?= $value->kode_barang ?></td>
                                     <td><?= $value->nama_barang ?></td>
                                     <td><?= (!empty($value->kategori_barang->nama_kategori)) ? $value->kategori_barang->nama_kategori : 'Kategori tidak ada/ sudah dihapus'; ?></td>
+                                    <td><?= $value->tipe == 0 ? '<span class="label label-primary">Pembelian</span>' : '<span class="label label-warning">Titipan</span>' ?></td>
                                     <td><?= (!empty($value->satuan->nama_satuan)) ? $value->satuan->nama_satuan : 'Satuan tidak ada/ sudah dihapus' ?></td>
                                     <td><?= $value->harga_jual ?></td>
                                     <td><?= $value->harga_beli ?></td>

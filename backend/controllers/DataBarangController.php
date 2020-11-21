@@ -44,14 +44,9 @@ class DataBarangController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new DataBarangSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         $data_barang = DataBarang::find()->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
             'data_barang' => $data_barang,
         ]);
     }

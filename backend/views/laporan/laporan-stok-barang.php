@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_awal" class="form-control" required>
+                                    <input type="date" name="tanggal_awal" value="<?= (!empty($tanggal_awal)) ? $tanggal_awal : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_akhir" class="form-control" required>
+                                    <input type="date" name="tanggal_akhir" value="<?= (!empty($tanggal_akhir)) ? $tanggal_akhir : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>

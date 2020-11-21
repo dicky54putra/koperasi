@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_awal" class="form-control" required>
+                                    <input type="date" name="tanggal_awal" value="<?= (!empty($tanggal_awal)) ? $tanggal_awal : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_akhir" class="form-control" required>
+                                    <input type="date" name="tanggal_akhir" value="<?= (!empty($tanggal_akhir)) ? $tanggal_akhir : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -101,13 +101,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             <th>Pajak</th>
                             <th>Harga Total</th>
                             <th>Status Pembayaran</th>
-                            <th>Grandtotal</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
                         $totalan_pengurangan = 0;
+                        $gt_penjualan = 0;
                         $barang = '';
                         $hrg_barang = '';
                         $diskon = '';
@@ -157,16 +158,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                     $grandtotal = 0;
                                     foreach ($detail as $key => $value) {
                                         $hrg_barang = $value->total_jual;
-                                        echo 'Rp. ' . number_format($value->total_jual) . '<br>';
+                                        echo number_format($value->total_jual) . '<br>';
                                         $grandtotal += $hrg_barang;
                                     }
                                     ?>
                                 </td>
                                 <td><?= $data['jenis_pembayaran'] == 1 ? 'LUNAS' : $retVal = ($data['jenis_pembayaran'] == 2) ? 'TAGIHAN' : 'Belum dikonfirmasi'; ?></td>
-                                <td><?= 'Rp. ' . ribuan($grandtotal) ?></td>
+                                <td><?= number_format($grandtotal) ?></td>
                             </tr>
+                            <?php
+                            $gt_penjualan += $grandtotal;
+                            ?>
                         <?php } ?>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="9">GRANDTOTAL</th>
+                            <th><?= number_format($gt_penjualan) ?></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
