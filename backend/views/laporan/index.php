@@ -33,6 +33,9 @@ $this->title = 'Daftar Laporan';
                                 <td><?= Html::a('<span class="fa fa-file-text"></span> Laporan Stok Penyesuaian', ['laporan/laporan-stok-penyesuaian']) ?></td>
                             </tr>
                             <tr>
+                                <td><?= Html::a('<span class="fa fa-file-text"></span> Laporan Stok Titipan', ['laporan/laporan-stok-titipan']) ?></td>
+                            </tr>
+                            <tr>
                                 <td><?= Html::a('<span class="fa fa-file-text"></span> Laporan Laba Rugi', ['laporan/laporan-laba-rugi/']) ?></td>
                             </tr>
                         </table>

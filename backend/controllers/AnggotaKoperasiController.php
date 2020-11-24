@@ -84,7 +84,8 @@ class AnggotaKoperasiController extends Controller
     public function actionCreate()
     {
         $model = new AnggotaKoperasi();
-
+        $generate = AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->count();
+        $model->kode_anggota  = 20201127 . str_pad($generate + 1, 4, "0", STR_PAD_LEFT);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', 'Disimpan');
             return $this->redirect(['index']);

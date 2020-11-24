@@ -136,6 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $barang = DataBarang::find()->where(['id_barang' => $value['id_barang']])->one();
                                         $beli += $barang->harga_beli * $value['qty'];
                                         $jual += $barang->harga_jual * $value['qty'];
+                                        // echo $barang->harga_jual . '-' . $barang->harga_beli . '-' . $value['qty'] . '<br>';
                                     }
                                     $jumlah_titipan = $jual - $beli;
                                     echo ribuan($jumlah_titipan);

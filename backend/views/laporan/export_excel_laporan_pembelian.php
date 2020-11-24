@@ -69,7 +69,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                 <td>
                     <?php
                     foreach ($detail as $key => $value) {
-                        echo $barang = (!empty($value->barang->nama_barang)) ? $value->barang->nama_barang . ' ( ' . $value->qty . ' x ' . $value->harga_beli . ' ) ' : 'Barang tidak ada/ sudah dihapus'  . "<br>";
+                        echo $barang = (!empty($value->barang->nama_barang)) ? $value->barang->nama_barang . ' ( ' . $value->qty . ' x ' . $value->harga_beli . ' ) <br>' : 'Barang tidak ada/ sudah dihapus'  . "<br>";
                     }
                     ?>
                 </td>
@@ -78,12 +78,12 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                     $grandtotal = 0;
                     foreach ($detail as $key => $value) {
                         $hrg_barang = $value->total_beli;
-                        echo 'Rp. ' . number_format($value->total_beli) . '<br>';
+                        echo number_format($value->total_beli) . '<br>';
                         $grandtotal += $hrg_barang;
                     }
                     ?>
                 </td>
-                <td><?= 'Rp. ' . ribuan($grandtotal) ?></td>
+                <td><?= number_format($grandtotal) ?></td>
             </tr>
             <?php
             $grandtotal_ += $grandtotal;
@@ -93,12 +93,12 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
     <tfoot>
         <tr>
             <td colspan="6"><b>GRANDTOTAL</b></td>
-            <td><?= 'Rp. ' . ribuan($grandtotal_) ?></td>
+            <td><?= number_format($grandtotal_) ?></td>
         </tr>
     </tfoot>
 </table>
 <?php
-$fileName = "Report Excel Laporan Stok Barang.xls";
+$fileName = "Report Excel Laporan Pembelian.xls";
 header("Content-Disposition: attachment; filename=$fileName");
 header("Content-Type: application/vnd.ms-excel");
 ?>

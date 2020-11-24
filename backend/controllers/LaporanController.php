@@ -114,6 +114,17 @@ class LaporanController extends Controller
         ]);
     }
 
+    public function actionLaporanStokTitipan()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->render('laporan-stok-titipan', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
     public function actionLaporanLabaRugi()
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
@@ -186,6 +197,17 @@ class LaporanController extends Controller
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
 
         return $this->renderPartial('export_excel_laporan_stok_barang', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
+    public function actionExportExcelLaporanStokTitipan()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->renderPartial('export_excel_laporan_stok_titipan', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
         ]);
