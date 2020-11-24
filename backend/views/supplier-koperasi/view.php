@@ -10,7 +10,7 @@ use yii\widgets\LinkPager;
 /* @var $this yii\web\View */
 /* @var $model backend\models\AnggotaKoperasi */
 
-$this->title = 'Detail Anggota : ' . $model->nama_anggota;
+$this->title = 'Detail Supplier : ' . $model->nama_anggota;
 $this->params['breadcrumbs'][] = ['label' => 'Anggota Koperasis', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);

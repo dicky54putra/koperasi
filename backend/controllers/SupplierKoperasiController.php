@@ -17,7 +17,7 @@ use yii\data\Pagination;
 /**
  * AnggotaKoperasiController implements the CRUD actions for AnggotaKoperasi model.
  */
-class AnggotaKoperasiController extends Controller
+class SupplierKoperasiController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -42,7 +42,7 @@ class AnggotaKoperasiController extends Controller
     {
         $searchModel = new AnggotaKoperasiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $anggota = AnggotaKoperasi::find()->where(['id_jenis_anggota' => 1])->all();
+        $anggota = AnggotaKoperasi::find()->where(['id_jenis_anggota' => 2])->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,

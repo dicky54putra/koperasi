@@ -23,7 +23,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="invoice-view">
 
-    <h4><?= Html::encode($this->title) ?></h4>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><?= Html::a('Daftar Laporan', ['index']) ?></li>
+        <li class="active"><?= $this->title ?></li>
+    </ul>
+
+    <p>
+        <?= Html::a('<span class="glyphicon glyphicon-circle-arrow-left"></span> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>
+    </p>
 
     <div class="box">
         <div class="box-header">
@@ -138,7 +147,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <tr>
                                                     <td style="width: 35%;"><?= (!empty($val['tanggal'])) ? tanggal_indo($val['tanggal']) . ',' : ''; ?></td>
                                                     <td style="width: 15%;"><?= ($val['tipe'] == 1) ? $val['qty'] . ',' : '(' . $val['qty'] . '),'; ?></td>
-                                                    <td><?= $val['keterangan']; ?></td>
+                                                    <td><?= ($val['tipe'] == 1) ? ', ' . number_format($val['qty'] * $data['harga_jual']) : ', (' . number_format($val['qty'] * $data['harga_jual']) . ')'; ?></td>
+                                                    <!-- $val['keterangan'] -->
                                                 </tr>
                                             <?php  } ?>
                                         <?php  } ?>

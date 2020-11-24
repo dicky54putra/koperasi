@@ -24,37 +24,19 @@ use yii\helpers\ArrayHelper;
 
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'kode_anggota')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'kode_anggota')->textInput(['maxlength' => true])->label('Kode Supplier') ?>
 
-            <?= $form->field($model, 'nama_anggota')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'nama_anggota')->textInput(['maxlength' => true])->label('Nama Supplier') ?>
 
-            <?= $form->field($model, 'alamat_anggota')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'alamat_anggota')->textInput(['maxlength' => true])->label('Alamat Supplier') ?>
 
             <?= $form->field($model, 'kota')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
 
-            <?php
-            $model->id_jenis_anggota = 1;
-            echo $form->field($model, 'id_jenis_anggota')->textInput(['type' => 'hidden'])->label(false); ?>
-
-            <?= $form->field($model, 'id_pangkat')->widget(Select2::classname(), [
-                'data' => ArrayHelper::map(
-                    DataPangkat::find()->all(),
-                    'id_pangkat',
-                    function ($model) {
-                        return $model['nama_pangkat'];
-                    }
-                ),
-                'language' => 'en',
-                'options' => ['placeholder' => 'Pilih Jenis Anggota'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label('Pangkat'); ?>
+            <?= $form->field($model, 'id_jenis_anggota')->textInput(['type' => 'hidden', 'value' => 2])->label(false); ?>
 
             <?php
             $model->tanggal_keanggotaan = date('Y-m-d');

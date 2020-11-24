@@ -41,3 +41,24 @@ $(".tombol-hapus").click(function (e) {
         }
     })
 });
+
+$(".tombol-konfirmasi").click(function (e) {
+    console.log = e;
+    e.preventDefault(); // untuk menghentikan href
+    e.stopImmediatePropagation();
+    const href = $(this).attr('href');
+    Swal.fire({
+        title: 'Apakah anda yakin?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        customClass: 'swal-wide',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.location.href = href;
+        }
+    })
+});

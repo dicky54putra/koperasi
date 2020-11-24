@@ -23,7 +23,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="invoice-view">
 
-    <h4><?= Html::encode($this->title) ?></h4>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><?= Html::a('Daftar Laporan', ['index']) ?></li>
+        <li class="active"><?= $this->title ?></li>
+    </ul>
+
+    <p>
+        <?= Html::a('<span class="glyphicon glyphicon-circle-arrow-left"></span> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>
+    </p>
 
     <div class="box">
         <div class="box-header">

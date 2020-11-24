@@ -33,6 +33,10 @@ class LaporanController extends Controller
      * Lists all DataPangkat models.
      * @return mixed
      */
+    public function actionIndex()
+    {
+        return $this->render('index');
+    }
     public function actionLaporanHutang()
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
@@ -61,6 +65,17 @@ class LaporanController extends Controller
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
 
         return $this->render('laporan-piutang-toko', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
+    public function actionLaporanPembelian()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->render('laporan-pembelian', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
         ]);
@@ -138,6 +153,17 @@ class LaporanController extends Controller
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
 
         return $this->renderPartial('export_excel_laporan_piutang_toko', [
+            'tanggal_awal'  => $tanggal_awal,
+            'tanggal_akhir' => $tanggal_akhir,
+        ]);
+    }
+
+    public function actionExportExcelLaporanPembelian()
+    {
+        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
+        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+
+        return $this->renderPartial('export_excel_laporan_pembelian', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
         ]);
