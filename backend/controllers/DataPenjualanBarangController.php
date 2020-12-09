@@ -390,11 +390,7 @@ class DataPenjualanBarangController extends Controller
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        DataPenjualanDetail::deleteAll(
-            [
-                'id_penjualan' => $id
-            ],
-        );
+        DataPenjualanDetail::deleteAll(['id_penjualan' => $id]);
         $model->delete();
 
         Yii::$app->session->setFlash('success', 'Dihapus');

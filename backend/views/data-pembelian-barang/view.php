@@ -159,6 +159,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
 $script = <<< JS
     $('#datapembeliandetail-id_barang').select2('open').select2('close');
-    JS;
+JS;
 $this->registerJs($script);
 ?>

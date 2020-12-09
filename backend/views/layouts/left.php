@@ -14,12 +14,7 @@ use backend\models\Userrole;
 			</div>
 			<div class="pull-left info">
 				<p>
-					<?php
-					$num_char = 17;
-					echo substr(Yii::$app->user->identity->nama, 0, $num_char) . '...';
-					?>
-					<?php // Yii::$app->user->identity->nama 
-					?>
+					<?= Yii::$app->user->identity->nama ?>
 				</p>
 				<?php
 				$userrole = Userrole::find()->where(['id_login' => Yii::$app->user->identity->id_login])->one();

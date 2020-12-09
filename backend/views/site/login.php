@@ -243,7 +243,5 @@ if (flashdata2) {
 
 
 JS;
-
 $this->registerJs($script);
-
 ?>

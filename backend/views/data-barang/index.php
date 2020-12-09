@@ -181,3 +181,5 @@ $this->title = 'Data Barang';
                 </div>
             </div>
         </div>
+    </div>
+</div>
