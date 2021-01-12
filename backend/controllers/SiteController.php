@@ -28,11 +28,11 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'popup'],
+                        'actions' => ['login', 'error', 'popup', 'blocked'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'popup'],
+                        'actions' => ['logout', 'index', 'popup', 'blocked'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -70,6 +70,11 @@ class SiteController extends Controller
         if ($exception !== null) {
             return $this->render('error', ['exception' => $exception]);
         }
+    }
+
+    public function actionBlocked()
+    {
+        return $this->renderPartial('blocked');
     }
 
     /**

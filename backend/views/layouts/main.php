@@ -58,7 +58,7 @@ if (Yii::$app->user->isGuest) {
         <?php $this->head() ?>
     </head>
 
-    <body class="hold-transition skin-yellow sidebar-mini fixed">
+    <body class="hold-transition skin-yellow sidebar-mini fixed <?= (Yii::$app->controller->id == 'data-pembelian-barang' || Yii::$app->controller->id == 'data-penjualan-barang') ? 'sidebar-collapse' : '' ?>">
         <?php $this->beginBody() ?>
         <div class="wrapper">
 

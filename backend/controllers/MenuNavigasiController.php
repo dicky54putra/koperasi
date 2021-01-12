@@ -12,6 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Utils;
 
 /**
  * MenuNavigasiController implements the CRUD actions for MenuNavigasi model.
@@ -23,6 +24,7 @@ class MenuNavigasiController extends Controller
      */
     public function behaviors()
     {
+        Utils::RoleAccess();
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
