@@ -31,6 +31,8 @@ function pretty_money($n)
         else if ($n >= 1000) return round(($n / 1000), 1) . ' Rb';
 
         return number_format($n);
+    } else {
+        return number_format(0);
     }
 }
 
@@ -164,7 +166,7 @@ function terbilang($nilai)
 
 return [
     'id' => 'app-backend',
-    'name' => 'KOPERASI',
+    'name' => 'KOPERASI S-24',
     'timeZone' => 'Asia/Jakarta',
     'language' => 'id',
     'basePath' => dirname(__DIR__),

@@ -10,7 +10,7 @@ use backend\models\Userrole;
 		<!-- Sidebar user panel -->
 		<div class="user-panel" style="margin-top: 10px;">
 			<div class="pull-left image">
-				<img src="<?= "upload/" . Yii::$app->user->identity->foto ?>" class="img-circle" style="height: 45px;" alt="User Image" />
+				<img src="<?= "upload/" . Yii::$app->user->identity->foto ?>" class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-left info">
 				<p>

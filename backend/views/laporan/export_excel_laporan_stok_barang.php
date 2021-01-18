@@ -33,6 +33,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
       <th rowspan="2">No</th>
       <th rowspan="2">Kode Barang</th>
       <th rowspan="2">Nama Barang</th>
+      <th rowspan="2">Kategori Barang</th>
       <th rowspan="2">Harga Beli</th>
       <th rowspan="2">Harga Jual</th>
       <th colspan="2" style="white-space: nowrap;">Persediaan Awal</th>
@@ -69,12 +70,13 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
       $gt_stok_penyesuaian = 0;
       $gt_persediaan_awal_stok = 0;
       $qty_keluar = 0;
-      $query1 = Yii::$app->db->createCommand("
-                                        SELECT *
+      $where_kategori = (!empty($kategori)) ? "AND data_barang.id_kategori = $kategori" : '';
+      $query1 = Yii::$app->db->createCommand("SELECT *
                                         FROM data_barang
                                         LEFT JOIN data_satuan ON data_satuan.id_satuan = data_barang.id_satuan
                                         LEFT JOIN kategori_barang ON kategori_barang.id_kategori = data_barang.id_kategori
                                         WHERE data_barang.tipe = 0
+                                        $where_kategori
                                         ORDER BY data_barang.id_barang
                                         ")->query();
       foreach ($query1 as $key => $data) {
@@ -82,15 +84,13 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
         $gt_persediaan_stok_digudang += $data['stok'] * $data['harga_beli'];
         $total_stok = 0;
         $total_stok_kosong = '';
-        $stok_masuk = Yii::$app->db->createCommand("
-                                        SELECT SUM(qty)
+        $stok_masuk = Yii::$app->db->createCommand("SELECT SUM(qty)
                                         FROM data_pembelian_detail
                                         LEFT JOIN data_pembelian_barang ON data_pembelian_barang.id_pembelian = data_pembelian_detail.id_pembelian
                                         WHERE id_barang = '$data[id_barang]'
                                         AND tanggal_pembelian BETWEEN '$tanggal_awal' AND '$tanggal_akhir'
                                         ")->queryScalar();
-        $stok_keluar = Yii::$app->db->createCommand("
-                                        SELECT SUM(qty)
+        $stok_keluar = Yii::$app->db->createCommand("SELECT SUM(qty)
                                         FROM data_penjualan_detail
                                         LEFT JOIN data_penjualan_barang ON data_penjualan_barang.id_penjualan = data_penjualan_detail.id_penjualan
                                         WHERE id_barang = '$data[id_barang]'
@@ -101,8 +101,9 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
           <td><?= $no++ . '.' ?></td>
           <td><?= $data['kode_barang'] ?></td>
           <td><?= $data['nama_barang'] ?></td>
-          <td><?= number_format($data['harga_beli']) ?></td>
-          <td><?= number_format($data['harga_jual']) ?></td>
+          <td><?= $data['nama_kategori'] ?></td>
+          <td><?= ribuan($data['harga_beli']) ?></td>
+          <td><?= ribuan($data['harga_jual']) ?></td>
           <?php
           $stok_penyesuaian = StokPenyesuaian::find()->where(['id_barang' => $data['id_barang']])->andWhere("tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->all();
           $jml = 0;
@@ -125,7 +126,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
           </td>
           <td>
             <!-- nominal persediaan awal -->
-            <?= number_format($stok_awal *  $data['harga_beli']) ?>
+            <?= ribuan($stok_awal *  $data['harga_beli']) ?>
           </td>
           <td>
             <!-- qty persediaan penjualan -->
@@ -133,7 +134,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
           </td>
           <td>
             <!-- nominal persediaan penjualan -->
-            <?= number_format($stok_barang_penjualan = $stok_keluar * $data['harga_jual']) ?>
+            <?= ribuan($stok_barang_penjualan = $stok_keluar * $data['harga_jual']) ?>
           </td>
           <td>
             <!-- qty persediaan barang masuk -->
@@ -141,7 +142,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
           </td>
           <td>
             <!-- nominal persediaan barang masuk -->
-            <?= number_format($stok_barang_masuk = $stok_masuk * $data['harga_beli']) ?>
+            <?= ribuan($stok_barang_masuk = $stok_masuk * $data['harga_beli']) ?>
           </td>
           <td>
             <!-- qty persediaan akhir -->
@@ -152,7 +153,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
           </td>
           <td>
             <!-- nominal persediaan akhir -->
-            <?= number_format($p_akhir * $data['harga_beli']) ?>
+            <?= ribuan($p_akhir * $data['harga_beli']) ?>
           </td>
           <td>
             <!-- qty persediaan gudang -->
@@ -160,7 +161,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
           </td>
           <td>
             <!-- nominal persediaan gudang -->
-            <?= number_format($data['stok'] * $data['harga_beli']) ?>
+            <?= ribuan($data['stok'] * $data['harga_beli']) ?>
           </td>
           <!-- <td>
                                         qty persediaan penyesuaian
@@ -186,9 +187,9 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                                     $stok_penyesuaian = StokPenyesuaian::find()->where(['id_barang' => $data['id_barang']])->andWhere("tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->all();
                                     foreach ($stok_penyesuaian as $key => $val) {
                                       if ($val->tipe == 1) {
-                                        echo number_format($val['qty'] *  $data['harga_jual']) . '<br>';
+                                        echo ribuan($val['qty'] *  $data['harga_jual']) . '<br>';
                                       } else {
-                                        echo '(' . number_format($val['qty'] *  $data['harga_jual']) . ')<br>';
+                                        echo '(' . ribuan($val['qty'] *  $data['harga_jual']) . ')<br>';
                                       }
                                     }
                                     ?>
@@ -213,15 +214,15 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
       <tr>
         <th colspan="5"></th>
         <th>Total</th>
-        <th><?= number_format($stok_awal *  $data['harga_beli']) ?></th>
+        <th><?= ribuan(!empty($stok_awal) ? $stok_awal *  ($data['harga_beli'] ?? 0) : 0) ?></th>
         <th>Total</th>
-        <th><?= number_format($gt_penjualan_stok) ?></th>
+        <th><?= ribuan($gt_penjualan_stok) ?></th>
         <th>Total</th>
-        <th><?= number_format($gt_barang_masuk_stok) ?></th>
+        <th><?= ribuan($gt_barang_masuk_stok) ?></th>
         <th>Total</th>
-        <th><?= number_format($gt_persediaan_stok) ?></th>
+        <th><?= ribuan($gt_persediaan_stok) ?></th>
         <th>Total</th>
-        <th><?= number_format($gt_persediaan_stok_digudang) ?></th>
+        <th><?= ribuan($gt_persediaan_stok_digudang) ?></th>
       </tr>
     </tfoot>
   <?php } ?>

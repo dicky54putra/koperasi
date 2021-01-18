@@ -111,7 +111,7 @@ $this->title = 'Data Barang';
                                 </table>
                             </div>
                             <div id="barang-titipan" class="tab-pane fade" style="margin-top:20px;overflow-x: auto;">
-                                <table class="table" id="table-index">
+                                <table class="table datatables">
                                     <thead>
                                         <tr>
                                             <th style="white-space: nowrap;">#</th>

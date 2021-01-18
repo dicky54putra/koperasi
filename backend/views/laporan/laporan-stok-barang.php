@@ -1,16 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-// use yii\grid\GridView;
-use kartik\grid\GridView;
-use kartik\daterange\DateRangePicker;
-use yii\widgets\ActiveForm;
-
-use yii\jui\AutoComplete;
-use yii\web\JsExpression;
-use backend\models\StokMasuk;
-use backend\models\StokKeluar;
-use backend\models\DataPembelianDetail;
+use kartik\select2\Select2;
 use backend\models\StokPenyesuaian;
 
 /* @var $this yii\web\View */
@@ -50,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_awal" value="<?= (!empty($tanggal_awal)) ? $tanggal_awal : '' ?>" class="form-control" required>
+                                    <input type="date" name="tanggal_awal" value="<?= (!empty($tanggal_awal)) ? $tanggal_awal : date('Y-m-d', strtotime('-30 days', strtotime(date('Y-m-d')))) ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -63,7 +54,28 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_akhir" value="<?= (!empty($tanggal_akhir)) ? $tanggal_akhir : '' ?>" class="form-control" required>
+                                    <input type="date" name="tanggal_akhir" value="<?= (!empty($tanggal_akhir)) ? $tanggal_akhir : date('Y-m-d') ?>" class="form-control" required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="10%">
+                                <div class="form-group">Kategori Barang</div>
+                            </td>
+                            <td align="center" width="5%">
+                                <div class="form-group">:</div>
+                            </td>
+                            <td width="30%">
+                                <div class="form-group">
+                                    <?= Select2::widget([
+                                        'name' => 'kategori',
+                                        'data' => $data,
+                                        'value' => $kategori ?? '',
+                                        'options' => ['placeholder' => 'Select kategori ...'],
+                                        'pluginOptions' => [
+                                            'allowClear' => true
+                                        ],
+                                    ]); ?>
                                 </div>
                             </td>
                         </tr>
@@ -77,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     if ($tanggal_awal != 0 && $tanggal_akhir != 0) {
                                         # code...
                                     ?>
-                                        <?= Html::a('Export Laporan', ['export-excel-laporan-stok-barang', 'tanggal_awal' => $tanggal_awal, 'tanggal_akhir' => $tanggal_akhir], ['class' => 'btn btn-primary', 'target' => '_blank', 'method' => 'post']) ?>
+                                        <?= Html::a('Export Laporan', ['export-excel-laporan-stok-barang', 'tanggal_awal' => $tanggal_awal, 'tanggal_akhir' => $tanggal_akhir, 'kategori' => $kategori], ['class' => 'btn btn-primary', 'target' => '_blank', 'method' => 'post']) ?>
                                     <?php
                                     }
                                     ?>
@@ -96,7 +108,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12" style="padding: 0;">
             <div class="box-body" style="overflow: auto;">
                 <p style="font-family: 'Times New Roman'">
-                    <h4>Periode Bulan: <?= ($tanggal_awal != '') ? tanggal_indo2(date('F', strtotime($tanggal_awal))) : '-'; ?></h4>
+                <h4>Periode Bulan: <?= ($tanggal_awal != '') ? tanggal_indo2(date('F', strtotime($tanggal_awal))) : '-'; ?></h4>
                 </p>
 
                 <table class="table table-bordered" id="table-index">
@@ -105,6 +117,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <th rowspan="2">No</th>
                             <th rowspan="2">Kode Barang</th>
                             <th rowspan="2">Nama Barang</th>
+                            <th rowspan="2">Kategori Barang</th>
                             <th rowspan="2">Harga Beli</th>
                             <th rowspan="2">Harga Jual</th>
                             <th colspan="2" style="white-space: nowrap;">Persediaan Awal</th>
@@ -141,12 +154,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             $gt_stok_penyesuaian = 0;
                             $gt_persediaan_awal_stok = 0;
                             $qty_keluar = 0;
-                            $query1 = Yii::$app->db->createCommand("
-                                        SELECT *
+                            $where_kategori = (!empty($kategori)) ? "AND data_barang.id_kategori = $kategori" : '';
+                            $query1 = Yii::$app->db->createCommand("SELECT *
                                         FROM data_barang
                                         LEFT JOIN data_satuan ON data_satuan.id_satuan = data_barang.id_satuan
                                         LEFT JOIN kategori_barang ON kategori_barang.id_kategori = data_barang.id_kategori
                                         WHERE data_barang.tipe = 0
+                                        $where_kategori
                                         ORDER BY data_barang.id_barang
                                         ")->query();
                             foreach ($query1 as $key => $data) {
@@ -154,15 +168,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $gt_persediaan_stok_digudang += $data['stok'] * $data['harga_beli'];
                                 $total_stok = 0;
                                 $total_stok_kosong = '';
-                                $stok_masuk = Yii::$app->db->createCommand("
-                                        SELECT SUM(qty)
+                                $stok_masuk = Yii::$app->db->createCommand("SELECT SUM(qty)
                                         FROM data_pembelian_detail
                                         LEFT JOIN data_pembelian_barang ON data_pembelian_barang.id_pembelian = data_pembelian_detail.id_pembelian
                                         WHERE id_barang = '$data[id_barang]'
                                         AND tanggal_pembelian BETWEEN '$tanggal_awal' AND '$tanggal_akhir'
                                         ")->queryScalar();
-                                $stok_keluar = Yii::$app->db->createCommand("
-                                        SELECT SUM(qty)
+                                $stok_keluar = Yii::$app->db->createCommand("SELECT SUM(qty)
                                         FROM data_penjualan_detail
                                         LEFT JOIN data_penjualan_barang ON data_penjualan_barang.id_penjualan = data_penjualan_detail.id_penjualan
                                         WHERE id_barang = '$data[id_barang]'
@@ -173,6 +185,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td><?= $no++ . '.' ?></td>
                                     <td><?= $data['kode_barang'] ?></td>
                                     <td><?= $data['nama_barang'] ?></td>
+                                    <td><?= $data['nama_kategori'] ?></td>
                                     <td><?= number_format($data['harga_beli']) ?></td>
                                     <td><?= number_format($data['harga_jual']) ?></td>
                                     <?php
@@ -285,7 +298,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <tr>
                                 <th colspan="5"></th>
                                 <th>Total</th>
-                                <th><?= number_format($stok_awal *  $data['harga_beli']) ?></th>
+                                <th><?= number_format(!empty($stok_awal) ? $stok_awal *  ($data['harga_beli'] ?? 0) : 0) ?></th>
                                 <th>Total</th>
                                 <th><?= number_format($gt_penjualan_stok) ?></th>
                                 <th>Total</th>

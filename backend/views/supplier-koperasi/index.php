@@ -22,7 +22,7 @@ $this->title = 'Supplier Koperasi';
 
     <p>
         <?= Html::button(
-            '<i class="glyphicon glyphicon-plus"></i> Tambah Anggota',
+            '<i class="glyphicon glyphicon-plus"></i> Tambah Supplier',
             [
                 'value' => Url::to(['create']),
                 'title' => '', 'class' => 'showModalButton btn btn-success'

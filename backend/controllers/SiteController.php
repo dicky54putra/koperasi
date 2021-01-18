@@ -107,8 +107,8 @@ class SiteController extends Controller
             'tanggal_label2' => $tanggal_labels2,
             'tanggal' => $tanggal,
             'tanggal2' => $tanggal2,
-            'omzet' => $omzet,
-            'pengeluaran' => $pengeluaran,
+            'omzet' => $omzet ?? 0,
+            'pengeluaran' => $pengeluaran ?? 0,
             'barang' => $barang,
         ]);
     }

@@ -32,6 +32,7 @@ if (Yii::$app->user->isGuest) {
         <meta charset="<?= Yii::$app->charset ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
+        <link rel="shortcut icon" href="images/pavicon.ico">
         <title><?= Html::encode(Yii::$app->name) ?></title>
         <style>
             ::-webkit-scrollbar {
@@ -58,7 +59,7 @@ if (Yii::$app->user->isGuest) {
         <?php $this->head() ?>
     </head>
 
-    <body class="hold-transition skin-yellow sidebar-mini fixed <?= (Yii::$app->controller->id == 'data-pembelian-barang' || Yii::$app->controller->id == 'data-penjualan-barang') ? 'sidebar-collapse' : '' ?>">
+    <body class="hold-transition skin-yellow sidebar-mini <?= (Yii::$app->controller->id == 'data-pembelian-barang' || Yii::$app->controller->id == 'data-penjualan-barang') ? 'sidebar-collapse' : 'fixed' ?>">
         <?php $this->beginBody() ?>
         <div class="wrapper">
 
@@ -116,6 +117,37 @@ if (Yii::$app->user->isGuest) {
                 'autoWidth': false
             });
         });
+        $('#tabForRefreshPage li a').click(function(e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+
+        // store the currently selected tab in the hash value
+        $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
+            var id = $(e.target).attr("href").substr(1);
+            window.location.hash = id;
+        });
+
+        // on load of the page: switch to the currently selected tab
+        var hash = window.location.hash;
+        $('#tabForRefreshPage li a[href="' + hash + '"]').tab('show');
+
+        const approver = document.querySelector('.btn-approver-hidden');
+        const formUser = document.querySelector('.form-user');
+        const btnUbah = document.querySelector('.btn-ubah-hidden');
+        const btnHapus = document.querySelector('.btn-hapus-hidden');
+        const btnPending = document.querySelector('.btn-pending-hidden');
+        const btnHapusDetail = document.querySelector('.btn-hapus-detail');
+        const btnUbahDetail = document.querySelector('.btn-ubah-detail');
+        if (approver != null) {
+            formUser.style.display = "none";
+            btnPending.style.display = "none";
+            btnHapusDetail.style.display = "none"
+            btnUbahDetail.style.display = "none"
+        } else {
+            btnHapusDetail.style.display = true
+            btnUbahDetail.style.display = true
+        }
     </script>
 
     <!-- JS;
