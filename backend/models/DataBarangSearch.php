@@ -17,8 +17,8 @@ class DataBarangSearch extends DataBarang
     public function rules()
     {
         return [
-            [['id_barang', 'id_kategori', 'id_satuan', 'id_anggota', 'harga_jual', 'harga_beli', 'is_active'], 'integer'],
-            [['kode_barang', 'nama_barang'], 'safe'],
+            [['id_barang', 'harga_jual', 'harga_beli', 'stok', 'tipe', 'is_active'], 'integer'],
+            [['kode_barang', 'nama_barang', 'kategori', 'satuan'], 'safe'],
         ];
     }
 
@@ -41,6 +41,9 @@ class DataBarangSearch extends DataBarang
     public function search($params)
     {
         $query = DataBarang::find();
+        $query->joinWith('kategori_barang');
+        $query->joinWith('satuan');
+        // $query->leftJoin('data_satuan', 'data_satuan.id_satuan = data_barang.id_satuan');
 
         // add conditions that should always apply here
 
@@ -59,16 +62,18 @@ class DataBarangSearch extends DataBarang
         // grid filtering conditions
         $query->andFilterWhere([
             'id_barang' => $this->id_barang,
-            'id_kategori' => $this->id_kategori,
-            'id_satuan' => $this->id_satuan,
             'id_anggota' => $this->id_anggota,
             'harga_jual' => $this->harga_jual,
             'harga_beli' => $this->harga_beli,
+            'tipe' => $this->tipe,
+            'stok' => $this->stok,
             'is_active' => $this->is_active,
         ]);
 
         $query->andFilterWhere(['like', 'kode_barang', $this->kode_barang])
-            ->andFilterWhere(['like', 'nama_barang', $this->nama_barang]);
+            ->andFilterWhere(['like', 'nama_barang', $this->nama_barang])
+            ->andFilterWhere(['like', 'kategori_barang.nama_kategori', $this->kategori])
+            ->andFilterWhere(['like', 'data_satuan.nama_satuan', $this->satuan]);
 
         return $dataProvider;
     }

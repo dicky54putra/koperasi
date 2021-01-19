@@ -19,6 +19,9 @@ use Yii;
  */
 class DataBarang extends \yii\db\ActiveRecord
 {
+
+    public $kategori;
+    public $satuan;
     /**
      * {@inheritdoc}
      */

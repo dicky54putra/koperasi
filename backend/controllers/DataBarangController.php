@@ -46,10 +46,14 @@ class DataBarangController extends Controller
     {
         $data_barang = DataBarang::find()->where(['tipe' => 0])->all();
         $data_barang_titipan = DataBarang::find()->where(['tipe' => 1])->all();
+        $searchModel = new DataBarangSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'data_barang' => $data_barang,
             'data_barang_titipan' => $data_barang_titipan,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
