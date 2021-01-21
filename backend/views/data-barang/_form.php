@@ -49,31 +49,16 @@ use kartik\select2\Select2;
             ])->label('Satuan') ?>
         </div>
         <div class="col-md-6">
-            <?php
-            //  $form->field($model, 'id_anggota')->widget(Select2::classname(), [
-            //     // 'name' => 'test',
-            //     'data' => $data_supplier,
-            //     // 'hashVarLoadPosition' => View::POS_READY,
-            //     'language' => 'en',
-            //     'options' => ['placeholder' => 'Pilih Supplier'],
-            //     'pluginOptions' => [
-            //         'allowClear' => true
-            //     ],
-            // ])->label('Supplier') 
-            ?>
-            <?= $form->field($model, 'tipe')->widget(Select2::classname(), [
+            <?= $form->field($model, 'id_anggota')->widget(Select2::classname(), [
                 // 'name' => 'test',
-                'data' => array(
-                    0 => 'Pembelian',
-                    1 => 'Titipan'
-                ),
+                'data' => $data_supplier,
                 // 'hashVarLoadPosition' => View::POS_READY,
                 'language' => 'en',
-                'options' => ['placeholder' => 'Pilih Tipe'],
+                'options' => ['placeholder' => 'Pilih Supplier'],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],
-            ])->label('Tipe Barang') ?>
+            ])->label('Supplier') ?>
 
             <?= $form->field($model, 'harga_jual')->textInput() ?>
 

@@ -5,8 +5,6 @@ namespace backend\controllers;
 use Yii;
 use backend\models\DataPangkat;
 use backend\models\DataPangkatSearch;
-use yii\helpers\ArrayHelper;
-use backend\models\KategoriBarang;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,10 +33,6 @@ class LaporanController extends Controller
      * Lists all DataPangkat models.
      * @return mixed
      */
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
     public function actionLaporanHutang()
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
@@ -65,21 +59,12 @@ class LaporanController extends Controller
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+        $id_anggota  = Yii::$app->request->post('id_anggota');
 
         return $this->render('laporan-piutang-toko', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
-        ]);
-    }
-
-    public function actionLaporanPembelian()
-    {
-        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
-        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
-
-        return $this->render('laporan-pembelian', [
-            'tanggal_awal'  => $tanggal_awal,
-            'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
@@ -98,23 +83,10 @@ class LaporanController extends Controller
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
-        $kategori  = Yii::$app->request->post('kategori');
-
-        $data = ArrayHelper::map(
-            KategoriBarang::find()
-                ->asArray()
-                ->all(),
-            'id_kategori',
-            function ($model) {
-                return $model['nama_kategori'];
-            }
-        );
 
         return $this->render('laporan-stok-barang', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
-            'kategori' => $kategori,
-            'data' => $data,
         ]);
     }
 
@@ -124,17 +96,6 @@ class LaporanController extends Controller
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
 
         return $this->render('laporan-stok-penyesuaian', [
-            'tanggal_awal'  => $tanggal_awal,
-            'tanggal_akhir' => $tanggal_akhir,
-        ]);
-    }
-
-    public function actionLaporanStokTitipan()
-    {
-        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
-        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
-
-        return $this->render('laporan-stok-titipan', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
         ]);
@@ -173,7 +134,7 @@ class LaporanController extends Controller
         ]);
     }
 
-    public function actionExportExcelLaporanPiutangToko()
+    public function actionExportExcelLaporanPiutangToko($id_anggota = null)
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
@@ -181,17 +142,7 @@ class LaporanController extends Controller
         return $this->renderPartial('export_excel_laporan_piutang_toko', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
-        ]);
-    }
-
-    public function actionExportExcelLaporanPembelian()
-    {
-        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
-        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
-
-        return $this->renderPartial('export_excel_laporan_pembelian', [
-            'tanggal_awal'  => $tanggal_awal,
-            'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
@@ -206,24 +157,12 @@ class LaporanController extends Controller
         ]);
     }
 
-    public function actionExportExcelLaporanStokBarang($kategori = null)
+    public function actionExportExcelLaporanStokBarang()
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
 
         return $this->renderPartial('export_excel_laporan_stok_barang', [
-            'tanggal_awal'  => $tanggal_awal,
-            'tanggal_akhir' => $tanggal_akhir,
-            'kategori' => $kategori,
-        ]);
-    }
-
-    public function actionExportExcelLaporanStokTitipan()
-    {
-        $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
-        $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
-
-        return $this->renderPartial('export_excel_laporan_stok_titipan', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
         ]);

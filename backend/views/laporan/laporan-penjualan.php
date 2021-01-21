@@ -22,16 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="invoice-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <ul class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li><?= Html::a('Daftar Laporan', ['index']) ?></li>
-        <li class="active"><?= $this->title ?></li>
-    </ul>
-
-    <p>
-        <?= Html::a('<span class="glyphicon glyphicon-circle-arrow-left"></span> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>
-    </p>
+    <h4><?= Html::encode($this->title) ?></h4>
 
     <div class="box">
         <div class="box-header">
@@ -49,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_awal" value="<?= (!empty($tanggal_awal)) ? $tanggal_awal : '' ?>" class="form-control" required>
+                                    <input type="date" name="tanggal_awal" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -62,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_akhir" value="<?= (!empty($tanggal_akhir)) ? $tanggal_akhir : '' ?>" class="form-control" required>
+                                    <input type="date" name="tanggal_akhir" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -110,14 +101,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             <th>Pajak</th>
                             <th>Harga Total</th>
                             <th>Status Pembayaran</th>
-                            <th>Total</th>
+                            <th>Grandtotal</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
                         $totalan_pengurangan = 0;
-                        $gt_penjualan = 0;
                         $barang = '';
                         $hrg_barang = '';
                         $diskon = '';
@@ -167,25 +157,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                     $grandtotal = 0;
                                     foreach ($detail as $key => $value) {
                                         $hrg_barang = $value->total_jual;
-                                        echo number_format($value->total_jual) . '<br>';
+                                        echo 'Rp. ' . number_format($value->total_jual) . '<br>';
                                         $grandtotal += $hrg_barang;
                                     }
                                     ?>
                                 </td>
                                 <td><?= $data['jenis_pembayaran'] == 1 ? 'LUNAS' : $retVal = ($data['jenis_pembayaran'] == 2) ? 'TAGIHAN' : 'Belum dikonfirmasi'; ?></td>
-                                <td><?= number_format($grandtotal) ?></td>
+                                <td><?= 'Rp. ' . ribuan($grandtotal) ?></td>
                             </tr>
-                            <?php
-                            $gt_penjualan += $grandtotal;
-                            ?>
                         <?php } ?>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th colspan="9">GRANDTOTAL</th>
-                            <th><?= number_format($gt_penjualan) ?></th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

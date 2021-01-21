@@ -29,7 +29,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
 <table class="table" border="1">
     <thead>
         <tr>
-            <th colspan="11">Laporan Pinjaman Toko Pertanggal <?= tanggal_indo($tanggal_awal, true) ?> - <?= tanggal_indo($tanggal_akhir, true) ?></th>
+            <th colspan="11">Laporan Penjualan Cash Pertanggal <?= tanggal_indo($tanggal_awal, true) ?> - <?= tanggal_indo($tanggal_akhir, true) ?></th>
         </tr>
         <tr>
             <th>No</th>
@@ -97,7 +97,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
     </tfoot>
 </table>
 <?php
-$fileName = "Report Excel Laporan Pinjaman Toko.xls";
+$fileName = "Report Excel Laporan Penjualan Cash.xls";
 header("Content-Disposition: attachment; filename=$fileName");
 header("Content-Type: application/vnd.ms-excel");
 ?>

@@ -73,5 +73,7 @@ $(document).ready(function(){
 	});
 
 JS;
+
 $this->registerJs($script);
+
 ?>

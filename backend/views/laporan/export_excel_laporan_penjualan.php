@@ -49,7 +49,6 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
     <?php
     $no = 1;
     $totalan_pengurangan = 0;
-    $gt_penjualan = 0;
     $barang = '';
     $hrg_barang = '';
     $diskon = '';
@@ -99,24 +98,18 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
           $grandtotal = 0;
           foreach ($detail as $key => $value) {
             $hrg_barang = $value->total_jual;
-            echo number_format($value->total_jual) . '<br>';
+            echo 'Rp. ' . number_format($value->total_jual) . '<br>';
             $grandtotal += $hrg_barang;
           }
           ?>
         </td>
         <td><?= $data['jenis_pembayaran'] == 1 ? 'LUNAS' : $retVal = ($data['jenis_pembayaran'] == 2) ? 'TAGIHAN' : 'Belum dikonfirmasi'; ?></td>
-        <td><?= number_format($grandtotal) ?></td>
+        <td><?= 'Rp. ' . ribuan($grandtotal) ?></td>
       </tr>
-      <?php
-      $gt_penjualan += $grandtotal;
-      ?>
     <?php } ?>
   </tbody>
   <tfoot>
-    <tr>
-      <th colspan="9">GRANDTOTAL</th>
-      <th><?= number_format($gt_penjualan) ?></th>
-    </tr>
+
   </tfoot>
 </table>
 <?php

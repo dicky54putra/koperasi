@@ -68,7 +68,7 @@ $this->title = 'Anggota Koperasi';
                                 <th>Aksi</th>
                                 <th style="white-space: nowrap;">Kode</th>
                                 <th style="white-space: nowrap;">Nama</th>
-                                <!-- <th style="white-space: nowrap;">Jenis Anggota</th> -->
+                                <th style="white-space: nowrap;">Jenis Anggota</th>
                                 <th style="white-space: nowrap;">Npwp</th>
                                 <th style="white-space: nowrap;">Kota</th>
                                 <th style="white-space: nowrap;">Status</th>
@@ -92,10 +92,14 @@ $this->title = 'Anggota Koperasi';
                                                 'title' => 'Ubah data', 'class' => 'showModalButton  btn btn-sm btn-success'
                                             ]
                                         ); ?>
+                                        <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_anggota], [
+                                            'title' => Yii::t('app', 'Hapus data'),
+                                            'class' => 'tombol-hapus'
+                                        ]); ?>
                                     </td>
                                     <td><?= $value->kode_anggota ?></td>
                                     <td><?= $value->nama_anggota ?></td>
-                                    <!-- <td><?= $value->id_jenis_anggota == 1 ? 'Customer' : 'Supplier' ?></td> -->
+                                    <td><?= $value->id_jenis_anggota == 1 ? 'Customer' : 'Supplier' ?></td>
                                     <td><?= $value->npwp ?></td>
                                     <td><?= $value->kota ?></td>
                                     <td>

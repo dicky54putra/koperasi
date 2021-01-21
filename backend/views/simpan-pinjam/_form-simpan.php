@@ -21,31 +21,31 @@ use kartik\select2\Select2;
     ]); ?>
 
     <?= $form->field($model, 'id_anggota')->widget(Select2::classname(), [
-        // 'name' => 'test',
-        'data' => $data_anggota,
-        // 'hashVarLoadPosition' => View::POS_READY,
-        'language' => 'en',
-        'options' => ['placeholder' => 'Pilih Anggota'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ])->label('Anggota') ?>
+                // 'name' => 'test',
+                'data' => $data_anggota,
+                // 'hashVarLoadPosition' => View::POS_READY,
+                'language' => 'en',
+                'options' => ['placeholder' => 'Pilih Anggota'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label('Anggota') ?>
 
-    <?= $form->field($model, 'jenis')->dropDownList([1 => 'SIMPANAN'], ['readonly' => true]) ?>
+    <?= $form->field($model, 'jenis')->dropDownList([ 1 => 'SIMPANAN'], ['readonly' => true]) ?>
 
     <?= $form->field($model, 'tanggal')->widget(\yii\jui\DatePicker::classname(), [
 
-        'clientOptions' => [
-            'changeMonth' => true,
-            'changeYear' => true,
-        ],
-        'dateFormat' => 'yyyy-MM-dd',
-        'options' => ['class' => 'form-control', 'autocomplete' => 'off']
+            'clientOptions' => [
+                        'changeMonth'=>true, 
+                        'changeYear'=>true,
+            ],
+            'dateFormat' => 'yyyy-MM-dd',
+            'options' => ['class' => 'form-control', 'autocomplete'=>'off']
     ]) ?>
 
     <?= $form->field($model, 'nominal')->textInput() ?>
 
-    <?= $form->field($model, 'status')->dropDownList([1 => 'SIMPAN', 2 => 'DIAMBIL']) ?>
+    <?= $form->field($model, 'status')->dropDownList([ 1 => 'AKTIF', 2 => 'NONAKTIF']) ?>
 
 
     <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
