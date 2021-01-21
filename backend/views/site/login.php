@@ -163,7 +163,7 @@ $fieldOptions2 = [
                         <div class="col-md-1"></div>
                         <div class="col-md-10" style="margin-top: 0px; margin-bottom: 10px; color: black;">
                             <p>WELCOME TO</p>
-                            <h3 style="color: black; margin-top: 10px;" class="gss"><b> KOPERASI</b> S - 24/ADHIKA UTTAMA</h3>
+                            <h2 style="color: black; margin-top: 10px;" class="gss"><b> KOPERASI SKADRON - 31</b></h2>
                             <small>Silahkan login untuk mengakses fitur-fitur</small><br>
                             <small>koperasi yang luar biasa</small>
 
@@ -243,5 +243,7 @@ if (flashdata2) {
 
 
 JS;
+
 $this->registerJs($script);
+
 ?>

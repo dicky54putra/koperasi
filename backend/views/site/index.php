@@ -3,10 +3,8 @@
 use yii\helpers\Html;
 use dosamigos\chartjs\ChartJs;
 use backend\models\AktPenjualan;
-use backend\models\DataBarang;
 use backend\models\DataPembelianDetail;
 use backend\models\DataPenjualanBarang;
-use yii\helpers\Utils;
 
 /* @var $this yii\web\View */
 
@@ -41,9 +39,9 @@ $this->title = 'Dashboard';
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>Rp. <?= pretty_money_minus($pengeluaran)
+                    <h3>Rp. <?= pretty_money_minus($kas)
                             ?> </h3>
-                    <p>Total Pengeluaran</p>
+                    <p>Total Kas</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-dollar"></i>
@@ -55,9 +53,9 @@ $this->title = 'Dashboard';
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3><?= pretty_money_minus($barang)
-                        ?> Produk</h3>
-                    <p>Data Barang</p>
+                    <h3>Rp. <?= pretty_money_minus($piutang)
+                            ?> </h3>
+                    <p>Total Piutang</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-funnel-dollar"></i>
@@ -136,20 +134,11 @@ $this->title = 'Dashboard';
                                 </td>
                             </tr>
                             <tr>
-                                <td>Barang Titipan</td>
+                                <td>Simpan</td>
                                 <td align="right">
                                     <?php
-                                    $titipan =  Yii::$app->db->createCommand("SELECT * FROM stok_titipan WHERE  tanggal = '$tanggal_hari_ini'")->query();
-                                    $jual = 0;
-                                    $beli = 0;
-                                    foreach ($titipan as $key => $value) {
-                                        $barang = DataBarang::find()->where(['id_barang' => $value['id_barang']])->one();
-                                        $beli += $barang->harga_beli * $value['qty'];
-                                        $jual += $barang->harga_jual * $value['qty'];
-                                        // echo $barang->harga_jual . '-' . $barang->harga_beli . '-' . $value['qty'] . '<br>';
-                                    }
-                                    $jumlah_titipan = $jual - $beli;
-                                    echo ribuan($jumlah_titipan);
+                                    $simpan =  Yii::$app->db->createCommand("SELECT SUM(nominal) FROM simpan_pinjam WHERE jenis = 1 AND tanggal = '$tanggal_hari_ini'")->queryScalar();
+                                    echo ribuan($simpan);
                                     ?>
                                 </td>
                             </tr>
@@ -157,7 +146,7 @@ $this->title = 'Dashboard';
                                 <th>Total Pendapatan</th>
                                 <th style="border-top: 1px solid #000000; float: right;">
                                     <?php
-                                    $total_pendapatan = $jumlah_titipan + $pendapatan_cash + $pendapatan_kredit;
+                                    $total_pendapatan = $simpan + $pendapatan_cash + $pendapatan_kredit;
                                     echo ribuan($total_pendapatan);
                                     ?>
                                 </th>

@@ -147,13 +147,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td><?= (!empty($value->barang->nama_barang)) ? $value->barang->nama_barang : 'Barang sudah dihapus'; ?></td>
                                     <td><?= number_format($value->harga_jual) ?></td>
                                     <td align="center">
-                                        <?php
-                                        if ($model->jenis_pembayaran == null) {
-                                        ?>
-                                            <a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#modal-view" data-id="<?= $value->id_penjualan_detail ?>" class="label label-default edit-qty"><?= $value->qty ?></a>
-                                        <?php } else { ?>
-                                            <?= $value->qty ?>
-                                        <?php } ?>
+                                        <a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#modal-view" data-id="<?= $value->id_penjualan_detail ?>" class="label label-default edit-qty"><?= $value->qty ?></a>
                                     </td>
                                     <td align="right"><?= number_format($value->total_jual) ?></td>
 
@@ -220,7 +214,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <table class="table">
                         <thead>
                             <tr>
-                                <td colspan="3" align="center" style="padding-bottom: 10px;"><b style="font-size: 11px;">KOPERASI S-24 <br> INVOICE</b></td>
+                                <td colspan="3" align="center" style="padding-bottom: 10px;"><b style="font-size: 11px;">KOPERASI SKADRON-31 <br> INVOICE</b></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -402,7 +396,7 @@ $script = <<< JS
             }
         });
     });
-JS;
+    JS;
 $this->registerJs($script);
 ?>
 <!-- <script>
