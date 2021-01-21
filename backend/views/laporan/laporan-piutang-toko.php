@@ -1,6 +1,5 @@
 <?php
 
-use backend\models\AnggotaKoperasi;
 use yii\helpers\Html;
 // use yii\grid\GridView;
 use kartik\grid\GridView;
@@ -10,6 +9,7 @@ use yii\widgets\ActiveForm;
 use yii\jui\AutoComplete;
 use yii\web\JsExpression;
 use backend\models\DataPenjualanDetail;
+use backend\models\AnggotaKoperasi;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 
@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     if ($tanggal_awal != 0 && $tanggal_akhir != 0) {
                                         # code...
                                     ?>
-                                        <?= Html::a('Export Laporan', ['export-excel-laporan-hutang-toko', 'tanggal_awal' => $tanggal_awal, 'tanggal_akhir' => $tanggal_akhir], ['class' => 'btn btn-primary', 'target' => '_blank', 'method' => 'post']) ?>
+                                        <?= Html::a('Export Laporan', ['export-excel-laporan-piutang-toko', 'tanggal_awal' => $tanggal_awal, 'tanggal_akhir' => $tanggal_akhir, 'id_anggota' => $id_anggota], ['class' => 'btn btn-primary', 'target' => '_blank', 'method' => 'post']) ?>
                                     <?php
                                     }
                                     ?>

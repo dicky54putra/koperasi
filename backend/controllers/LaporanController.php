@@ -48,10 +48,12 @@ class LaporanController extends Controller
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+        $id_anggota  = Yii::$app->request->post('id_anggota');
 
         return $this->render('laporan-hutang-toko', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
@@ -72,10 +74,12 @@ class LaporanController extends Controller
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+        $id_anggota  = Yii::$app->request->post('id_anggota');
 
         return $this->render('laporan-penjualan', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
@@ -123,7 +127,7 @@ class LaporanController extends Controller
         ]);
     }
 
-    public function actionExportExcelLaporanHutangToko()
+    public function actionExportExcelLaporanHutangToko($id_anggota = null)
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
@@ -131,6 +135,7 @@ class LaporanController extends Controller
         return $this->renderPartial('export_excel_laporan_hutang_toko', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
@@ -146,7 +151,7 @@ class LaporanController extends Controller
         ]);
     }
 
-    public function actionExportExcelLaporanPenjualan()
+    public function actionExportExcelLaporanPenjualan($id_anggota = null)
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
@@ -154,6 +159,7 @@ class LaporanController extends Controller
         return $this->renderPartial('export_excel_laporan_penjualan', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
