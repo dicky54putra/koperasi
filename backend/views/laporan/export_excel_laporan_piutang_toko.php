@@ -29,7 +29,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
 <table class="table" border="1">
     <thead>
         <tr>
-            <th colspan="11">Laporan Penjualan Cash Pertanggal <?= tanggal_indo($tanggal_awal, true) ?> - <?= tanggal_indo($tanggal_akhir, true) ?></th>
+            <th colspan="11">Laporan Pinjaman Toko Pertanggal <?= tanggal_indo($tanggal_awal, true) ?> - <?= tanggal_indo($tanggal_akhir, true) ?></th>
         </tr>
         <tr>
             <th>No</th>
@@ -47,14 +47,13 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
         $totalan = 0;
         $barang = '';
         $hrg_barang = '';
-        $where_anggota = (!empty($id_anggota)) ? "AND data_penjualan_barang.id_anggota = $id_anggota" : null;
-        $query1 = Yii::$app->db->createCommand("SELECT data_penjualan_barang.id_penjualan, data_penjualan_barang.id_anggota, data_penjualan_barang.tanggal_penjualan, data_penjualan_barang.grandtotal, anggota_koperasi.nama_anggota
+        $query1 = Yii::$app->db->createCommand("
+                                        SELECT data_penjualan_barang.id_penjualan, data_penjualan_barang.id_anggota, data_penjualan_barang.tanggal_penjualan, data_penjualan_barang.grandtotal, anggota_koperasi.nama_anggota
                                         FROM data_penjualan_barang
                                         LEFT JOIN anggota_koperasi ON anggota_koperasi.id_anggota = data_penjualan_barang.id_anggota
                                         WHERE data_penjualan_barang.tanggal_penjualan
                                         BETWEEN '$tanggal_awal' AND '$tanggal_akhir'
                                         AND data_penjualan_barang.jenis_pembayaran = 1
-                                        $where_anggota
                                         ORDER BY data_penjualan_barang.tanggal_penjualan
                                         ")->query();
         foreach ($query1 as $key => $data) {
@@ -98,7 +97,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
     </tfoot>
 </table>
 <?php
-$fileName = "Report Excel Laporan Penjualan Cash.xls";
+$fileName = "Report Excel Laporan Pinjaman Toko.xls";
 header("Content-Disposition: attachment; filename=$fileName");
 header("Content-Type: application/vnd.ms-excel");
 ?>

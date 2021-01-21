@@ -109,6 +109,6 @@ $script = <<< JS
     $(".clickable-row").click(function() {
         window.location = $(this).data("href");
     });
-    JS;
+JS;
 $this->registerJs($script);
 ?>

@@ -21,7 +21,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="invoice-view">
 
-    <h4><?= Html::encode($this->title) ?></h4>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><?= Html::a('Daftar Laporan', ['index']) ?></li>
+        <li class="active"><?= $this->title ?></li>
+    </ul>
+
+    <p>
+        <?= Html::a('<span class="glyphicon glyphicon-circle-arrow-left"></span> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>
+    </p>
 
     <div class="box">
         <div class="box-header">
@@ -39,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_awal" class="form-control" required>
+                                    <input type="date" name="tanggal_awal" value="<?= (!empty($tanggal_awal)) ? $tanggal_awal : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -52,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_akhir" class="form-control" required>
+                                    <input type="date" name="tanggal_akhir" value="<?= (!empty($tanggal_akhir)) ? $tanggal_akhir : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>

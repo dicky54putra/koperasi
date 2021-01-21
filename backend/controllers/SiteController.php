@@ -28,11 +28,11 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'popup'],
+                        'actions' => ['login', 'error', 'popup', 'blocked'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'popup'],
+                        'actions' => ['logout', 'index', 'popup', 'blocked'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -72,6 +72,11 @@ class SiteController extends Controller
         }
     }
 
+    public function actionBlocked()
+    {
+        return $this->renderPartial('blocked');
+    }
+
     /**
      * Displays homepage.
      *
@@ -86,9 +91,8 @@ class SiteController extends Controller
         $tanggal2 = Yii::$app->db->createCommand("SELECT tanggal_pembelian FROM data_pembelian_barang WHERE  MONTH(tanggal_pembelian) = '$month' AND YEAR(tanggal_pembelian) = '$year' GROUP BY tanggal_pembelian ORDER BY tanggal_pembelian ASC")->query();
 
         $omzet = Yii::$app->db->createCommand("SELECT sum(grandtotal) FROM data_penjualan_barang WHERE  MONTH(tanggal_penjualan) = '$month' AND YEAR(tanggal_penjualan) = '$year'")->queryScalar();
-        $kas = Yii::$app->db->createCommand("SELECT sum(nominal) FROM simpan_pinjam WHERE jenis = 1")->queryScalar();
-        $piutang = Yii::$app->db->createCommand("SELECT sum(nominal) FROM simpan_pinjam WHERE jenis = 2")->queryScalar();
-
+        $pengeluaran = Yii::$app->db->createCommand("SELECT sum(total_beli) FROM data_pembelian_detail LEFT JOIN data_pembelian_barang ON data_pembelian_barang.id_pembelian = data_pembelian_detail.id_pembelian WHERE  MONTH(tanggal_pembelian) = '$month' AND YEAR(tanggal_pembelian) = '$year'")->queryScalar();
+        $barang = Yii::$app->db->createCommand("SELECT count(id_barang) FROM data_barang")->queryScalar();
         // $tanggal_penjualan = Yii::$app->db->createCommand("SELECT tanggal_penjualan FROM data_penjualan_barang WHERE  MONTH(tanggal_penjualan) = '$month' AND YEAR(tanggal_penjualan) = '$year' GROUP BY tanggal_penjualan")->query();
         // $tanggal_pembelian = Yii::$app->db->createCommand("SELECT tanggal_pembelian FROM data_pembelian_barang 
         // WHERE  MONTH(tanggal_pembelian) = '$month' AND YEAR(tanggal_pembelian) = '$year' GROUP BY 
@@ -103,9 +107,9 @@ class SiteController extends Controller
             'tanggal_label2' => $tanggal_labels2,
             'tanggal' => $tanggal,
             'tanggal2' => $tanggal2,
-            'omzet' => $omzet,
-            'kas' => $kas,
-            'piutang' => $piutang,
+            'omzet' => $omzet ?? 0,
+            'pengeluaran' => $pengeluaran ?? 0,
+            'barang' => $barang,
         ]);
     }
 

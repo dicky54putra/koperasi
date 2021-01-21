@@ -1,5 +1,6 @@
 <?php
 
+use backend\models\DataBarang;
 use backend\models\DataPenjualanDetail;
 
 $tanggal_awal = $_GET['tanggal_awal'];
@@ -29,10 +30,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
 <table class="table" border="1">
     <tbody>
         <tr>
-            <th colspan="11">Laporan Laba/Rugi Toko Pertanggal <?= tanggal_indo($tanggal_awal, true) ?> - <?= tanggal_indo($tanggal_akhir, true) ?></th>
-        </tr>
-        <tr>
-            <th>Pendapatan</th>
+            <th colspan="2">Pendapatan</th>
             <th></th>
         </tr>
         <tr>
@@ -43,6 +41,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                 echo ribuan($pendapatan_cash);
                 ?>
             </td>
+            <td></td>
         </tr>
         <tr>
             <td>Pejualan Kredit</td>
@@ -52,27 +51,40 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                 echo ribuan($pendapatan_kredit);
                 ?>
             </td>
+            <td></td>
         </tr>
         <tr>
-            <td>Simpan</td>
+            <td>Barang Titipan</td>
             <td align="right">
                 <?php
-                $simpan =  Yii::$app->db->createCommand("SELECT SUM(nominal) FROM simpan_pinjam WHERE jenis = 1 AND tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->queryScalar();
-                echo ribuan($simpan);
+                $titipan =  Yii::$app->db->createCommand("SELECT * FROM stok_titipan WHERE  tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->query();
+                $jual = 0;
+                $beli = 0;
+                foreach ($titipan as $key => $value) {
+                    $barang = DataBarang::find()->where(['id_barang' => $value['id_barang']])->one();
+                    $beli += $barang->harga_beli * $value['qty'];
+                    $jual += $barang->harga_jual * $value['qty'];
+                    // echo $barang->harga_jual . '-' . $barang->harga_beli . '-' . $value['qty'] . '<br>';
+                }
+                $jumlah_titipan = $jual - $beli;
+                echo ribuan($jumlah_titipan);
                 ?>
             </td>
+            <td></td>
         </tr>
         <tr>
-            <th>Total Pendapatan</th>
-            <th align="right">
-                <?php
-                $total_pendapatan = $simpan + $pendapatan_cash + $pendapatan_kredit;
-                echo ribuan($total_pendapatan);
-                ?>
+            <th colspan="2">Total Pendapatan</th>
+            <th style="border-top: 1px solid #000000;">
+                <p style="float: right;">
+                    <?php
+                    $total_pendapatan = $jumlah_titipan + $pendapatan_cash + $pendapatan_kredit;
+                    echo ribuan($total_pendapatan);
+                    ?>
+                </p>
             </th>
         </tr>
         <tr>
-            <th>Pengeluaran</th>
+            <th colspan="2">Pengeluaran</th>
             <th></th>
         </tr>
         <tr>
@@ -83,32 +95,28 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                 echo ribuan($pembelian);
                 ?>
             </td>
+            <td></td>
         </tr>
         <tr>
-            <td>Pinjaman</td>
-            <td align="right">
-                <?php
-                $pinjam =  Yii::$app->db->createCommand("SELECT SUM(nominal) FROM simpan_pinjam WHERE jenis = 2 AND tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->queryScalar();
-                echo ribuan($pinjam);
-                ?>
-            </td>
-        </tr>
-        <tr>
-            <th>Total Pengeluaran</th>
-            <th align="right">
-                <?php
-                $total_pengeluaran = $pinjam + $pembelian;
-                echo ribuan($total_pengeluaran);
-                ?>
+            <th colspan="2">Total Pengeluaran</th>
+            <th style="border-top: 1px solid #000000;">
+                <p style="float: right;">
+                    <?php
+                    $total_pengeluaran = $pembelian;
+                    echo ribuan($total_pengeluaran);
+                    ?>
+                </p>
             </th>
         </tr>
-        <tr>
-            <th>Laba/Rugi</th>
-            <th align="right">
-                <?php
-                $laba_rugi = $total_pendapatan - $total_pengeluaran;
-                echo ribuan($laba_rugi);
-                ?>
+        <tr style="border-top: 1px solid #000000;">
+            <th style="border-top: 1px solid #000000;" colspan="2">Laba/Rugi</th>
+            <th style="border-top: 1px solid #000000;">
+                <p style="float: right;">
+                    <?php
+                    $laba_rugi = $total_pendapatan - $total_pengeluaran;
+                    echo ribuan($laba_rugi);
+                    ?>
+                </p>
             </th>
         </tr>
     </tbody>

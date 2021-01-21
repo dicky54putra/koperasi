@@ -269,9 +269,15 @@ class DataPenjualanBarangController extends Controller
     public function actionEditQty($id)
     {
         $model = DataPenjualanDetail::find()->where(['id_penjualan_detail' => $id])->one();
-        $model->qty = $_POST['qty'];
-        $model->total_jual = $model->harga_jual * $model->qty;
-        $model->save(false);
+        $cek_harga = DataBarang::find()->where(['id_barang' => $model->id_barang])->one();
+
+        if ($_POST['qty'] > $cek_harga->stok) {
+            Yii::$app->session->setFlash("error", "Stok Barang tidak mencukupi");
+        } else {
+            $model->qty = $_POST['qty'];
+            $model->total_jual = $model->harga_jual * $model->qty;
+            $model->save(false);
+        }
         // Yii::$app->session->setFlash("success", "Disimpan");
         return $this->redirect(['data-penjualan-barang/view', 'id' => $model->id_penjualan]);
     }
@@ -384,11 +390,7 @@ class DataPenjualanBarangController extends Controller
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        DataPenjualanDetail::deleteAll(
-            [
-                'id_penjualan' => $id
-            ],
-        );
+        DataPenjualanDetail::deleteAll(['id_penjualan' => $id]);
         $model->delete();
 
         Yii::$app->session->setFlash('success', 'Dihapus');

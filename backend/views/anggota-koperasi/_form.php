@@ -37,14 +37,9 @@ use yii\helpers\ArrayHelper;
         <div class="col-md-6">
             <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'id_jenis_anggota')->widget(Select2::classname(), [
-                'data' => array(1 => 'Customer', 2 => 'Supplier', 3 => 'Pengunjung'),
-                'language' => 'en',
-                'options' => ['placeholder' => 'Pilih Jenis Anggota'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]); ?>
+            <?php
+            $model->id_jenis_anggota = 1;
+            echo $form->field($model, 'id_jenis_anggota')->textInput(['type' => 'hidden'])->label(false); ?>
 
             <?= $form->field($model, 'id_pangkat')->widget(Select2::classname(), [
                 'data' => ArrayHelper::map(
@@ -61,15 +56,17 @@ use yii\helpers\ArrayHelper;
                 ],
             ])->label('Pangkat'); ?>
 
-            <?= $form->field($model, 'tanggal_keanggotaan')->widget(\yii\jui\DatePicker::classname(), [
+            <?php
+            $model->tanggal_keanggotaan = date('Y-m-d');
+            echo $form->field($model, 'tanggal_keanggotaan')->widget(\yii\jui\DatePicker::classname(), [
 
-            'clientOptions' => [
-                        'changeMonth'=>true, 
-                        'changeYear'=>true,
-            ],
-            'dateFormat' => 'yyyy-MM-dd',
-            'options' => ['class' => 'form-control', 'autocomplete'=>'off']
-    ]) ?>
+                'clientOptions' => [
+                    'changeMonth' => true,
+                    'changeYear' => true,
+                ],
+                'dateFormat' => 'yyyy-MM-dd',
+                'options' => ['class' => 'form-control', 'autocomplete' => 'off']
+            ]) ?>
 
             <?= $form->field($model, 'is_active')->dropDownList(array(1 => 'Aktif', 2 => 'Tidak Aktif'))->label('Status') ?>
         </div>

@@ -1,7 +1,8 @@
 <?php
 
+use backend\models\DataSatuan;
+use kartik\grid\GridView;
 use yii\helpers\Html;
-use yii\grid\GridView;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
@@ -34,74 +35,141 @@ $this->title = 'Data Barang';
         <!-- <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Tambah Barang Banyak', ['tambah-barang-banyak'], ['class' => 'btn btn-warning']) ?> -->
     </p>
 
-    <div class="box box-warning">
-        <div class="box-header">
-            <div class="col-md-12" style="padding: 0;">
-                <div class="box-body" style="overflow-x: auto;">
-                    <table class="table" id="table-index">
-                        <thead>
-                            <tr>
-                                <th style="white-space: nowrap;">#</th>
-                                <th>Aksi</th>
-                                <th style="white-space: nowrap;">Kode Barang</th>
-                                <th style="white-space: nowrap;">Nama Barang</th>
-                                <th style="white-space: nowrap;">Kategori</th>
-                                <th style="white-space: nowrap;">Satuan</th>
-                                <th style="white-space: nowrap;">Harga Jual</th>
-                                <th style="white-space: nowrap;">Harga Beli</th>
-                                <th style="white-space: nowrap;">Stok</th>
-                                <th style="white-space: nowrap;">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            foreach ($data_barang as $key => $value) {
-                            ?>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header' => 'Aksi',
+                'headerOptions' => ['style' => 'color:#337ab7'],
+                'template' => "{view} {update} {delete}",
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<button class = "btn btn-info"><span class="glyphicon glyphicon-eye-open"></span></button>', $url, [
+                            'title' => Yii::t('app', 'lead-view'),
+                        ]);
+                    },
 
-                                <tr>
-                                    <td><?= $i++; ?>.</td>
-                                    <td style="white-space: nowrap;">
-                                        <?= Html::a('<button class = "btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>', ['view', 'id' => $value->id_barang], [
-                                            'title' => Yii::t('app', 'Lihat Detail'),
-                                        ]); ?>
-                                        <?= Html::button(
-                                            '<span class="glyphicon glyphicon-edit"></span>',
-                                            [
-                                                'value' => Url::to(['update', 'id' => $value->id_barang]),
-                                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-sm btn-success'
-                                            ]
-                                        ); ?>
-                                        <?= Html::a('<button class = "btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', ['delete', 'id' => $value->id_barang], [
-                                            'title' => Yii::t('app', 'Hapus data'),
-                                            'data' => [
-                                                'method' => 'post',
-                                            ],
-                                            'class' => 'tombol-hapus'
-                                        ]); ?>
-                                    </td>
-                                    <td><?= $value->kode_barang ?></td>
-                                    <td><?= $value->nama_barang ?></td>
-                                    <td><?= (!empty($value->kategori_barang->nama_kategori)) ? $value->kategori_barang->nama_kategori : 'Kategori tidak ada/ sudah dihapus'; ?></td>
-                                    <td><?= (!empty($value->satuan->nama_satuan)) ? $value->satuan->nama_satuan : 'Satuan tidak ada/ sudah dihapus' ?></td>
-                                    <td><?= $value->harga_jual ?></td>
-                                    <td><?= $value->harga_beli ?></td>
-                                    <td><?= $value->stok ?></td>
-                                    <td><?= $value->is_active == 1 ? '<span class="label label-success">Aktif</span>' : '<span class="label label-danger">Tidak Aktif</span>' ?></td>
+                    'update' => function ($url, $model) {
+                        return Html::button(
+                            '<span class="glyphicon glyphicon-edit"></span>',
+                            [
+                                'value' => Url::to(['update', 'id' => $model->id_barang]),
+                                'title' => 'Ubah data', 'class' => 'showModalButton btn btn-success'
+                            ]
+                        );
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('<button class = "btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>', $url, [
+                            'title' => Yii::t('app', 'lead-delete'),
+                            'data' => [
+                                'confirm' => 'Anda yakin ingin menghapus data?',
+                                'method' => 'post'
+                            ],
+                        ]);
+                    },
 
-                                </tr>
+                ],
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    if ($action === 'view') {
+                        $url = 'index.php?r=data-barang/view&id=' . $model->id_barang;
+                        return $url;
+                    }
 
-                            <?php } ?>
-                        </tbody>
+                    if ($action === 'update') {
+                        $url = 'index.php?r=data-barang/update&id=' . $model->id_barang;
+                        return $url;
+                    }
 
-                        <tfoot>
-                            <tr>
-                                <!-- <td>T</td> -->
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+                    if ($action === 'delete') {
+                        $url = 'index.php?r=data-barang/delete&id=' . $model->id_barang;
+                        return $url;
+                    }
+                }
+            ],
+            'nama_barang',
+            [
+                'attribute' => 'kategori',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return $model->kategori_barang->nama_kategori;
+                }
+            ],
+            [
+                'attribute' => 'tipe',
+                'format' => 'raw',
+                'filter' => array(0 => 'Barang Pembelian', 1 => 'Barang Titipan'),
+                'value' => function ($model) {
+                    return ($model->tipe == 0) ? 'Barang Pembelian' : 'Barang Titipan';
+                }
+            ],
+            [
+                'attribute' => 'satuan',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    $q = DataSatuan::findOne($model->id_satuan);
+                    return $q->nama_satuan ?? '';
+                }
+            ],
+            'harga_jual',
+            'harga_beli',
+            'stok',
+            [
+                'attribute' => 'is_active',
+                'label' => 'Status',
+                'filter' => array(1 => 'Aktif', 2 => 'Tidak Aktif'),
+                'format' => 'html',
+                'value' => function ($model) {
+                    if ($model->is_active == 2) {
+                        return '<p class="label label-danger" style="font-weight:bold;"> Tidak Aktif </p> ';
+                    } else if ($model->is_active == 1) {
+                        return '<p class="label label-success" style="font-weight:bold;"> Aktif </p> ';
+                    }
+                }
+            ],
+        ],
+        'containerOptions' => ['style' => 'overflow: auto'], // only set when $responsive = false
+        'headerRowOptions' => ['class' => 'kartik-sheet-style'],
+        'filterRowOptions' => ['class' => 'kartik-sheet-style'],
+        //'pjax' => true, // pjax is set to always true for this demo
+        // set your toolbar
+        'toolbar' =>  [
+
+            '{export}',
+            '{toggleData}',
+        ],
+        'toggleDataContainer' => ['class' => 'btn-group mr-2'],
+        // set export properties
+        'export' => [
+            'fontAwesome' => true
+        ],
+        // parameters from the demo form
+        //'bordered' => $bordered,
+        //'striped' => $striped,
+        //'condensed' => $condensed,
+        //'responsive' => $responsive,
+        //'hover' => $hover,
+        //'showPageSummary' => $pageSummary,
+        'panel' => [
+            'type' => GridView::TYPE_PRIMARY,
+            'heading' => '<span class="fa fa-map-marker-alt"></span> Daftar Kota',
+        ],
+        'persistResize' => false,
+        'toggleDataOptions' => ['minCount' => 100],
+        'autoXlFormat' => true,
+        'toggleDataContainer' => ['class' => 'btn-group mr-2'],
+        'export' => [
+            'showConfirmAlert' => false,
+            'target' => GridView::TARGET_BLANK
+        ],
+        'exportConfig' => [
+            GridView::EXCEL =>  [
+                'filename' => 'Data Kota',
+                'showPageSummary' => true,
+            ]
+
+        ],
+    ]); ?>
 </div>

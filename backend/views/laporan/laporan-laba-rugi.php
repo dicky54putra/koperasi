@@ -1,5 +1,6 @@
 <?php
 
+use backend\models\DataBarang;
 use yii\helpers\Html;
 // use yii\grid\GridView;
 use kartik\grid\GridView;
@@ -15,13 +16,22 @@ use backend\models\DataPenjualanDetail;
 /* @var $searchModel backend\models\PurchaseOrderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Laporan Pinjaman Toko';
+$this->title = 'Laporan Laba Rugi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="invoice-view">
 
-    <h4><?= Html::encode($this->title) ?></h4>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><?= Html::a('Daftar Laporan', ['index']) ?></li>
+        <li class="active"><?= $this->title ?></li>
+    </ul>
+
+    <p>
+        <?= Html::a('<span class="glyphicon glyphicon-circle-arrow-left"></span> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>
+    </p>
 
     <div class="box">
         <div class="box-header">
@@ -39,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_awal" class="form-control" required>
+                                    <input type="date" name="tanggal_awal" value="<?= (!empty($tanggal_awal)) ? $tanggal_awal : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -52,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_akhir" class="form-control" required>
+                                    <input type="date" name="tanggal_akhir" value="<?= (!empty($tanggal_akhir)) ? $tanggal_akhir : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -116,11 +126,20 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Simpan</td>
+                                <td>Barang Titipan</td>
                                 <td align="right">
                                     <?php
-                                    $simpan =  Yii::$app->db->createCommand("SELECT SUM(nominal) FROM simpan_pinjam WHERE jenis = 1 AND tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->queryScalar();
-                                    echo ribuan($simpan);
+                                    $titipan =  Yii::$app->db->createCommand("SELECT * FROM stok_titipan WHERE  tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->query();
+                                    $jual = 0;
+                                    $beli = 0;
+                                    foreach ($titipan as $key => $value) {
+                                        $barang = DataBarang::find()->where(['id_barang' => $value['id_barang']])->one();
+                                        $beli += $barang->harga_beli * $value['qty'];
+                                        $jual += $barang->harga_jual * $value['qty'];
+                                        // echo $barang->harga_jual . '-' . $barang->harga_beli . '-' . $value['qty'] . '<br>';
+                                    }
+                                    $jumlah_titipan = $jual - $beli;
+                                    echo ribuan($jumlah_titipan);
                                     ?>
                                 </td>
                                 <td></td>
@@ -130,7 +149,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th style="border-top: 1px solid #000000;">
                                     <p style="float: right;">
                                         <?php
-                                        $total_pendapatan = $simpan + $pendapatan_cash + $pendapatan_kredit;
+                                        $total_pendapatan = $jumlah_titipan + $pendapatan_cash + $pendapatan_kredit;
                                         echo ribuan($total_pendapatan);
                                         ?>
                                     </p>
@@ -151,21 +170,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Pinjaman</td>
-                                <td align="right">
-                                    <?php
-                                    $pinjam =  Yii::$app->db->createCommand("SELECT SUM(nominal) FROM simpan_pinjam WHERE jenis = 2 AND tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->queryScalar();
-                                    echo ribuan($pinjam);
-                                    ?>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
                                 <th colspan="2">Total Pengeluaran</th>
                                 <th style="border-top: 1px solid #000000;">
                                     <p style="float: right;">
                                         <?php
-                                        $total_pengeluaran = $pinjam + $pembelian;
+                                        $total_pengeluaran = $pembelian;
                                         echo ribuan($total_pengeluaran);
                                         ?>
                                     </p>

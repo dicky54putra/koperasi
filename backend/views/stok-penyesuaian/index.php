@@ -168,6 +168,6 @@ $script = <<< JS
             }
         });
     });
-    JS;
+JS;
 $this->registerJs($script);
 ?>

@@ -19,6 +19,7 @@ dmstr\web\AdminLteAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link rel="shortcut icon" href="images/pavicon.ico">
     <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
     <style type="text/css">
         .login-page {

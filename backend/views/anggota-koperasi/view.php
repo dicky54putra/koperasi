@@ -34,12 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'title' => 'Ubah data', 'class' => 'showModalButton btn btn-primary'
             ]
         ); ?>
-        <?= Html::a('<span class="glyphicon glyphicon-trash"></span> Hapus', ['delete', 'id' => $model->id_anggota], [
-            'class' => 'tombol-hapus btn btn-danger',
-            'data' => [
-                'method' => 'post',
-            ],
-        ]) ?>
         <?= Html::a('<span class="glyphicon glyphicon-print"></span> Print Karu Anggota', ['print-kartu', 'id' => $model->id_anggota], ['class' => 'btn btn-default text-blue', 'target' => '_BLANK']) ?>
     </p>
 

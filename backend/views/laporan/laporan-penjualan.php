@@ -10,9 +10,6 @@ use yii\widgets\ActiveForm;
 use yii\jui\AutoComplete;
 use yii\web\JsExpression;
 use backend\models\DataPenjualanDetail;
-use backend\models\AnggotaKoperasi;
-use kartik\select2\Select2;
-use yii\helpers\ArrayHelper;
 
 
 /* @var $this yii\web\View */
@@ -25,7 +22,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="invoice-view">
 
-    <h4><?= Html::encode($this->title) ?></h4>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><?= Html::a('Daftar Laporan', ['index']) ?></li>
+        <li class="active"><?= $this->title ?></li>
+    </ul>
+
+    <p>
+        <?= Html::a('<span class="glyphicon glyphicon-circle-arrow-left"></span> Kembali', ['index'], ['class' => 'btn btn-warning']) ?>
+    </p>
 
     <div class="box">
         <div class="box-header">
@@ -43,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_awal" class="form-control" required>
+                                    <input type="date" name="tanggal_awal" value="<?= (!empty($tanggal_awal)) ? $tanggal_awal : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -56,32 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                             <td width="30%">
                                 <div class="form-group">
-                                    <input type="date" name="tanggal_akhir" class="form-control" required>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10%">
-                                <div class="form-group">Anggota</div>
-                            </td>
-                            <td align="center" width="5%">
-                                <div class="form-group">:</div>
-                            </td>
-                            <td width="30%">
-                                <div class="form-group">
-                                    <?= Select2::widget([
-                                        // 'model' => $model,
-                                        'name' => 'id_anggota',
-                                        'data' => ArrayHelper::map(AnggotaKoperasi::find()->all(), 'id_anggota', function ($model) {
-                                            return 'Nama Anggota: ' . $model->nama_anggota;
-                                        }),
-                                        'language' => 'en',
-                                        'options' => ['placeholder' => 'Pilih Anggota'],
-                                        'pluginOptions' => [
-                                            'allowClear' => true
-                                        ]
-                                    ]);
-                                    ?>
+                                    <input type="date" name="tanggal_akhir" value="<?= (!empty($tanggal_akhir)) ? $tanggal_akhir : '' ?>" class="form-control" required>
                                 </div>
                             </td>
                         </tr>
@@ -95,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     if ($tanggal_awal != 0 && $tanggal_akhir != 0) {
                                         # code...
                                     ?>
-                                        <?= Html::a('Export Laporan', ['export-excel-laporan-penjualan', 'tanggal_awal' => $tanggal_awal, 'tanggal_akhir' => $tanggal_akhir, 'id_anggota' => $id_anggota], ['class' => 'btn btn-primary', 'target' => '_blank', 'method' => 'post']) ?>
+                                        <?= Html::a('Export Laporan', ['export-excel-laporan-penjualan', 'tanggal_awal' => $tanggal_awal, 'tanggal_akhir' => $tanggal_akhir], ['class' => 'btn btn-primary', 'target' => '_blank', 'method' => 'post']) ?>
                                     <?php
                                     }
                                     ?>
@@ -129,18 +110,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             <th>Pajak</th>
                             <th>Harga Total</th>
                             <th>Status Pembayaran</th>
-                            <th>Grandtotal</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
                         $totalan_pengurangan = 0;
+                        $gt_penjualan = 0;
                         $barang = '';
                         $hrg_barang = '';
                         $diskon = '';
                         $ppn = '';
-                        $where_anggota = (!empty($id_anggota)) ? "AND data_penjualan_barang.id_anggota = $id_anggota" : null;
                         $query1 = Yii::$app->db->createCommand("
                                         SELECT data_penjualan_barang.id_penjualan, data_penjualan_barang.id_anggota, data_penjualan_barang.no_invoice, data_penjualan_barang.tanggal_penjualan, data_penjualan_barang.grandtotal, data_penjualan_barang.jenis_pembayaran, anggota_koperasi.nama_anggota
                                         FROM data_penjualan_barang
@@ -148,7 +129,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                         WHERE data_penjualan_barang.tanggal_penjualan
                                         BETWEEN '$tanggal_awal' AND '$tanggal_akhir'
                                         AND data_penjualan_barang.jenis_pembayaran in(1,2)
-                                        $where_anggota
                                         ORDER BY data_penjualan_barang.tanggal_penjualan
                                         ")->query();
                         foreach ($query1 as $key => $data) {
@@ -187,16 +167,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                     $grandtotal = 0;
                                     foreach ($detail as $key => $value) {
                                         $hrg_barang = $value->total_jual;
-                                        echo 'Rp. ' . number_format($value->total_jual) . '<br>';
+                                        echo number_format($value->total_jual) . '<br>';
                                         $grandtotal += $hrg_barang;
                                     }
                                     ?>
                                 </td>
                                 <td><?= $data['jenis_pembayaran'] == 1 ? 'LUNAS' : $retVal = ($data['jenis_pembayaran'] == 2) ? 'TAGIHAN' : 'Belum dikonfirmasi'; ?></td>
-                                <td><?= 'Rp. ' . ribuan($grandtotal) ?></td>
+                                <td><?= number_format($grandtotal) ?></td>
                             </tr>
+                            <?php
+                            $gt_penjualan += $grandtotal;
+                            ?>
                         <?php } ?>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="9">GRANDTOTAL</th>
+                            <th><?= number_format($gt_penjualan) ?></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

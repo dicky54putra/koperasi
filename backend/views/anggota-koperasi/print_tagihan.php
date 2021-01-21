@@ -25,7 +25,7 @@ use backend\models\DataPenjualanDetail;
 <table class="table" width="15%">
     <thead>
         <tr>
-            <td colspan="3" align="center" style="padding-bottom: 10px;"><b style="font-size: 11px;">KOPERASI SKADRON-31 <br> INVOICE</b></td>
+            <td colspan="3" align="center" style="padding-bottom: 10px;"><b style="font-size: 11px;">KOPERASI S-24/ADHIKA UTTAMA<br> INVOICE</b></td>
         </tr>
     </thead>
     <tbody>

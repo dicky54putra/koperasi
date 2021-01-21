@@ -10,16 +10,11 @@ use backend\models\Userrole;
 		<!-- Sidebar user panel -->
 		<div class="user-panel" style="margin-top: 10px;">
 			<div class="pull-left image">
-				<img src="<?= "upload/" . Yii::$app->user->identity->foto ?>" class="img-circle" style="height: 45px;" alt="User Image" />
+				<img src="<?= "upload/" . Yii::$app->user->identity->foto ?>" class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-left info">
 				<p>
-					<?php
-					$num_char = 17;
-					echo substr(Yii::$app->user->identity->nama, 0, $num_char) . '...';
-					?>
-					<?php // Yii::$app->user->identity->nama 
-					?>
+					<?= Yii::$app->user->identity->nama ?>
 				</p>
 				<?php
 				$userrole = Userrole::find()->where(['id_login' => Yii::$app->user->identity->id_login])->one();
