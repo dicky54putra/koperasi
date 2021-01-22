@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12" style="padding: 0;">
             <div class="box-body">
                 <p style="font-family: 'Times New Roman'">
-                    <h4>Periode : <?= ($tanggal_awal != '') ? date('d/m/Y', strtotime($tanggal_awal)) : '-'; ?> Sampai <?= ($tanggal_akhir != '') ? date('d/m/Y', strtotime($tanggal_akhir)) : '-'; ?></h4>
+                <h4>Periode : <?= ($tanggal_awal != '') ? date('d/m/Y', strtotime($tanggal_awal)) : '-'; ?> Sampai <?= ($tanggal_akhir != '') ? date('d/m/Y', strtotime($tanggal_akhir)) : '-'; ?></h4>
                 </p>
 
                 <table class="table" id="table-index">
@@ -139,7 +139,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td><?php
                                     foreach ($detail as $key => $value) {
                                         $hrg_barang = $value->harga_jual * $value->qty;
-                                        echo 'Rp. ' . number_format($hrg_barang) . '<br>';
+                                        echo 'Rp. ' . ribuan($hrg_barang) . '<br>';
                                         $grandtotal += $hrg_barang;
                                     }
 

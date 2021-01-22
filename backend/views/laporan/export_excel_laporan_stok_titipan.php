@@ -93,7 +93,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                                         <td style="width: 35%;"><?= (!empty($val['tanggal'])) ? tanggal_indo($val['tanggal']) . ',' : ''; ?></td>
                                         <td style="width: 15%;"><?= $val['qty']; ?></td>
                                         <td>
-                                            <?= ($jum_diambil > 0) ? number_format($jum_diambil) : number_format($jum_setor); ?>
+                                            <?= ($jum_diambil > 0) ? ribuan($jum_diambil) : ribuan($jum_setor); ?>
                                         </td>
                                         <td align="right"><?= $val['keterangan'] ?></td>
                                     </tr>

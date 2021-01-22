@@ -54,13 +54,16 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
     $hrg_barang = '';
     $diskon = '';
     $ppn = '';
-    $query1 = Yii::$app->db->createCommand("
-                                        SELECT data_penjualan_barang.id_penjualan, data_penjualan_barang.id_anggota, data_penjualan_barang.no_invoice, data_penjualan_barang.tanggal_penjualan, data_penjualan_barang.grandtotal, data_penjualan_barang.jenis_pembayaran, anggota_koperasi.nama_anggota
+    $where_anggota = (!empty($id_anggota)) ? "AND data_penjualan_barang.id_anggota = $id_anggota" : null;
+    $where_pembayaran = (!empty($jenis_pembayaran)) ? "AND data_penjualan_barang.jenis_pembayaran = $jenis_pembayaran" : null;
+    $query1 = Yii::$app->db->createCommand("SELECT data_penjualan_barang.id_penjualan, data_penjualan_barang.id_anggota, data_penjualan_barang.no_invoice, data_penjualan_barang.tanggal_penjualan, data_penjualan_barang.grandtotal, data_penjualan_barang.jenis_pembayaran, anggota_koperasi.nama_anggota
                                         FROM data_penjualan_barang
                                         LEFT JOIN anggota_koperasi ON anggota_koperasi.id_anggota = data_penjualan_barang.id_anggota
                                         WHERE data_penjualan_barang.tanggal_penjualan
                                         BETWEEN '$tanggal_awal' AND '$tanggal_akhir'
                                         AND data_penjualan_barang.jenis_pembayaran in(1,2)
+                                        $where_anggota 
+                                        $where_pembayaran
                                         ORDER BY data_penjualan_barang.tanggal_penjualan
                                         ")->query();
     foreach ($query1 as $key => $data) {
@@ -99,13 +102,13 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
           $grandtotal = 0;
           foreach ($detail as $key => $value) {
             $hrg_barang = $value->total_jual;
-            echo number_format($value->total_jual) . '<br>';
+            echo ribuan($value->total_jual) . '<br>';
             $grandtotal += $hrg_barang;
           }
           ?>
         </td>
         <td><?= $data['jenis_pembayaran'] == 1 ? 'LUNAS' : $retVal = ($data['jenis_pembayaran'] == 2) ? 'TAGIHAN' : 'Belum dikonfirmasi'; ?></td>
-        <td><?= number_format($grandtotal) ?></td>
+        <td><?= ribuan($grandtotal) ?></td>
       </tr>
       <?php
       $gt_penjualan += $grandtotal;
@@ -115,7 +118,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
   <tfoot>
     <tr>
       <th colspan="9">GRANDTOTAL</th>
-      <th><?= number_format($gt_penjualan) ?></th>
+      <th><?= ribuan($gt_penjualan) ?></th>
     </tr>
   </tfoot>
 </table>

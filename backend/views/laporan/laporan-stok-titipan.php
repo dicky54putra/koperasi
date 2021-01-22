@@ -96,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12" style="padding: 0;">
             <div class="box-body">
                 <p style="font-family: 'Times New Roman'">
-                    <h4>Periode Bulan: <?= ($tanggal_awal != '') ? tanggal_indo2(date('F', strtotime($tanggal_awal))) : '-'; ?></h4>
+                <h4>Periode Bulan: <?= ($tanggal_awal != '') ? tanggal_indo2(date('F', strtotime($tanggal_awal))) : '-'; ?></h4>
                 </p>
 
                 <table class="table" id="table-index">
@@ -166,7 +166,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         <td style="width: 35%;"><?= (!empty($val['tanggal'])) ? tanggal_indo($val['tanggal']) . ',' : ''; ?></td>
                                                         <td style="width: 15%;"><?= $val['qty']; ?></td>
                                                         <td>
-                                                            <?= ($jum_diambil > 0) ? number_format($jum_diambil) : number_format($jum_setor); ?>
+                                                            <?= ($jum_diambil > 0) ? ribuan($jum_diambil) : ribuan($jum_setor); ?>
                                                         </td>
                                                         <td align="right"><?= $val['keterangan'] ?></td>
                                                     </tr>

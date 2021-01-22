@@ -77,7 +77,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                                     <tr>
                                         <td style="width: 35%;"><?= (!empty($val['tanggal'])) ? tanggal_indo($val['tanggal']) . ',' : ''; ?></td>
                                         <td style="width: 15%;"><?= ($val['tipe'] == 1) ? $val['qty'] . ',' : '(' . $val['qty'] . '),'; ?></td>
-                                        <td><?= ($val['tipe'] == 1) ? ', ' . number_format($val['qty'] * $data['harga_jual']) : ', (' . number_format($val['qty'] * $data['harga_jual']) . ')'; ?></td>
+                                        <td><?= ($val['tipe'] == 1) ? ', ' . ribuan($val['qty'] * $data['harga_jual']) : ', (' . ribuan($val['qty'] * $data['harga_jual']) . ')'; ?></td>
                                         <!-- $val['keterangan'] -->
                                     </tr>
                                 <?php  } ?>

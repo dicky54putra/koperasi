@@ -48,13 +48,14 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
         $hrg_barang = '';
         $diskon = '';
         $ppn = '';
-        $query1 = Yii::$app->db->createCommand("
-                                        SELECT data_pembelian_barang.id_pembelian, data_pembelian_barang.id_anggota, data_pembelian_barang.no_faktur, data_pembelian_barang.tanggal_pembelian, data_pembelian_barang.grandtotal, anggota_koperasi.nama_anggota
+        $where_anggota = (!empty($id_anggota)) ? "AND data_pembelian_barang.id_anggota = $id_anggota" : null;
+        $query1 = Yii::$app->db->createCommand("SELECT data_pembelian_barang.id_pembelian, data_pembelian_barang.id_anggota, data_pembelian_barang.no_faktur, data_pembelian_barang.tanggal_pembelian, data_pembelian_barang.grandtotal, anggota_koperasi.nama_anggota
                                         FROM data_pembelian_detail
                                         LEFT JOIN data_pembelian_barang ON data_pembelian_barang.id_pembelian = data_pembelian_detail.id_pembelian
                                         LEFT JOIN anggota_koperasi ON anggota_koperasi.id_anggota = data_pembelian_barang.id_anggota
                                         WHERE data_pembelian_barang.tanggal_pembelian
                                         BETWEEN '$tanggal_awal' AND '$tanggal_akhir'
+                                        $where_anggota
                                         GROUP BY data_pembelian_detail.id_pembelian
                                         ORDER BY data_pembelian_barang.tanggal_pembelian
                                         ")->query();
@@ -78,12 +79,12 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                     $grandtotal = 0;
                     foreach ($detail as $key => $value) {
                         $hrg_barang = $value->total_beli;
-                        echo number_format($value->total_beli) . '<br>';
+                        echo ribuan($value->total_beli) . '<br>';
                         $grandtotal += $hrg_barang;
                     }
                     ?>
                 </td>
-                <td><?= number_format($grandtotal) ?></td>
+                <td><?= ribuan($grandtotal) ?></td>
             </tr>
             <?php
             $grandtotal_ += $grandtotal;
@@ -93,7 +94,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
     <tfoot>
         <tr>
             <td colspan="6"><b>GRANDTOTAL</b></td>
-            <td><?= number_format($grandtotal_) ?></td>
+            <td><?= ribuan($grandtotal_) ?></td>
         </tr>
     </tfoot>
 </table>

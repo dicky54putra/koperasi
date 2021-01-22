@@ -79,7 +79,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
                 <td><?php
                     foreach ($detail as $key => $value) {
                         $hrg_barang = $value->harga_jual * $value->qty;
-                        echo 'Rp. ' . number_format($hrg_barang) . '<br>';
+                        echo 'Rp. ' . ribuan($hrg_barang) . '<br>';
                         $grandtotal += $hrg_barang;
                     }
 

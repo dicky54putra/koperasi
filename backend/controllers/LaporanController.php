@@ -65,10 +65,12 @@ class LaporanController extends Controller
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+        $id_anggota  = Yii::$app->request->post('id_anggota');
 
         return $this->render('laporan-piutang-toko', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
@@ -76,10 +78,12 @@ class LaporanController extends Controller
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+        $id_anggota  = Yii::$app->request->post('id_anggota');
 
         return $this->render('laporan-pembelian', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
@@ -87,10 +91,14 @@ class LaporanController extends Controller
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
+        $id_anggota  = Yii::$app->request->post('id_anggota');
+        $jenis_pembayaran  = Yii::$app->request->post('jenis_pembayaran');
 
         return $this->render('laporan-penjualan', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
+            'jenis_pembayaran' => $jenis_pembayaran,
         ]);
     }
 
@@ -173,7 +181,7 @@ class LaporanController extends Controller
         ]);
     }
 
-    public function actionExportExcelLaporanPiutangToko()
+    public function actionExportExcelLaporanPiutangToko($id_anggota = null)
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
@@ -181,10 +189,11 @@ class LaporanController extends Controller
         return $this->renderPartial('export_excel_laporan_piutang_toko', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
-    public function actionExportExcelLaporanPembelian()
+    public function actionExportExcelLaporanPembelian($id_anggota = null)
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
@@ -192,10 +201,11 @@ class LaporanController extends Controller
         return $this->renderPartial('export_excel_laporan_pembelian', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
         ]);
     }
 
-    public function actionExportExcelLaporanPenjualan()
+    public function actionExportExcelLaporanPenjualan($id_anggota = null, $jenis_pembayaran = null)
     {
         $tanggal_awal   = Yii::$app->request->post('tanggal_awal');
         $tanggal_akhir  = Yii::$app->request->post('tanggal_akhir');
@@ -203,6 +213,8 @@ class LaporanController extends Controller
         return $this->renderPartial('export_excel_laporan_penjualan', [
             'tanggal_awal'  => $tanggal_awal,
             'tanggal_akhir' => $tanggal_akhir,
+            'id_anggota' => $id_anggota,
+            'jenis_pembayaran' => $jenis_pembayaran,
         ]);
     }
 

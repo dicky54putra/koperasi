@@ -186,8 +186,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td><?= $data['kode_barang'] ?></td>
                                     <td><?= $data['nama_barang'] ?></td>
                                     <td><?= $data['nama_kategori'] ?></td>
-                                    <td><?= number_format($data['harga_beli']) ?></td>
-                                    <td><?= number_format($data['harga_jual']) ?></td>
+                                    <td><?= ribuan($data['harga_beli']) ?></td>
+                                    <td><?= ribuan($data['harga_jual']) ?></td>
                                     <?php
                                     $stok_penyesuaian = StokPenyesuaian::find()->where(['id_barang' => $data['id_barang']])->andWhere("tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->all();
                                     $jml = 0;
@@ -210,7 +210,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </td>
                                     <td>
                                         <!-- nominal persediaan awal -->
-                                        <?= number_format($stok_awal *  $data['harga_beli']) ?>
+                                        <?= ribuan($stok_awal *  $data['harga_beli']) ?>
                                     </td>
                                     <td>
                                         <!-- qty persediaan penjualan -->
@@ -218,7 +218,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </td>
                                     <td>
                                         <!-- nominal persediaan penjualan -->
-                                        <?= number_format($stok_barang_penjualan = $stok_keluar * $data['harga_jual']) ?>
+                                        <?= ribuan($stok_barang_penjualan = $stok_keluar * $data['harga_jual']) ?>
                                     </td>
                                     <td>
                                         <!-- qty persediaan barang masuk -->
@@ -226,7 +226,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </td>
                                     <td>
                                         <!-- nominal persediaan barang masuk -->
-                                        <?= number_format($stok_barang_masuk = $stok_masuk * $data['harga_beli']) ?>
+                                        <?= ribuan($stok_barang_masuk = $stok_masuk * $data['harga_beli']) ?>
                                     </td>
                                     <td>
                                         <!-- qty persediaan akhir -->
@@ -237,7 +237,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </td>
                                     <td>
                                         <!-- nominal persediaan akhir -->
-                                        <?= number_format($p_akhir * $data['harga_beli']) ?>
+                                        <?= ribuan($p_akhir * $data['harga_beli']) ?>
                                     </td>
                                     <td>
                                         <!-- qty persediaan gudang -->
@@ -245,7 +245,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </td>
                                     <td>
                                         <!-- nominal persediaan gudang -->
-                                        <?= number_format($data['stok'] * $data['harga_beli']) ?>
+                                        <?= ribuan($data['stok'] * $data['harga_beli']) ?>
                                     </td>
                                     <!-- <td>
                                         qty persediaan penyesuaian
@@ -271,9 +271,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                     $stok_penyesuaian = StokPenyesuaian::find()->where(['id_barang' => $data['id_barang']])->andWhere("tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'")->all();
                                     foreach ($stok_penyesuaian as $key => $val) {
                                         if ($val->tipe == 1) {
-                                            echo number_format($val['qty'] *  $data['harga_jual']) . '<br>';
+                                            echo ribuan($val['qty'] *  $data['harga_jual']) . '<br>';
                                         } else {
-                                            echo '(' . number_format($val['qty'] *  $data['harga_jual']) . ')<br>';
+                                            echo '(' . ribuan($val['qty'] *  $data['harga_jual']) . ')<br>';
                                         }
                                     }
                                     ?>
@@ -298,15 +298,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             <tr>
                                 <th colspan="5"></th>
                                 <th>Total</th>
-                                <th><?= number_format(!empty($stok_awal) ? $stok_awal *  ($data['harga_beli'] ?? 0) : 0) ?></th>
+                                <th><?= ribuan(!empty($stok_awal) ? $stok_awal *  ($data['harga_beli'] ?? 0) : 0) ?></th>
                                 <th>Total</th>
-                                <th><?= number_format($gt_penjualan_stok) ?></th>
+                                <th><?= ribuan($gt_penjualan_stok) ?></th>
                                 <th>Total</th>
-                                <th><?= number_format($gt_barang_masuk_stok) ?></th>
+                                <th><?= ribuan($gt_barang_masuk_stok) ?></th>
                                 <th>Total</th>
-                                <th><?= number_format($gt_persediaan_stok) ?></th>
+                                <th><?= ribuan($gt_persediaan_stok) ?></th>
                                 <th>Total</th>
-                                <th><?= number_format($gt_persediaan_stok_digudang) ?></th>
+                                <th><?= ribuan($gt_persediaan_stok_digudang) ?></th>
                             </tr>
                         </tfoot>
                     <?php } ?>

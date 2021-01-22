@@ -62,7 +62,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
       foreach ($detail as $key => $value) {
         # code...
         $tgl_ .= tanggal_indo($value->tanggal, true) . "<br>";
-        $nominal .= 'Rp. ' . number_format($value->nominal) . '<br>';
+        $nominal .= 'Rp. ' . ribuan($value->nominal) . '<br>';
         $gd += $value->nominal;
         // $ppn .= $value->ppn.'<br>';
       }
@@ -75,7 +75,7 @@ $tanggal_akhir = $_GET['tanggal_akhir'];
         <td><?= $data['keterangan'] ?></td>
         <td><?= $tgl_ ?></td>
         <td><?= $nominal ?></td>
-        <td><?= 'Rp. ' . number_format($gd) ?></td>
+        <td><?= 'Rp. ' . ribuan($gd) ?></td>
       </tr>
     <?php } ?>
   </tbody>

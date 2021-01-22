@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12" style="padding: 0;">
             <div class="box-body">
                 <p style="font-family: 'Times New Roman'">
-                    <h4>Periode : <?= ($tanggal_awal != '') ? date('d/m/Y', strtotime($tanggal_awal)) : '-'; ?> Sampai <?= ($tanggal_akhir != '') ? date('d/m/Y', strtotime($tanggal_akhir)) : '-'; ?></h4>
+                <h4>Periode : <?= ($tanggal_awal != '') ? date('d/m/Y', strtotime($tanggal_awal)) : '-'; ?> Sampai <?= ($tanggal_akhir != '') ? date('d/m/Y', strtotime($tanggal_akhir)) : '-'; ?></h4>
                 </p>
 
                 <table class="table" id="table-index">
@@ -132,7 +132,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             foreach ($detail as $key => $value) {
                                 # code...
                                 $tgl_ .= tanggal_indo($value->tanggal, true) . "<br>";
-                                $nominal .= 'Rp. ' . number_format($value->nominal) . '<br>';
+                                $nominal .= 'Rp. ' . ribuan($value->nominal) . '<br>';
                                 $gd += $value->nominal;
                                 // $ppn .= $value->ppn.'<br>';
                             }
@@ -145,7 +145,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td><?= $data['keterangan'] ?></td>
                                 <td><?= $tgl_ ?></td>
                                 <td><?= $nominal ?></td>
-                                <td><?= 'Rp. ' . number_format($gd) ?></td>
+                                <td><?= 'Rp. ' . ribuan($gd) ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
